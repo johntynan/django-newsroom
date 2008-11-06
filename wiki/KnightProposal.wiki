@@ -1,4 +1,3 @@
-#labels Featured
 Project Title:Django Newsroom
 
 Requested amount from Knight News Challenge:350,000
