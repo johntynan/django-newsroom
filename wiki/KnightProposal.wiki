@@ -1,27 +1,70 @@
-Project Title:Django Newsroom
+Django Newsroom
 
-Requested amount from Knight News Challenge:350,000
-
-Expected amount of time to complete project:1
-
-Total cost of project including all sources of funding:350,000
+_Written by Jeremy Rue_
 
 =Describe your project=
 
-Journalism should be building our own software tools that are released to the public. But journalists are writers, not programmers. They come from liberal arts backgrounds and pronounce the art of story telling as the end-all-be-all skill set to reaching the hearts and minds of the public. But a digital revolution has moved that "public" online, and publishing models for telling those stories have changed drastically. Generally speaking, journalists are no more adept at online publishing than the average MySpace user. That's why we want to create a software solution for news organizations to easily publish media online -- to give journalists a venue for telling their stories that is incredibly simple to use; and we have the technical expertise to do it. This solution would be to create a completely open-source and free Web application for any news organization to utilize. We plan to: 
- 
- # Create a simple, packaged, auto-install content management system for news organizations that is built specifically for journalists to tell stories online. 
- # Release a public source code to engage the community to participate in improving the system to evolve with the changing needs of the industry. 
- # Develop a software community whose sole purpose would be to maintain the software and update it regularly to keep it secure and relevant. We would create this software product in one-year's time. By eight months, we plan to have a fully functioning beta version, and in one year a final product.
+Journalists are writers, not programmers. They come from liberal arts backgrounds and pronounce the art of story telling as the end-all-be-all skill set to reaching the hearts and minds of the public.
+
+But a digital revolution has moved that "public" online, and publishing models for telling those stories have changed drastically. Generally speaking, journalists are no more adept at online publishing than the average MySpace user.
+
+That's why we want to create a software solution for news organizations to easily publish media online -- to give journalists a venue for telling their stories that is incredibly simple to use; and we have the technical expertise to do it.
+
+This solution would be to create a completely open-source and free Web application for any news organization to utilize. We plan to:
+
+ # Create a simple, packaged, auto-install content management system for news organizations that is built specifically for journalists to tell stories online.
+ # Release a public source code to engage the community to participate in improving the system to evolve with the changing needs of the industry.
+ # Develop a software community whose sole purpose would be to maintain the software and update it regularly to keep it secure and relevant.
+
+We would create this software product in one-year's time. By eight months, we plan to have a fully functioning beta version, and in one year a final product.
 
 =How will your project improve the way news and information are delivered to geographic communities?=
 
-Walk into most newsrooms across this country and the reporters, editors and photographers probably have no idea how their stories or photos end up on the Web. The Web sites are a separate entity, sometimes even outsourced to a tech company that normally specializes in e-commerce. They do this for good reasons; the complexity of the CMS is so great it takes specialized staff to even make it run. This is especially apparent in small newsrooms serving local communities. This will be our target audience. As newspaper subscriptions decline, so do the organizations that serve local communities. We're doing this to help all of the thousands of mid-market news organizations that simply won't survive in the coming years as their print costs rise.
+Walk into most newsrooms across this country and the reporters, editors and photographers probably have no idea how their stories or photos end up on the Web. The Web sites are a separate entity, sometimes even outsourced to a tech company that normally specializes in e-commerce. They do this for good reasons; the complexity of the CMS is so great it takes specialized staff to even make it run. 
+
+This is especially apparent in small newsrooms serving local communities. This will be our target audience. As newspaper subscriptions decline, so do the organizations that serve local communities. We're not developing this to help the New York Times or the Washington Post; we doing this to help all of the thousands of mid-market news organizations that simply won't survive in the coming years as their print costs rise.
+
+They need an online solution that doesn't require a lot of capital and additional staff. They need an easy Web solution to thrive online. We want to create that solution.
+
+We plan to develop a system that is easy to use, made specifically for journalists, and best of all it will be completely free, so news organizations of all sizes can take advantage of it.
 
 =How is your idea innovative? (new or different from what already exists)=
 
-Various "simple" publishing platforms already exist. WordPress is easy to use, but is built for blogging. It is astounding how many people attempt to use WordPress as a content management system. Why? Because it's simple. But it was never made for that purpose and the result is a bail awired hacked CMS to do something it was never intended to do. We want to create the next WordPress or Drupal – but built on a framework that is modular and innovative. How is ours different? Three ways: It's simple, it's flexible and it's made for journalists, with the input of journalists. Our system will utilize an emerging technology that already exists: the Python-based Django framework. It provides the building blocks to construct a well designed CMS.
+Various "simple" publishing platforms already exist. WordPress is easy to use, but is built for blogging. It is astounding how many people attempt to use WordPress as a content management system. Why? Because it's simple. But it was never made for that purpose and the result is a bail-wired hacked CMS to do something it was never intended to do.
+
+We want to create the next WordPress or Drupal – but built on a framework that is modular and innovative. How is ours different? Three ways: It's simple, it's flexible and it's made for journalists, with the input of journalists.
+
+Our system will utilize an emerging technology that already exists: the Python-based Django framework. Built by journalists, for journalists, Django's purpose was to give the tools needed to construct Web applications rapidly and efficiently. The entire framework is built on the concept of adaptability and modularity. If one news organization needs a blog, it's a simple install away to attach a blog application.
+
+However, Django's framework is just that; a "framework." It's the building blocks to construct a CMS, not a pre-packaged solution. We want to build something that can be used by any newsroom that wants an easy and free solution to publishing online, regardless of how small or large the organization is.
+
+We will develop a packaged set of instructions for installing Python, and installing the Django framework. All of the dependencies will be included in our builds, and we will utilize the latest version control technologies to help people upgrade hassle free.
+
+Unlike almost every other system, ours will be built with multimedia in mind. We will implement the latest technologies for running Flash video, audio and photo slideshows. It will be pre-packaged with a basic player, but allow for modification and branding. We will also include support for streaming services (severd by 3rd parties) to live broadcast events.
+
+WordPress and Drupal have vibrant communities and support centers, despite being free solutions.  We plan to create a similar community around our Django package. We will first develop a Web site to facilitate that community and gather developers for managing the project. Builds will be distributed via this site, and input and support will be included through the use of forums and wikis.
 
 =What experience do you or your organization have to successfully develop this project?=
 
-This team will have the perfect combination of skills. Whenever there is a plan to do something incredible with digital tools, there is usually a hole in the team's skill set. Either there is a lack of technical expertise, or it's a team that is too technical and doesn't speak to the needs of the everyday user. We believe we have a team that is diverse in its backgrounds and contains the combination of skills to make this project a reality. The team leader, Milan Andric, is technically proficient in just this way. He is a programmer who spent the last three years working for the UC Berkeley Graduate School of Journalism developing a CMS from the ground up. Built purely in PHP, it was a tremendous learning experience as he realized the evolving needs of journalists required consistent rebuilds of the system. That's when he discovered a new mechanism for building CMSs -- Django. He later built a CMS in Django to serve the site for the Knight Digital Media Center at UC Berkeley. The site has gone through several revisions, all possible because of the flexibility of the framework. Roles: Backend Web Development: Milan Andric, UCB Journalism Scot Hacker, UCB Journalism Peter Baumgartner, Lincoln Loop John Tynan, KJZZ.org / KBAQ.org (NPR Affiliate) Frontend Interface: Jeremy Rue, UCB Journalism Brad Flora, Windy Citizen Multimedia Journalists (wisdom, beneficiaries): Richard Koci Hernandez, San Jose Mercury News Stokely Baksh, Columbia Journalism Kara Andrade, Youth Radio Amy Jeffries, Global News Enterprises
+
+This team will have the perfect combination of skills. Whenever there is a plan to do something incredible with digital tools, there is usually a hole in the team's skill set. Either there is a lack of technical expertise, or it's a team that is too technical and doesn't speak to the needs of the everyday user. We believe we have a team that is diverse in its backgrounds and contains the combination of skills to make this a reality.
+
+The team leader, Milan Andric, is technically proficient in just this way. He is a programmer who spent the last three years working for the UC Berkeley Graduate School of Journalist developing a CMS from the ground up. Built purely in PHP, it was a tremendous learning experience as he realized the evolving needs of journalists required consistent rebuilds of the system. That's when he discovered a new mechanism for building CMSes -- the Python-based Django framework. He later built a CMS in Django to serve the site for the Knight Digtial Media Center at UC Berkeley. The site has gone through several revisions, all possible because of the flexibility of the framework.
+
+=Development Roles=
+These are open to change of who is sitting in the role, but I think it's important to define the roles and people that are necessary to build this piece of software.  
+
+Backend Web Development
+  * Milan Andric,  UC Berkeley/KDMC
+  * Scot Hacker, UC Berkeley/KDMC
+  * John Tynan, KJZZ.org / KBAQ.org (NPR Affiliates)
+
+Frontend Interface Development / User Experience
+  * Jeremy Rue, multimedia training instructor UC Berkeley Knight Digital Media Center
+  * Brad Flora, editor, Windy Citizen
+
+Multimedia Journalists (wisdom, beneficiaries ...)
+  * Richard Koci Hernandez, formerly San Jose Mercury News, now Ford Fellow for UC Berkeley
+  * Stokely Baksh, Columbia
+  * Kara Andrade, Youth Radio in Oakland
+  * Amy Jeffries, web developer for Global News Enterprises
