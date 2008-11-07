@@ -1,4 +1,3 @@
-
 _Written by Jeremy Rue_
 
 =Describe your project=
@@ -51,7 +50,7 @@ This team will have the perfect combination of skills. Whenever there is a plan 
 The team leader, Milan Andric, is technically proficient in just this way. He is a programmer who spent the last three years working for the UC Berkeley Graduate School of Journalist developing a CMS from the ground up. Built purely in PHP, it was a tremendous learning experience as he realized the evolving needs of journalists required consistent rebuilds of the system. That's when he discovered a new mechanism for building CMSes -- the Python-based Django framework. He later built a CMS in Django to serve the site for the Knight Digtial Media Center at UC Berkeley. The site has gone through several revisions, all possible because of the flexibility of the framework.
 
 =Development Roles=
-These are open to change of who is sitting in the role, but I think it's important to define the roles and people that are necessary to build this piece of software.  
+These are open to change of who is sitting in the role, but I think it's important to define the roles that are necessary for this project.
 
 Backend Web Development
   * Milan Andric,  UC Berkeley/KDMC
