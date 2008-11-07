@@ -1,4 +1,3 @@
-Django Newsroom
 
 _Written by Jeremy Rue_
 
