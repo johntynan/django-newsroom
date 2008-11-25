@@ -68,7 +68,7 @@ Software construction is a multi-disciplinary activity, so we need to encourage 
 
 Release early and release often is a tried and true open source mantra. When software is made available then user interest grows, participants come on board and feedback is gathered sooner rather than later.
 
-Our first release will include a slideshow and video application.  These applications are in the greatest demand and specifically needed in multimedia journalism.  We hope to have a release for these applications ready in a month.
+Our first release will include a slideshow and video application. These applications are in the greatest demand and specifically needed in multimedia journalism. We hope to have a release for these applications ready in a month.
 
 When any software is released it is important to have a demo site.  The demo site, which will be running the current/development version of our software. This provides a place for anyone to test new features without installing anything.  
 
@@ -107,8 +107,8 @@ The only risk is that another project with similar goals gains more interest tha
 
 Our marketing plan is to do outreach at all the major user group social networks and development hubs to find interested parties to join our open source project.  The list includes:
 
-	* Linkedin’s Python, Django and Journalism groups
-	* FOSS Professionals on LinkedIn
+	* !LinkedIn’s Python, Django and Journalism groups
+	* FOSS Professionals on !LinkedIn
 	* Facebook’s Python, Django and Journalism groups
 	* Django user and developers groups, including Pinax
 	* Pinax user and developer groups
@@ -120,7 +120,7 @@ Our marketing plan is to do outreach at all the major user group social networks
 Once the first milestone is reached, a press release will be made to the various journalism news outlets and blogs, including:
 
 	* Knight Digital Media Center
-	* MediaShift/PBS.org
+	* !MediaShift/PBS.org
 	* NPR.org
 	* Romensko (Poynter)
-	* Jay Rosen’s PressThink
+	* Jay Rosen’s !PressThink
