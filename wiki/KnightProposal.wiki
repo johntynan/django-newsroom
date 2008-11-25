@@ -1,21 +1,17 @@
 #labels Featured
-_Written by Jeremy Rue_
+_Written by Jeremy Rue, Scot Hacker and Milan Andric_
 
 =Describe your project=
 
-Journalists are writers, not programmers. They come from liberal arts backgrounds and pronounce the art of story telling as the end-all-be-all skill set to reaching the hearts and minds of the public.
+Rather than relying on expensive, proprietary content management tools that are not fine-tuned for the art of digital storytelling, journalists should be building their own software tools, which can then be released to the public and shared between organizations. But journalists are writers, not programmers. They emerge from liberal arts backgrounds, and often consider the art of storytelling to be the ultimate skill set. But a digital revolution has moved the readership online, and publishing models for telling those stories have changed drastically. 
 
-But a digital revolution has moved that "public" online, and publishing models for telling those stories have changed drastically. Generally speaking, journalists are no more adept at online publishing than the average MySpace user.
+Generally speaking, journalists are no more adept at online publishing than the average MySpace user. That's why we want to create a software solution for news organizations to easily publish new media online -- to give journalists a venue for telling their stories that is simple to learn and use. We plan to create an open-source and free Web application for any news organization to utilize. We plan to: 
 
-That's why we want to create a software solution for news organizations to easily publish media online -- to give journalists a venue for telling their stories that is incredibly simple to use; and we have the technical expertise to do it.
+ # Create a simple, packaged, auto-install content management system for news organizations that is built specifically for journalists to tell stories online. 
+ # Release a public source code to engage the community to participate in improving the system to evolve with the changing needs of the industry. 
+ # Develop a software community whose sole purpose would be to maintain the software and update it regularly to keep it secure and relevant. 
 
-This solution would be to create a completely open-source and free Web application for any news organization to utilize. We plan to:
-
- # Create a simple, packaged, auto-install content management system for news organizations that is built specifically for journalists to tell stories online.
- # Release a public source code to engage the community to participate in improving the system to evolve with the changing needs of the industry.
- # Develop a software community whose sole purpose would be to maintain the software and update it regularly to keep it secure and relevant.
-
-We would create this software product in one-year's time. By eight months, we plan to have a fully functioning beta version, and in one year a final product.
+We can create this software product in one-year's time. By the end of eight months, we plan to have a fully functioning beta version, and in one year a final product.  
 
 =How will your project improve the way news and information are delivered to geographic communities?=
 
