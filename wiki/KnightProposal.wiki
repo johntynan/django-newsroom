@@ -23,15 +23,11 @@ This is especially apparent in small newsrooms serving local communities, who wi
 
 =How is your idea innovative? (new or different from what already exists)=
 
-Various "simple" publishing platforms already exist. WordPress is easy to use, but is built for blogging. It is astounding how many people attempt to use WordPress as a content management system. Why? Because it's simple. But it was never made for that purpose and the result is a bail-wired hacked CMS to do something it was never intended to do.
+Various "simple" publishing platforms already exist. WordPress is easy to use, but is built for confined data structures such as blogs and simple publications. It is astounding how many people attempt to use WordPress as a content management system. Why? WordPress is popular because it's simple, but it was never designed for the more complex site structures, and the result is a bail-wired hacked CMS to do something it was never intended to do.
 
 We want to create the next WordPress or Drupal – but built on a framework that is modular and innovative. How is ours different? Three ways: It's simple, it's flexible and it's made for journalists, with the input of journalists.
 
-Our system will utilize an emerging technology that already exists: the Python-based Django framework. Built by journalists, for journalists, Django's purpose was to give the tools needed to construct Web applications rapidly and efficiently. The entire framework is built on the concept of adaptability and modularity. If one news organization needs a blog, it's a simple install away to attach a blog application.
-
-However, Django's framework is just that; a "framework." It's the building blocks to construct a CMS, not a pre-packaged solution. We want to build something that can be used by any newsroom that wants an easy and free solution to publishing online, regardless of how small or large the organization is.
-
-We will develop a packaged set of instructions for installing Python, and installing the Django framework. All of the dependencies will be included in our builds, and we will utilize the latest version control technologies to help people upgrade hassle free.
+Our system will utilize an emerging technology that already exists: the Python-based Django framework. Rather than yet another pre-fab CMS with all of its assumptions and limitations, Django provides the building blocks to construct a well designed CMS custom-tailored to the needs of new media journalists. 
 
 Unlike almost every other system, ours will be built with multimedia in mind. We will implement the latest technologies for running Flash video, audio and photo slideshows. It will be pre-packaged with a basic player, but allow for modification and branding. We will also include support for streaming services (severd by 3rd parties) to live broadcast events.
 
