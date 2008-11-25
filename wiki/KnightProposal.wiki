@@ -15,13 +15,9 @@ We can create this software product in one-year's time. By the end of eight mont
 
 =How will your project improve the way news and information are delivered to geographic communities?=
 
-Walk into most newsrooms across this country and the reporters, editors and photographers probably have no idea how their stories or photos end up on the Web. The Web sites are a separate entity, sometimes even outsourced to a tech company that normally specializes in e-commerce. They do this for good reasons; the complexity of the CMS is so great it takes specialized staff to even make it run. 
+Walk into most newsrooms across this country, you’ll find and that the reporters, editors and photographers probably have little understanding of how their stories or photos end up on the Web.  The publication web sites are a separate entity, sometimes even outsourced to a tech company that normally often specializes in e-commerce. They do this for good reasons; the complexity of the CMS is so great it takes specialized staff to even keep it running. 
 
-This is especially apparent in small newsrooms serving local communities. This will be our target audience. As newspaper subscriptions decline, so do the organizations that serve local communities. We're not developing this to help the New York Times or the Washington Post; we doing this to help all of the thousands of mid-market news organizations that simply won't survive in the coming years as their print costs rise.
-
-They need an online solution that doesn't require a lot of capital and additional staff. They need an easy Web solution to thrive online. We want to create that solution.
-
-We plan to develop a system that is easy to use, made specifically for journalists, and best of all it will be completely free, so news organizations of all sizes can take advantage of it.
+This is especially apparent in small newsrooms serving local communities, who will be our target audience. As newspaper subscriptions decline, so do the organizations that serve local communities. Our goal is to help all of the thousands of mid-market news organizations that simply won't survive in the coming years as their print costs rise and ad revenues decline. 
 
 =How is your idea innovative? (new or different from what already exists)=
 
