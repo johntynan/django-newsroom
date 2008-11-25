@@ -3,6 +3,8 @@ _Written by Jeremy Rue, Scot Hacker and Milan Andric_
 
 =Describe your project=
 
+In the process of getting content on the Web, one major hurdle continues to be a reoccurring theme among virtually every newsroom we talk to. The Content Management      System has become the new copy desk, and everyone is dying to get their hands on something that is easy, capable and practical.
+
 Rather than relying on expensive, proprietary content management tools that are not fine-tuned for the art of digital storytelling, journalists should be building their own software tools, which can then be released to the public and shared between organizations. But journalists are writers, not programmers. They emerge from liberal arts backgrounds, and often consider the art of storytelling to be the ultimate skill set. But a digital revolution has moved the readership online, and publishing models for telling those stories have changed drastically. 
 
 Generally speaking, journalists are no more adept at online publishing than the average MySpace user. That's why we want to create a software solution for news organizations to easily publish new media online -- to give journalists a venue for telling their stories that is simple to learn and use. We plan to create an open-source and free Web application for any news organization to utilize. We plan to: 
