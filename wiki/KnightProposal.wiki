@@ -23,24 +23,20 @@ This is especially apparent in small newsrooms serving local communities, who wi
 
 =How is your idea innovative? (new or different from what already exists)=
 
-Various "simple" publishing platforms already exist. WordPress is easy to use, but is built for confined data structures such as blogs and simple publications. It is astounding how many people attempt to use WordPress as a content management system. Why? WordPress is popular because it's simple, but it was never designed for the more complex site structures, and the result is a bail-wired hacked CMS to do something it was never intended to do.
-
 We want to create the next WordPress or Drupal – but built on a framework that is modular and innovative. How is ours different? Three ways: It's simple, it's flexible and it's made for journalists, with the input of journalists.
 
-Our system will utilize an emerging technology that already exists: the Python-based Django framework. Rather than yet another pre-fab CMS with all of its assumptions and limitations, Django provides the building blocks to construct a well designed CMS custom-tailored to the needs of new media journalists. 
+Unlike almost every other system, ours will be built with multimedia in mind. We will implement the latest technologies for running video, audio and photo slideshows. It will be pre-packaged with a basic player, but allow for modification and branding. We will also include support for streaming services (served by 3rd parties) to live broadcast events.
 
-Unlike almost every other system, ours will be built with multimedia in mind. We will implement the latest technologies for running Flash video, audio and photo slideshows. It will be pre-packaged with a basic player, but allow for modification and branding. We will also include support for streaming services (severd by 3rd parties) to live broadcast events.
-
-WordPress and Drupal have vibrant communities and support centers, despite being free solutions.  We plan to create a similar community around our Django package. We will first develop a Web site to facilitate that community and gather developers for managing the project. Builds will be distributed via this site, and input and support will be included through the use of forums and wikis.
+WordPress is simple and easy to use, but is built for blogs and simple publications. It was never designed for the complex site structures journalism requires.
 
 =What experience do you or your organization have to successfully develop this project?=
-
+(400 characters remaining)
 
 This team will have the perfect combination of skills. Whenever there is a plan to do something incredible with digital tools, there is usually a hole in the team's skill set. Either there is a lack of technical expertise, or it's a team that is too technical and doesn't speak to the needs of the everyday user. We've assembled a team that is diverse in its backgrounds and contains the  right combination of skills to make this project a reality.
 
 The team leader, Milan Andric, is technically proficient in just this way. He is a programmer who spent the last three years working for the UC Berkeley Graduate School of Journalism.  He also developed a CMS from the ground up. Built purely in PHP, it was a tremendous learning experience as he realized the evolving needs of journalists required consistent re-thinking of the what the system is and does. Along the way he discovered a new mechanism for building CMSes -- Django. He later built a CMS in Django to serve the site for the Knight Digtial Media Center at UC Berkeley, which sits on top of a complex and multi-tiered data structure. The site has gone through several revisions, all possible thanks to of the flexibility of the framework.
 
-=Development Roles=
+==Development Roles==
 These are open to change of who is sitting in the role, but I think it's important to define the roles that are necessary for this project.
 
 Backend Web Development
@@ -60,19 +56,20 @@ Multimedia Journalists (wisdom, beneficiaries ...)
 
 =What unmet need does your proposal answer?=
 
-Online newsrooms struggle with publishing systems that are rigid and difficult to change. Systems are built for a pre-defined story format (usually text-based), and often are owned and controlled by parent corporations, leaving the individual newsroom with no online vehicle in which to experiment. Examples of story formats that newsrooms struggle to publish include Flash-based presentations, map mashups, custom navigation and templates for special feature presentations, data-backed presentations (like chicagocrime or everyblock), etc. In addition, IT staff and management are often unwilling or unable to make accommodations for journalists who want to work “outside the box” (where “box” = CMS). There are really two obstacles to overcome: 1) Rigid and unchangeable data models on the back-end, and 2) Rigid and unchangeable presentation templates. In contrast, Django Newsroom aims to provide a platform that can easily accommodate any data type, where organizational site templates can be modified, augmented, or replaced; and where custom content types and story formats are encouraged, rather than discouraged.
+Online newsrooms struggle with publishing systems that are difficult to change. Systems are often built for a pre-defined story format and controlled by parent corporations. Examples of story formats that newsrooms struggle to publish include Flash-based presentations, map mashups, custom navigation and templates for special feature presentations, data-backed presentations like chicagocrime or everyblock. There are really two obstacles to overcome: 1) Rigid and unchangeable data models on the back-end, and 2) Rigid and unchangeable presentation templates. In contrast, Django Newsroom aims to provide a platform that can accommodate any data type, where custom content types and story formats are encouraged, rather than discouraged.
 
 =What tasks/benchmarks need to be accomplished to develop your project and by when will you complete them?=
+(176 characters remaining)  
 
-The project is currently in early planning phases, this involves requirements and outreach.  During the “requirements phase” of development, our first objective is to research and discuss what the needs of journalists are, and to formulate the requirements for the components of the software. Once that phase is complete, we’ll create a roadmap defining our path to final goals.  The requirements phase requires discussion and input from all sides: developers, interaction and interface designers,  and particularly journalists who are technically inclined, to craft, define and prioritize features.  The requirements phase is an iterative process.
+The project is currently in early planning phases, this involves requirements and outreach.  During the “requirements phase” of development, our first objective is to research and discuss what the needs of journalists are, and to formulate the requirements for the components of the software. Once that phase is complete, we’ll create a roadmap defining our path to the first milestone release and final goals.  The requirements phase requires discussion and input from all sides: developers, interaction and interface designers,  and particularly journalists who are technically inclined, to craft, define and prioritize features. 
 
-We view software construction as a multi-disciplinary activity, so we need to encourage professionals from all areas of the ecosystem to participate. CMSs built by engineers in a vacuum is the problem; we intend not to repeat that mistake.  It is important to find people who see value in the project and encourage them to contribute -- to participate in the open source process.  
+Software construction is a multi-disciplinary activity, so we need to encourage professionals from all areas of the ecosystem to participate. CMSes built by engineers in a vacuum is the problem; we intend not to repeat that mistake.  It is important to find people who see value in the project and encourage them to participate in the open source process.  
 
-In keeping with the “iterative process” approach, software “deliverables”  should be released as soon as possible early in the development cycle. When a “proof of concept” is made available, then we expect interest to grow, and for more participants to come on board.  
+Release early and release often is a tried and true open source mantra. When software is made available then user interest grows, participants come on board and feedback is gathered sooner rather than later.
 
-Our first deliverables will be a slideshow and video application.  These applications are in the greatest demand and have very specific needs in multimedia journalism.  The current solutions available are quite lacking.  Providing these solutions will give the project the initial exposure necessary to  get more people involved, using the software, and providing feedback.  We plan to have a release for these applications ready in a month.
+Our first release will include a slideshow and video application.  These applications are in the greatest demand and specifically needed in multimedia journalism.  We hope to have a release for these applications ready in a month.
 
-Once our proof-of-concept software is functional, it is important to set up a demo site.  The demo site, which will be running the current/development version of our software. This provides a place for anyone to test new features without installing anything.  
+When any software is released it is important to have a demo site.  The demo site, which will be running the current/development version of our software. This provides a place for anyone to test new features without installing anything.  
 
 We have already launched an open discussion group for the project, and participants are actively chewing on ideas and approaches for Django Newsroom.  
 
