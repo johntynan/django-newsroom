@@ -74,13 +74,11 @@ When any software is released it is important to have a demo site.  The demo sit
 We have already launched an open discussion group for the project, and participants are actively chewing on ideas and approaches for Django Newsroom.  
 
 =What will you have changed by the end of your project?=
-
 (1532 characters remaining)  
 
 As the iterative development process progresses, we expect to go through many iterations of sample data models, back-end interfaces, and workflow approaches. Because of the anticipated difficulty of getting this right, we don’t expect it to be perfect the first time. 
 
 =How will you measure progress and ultimately success?=
-
 (546 characters remaining)  
 
 Progress will be measured in milestones and release cycles.  We plan to have a regular release cycle, in which, every 3 months a new version of the software will be made available.  Each release will address a defined set of objectives, and the team will work towards those goals for each release.  Success will be measured by answering these questions (in rough chronological order):
@@ -99,12 +97,12 @@ Progress will be measured in milestones and release cycles.  We plan to have a r
 
 
 =Do you see any risk in the development of your project?=
-
 (1246 characters remaining)  
 
 The only risk is that another project with similar goals gains more interest than we do and provides similar goals.  This might divide the resources/people available to contribute to our project. Because it’s relatively difficult for an organization to “escape” from a content management system, once a publication decides on a competing product, it could be difficult to win them back (even if our platform is markedly superior). Therefore it is in the best interest of Django Newsroom to get a working platform “into the wild” sooner rather than later.
 
 =What is your marketing plan? How will people learn about what you are doing?=
+(901 characters remaining)  
 
 Our marketing plan is to do outreach at all the major user group social networks and development hubs to find interested parties to join our open source project.  The list includes:
 
