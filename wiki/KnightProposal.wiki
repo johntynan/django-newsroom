@@ -29,15 +29,15 @@ This is especially apparent in small newsrooms serving local communities, who wi
 
 It's simple, it's flexible, and it's made for journalists, with the input of journalists.
 
-Unlike almost systems, ours will be built with multimedia in mind. We will implement the latest technologies for running video, audio and photo slideshows. It will be pre-packaged with a basic player, but allow for modification and branding. We will also include support for streaming services (served by 3rd parties) to live-broadcast events.
+Unlike most systems, ours will be built with multimedia in mind. We will implement the latest technologies for running video, audio and photo slideshows. It will be pre-packaged with a basic player, but allow for modification and branding. We will also include support for streaming services (served by 3rd parties) to live-broadcast events.
 
 
 =What experience do you or your organization have to successfully develop this project?=
 (456 characters remaining)  
 
-Whenever there is a plan to do something highly ambitious with digital tools, there is usually a hole in the team's skill set. Either there is a lack of technical expertise, or the team that is too technical and doesn't appreciate the needs of the everyday user. We've assembled a team that is diverse in its backgrounds and contains the  right combination of skills to make this project a reality.
+Whenever there is a plan to do something highly ambitious with digital tools, there is usually a hole in the team's skill set. Either there is a lack of technical expertise, or the team is too technical and doesn't appreciate the needs of the everyday user. We've assembled a team that is diverse in its backgrounds and contains the  right combination of skills to make this project a reality.
 
-Team leader Milan Andric is technically proficient in just this way. He is a programmer who spent the last three years working for the UC Berkeley Graduate School of Journalism.  He also developed a CMS from the ground up. Built purely in PHP, it was a tremendous learning experience as he realized the evolving needs of journalists required consistent re-thinking of the what the system is and does. Along the way he discovered a new mechanism for building CMSes -- Django. He later built a CMS in Django to serve the site for the Knight Digtial Media Center at UC Berkeley, which sits on top of a complex and multi-tiered data structure. The site has gone through several revisions, all possible thanks to of the flexibility of the framework.
+Team leader Milan Andric is technically proficient in just this way. He is a programmer who spent the last three years working for the UC Berkeley Graduate School of Journalism.  He also developed a CMS from the ground up. Built purely in PHP, it was a tremendous learning experience as he realized the evolving needs of journalists required consistent re-thinking of what the system is and does. Along the way he discovered a new mechanism for building CMSes -- Django. He later built a CMS in Django to serve the site for the Knight Digital Media Center at UC Berkeley, which sits on top of a complex and multi-tiered data structure. The site has gone through several revisions, all possible thanks to of the flexibility of the framework.
 
 
 =What unmet need does your proposal answer?=
@@ -90,9 +90,9 @@ Progress will be measured in milestones and release cycles.  We plan to have a r
 
 One risk is that another project with similar goals might gain more interest than we do.  This might divide the resources/people available to contribute to our project. Because it’s relatively difficult for an organization to “escape” from a content management system, once a publication decides on a competing product, it could be difficult to win them back (even if our platform is markedly superior). Therefore it is in the best interest of Django Newsroom to get a working platform “into the wild” sooner rather than later.
 
-We want to create the next !WordPress or Drupal – but built on a framework that is modular and innovative. !WordPress is simple and easy to use, but is built for blogs and simple publications - it was never designed for the complex site structures journalism requires. Drupal is powerful, but has a steep learning curve and is often frustrating to customize. Nonetheless both of these projects are wildly successful in their goals.  Django Newsroom needs to develop quickly to find and fill a new niche.
+We want to create the next !WordPress or !Drupal – but built on a framework that is modular and innovative. !WordPress is simple and easy to use, but is built for blogs and simple publications - it was never designed for the complex site structures journalism requires. Drupal is powerful, but has a steep learning curve and is often frustrating to customize. Nonetheless both of these projects are wildly successful in their goals.  Django Newsroom needs to develop quickly to find and fill a new niche.
 
-Another challenge is to get people involved.  The named below have either shown an interest in the project or are actively involved in the current Django Newsroom dicussion list. The presence of names here does not represent an official commitment.
+Another challenge is to get people involved.  The participants named below have either shown an interest in the project or are actively involved in the current Django Newsroom dicussion list. The presence of names here does not represent an official commitment.
 
 Back-end: Milan Andric (UC Berkeley), Scot Hacker (KDMC), John Tynan (KJZZ.org/KBAQ.org NPR Affiliate); Front-end Interface Experience: Jeremy Rue (Multimedia Training Instructor, UC Berkeley/KDMC), Brad Flora (Editor, Windy Citizen); Multimedia Journalists:  Richard Koci Hernandez (formerly San Jose Mercury News, Ford Fellow for UC Berkeley), Stokely Baksh (Columbia University Graduate School of Journalism),  Kara Andrade (Youth Radio in Oakland), Amy Jeffries (Webmaster for Global News Enterprises).
 
