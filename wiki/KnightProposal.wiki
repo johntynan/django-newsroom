@@ -27,7 +27,7 @@ This is especially apparent in small newsrooms serving local communities, who wi
 
 (271 characters remaining)  
 
-Django Newsroom is different in three ways: It's simple, it's flexible, and it's made for journalists, with the input of journalists.
+It's simple, it's flexible, and it's made for journalists, with the input of journalists.
 
 Unlike almost systems, ours will be built with multimedia in mind. We will implement the latest technologies for running video, audio and photo slideshows. It will be pre-packaged with a basic player, but allow for modification and branding. We will also include support for streaming services (served by 3rd parties) to live-broadcast events.
 
