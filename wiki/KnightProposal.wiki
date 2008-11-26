@@ -33,41 +33,23 @@ Unlike almost systems, ours will be built with multimedia in mind. We will imple
 
 
 =What experience do you or your organization have to successfully develop this project?=
-(400 characters remaining)
+(456 characters remaining)  
 
 Whenever there is a plan to do something highly ambitious with digital tools, there is usually a hole in the team's skill set. Either there is a lack of technical expertise, or the team that is too technical and doesn't appreciate the needs of the everyday user. We've assembled a team that is diverse in its backgrounds and contains the  right combination of skills to make this project a reality.
 
 Team leader Milan Andric is technically proficient in just this way. He is a programmer who spent the last three years working for the UC Berkeley Graduate School of Journalism.  He also developed a CMS from the ground up. Built purely in PHP, it was a tremendous learning experience as he realized the evolving needs of journalists required consistent re-thinking of the what the system is and does. Along the way he discovered a new mechanism for building CMSes -- Django. He later built a CMS in Django to serve the site for the Knight Digtial Media Center at UC Berkeley, which sits on top of a complex and multi-tiered data structure. The site has gone through several revisions, all possible thanks to of the flexibility of the framework.
 
 
-All of people named below have either shown an interest in the project or are actively involved in the current Django Newsroom mailing list. The presence of names here does not represent an official commitment.
-
-
-Back-end Web Development
-  * Milan Andric,  UC Berkeley/KDMC
-  * Scot Hacker, UC Berkeley/KDMC
-  * John Tynan, KJZZ.org / KBAQ.org (NPR Affiliates)
-
-Front-end Interface Development / User Experience
-  * Jeremy Rue, Multimedia Training Instructor, UC Berkeley/KDMC
-  * Brad Flora, Editor, Windy Citizen
-
-Multimedia Journalists (wisdom, beneficiaries ...)
-  * Richard Koci Hernandez, formerly San Jose Mercury News, now Ford Fellow for UC Berkeley
-  * Stokely Baksh, Columbia University Graduate School of Journalism
-  * Kara Andrade, Youth Radio in Oakland
-  * Amy Jeffries, Webmaster for Global News Enterprises
-
 =What unmet need does your proposal answer?=
-(11 characters remaining)  
+(2 characters remaining)  
 
 Online newsrooms struggle with publishing systems that are difficult to change. Systems are often built for a pre-defined story format and controlled by parent corporations. Examples of story formats that newsrooms struggle to publish include Flash-based presentations, map mash-ups, custom navigation and templates for special feature presentations, data-backed presentations like chicagocrime.org or everyblock.com. There are really two obstacles to overcome: 1) Rigid and unchangeable data models on the back-end, and 2) Rigid and unchangeable presentation templates. In contrast, Django Newsroom aims to provide a platform that can accommodate any data type, where custom content types and story formats are encouraged, rather than discouraged.
 
 
 =What tasks/benchmarks need to be accomplished to develop your project and by when will you complete them?=
-(176 characters remaining)  
+(12 characters remaining)
 
-The project is currently in early planning phases, which involves defining requirements and starting the outreach process.  During the “requirements phase” of development, our first objective is to research and discuss what the needs of journalists are, and to formulate the requirements for the components of the software. Once that phase is complete, we’ll create a roadmap defining our path to the first milestone release and final goals.  The requirements phase requires discussion and input from all sides: developers, interaction and interface designers,  and particularly journalists who are technically inclined, to craft, define and prioritize features. 
+The project is currently in early planning phases, which involves defining requirements and starting the outreach process.  During the “requirements phase” of development, our first objective is to research and discuss what the needs of journalists are, and to formulate the requirements for the software. Once that phase is complete, we’ll create a roadmap defining our path to the first milestone release and final goals.  The requirements phase requires discussion and input from all sides: developers, interaction and interface designers, and particularly journalists who are technically inclined, to craft, define and prioritize features. 
 
 Software construction is a multi-disciplinary activity, so we need to encourage professionals from all areas of the ecosystem to participate. CMSes built by engineers in a vacuum is the problem; we intend not to repeat that mistake.  It is important to find people who see value in the project and encourage them to participate in the open source process.  
 
@@ -75,7 +57,7 @@ Software construction is a multi-disciplinary activity, so we need to encourage 
 
 Our first release will include a web-based slideshow and video application.  These applications are in very high demand, and are particularly needed in multimedia journalism.  We hope to have a release for these applications ready in a month.
 
-When any software is released, it is important to have a demonstration site, so potential users can kick the tires and begin the feedback loop.  The demo site will be running the current/development version of our software. This provides a place for anyone to test new features without installing anything.  
+When we have a release ready, it is important to have a demonstration site, so folks can kick the tires and begin the feedback loop.  The demo site will be running the current/development version of our software.  This provides a place for anyone to test  features without installing anything.
 
 We have already launched an open discussion group for the project, and participants are actively chewing on ideas and approaches for Django Newsroom.  
 
@@ -104,12 +86,15 @@ Progress will be measured in milestones and release cycles.  We plan to have a r
 
 
 =Do you see any risk in the development of your project?=
-(1246 characters remaining)  
+(12 characters remaining)  
 
-The only risk is that another project with similar goals might gain more interest than we do.  This might divide the resources/people available to contribute to our project. Because it’s relatively difficult for an organization to “escape” from a content management system, once a publication decides on a competing product, it could be difficult to win them back (even if our platform is markedly superior). Therefore it is in the best interest of Django Newsroom to get a working platform “into the wild” sooner rather than later.
+One risk is that another project with similar goals might gain more interest than we do.  This might divide the resources/people available to contribute to our project. Because it’s relatively difficult for an organization to “escape” from a content management system, once a publication decides on a competing product, it could be difficult to win them back (even if our platform is markedly superior). Therefore it is in the best interest of Django Newsroom to get a working platform “into the wild” sooner rather than later.
 
-We want to create the next WordPress or Drupal – but built on a framework that is modular and innovative. WordPress is simple and easy to use, but is built for blogs and simple publications - it was never designed for the complex site structures journalism requires. Drupal is powerful, but has a steep learning curve and is often frustrating to customize. Django Newsroom is different in three ways: It's simple, it's flexible, and it's made for journalists, with the input of journalists.
+We want to create the next WordPress or Drupal – but built on a framework that is modular and innovative. WordPress is simple and easy to use, but is built for blogs and simple publications - it was never designed for the complex site structures journalism requires. Drupal is powerful, but has a steep learning curve and is often frustrating to customize. Nonetheless both of these projects are wildly successful in their goals.  Django Newsroom needs to develop quickly to find and fill a new niche.
 
+Another challenge is to get people involved.  The named below have either shown an interest in the project or are actively involved in the current Django Newsroom dicussion list. The presence of names here does not represent an official commitment.
+
+Back-end: Milan Andric (UC Berkeley), Scot Hacker (KDMC), John Tynan (KJZZ.org/KBAQ.org NPR Affiliate); Front-end Interface Experience: Jeremy Rue (Multimedia Training Instructor, UC Berkeley/KDMC), Brad Flora (Editor, Windy Citizen); Multimedia Journalists:  Richard Koci Hernandez (formerly San Jose Mercury News, Ford Fellow for UC Berkeley), Stokely Baksh (Columbia University Graduate School of Journalism),  Kara Andrade (Youth Radio in Oakland), Amy Jeffries (Webmaster for Global News Enterprises).
 
 =What is your marketing plan? How will people learn about what you are doing?=
 (901 characters remaining)  
