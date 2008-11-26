@@ -49,12 +49,12 @@ Back-end Web Development
   * John Tynan, KJZZ.org / KBAQ.org (NPR Affiliates)
 
 Front-end Interface Development / User Experience
-  * Jeremy Rue, multimedia training instructor UC Berkeley Knight Digital Media Center
-  * Brad Flora, editor, Windy Citizen
+  * Jeremy Rue, Multimedia Training Instructor, UC Berkeley/KDMC
+  * Brad Flora, Editor, Windy Citizen
 
 Multimedia Journalists (wisdom, beneficiaries ...)
   * Richard Koci Hernandez, formerly San Jose Mercury News, now Ford Fellow for UC Berkeley
-  * Stokely Baksh, Columbia
+  * Stokely Baksh, Columbia University Graduate School of Journalism
   * Kara Andrade, Youth Radio in Oakland
   * Amy Jeffries, Webmaster for Global News Enterprises
 
