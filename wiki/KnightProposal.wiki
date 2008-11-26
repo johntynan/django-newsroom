@@ -62,7 +62,7 @@ When we have a release ready, it is important to have a demonstration site, so f
 We have already launched an open discussion group for the project, and participants are actively chewing on ideas and approaches for Django Newsroom.  
 
 =What will you have changed by the end of your project?=
-(1532 characters remaining)  
+(471 characters remaining)  
 
 Journalism will have an open source project available to it, and we may even see the beginnings of consolidation on a platform.  A Django based CMS is one of the most robust and innovative systems currently available.  If adoption for it at the end of this project shows growth then it may also become interesting for larger organizations to take advantage of it and even contribute to it.
 
