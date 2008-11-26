@@ -2,7 +2,7 @@
 _Written by Jeremy Rue, Scot Hacker and Milan Andric_
 
 =Describe your project=
-(0 characters remaining)
+(58 characters remaining)
 
 In the process of getting content on the web, one major hurdle continues to be a reoccurring theme among virtually every newsroom we talk to. The content management system has become the new printing press, and everyone is dying to get their hands on something that is functional, easy, and practical.
 
@@ -17,7 +17,7 @@ Generally speaking, journalists are no more adept at online publishing than the 
 By the end of eight months, we plan to have a fully functioning beta version, and in one year a final product.  
 
 =How will your project improve the way news and information are delivered to geographic communities?=
-(0 characters remaining)
+(12 characters remaining)  
 
 Walk into most newsrooms and you will find that the reporters, editors and photographers  have little understanding of how their stories or photos end up on the web. In some cases the publication web sites are a separate entity, outsourced to a company that specializes in e-commerce. They do this because the complexity of the CMS is so great it takes specialized staff to use it. 
 
@@ -25,7 +25,7 @@ This is especially apparent in small newsrooms serving local communities, who wi
 
 =How is your idea innovative? (new or different from what already exists)=
 
-(0 characters remaining)
+(4 characters remaining)  
 
 We want to create the next !WordPress or Drupal – but made specifically for the journalism industry and built on a framework that is modular and innovative. How is ours different? Three ways: It's simple, it's flexible and it's made for journalists, with the input of journalists.
 
@@ -60,7 +60,7 @@ Multimedia Journalists (wisdom, beneficiaries ...)
   * Amy Jeffries, Webmaster for Global News Enterprises
 
 =What unmet need does your proposal answer?=
-(0 characters remaining)
+(11 characters remaining)  
 
 Online newsrooms struggle with publishing systems that are difficult to change. Systems are often built for a pre-defined story format and controlled by parent corporations. Examples of story formats that newsrooms struggle to publish include Flash-based presentations, map mashups, custom navigation and templates for special feature presentations, data-backed presentations like chicagocrime or everyblock. There are really two obstacles to overcome: 1) Rigid and unchangeable data models on the back-end, and 2) Rigid and unchangeable presentation templates. In contrast, Django Newsroom aims to provide a platform that can accommodate any data type, where custom content types and story formats are encouraged, rather than discouraged.
 
