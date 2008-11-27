@@ -4,11 +4,9 @@ _Written by Jeremy Rue, Scot Hacker and Milan Andric_
 =Describe your project=
 (29 characters remaining)  
 
-In the process of publishing content to the web, one major hurdle continues to be a recurring theme in newsrooms: Overly restrictive Content Management Systems have become a bottleneck in the work-flow, limiting the presentation of digital content. Journalists are dying to get their hands on a CMS that is easy to use, capable of flexing to accommodate new story structures, and practical to deploy.
+In the process of publishing content to the web, one major hurdle continues to be a recurring theme in newsrooms: Overly restrictive Content Management Systems have become a bottleneck in the work-flow by limiting the presentation of digital content. Journalists are dying to get their hands on a CMS that is easy to use, capable of accommodating new story structures, and practical to deploy.
 
-Rather than relying on expensive, proprietary tools that are not fine-tuned for the art of digital storytelling, journalists should be building their own software tools, which can then be released to the public and shared between organizations. But journalists are writers, not programmers. They emerge from liberal arts backgrounds, and often consider the art of storytelling to be the ultimate skill set. But a digital revolution has moved the readership online, and publishing models for telling those stories have changed drastically. 
-
-Generally speaking, journalists are no more adept at online publishing than the average !MySpace user. We aim to create a software solution to give journalists a venue for telling their stories that is simple to learn and use. We plan to: 
+Rather than relying on expensive, proprietary tools that are not fine-tuned for the art of digital storytelling, journalists should be building their own software tools, which can then be released to the public and shared between organizations. But journalists are writers, not programmers. So we aim to create a software solution to give journalists a venue for telling their stories that is simple to learn and use. We plan to: 
 
  # Create a simple, pre-packaged, auto-install content management system for news organizations that is built specifically for journalists to tell stories online. 
  # Release public source code in order to encourage development participation by the same community of journalists and developers who will be using the system.  
@@ -19,9 +17,9 @@ By the end of eight months, we plan to have a fully functioning beta version, an
 =How will your project improve the way news and information are delivered to geographic communities?=
 (1 characters remaining)  
 
-Walk into most newsrooms, and you’ll find and that the reporters, editors and photographers  have little understanding of how their stories or photos end up on the web.  The technical maintenance of publication sites is often outsourced to external companies, which may or may not themselves practice journalism. This happens because the complexity of the CMS is so great that it takes specialized staff to run it.
+Walk into most newsrooms, and you’ll find and that the reporters, editors and photographers  have little understanding of how their stories or photos end up on the web. The technical maintenance of publication sites is often outsourced to external companies because the complexity of the CMS is so great that it takes specialized staff to run it.
 
-This is especially apparent in small newsrooms serving local communities, who will be our target audience. As newspaper subscriptions decline, so do the organizations that serve local communities. Our goal is to help the thousands of mid-market news organizations that won't survive as their print costs rise and ad revenues decline.
+This is especially apparent in small newsrooms serving local communities, which will be our target audience. As newspaper subscriptions decline, so do the organizations that serve local communities. Our goal is to help the thousands of mid-market news organizations that won't survive as their print costs rise and ad revenues decline.
 
 =How is your idea innovative? (new or different from what already exists)=
 
@@ -68,9 +66,7 @@ Journalism will have an open source project available to it, and we may even see
 
 Small and mid-sized news organizations will have an alternative to their current CMS, that for the first time ever, actually makes them happy.  Journalists working in the modern digital world will take comfort in knowing that a vibrant open source community of developers and journalists are working to provide a state of the art publishing platform.
 
-Students can be taught on a publishing system that may actually be used in the real world.  Technical training on Django Newsroom at schools will provide for a basis of understanding and less training when they move to the work place.
-
-At least one organization will be using Django newsroom in a production environment.
+We plan to outfit some smaller organizations with the CMS as a testbed to learn how the platform may need to evolve in the future, and to better understand the needs of the industry.
 
 As the iterative development process progresses, we expect to go through many iterations of sample data models, back-end interfaces, and workflow approaches. Because of the anticipated difficulty of getting this right, we don’t expect it to be perfect the first time. 
 
@@ -96,11 +92,11 @@ Progress will be measured in milestones and release cycles.  We plan to have a r
 =Do you see any risk in the development of your project?=
 (12 characters remaining)  
 
-One risk is that another project with similar goals might gain more interest than we do.  This might divide the resources/people available to contribute to our project. Because it’s relatively difficult for an organization to “escape” from a content management system, once a publication decides on a competing product, it could be difficult to win them back (even if our platform is markedly superior). Therefore it is in the best interest of Django Newsroom to get a working platform “into the wild” sooner rather than later.
+One risk is that it’s relatively difficult for an organization to “escape” from a content management system, once a publication decides on a competing product, it could be difficult to win them back (even if our platform is markedly superior). Therefore it is in the best interest of Django Newsroom to get a working platform “into the wild” sooner rather than later.
 
-We want to create the next !WordPress or Drupal – but built on a framework that is modular and innovative. !WordPress is simple and easy to use, but is built for blogs and simple publications - it was never designed for the complex site structures journalism requires. Drupal is powerful, but has a steep learning curve and is often frustrating to customize. Nonetheless both of these projects are wildly successful in their goals.  Django Newsroom needs to develop quickly to find and fill a new niche.
+We want to create the next !WordPress or Drupal – but built on a framework that is modular and innovative. !WordPress is simple and easy to use, but is built for blogs and simple publications - it was never designed for the complex site structures journalism requires. It's amazing how many organizations attempt to use it as a content management system. Drupal is powerful, but has a steep learning curve due to its broad market and is often frustrating to customize for a specific purpose. Django Newsroom needs to develop quickly fill a new niche.
 
-Another challenge is to get people involved.  The participants named below have either shown an interest in the project or are actively involved in the current Django Newsroom dicussion list. The presence of names here does not represent an official commitment.
+Another challenge is to get people involved. Milan Andric is the team leader, and supporting him is a team of diverse candidates. The participants named below have either shown interest in the project or are actively involved in the current Django Newsroom discussion list.
 
 Back-end: Milan Andric (UC Berkeley), Scot Hacker (KDMC), John Tynan (KJZZ.org/KBAQ.org NPR Affiliate); Front-end Interface Experience: Jeremy Rue (Multimedia Training Instructor, UC Berkeley/KDMC), Brad Flora (Editor, Windy Citizen); Multimedia Journalists:  Richard Koci Hernandez (formerly San Jose Mercury News, Ford Fellow for UC Berkeley), Stokely Baksh (Columbia University Graduate School of Journalism),  Kara Andrade (Youth Radio in Oakland), Amy Jeffries (Webmaster for Global News Enterprises).
 
@@ -119,6 +115,8 @@ Our marketing plan is to perform outreach at major social networks and developme
 	* Contact Python developers already working in the Journalism field
 	* Encourage community members to blog about the project
 
+This is to engage initial interest. After we develop early iterations of the project, we plan to develop testbeds with various organizations to learn more about the implementation process. This also aid tremendously in the marketability by creating an real-world example of how the project would function. 
+
 Once the first milestone is reached, a press release will be made to the various journalism news outlets and blogs, including:
 
 	* Knight Digital Media Center
@@ -126,3 +124,7 @@ Once the first milestone is reached, a press release will be made to the various
 	* NPR.org
 	* Romensko (Poynter)
 	* Jay Rosen’s !PressThink
+
+We imagine adoption might be slow for existing organizations. But, we believe this project could immediately serve as an invaluable asset to incipient markets and news organizations that are forming Web-only operations. In recent years, such organizations like Politico, Pro-Publica, and Global News Enterprises have formed a new presence in the mediascape. This demonstrates that several more will likely emerge in the coming years.
+
+After initial adoption, we hope this CMS will begin to gain traction as a tool to helping journalists tell stories online.
