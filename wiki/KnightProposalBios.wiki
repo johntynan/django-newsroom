@@ -10,7 +10,7 @@ Milan is also an open source advocate and has been using open source tools like 
 
 http://birdhouse.org/blog/
 
-Scot Hacker is the webmaster for the Knight Digital Media Center at the UC Berkeley Graduate School of Journalism, where he also offers technical assistance in multimedia training courses and teaches a class in web development. Hacker is the author of O'Reilly's MP3: The Definitive Guide, Peachpit's The BeOS Bible, and dozens of articles for print- and web-based technology publications including PC Magazine, Byte.com, Windows Sources, ZDNet, and the CompuServe network, as well as television appearances and trade show gigs.
+Scot Hacker is the webmaster for the Knight Digital Media Center at the UC Berkeley Graduate School of Journalism, where he also offers technical assistance in multimedia training courses and teaches a class in web development. Hacker is the author of O'Reilly's MP3: The Definitive Guide, Peachpit's The BeOS Bible, and dozens of articles for print- and web-based technology publications including PC Magazine, Byte.com, Windows Sources, ZDNet, and the !CompuServe network, as well as television appearances and trade show gigs.
 
 =Jeremy Rue=
 
