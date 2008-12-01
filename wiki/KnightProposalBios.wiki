@@ -1,5 +1,11 @@
 =Milan Andric=
 
+http://m.andric.us/
+
+Milan Andric is a part-time consultant and part-time web developer for the Knight Digital Media Center at the Graduate School of Journalism, UC Berkeley.  Previously he was a part-time developer on the News21 Project.   Prior to News21 he has served as webmaster for the UC Berkeley Electrical Engineering and Computer Science Department where he developed a content management system for departmental IT support as well as various other UNIX based systems. He is a graduate of the University of Illinois Urbana-Champaign with a bachelor's degree in History of Art and concentrations in Multimedia Arts and Computer Science. As a student he worked with local artists and Internet service providers doing creative work in programming, computer animation, writing and filmmaking.
+
+He is also an open source advocate and has been using open source tools like Perl, Apache and Linux for almost 10 years.  During his time at the Journalism School he had great success with the computer language Python and the web framework Django.   He aspires to continue supporting and contributing to open source.  He also has a new found interest in Multimedia Journalism and the problems that the New Media movement is addressing.  He hopes to contribute in some way to the success of digital publishing and to provide tools for Multimedia Journalists to publish their work on the web with little headache.
+
 =Scot Hacker=
 
 http://birdhouse.org/blog/
