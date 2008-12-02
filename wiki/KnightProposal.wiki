@@ -23,12 +23,13 @@ This is especially apparent in small newsrooms serving local communities, which 
 
 =How is your idea innovative? (new or different from what already exists)=
 
-(271 characters remaining)  
+(13 characters remaining)  
 
 It's simple, it's flexible, and it's made for journalists, with the input of journalists.
 
-Unlike most systems, ours will be built with multimedia in mind. We will implement the latest technologies for running video, audio and photo slideshows. It will be pre-packaged with a basic player, but allow for modification and branding. We will also include support for streaming services (served by 3rd parties) to live-broadcast events.
+Unlike most systems, ours will be built with multimedia in mind. We will implement the latest technologies for running video, audio, photo slideshows, and streaming services (served by 3rd parties) to live-broadcast events. 
 
+We want to create the next WordPress or Drupal – but built on a framework that is modular and innovative. WordPress is simple and easy to use, but is built for blogs and simple publications - it was never designed for the complex site structures of journalism. It's amazing how many organizations attempt to use it as a CMS. Drupal has a steep learning curve and is often frustrating to customize for a specific purpose.
 
 =What experience do you or your organization have to successfully develop this project?=
 (456 characters remaining)  
@@ -97,8 +98,6 @@ Progress will be measured in milestones and release cycles.  We plan to have a r
 (12 characters remaining)  
 
 One risk is that it’s relatively difficult for an organization to “escape” from a content management system, once a publication decides on a competing product, it could be difficult to win them back (even if our platform is markedly superior). Therefore it is in the best interest of Django Newsroom to get a working platform “into the wild” sooner rather than later.
-
-We want to create the next !WordPress or Drupal – but built on a framework that is modular and innovative. !WordPress is simple and easy to use, but is built for blogs and simple publications - it was never designed for the complex site structures journalism requires. It's amazing how many organizations attempt to use it as a content management system. Drupal is powerful, but has a steep learning curve due to its broad market and is often frustrating to customize for a specific purpose. Django Newsroom needs to develop quickly to fill the niche.
 
 =What is your marketing plan? How will people learn about what you are doing?=
 (22 characters remaining)  
