@@ -29,7 +29,7 @@ It's simple, it's flexible, and it's made for journalists, with the input of jou
 
 Unlike most systems, ours will be built with multimedia in mind. We will implement the latest technologies for running video, audio, photo slideshows, and streaming services (served by 3rd parties) to live-broadcast events. 
 
-We want to create the next WordPress or Drupal – but built on a framework that is modular and innovative. WordPress is simple and easy to use, but is built for blogs and simple publications - it was never designed for the complex site structures of journalism. It's amazing how many organizations attempt to use it as a CMS. Drupal has a steep learning curve and is often frustrating to customize for a specific purpose.
+We want to create the next !WordPress or Drupal – but built on a framework that is modular and innovative. !WordPress is simple and easy to use, but is built for blogs and simple publications - it was never designed for the complex site structures of journalism. It's amazing how many organizations attempt to use it as a CMS. Drupal has a steep learning curve and is often frustrating to customize for a specific purpose.
 
 =What experience do you or your organization have to successfully develop this project?=
 (456 characters remaining)  
