@@ -35,7 +35,7 @@ Unlike most systems, ours will be built with multimedia in mind. We will impleme
 
 Whenever there is a plan to do something highly ambitious with digital tools, there is usually a hole in the team's skill set. Either there is a lack of technical expertise, or the team is too technical and doesn't appreciate the needs of the everyday user. We've assembled a team that is diverse in its backgrounds and contains the right combination of skills to make this project a reality.
 
-Team leader Milan Andric is technically proficient in just this way. He is a programmer who spent the last 8 years working for the UC Berkeley Graduate School of Journalism and Computer Science Departments. He has spent several years developing and working with many CMSs.  Recently he had great success with Django and built the site for the Knight Digital Media Center at UC Berkeley, which sits on top of a complex and multi-tiered data structure. The site has gone through many phases of growth, all possible thanks to the flexibility of the Django web framework. 
+Team leader Milan Andric is a programmer who spent the last 8 years working for the UC Berkeley Graduate School of Journalism and Computer Science Departments. He has spent several years developing and working with many CMSs.  Recently he had great success with Django and built the site for the Knight Digital Media Center at UC Berkeley, which sits on top of a complex and multi-tiered data structure. The site has gone through many phases of growth, all possible thanks to the flexibility of the Django web framework. 
 
 Supporting Milan is a team of diverse candidates. The participants named below have either shown interest in the project or are actively involved in the discussion.
 
