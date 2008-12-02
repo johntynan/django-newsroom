@@ -20,6 +20,10 @@ RUE, JEREMY is a multimedia training instructor for the Knight Digital Media Cen
 
 =John Tynan=
 
+http://opensourcebroadcasting.blogspot.com/
+
+John Tynan is the webmaster for NPR member stations [http://kjzz.org KJZZ] and [http://kbaq.org KBAQ] in Tempe, Arizona.  An early advocate of open source technology in public broadcasting, John migrated the stations' web site to [http://zope.org Zope], a python-based web application framework, in 2003 and has relied on this technology in production use for the last six years and counting.  He has also relied on similar technologies to create visually appealing web sites for his station's [https://secure.fpraz.org online store] as well as KJZZ's [http://aaronbrown.kjzz.org Aaron Brown Show] and the [http://downtothewireradio.kjzz.org/ Down to the Wire] election special.  Recently, John received mention in the July 28, 2008 issue of [http://www.current.org/web/web0813api.shtml Current], a trade magazine for public broadcasters, for his work in creating the [http://code.google.com/p/npr-simile-timeline/ NPR Timeline], a working, scaleable, mashup combining [http://code.google.com/p/simile-widgets/ MIT's Timeline widget] with [http://www.npr.org/api/ NPR's API].  John currently serves as an advisor on NPR's Digital Advisory Working Group and he helped facilitate the Social Media Track at the 2008 Public Media Conference.  John received an MFA in creative writing from the University of Arizona. He lives in Tempe with his wife, reporter [http://www.renegutel.com/ Rene Gutel], and their two dachshunds, Rigatoni and Alfredo.
+
 =Stokely Baksh=
 
 http://www.stokelybaksh.com/
