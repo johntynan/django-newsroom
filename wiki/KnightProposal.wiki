@@ -98,7 +98,7 @@ We want to create the next !WordPress or Drupal – but built on a framework tha
 
 Another challenge is to get people involved. Milan Andric is the team leader, and supporting him is a team of diverse candidates. The participants named below have either shown interest in the project or are actively involved in the current Django Newsroom discussion list.
 
-Back-end: Milan Andric (UC Berkeley), Scot Hacker (KDMC), John Tynan (KJZZ.org/KBAQ.org NPR Affiliate); Front-end Interface Experience: Jeremy Rue (Multimedia Training Instructor, UC Berkeley/KDMC); Multimedia Journalists:  Richard Koci Hernandez (formerly San Jose Mercury News, Ford Fellow for UC Berkeley), Stokely Baksh (Columbia University Graduate School of Journalism),  Kara Andrade (Youth Radio in Oakland), Amy Jeffries (Webmaster for Global News Enterprises).
+Back-end: Milan Andric (UC Berkeley), Scot Hacker (KDMC), John Tynan (KJZZ.org/KBAQ.org NPR Affiliate); Front-end Interface Experience: Jeremy Rue (Multimedia Training Instructor, UC Berkeley/KDMC); Multimedia Journalists:  Richard Koci Hernandez (formerly San Jose Mercury News, Ford Fellow for UC Berkeley), Stokely Baksh (Columbia University Graduate School of Journalism),  Kara Andrade (Youth Radio in Oakland), Amy Jeffries (Webmaster for Global News Enterprises).  See KnightProposalBios for more details.
 
 =What is your marketing plan? How will people learn about what you are doing?=
 (901 characters remaining)  
