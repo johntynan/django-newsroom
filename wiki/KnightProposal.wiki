@@ -101,7 +101,7 @@ One risk is that it’s relatively difficult for an organization to “escape”
 We want to create the next !WordPress or Drupal – but built on a framework that is modular and innovative. !WordPress is simple and easy to use, but is built for blogs and simple publications - it was never designed for the complex site structures journalism requires. It's amazing how many organizations attempt to use it as a content management system. Drupal is powerful, but has a steep learning curve due to its broad market and is often frustrating to customize for a specific purpose. Django Newsroom needs to develop quickly to fill the niche.
 
 =What is your marketing plan? How will people learn about what you are doing?=
-(901 characters remaining)  
+(22 characters remaining)  
 
 Our marketing plan is to perform outreach at major social networks and development hubs to find interested parties to join our open source project.  The list includes:
 
