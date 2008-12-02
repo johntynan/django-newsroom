@@ -33,9 +33,13 @@ Unlike most systems, ours will be built with multimedia in mind. We will impleme
 =What experience do you or your organization have to successfully develop this project?=
 (456 characters remaining)  
 
-Whenever there is a plan to do something highly ambitious with digital tools, there is usually a hole in the team's skill set. Either there is a lack of technical expertise, or the team is too technical and doesn't appreciate the needs of the everyday user. We've assembled a team that is diverse in its backgrounds and contains the  right combination of skills to make this project a reality.
+Whenever there is a plan to do something highly ambitious with digital tools, there is usually a hole in the team's skill set. Either there is a lack of technical expertise, or the team is too technical and doesn't appreciate the needs of the everyday user. We've assembled a team that is diverse in its backgrounds and contains the right combination of skills to make this project a reality.
 
-Team leader Milan Andric is technically proficient in just this way. He is a programmer who spent the last three years working for the UC Berkeley Graduate School of Journalism.  He also developed a CMS from the ground up. Built purely in PHP, it was a tremendous learning experience as he realized the evolving needs of journalists required consistent re-thinking of what the system is and does. Along the way he discovered a new mechanism for building CMSes -- Django. He later built a CMS in Django to serve the site for the Knight Digital Media Center at UC Berkeley, which sits on top of a complex and multi-tiered data structure. The site has gone through several revisions, all possible thanks to of the flexibility of the framework.
+Team leader Milan Andric is technically proficient in just this way. He is a programmer who spent the last 8 years working for the UC Berkeley Graduate School of Journalism and Computer Science Departments. He has spent several years developing and working with many CMSs.  Recently he had great success with Django and built the site for the Knight Digital Media Center at UC Berkeley, which sits on top of a complex and multi-tiered data structure. The site has gone through many phases of growth, all possible thanks to the flexibility of the Django web framework. 
+
+Supporting Milan is a team of diverse candidates. The participants named below have either shown interest in the project or are actively involved in the discussion.
+
+Back-end: Milan Andric (UC Berkeley), Scot Hacker (KDMC), John Tynan (KJZZ.org/KBAQ.org NPR Affiliate); Front-end Interface Experience: Jeremy Rue (Multimedia Training Instructor, UC Berkeley/KDMC); Multimedia Journalists: Richard Koci Hernandez (formerly San Jose Mercury News, Ford Fellow for UC Berkeley), Stokely Baksh (Columbia University Graduate School of Journalism), Kara Andrade (Youth Radio in Oakland), Amy Jeffries (Webmaster for Global News Enterprises).  See KnightProposalBios for more details. 
 
 
 =What unmet need does your proposal answer?=
@@ -122,9 +126,5 @@ Once the first milestone is reached, a press release will be made to the various
 	* Jay Rosen’s !PressThink
 
 We imagine adoption might be slow for existing organizations. But, we believe this project could immediately serve as an invaluable asset to incipient markets and news organizations that are forming Web-only operations. In recent years, such organizations like Politico, Pro-Publica, and Global News Enterprises have formed a new presence in the mediascape. This demonstrates that several more will likely emerge in the coming years.
-
-Getting people involved is a challenge. Milan Andric is the team leader, and supporting him is a team of diverse candidates. The participants named below have either shown interest in the project or are actively involved in the current Django Newsroom discussion list.
-
-Back-end: Milan Andric (UC Berkeley), Scot Hacker (KDMC), John Tynan (KJZZ.org/KBAQ.org NPR Affiliate); Front-end Interface Experience: Jeremy Rue (Multimedia Training Instructor, UC Berkeley/KDMC); Multimedia Journalists:  Richard Koci Hernandez (formerly San Jose Mercury News, Ford Fellow for UC Berkeley), Stokely Baksh (Columbia University Graduate School of Journalism),  Kara Andrade (Youth Radio in Oakland), Amy Jeffries (Webmaster for Global News Enterprises).  See KnightProposalBios for more details.
 
 After initial adoption, we hope this CMS will begin to gain traction as a tool to helping journalists tell stories online.
