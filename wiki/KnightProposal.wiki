@@ -17,7 +17,7 @@ By the end of eight months, we plan to have a fully functioning beta version, an
 =How will your project improve the way news and information are delivered to geographic communities?=
 (1 characters remaining)  
 
-Walk into most newsrooms, and you’ll find and that the reporters, editors and photographers  have little understanding of how their stories or photos end up on the web. The technical maintenance of publication sites is often outsourced to external companies because the complexity of the CMS is so great that it takes specialized staff to run it.
+Walk into most newsrooms, and you’ll find that the reporters, editors and photographers  have little understanding of how their stories or photos end up on the web. The technical maintenance of publication sites is often outsourced to external companies because the complexity of the CMS is so great that it takes specialized staff to run it.
 
 This is especially apparent in small newsrooms serving local communities, which will be our target audience. As newspaper subscriptions decline, so do the organizations that serve local communities. Our goal is to help the thousands of mid-market news organizations that won't survive as their print costs rise and ad revenues decline.
 
