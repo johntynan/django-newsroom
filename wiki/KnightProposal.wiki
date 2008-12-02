@@ -94,7 +94,7 @@ Progress will be measured in milestones and release cycles.  We plan to have a r
 
 One risk is that it’s relatively difficult for an organization to “escape” from a content management system, once a publication decides on a competing product, it could be difficult to win them back (even if our platform is markedly superior). Therefore it is in the best interest of Django Newsroom to get a working platform “into the wild” sooner rather than later.
 
-We want to create the next !WordPress or Drupal – but built on a framework that is modular and innovative. !WordPress is simple and easy to use, but is built for blogs and simple publications - it was never designed for the complex site structures journalism requires. It's amazing how many organizations attempt to use it as a content management system. Drupal is powerful, but has a steep learning curve due to its broad market and is often frustrating to customize for a specific purpose. Django Newsroom needs to develop quickly fill the niche.
+We want to create the next !WordPress or Drupal – but built on a framework that is modular and innovative. !WordPress is simple and easy to use, but is built for blogs and simple publications - it was never designed for the complex site structures journalism requires. It's amazing how many organizations attempt to use it as a content management system. Drupal is powerful, but has a steep learning curve due to its broad market and is often frustrating to customize for a specific purpose. Django Newsroom needs to develop quickly to fill the niche.
 
 Another challenge is to get people involved. Milan Andric is the team leader, and supporting him is a team of diverse candidates. The participants named below have either shown interest in the project or are actively involved in the current Django Newsroom discussion list.
 
@@ -115,7 +115,7 @@ Our marketing plan is to perform outreach at major social networks and developme
 	* Contact Python developers already working in the Journalism field
 	* Encourage community members to blog about the project
 
-This is to engage initial interest. After we develop early iterations of the project, we plan to develop testbeds with various organizations to learn more about the implementation process. This also aid tremendously in the marketability by creating an real-world example of how the project would function. 
+This is to engage initial interest. After we develop early iterations of the project, we plan to develop testbeds with various organizations to learn more about the implementation process. This also aids tremendously in the marketability by creating a real-world example of how the project would function. 
 
 Once the first milestone is reached, a press release will be made to the various journalism news outlets and blogs, including:
 
