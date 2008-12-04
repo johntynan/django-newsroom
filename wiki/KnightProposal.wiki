@@ -67,7 +67,7 @@ We have already launched an open discussion group for the project, and participa
 =What will you have changed by the end of your project?=
 (608 characters remaining)  
 
-Journalism will have an open source project available to it, and we may even see the beginnings of consolidation on a platform.  A Django based CMS is one of the most robust and innovative systems currently available.  If adoption for it at the end of this project shows growth then it may also become interesting for larger organizations to take advantage of it and even contribute to it.
+Journalism will have an open source set of tools available to it, and we may even see the beginnings of consolidation on a platform.  A Django based CMS is one of the most robust and innovative systems currently available.  If adoption for it at the end of this project shows growth then it may also become interesting for larger organizations to take advantage of it and even contribute to it.
 
 Small and mid-sized news organizations will have an alternative to their current CMS, that for the first time ever, actually makes them happy.  Journalists working in the modern digital world will take comfort in knowing that a vibrant open source community of developers and journalists are working to provide a state of the art publishing platform.
 
