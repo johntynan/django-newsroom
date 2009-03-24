@@ -1,0 +1,25 @@
+=Setup working dir=
+mkdir django-newsroom
+cd django-newsroom
+
+=Get virtualenv=
+easy_install virtualenv
+virtualenv env
+cd env
+
+=Get pip=
+env/bin/easy_intall pip 
+# or download from pypi and run env/bin/python setup.py install
+
+=Get the code=
+
+==checkout everything, including wiki and branches==
+
+svn checkout https://django-newsroom.googlecode.com/svn svn
+
+==just checkout trunk version of the project==
+
+svn checkout https://django-newsroom.googlecode.com/svn/trunk/newsroom
+
+env/bin/pip install -r requirements/external_apps.txt
+
