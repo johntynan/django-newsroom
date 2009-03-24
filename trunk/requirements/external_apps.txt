@@ -1,0 +1,3 @@
+django-pagination
+#http://django-timezones.googlecode.com/svn/trunk/timezones
+#-e svn+http://django-oembed.googlecode.com/svn/trunk#egg=django-oembed
