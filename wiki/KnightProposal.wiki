@@ -1,5 +1,4 @@
-﻿#labels Featured
-_Written by Jeremy Rue, Scot Hacker and Milan Andric_
+﻿_Written by Jeremy Rue, Scot Hacker and Milan Andric_
 
 =Describe your project=
 (389 characters remaining)  
