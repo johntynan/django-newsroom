@@ -2,7 +2,7 @@
 easy_install virtualenv
 cd dev
 virtualenv django-newsroom
-export PATH=`pwd`/bin:$PATH
+export PATH=`pwd`/django-newsroom/bin:$PATH
 
 =Get pip=
 easy_intall pip 
