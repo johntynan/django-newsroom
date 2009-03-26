@@ -1,10 +1,10 @@
 from django.contrib.syndication.feeds import Feed
-from django_website.apps.aggregator.models import FeedItem
+from aggregator.models import FeedItem
 
 class CommunityAggregatorFeed(Feed):
-    title = "The Django community aggregator"
-    link = "http://www.djangoproject.com/community/"
-    description = "Aggregated feeds from the Django community."
+    title = "The News21 Community"
+    link = "http://www.news21.com/community/"
+    description = "Aggregated feeds from the News21 community."
 
     def items(self):
         return FeedItem.objects.all()[:10]
