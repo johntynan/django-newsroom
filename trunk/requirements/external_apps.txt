@@ -1,5 +1,5 @@
 -e svn+http://code.djangoproject.com/svn/django/trunk#egg=django-trunk
-# add countries to your python path manually for now just symlink it in
+# see caveats in install
 # -e svn+http://django-countries.googlecode.com/svn/trunk#egg=django-countries
 -e svn+http://django-timezones.googlecode.com/svn/trunk#egg=django-timezones
 -e svn+http://django-oembed.googlecode.com/svn/trunk#egg=django-oembed 
@@ -10,5 +10,6 @@ django-registration
 # you need gcc/xcode if you're on a Mac for PIL
 PIL
 django-imagekit
--f http://django-photologue.googlecode.com/svn/branches/3.x/photologue#egg=photologue
+# see caveats in install
+# -f http://django-photologue.googlecode.com/svn/branches/3.x/photologue#egg=photologue
 -e svn+http://django-bookmarks.googlecode.com/svn/trunk#egg=django-bookmarks
