@@ -51,3 +51,12 @@ wget http://effbot.org/downloads/Imaging-1.1.6.tar.gz
 tar zxf Imaging-1.1.6.tar.gz
 cd Imaging-1.1.6
 python setup.py install
+
+==django-countries==
+
+For some reason this project doesn't have a setup.py, so you have to handle it
+manually.
+
+cd newsroom/apps/
+svn co http://django-countries.googlecode.com/svn/trunk django-countries
+ln -s django-countries/countries .
