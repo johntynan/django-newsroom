@@ -2,7 +2,7 @@
 easy_install virtualenv
 mkdir dev && cd dev
 virtualenv newsroom-env
-newsroom-env/bin/activate
+source newsroom-env/bin/activate
 
 =Get pip=
 easy_intall pip 
