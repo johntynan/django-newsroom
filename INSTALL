@@ -25,7 +25,7 @@ svn checkout https://django-newsroom.googlecode.com/svn working
 cd working/trunk
 pip install -r requirements/external_apps.txt
 
-==Caveats==
+=Caveats=
 
 If you only want read-only access use this:
 
@@ -35,3 +35,12 @@ You may want to checkout just part of the tree, in which case you might use some
 
 svn checkout http://django-newsroom.googlecode.com/svn/trunk working
 
+==PIL==
+
+Installing PIL failed for us on OSX, we needed to download the source and 
+using the setup.py.  http://www.pythonware.com/products/pil/
+
+wget http://effbot.org/downloads/Imaging-1.1.6.tar.gz
+tar zxf Imaging-1.1.6.tar.gz
+cd Imaging-1.1.6
+python setup.py install
