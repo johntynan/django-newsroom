@@ -1,8 +1,8 @@
 =Setup working dir with virtualenv=
 easy_install virtualenv
 mkdir dev && cd dev
-virtualenv django-newsroom
-export PATH=`pwd`/django-newsroom/bin:$PATH
+virtualenv newsroom-env
+newsroom-env/bin/activate
 
 =Get pip=
 easy_intall pip 
@@ -12,7 +12,7 @@ easy_intall pip
 
 ==use your virtualenv==
 
-cd django-newsroom
+cd newsroom-env
 
 ==checkout the project==
 
