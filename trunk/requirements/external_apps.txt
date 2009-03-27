@@ -7,3 +7,5 @@ django-profiles
 django-registration
 # you need gcc/xcode if you're on a Mac for PIL
 PIL
+django-imagekit
+-f http://django-photologue.googlecode.com/svn/branches/3.x/photologue#egg=photologue
