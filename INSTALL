@@ -1,4 +1,5 @@
 =Setup working dir with virtualenv=
+
 easy_install virtualenv
 mkdir dev && cd dev
 virtualenv newsroom-env
@@ -27,6 +28,7 @@ pip install -r requirements/external_apps.txt
 
 ==done==
 
+cd newsroom
 ./manage.py syncdb
 ./manage.py runserver
 
