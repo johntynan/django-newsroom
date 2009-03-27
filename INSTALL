@@ -5,7 +5,7 @@ virtualenv newsroom-env
 source newsroom-env/bin/activate
 
 =Get pip=
-easy_intall pip 
+easy_install pip 
 # or download from pypi and run python setup.py install
 
 =Get the code=
