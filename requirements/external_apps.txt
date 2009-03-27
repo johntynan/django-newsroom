@@ -1,7 +1,6 @@
--e svn+http://django-countries.googlecode.com/svn/trunk#egg=django-countries
+#-e svn+http://django-countries.googlecode.com/svn/trunk#egg=django-countries
+-e svn+http://django-timezones.googlecode.com/svn/trunk#egg=django-timezones
 -e svn+http://django-oembed.googlecode.com/svn/trunk#egg=django-oembed 
-django-timezones
 django-pagination 
-django-timezones 
 django-profiles
 django-registration
