@@ -1,6 +1,6 @@
 =Setup working dir with virtualenv=
 easy_install virtualenv
-cd dev
+mkdir dev && cd dev
 virtualenv django-newsroom
 export PATH=`pwd`/django-newsroom/bin:$PATH
 
@@ -10,13 +10,28 @@ easy_intall pip
 
 =Get the code=
 
-==checkout everything, including wiki and branches==
+==use your virtualenv==
+
+cd django-newsroom
+
+==checkout the project==
+
+If you want to get writeable access to svn you have to be a project member and request that through the group.  If you are already a group member, use this command:
 
 svn checkout https://django-newsroom.googlecode.com/svn working
 
-==just checkout trunk version of the project==
+==get the external app modules==
 
-svn checkout https://django-newsroom.googlecode.com/svn/trunk working
-
+cd working/trunk/newsroom
 pip install -r requirements/external_apps.txt
+
+==Caveats==
+
+If you only want read-only access use this:
+
+svn checkout http://django-newsroom.googlecode.com/svn working
+
+You may want to checkout just part of the tree, in which case you might use something like, appending a subdirectory to the svn path:
+
+svn checkout http://django-newsroom.googlecode.com/svn/trunk working
 
