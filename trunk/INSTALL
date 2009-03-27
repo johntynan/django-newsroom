@@ -25,6 +25,11 @@ svn checkout https://django-newsroom.googlecode.com/svn working
 cd working/trunk
 pip install -r requirements/external_apps.txt
 
+==done==
+
+./manage.py syncdb
+./manage.py runserver
+
 =Caveats=
 
 If you only want read-only access use this:
