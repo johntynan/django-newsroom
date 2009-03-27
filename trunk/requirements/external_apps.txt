@@ -1,6 +1,9 @@
-#-e svn+http://django-countries.googlecode.com/svn/trunk#egg=django-countries
+# add countries to your python path manually for now just symlink it in
+# -e svn+http://django-countries.googlecode.com/svn/trunk#egg=django-countries
 -e svn+http://django-timezones.googlecode.com/svn/trunk#egg=django-timezones
 -e svn+http://django-oembed.googlecode.com/svn/trunk#egg=django-oembed 
 django-pagination 
 django-profiles
 django-registration
+# you need gcc/xcode if you're on a Mac for PIL
+PIL
