@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from core.models import Person, Affiliate
+from photologue.models import Photo
+from bookmarks.models import BookmarkInstance
 
 class Feature(models.Model):
     """
@@ -28,3 +30,9 @@ class FeatureSubmission(models.Model):
 
     submitter = models.ForeignKey(Person)
     org = models.ForeignKey(Affiliate)
+    images = models.ManyToMany(
+                Photo,
+                help_text="Photos to help with featuring the piece.  The photos ideally are 16:9 or 4:3 aspect ratio and 1000px wide.  Scaling and thumbnails are handled automatically.",
+                blank=True)
+
+    related_links = models.ManyToMany(BookmarkInstance)
