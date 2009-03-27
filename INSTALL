@@ -60,3 +60,12 @@ manually.
 cd newsroom/apps/
 svn co http://django-countries.googlecode.com/svn/trunk django-countries
 ln -s django-countries/countries .
+
+==photologue==
+
+photologue is still bleeding edge, but we're going to use it anyway.
+
+cd newsroom/apps/
+svn co http://django-photologue.googlecode.com/svn/branches/3.x/ photologue-3.x
+ln -s photologue-3.x/photologue .
+
