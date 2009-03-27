@@ -1,3 +1,4 @@
+-e svn+http://code.djangoproject.com/svn/django/trunk#egg=django-trunk
 # add countries to your python path manually for now just symlink it in
 # -e svn+http://django-countries.googlecode.com/svn/trunk#egg=django-countries
 -e svn+http://django-timezones.googlecode.com/svn/trunk#egg=django-timezones
