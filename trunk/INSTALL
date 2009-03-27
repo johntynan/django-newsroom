@@ -37,8 +37,8 @@ svn checkout http://django-newsroom.googlecode.com/svn/trunk working
 
 ==PIL==
 
-Installing PIL failed for us on OSX, we needed to download the source and 
-using the setup.py.  http://www.pythonware.com/products/pil/
+Installing PIL with pip failed for us on OSX, we needed to download the source
+and using the setup.py.  http://www.pythonware.com/products/pil/
 
 wget http://effbot.org/downloads/Imaging-1.1.6.tar.gz
 tar zxf Imaging-1.1.6.tar.gz
