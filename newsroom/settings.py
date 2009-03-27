@@ -89,11 +89,12 @@ INSTALLED_APPS = (
     'countries',
     'profiles',
     'photologue',
+    'tagging',
 )
 
 
 AUTH_PROFILE_MODULE='core.Person'
-PHOTOLOGUE_SPEC_MODULE='newsroom.photo_specs.py'
+PHOTOLOGUE_SPEC_MODULE='newsroom.photo_specs'
 
 #####################################################################
 # Default settings go above this line.
