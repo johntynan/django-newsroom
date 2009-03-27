@@ -22,7 +22,7 @@ svn checkout https://django-newsroom.googlecode.com/svn working
 
 ==get the external app modules==
 
-cd working/trunk/newsroom
+cd working/trunk
 pip install -r requirements/external_apps.txt
 
 ==Caveats==
