@@ -30,9 +30,9 @@ class FeatureSubmission(models.Model):
 
     submitter = models.ForeignKey(Person)
     org = models.ForeignKey(Affiliate)
-    images = models.ManyToMany(
+    images = models.ManyToManyField(
                 Photo,
                 help_text="Photos to help with featuring the piece.  The photos ideally are 16:9 or 4:3 aspect ratio and 1000px wide.  Scaling and thumbnails are handled automatically.",
                 blank=True)
 
-    related_links = models.ManyToMany(BookmarkInstance)
+    related_links = models.ManyToManyField(BookmarkInstance)
