@@ -45,7 +45,7 @@ svn checkout http://django-newsroom.googlecode.com/svn/trunk working
 ==PIL==
 
 Installing PIL with pip failed for us on OSX, we needed to download the source
-and using the setup.py.  http://www.pythonware.com/products/pil/
+and use the setup.py.  http://www.pythonware.com/products/pil/
 
 wget http://effbot.org/downloads/Imaging-1.1.6.tar.gz
 tar zxf Imaging-1.1.6.tar.gz
@@ -63,7 +63,7 @@ ln -s django-countries/countries .
 
 ==photologue==
 
-photologue is still bleeding edge, but we're going to use it anyway.
+photologue 3 is still bleeding edge, but we're going to fly with it.
 
 cd newsroom/apps/
 svn co http://django-photologue.googlecode.com/svn/branches/3.x/ photologue-3.x
