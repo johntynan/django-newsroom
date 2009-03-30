@@ -22,6 +22,13 @@ class Feature(models.Model):
                         blank=True,)
     expires = models.DateTimeField(blank=True,)
 
+class FeatureLink(models.Model):
+    """
+    Links to stories or projects submitted by affiliates.
+    """
+    url = models.URLField(verify_exists=False)
+    desc = models.TextField('description')
+
 class FeatureSubmission(models.Model):
     """
     When affiliates want a story or project syndicated through this site
@@ -30,15 +37,33 @@ class FeatureSubmission(models.Model):
     """
 
     affiliate = models.ForeignKey(Affiliate)
-    submitter = models.ForeignKey(User)
-    author = models.ForeignKey(Person)
-    other_author = models.CharField(
-                    max_length=100,
-                    help_text="If the person doing this feature submission are not the author please specify that here.",)
+    submitter = models.ForeignKey(
+                    Person,
+                    related_name='features_submitted',)
+    author = models.ForeignKey(
+                Person,
+                related_name='features_authored',)
+    other_credits = models.CharField(
+                      max_length=100,
+                      help_text="If the authors are not available in the list above please specify them here.",)
     images = models.ManyToManyField(
                 Photo,
                 help_text="Photos to help with featuring the piece.  The photos ideally are 16:9 or 4:3 aspect ratio and 1000px wide.  Scaling and thumbnails are handled automatically.",
                 blank=True)
+    permalink = models.ForeignKey(
+                    FeatureLink,
+                    unique=True,
+                    related_name="features",
+                    help_text="This should be the published link for the story or project you want featured on news21.com.")
     related_links = models.ManyToManyField(
-                        BookmarkInstance,
-                        blank=True)
+                        FeatureLink,
+                        blank=True,
+                        related_name="features_secondary",
+                        help_text='Related links might be a blog post or other information related to how the piece was built, "behind the scenes", or just links related to the same topic.')
+
+    relevance_begins = models.DateField(
+                        "Suggested Relevance Begins",
+                        help_text="Suggested date span for use on home page.")
+    relevance_ends = models.DateField(
+                        "Suggested Relevance Ends",)
+
