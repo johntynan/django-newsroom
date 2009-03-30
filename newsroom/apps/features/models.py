@@ -24,16 +24,20 @@ class Feature(models.Model):
 
 class FeatureLink(models.Model):
     """
-    Links to stories or projects submitted by affiliates.
+    Links related to feature submissions.
     """
+    title = models.CharField(max_length=200)
     url = models.URLField(verify_exists=False)
-    desc = models.TextField('description')
+    desc = models.TextField('description',blank=True)
+
+    def __unicode__(self):
+        return self.title
 
 class FeatureSubmission(models.Model):
     """
     When affiliates want a story or project syndicated through this site
     they submit a feature.  This is where some data gets saved for the 
-    editor to sift through later.
+    editor to sift through later and contruct a home page.
     """
 
     affiliate = models.ForeignKey(Affiliate)
@@ -45,7 +49,8 @@ class FeatureSubmission(models.Model):
                 related_name='features_authored',)
     other_credits = models.CharField(
                       max_length=100,
-                      help_text="If the authors are not available in the list above please specify them here.",)
+                      blank=True,
+                      help_text="If the authors are not available in the list above please include their names here.",)
     images = models.ManyToManyField(
                 Photo,
                 help_text="Photos to help with featuring the piece.  The photos ideally are 16:9 or 4:3 aspect ratio and 1000px wide.  Scaling and thumbnails are handled automatically.",
