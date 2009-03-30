@@ -30,9 +30,11 @@ class Person(models.Model):
                 help_text="Your City and State or lat/lon.")
 
     def __unicode__(self):
-        return "%s %s %s" % (self.user.first_name, 
-                             self.middle_name,
-                             self.user.last_name)
+        if self.user.first_name:
+            return "%s %s %s" % (self.user.first_name, 
+                                 self.middle_name,
+                                 self.user.last_name)
+        return self.user.username
 
     def get_absolute_url(self):
         return ('profiles_profile_detail', 
