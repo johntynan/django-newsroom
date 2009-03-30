@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
+from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
 from core.models import Person, Affiliate
 from photologue.models import Photo
@@ -24,15 +25,20 @@ class Feature(models.Model):
 class FeatureSubmission(models.Model):
     """
     When affiliates want a story or project syndicated through this site
-    they submit a feature.  This is where the data gets saved for the 
+    they submit a feature.  This is where some data gets saved for the 
     editor to sift through later.
     """
 
-    submitter = models.ForeignKey(Person)
-    org = models.ForeignKey(Affiliate)
+    affiliate = models.ForeignKey(Affiliate)
+    submitter = models.ForeignKey(User)
+    author = models.ForeignKey(Person)
+    other_author = models.CharField(
+                    max_length=100,
+                    help_text="If the person doing this feature submission are not the author please specify that here.",)
     images = models.ManyToManyField(
                 Photo,
                 help_text="Photos to help with featuring the piece.  The photos ideally are 16:9 or 4:3 aspect ratio and 1000px wide.  Scaling and thumbnails are handled automatically.",
                 blank=True)
-
-    related_links = models.ManyToManyField(BookmarkInstance)
+    related_links = models.ManyToManyField(
+                        BookmarkInstance,
+                        blank=True)
