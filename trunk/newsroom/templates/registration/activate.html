@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block content %}
+
+{% if account %}
+<h1>Your account has been activated.</h1>
+<p>Please <a href="{% url auth_login %}">login</a>.</p>
+{% else %} {% if request.user.is_authenticated %}
+<h1>You are already logged in!</h1>
+{% else %}
+<h1>Sorry, it didn't work.</h1>
+<p>Either your activation link was incorrect, or
+    the activation key for your account has expired; activation keys are
+    only valid for {{ expiration_days|apnumber }} days after
+    registration.</p>
+<p>Please <a href="{% url registration_register %}">try again</a>.</p>
+{% endif %}{% endif %}
+
+</div>
+{% endblock %}
