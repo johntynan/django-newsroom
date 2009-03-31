@@ -15,7 +15,8 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
     (r'^people/', include('profiles.urls')),
-    (r'^$', include('features.urls')),
+    (r'^$', 'features.views.front'),
+    (r'^features/', include('features.urls')),
     (r'', include('photologue.urls')),
 )
 
