@@ -25,7 +25,8 @@ def feature_add(request):
             return HttpResponseRedirect(request.user.get_absolute_url())
 
     else:
-        form = FeatureForm(user=request.user)
+        #form = FeatureForm(user=request.user)
+        form = FeatureForm()
 
     return render_to_response(
               'features/feature_add.html',
