@@ -1,0 +1,10 @@
+{% load humanize %}
+Hello, and thanks for signing up for a {{ site.name }} account!
+            
+To activate your account, click this link within {{ expiration_days|apnumber }} days. 
+
+http://{{site.domain}}{% url registration_activate {{ activation_key }} %}
+
+Do not reply to this message.
+
+{% include 'templates/email_footer.txt %}

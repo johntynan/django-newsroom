@@ -61,7 +61,17 @@
             <li><a href="{% url pl-photo-archive %}" title="Photos">Photos</a></li>
             <li><a href="{% url pl-gallery-archive %}" title="Galleries">Galleries</a></li>
             <li><a href="{% url features_feature_add %}" title="Submit Feature">Submit Feature</a></li>
-            <li><a href="#nowhere" title="Pellentesque fermentum dolor">Pellentesque</a></li>
+        </ul>
+
+        <h2>Accounts</h2>
+        <ul>
+            {% if user.is_authenticated %}
+            <li>Logged in as {{ user }}</li>
+            <li><a href="{% url django.contrib.auth.views.logout %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url registration_register %}" title="Register">Register</a></li>
+            <li><a href="{% url django.contrib.auth.views.login %}" title="Login">Login</a></li>
+            {% endif %}
         </ul>
                 {% endblock %}
     </div>
