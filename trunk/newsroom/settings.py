@@ -5,7 +5,6 @@ PROJECT_DIR = os.path.dirname(__file__)
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
@@ -82,6 +81,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
+    'django.contrib.humanize',
     'core',
     'aggregator',
     'features',
@@ -90,11 +90,13 @@ INSTALLED_APPS = (
     'profiles',
     'photologue',
     'tagging',
+    'registration',
 )
 
 
 AUTH_PROFILE_MODULE='core.Person'
 PHOTOLOGUE_SPEC_MODULE='newsroom.photo_specs'
+ACCOUNT_ACTIVATION_DAYS=5
 
 #####################################################################
 # Default settings go above this line.
