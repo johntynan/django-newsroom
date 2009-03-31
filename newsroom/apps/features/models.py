@@ -40,26 +40,26 @@ class FeatureSubmission(models.Model):
     editor to sift through later and contruct a home page.
     """
 
+    headline =  models.CharField(max_length=255)
+    permalink = models.URLField(
+                    unique=True,
+                    verify_exists=False,
+                    help_text="This should be the published link for the story or project you want featured on news21.com. <br />e.g. http://features.csmonitor.com/globalnews/2009/03/30/ahead-of-north-koreas-planned-rocket-launch-us-dispatches-destroyers/")
     affiliate = models.ForeignKey(Affiliate)
     submitter = models.ForeignKey(
                     Person,
                     related_name='features_submitted',)
-    author = models.ForeignKey(
+    authors = models.ManyToManyField(
                 Person,
-                related_name='features_authored',)
-    other_credits = models.CharField(
-                      max_length=100,
+                related_name='features_authored',
+                help_text="The authors of the published work.")
+    other_credits = models.TextField(
                       blank=True,
                       help_text="If the authors are not available in the list above please include their names here.",)
     images = models.ManyToManyField(
                 Photo,
                 help_text="Photos to help with featuring the piece.  The photos ideally are 16:9 or 4:3 aspect ratio and 1000px wide.  Scaling and thumbnails are handled automatically.",
                 blank=True)
-    permalink = models.ForeignKey(
-                    FeatureLink,
-                    unique=True,
-                    related_name="features",
-                    help_text="This should be the published link for the story or project you want featured on news21.com.")
     related_links = models.ManyToManyField(
                         FeatureLink,
                         blank=True,
