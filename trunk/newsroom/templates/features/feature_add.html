@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Submit a Feature{% endblock %}
+
+{% block content %}
+<h1>Submit a Feature</h1>
+
+{% if form.has_errors %}
+<p class="errors">Please correct the following error{{ form.error_dict|pluralize }}:</p>
+{% endif %}
+
+<p>When affiliates want a story or project syndicated through this site they
+should complete this form.  Your data gets saved for the editor to sift
+through later and contruct a home page.</p>
+
+<form action="" method="post">
+<table>
+{{ form }}
+</table>
+<input type="submit" name="submit" />
+</form>
+{% endblock %}
