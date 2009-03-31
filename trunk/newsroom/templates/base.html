@@ -60,13 +60,13 @@
             <li><a href="{% url profiles_profile_list %}" title="People">People</a></li>
             <li><a href="{% url pl-photo-archive %}" title="Photos">Photos</a></li>
             <li><a href="{% url pl-gallery-archive %}" title="Galleries">Galleries</a></li>
-            <li><a href="{% url features_feature_add %}" title="Submit Feature">Submit Feature</a></li>
         </ul>
 
         <h2>Accounts</h2>
         <ul>
             {% if user.is_authenticated %}
             <li>Logged in as {{ user }}</li>
+            <li><a href="{% url features_feature_add %}" title="Submit Feature">Submit Feature</a></li>
             <li><a href="{% url django.contrib.auth.views.logout %}">Logout</a></li>
             {% else %}
             <li><a href="{% url registration_register %}" title="Register">Register</a></li>
