@@ -1,5 +1,6 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from django.http import HttpResponseRedirect
 from features.models import * 
 from features.forms import *
 
@@ -18,7 +19,7 @@ def feature_add(request):
         form = FeatureForm(request.POST)
         if form.is_valid():
             feature = form.save(commit=False)
-            feature.submitter = request.user
+            feature.submitter = request.user.get_profile()
             feature.save()
             request.user.message_set.create(
                 message='Your feature has been submitted.  Thank you.')

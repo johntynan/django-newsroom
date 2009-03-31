@@ -43,8 +43,11 @@ class Feature(models.Model):
     # view code.
     last_featured = models.DateTimeField(
                         editable=False,
-                        blank=True,)
-    expires = models.DateTimeField(blank=True,)
+                        blank=True,
+                        null=True)
+    expires = models.DateTimeField(
+                blank=True,
+                null=True,)
 
 
 class FeatureLink(models.Model):
