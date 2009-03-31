@@ -17,7 +17,9 @@ urlpatterns = patterns('',
     (r'^people/', include('profiles.urls')),
     (r'^$', 'features.views.front'),
     (r'^features/', include('features.urls')),
+    (r'^accounts/', include('registration.urls')),
     (r'', include('photologue.urls')),
+
 )
 
 if settings.DEBUG:
