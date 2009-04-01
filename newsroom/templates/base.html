@@ -73,7 +73,14 @@
             <li><a href="{% url django.contrib.auth.views.login %}" title="Login">Login</a></li>
             {% endif %}
         </ul>
-                {% endblock %}
+            {% if user.is_staff %}
+            <h2>Admin</h2>
+            <ul>
+                <li><a href="/admin">Site Administration</a></li>
+            </ul>
+             {% endif %}
+
+        {% endblock %}
     </div>
   
 </div>
