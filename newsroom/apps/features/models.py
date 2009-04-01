@@ -48,6 +48,9 @@ class Feature(models.Model):
     expires = models.DateTimeField(
                 blank=True,
                 null=True,)
+    
+    def __unicode__(self):
+       return self.headline
 
 
 class FeatureLink(models.Model):
