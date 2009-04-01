@@ -67,10 +67,10 @@
             {% if user.is_authenticated %}
             <li>Logged in as {{ user }}</li>
             <li><a href="{% url features_feature_add %}" title="Submit Feature">Submit Feature</a></li>
-            <li><a href="{% url django.contrib.auth.views.logout %}">Logout</a></li>
+            <li><a href="{% url auth_logout %}">Logout</a></li>
             {% else %}
             <li><a href="{% url registration_register %}" title="Register">Register</a></li>
-            <li><a href="{% url django.contrib.auth.views.login %}" title="Login">Login</a></li>
+            <li><a href="{% url auth_login %}" title="Login">Login</a></li>
             {% endif %}
         </ul>
             {% if user.is_staff %}
