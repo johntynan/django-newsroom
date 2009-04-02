@@ -15,7 +15,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     #(r'^admin/', include(admin.site.urls)),
     (r'^admin/(.*)', admin.site.root),
-    (r'^profiles/', include('my_profiles.urls')),
+    (r'^people/', include('my_profiles.urls')),
     url(r'^$', 'features.views.front', name="features_front"),
     (r'^features/', include('features.urls')),
 
@@ -32,6 +32,11 @@ urlpatterns = patterns('',
         name='my_profiles_activate'),
 
     (r'^accounts/', include('registration.urls')),
+
+    # redirect /users/ so user.get_absolute_url() still works if we need it
+    ( r'^users/(?P<user>\w+)/$', 
+      'django.views.generic.simple.redirect_to', 
+      {'url':'/people/%(user)s/'} ),
 
     (r'', include('photologue.urls')),
 )

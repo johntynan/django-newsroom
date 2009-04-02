@@ -11,4 +11,7 @@ urlpatterns = patterns('',
         'features.views.feature_add',
         name="features_feature_add"),
 
+    url(r'^(?P<id>\d+)/$', 
+        'features.views.feature_detail',
+        name="features_feature_detail"),
 )
