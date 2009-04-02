@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Features{% endblock %}
+
+{% block content %}
+<h1>Features</h1>
+
+{% for feature in features %}
+{{ feature }}
+{% endfor %}
+
+{% endblock %}

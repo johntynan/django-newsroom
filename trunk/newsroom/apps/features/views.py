@@ -19,11 +19,11 @@ def feature_add(request):
         form = FeatureForm(request.POST)
         if form.is_valid():
             feature = form.save(commit=False)
-            feature.submitter = request.user.get_profile()
+            feature.submitter = request.user
             feature.save()
             request.user.message_set.create(
                 message='Your feature has been submitted.  Thank you.')
-            return HttpResponseRedirect(request.user.get_absolute_url())
+            return HttpResponseRedirect(request.user.get_profile().get_absolute_url())
 
     else:
         #form = FeatureForm(user=request.user)
@@ -33,3 +33,16 @@ def feature_add(request):
               'features/feature_add.html',
               {'form':form},
               context_instance=RequestContext(request))
+
+def feature_list(request):
+    """
+    Get index of features.
+    """
+
+    features = Feature.objects.all()
+
+    return render_to_response(
+              'features/feature_list.html',
+              {'features':features},
+              context_instance=RequestContext(request))
+

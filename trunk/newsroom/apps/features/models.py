@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
-from core.models import Person, Affiliate
+from core.models import Affiliate
 from photologue.models import Photo
 from bookmarks.models import BookmarkInstance
 
@@ -23,10 +23,10 @@ class Feature(models.Model):
                     help_text="This should be the published link for the story or project you want featured on news21.com. <br />e.g. http://features.csmonitor.com/globalnews/2009/03/30/ahead-of-north-koreas-planned-rocket-launch-us-dispatches-destroyers/")
     affiliate = models.ForeignKey(Affiliate)
     submitter = models.ForeignKey(
-                    Person,
+                    User,
                     related_name='features_submitted',)
     authors = models.ManyToManyField(
-                Person,
+                User,
                 related_name='features_authored',
                 help_text="The authors of the published work.")
     other_credits = models.TextField(

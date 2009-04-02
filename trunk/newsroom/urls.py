@@ -15,12 +15,25 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     #(r'^admin/', include(admin.site.urls)),
     (r'^admin/(.*)', admin.site.root),
-    (r'^people/', include('profiles.urls')),
-    (r'^$', 'features.views.front'),
+    (r'^profiles/', include('my_profiles.urls')),
+    url(r'^$', 'features.views.front', name="features_front"),
     (r'^features/', include('features.urls')),
-    (r'^accounts/', include('registration.urls')),
-    (r'', include('photologue.urls')),
 
+    url(r'^accounts/register/$',
+        'my_profiles.views.register',
+        name='my_profiles_register'),
+
+    url(r'^accounts/password/reset/$',
+        'my_profiles.views.password_reset',
+        name='my_profiles_password_reset'),
+
+    url(r'^activate/(?P<activation_key>\w+)/$',
+        'my_profiles.views.activate',
+        name='my_profiles_activate'),
+
+    (r'^accounts/', include('registration.urls')),
+
+    (r'', include('photologue.urls')),
 )
 
 if settings.DEBUG:
