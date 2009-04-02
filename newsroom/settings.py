@@ -92,12 +92,14 @@ INSTALLED_APPS = (
     'photologue',
     'tagging',
     'registration',
+    'my_profiles',
 )
 
 
-AUTH_PROFILE_MODULE='core.Person'
+AUTH_PROFILE_MODULE='my_profiles.Profile'
 PHOTOLOGUE_SPEC_MODULE='newsroom.photo_specs'
 ACCOUNT_ACTIVATION_DAYS=5
+LOGIN_REDIRECT_URL='/profiles/create/'
 
 #####################################################################
 # Default settings go above this line.
