@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}{{feature}} | Features{% endblock %}
+
+{% block body_id %}features{% endblock %}
+
+{% block content %}
+<h1>{{feature}}</h1>
+
+<dl>
+
+<dt>Permalink</dt>
+<dd><a href="{{ feature.permalink }}">{{ feature.permalink }}</a></dd>
+
+<dt>Affiliate</dt>
+<dd>{{feature.affiliate}}</dd>
+
+<dt>Submitted by</dt>
+<dd><a href="{{ feature.submitter.get_absolute_url }}"
+    >{{feature.submitter}}</a></dd>
+
+<dt>Authors</dt>
+<dd>
+{{ feature.authors.all|join:", " }}
+</dd>
+
+</dl>
+
+{% endblock %}

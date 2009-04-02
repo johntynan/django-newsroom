@@ -46,3 +46,15 @@ def feature_list(request):
               {'features':features},
               context_instance=RequestContext(request))
 
+def feature_detail(request, id):
+    """
+    Get feature details.
+    """
+
+    feature = Feature.objects.get(pk=id)
+
+    return render_to_response(
+              'features/feature_detail.html',
+              {'feature':feature},
+              context_instance=RequestContext(request))
+

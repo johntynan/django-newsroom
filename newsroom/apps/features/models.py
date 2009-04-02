@@ -52,6 +52,12 @@ class Feature(models.Model):
     def __unicode__(self):
        return self.headline
 
+    def get_absolute_url(self):
+        return ('features_feature_detail', 
+                (), 
+                { 'id': self.id })
+    get_absolute_url = models.permalink(get_absolute_url)
+
 
 class FeatureLink(models.Model):
     """
