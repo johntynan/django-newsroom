@@ -2,8 +2,11 @@
 
 {% block title %}People{% endblock %}
 
+{% block body_id %}people{% endblock %}
+
 {% block content %}
 
+<h1>People</h1>
 <ul>
 {% for o in object_list %}
 <li><a href="{{o.get_absolute_url}}">{{o}}</a> {{o.affiliate}}</li>

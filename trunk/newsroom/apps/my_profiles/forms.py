@@ -3,15 +3,21 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import PasswordResetForm as BasicPasswordResetForm
 from django.conf import settings
 from django.utils.translation import ugettext as _
-from my_profiles.models import Profile
 from registration.forms import RegistrationFormUniqueEmail
 
+from profiles import utils
+profile_model = utils.get_profile_model()
 
 class ProfileForm(forms.ModelForm):
     
+    mugshot = forms.FileField(
+                help_text='A JPEG image of yourself or something that \
+                           represents you.',
+                )
+
     class Meta:
-        model = Profile
-        exclude = ('user','latitude','longitude')
+        model = profile_model
+        exclude = ('user','latitude','longitude','mugshot')
 
 class RegistrationForm(RegistrationFormUniqueEmail):
     """

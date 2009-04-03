@@ -20,6 +20,7 @@ class Profile(models.Model):
             verify_exists=False,
             blank=True,
             help_text="Your public web site.",)
+    bio = models.TextField(blank=True)
     phone = PhoneNumberField(blank=True)
     twitter_name = models.CharField(
                     max_length=50,
