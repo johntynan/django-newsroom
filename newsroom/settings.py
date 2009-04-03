@@ -99,7 +99,7 @@ INSTALLED_APPS = (
 AUTH_PROFILE_MODULE='my_profiles.Profile'
 PHOTOLOGUE_SPEC_MODULE='newsroom.photo_specs'
 ACCOUNT_ACTIVATION_DAYS=5
-LOGIN_REDIRECT_URL='/profiles/create/'
+LOGIN_REDIRECT_URL='/people/edit/'
 
 #####################################################################
 # Default settings go above this line.

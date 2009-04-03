@@ -10,6 +10,7 @@ from django.conf import settings
 from my_profiles.forms import RegistrationForm, PasswordResetForm
 from registration import views as reg_views
 from profiles import views as prof_views
+from my_profiles.forms import ProfileForm
 import datetime, random, sha
 
 #from profiles import utils
@@ -18,8 +19,8 @@ import datetime, random, sha
 def create_profile(request, **kwargs):
     return prof_views.create_profile(request, **kwargs)
 
-def edit_profile(request, **kwargs):
-    return prof_views.edit_profile(request, **kwargs)
+def edit_profile(request, form_class=ProfileForm, **kwargs):
+    return prof_views.edit_profile(request, form_class=ProfileForm, **kwargs)
 
 def profile_detail(request, username, **kwargs):
     return prof_views.profile_detail(request, username, **kwargs)
