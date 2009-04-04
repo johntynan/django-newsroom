@@ -1,4 +1,4 @@
-=Groups As Affiliates RFC=
+=Django Groups As Affiliates RFC=
 
 There was some thought about using groups to define affiliates.  Affiliates is a django model and organizational structure, and groups (django model Group) is more of a permissions structure.  Should we integrate them somehow?   Would that make things more flexible if we use the power of the existing groups functionality?  How would it look? 
 
