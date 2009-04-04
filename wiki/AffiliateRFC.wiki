@@ -42,5 +42,6 @@ URL mapper to view
 {{{
 def story_index(request, affiliate_slug=None):
     ...
-    stories = Story.objects.filter( affiliate=Affiliate.objects.get(slug=affiliate_slug) )
+    if affiliate_slug:
+        stories = Story.objects.filter( affiliate=Affiliate.objects.get(slug=affiliate_slug) )
 }}}
