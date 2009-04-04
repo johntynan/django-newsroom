@@ -1,5 +1,7 @@
 =AffiliateRFC=
 
+==Affiliates==
+
 Affiliates are organizations or partners.  The system needs to know what object was authored by who and what organization the object belonged to when it was published or created.
 
 So a conventional schema might look like:
@@ -29,9 +31,9 @@ class Story(model.Model):
      affiliate = models.ForeignKey(Affiliate)
 }}}
 
-So to get a list of stories published by a specific group or affiliate ...
+===A request example===
 
-==A request example==
+So to get a list of stories published by a specific group or affiliate ...
 
 {{{
 GET /stories/affiliate/uc_berkeley
@@ -45,3 +47,11 @@ def story_index(request, affiliate_slug=None):
     if affiliate_slug:
         stories = Story.objects.filter( affiliate=Affiliate.objects.get(slug=affiliate_slug) )
 }}}
+
+==Independent Affiliates==
+
+What happens when a person publishes a story as themselves or is not affiliated with an organization?   We accommodate this by creating an "Independent" affiliation.
+
+===A request example===
+
+
