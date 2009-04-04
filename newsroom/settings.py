@@ -93,6 +93,7 @@ INSTALLED_APPS = (
     'tagging',
     'registration',
     'my_profiles',
+    'multimedia',
 )
 
 

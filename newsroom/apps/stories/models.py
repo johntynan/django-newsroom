@@ -1,8 +1,8 @@
 import datetime
 from django.contrib.auth.models import User
 from django.db import models
-from newsroom.multimedia.models import Media
-from newsroom.stories.constants import STORY_STATUS_CHOICES
+from multimedia.models import Media
+from stories.constants import STORY_STATUS_CHOICES
 
 class Story(models.Model):
     """
@@ -50,7 +50,7 @@ class Page(models.Model):
     story = models.ForeignKey(Story)
     content = models.TextField()
     media = models.ManyToManyField(Media)
-    pagenum = models.PostiveIntegerField()
+    pagenum = models.PositiveIntegerField()
     
     objects = PageManager()
     
