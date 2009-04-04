@@ -13,52 +13,45 @@ virtualenv newsroom-env
 
 source newsroom-env/bin/activate
 
+cd newsroom-env
+
+
 Get pip
 -------
 
 easy_install pip
 
-# or download from pypi and run python setup.py install
+# or download http://pypi.python.org/pypi/pip and run python setup.py install
 
 Get the code
 ------------
 
-use your virtualenv
--------------------
-
-cd newsroom-env
-
-checkout the project (with read/write access)
----------------------------------------------
-
-If you want to get writeable access to svn you have to be a project member and request that through the group. If you are already a group member, use this command:
-
-svn checkout https://django-newsroom.googlecode.com/svn working
-
-
-check out the project (with read-only access)
-------------------------------------------------
-
-If you are not a project member, you will likely want to check out the project using read-only access:
+checkout the project 
+---------------------
 
 svn checkout http://django-newsroom.googlecode.com/svn working
+
+
+check out the project (with write access)
+------------------------------------------------
+
+If you want to get writeable access to svn you have to be a project member and request that through the group. (notice https)
+
+svn checkout https://django-newsroom.googlecode.com/svn working
 
 You also may want to checkout using just part of the tree, in which case you might use something like, appending a subdirectory to the svn path:
 
 svn checkout http://django-newsroom.googlecode.com/svn/trunk working
 
-
 get the external app modules
 ----------------------------
 
-cd working/trunk
-
-pip install -r requirements/external_apps.txt
+pip install -r working/trunk/requirements/external_apps.txt
 
 done
 ----
 
-cd newsroom
+cd working/trunk/newsroom
 
 ./manage.py syncdb
 
