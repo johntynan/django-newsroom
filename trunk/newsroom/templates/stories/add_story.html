@@ -1,3 +1,9 @@
 {% extends "base.html" %}
 
-{{form}}
+{% block content %}
+{# TODO auto-slugify headline (or customize admin) #}
+<form method="post">
+{{form.as_p}}
+<input type="submit" value="Save"/>
+</form>
+{% endblock content %}
