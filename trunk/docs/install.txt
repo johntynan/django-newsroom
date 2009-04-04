@@ -21,7 +21,8 @@ Get pip
 
 easy_install pip
 
-# or download http://pypi.python.org/pypi/pip and run python setup.py install
+# or grab tarball at http://pypi.python.org/pypi/pip and run python setup.py install
+
 
 Get the code
 ------------
@@ -43,13 +44,15 @@ You also may want to checkout using just part of the tree, in which case you mig
 
 svn checkout http://django-newsroom.googlecode.com/svn/trunk working
 
+
 get the external app modules
 ----------------------------
 
 pip install -r working/trunk/requirements/external_apps.txt
 
-done
-----
+
+done with dependencies, run the dev server
+------------------------------------------
 
 cd working/trunk/newsroom
 
