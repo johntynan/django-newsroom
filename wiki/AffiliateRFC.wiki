@@ -1,6 +1,6 @@
 =AffiliateRFC=
 
-Affiliates are organizations or partners.  The system needs to know what object was authored by who and what organization the object belonged to when it was published.
+Affiliates are organizations or partners.  The system needs to know what object was authored by who and what organization the object belonged to when it was published or created.
 
 So a conventional schema might look like:
 
