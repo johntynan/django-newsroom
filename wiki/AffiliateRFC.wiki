@@ -1,0 +1,46 @@
+=AffiliateRFC=
+
+Affiliates are organizations or partners.  The system needs to know what object was authored by who and what organization the object belonged to when it was published.
+
+So a conventional schema might look like:
+
+{{{
+Affiliate 1------(n) Story (n) ------ (n) User
+}}}
+
+A story is linked to Affiliate and User.   A story is published by one organization but can have many authors.  We have also been debating with Affiliate is better name as Org, so far Affiliate has a little more abstract meaning so we're sticking with it.
+Originally we foreign-keyed affiliate to profile like
+
+{{{
+Affiliate 1 ------ (n) Profile    [not this]
+}}}
+
+But realized that the user should be allowed to change organizations and that should not affect the published object.
+
+{{{
+class Affiliate(models.Model):
+     title = CharField()
+     location = CharField()
+     ...
+
+class Story(model.Model):
+     ...
+     authors = models.ManyToManyField(User)
+     affiliate = models.ForeignKey(Affiliate)
+}}}
+
+So to get a list of stories published by a specific group or affiliate ...
+
+==A request example==
+
+{{{
+GET /stories/affiliate/uc_berkeley
+}}}
+
+URL mapper to view
+
+{{{
+def story_index(request, affiliate_slug=None):
+    ...
+    stories = Story.objects.filter( affiliate=Affiliate.objects.get(slug=affiliate_slug) )
+}}}
