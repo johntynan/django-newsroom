@@ -70,4 +70,4 @@ You can filter based on affiliation or group ... so you could get a story index 
 
 There would be groups that only exist as organizations.  
 
-You have to define another model that links to a group to define the meta data for a group.
+Just feels wrong.
