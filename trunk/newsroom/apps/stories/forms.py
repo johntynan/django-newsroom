@@ -1,5 +1,5 @@
 from django import forms
-from newsroom.models import Story
+from stories.models import Story
 
 class StoryForm(forms.ModelForm):
     class Meta:

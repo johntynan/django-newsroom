@@ -37,6 +37,8 @@ urlpatterns = patterns('',
     ( r'^users/(?P<user>\w+)/$', 
       'django.views.generic.simple.redirect_to', 
       {'url':'/people/%(user)s/'} ),
+    
+    (r'^stories/',include('stories.urls')),
 
     (r'', include('photologue.urls')),
 )
