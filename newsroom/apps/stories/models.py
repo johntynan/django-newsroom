@@ -14,7 +14,7 @@ class Story(models.Model):
     status = models.CharField(max_length=1,choices=STORY_STATUS_CHOICES)
     summary = models.TextField()
     created = models.DateTimeField(default=datetime.datetime.now)
-    modified = models.DateTimeField()
+    modified = models.DateTimeField(auto_now=True)
     
     @property
     def pages(self):
