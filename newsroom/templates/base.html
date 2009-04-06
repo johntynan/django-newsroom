@@ -33,13 +33,44 @@
 <div class="container_12" id="container">
 
 
-    <div id="header">
+        <!--Header Div -->
         <div class="grid_12">
             <h1>Site Header</h1>
         </div>
-    </div>
+        <div class="clear">&nbsp;</div>
+        <!-- END HeaderDiv -->
+
+        {% block navbar %}
+        <div class="grid_12" id="navbar">
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="/" title="Front Page">Home</a></li>
+            <li><a href="{% url profiles_profile_list %}" title="People">People</a></li>
+            <li><a href="{% url pl-photo-archive %}" title="Photos">Photos</a></li>
+            <li><a href="{% url pl-gallery-archive %}" title="Galleries">Galleries</a></li>
+            <li><a href="{% url features_feature_list %}" title="Features">Features</a></li>
+            {% if user.is_authenticated %}
+            <li class="login">Logged in as {{ user }}</li>
+            {% else %}
+            <li class="login"><a href="{% url auth_login %}" title="Login">Login</a></li>
+            {% endif %}
+        </ul>
+        </div>
+        <div class="clear"></div>
+        {% endblock %}
 
     <div id="content" class="{% block content_class %}grid_9{% endblock %}">
+    
+        {% block messages %}
+        <ul id="messages">
+            {% for msg in messages %}
+            <li>
+            {{ msg }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endblock %}
+
         {% block content %}        
         <h2>Content</h2>
 
@@ -64,26 +95,13 @@
 
     <div class="{% block menu_class %}grid_3{% endblock %}" id="menu">
         {% block menu %}
-        <h2>Menu</h2>
-        <ul id="nav">
-            <li><a href="/" title="Front Page">Home</a></li>
-            <li><a href="{% url profiles_profile_list %}" title="People">People</a></li>
-            <li><a href="{% url pl-photo-archive %}" title="Photos">Photos</a></li>
-            <li><a href="{% url pl-gallery-archive %}" title="Galleries">Galleries</a></li>
-            <li><a href="{% url features_feature_list %}" title="Features">Features</a></li>
-        </ul>
 
+        {% if user.is_authenticated %}
         <h2>Accounts</h2>
         <ul>
-            {% if user.is_authenticated %}
-            <li>Logged in as {{ user }}</li>
             <li><a href="{% url features_feature_add %}" title="Submit Feature">Submit Feature</a></li>
             <li><a href="{% url profiles_edit_profile %}" title="Edit Profile">Edit Profile</a></li>
             <li><a href="{% url auth_logout %}">Logout</a></li>
-            {% else %}
-            <li><a href="{% url registration_register %}" title="Register">Register</a></li>
-            <li><a href="{% url auth_login %}" title="Login">Login</a></li>
-            {% endif %}
         </ul>
             {% if user.is_staff %}
             <h2>Admin</h2>
@@ -91,9 +109,35 @@
                 <li><a href="/admin">Site Administration</a></li>
             </ul>
              {% endif %}
+        {% endif %}
 
         {% endblock %}
     </div>
+    <div class="clear">&nbsp;</div>
+
+
+    <!--Spacer-->
+    <div class="grid_12 spacer">
+    </div>
+    <div class="clear">&nbsp;</div>
+    <!--End Spacer-->
+
+    <div class="grid_12" id="footer">
+
+        <div class="grid_4 alpha">
+            <p>Footer part 1</p>
+        </div>
+
+        <div class="grid_4">
+            <p>Footer part 2</p>
+        </div>
+
+        <div class="grid_4 omega">
+            <p>Footer part 3</p>
+        </div>
+
+    </div>
+
 </div>
 
 </body>
