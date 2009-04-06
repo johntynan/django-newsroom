@@ -1,17 +1,18 @@
 import datetime
 from django.contrib.auth.models import User
 from django.db import models
+from django.db.models.signals import post_save
 from multimedia.models import Media
-from stories.constants import STORY_STATUS_CHOICES
+from stories.constants import STORY_STATUS_CHOICES, STORY_STATUS_DRAFT
 
 class Story(models.Model):
     """
     A Story is composed of one or more Pages
     """
-    author = models.ForeignKey(User)
+    author = models.ManyToManyField(User)
     headline = models.CharField(max_length=256)
-    slug = models.SlugField()
-    status = models.CharField(max_length=1,choices=STORY_STATUS_CHOICES)
+    slug = models.SlugField(unique=True)
+    status = models.CharField(max_length=1,choices=STORY_STATUS_CHOICES,default=STORY_STATUS_DRAFT)
     summary = models.TextField()
     created = models.DateTimeField(default=datetime.datetime.now)
     modified = models.DateTimeField(auto_now=True)
@@ -21,7 +22,25 @@ class Story(models.Model):
         return self.page_set.all()
         
     def add_page(self):
-        return Page.objects.new_page(self)
+        """
+        Creates a new page for this story. Returns the newly created page
+        """
+        new_page = Page.objects.new_page(self)
+        self.page_set.add(new_page)
+        return new_page
+
+        
+def new_story_add_page(sender,**kwargs):
+    """
+    Post-save signal for Story.
+    All stories should have at least one page. 
+    """
+    story = kwargs.get('instance',None)
+    new = kwargs.get('created',False)
+    if new and story:
+        story.add_page()
+        
+post_save.connect(new_story_add_page,sender=Story)
 
 class PageManager(models.Manager):
     """
@@ -42,6 +61,13 @@ class PageManager(models.Manager):
         for i,page in enumerate(self.filter(story=story)):
             page.pagenum = i+1
             page.save()
+
+class StoryIntegrityError(Exception):
+    """
+    This exception should be raised when an application attempts to
+    delete the only Page associated with a Story instance.
+    """
+    pass
 
 class Page(models.Model):
     """
@@ -64,6 +90,9 @@ class Page(models.Model):
         """
         Re-orders the remaining pages
         """
+        #don't delete if this is the only Page associated with a Story
+        if self.story.pages.count() == 1:
+            raise StoryIntegrityError
         super(Page,self).delete()
         Page.objects.update_page_order(self.story)
     
