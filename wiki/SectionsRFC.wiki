@@ -11,7 +11,7 @@ Sections are a top level collection of stories groped by topic.  For instance, a
 http://news21.com/economy/housing-crisis/
 }}}
 
-A publication might want to create/modify sections at any point in time, depending on current events.  This module should provide an editor with the functionality to perform such a task.  There is potential for the Sections module to touch any part of content in the system, or just stories.  
+A publication might want to create/modify sections at any point in time, depending on current events.  This module should provide an editor with the functionality to perform such a task.  There is potential for the Sections module to touch any part of content in the system, or just stories.  At the time of this writing we are focusing on how sections work with stories.
 
 == Section Paths ==
 
