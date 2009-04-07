@@ -1,7 +1,7 @@
 import datetime
 from django.contrib.auth.models import User
 from django.db import models
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save,post_delete
 from multimedia.models import Media
 from stories.constants import STORY_STATUS_CHOICES, STORY_STATUS_DRAFT
 
@@ -9,7 +9,7 @@ class Story(models.Model):
     """
     A Story is composed of one or more Pages
     """
-    author = models.ManyToManyField(User)
+    authors = models.ManyToManyField(User)
     headline = models.CharField(max_length=256)
     slug = models.SlugField(unique=True)
     status = models.CharField(max_length=1,choices=STORY_STATUS_CHOICES,default=STORY_STATUS_DRAFT)
@@ -20,6 +20,10 @@ class Story(models.Model):
     @property
     def pages(self):
         return self.page_set.all()
+        
+    @property
+    def page_one(self):
+        return self.page_set.get(pagenum=1)
         
     def add_page(self):
         """
@@ -94,8 +98,11 @@ class Page(models.Model):
         if self.story.pages.count() == 1:
             raise StoryIntegrityError
         super(Page,self).delete()
-        Page.objects.update_page_order(self.story)
+        #Page.objects.update_page_order(self.story)
+
+def reorder_story_pages(sender,**kwargs):
+    story = kwargs['instance'].story
+    Page.objects.update_page_order(story)
     
-
-
+post_delete.connect(reorder_story_pages,Page)
 

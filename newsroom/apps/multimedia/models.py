@@ -18,3 +18,11 @@ class Media(models.Model):
         """
         pass
 
+    def get_insert_snippet(self,args,**kwargs):
+        """
+        Creates the text snippet that Story authors will paste into their content to indicate that the
+        media item should render should render itself there.
+        
+        """
+        pass
+    
