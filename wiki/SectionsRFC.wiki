@@ -24,6 +24,8 @@ News sections are based on existing section paths, available in the...
 
 = Sections manager =
 
+The sections manager is an interface for grouping content according to section paths (categories?)
+
 
 = Schema =
 
