@@ -12,7 +12,7 @@ def add_video(request):
     Create a new Video for the user
     """
     if request.method == 'POST':
-        form = VideoForm(request.POST)
+        form = VideoForm(request.POST, request.FILES)
         if form.is_valid():
             video = form.save(commit=False)
             video.created_by = request.user
