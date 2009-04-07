@@ -24,16 +24,6 @@ News sections are based on existing section paths, available in the...
 
 = Sections manager =
 
-Sections are top level collection of stories
-
-Section paths are free-from strings defined by (editors/authors?) but follow the convention of:
-
-{{{
-/people/george_bush/
-/places/europe/france/region/paris/neighborhood
-/topics/immigration
-/events/2009/inauguration
-}}}
 
 = Schema =
 
