@@ -13,7 +13,7 @@ This RFC helps to define how this section is dynamically created and structured 
 
 == Section Paths ==
 
-Section paths are free-from strings defined by (editors/authors?) which allow you to  navigate / categorize content.  They follow the convention of:
+Section Paths are a term we are creating to describe free-from strings defined by editors or authors that allow you to categorize content.  The strings follow a simple convention using forward slashes:
 
 {{{
 /people/george_bush/
@@ -23,13 +23,9 @@ Section paths are free-from strings defined by (editors/authors?) which allow yo
 }}}
 
 
-= Topics and Paths example =
-
-News sections are based on existing section paths, available in the...
-
 = Sections manager =
 
-The sections manager is an interface for grouping content according to section paths (categories?)
+The Sections Manager provides interface for grouping content according to section paths (categories?)
 
 Here is a mockup:
 
