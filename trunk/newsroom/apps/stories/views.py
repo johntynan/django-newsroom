@@ -1,7 +1,8 @@
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
-from django.core.urlresolvers import reverse
-from django.template import RequestContext
+from django.template import RequestContext, Template, Context
+
 from stories.forms import StoryForm
 from stories.models import Story
 
@@ -41,4 +42,19 @@ def story_detail(request,story_id):
                 context_instance=RequestContext(request))
 
 
+def show_story(request,slug):
+    story = get_object_or_404(Story,slug=slug)
+    pagenum = request.GET.get('p',1)
+    page = story.get_page(1)
+    
+    #render the page content so that media tags are handled
+    print page.content
+    template = Template("{%% load media_tags %%}%s" %  page.content)
+    content = template.render(Context())
+    print content
+    #TODO: get the template to use from the story
+    
+    return render_to_response('stories/display_page_content.html',
+                              locals(),
+                              context_instance=RequestContext(request))
 
