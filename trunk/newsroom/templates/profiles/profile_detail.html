@@ -7,9 +7,9 @@
 
 <h2>
 <img src="{{ user.profile.mugshot.display.url }}" />
-{% if user.is_authenticated %}
+{% ifequal user.get_profile profile %}
 <a href="{% url profiles_edit_profile_image %}">edit</a>
-{% endif %}
+{% endifequal %}
 </h2>
 <h2><a href="{{profile.url}}">{{ profile.url }}</a></h2>
 <p>{{ profile.bio }}</p>
