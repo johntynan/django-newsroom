@@ -5,6 +5,12 @@
 {% block content %}
 <h1>{{ profile }}, {{ profile.affiliate }}</h1>
 
+<h2>
+<img src="{{ user.profile.mugshot.display.url }}" />
+{% if user.is_authenticated %}
+<a href="{% url profiles_edit_profile_image %}">edit</a>
+{% endif %}
+</h2>
 <h2><a href="{{profile.url}}">{{ profile.url }}</a></h2>
 <p>{{ profile.bio }}</p>
 <p>Phone: {{profile.phone}}</p>

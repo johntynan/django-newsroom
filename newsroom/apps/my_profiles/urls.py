@@ -12,11 +12,16 @@ urlpatterns = patterns('',
            views.edit_profile,
            name='profiles_edit_profile'),
 
+       url(r'^edit/image/$',
+           views.edit_profile_image,
+           name='profiles_edit_profile_image'),
+
        url(r'^(?P<username>\w+)/$',
            views.profile_detail,
            name='profiles_profile_detail'),
 
        url(r'^$',
            views.profile_list,
-           name='profiles_profile_list'),)
+           name='profiles_profile_list'),
+)
 
