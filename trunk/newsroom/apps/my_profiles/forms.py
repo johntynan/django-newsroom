@@ -4,17 +4,18 @@ from django.contrib.auth.forms import PasswordResetForm as BasicPasswordResetFor
 from django.conf import settings
 from django.utils.translation import ugettext as _
 from registration.forms import RegistrationFormUniqueEmail
+from my_profiles.models import ProfileImage
 
 from profiles import utils
 profile_model = utils.get_profile_model()
 
+class ProfileImageForm(forms.ModelForm):
+
+    class Meta:
+        model = ProfileImage
+
 class ProfileForm(forms.ModelForm):
     
-    mugshot = forms.FileField(
-                help_text='A JPEG image of yourself or something that \
-                           represents you.',
-                )
-
     class Meta:
         model = profile_model
         exclude = ('user','latitude','longitude','mugshot')
@@ -49,7 +50,7 @@ class RegistrationForm(RegistrationFormUniqueEmail):
 class PasswordResetForm(BasicPasswordResetForm):
     """
     Override clean_email()
-    No sense in sending a password to someone who is not active, let them know.     
+    No sense in sending a password to someone who is not active, let them know.
     """
     def clean_email(self):
         """

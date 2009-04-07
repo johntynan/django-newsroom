@@ -2,8 +2,22 @@ from django.contrib.localflavor.us.models import PhoneNumberField, USStateField
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import signals  
-from photologue.models import Photo
+from imagekit.models import ImageModel
 from core.models import Affiliate
+
+
+IK_SPEC_MODULE = 'my_profiles.photo_specs'
+
+class ProfileImage(ImageModel):
+    """
+    Define a profile image using an imagekit model.
+    """
+    image = models.ImageField(upload_to='uploads/my_profiles',)
+
+    class IKOptions:
+        spec_module = IK_SPEC_MODULE
+        cache_dir = 'my_profiles'
+        cache_filename_format = "%(specname)s/%(filename)s.%(extension)s"
 
 
 class Profile(models.Model):
@@ -30,7 +44,9 @@ class Profile(models.Model):
                 max_length=100,
                 help_text="Your City, State or lat/lon.")
 
-    mugshot = models.ForeignKey(Photo, null=True, blank=True)
+    mugshot = models.ForeignKey(
+                ProfileImage, null=True, blank=True,
+                help_text='A JPEG image of yourself or something that represents you.',)
 
     def __unicode__(self):
         if self.user.first_name:
