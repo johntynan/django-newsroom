@@ -9,7 +9,7 @@ Sections are top level collection of stories groped by topic.  For instance, a s
 http://news21.com/economy/housing-crisis/.
 }}}
 
-This RFC helps to define how that collection is created and structured under the hood.
+This RFC helps to define how this section is dynamically created and structured under the hood.
 
 == Section Paths ==
 
