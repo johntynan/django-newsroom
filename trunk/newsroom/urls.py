@@ -40,6 +40,8 @@ urlpatterns = patterns('',
     
     (r'^stories/',include('stories.urls')),
 
+    (r'^videos/',include('videos.urls')),
+
     (r'', include('photologue.urls')),
 )
 
