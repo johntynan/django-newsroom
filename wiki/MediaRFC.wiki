@@ -1,0 +1,50 @@
+#summary Framework for associating media items of any type to a Model.
+
+= Introduction =
+
+The goal is to create a flexible system that is easy to use and easy to understand. It is not the goal of this project to invent new ways of managing the individual media types within the system since there are already several usable open source apps available for many common publishing media types. For example, Photologue already provides solid tools for managing photos (images) and galleries. In this case the Media app is providing a thin wrapper around the Photologue Photo model. Photo consumers can still take advantage of the Photologue API when needed, but should be able to use the simple Media API in most cases. It probably makes sense to decide on a reasonable set of defaults for each media type and expose those in a consistent manner through the API, further reducing the need to drop lower than the Media API.
+
+
+= Details =
+
+As of r205 a working proof-of-concept was committed. There is no supporting UI yet, I've tested by manually performing some steps. Please refer to multimedia.models for additional documentation. 
+
+== Overview ==
+
+Media is the parent model (base class) for media types within newsroom. Generally, your application will never create instances of Media; rather you will work with instances of the derived classes. 
+
+=== API ===
+*render*
+
+Every subclass must implement the `render()` method. The render method returns the HTML string that will be placed into the page to render the media item in-place. 
+
+*get_insert_snippet*
+
+Subclasses may also choose to override `get_insert_snippet` if they need to accept additional arguments specific to the media type they represent. _Note that the media_insert template tag needs to be updated to handle arbitrary arguments first_
+_See also Handling Config/Options below_
+
+=== Example ===
+
+  # user creates new Story
+  # while editing Page 1, user selects Add Image
+  # user would select from existing/available photos or add new
+  # when they've selected photo, view should create a new multimedia.models.Image object and set the Image.content_object to the photo. 
+  # view would then add the Image to the Page's media
+  # call get_insert_snippet on the image to provide an insert snippet for the author to use where they'd like the media to render.
+
+{{{
+#selected_photo is the photologue Photo instance representing an image selected for
+#add by the user
+image = Image
+image.content_object = selected_photo
+#set title,description fields....
+image.save()
+page.media.add(image)
+insert_snippet = image.get_insert_snippet()
+}}}
+
+== Handling Config/Options for Individual Media Types ==
+
+In general it would be desirable for insert snippets to be as terse as possible; enough to convey to the author that a media item will show up there and which one it will be. I like the idea of preserving the ability to explicitly send in extra parameters when needed, but I think it makes sense to treat those as rare cases. One idea I had was to create another model that would be used to hold individual options (ex: height,width,startFrame,etc...) which would then be associated with the Media objects. Then during render time the Media object would check for an associated Options object and use the values there. Another attractive approach is to simply add an options field onto Media models and pickle any options in there. 
+
+The primary use case for this is UI that would expose the properties available for the media type when the user is selecting from inventory for adding a story and the user would be able to customize the options inline. 
