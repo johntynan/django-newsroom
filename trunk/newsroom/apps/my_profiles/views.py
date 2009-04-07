@@ -68,7 +68,7 @@ def edit_profile_image(request):
             if old_image:
                 old_image.delete()
             request.user.message_set.create(
-                message="You are already logged in.")
+                message="Your profile image was updated.")
             return HttpResponseRedirect(
                 reverse('profiles_profile_detail',args=[profile.user.username]))
     else: 
