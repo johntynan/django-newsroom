@@ -98,7 +98,7 @@ class Page(models.Model):
         if self.story.pages.count() == 1:
             raise StoryIntegrityError
         super(Page,self).delete()
-        #Page.objects.update_page_order(self.story)
+        
 
 def reorder_story_pages(sender,**kwargs):
     story = kwargs['instance'].story
