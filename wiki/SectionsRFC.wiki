@@ -2,14 +2,16 @@
 
 = Introduction =
 
+This document helps define the sections module which is used to group content based on real world topics. 
+
 == Sections ==
 
-Sections are top level collection of stories groped by topic.  For instance, a section on the site related to the Housing Crisis could list stories based on the following more general topics “housing,” “banking,” “mortgages” and that would live under the site at 
+Sections are a top level collection of stories groped by topic.  For instance, a section on the site related to the Housing Crisis could list stories based on the following more general topics “housing,” “banking,” “mortgages” and that would live under the site at 
 {{{
 http://news21.com/economy/housing-crisis/
 }}}
 
-This RFC helps to define how this section is dynamically created and structured under the hood.
+A publication might want to create/modify sections at any point in time, depending on current events.  This module should provide an editor with the functionality to perform such a task.  There is potential for the Sections module to touch any part of content in the system, or just stories.  
 
 == Section Paths ==
 
