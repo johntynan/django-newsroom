@@ -2,7 +2,21 @@
 
 = Introduction =
 
-Topics and Paths are distinct from categories and tags... (don't even mention these here... categories and tags are distinct from Topics and Paths)
+== Sections ==
+
+Sections are top level collection of stories groped by Topic.
+
+== Section Paths ==
+
+Section paths are free-from strings defined by (editors/authors?) which allow you to  navigate / categorize content.  They follow the convention of:
+
+{{{
+/people/george_bush/
+/places/europe/france/region/paris/neighborhood
+/topics/immigration
+/events/2009/inauguration
+}}}
+
 
 = Topics and Paths example =
 
