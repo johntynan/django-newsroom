@@ -26,8 +26,8 @@ class AffiliateFeed(Feed):
     def __unicode__(self):
         return "Feed for %s" % self.affiliate.name
 
-class Project(models.Model):
-    affiliate = models.ForeignKey(Affiliate)
-    url = models.URLField(
-            verify_exists=False,
-            help_text="The project's public web site.",)
+#class Project(models.Model):
+#    affiliate = models.ForeignKey(Affiliate)
+#    url = models.URLField(
+#            verify_exists=False,
+#            help_text="The project's public web site.",)
