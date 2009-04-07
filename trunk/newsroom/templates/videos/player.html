@@ -1,0 +1,28 @@
+<!--object type="application/x-shockwave-flash" data="{{MEDIA_URL}}swf/player_flv.swf" width="{{object.get_frame_width}}" height="{{object.get_frame_height}}">
+     <param name="movie" value="{{MEDIA_URL}}swf/player_flv.swf" />
+     <param name="FlashVars" value="flv={{MEDIA_URL}}{{object.video}}&bgcolor=#000" />
+</object-->
+
+<!--embed 
+src="{{MEDIA_URL}}swf/player.swf" 
+width="{{object.get_frame_width}}" 
+height="{{object.get_frame_height}}"
+allowscriptaccess="always" 
+allowfullscreen="true" 
+flashvars="width={{object.get_frame_width}}&height={{object.get_frame_height}}&file={{MEDIA_URL}}{{object.video}}&fallback={{MEDIA_URL}}{{object.video_flv}}&smoothing=false&searchbar=false" 
+/-->
+<!-- embed 
+src="{{MEDIA_URL}}swf/flowPlayerDark.swf" 
+width="{{object.get_frame_width}}" 
+height="{{object.get_frame_height}}"
+bgcolor="000"
+allowscriptaccess="always" 
+allowfullscreen="true" 
+flashvars="videoFile={{MEDIA_URL}}{{object.video}}" 
+/-->
+
+<object type="application/x-shockwave-flash" data="{{MEDIA_URL}}swf/flowPlayerDark.swf" width="{{object.get_frame_width}}" height="{{object.get_frame_height}}">
+     <param name="movie" value="{{MEDIA_URL}}swf/flowPlayerDark.swf" />
+     <param name="FlashVars" value="videoFile={{MEDIA_URL}}{{object.video}}&bgcolor=#000" />
+</object>
+
