@@ -6,11 +6,12 @@
 <h1>{{ profile }}, {{ profile.affiliate }}</h1>
 
 <h2>
-<img src="{{ user.profile.mugshot.display.url }}" />
+<img src="{{ profile.mugshot.display.url }}" />
 {% ifequal user.get_profile profile %}
 <a href="{% url profiles_edit_profile_image %}">edit</a>
 {% endifequal %}
 </h2>
+
 <h2><a href="{{profile.url}}">{{ profile.url }}</a></h2>
 <p>{{ profile.bio }}</p>
 <p>Phone: {{profile.phone}}</p>
