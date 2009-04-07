@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Add a Video{% endblock %}
+
+{% block content %}
+<h1>Add a Video</h1>
+
+<form method="post" enctype="multipart/form-data">
+{{form.as_p}}
+<input type="submit" value="Save"/>
+</form>
+{% endblock content %}

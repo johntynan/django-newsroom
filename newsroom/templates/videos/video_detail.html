@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{object.title}} | {% trans "Videos" %} {% endblock %}
+
+{% block extrahead %}
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" 
+      href="http://{{ site.domain }}/rss/videos/" />
+<link rel="alternate" type="application/atom+xml" title="Atom 1.0" 
+      href="http://{{ site.domain }}/atom/videos/" />
+
+
+<script type="text/javascript" src="{{MEDIA_URL}}js/swfobject.js"></script>
+<script type="text/javascript">
+
+function sendEvent(swf,typ,prm) { 
+  thisMovie(swf).sendEvent(typ,prm); 
+};
+function getUpdate(typ,pr1,pr2,swf) {
+  //if(typ == 'state') { alert('the current state is: '+pr1); }
+};
+function thisMovie(swf) {
+  if(navigator.appName.indexOf("Microsoft") != -1) {
+    return window[swf];
+  } else {
+    return document[swf];
+  }
+};
+
+//jw player
+var player = "{{MEDIA_URL}}swf/mediaplayer.swf"; 
+
+//jw player
+var flashvars = {
+  file: "{{MEDIA_URL}}{{object.video}}",
+  fallback: "{{MEDIA_URL}}{{object.video_flv}}",
+  image: "{{MEDIA_URL}}{{object.frame}}",
+  width: "{{object.get_frame_width}}",
+  height: "{{object.get_frame_height}}",
+  //fallback: "{{MEDIA_URL}}{{object.video_flv}}",
+  searchbar:false,
+  shownavigation: false,
+  bgcolor: "#000",
+  //autoPlay: true,
+  javascriptid: 'videocontent',
+  enablejs: true,
+};
+
+var params = {};
+
+var attributes = {
+  id: "videocontent",
+  name: "videoplayer"
+};    
+
+swfobject.embedSWF(
+    player,
+    "videocontent", 
+    "{{object.get_frame_width}}", 
+    "{{object.get_frame_height}}", 
+    "8",
+    "", //"{{MEDIA_URL}}swf/expressInstall.swf", 
+    flashvars, params, attributes);
+</script>
+{% endblock %}
+
+{% block content %}
+<h2><a href="{% url videos_index %}">{% trans "Videos" %}</a> :: 
+    {{ object.title }}</h2>
+<div id="videocontent">You need to have Flash 8 or above installed.</div>
+
+<div class="video_meta">
+<p class="file">
+{% if object.video %}<p>{% trans "Video File" %}: <a href="{{MEDIA_URL}}{{ object.video }}">{{ object.video }}</a></p>{% endif %}
+<p class="byline">{% trans "Posted by" %} {% ifnotequal object.user.get_full_name "" %} {{ object.user.get_full_name }}{% else %} {{ object.user.username }}{% endifnotequal %}</p>
+<p class="posted">{% trans "Posted on" %} {{ object.pub_date|date:"N j, Y" }}</p>
+<p>{{ object.summary|linebreaks }}</p>
+<h3>Related</h3>
+                        <ul>
+                        <li><a href="">Lorem ipson dolor sic amet</a></li>
+                        <li><a href="">consetum nunc ad valorem</a></li>
+                        <li><a href="">Lorem ipson dolor sic amet</a></li>
+                        </ul>
+                    </p>
+                    <h3>Tags</h3>  
+<p>
+{% for tag in object.tags %}
+<a href="{% url videos_tag_index tag.name %}" rel="tag">{{tag}}</a>
+{% endfor %}
+</p>
+</div>
+{% endblock %}
+
+{% block leftnav %}
+<div id="play_button">
+  <a href="javascript:sendEvent('videocontent','playpause');">Play</a>
+</div>
+<div id="prev_button">
+  <a href="javascript:sendEvent('videocontent', 'scrub', 10);">&lt;&lt;</a>
+</div>
+<div id="next_button">
+    <a href="">&gt;&gt;</a>
+</div>
+{{ block.super }}
+{% endblock %}
