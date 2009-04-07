@@ -27,6 +27,10 @@ News sections are based on existing section paths, available in the...
 
 The sections manager is an interface for grouping content according to section paths (categories?)
 
+Here is a mockup:
+
+http://api.ning.com/files/nLWRHw63e1aqEa0KxR8LNjowx5MawoaxBozi7nKW30c1X6Nc-SDeta-sOC0Yovimz60dJXz-Xtu3UTjOD2NxM7E5A59VlJVf/photo.jpg?width=737&height=552
+
 
 = Schema =
 
