@@ -22,16 +22,17 @@ Section Paths are a term we are creating to describe free-from strings defined b
 /events/2009/inauguration
 }}}
 
+== Schema ==
+
+{{{
+sections (n) ---- (n) section_path (n) ---- (n) stories
+}}}
 
 = Sections Editor =
 
 The Sections Editor provides an interface for creating new Section Paths and Sections. 
 
-= Schema =
 
-{{{
-sections (n) ---- (n) section_path (n) ---- (n) stories
-}}}
 
 = Models =
 
