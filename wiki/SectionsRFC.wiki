@@ -23,14 +23,9 @@ Section Paths are a term we are creating to describe free-from strings defined b
 }}}
 
 
-= Sections manager =
+= Sections Editor =
 
-The Sections Manager provides interface for grouping content according to section paths (categories?)
-
-Here is a mockup:
-
-http://api.ning.com/files/nLWRHw63e1aqEa0KxR8LNjowx5MawoaxBozi7nKW30c1X6Nc-SDeta-sOC0Yovimz60dJXz-Xtu3UTjOD2NxM7E5A59VlJVf/photo.jpg?width=737&height=552
-
+The Sections Editor provides an interface for creating new Section Paths and Sections. 
 
 = Schema =
 
@@ -46,6 +41,14 @@ sections (n) ---- (n) section_path (n) ---- (n) stories
 {{{
 {% for get_stories_by_section economy/housing-crisis as story %}
 }}}
+
+= Stories Example =
+
+In this example a screen provides you with a list of checkboxes to relate a story to one or more Section Paths.
+
+Here is a mockup:
+
+http://api.ning.com/files/nLWRHw63e1aqEa0KxR8LNjowx5MawoaxBozi7nKW30c1X6Nc-SDeta-sOC0Yovimz60dJXz-Xtu3UTjOD2NxM7E5A59VlJVf/photo.jpg?width=737&height=552
 
 = Request example =
 
