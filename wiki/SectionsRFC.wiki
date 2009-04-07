@@ -4,8 +4,12 @@
 
 == Sections ==
 
-Sections are top level collection of stories groped by topic.  For instance, a section on the site related to the Housing Crisis could list stories based on the following more general topics “housing,” “banking,” “mortgages” and that would live under the site at http://news21.com/economy/housing-crisis/.
+Sections are top level collection of stories groped by topic.  For instance, a section on the site related to the Housing Crisis could list stories based on the following more general topics “housing,” “banking,” “mortgages” and that would live under the site at 
+{{{
+http://news21.com/economy/housing-crisis/.
+}}}
 
+This RFC helps to define how that collection is created and structured under the hood.
 
 == Section Paths ==
 
