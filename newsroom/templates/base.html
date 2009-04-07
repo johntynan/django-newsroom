@@ -27,7 +27,6 @@
     {% block extra_head %}{% endblock %}
 </head>
 
-{% block body %}
 <body id="{% block body_id %}base{% endblock %}">
 
 <div class="container_12" id="container">
@@ -99,6 +98,7 @@
         {% if user.is_authenticated %}
         <h2>Accounts</h2>
         <ul>
+            <li><a href="{% url stories_add_story %}" title="Add Story">Add Story</a></li>
             <li><a href="{% url features_feature_add %}" title="Submit Feature">Submit Feature</a></li>
             <li><a href="{% url profiles_edit_profile %}" title="Edit Profile">Edit Profile</a></li>
             <li><a href="{% url auth_logout %}">Logout</a></li>
@@ -141,6 +141,5 @@
 </div>
 
 </body>
-{% endblock %}
 
 </html>
