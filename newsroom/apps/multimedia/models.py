@@ -3,9 +3,9 @@ from django.contrib.contenttypes import generic
 from django.db import models
 
 from multimedia.constants import MEDIA_TYPES
+from utils.model_inheritance import ParentModel,ChildManager
 
-
-class Media(models.Model):
+class Media(ParentModel):
     """
     A generic container for media items.
     """
@@ -23,10 +23,18 @@ class Media(models.Model):
     #    {{some_instance.media}}
     #    """
     #    pass
+    
+    objects = models.Manager()
+    children = ChildManager()
+    
+    def get_parent_model(self):
+        return Media
 
-    def render_media(self,*args,**kwargs):
+    def render(self,*args,**kwargs):
         """
         Handles rendering of the encapsulated media object to HTML
+        
+        Must be implemented by subclass
         """
         raise NotImplentedError
 
@@ -35,17 +43,28 @@ class Media(models.Model):
         Creates the text snippet that Story authors will paste into their content to indicate that the
         media item should render should render itself there.
         
+        If the user supplied a title with the media item, we tack that in as a convenience so that authors
+        can quickly identify which media item will be shown when they are editing stories. An example snippet
+        might then look like:
+            
+            {% media_insert 364 "obama speaking" %}
+        
+        Individual media types may desire/require arbitrary parameters for initializing/customizing the media
+        object. Media subclasses should override this method so that they can translate additional arguments
+        into the snippet in a way that the render method will be able to leverage.
         """
-        raise NotImplentedError
+        if len(self.title):
+            return '{%% media_insert %d "%s" %%}' % (self.id,self.title,)
+        else:
+            return "{%% media_insert %d %%}" % self.id
     
 
 class Image(Media):
     """
     A Media container for Photologue Photo instances
     """
-    def render_media(self,*args,**kwargs):
-        return u'<img src="%s"/>' % self.content_object.get_absolute_url()
+    def render(self,*args,**kwargs):
+        return u'<img src="%s"/>' % self.content_object.image.url
         
-    def get_insert_snippet(self,*args,**kwargs):
-        pass
+    
     

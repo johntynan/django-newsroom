@@ -23,7 +23,10 @@ class Story(models.Model):
         
     @property
     def page_one(self):
-        return self.page_set.get(pagenum=1)
+        return self.get_page(1)
+        
+    def get_page(self,num):
+        return self.page_set.get(pagenum=num)
         
     def add_page(self):
         """
