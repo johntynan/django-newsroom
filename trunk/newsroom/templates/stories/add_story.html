@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 
+{% block title %}Add a Story{% endblock %}
+
 {% block content %}
+<h1>Add a Story</h1>
+
 {# TODO auto-slugify headline (or customize admin) #}
 <form method="post">
 {{form.as_p}}
