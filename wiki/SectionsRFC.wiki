@@ -1,0 +1,54 @@
+#summary Django Newsroom Sections RFC
+
+= Introduction =
+
+Topics and Paths are distinct from categories and tags... (don't even mention these here... categories and tags are distinct from Topics and Paths)
+
+= Topics and Paths example =
+
+News sections are based on existing section paths, available in the...
+
+= Sections manager =
+
+Sections are top level collection of stories
+
+Section paths are free-from strings defined by (editors/authors?) but follow the convention of:
+
+{{{
+/people/george_bush/
+/places/europe/france/region/paris/neighborhood
+/topics/immigration
+/events/2009/inauguration
+}}}
+
+= Schema =
+
+{{{
+sections (n) ---- (n) section_path (n) ---- (n) stories
+}}}
+
+= Models =
+
+
+= Templates =
+
+{{{
+{% for get_stories_by_section economy/housing-crisis as story %}
+}}}
+
+= Request example =
+
+Description here...
+
+{{{
+GET /economy/housing-crisis/
+}}}
+
+= view =
+
+{{{
+def section_index(request, sections, section_slug=None):
+    ...
+    if sections:
+        stories = Story.objects.filter( section=Section.objects.get(slug=section_slug) )
+}}}
