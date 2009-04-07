@@ -4,7 +4,8 @@
 
 == Sections ==
 
-Sections are top level collection of stories groped by Topic.
+Sections are top level collection of stories groped by topic.  For instance, a section on the site related to the Housing Crisis could aggregate stories based on the following categories “housing,” “banking,” “mortgages” and then later aggregate them under the section http://news21.com/economy/housing-crisis/
+
 
 == Section Paths ==
 
