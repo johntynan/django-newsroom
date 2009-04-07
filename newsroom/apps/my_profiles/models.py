@@ -12,7 +12,7 @@ class ProfileImage(ImageModel):
     """
     Define a profile image using an imagekit model.
     """
-    image = models.ImageField(upload_to='uploads/my_profiles',)
+    image = models.ImageField(upload_to='uploads/my_profiles/%Y/%b',)
 
     class IKOptions:
         spec_module = IK_SPEC_MODULE
@@ -42,7 +42,7 @@ class Profile(models.Model):
     location = models.CharField(
                 blank=True,
                 max_length=100,
-                help_text="Your City, State or lat/lon.")
+                help_text="e.g. Chicago, IL")
 
     mugshot = models.ForeignKey(
                 ProfileImage, null=True, blank=True,
