@@ -27,7 +27,7 @@ A Section Path is a term we are using to describe free-from strings defined by e
 == Schema ==
 
 {{{
-sections (n) ---- (n) section_path (n) ---- (n) stories
+section (n) ---- (n) section_path (n) ---- (n) stories
 }}}
 
 = Sections Editor =
