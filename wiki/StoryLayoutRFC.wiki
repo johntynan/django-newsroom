@@ -26,8 +26,8 @@ The interface to define what layout you would like to use is defined by using co
 
 The page view will parse the page content and depending on how many column breaks exist will choose the appropriate base template for rendering.  If there are more than the supported column breaks in a page body the parser will raise an except or ignore it (TODO).
 
-= Grid Templates =
+= Grids =
 
-Each of the supported backend templates will have an associated photoshop document or image providing the grid structure.  The grid templates can be used to mockup your page in photoshop or on paper, as well as providing you with pixel dimensions for your media within the templates.
+Each of the supported backend templates will be based on a grid layout, like "960.gs":http://960.gs/.  A  photoshop document or image with the grid structure will be provided.  The grid template can be used to mockup your page in photoshop or on paper, as well as providing you with pixel dimensions for your media within the templates.  
 
-This offering should be sufficient for the authors to plan their story layout and have a  complete idea of how story layout before approaching the CMS with their final and vetted media.
+This should be sufficient for the authors to plan their story layout and have a complete idea of story layout before approaching the CMS with their final and vetted media.
