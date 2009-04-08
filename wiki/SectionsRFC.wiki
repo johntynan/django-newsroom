@@ -34,6 +34,25 @@ The Sections Editor provides an interface for creating new Section Paths and Sec
 
 = Models =
 
+{{{
+class SectionPath(models.Model):
+
+    section_path = models.CharField(max_length=256)
+
+    def __unicode__(self):
+        return u"%s" % (self.section_path)
+
+class Section(models.Model):
+
+    title = models.CharField(max_length=256)
+    slug = models.SlugField(unique=True)
+    description = models.TextField()
+    collection = models.ManyToManyField(SectionPath) 
+        
+    def __unicode__(self):
+        return u"%s" % (self.title)
+}}}
+
 
 = Template Tags =
 
