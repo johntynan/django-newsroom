@@ -28,6 +28,6 @@ The page view will parse the page content and depending on how many column break
 
 = Grid Templates =
 
-Each of the supported templates will have an associated photoshop document or image providing the grid structure.  The grid templates can be used to mockup your page in photoshop or on paper, as well as providing you with pixel dimensions for your media within the templates.
+Each of the supported backend templates will have an associated photoshop document or image providing the grid structure.  The grid templates can be used to mockup your page in photoshop or on paper, as well as providing you with pixel dimensions for your media within the templates.
 
 This offering should be sufficient for the authors to plan their story layout and have a  complete idea of how story layout before approaching the CMS with their final and vetted media.
