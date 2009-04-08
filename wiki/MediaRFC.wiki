@@ -35,7 +35,7 @@ _See also Handling Config/Options below_
 {{{
 #selected_photo is the photologue Photo instance representing an image selected for
 #add by the user
-image = Image
+image = Image()
 image.content_object = selected_photo
 #set title,description fields....
 image.save()
