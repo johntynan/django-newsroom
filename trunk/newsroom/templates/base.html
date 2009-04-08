@@ -24,7 +24,7 @@
       });
     </script>
 
-    {% block extra_head %}{% endblock %}
+    {% block extrahead %}{% endblock %}
 </head>
 
 <body id="{% block body_id %}base{% endblock %}">
@@ -62,6 +62,7 @@
     <div id="content" class="{% block content_class %}grid_9{% endblock %}">
     
         {% block messages %}
+        {% if messages %}
         <ul id="messages">
             {% for msg in messages %}
             <li>
@@ -69,6 +70,7 @@
             </li>
             {% endfor %}
         </ul>
+        {% endif %}
         {% endblock %}
 
         {% block content %}        
@@ -94,10 +96,13 @@
     </div>
 
     <div class="{% block menu_class %}grid_3{% endblock %}" id="menu">
+
+        {% block app_menu %}{% endblock %}
+
         {% block menu %}
 
         {% if user.is_authenticated %}
-        <h2>Accounts</h2>
+        <h2>Menu</h2>
         <ul>
             <li><a href="{% url stories_add_story %}" title="Add Story">Add Story</a></li>
             <li><a href="{% url videos_add_video %}" title="Add Video">Add Video</a></li>

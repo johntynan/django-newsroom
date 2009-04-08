@@ -3,77 +3,99 @@
 
 {% block title %}{{object.title}} | {% trans "Videos" %} {% endblock %}
 
+{% block body_id %}videos{% endblock %}
+
 {% block extrahead %}
 <link rel="alternate" type="application/rss+xml" title="RSS 2.0" 
       href="http://{{ site.domain }}/rss/videos/" />
 <link rel="alternate" type="application/atom+xml" title="Atom 1.0" 
       href="http://{{ site.domain }}/atom/videos/" />
 
-
 <script type="text/javascript" src="{{MEDIA_URL}}js/swfobject.js"></script>
-<script type="text/javascript">
+<script type="text/JavaScript">
+/* <![CDATA[ */
 
-function sendEvent(swf,typ,prm) { 
-  thisMovie(swf).sendEvent(typ,prm); 
-};
-function getUpdate(typ,pr1,pr2,swf) {
-  //if(typ == 'state') { alert('the current state is: '+pr1); }
-};
-function thisMovie(swf) {
-  if(navigator.appName.indexOf("Microsoft") != -1) {
-    return window[swf];
-  } else {
-    return document[swf];
-  }
-};
+    function createPlayer() {
+        var flashvars = {
+                file:"{{ MEDIA_URL }}{{ object.video }}", 
+                autostart:"false",
+                controlbar:"none",
+                //enablejs: true,
+                //searchbar:false,
+                //hownavigation: false,
+        }
+        var params = {
+                allowfullscreen:"true", 
+                allowscriptaccess:"always"
+        }
+        var attributes = {
+                    id:"player1",  
+                    name:"player1"
+            }
+        swfobject.embedSWF("{{ MEDIA_URL }}swf/player-viral.swf", "placeholder1", "320", "196", "9.0.115", false, flashvars, params, attributes);
+    }
 
-//jw player
-var player = "{{MEDIA_URL}}swf/mediaplayer.swf"; 
+    var player = null; 
+    /* swf does a callback */
+    function playerReady(thePlayer) { 
+        player = document.getElementById("player1"); 
+        addListeners();
+    }
 
-//jw player
-var flashvars = {
-  file: "{{MEDIA_URL}}{{object.video}}",
-  fallback: "{{MEDIA_URL}}{{object.video_flv}}",
-  image: "{{MEDIA_URL}}{{object.frame}}",
-  width: "{{object.get_frame_width}}",
-  height: "{{object.get_frame_height}}",
-  //fallback: "{{MEDIA_URL}}{{object.video_flv}}",
-  searchbar:false,
-  shownavigation: false,
-  bgcolor: "#000",
-  //autoPlay: true,
-  javascriptid: 'videocontent',
-  enablejs: true,
-};
+    /* 
+http://home5.inet.tele.dk/nyboe/flash/mediaplayer4/JW_API_xmpl_6-2-0-0.html
+    */
+    function addListeners() {
+        if (player) { 
+            //player.addControllerListener("ITEM", "itemListener");
+            //player.addControllerListener("MUTE", "muteListener");
 
-var params = {};
+            //player.addModelListener("LOADED", "loadedListener");
+            //player.addModelListener("STATE", "stateListener");
+            player.addModelListener("TIME", "positionListener");
 
-var attributes = {
-  id: "videocontent",
-  name: "videoplayer"
-};    
+            //player.addViewListener("VOLUME", "volumeListener");
+        } else {
+            setTimeout("addListeners()",100);
+        }
+    }
 
-swfobject.embedSWF(
-    player,
-    "videocontent", 
-    "{{object.get_frame_width}}", 
-    "{{object.get_frame_height}}", 
-    "8",
-    "", //"{{MEDIA_URL}}swf/expressInstall.swf", 
-    flashvars, params, attributes);
+    function positionListener(obj) { 
+        currentPosition = obj.position; 
+        var tmp = document.getElementById("player_time");
+        if (tmp) { tmp.innerHTML = "position: " + currentPosition; }
+    }
+
+/* ]]> */
 </script>
+
 {% endblock %}
+
+{% block jquery %}
+createPlayer();
+{% endblock %}
+
 
 {% block content %}
 <h1>{{ object }}</h1>
 
-<div id="videocontent">You need to have Flash 8 or above installed.</div>
+<div id="placeholder1">
+<p><a href="http://get.adobe.com/flashplayer">Get Flash</a> to see this player.</p>
+</div>
 
 <div class="video_meta">
+<h2>Download</h2>
 <p class="file">
 {% if object.video %}<p>{% trans "Video File" %}: <a href="{{MEDIA_URL}}{{ object.video }}">{{ object.video }}</a></p>{% endif %}
-<p class="byline">{% trans "Posted by" %} {% ifnotequal object.user.get_full_name "" %} {{ object.user.get_full_name }}{% else %} {{ object.user.username }}{% endifnotequal %}</p>
+
+<h2>Meta</h2>
+<p class="byline">{% trans "Posted by" %} 
+{{ object.authors.all|join:", " }}
+</p>
+
 <p class="posted">{% trans "Posted on" %} {{ object.pub_date|date:"N j, Y" }}</p>
+
+<h2>Summary</h2>
 <p>{{ object.summary|linebreaks }}</p>
 
 <h2>Tags</h2>  
@@ -85,15 +107,17 @@ swfobject.embedSWF(
 </div>
 {% endblock %}
 
-{% block leftnav %}
+{% block app_menu %}
+<h2>Videos</h2>
 <div id="play_button">
-  <a href="javascript:sendEvent('videocontent','playpause');">Play</a>
+  <a href="javascript:player.sendEvent('PLAY')">Play/Pause</a>
 </div>
 <div id="prev_button">
-  <a href="javascript:sendEvent('videocontent', 'scrub', 10);">&lt;&lt;</a>
+  <a href="javascript:player.sendEvent('SEEK', currentPosition-10);">&lt;&lt;</a>
 </div>
 <div id="next_button">
-    <a href="">&gt;&gt;</a>
+  <a href="javascript:player.sendEvent('SEEK', currentPosition+10);">&gt;&gt;</a>
 </div>
-{{ block.super }}
+<div id="player_time">
+</div>
 {% endblock %}
