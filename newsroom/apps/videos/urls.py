@@ -30,6 +30,10 @@ urlpatterns = patterns ('',
         dict(info_dict, template_object_name='object_list'),
         name="videos_index",),
 
+    url( '^video/(?P<video_id>\d+)/(?P<slug>[-\w]+)/$',
+         vid_views.video_detail,
+         name="videos_video_detail",),
+
     url( '^video/add/$',
          vid_views.add_video,
          name='videos_add_video'),

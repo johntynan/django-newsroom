@@ -110,5 +110,9 @@ class Video(models.Model):
         Tag.objects.update_tags(self, self.tag_list)
 
     def get_absolute_url(self):
-        return '/videos/%s/%s/' % (self.pub_date.strftime("%Y/%b/%d").lower(),
-                                    self.slug)
+        return ('videos_video_detail', 
+                (), 
+                { 'video_id': self.id, 'slug': self.slug })
+    get_absolute_url = models.permalink(get_absolute_url)
+
+
