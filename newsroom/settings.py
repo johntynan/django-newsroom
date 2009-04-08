@@ -95,6 +95,7 @@ INSTALLED_APPS = (
     'my_profiles',
     'multimedia',
     'videos',
+    'sections',
     'utils',
 )
 
