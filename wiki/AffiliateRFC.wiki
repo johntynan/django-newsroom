@@ -1,4 +1,4 @@
-=AffiliateRFC=
+#summary Describes how affiliate organizations and users are related within the system.
 
 ==Affiliates==
 
@@ -53,5 +53,3 @@ def story_index(request, affiliate_slug=None):
 What happens when a person publishes a story as themselves or is not affiliated with an organization?   We accommodate this by creating an "Independent" affiliation.
 
 ===A request example===
-
-
