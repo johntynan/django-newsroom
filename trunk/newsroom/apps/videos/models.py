@@ -51,7 +51,7 @@ class Video(models.Model):
     video = models.FileField(
                         upload_to='uploads/videos/%Y/%m/%d/', 
                         verbose_name=_(u'Video file'),
-                        help_text=_(u'Select the video for upload.'),)
+                        help_text=_(u'Select the video for upload, supported encodings are h.264 and flash video.'),)
 
     frame = models.ForeignKey(
                     VideoFrame, 
