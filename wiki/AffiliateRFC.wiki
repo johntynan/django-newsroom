@@ -1,6 +1,6 @@
 #summary Describes how affiliate organizations and users are related within the system.
 
-==Affiliates==
+==Introduction==
 
 Affiliates are organizations or partners.  The system needs to know what object was authored by who and what organization the object belonged to when it was published or created.
 
