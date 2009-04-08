@@ -22,6 +22,8 @@ def add_video(request):
             video.save()
             # we need to save authors in extra step because they are manytomany
             form.save_m2m()
+            request.user.message_set.create(
+                    message='Your video has been saved.')
             return HttpResponseRedirect(reverse('videos_video_detail',args=[video.id]))
     else:
         form = VideoForm()
@@ -31,11 +33,11 @@ def add_video(request):
                 locals(),
                 context_instance=RequestContext(request))
 
-def video_detail(request,video_id):
+def video_detail(request,video_id,slug):
     video = get_object_or_404(Video,pk=video_id)
     return render_to_response(
                 'videos/video_detail.html',
-                locals(),
+                {'object':video,},
                 context_instance=RequestContext(request))
 
 
