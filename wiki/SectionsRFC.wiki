@@ -35,10 +35,14 @@ The Sections Editor provides an interface for creating new Section Paths and Sec
 = Models =
 
 
-= Templates =
+= Template Tags =
+
+Within the templates, there might be a need to access arbitrary content based on section path. For example, on the /economy/ page, it would be cool to be able to put in a “Housing Crisis” sidebar that pulls in the appropriate content with something like:
 
 {{{
-{% for get_stories_by_section economy/housing-crisis as story %}
+{% for get_stories_by_section /economy/housing-crisis/ as story %}
+   <a href="{{story.get_absolute_url}}">{{story}}</a>
+{% endfor %}
 }}}
 
 = Stories Example =
