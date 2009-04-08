@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
+from django.template.defaultfilters import slugify
 from videos.forms import VideoForm
 from videos.models import Video
 
@@ -17,7 +18,10 @@ def add_video(request):
             video = form.save(commit=False)
             video.created_by = request.user
             video.modified_by = request.user
+            video.slug = slugify(video.title)
             video.save()
+            # we need to save authors in extra step because they are manytomany
+            form.save_m2m()
             return HttpResponseRedirect(reverse('videos_video_detail',args=[video.id]))
     else:
         form = VideoForm()

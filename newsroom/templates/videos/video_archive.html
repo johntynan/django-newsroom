@@ -12,9 +12,9 @@
 
 {% block content %}
 
-<h2> <a href="{% url videos_index %}">{% trans "Videos" %}</a> :: 
-{% block content_title %}Archive{% endblock %}
-</h2>
+<h1>Videos</h1>
+
+<p>Here you will find a list of the latest published videos.</p>
 
 {% if calendar %}
 {{ calendar }}
@@ -37,7 +37,7 @@
     {{ video.user.username }}
     {% endifnotequal %}
   </p>
-  <p class="desc">{{ video.summary|linebreaks|truncatewords_html:20}}</p>
+  <p class="desc">{{ video.summary|linebreaks}}</p>
   </div>
 </div>
 {% endfor %}

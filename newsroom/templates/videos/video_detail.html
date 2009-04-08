@@ -65,8 +65,8 @@ swfobject.embedSWF(
 {% endblock %}
 
 {% block content %}
-<h2><a href="{% url videos_index %}">{% trans "Videos" %}</a> :: 
-    {{ object.title }}</h2>
+<h1>{{ object }}</h1>
+
 <div id="videocontent">You need to have Flash 8 or above installed.</div>
 
 <div class="video_meta">
@@ -75,14 +75,8 @@ swfobject.embedSWF(
 <p class="byline">{% trans "Posted by" %} {% ifnotequal object.user.get_full_name "" %} {{ object.user.get_full_name }}{% else %} {{ object.user.username }}{% endifnotequal %}</p>
 <p class="posted">{% trans "Posted on" %} {{ object.pub_date|date:"N j, Y" }}</p>
 <p>{{ object.summary|linebreaks }}</p>
-<h3>Related</h3>
-                        <ul>
-                        <li><a href="">Lorem ipson dolor sic amet</a></li>
-                        <li><a href="">consetum nunc ad valorem</a></li>
-                        <li><a href="">Lorem ipson dolor sic amet</a></li>
-                        </ul>
-                    </p>
-                    <h3>Tags</h3>  
+
+<h2>Tags</h2>  
 <p>
 {% for tag in object.tags %}
 <a href="{% url videos_tag_index tag.name %}" rel="tag">{{tag}}</a>
