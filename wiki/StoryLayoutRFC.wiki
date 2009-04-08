@@ -1,4 +1,4 @@
-#summary Strategies to handle multiple layouts in stories
+#summary Strategies to handle multiple layouts in story pages
 
 = Introduction =
 
