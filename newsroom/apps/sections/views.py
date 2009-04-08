@@ -1,36 +1,34 @@
-from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
-from django.core.urlresolvers import reverse
-from sections.forms import SectionForm
+from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from sections.models import Section
+from sections.models import SectionPath
+# from sections.forms import SectionForm
+from django.template import Context, loader
 
-#TODO: add authentication check decorators
+def sections_list(request):
+    sections_list = Section.objects.all()
+    t = loader.get_template('sections/sections_list.html')
+    c = Context({
+                'sections_list': sections_list,
+    })
+    return HttpResponse(t.render(c))
 
-def add_section(request):
-    """
-    Create a new Section for the user
-    """
-    if request.method == 'POST':
-        form = SectionForm(request.POST)
-        if form.is_valid():
-            section = form.save(commit=False)
-            section.author = request.user
-            section.save()
-            return HttpResponseRedirect(reverse('sections_section_detail',args=[section.id]))
-    form = SectionForm()
-    print form
-    return render_to_response('sections/add_section.html',locals())
-    
+def section_detail(request, id):
+    section_detail = Section.objects.get(id=id)
+    t = loader.get_template('sections/section_detail.html')
+    c = Context({
+                'section': section_detail,
+    })
+    return HttpResponse(t.render(c))
+ 
+def add_section(request, **kwargs):
+    return HttpResponse('add_section')
 
-def add_page(request,section_id):
-    """
-    Add a Page to a Section
-    """
-    pass
+def edit_section(request, **kwargs):
+    return HttpResponse('edit_section')
 
-def section_detail(request,section_id):
-    section = get_object_or_404(Section,pk=section_id)
-    return render_to_response('sections/section_detail.html',locals())
+
 
 
 
