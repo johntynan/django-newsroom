@@ -9,9 +9,11 @@ Stories are composed of pages and these pages will contain layout information to
 For example, on the backend we start by defining the following templates for a page:
 
 {{{
-stories/page_detail_one_column.html
-stories/page_detail_two_column.html
-stories/page_detail_three_column.html
+stories/page_base_1col.html
+stories/page_base_2col.html
+stories/page_base_3col.html
+stories/page_base_3col_bigleadart.html
+stories/page_base_3col_section_noart
 }}}
 
 Each of these template will have the required html and css associated with them to create a layout structure for a specific page.  
