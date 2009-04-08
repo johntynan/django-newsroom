@@ -4,5 +4,5 @@ from videos.models import Video
 class VideoForm(forms.ModelForm):
     class Meta:
         model = Video
-        exclude = ('created_by', 'modified_by', 'created','modified','frame')
+        exclude = ('slug','created_by', 'modified_by', 'created','modified','frame')
 

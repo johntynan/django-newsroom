@@ -66,7 +66,7 @@ class Video(models.Model):
                     _(u'Slug'),
                     help_text=_(u'Automatically built from the title.'),)
 
-    summary = models.TextField(_(u'Summary'), blank=True, null=True, ),
+    summary= models.TextField()
 
     #tags = TagField(verbose_name=_(u'Tags'), blank=True, null=True, 
 	#            help_text=_(u'Separate tags with spaces or commas.'))

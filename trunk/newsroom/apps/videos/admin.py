@@ -4,8 +4,8 @@ from videos.models import Video
 
 class VideoAdmin(admin.ModelAdmin):
 	list_display = ('title', 'pub_date', 'site', 'video', 'status','created_by', 'modified_by')
-	list_filter = ('pub_date', 'site', 'authors', 'status',)
-	search_fields = ['title']
+	list_filter = ('pub_date', 'site', 'status',)
+	search_fields = ['title','summary']
 	date_hierarchy = 'pub_date'
 	prepopulated_fields = {'slug': ('title',)}
 	

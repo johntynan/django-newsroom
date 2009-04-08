@@ -48,6 +48,7 @@
             <li><a href="{% url pl-photo-archive %}" title="Photos">Photos</a></li>
             <li><a href="{% url pl-gallery-archive %}" title="Galleries">Galleries</a></li>
             <li><a href="{% url features_feature_list %}" title="Features">Features</a></li>
+            <li><a href="{% url videos_index %}" title="Videos">Videos</a></li>
             {% if user.is_authenticated %}
             <li class="login">Logged in as <a href="{% url profiles_profile_detail user.username %}">{{ user }}</a></li>
             {% else %}
