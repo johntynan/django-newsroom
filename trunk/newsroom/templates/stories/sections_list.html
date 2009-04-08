@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Sections{% endblock %}
+
+{% block body_id %}sections{% endblock %}
+
+{% block content %}
+
+<h1>Sections</h1>
+<ul>
+{% for o in sections_list %}
+<li><a href="{{o.id}}">{{o}}</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}
+
+

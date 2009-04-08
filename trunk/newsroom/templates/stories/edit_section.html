@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Section{% endblock %}
+
+{% block content %}
+<h1>Edit Section</h1>
+
+<form method="post">
+{{form.as_p}}
+<input type="submit" value="Save"/>
+</form>
+{% endblock content %}
