@@ -1,0 +1,33 @@
+#summary Strategies to handle multiple layouts in stories
+
+= Introduction =
+
+Stories are composed of pages and these pages will contain layout information to define how the page will be rendered.  
+
+= Backend Templates =
+
+We start by defining the following templates for a page on the backend:
+
+{{{
+stories/page_detail_one_column.html
+stories/page_detail_two_column.html
+stories/page_detail_three_column.html
+}}}
+
+Each of these template will have the required html and css associated with them to create a layout structure for the page content.  
+
+= Grid Templates =
+
+Each of the supported templates will have an associated document providing the grid structure.  The grid templates can be used to mockup your page in photoshop or by hand, as well as providing you with pixel dimension limits for your media within the templates.
+This offering should be sufficient for the author to plan their story layout around and have a nearly complete idea of how their story will look before even approaching the CMS with their final vetted media.
+
+= Interface =
+
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
