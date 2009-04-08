@@ -12,8 +12,9 @@ class Story(models.Model):
     authors = models.ManyToManyField(User)
     headline = models.CharField(max_length=256)
     slug = models.SlugField(unique=True)
+    lead_art = models.ForeignKey(Media,null=True,blank=True)
+    summary = models.TextField(blank=True)
     status = models.CharField(max_length=1,choices=STORY_STATUS_CHOICES,default=STORY_STATUS_DRAFT)
-    summary = models.TextField()
     created = models.DateTimeField(default=datetime.datetime.now)
     modified = models.DateTimeField(auto_now=True)
     
