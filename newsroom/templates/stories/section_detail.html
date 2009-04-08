@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section }}{% endblock %}
+
+{% block content %}
+
+<h1>{{ section }}</h1>
+<p>{{ section.description }}</[p>
+
+{% for o in section.collection.all %}
+<ul>
+    <li>{{o}}</li>
+</ul>
+{% endfor %}
+
+{% endblock content %}
