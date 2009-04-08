@@ -47,7 +47,6 @@
             <li><a href="{% url profiles_profile_list %}" title="People">People</a></li>
             <li><a href="{% url pl-photo-archive %}" title="Photos">Photos</a></li>
             <li><a href="{% url pl-gallery-archive %}" title="Galleries">Galleries</a></li>
-            <li><a href="{% url features_feature_list %}" title="Features">Features</a></li>
             <li><a href="{% url videos_index %}" title="Videos">Videos</a></li>
             {% if user.is_authenticated %}
             <li class="login">Logged in as <a href="{% url profiles_profile_detail user.username %}">{{ user }}</a></li>
@@ -107,6 +106,7 @@
             <li><a href="{% url stories_add_story %}" title="Add Story">Add Story</a></li>
             <li><a href="{% url videos_add_video %}" title="Add Video">Add Video</a></li>
             <li><a href="{% url features_feature_add %}" title="Submit Feature">Submit Feature</a></li>
+            <li><a href="{% url features_feature_list %}" title="Features List">Features List</a></li>
             <li><a href="{% url profiles_edit_profile %}" title="Edit Profile">Edit Profile</a></li>
             <li><a href="{% url auth_logout %}">Logout</a></li>
         </ul>
