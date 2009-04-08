@@ -2,11 +2,11 @@
 
 = Introduction =
 
-Stories are composed of pages and these pages will contain layout information to define how the page will be rendered.  
+Stories are composed of pages and these pages will contain layout information to define how the page will be rendered.  At the time of this writing this layout feature only relates to the stories module.
 
 = Backend Templates =
 
-We start by defining the following templates for a page on the backend:
+For example, on the backend we start by defining the following templates for a page:
 
 {{{
 stories/page_detail_one_column.html
@@ -14,15 +14,22 @@ stories/page_detail_two_column.html
 stories/page_detail_three_column.html
 }}}
 
-Each of these template will have the required html and css associated with them to create a layout structure for the page content.  
+Each of these template will have the required html and css associated with them to create a layout structure for a specific page.  
+
+= Column Breaks =
+
+The interface to define what layout you would like to use is defined by using column break tags.  So within your page if you want a new column you define a column break, like:
+
+{{{
+<!-- column break -->
+}}}
+
+The page view will parse the page content and depending on how many column breaks exist will choose the appropriate base template for rendering.  If there are more than the supported column breaks in a page body the parser will raise an except or ignore it (TODO).
 
 = Grid Templates =
 
 Each of the supported templates will have an associated document providing the grid structure.  The grid templates can be used to mockup your page in photoshop or by hand, as well as providing you with pixel dimension limits for your media within the templates.
-This offering should be sufficient for the author to plan their story layout around and have a nearly complete idea of how their story will look before even approaching the CMS with their final vetted media.
-
-= Interface =
-
+This offering should be sufficient for the author to plan their story layout around and have a nearly complete idea of how their story will look before even approaching the CMS with their final and vetted media.
 
 
 = Details =
