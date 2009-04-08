@@ -13,7 +13,7 @@ stories/page_base_1col.html
 stories/page_base_2col.html
 stories/page_base_3col.html
 stories/page_base_3col_bigleadart.html
-stories/page_base_3col_section_noart
+stories/page_base_3col_noart.html
 }}}
 
 Each of these template will have the required html and css associated with them to create a layout structure for a specific page.  
