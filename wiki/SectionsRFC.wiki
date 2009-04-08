@@ -1,10 +1,6 @@
-#summary Django Newsroom Sections RFC
+#summary Define the sections module which is used to group content based on real world topics.
 
 = Introduction =
-
-This document helps define the sections module which is used to group content based on real world topics. 
-
-== Sections ==
 
 Sections are a top level collection of stories groped by topic.  For instance, a section on the site related to the Housing Crisis could list stories based on the following more general topics “housing,” “banking,” “mortgages” and that would live under the site at 
 {{{
