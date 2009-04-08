@@ -16,7 +16,7 @@ class SectionPath(models.Model):
     section_path = models.CharField(max_length=256)
 
     def __unicode__(self):
-        return u"%s" % (self.section_path)
+        return self.section_path
         
 
 class Section(models.Model):
@@ -36,4 +36,4 @@ class Section(models.Model):
     collection = models.ManyToManyField(SectionPath) 
         
     def __unicode__(self):
-        return u"%s" % (self.title)
+        return self.title
