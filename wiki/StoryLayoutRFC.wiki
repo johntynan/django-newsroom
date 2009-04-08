@@ -2,7 +2,7 @@
 
 = Introduction =
 
-Stories are composed of pages and these pages will contain layout information to define how the page will be rendered.  At the time of this writing this layout feature only relates to the stories module.
+Stories are composed of pages and these pages will contain layout information to define how the page is rendered.  At the time of this writing this layout feature only relates to the stories module.
 
 = Backend Templates =
 
