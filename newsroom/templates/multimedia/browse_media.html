@@ -1,0 +1,6 @@
+<p>Recent {{media_type|capfirst}}</p>
+<ul id="media-items">
+    {% for item in media_items %}
+    <li>{{item.title}}</li>
+    {% endfor %}
+</ul>

@@ -1,8 +1,60 @@
 {% extends "base.html" %}
 
-{% block title %}Edit Page {{page.pagenum}} : {{ story.headline }}{% endblock %}
+{% block title %}Edit Page {{page.pagenum}} : {{ page.story.headline }}{% endblock %}
+
+{% block jquery %}
+$('#add_media_types').hide();
+$('#menu_add_media').click(function(){
+    $('.add_media').click(function(){
+        //var goto = this.href;
+        //save the page contents
+        //$.post('',{},function(data,textStatus){
+        //    window.location = goto;
+        //})
+        $.get(this.href,function(data,textStatus){
+            
+        });
+    });
+    
+    $('#add_media_types').show();
+    return false;
+});
+{% endblock %}
 
 {% block content %}
 <h2><a href="{% url stories_edit_story page.story.id %}">{{ page.story.headline }}</a> : Page {{ page.pagenum }}</h2>
+<div>
     
+    <div style="float:right;width:200px">
+        <h3>Page Media</h3>
+        {% if page.media.all %}
+            {% for item in page.media.all %}
+                {{item.title}}
+            {% endfor%}
+        {% else %}
+            No media items on this page.
+        {% endif %}
+        
+        <p><a id="menu_add_media" href="#">Add Media</a></p>
+        <div id="add_media_types">
+            <ul>
+                <li><a class="add_media" href="{% url multimedia_browse "image" %}">Add Image</a></li>
+                <li><a class="add_media" href="{% url multimedia_browse "video" %}">Add Video</a></li>
+            </ul>
+            
+        </div>
+        
+    </div>
+    <div id="media_selection">
+        
+    </div>
+    
+    <p>
+        <form method="post">
+            {{form}}
+            <input type="submit" value="Submit"/>
+        </form>
+        
+    </p>
+</div>
 {% endblock content %}
