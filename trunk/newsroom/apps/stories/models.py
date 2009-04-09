@@ -18,6 +18,10 @@ class Story(models.Model):
     created = models.DateTimeField(default=datetime.datetime.now)
     modified = models.DateTimeField(auto_now=True)
     
+    @models.permalink
+    def get_absolute_url(self):
+        return ('stories.views.show_story',[self.slug])
+        
     @property
     def pages(self):
         return self.page_set.all()
@@ -102,6 +106,10 @@ class Page(models.Model):
         if self.story.pages.count() == 1:
             raise StoryIntegrityError
         super(Page,self).delete()
+        
+    @property
+    def url(self):
+        return "%s?p=%d" % (self.story.get_absolute_url(),self.pagenum,)
         
 
 def reorder_story_pages(sender,**kwargs):
