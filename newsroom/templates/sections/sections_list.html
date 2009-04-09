@@ -9,9 +9,11 @@
 <h1>Sections</h1>
 <ul>
 {% for o in sections_list %}
-<li><a href="{{o.id}}">{{o}}</a></li>
+<li><a href="{{o.id}}">{{o}}</a> - <a href="{{o.id}}/edit/">edit</a></li>
 {% endfor %}
 </ul>
+
+<p><a href="./add/">Add a new section</a></p>
 
 {% endblock %}
 
