@@ -12,7 +12,9 @@ class ProfileImage(ImageModel):
     """
     Define a profile image using an imagekit model.
     """
-    image = models.ImageField(upload_to='uploads/my_profiles/%Y/%b',)
+    image = models.ImageField(
+                blank=True,
+                upload_to='uploads/my_profiles/%Y/%b',)
 
     class IKOptions:
         spec_module = IK_SPEC_MODULE
