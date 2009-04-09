@@ -10,78 +10,13 @@
       href="http://{{ site.domain }}/rss/videos/" />
 <link rel="alternate" type="application/atom+xml" title="Atom 1.0" 
       href="http://{{ site.domain }}/atom/videos/" />
-
-<script type="text/javascript" src="{{MEDIA_URL}}js/swfobject.js"></script>
-<script type="text/JavaScript">
-/* <![CDATA[ */
-
-    function createPlayer() {
-        var flashvars = {
-                file:"{{ MEDIA_URL }}{{ object.video }}", 
-                autostart:"false",
-                controlbar:"none",
-                //enablejs: true,
-                //searchbar:false,
-                //hownavigation: false,
-        }
-        var params = {
-                allowfullscreen:"true", 
-                allowscriptaccess:"always"
-        }
-        var attributes = {
-                    id:"player1",  
-                    name:"player1"
-            }
-        swfobject.embedSWF("{{ MEDIA_URL }}swf/player-viral.swf", "placeholder1", "320", "196", "9.0.115", false, flashvars, params, attributes);
-    }
-
-    var player = null; 
-    /* swf does a callback */
-    function playerReady(thePlayer) { 
-        player = document.getElementById("player1"); 
-        addListeners();
-    }
-
-    /* 
-http://home5.inet.tele.dk/nyboe/flash/mediaplayer4/JW_API_xmpl_6-2-0-0.html
-    */
-    function addListeners() {
-        if (player) { 
-            //player.addControllerListener("ITEM", "itemListener");
-            //player.addControllerListener("MUTE", "muteListener");
-
-            //player.addModelListener("LOADED", "loadedListener");
-            //player.addModelListener("STATE", "stateListener");
-            player.addModelListener("TIME", "positionListener");
-
-            //player.addViewListener("VOLUME", "volumeListener");
-        } else {
-            setTimeout("addListeners()",100);
-        }
-    }
-
-    function positionListener(obj) { 
-        currentPosition = obj.position; 
-        var tmp = document.getElementById("player_time");
-        if (tmp) { tmp.innerHTML = "position: " + currentPosition; }
-    }
-
-/* ]]> */
-</script>
-
 {% endblock %}
-
-{% block jquery %}
-createPlayer();
-{% endblock %}
-
 
 {% block content %}
 <h1>{{ object }}</h1>
 
-<div id="placeholder1">
-<p><a href="http://get.adobe.com/flashplayer">Get Flash</a> to see this player.</p>
-</div>
+
+{% include 'videos/video_player.html' %}
 
 <div class="video_meta">
 <h2>Download</h2>
@@ -107,17 +42,3 @@ createPlayer();
 </div>
 {% endblock %}
 
-{% block app_menu %}
-<h2>Videos</h2>
-<div id="play_button">
-  <a href="javascript:player.sendEvent('PLAY')">Play/Pause</a>
-</div>
-<div id="prev_button">
-  <a href="javascript:player.sendEvent('SEEK', currentPosition-10);">&lt;&lt;</a>
-</div>
-<div id="next_button">
-  <a href="javascript:player.sendEvent('SEEK', currentPosition+10);">&gt;&gt;</a>
-</div>
-<div id="player_time">
-</div>
-{% endblock %}
