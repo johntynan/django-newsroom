@@ -1,6 +1,8 @@
+from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 from django.db import models
+from django.db.models.signals import post_save
 
 from multimedia.constants import MEDIA_TYPES
 from utils.model_inheritance import ParentModel,ChildManager
@@ -11,6 +13,7 @@ class Media(ParentModel):
     
     
     """
+    owners = models.ManyToManyField(User)
     title = models.CharField(max_length=128)
     description = models.TextField(blank=True)
     content_type = models.ForeignKey(ContentType)
@@ -77,5 +80,3 @@ class Image(Media):
     def render(self,*args,**kwargs):
         return u'<img src="%s"/>' % self.content_object.image.url
         
-    
-    

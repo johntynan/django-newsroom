@@ -44,7 +44,10 @@ urlpatterns = patterns('',
 
     (r'^videos/',include('videos.urls')),
 
+    (r'^multimedia/',include('multimedia.urls')),
+    
     (r'', include('photologue.urls')),
+    
 )
 
 if settings.DEBUG:

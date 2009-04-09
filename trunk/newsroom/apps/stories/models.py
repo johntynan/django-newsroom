@@ -18,6 +18,13 @@ class Story(models.Model):
     created = models.DateTimeField(default=datetime.datetime.now)
     modified = models.DateTimeField(auto_now=True)
     
+    class Meta:
+        verbose_name_plural = 'stories'
+        ordering = ('created',)
+    
+    def __unicode__(self):
+        return self.headline
+    
     @models.permalink
     def get_absolute_url(self):
         return ('stories.views.show_story',[self.slug])

@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext, Template, Context
 
-from stories.forms import StoryForm
+from stories.forms import StoryForm, PageForm
 from stories.models import Story, Page
 
 #TODO: add authentication check decorators
@@ -62,7 +62,19 @@ def show_story(request,slug):
 
 def edit_page(request,page_id):
     page = get_object_or_404(Page,pk=page_id)
-    
+    if request.method == 'POST':
+        form = PageForm(request.POST)
+        if form.is_valid():
+            page.content = form.cleaned_data['content']
+            page.save()
+            #if request.is_ajax():
+                #TODO json response
+            #    return HttpResponse("")
+            #else:
+            #    return HttpResponseRedirect(reverse('stories_edit_story',args=[page.story.id]))
+            return HttpResponseRedirect(reverse('stories_edit_story',args=[page.story.id]))
+    else:
+        form = PageForm({'content':page.content})
     return render_to_response('stories/edit_page.html',
                               locals(),
                               context_instance=RequestContext(request))
