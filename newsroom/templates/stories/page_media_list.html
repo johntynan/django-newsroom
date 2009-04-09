@@ -1,0 +1,10 @@
+{% if page.media.all %}
+    {% for item in page.media.all %}
+        <li>
+            <p>{{item.title}}</p>
+            <p>Insert: {{item.get_insert_snippet}}</p>
+        </li>
+    {% endfor%}
+{% else %}
+    <li>No media items on this page.</li>
+{% endif %}

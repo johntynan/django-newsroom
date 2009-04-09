@@ -6,14 +6,24 @@
 $('#add_media_types').hide();
 $('#menu_add_media').click(function(){
     $('.add_media').click(function(){
-        //var goto = this.href;
-        //save the page contents
-        //$.post('',{},function(data,textStatus){
-        //    window.location = goto;
-        //})
-        $.get(this.href,function(data,textStatus){
-            
+        
+        $('#media_selection').load(this.href,function(){
+            $('.media-item',this).append('<a href="#">Add to Page</a>');
+            $('.media-item a',this).click(function(){
+                //TODO: fragile
+                var media_item_id = $(this).parent().attr('id');
+                var parts = media_item_id.split('-');
+                var id = parts[2];
+                $.post('{% url stories_page_add_media page.id %}',{media_id:id},function(data,textStatus){
+                   // if (data.status == 1){
+                        $('#page-media-list').html(data);
+                        return false;
+                    //}
+                });
+                return false;
+            });
         });
+        return false;
     });
     
     $('#add_media_types').show();
@@ -27,13 +37,9 @@ $('#menu_add_media').click(function(){
     
     <div style="float:right;width:200px">
         <h3>Page Media</h3>
-        {% if page.media.all %}
-            {% for item in page.media.all %}
-                {{item.title}}
-            {% endfor%}
-        {% else %}
-            No media items on this page.
-        {% endif %}
+        <ul id="page-media-list">
+        {% include "stories/page_media_list.html" %}
+        </ul>
         
         <p><a id="menu_add_media" href="#">Add Media</a></p>
         <div id="add_media_types">
@@ -45,9 +51,7 @@ $('#menu_add_media').click(function(){
         </div>
         
     </div>
-    <div id="media_selection">
-        
-    </div>
+    
     
     <p>
         <form method="post">
@@ -56,5 +60,8 @@ $('#menu_add_media').click(function(){
         </form>
         
     </p>
+    <div id="media_selection">
+        
+    </div>
 </div>
 {% endblock content %}
