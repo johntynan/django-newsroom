@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext, Template, Context
 
+from multimedia.models import Media
 from stories.forms import StoryForm, PageForm
 from stories.models import Story, Page
 
@@ -78,3 +79,9 @@ def edit_page(request,page_id):
     return render_to_response('stories/edit_page.html',
                               locals(),
                               context_instance=RequestContext(request))
+    
+def page_add_media(request,page_id):
+    page = get_object_or_404(Page,pk=page_id)
+    media = get_object_or_404(Media,pk=request.POST.get('media_id'))
+    page.media.add(media)
+    return render_to_response('stories/page_media_list.html',locals())

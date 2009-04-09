@@ -1,6 +1,6 @@
-<p>Recent {{media_type|capfirst}}</p>
+<p>Recent {{media_type|capfirst}} Items</p>
 <ul id="media-items">
     {% for item in media_items %}
-    <li>{{item.title}}</li>
+    <li class="media-item" id="media-item-{{item.id}}"><img src="{{item.preview.url}}" />{{item.title}}</li>
     {% endfor %}
 </ul>
