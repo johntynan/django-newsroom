@@ -4,7 +4,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext, Template, Context
 
 from stories.forms import StoryForm
-from stories.models import Story
+from stories.models import Story, Page
 
 #TODO: add authentication check decorators
 
@@ -18,7 +18,9 @@ def add_story(request):
             story = form.save(commit=False)
             story.author = request.user
             story.save()
-            return HttpResponseRedirect(reverse('stories_story_detail',args=[story.id]))
+            return HttpResponseRedirect(reverse('stories_edit_story',args=[story.id]))
+        else:
+            print form.errors
     else:
         form = StoryForm()
 
@@ -34,10 +36,10 @@ def add_page(request,story_id):
     """
     pass
 
-def story_detail(request,story_id):
+def edit_story(request,story_id):
     story = get_object_or_404(Story,pk=story_id)
     return render_to_response(
-                'stories/story_detail.html',
+                'stories/edit_story.html',
                 locals(),
                 context_instance=RequestContext(request))
 
@@ -48,13 +50,19 @@ def show_story(request,slug):
     page = story.get_page(1)
     
     #render the page content so that media tags are handled
-    print page.content
     template = Template("{%% load media_tags %%}%s" %  page.content)
     content = template.render(Context())
-    print content
+    
     #TODO: get the template to use from the story
     
+    #TODO: handle column breaks
     return render_to_response('stories/display_page_content.html',
                               locals(),
                               context_instance=RequestContext(request))
 
+def edit_page(request,page_id):
+    page = get_object_or_404(Page,pk=page_id)
+    
+    return render_to_response('stories/edit_page.html',
+                              locals(),
+                              context_instance=RequestContext(request))

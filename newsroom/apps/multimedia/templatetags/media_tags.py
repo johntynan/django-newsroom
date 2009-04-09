@@ -12,6 +12,7 @@ class MediaNode(template.Node):
         media_id = self.media_id.resolve(context)
         media = Media.objects.get(pk=media_id)
         as_child = media.get_child_object()
+        print type(context)
         return as_child.render()
 
 @register.tag
