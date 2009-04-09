@@ -3,15 +3,20 @@
 {% block title %}Edit Profile{% endblock %}
 
 {% block content %}
-<h1>{{ profile }}, {{ profile.affiliate }}</h1>
-<h2>{{ profile.user.email }}</h2>
+<h1>Edit Profile</h1>
 
-<p>Please update your profile.</p>
 
 <form action="." method="post" enctype="multipart/form-data">
     <fieldset>
     <table>
-    {{ form }}
+    {{ image_form }}
+    <img src="{{ user.profile.mugshot.display.url }}" />
+    <p>Don't like your pic?  Change it.</p>
+    </table>
+    <table>
+    <tr><th>Name:</th><td>{{ profile }}</td></tr>
+    <tr><th>Email:</th><td>{{ profile.user.email }}</td></tr>
+    {{ profile_form }}
     </table>
     <input id="id_submit" type="submit" value="Submit" />
     </fieldset>
