@@ -80,8 +80,8 @@ def edit_page(request,page_id):
                               locals(),
                               context_instance=RequestContext(request))
     
-def page_add_media(request,page_id):
-    page = get_object_or_404(Page,pk=page_id)
+def story_add_media(request,story_id):
+    story = get_object_or_404(Story,pk=story_id)
     media = get_object_or_404(Media,pk=request.POST.get('media_id'))
-    page.media.add(media)
-    return render_to_response('stories/page_media_list.html',locals())
+    story.media.add(media)
+    return render_to_response('stories/story_media_list.html',locals())

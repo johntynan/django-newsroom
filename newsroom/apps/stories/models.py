@@ -12,7 +12,8 @@ class Story(models.Model):
     authors = models.ManyToManyField(User)
     headline = models.CharField(max_length=256)
     slug = models.SlugField(unique=True)
-    lead_art = models.ForeignKey(Media,null=True,blank=True)
+    lead_art = models.ForeignKey(Media,null=True,blank=True,related_name="lead_art")
+    media = models.ManyToManyField(Media)
     summary = models.TextField(blank=True)
     status = models.CharField(max_length=1,choices=STORY_STATUS_CHOICES,default=STORY_STATUS_DRAFT)
     created = models.DateTimeField(default=datetime.datetime.now)
@@ -49,8 +50,6 @@ class Story(models.Model):
         return new_page
     
     
-
-        
 def new_story_add_page(sender,**kwargs):
     """
     Post-save signal for Story.
@@ -96,7 +95,6 @@ class Page(models.Model):
     """
     story = models.ForeignKey(Story)
     content = models.TextField()
-    media = models.ManyToManyField(Media)
     pagenum = models.PositiveIntegerField()
     
     objects = PageManager()
