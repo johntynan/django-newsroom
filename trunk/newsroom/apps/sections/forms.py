@@ -7,3 +7,8 @@ class SectionForm(forms.ModelForm):
     class Meta:
         model = Section
         fields = ('title','slug','description','collection')
+
+class SectionPathForm(forms.ModelForm):
+    
+    class Meta:
+        model = SectionPath
