@@ -1,6 +1,8 @@
 from django.conf.urls.defaults import *
 
 urlpatterns = patterns('stories.views',
+    
+    url('^$','story_list',name='stories_story_list'),
     url('^story/add/$','add_story',name='stories_add_story'),
     url('^story/(?P<story_id>\d+)/edit/$','edit_story',name='stories_edit_story'),
     

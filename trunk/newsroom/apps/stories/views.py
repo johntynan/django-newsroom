@@ -9,6 +9,10 @@ from stories.models import Story, Page
 
 #TODO: add authentication check decorators
 
+def story_list(request):
+    stories = request.user.story_set.all()
+    return render_to_response('stories/story_list.html',locals(),context_instance=RequestContext(request))
+
 def add_story(request):
     """
     Create a new Story for the user
@@ -16,9 +20,7 @@ def add_story(request):
     if request.method == 'POST':
         form = StoryForm(request.POST)
         if form.is_valid():
-            story = form.save(commit=False)
-            story.author = request.user
-            story.save()
+            story = form.save()
             return HttpResponseRedirect(reverse('stories_edit_story',args=[story.id]))
         else:
             print form.errors
@@ -68,11 +70,6 @@ def edit_page(request,page_id):
         if form.is_valid():
             page.content = form.cleaned_data['content']
             page.save()
-            #if request.is_ajax():
-                #TODO json response
-            #    return HttpResponse("")
-            #else:
-            #    return HttpResponseRedirect(reverse('stories_edit_story',args=[page.story.id]))
             return HttpResponseRedirect(reverse('stories_edit_story',args=[page.story.id]))
     else:
         form = PageForm({'content':page.content})

@@ -14,7 +14,7 @@ $('#menu_add_media').click(function(){
                 var media_item_id = $(this).parent().attr('id');
                 var parts = media_item_id.split('-');
                 var id = parts[2];
-                $.post('{% url stories_sotry_add_media page.id %}',{media_id:id},function(data,textStatus){
+                $.post('{% url stories_story_add_media page.id %}',{media_id:id},function(data,textStatus){
                    // if (data.status == 1){
                         $('#page-media-list').html(data);
                         return false;
@@ -39,7 +39,7 @@ $('#menu_add_media').click(function(){
     <div style="float:right;width:200px">
         <h3>Page Media</h3>
         <ul id="page-media-list">
-        {% include "stories/page_media_list.html" %}
+        {% include "stories/story_media_list.html" %}
         </ul>
         
         <p><a id="menu_add_media" href="#">Add Media</a></p>
@@ -52,7 +52,6 @@ $('#menu_add_media').click(function(){
         </div>
         
     </div>
-    
     
     <p>
         <form method="post">
