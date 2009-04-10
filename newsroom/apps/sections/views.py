@@ -6,8 +6,7 @@ from sections.models import Section
 from sections.models import SectionPath
 from django.template import Context, loader
 from django.core.urlresolvers import reverse
-from sections.forms import SectionForm
-
+from sections.forms import SectionForm, SectionPathForm
 
 def sections_list(request):
     sections_list = Section.objects.all()
@@ -49,9 +48,10 @@ def section_edit(request, id):
     """
     Edit an existing section.
     """
-
+    section = Section.objects.get(pk=id)
+    
     if request.method == "POST":
-        form = SectionForm(request.POST)
+        form = SectionForm(request.POST, instance=section)
         if form.is_valid():
             form.save()
             request.user.message_set.create(
@@ -59,10 +59,57 @@ def section_edit(request, id):
             return HttpResponseRedirect(reverse('sections_section_list'))
 
     else:
-        section = Section.objects.get(pk=id)
         form = SectionForm(instance=section)        
     return render_to_response(
               'sections/section_edit.html',
+              {'form':form},
+              context_instance=RequestContext(request))
+
+def section_path_list(request):
+    section_path_list = SectionPath.objects.all()
+    return render_to_response(
+            'sections/section_path_list.html',
+            {'section_path_list': section_path_list},              
+            context_instance=RequestContext(request))
+
+def section_path_add(request):
+    """
+    Process a new section path.
+    """
+    if request.method == "POST":
+        form = SectionPathForm(request.POST)
+        if form.is_valid():
+            form.save()
+            request.user.message_set.create(
+                message='Your section path has been added.  Thank you.')
+            return HttpResponseRedirect(reverse('sections_section_path_list'))
+
+    else:
+        #form = SectionForm(user=request.user)
+        form = SectionPathForm()
+
+    return render_to_response(
+              'sections/section_path_add.html',
+              {'form':form},
+              context_instance=RequestContext(request))
+
+def section_path_edit(request, id):
+    """
+    Edit an existing section path.
+    """
+    section_path = SectionPath.objects.get(pk=id)
+    if request.method == "POST":
+        form = SectionPathForm(request.POST, instance=section_path)
+        if form.is_valid():
+            form.save()
+            request.user.message_set.create(
+                message='Your section has been edited.  Thank you.')
+            return HttpResponseRedirect(reverse('sections_section_path_list'))
+
+    else:
+        form = SectionPathForm(instance=section_path)        
+    return render_to_response(
+              'sections/section_path_edit.html',
               {'form':form},
               context_instance=RequestContext(request))
 
