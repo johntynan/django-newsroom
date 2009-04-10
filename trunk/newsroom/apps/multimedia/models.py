@@ -10,12 +10,47 @@ from tagging.fields import TagField
 
 from multimedia.constants import MEDIA_TYPES, MEDIA_STATUS_CHOICES, MEDIA_STATUS_DRAFT
 from utils.model_inheritance import ParentModel,ChildManager
-from videos.models import Video as VideoModel
+from videos.models import Video as NativeVideoModel
 
 class MediaBase(ModelBase):
     def __init__(cls, name, bases, attrs):
-        #TODO register the incoming media types
-        pass
+        """
+        Registers the media types with the class. Media will
+        have a list of all known media types in the media_types list attribute. Ex:
+        
+        In [1]: from multimedia.models import Media
+
+        In [2]: Media.media_types
+        Out[2]: ['Image', 'Video']
+        
+        Additionally, each subclass of Media will have a media_type attribute
+        indicating the media type string registered with Media. By default this is just
+        the class name, but it can be overridden by explicitly adding a media_type attribute
+        to subclass definitions. Ex:
+        
+        class Test(Media):
+            pass
+            
+        class Another(Media):
+            media_type = 'another_media'
+            
+        >>> Media.media_types
+        ['Test','another_media']
+        
+        >>> t = Test()
+        >>> t.media_type
+        'Test'
+        """
+        #TODO: media_type doesn't work for Media instances (subclasses OK)
+        
+        if not hasattr(cls,'media_types'):
+            cls.media_types = []
+        else:
+            if hasattr(cls,'media_type'):
+                cls.media_types.append(cls.media_type)
+            else:
+                setattr(cls,'media_type',name)
+                cls.media_types.append(name)
     
 class MediaAttribute(object):
     """
@@ -36,12 +71,11 @@ class MediaAttribute(object):
     
     def __set__(self,obj,value):
         if hasattr(obj.content_object,self.name):
-            setattr(obj.content_object,self.name)
+            obj.content_object.__dict__[self.name] = value
         else:
-            setattr(obj,'m_%s'%self.attrname)
+            obj.__dict__['m_%s'%self.attrname] = value
     
     
-
 class Media(ParentModel):
     """
     A generic container for media items.
@@ -71,6 +105,10 @@ class Media(ParentModel):
     status = MediaAttribute(fn="status")
     #preview = MediaAttribute(fn="preview")
     
+    #def __new__(cls,name,bases,attr):
+    #    print 'in new'
+    #    return ParentModel.__new__(cls,name,bases,attr)
+    
     #def __unicode__(self):
     #    """
     #    experimental: output self as HTML ala Django Forms
@@ -82,16 +120,11 @@ class Media(ParentModel):
     objects = models.Manager()
     children = ChildManager()
     
+    def __unicode__(self):
+        return self.title
+    
     def get_parent_model(self):
         return Media
-
-    def render(self,*args,**kwargs):
-        """
-        Handles rendering of the encapsulated media object to HTML
-        
-        Must be implemented by subclass
-        """
-        raise NotImplentedError
 
     def get_insert_snippet(self):
         """
@@ -124,24 +157,24 @@ class Image(Media):
     """
     A Media container for Photologue Photo instances
     """
-    media_type = "image"
+    pass
     
-    def render(self,*args,**kwargs):
-        return u'<img src="%s"/>' % self.content_object.image.url
     
 class Video(Media):
     """
     A Media container for Video instances
     """
-    media_type = "video"
     
-    #preview = MediaAttribute(fn="frame.image")
-    
-def associate_video(sender,**kwargs):
-    if kwargs.get('created',False):
-        video = Video()
-        video.content_object = kwargs.get('instance')
-        video.save()
+    @staticmethod
+    def associate(sender,**kwargs):
+        """
+        post_save signal handler that associates any new videos.Video instances with a multimedia.Video instance
+        """
+        if kwargs.get('created',False):
+            video = Video()
+            video.content_object = kwargs.get('instance')
+            video.save()
 
-post_save.connect(associate_video,VideoModel)   
+
+post_save.connect(Video.associate,NativeVideoModel)   
         

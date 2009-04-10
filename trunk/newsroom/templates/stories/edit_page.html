@@ -14,7 +14,7 @@ $('#menu_add_media').click(function(){
                 var media_item_id = $(this).parent().attr('id');
                 var parts = media_item_id.split('-');
                 var id = parts[2];
-                $.post('{% url stories_page_add_media page.id %}',{media_id:id},function(data,textStatus){
+                $.post('{% url stories_sotry_add_media page.id %}',{media_id:id},function(data,textStatus){
                    // if (data.status == 1){
                         $('#page-media-list').html(data);
                         return false;
