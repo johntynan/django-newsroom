@@ -120,12 +120,12 @@ class Media(ParentModel):
     objects = models.Manager()
     children = ChildManager()
     
+    class Meta:
+        verbose_name_plural = 'Media'
+    
     def __unicode__(self):
         return self.title
-    
-    def get_parent_model(self):
-        return Media
-
+        
     def get_insert_snippet(self):
         """
         Creates the text snippet that Story authors will paste into their content to indicate that the
@@ -152,6 +152,8 @@ class Media(ParentModel):
         else:
             return "{%% media_insert %d %%}" % self.id
     
+    def get_parent_model(self):
+        return Media
 
 class Image(Media):
     """

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% for story in stories %}
+<div>
+    <a href="{% url stories_edit_story story.id %}">{{story.headline}}</a>
+    <br/>
+    Pages:
+    <br/>
+    Media: 
+</div>
+{% endfor%}
+{% endblock content%}
