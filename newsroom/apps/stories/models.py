@@ -1,4 +1,4 @@
-import datetime
+import datetime, re
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save,post_delete
@@ -47,6 +47,8 @@ class Story(models.Model):
         new_page = Page.objects.new_page(self)
         self.page_set.add(new_page)
         return new_page
+    
+    
 
         
 def new_story_add_page(sender,**kwargs):
@@ -118,7 +120,22 @@ class Page(models.Model):
     def url(self):
         return "%s?p=%d" % (self.story.get_absolute_url(),self.pagenum,)
         
-
+    @property
+    def columns(self):
+        """
+        Split the page's content into columns based on HTML comments containing
+        "Column Break".
+        
+        The split is done with regex so it is forgiving of the formatting. Examples:
+            <!--columnbreak-->
+            <!--   COLUMN BREAK   -->
+            <!-- Column Break -->
+            <!-- ColumnBreak -->
+        """
+        colbrk = re.compile(r'<!--\s*column\s*break\s*-->',re.IGNORECASE)
+        cols = re.split(colbrk,self.content)
+        return cols
+    
 def reorder_story_pages(sender,**kwargs):
     story = kwargs['instance'].story
     Page.objects.update_page_order(story)
