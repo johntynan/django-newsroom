@@ -9,17 +9,18 @@
 <h1>Sections</h1>
 
 <ul>
-  <li><a href="./add/">Add New Section</a></li>
-  <li><a href="./path/">View Section Paths</a></li>
-  <li><a href="./path/add/">Add New Section Path</a></li>
-</ul>
-<ul>
 {% for o in sections_list %}
 <li><a href="{{o.id}}">{{o}}</a> - <a href="{{o.id}}/edit/">edit</a></li>
 {% endfor %}
 </ul>
 
-
 {% endblock %}
 
-
+{% block app_menu %}
+<h2>Sections</h2>
+<ul>
+  <li><a href="./add/">Add New Section</a></li>
+  <li><a href="./path/">View Section Paths</a></li>
+  <li><a href="./path/add/">Add New Section Path</a></li>
+</ul>
+{% endblock %}
