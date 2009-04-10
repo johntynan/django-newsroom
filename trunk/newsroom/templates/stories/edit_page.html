@@ -33,6 +33,7 @@ $('#menu_add_media').click(function(){
 
 {% block content %}
 <h2><a href="{% url stories_edit_story page.story.id %}">{{ page.story.headline }}</a> : Page {{ page.pagenum }}</h2>
+<p>Using {{page.columns|length}} Columns</p>
 <div>
     
     <div style="float:right;width:200px">
