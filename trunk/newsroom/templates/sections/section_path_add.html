@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Section Path{% endblock %}
+
+{% block content %}
+<h1>Edit Section Paths</h1>
+
+<form action="." method="post">
+    <fieldset>
+    <table>
+    {{ form }}
+    </table>
+    <input id="id_submit" type="submit" value="Submit" />
+    <a href="../">Cancel</a>
+    </fieldset>
+</form>
+{% endblock content %}
