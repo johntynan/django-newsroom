@@ -4,9 +4,10 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from sections.models import Section
 from sections.models import SectionPath
-# from sections.forms import SectionForm
 from django.template import Context, loader
-from sections.forms import *
+from django.core.urlresolvers import reverse
+from sections.forms import SectionForm
+
 
 def sections_list(request):
     sections_list = Section.objects.all()
@@ -30,12 +31,10 @@ def section_add(request):
     if request.method == "POST":
         form = SectionForm(request.POST)
         if form.is_valid():
-            section = form.save(commit=False)
-            section.submitter = request.user
-            section.save()
+            form.save()
             request.user.message_set.create(
-                message='Your section has been submitted.  Thank you.')
-            return HttpResponseRedirect(request.user.get_profile().get_absolute_url())
+                message='Your section has been added.  Thank you.')
+            return HttpResponseRedirect(reverse('sections_section_list'))
 
     else:
         #form = SectionForm(user=request.user)
@@ -46,26 +45,24 @@ def section_add(request):
               {'form':form},
               context_instance=RequestContext(request))
 
-def section_edit(request,id):
+def section_edit(request, id):
     """
-    Process a new section submission.
+    Edit an existing section.
     """
 
     if request.method == "POST":
         form = SectionForm(request.POST)
         if form.is_valid():
-            section = form.save(commit=False)
-            section.submitter = request.user
-            section.save()
+            form.save()
             request.user.message_set.create(
-                message='Your section has been submitted.  Thank you.')
-            return HttpResponseRedirect(request.user.get_profile().get_absolute_url())
+                message='Your section has been edited.  Thank you.')
+            return HttpResponseRedirect(reverse('sections_section_list'))
 
     else:
-        #form = SectionForm(user=request.user)
-        form = SectionForm()
-
+        section = Section.objects.get(pk=id)
+        form = SectionForm(instance=section)        
     return render_to_response(
               'sections/section_edit.html',
               {'form':form},
               context_instance=RequestContext(request))
+
