@@ -1,13 +1,19 @@
-{% extends "base.html" %}
+{% extends "stories/story_base.html" %}
+{% load formfields %}
 
-{% block title %}{{ story.headline }}{% endblock %}
+{% block title %}Edit Story: {{story.headline}}{% endblock %}
 
-{% block content %}
-<h1>{{ story.headline}}</h1>
-    
-<ul>
-{% for page in story.pages %}
-    <li><a href="{% url stories_edit_page page.id %}">Page {{page.pagenum}}</a></li>
-{% endfor %}
-</ul>
-{% endblock content %}
+{% block main_content %}
+<h1>Edit Story: {{story.headline}}</h1>
+
+{# TODO auto-slugify headline (or customize admin) #}
+<form method="post">
+{% display_field form.headline %}
+{% display_field form.slug %}
+{% display_field form.summary %}
+<p>TODO: select lead art</p>
+{% display_field form.status %}
+{% display_field form.authors %}
+<input type="submit" value="Save"/>
+</form>
+{% endblock main_content %}

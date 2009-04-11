@@ -1,16 +1,11 @@
 {% extends "stories/story_base.html" %}
 
-{% block context_menu %}
-<div id="story-page-list-menu">
-    <a href="{% url stories_add_page story.id %}">Add Page</a>
-    <a href="">Story Preview</a>
-    <a href="{% url stories_story_list %}">Story List</a>
-</div>
-{% endblock %}
+{% block title %}Content Overview: {{story.headline}}{% endblock %}
+
 
 {% block main_content %}
 
-<div id="page-preview-blocks" style="width:500px;">
+<div id="page-preview-blocks">
 {% for page in story.pages %}
     <div class="page-preview-block" style="width:240px;float:left;border:1px solid">
         <h2>Page {{page.pagenum}}</h2>
