@@ -46,7 +46,7 @@ def edit_story(request,story_id):
     story = get_object_or_404(Story,pk=story_id)
     form = StoryForm(instance=story)
     return render_to_response(
-                'stories/add_story.html',
+                'stories/edit_story.html',
                 locals(),
                 context_instance=RequestContext(request))
     

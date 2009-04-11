@@ -104,6 +104,7 @@
 
         {% if user.is_authenticated %}
         <h2>Menu</h2>
+        {% block context_menu %}
         <ul>
             <li><a href="{% url stories_add_story %}" title="Add Story">Add Story</a></li>
             <li><a href="{% url videos_add_video %}" title="Add Video">Add Video</a></li>
@@ -112,6 +113,7 @@
             <li><a href="{% url profiles_edit_profile %}" title="Edit Profile">Edit Profile</a></li>
             <li><a href="{% url auth_logout %}">Logout</a></li>
         </ul>
+        {% endblock context_menu %}
             {% if user.is_staff %}
             <h2>Admin</h2>
             <ul>
