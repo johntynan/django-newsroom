@@ -11,7 +11,17 @@
     {{ form }}
     </table>
     <input id="id_submit" type="submit" value="Submit" />
-    <a href="../">Cancel</a>
+    <a href="../../">Cancel</a>
     </fieldset>
 </form>
 {% endblock content %}
+
+{% block app_menu %}
+<h2>Sections</h2>
+<ul>
+  <li><a href="/sections/">Section</a></li>
+  <li><a href="/sections/add/">Add Section</a></li>
+  <li><a href="/sections/path/">View Section Paths</a></li>
+  <li><a href="/sections/path/add/">Add Section Path</a></li>
+</ul>
+{% endblock %}
