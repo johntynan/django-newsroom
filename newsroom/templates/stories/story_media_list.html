@@ -1,5 +1,6 @@
-{% if page.story.media.all %}
-    {% for item in page.story.media.all %}
+<ul id="page-media-list">
+{% if story.media.all %}
+    {% for item in story.media.all %}
         <li>
             <p>{{item.title}}</p>
             <p>Insert: {{item.get_insert_snippet}}</p>
@@ -8,3 +9,4 @@
 {% else %}
     <li>No media items on this page.</li>
 {% endif %}
+</ul>

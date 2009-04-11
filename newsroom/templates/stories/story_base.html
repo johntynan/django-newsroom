@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <div>
+    {% block tabs_menu %}
+        <a href="{% url stories_edit_story story.id %}">Properties</a> | <a href="">Media</a> | <a href="{% url stories_story_pages story.id %}">Pages</a>
+    {% endblock %}    
+    </div>
+    
+    <div>
+    {% block context_menu %}
+    {% endblock %}
+    </div>
+    
+    {% block main_content %}
+    {% endblock %}
+    
+</div>
+{% endblock content%}

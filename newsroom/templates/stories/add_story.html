@@ -1,9 +1,9 @@
-{% extends "base.html" %}
+{% extends "stories/story_base.html" %}
 {% load formfields %}
 
 {% block title %}Add a Story{% endblock %}
 
-{% block content %}
+{% block main_content %}
 <h1>Add a Story</h1>
 
 {# TODO auto-slugify headline (or customize admin) #}
@@ -16,4 +16,4 @@
 {% display_field form.authors %}
 <input type="submit" value="Save"/>
 </form>
-{% endblock content %}
+{% endblock main_content %}

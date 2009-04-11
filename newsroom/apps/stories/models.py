@@ -2,7 +2,9 @@ import datetime, re
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save,post_delete
+from django.template import Template, Context
 from multimedia.models import Media
+from multimedia.nodes import MediaNode
 from stories.constants import STORY_STATUS_CHOICES, STORY_STATUS_DRAFT
 
 class Story(models.Model):
@@ -46,6 +48,7 @@ class Story(models.Model):
         Creates a new page for this story. Returns the newly created page
         """
         new_page = Page.objects.new_page(self)
+        new_page.save()
         self.page_set.add(new_page)
         return new_page
     
@@ -126,13 +129,21 @@ class Page(models.Model):
         
         The split is done with regex so it is forgiving of the formatting. Examples:
             <!--columnbreak-->
-            <!--   COLUMN BREAK   -->
+            <!--   COLUMN   BREAK   -->
             <!-- Column Break -->
             <!-- ColumnBreak -->
         """
         colbrk = re.compile(r'<!--\s*column\s*break\s*-->',re.IGNORECASE)
         cols = re.split(colbrk,self.content)
         return cols
+    
+    @property
+    def media(self):
+        return self.detect_media()
+    
+    def detect_media(self):
+        template = Template("{%% load media_tags %%}%s" %  self.content)
+        return [ Media.objects.get(pk=node.media_id.resolve(Context())).get_child_object() for node in template.nodelist if isinstance(node,MediaNode) ]
     
 def reorder_story_pages(sender,**kwargs):
     story = kwargs['instance'].story

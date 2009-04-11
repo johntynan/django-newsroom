@@ -1,0 +1,35 @@
+{% extends "stories/story_base.html" %}
+
+{% block context_menu %}
+<div id="story-page-list-menu">
+    <a href="{% url stories_add_page story.id %}">Add Page</a>
+    <a href="">Story Preview</a>
+    <a href="{% url stories_story_list %}">Story List</a>
+</div>
+{% endblock %}
+
+{% block main_content %}
+
+<div id="page-preview-blocks" style="width:500px;">
+{% for page in story.pages %}
+    <div class="page-preview-block" style="width:240px;float:left;border:1px solid">
+        <h2>Page {{page.pagenum}}</h2>
+        <p>{{page.content|truncatewords:30}}</p>
+        <p style="border-bottom:1px solid">Media</p>
+        {%if page.media%}
+        <ul>
+            {% for item in page.media %}
+            <li>{{item}} ({{item.media_type}})</li>
+            {% endfor %}
+        </ul>
+        {%else%}
+        --Empty--
+        {% endif %}
+        <p>{{page.columns|length}} Column{{page.columns|length|pluralize}}</p>
+        {# TODO actual preview URL; delete URL #}
+        <p><a href="{% url stories_edit_page page.id %}">Edit</a>|<a href="{% url stories_show_story story.slug %}">Preview</a>|<a href="">Delete</a></p>
+    </div>
+{% endfor %}    
+</div>
+<div style="clear:both"/>
+{% endblock %}
