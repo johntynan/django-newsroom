@@ -103,8 +103,8 @@
         {% block menu %}
 
         {% if user.is_authenticated %}
-        <h2>Menu</h2>
         {% block context_menu %}
+        <h2>Menu</h2>
         <ul>
             <li><a href="{% url stories_add_story %}" title="Add Story">Add Story</a></li>
             <li><a href="{% url videos_add_video %}" title="Add Video">Add Video</a></li>

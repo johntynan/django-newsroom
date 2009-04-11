@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block context_menu %}
+<h2>Menu</h2>
 <ul id="story-page-list-menu">
     <li><a href="{% url stories_add_page story.id %}">Add Page</a></li>
     <li><a href="">Story Preview</a></li>
@@ -12,7 +13,7 @@
 <div>
     <div style="background:#cceecc;padding:10px 0 4px 4px">
     {% block tabs_menu %}
-        <a href="{% url stories_edit_story story.id %}">Properties</a> | <a href="">Media</a> | <a href="{% url stories_story_pages story.id %}">Pages</a>
+        <a href="{% url stories_edit_story story.id %}">Properties</a> | <a href="{% url stories_story_media story.id %}">Media</a> | <a href="{% url stories_story_pages story.id %}">Pages</a>
     {% endblock %}    
     </div>
     

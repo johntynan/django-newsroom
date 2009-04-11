@@ -54,7 +54,10 @@ def story_pages(request,story_id):
     story = get_object_or_404(Story,pk=story_id)
     return render_to_response('stories/story_page_list.html',locals(),context_instance=RequestContext(request))
     
-
+def story_media(request,story_id):
+    story = get_object_or_404(Story,pk=story_id)
+    system_media_types = Media.media_types
+    return render_to_response('stories/story_media_list.html',locals(),context_instance=RequestContext(request))
 
 def story(request,slug):
     story = get_object_or_404(Story,slug=slug)
@@ -91,4 +94,4 @@ def story_add_media(request,story_id):
     story = get_object_or_404(Story,pk=story_id)
     media = get_object_or_404(Media,pk=request.POST.get('media_id'))
     story.media.add(media)
-    return render_to_response('stories/story_media_list.html',locals())
+    return render_to_response('stories/widgets/story_media_summary.html',locals())

@@ -1,10 +1,11 @@
-{% extends "stories/story_base.html" %}
+{% extends "stories/base.html" %}
 
 {% block title %}Edit Page {{page.pagenum}} : {{ page.story.headline }}{% endblock %}
 
 {%block menu %}{% endblock menu %}
 
 {% block jquery %}
+/*
 $('#add_media_types').hide();
 $('#menu_add_media').click(function(){
     $('.add_media').click(function(){
@@ -30,7 +31,7 @@ $('#menu_add_media').click(function(){
     
     $('#add_media_types').show();
     return false;
-});
+});*/
 {% endblock %}
 
 {% block main_content %}
@@ -41,9 +42,9 @@ $('#menu_add_media').click(function(){
     <div style="float:right;width:300px;background:#DDD;border:1px solid">
         <h3>Story Media List</h3>
         
-        {% include "stories/story_media_list.html" %}
+        {% include "stories/widgets/story_media_summary.html" %}
         
-        
+        <!--
         <p><a id="menu_add_media" href="#">Add Media</a></p>
         <div id="add_media_types">
             <ul>
@@ -51,7 +52,7 @@ $('#menu_add_media').click(function(){
                 <li><a class="add_media" href="{% url multimedia_browse "video" %}">Add Video</a></li>
             </ul>
             
-        </div>
+        </div>-->
         
     </div>
     

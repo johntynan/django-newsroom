@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
+from django.contrib.sites.models import Site
 from django.db import models
 from django.db.models.base import ModelBase
 from django.db.models.signals import post_save
@@ -52,28 +53,28 @@ class MediaBase(ModelBase):
                 setattr(cls,'media_type',name)
                 cls.media_types.append(name)
     
-class MediaAttribute(object):
-    """
-    A descriptor that allows Media properties to look for the
-    property name on the underlying content object (the generic relation)
-    If the content object contains the attribute, return it from there, otherwise
-    return from the Media instance
-    """
-    def __init__(self,**kwargs):
-        self.name = kwargs.get('fn')
-        self.attrname = kwargs.get('syn',self.name)
-    
-    def __get__(self,obj,type=None):
-        if hasattr(obj.content_object,self.name):
-            return getattr(obj.content_object,self.name)
-        else:
-            return getattr(obj,'m_%s'%self.attrname)
-    
-    def __set__(self,obj,value):
-        if hasattr(obj.content_object,self.name):
-            obj.content_object.__dict__[self.name] = value
-        else:
-            obj.__dict__['m_%s'%self.attrname] = value
+#class MediaAttribute(object):
+#    """
+#    A descriptor that allows Media properties to look for the
+#    property name on the underlying content object (the generic relation)
+#    If the content object contains the attribute, return it from there, otherwise
+#    return from the Media instance
+#    """
+#    def __init__(self,**kwargs):
+#        self.name = kwargs.get('fn')
+#        self.attrname = kwargs.get('syn',self.name)
+#    
+#    def __get__(self,obj,type=None):
+#        if hasattr(obj.media_item,self.name):
+#            return getattr(obj.media_item,self.name)
+#        else:
+#            return getattr(obj,'m_%s'%self.attrname)
+#    
+#    def __set__(self,obj,value):
+#        if hasattr(obj.content_object,self.name):
+#            obj.media_item.__dict__[self.name] = value
+#        else:
+#            obj.__dict__['m_%s'%self.attrname] = value
     
     
 class Media(ParentModel):
@@ -84,30 +85,22 @@ class Media(ParentModel):
     """
     __metaclass__ = MediaBase
     
-    m_owners = models.ManyToManyField(User)
-    m_title = models.CharField(max_length=128,blank=True)
-    m_summary = models.TextField(blank=True)
-    m_tags = TagField()
-    m_status = models.CharField(
+    #owner = models.ForeignKey(User)
+    site = models.ForeignKey(Site)
+    authors = models.ManyToManyField(User)
+    title = models.CharField(max_length=128,blank=True)
+    summary = models.TextField(blank=True)
+    attribution = models.TextField(blank=True)
+    tags = TagField()
+    status = models.CharField(
                         max_length=1,
                         choices=MEDIA_STATUS_CHOICES,
                         default=MEDIA_STATUS_DRAFT,
                         help_text=_(u'Only published items will appear on the site.'),)
+    
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
-    content_object = generic.GenericForeignKey('content_type', 'object_id')
-    
-    #these are the "public" attributes 
-    owners = MediaAttribute(fn="authors",syn="owners")
-    title = MediaAttribute(fn="title")
-    summary = MediaAttribute(fn="summary")
-    tags = MediaAttribute(fn="tags")
-    status = MediaAttribute(fn="status")
-    #preview = MediaAttribute(fn="preview")
-    
-    #def __new__(cls,name,bases,attr):
-    #    print 'in new'
-    #    return ParentModel.__new__(cls,name,bases,attr)
+    media_item = generic.GenericForeignKey('content_type', 'object_id')
     
     #def __unicode__(self):
     #    """
@@ -126,6 +119,14 @@ class Media(ParentModel):
     def __unicode__(self):
         return self.title
         
+    @property
+    def authors(self):
+        """
+        Returns a comma separated string of the author names
+        """
+        #TODO: format first/last if exists
+        return ",".join([user.username for user in self.owners.all()])
+    
     def get_insert_snippet(self):
         """
         Creates the text snippet that Story authors will paste into their content to indicate that the
@@ -173,9 +174,15 @@ class Video(Media):
         post_save signal handler that associates any new videos.Video instances with a multimedia.Video instance
         """
         if kwargs.get('created',False):
+            media_item = kwargs.get('instance')
             video = Video()
-            video.content_object = kwargs.get('instance')
+            video.media_item = media_item
+            video.site = media_item.site
+            video.title = media_item.title
+            video.summary = media_item.summary
+            video.tags = media_item.tag_list
             video.save()
+            video.authors.add(media_item.authors.all())
 
 
 post_save.connect(Video.associate,NativeVideoModel)   
