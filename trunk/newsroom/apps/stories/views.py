@@ -37,17 +37,26 @@ def add_page(request,story_id):
     """
     Add a Page to a Story
     """
-    pass
+    story = get_object_or_404(Story,pk=story_id)
+    page = story.add_page()
+    #return render_to_response('stories/story_page_list',locals(),context_instance=RequestContext(request))
+    return HttpResponseRedirect(reverse('stories_edit_page',args=[page.id]))
 
 def edit_story(request,story_id):
     story = get_object_or_404(Story,pk=story_id)
+    form = StoryForm(instance=story)
     return render_to_response(
-                'stories/edit_story.html',
+                'stories/add_story.html',
                 locals(),
                 context_instance=RequestContext(request))
+    
+def story_pages(request,story_id):
+    story = get_object_or_404(Story,pk=story_id)
+    return render_to_response('stories/story_page_list.html',locals(),context_instance=RequestContext(request))
+    
 
 
-def show_story(request,slug):
+def story(request,slug):
     story = get_object_or_404(Story,slug=slug)
     pagenum = request.GET.get('p',1)
     page = story.get_page(1)
@@ -65,12 +74,13 @@ def show_story(request,slug):
 
 def edit_page(request,page_id):
     page = get_object_or_404(Page,pk=page_id)
+    story = page.story
     if request.method == 'POST':
         form = PageForm(request.POST)
         if form.is_valid():
             page.content = form.cleaned_data['content']
             page.save()
-            return HttpResponseRedirect(reverse('stories_edit_story',args=[page.story.id]))
+            return HttpResponseRedirect(reverse('stories_story_pages',args=[page.story.id]))
     else:
         form = PageForm({'content':page.content})
     return render_to_response('stories/edit_page.html',

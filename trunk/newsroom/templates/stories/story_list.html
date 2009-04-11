@@ -3,11 +3,11 @@
 {% block content %}
 {% for story in stories %}
 <div>
-    <a href="{% url stories_edit_story story.id %}">{{story.headline}}</a>
+    <a href="{% url stories_story_pages story.id %}">{{story.headline}}</a>
     <br/>
-    Pages:
+    Pages: {% for page in story.pages %}<a href="{% url stories_edit_page page.id %}">{{page.pagenum}}</a></a>{% endfor %}
     <br/>
-    Media: 
+    Media: {% for item in story.media.all %}{{item.title}}{% endfor %}
 </div>
 {% endfor%}
 {% endblock content%}
