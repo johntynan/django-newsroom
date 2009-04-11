@@ -11,11 +11,19 @@
 
 <ul style="float:left; background-color: #C0C0C0;">
 {% for o in section.collection.all %}
-    <li>{{o}}</li>
+    <li><a href="/sections/path/{{o.id}}">{{o}}</a> - <a href="/sections/path/{{o.id}}/edit/">edit</a>
 {% endfor %}
 </ul>
-<span style="margin:10px;"><a href="/sections/path/edit/">Edit Section Paths</a></span>
-
-
+<span style="margin:10px;"><a href="/sections/path/add/">Add Section Path</a></span>
 
 {% endblock content %}
+
+{% block app_menu %}
+<h2>Sections</h2>
+<ul>
+  <li><a href="/sections/">Section</a></li>
+  <li><a href="/sections/add/">Add Section</a></li>
+  <li><a href="/sections/path/">View Section Paths</a></li>
+  <li><a href="/sections/path/add/">Add Section Path</a></li>
+</ul>
+{% endblock %}
