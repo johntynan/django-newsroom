@@ -11,7 +11,7 @@ http://news21.com/sections/energy/alternate/wind/
 
 A publication might want to create/modify sections at any point in time, depending on current events.  This module should provide an editor with the functionality to perform such a task.  There is potential for the Sections module to touch any part of content in the system, or just stories.  At the time of this writing we are focusing on how sections work with stories.
 
-== Section Paths ==
+= Section Paths =
 
 A Section Path is a term we are using to describe free-from strings defined by editors or authors that allow you to categorize content.  The strings follow a simple convention using forward slashes.  They look like slugs but do NOT map to a URL. They are used to define a section, which has the URL mapping.
 
@@ -44,7 +44,7 @@ A project landing page has a different URL:
 http://news21.com/projects/the_western_edge
 }}}
 
-== Schema ==
+= Schema =
 
 {{{
 section (n) ---- (n) section_path (n) ---- (n) stories
