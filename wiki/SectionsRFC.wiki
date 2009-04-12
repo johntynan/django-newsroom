@@ -13,7 +13,7 @@ A publication might want to create/modify sections at any point in time, dependi
 
 == Section Paths ==
 
-A Section Path is a term we are using to describe free-from strings defined by editors or authors that allow you to categorize content.  The strings follow a simple convention using forward slashes:
+A Section Path is a term we are using to describe free-from strings defined by editors or authors that allow you to categorize content.  The strings follow a simple convention using forward slashes.  They look like slugs but do NOT map to a URL. They are used to define a section, which has the URL mapping.
 
 {{{
 /people/george_bush/
@@ -22,16 +22,33 @@ A Section Path is a term we are using to describe free-from strings defined by e
 /events/2009/inauguration
 }}}
 
+Section paths should be unique strings within the table, and can be added by authors as needed.
+
+= Sections Editor/Manager =
+
+The Sections Editor provides an interface for, creating new Section Paths and Sections and streamlining editing functions like re-assigning section_paths in bulk.  
+
+= Section Page =
+
+Each section will define a single page, which represents features related to the section, similar to the front page.  Template options will be given, similar to story pages.  Likely a separate set of templates is necessary for section pages, they have different layout requirements than story pages.
+
+= Sections vs Projects =
+
+After some conversation it was decided that sections are not project landing pages. The project landing page, also known as project front page, will be a separate page type object attached to a project in the db. So there will be a new model called Project.
+
+Project pages are controlled to the affiliate organization where they have the most expressive freedom, while sections are maintained by the site-wide editors.
+ 
+A project landing page has a different URL:
+
+{{{
+http://news21.com/projects/the_western_edge
+}}}
+
 == Schema ==
 
 {{{
 section (n) ---- (n) section_path (n) ---- (n) stories
 }}}
-
-= Sections Editor =
-
-The Sections Editor provides an interface for creating new Section Paths and Sections. 
-
 
 
 = Models =
