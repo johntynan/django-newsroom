@@ -32,18 +32,6 @@ The Sections Editor provides an interface for, creating new Section Paths and Se
 
 Each section will define a single page, which represents features related to the section, similar to the front page.  Template options will be given, similar to story pages.  Likely a separate set of templates is necessary for section pages, they have different layout requirements than story pages.
 
-= Sections vs Projects =
-
-After some conversation it was decided that sections are not project landing pages. The project landing page, also known as project front page, will be a separate page type object attached to a project in the db. So there will be a new model called Project.
-
-Project pages are controlled to the affiliate organization where they have the most expressive freedom, while sections are maintained by the site-wide editors.
- 
-A project landing page has a different URL:
-
-{{{
-http://news21.com/projects/the_western_edge
-}}}
-
 = Schema =
 
 {{{
@@ -102,4 +90,16 @@ def section_index(request, sections, section_slug=None):
     ...
     if sections:
         stories = Story.objects.filter( section=Section.objects.get(slug=section_slug) )
+}}}
+
+= Sections vs Projects =
+
+After some conversation it was decided that sections are not project landing pages. The project landing page, also known as project front page, will be a separate page type object attached to a project in the db. So there will be a new model called Project.
+
+Project pages are controlled to the affiliate organization where they have the most expressive freedom, while sections are maintained by the site-wide editors.
+ 
+A project landing page has a different URL:
+
+{{{
+http://news21.com/projects/the_western_edge
 }}}
