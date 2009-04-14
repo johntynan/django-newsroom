@@ -1,9 +1,14 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
-<html lang="en">
-<head>
-    <title><!-- Insert your title here --></title>
-</head>
-<body>
-    <!-- Insert your content here -->
-</body>
-</html>
+<div>
+<p>Recently added {{media_type}}s</p>
+<p><a href="" >Add new {{media_type}}</a></p>
+
+{% if object_list %}
+<ul>
+    {% for object in object_list %}
+    <li>{{object.title}}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+</div>
+
+

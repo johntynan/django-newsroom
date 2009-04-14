@@ -95,3 +95,10 @@ def story_add_media(request,story_id):
     media = get_object_or_404(Media,pk=request.POST.get('media_id'))
     story.media.add(media)
     return render_to_response('stories/widgets/story_media_summary.html',locals())
+    
+def story_select_media(request,story_id,media_type):
+    story = get_object_or_404(Story,pk=story_id)
+    MediaType = Media.class_factory(media_type)
+    
+    object_list = MediaType.objects.filter(authors__pk__exact=request.user.pk)
+    return render_to_response('stories/select_media.html',locals(),context_instance=RequestContext(request))

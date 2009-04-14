@@ -13,6 +13,13 @@ from multimedia.constants import MEDIA_TYPES, MEDIA_STATUS_CHOICES, MEDIA_STATUS
 from utils.model_inheritance import ParentModel,ChildManager
 from videos.models import Video as NativeVideoModel
 
+                
+class _MediaTypesDescriptor(object):
+    def __get__(self,obj,type=None):
+        return type._media_types.keys()
+    def __set__(self,obj,value):
+        raise NotImplementedError
+                
 class MediaBase(ModelBase):
     def __init__(cls, name, bases, attrs):
         """
@@ -44,39 +51,18 @@ class MediaBase(ModelBase):
         """
         #TODO: media_type doesn't work for Media instances (subclasses OK)
         
-        if not hasattr(cls,'media_types'):
-            cls.media_types = []
+        if not hasattr(cls,'_media_types'):
+            setattr(cls,'_media_types',dict())
+            setattr(cls,'media_types',_MediaTypesDescriptor())
         else:
             if hasattr(cls,'media_type'):
-                cls.media_types.append(cls.media_type)
+                cls._media_types[name] = cls
             else:
                 setattr(cls,'media_type',name)
-                cls.media_types.append(name)
-    
-#class MediaAttribute(object):
-#    """
-#    A descriptor that allows Media properties to look for the
-#    property name on the underlying content object (the generic relation)
-#    If the content object contains the attribute, return it from there, otherwise
-#    return from the Media instance
-#    """
-#    def __init__(self,**kwargs):
-#        self.name = kwargs.get('fn')
-#        self.attrname = kwargs.get('syn',self.name)
-#    
-#    def __get__(self,obj,type=None):
-#        if hasattr(obj.media_item,self.name):
-#            return getattr(obj.media_item,self.name)
-#        else:
-#            return getattr(obj,'m_%s'%self.attrname)
-#    
-#    def __set__(self,obj,value):
-#        if hasattr(obj.content_object,self.name):
-#            obj.media_item.__dict__[self.name] = value
-#        else:
-#            obj.__dict__['m_%s'%self.attrname] = value
-    
-    
+                cls._media_types[name] = cls
+        #super(MediaBase,cls).__init__(cls,name,bases,attrs)
+        
+        
 class Media(ParentModel):
     """
     A generic container for media items.
@@ -85,7 +71,6 @@ class Media(ParentModel):
     """
     __metaclass__ = MediaBase
     
-    #owner = models.ForeignKey(User)
     site = models.ForeignKey(Site)
     authors = models.ManyToManyField(User)
     title = models.CharField(max_length=128,blank=True)
@@ -116,16 +101,20 @@ class Media(ParentModel):
     class Meta:
         verbose_name_plural = 'Media'
     
-    def __unicode__(self):
-        return self.title
+    def __unicode__(self): lambda self: self.title
+     
+    @staticmethod
+    def class_factory(media_type):
+        return Media._media_types[media_type]
         
-    @property
-    def authors(self):
-        """
-        Returns a comma separated string of the author names
-        """
-        #TODO: format first/last if exists
-        return ",".join([user.username for user in self.owners.all()])
+        
+    #@property
+    #def authors(self):
+    #    """
+    #    Returns a comma separated string of the author names
+    #    """
+    #    #TODO: format first/last if exists
+    #    return ",".join([user.username for user in self.owners.all()])
     
     def get_insert_snippet(self):
         """
