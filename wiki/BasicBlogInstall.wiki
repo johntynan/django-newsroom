@@ -25,7 +25,7 @@ svn checkout http://django-basic-apps.googlecode.com/svn/trunk/blog blog
 
 4. add 'basic.blog' to your project's INSTALLED_APPS list in your settings.py file.
 
-=== Dependancies ===
+=== Dependencies ===
 
 5. Django Comments is likely already installed.  But to activate this for django newsroom add 'django.contrib.comments' to INSTALLED_APPS.
 
