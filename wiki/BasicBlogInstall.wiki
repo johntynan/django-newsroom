@@ -44,7 +44,7 @@ svn checkout http://django-basic-apps.googlecode.com/svn/trunk/inlines inlines
 
 8. Add 'basic.inlines' to INSTALLED_APPS.
 
-8. Install Markup
+9. Install Markup
 
 Markup and Inlines requires Markdown be installed.  To do this, run the following commands from within your virtual env:
 
