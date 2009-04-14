@@ -10,5 +10,8 @@ class PageForm(forms.Form):
     content = forms.CharField(widget=forms.Textarea)
         
 
-
-
+#class SelectMediaForm(forms.Form):
+#    
+#    @staticmethod
+#    def factory(media_type):
+#        pass

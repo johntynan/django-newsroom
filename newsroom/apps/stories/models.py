@@ -142,6 +142,7 @@ class Page(models.Model):
         return self.detect_media()
     
     def detect_media(self):
+        #TODO: strip out inserts that aren't the story media list
         template = Template("{%% load media_tags %%}%s" %  self.content)
         return [ Media.objects.get(pk=node.media_id.resolve(Context())).get_child_object() for node in template.nodelist if isinstance(node,MediaNode) ]
     

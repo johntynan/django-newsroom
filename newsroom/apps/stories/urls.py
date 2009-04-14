@@ -19,6 +19,8 @@ urlpatterns = patterns('stories.views',
     url(r'^story/page/(?P<page_id>\d+)/edit/$','edit_page',name='stories_edit_page'),
     #add media
     url(r'^story/(?P<story_id>\d+)/media/add/$','story_add_media',name='stories_story_add_media'),
+    #associate media
+    url(r'^story/(?P<story_id>\d+)/media/(?P<media_type>\w+)/select/$','story_select_media',name='stories_story_select_media'),
     
     #- PUBLIC  -
     #diplay story
