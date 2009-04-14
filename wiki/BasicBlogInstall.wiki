@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#summary http://code.google.com/p/django-basic-apps/
 
 = Basic Apps Blog =
 
@@ -87,4 +87,3 @@ Installing index for inlines.InlineType model
 Installing index for comments.Comment model
 Installing index for comments.CommentFlag model
 }}}
-
