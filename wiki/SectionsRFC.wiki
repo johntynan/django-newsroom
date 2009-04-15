@@ -87,10 +87,10 @@ GET /economy/housing-crisis/
 = view =
 
 {{{
-def section_index(request, sections, section_slug=None):
+def section_index(request, section_slug=None):
     ...
-    if sections:
-        stories = Story.objects.filter( section=Section.objects.get(slug=section_slug) )
+    stories = Story.objects.filter( section=Section.objects.get(slug=section_slug) )
+    ...
 }}}
 
 = Sections vs Projects =
