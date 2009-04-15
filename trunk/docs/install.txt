@@ -101,3 +101,9 @@ svn co http://django-photologue.googlecode.com/svn/branches/3.x/ photologue-3.x
 ln -s photologue-3.x/photologue .
 
 
+django basic blog
+-----------------
+
+See BasicBlogInstall
+
+http://code.google.com/p/django-newsroom/wiki/BasicBlogInstall
