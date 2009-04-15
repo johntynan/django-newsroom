@@ -34,6 +34,26 @@ def feature_add(request):
               {'form':form},
               context_instance=RequestContext(request))
 
+def feature_edit(request, id):
+    """
+    Edit an existing feature.
+    """
+    feature = Feature.objects.get(pk=id)
+    
+    if request.method == "POST":
+        form = FeatureForm(request.POST, instance=feature)
+        if form.is_valid():
+            form.save()
+            request.user.message_set.create(
+                message='Your feature has been edited.  Thank you.')
+            return HttpResponseRedirect(reverse('features_feature_list'))
+    else:
+        form = FeatureForm(instance=feature)        
+    return render_to_response(
+              'features/feature_edit.html',
+              {'form':form},
+              context_instance=RequestContext(request))
+
 def feature_list(request):
     """
     Get index of features.
