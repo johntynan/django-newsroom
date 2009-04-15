@@ -97,6 +97,10 @@ INSTALLED_APPS = (
     'videos',
     'sections',
     'utils',
+    'basic.blog',
+    'basic.inlines',
+    'django.contrib.comments',
+    'django.contrib.markup',
 )
 
 
