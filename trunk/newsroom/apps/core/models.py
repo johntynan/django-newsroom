@@ -34,17 +34,22 @@ class Project(models.Model):
     that defines a project's landing page.
     """
 
-    affiliate = models.ForeignKey(Affiliate)
+    affiliate = models.ManyToManyField(Affiliate)
     url = models.URLField(
             blank=True,
             verify_exists=False,
-            help_text="The project's public web site if it has one.",)
+            help_text="Is the project a separate website? Provide the public URL if it has one.",)
     title = models.CharField(
                 max_length=100,
-                help_text='The title of the project.')
-    slug = models.SlugField()
+                help_text='The title of the project. i.e. "The American Dream"')
+    slug = models.SlugField(unique=True)
     summary = models.TextField(
                 help_text='Provide a summary that can be used to describe the project.')
+
+    activity_begins = models.DateField(
+                        help_text="When does production begin for this project?")
+    activity_ends = models.DateField(
+                        help_text="When is all production forcasted to end for this project?")
 
     def __unicode__(self):
         return self.title
