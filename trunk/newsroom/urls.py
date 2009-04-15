@@ -48,6 +48,10 @@ urlpatterns = patterns('',
     
     (r'', include('photologue.urls')),
     
+    (r'^blog/', include('basic.blog.urls')),
+
+    (r'^comments/', include('django.contrib.comments.urls')), 
+    
 )
 
 if settings.DEBUG:
