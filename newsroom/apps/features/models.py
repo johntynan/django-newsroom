@@ -21,7 +21,7 @@ class Feature(models.Model):
                     unique=True,
                     verify_exists=False,
                     help_text="This should be the published link for the story or project you want featured on news21.com. <br />e.g. http://features.csmonitor.com/globalnews/2009/03/30/ahead-of-north-koreas-planned-rocket-launch-us-dispatches-destroyers/")
-    affiliate = models.ForeignKey(Affiliate)
+    project = models.ManyToManyField(Project)
     submitter = models.ForeignKey(
                     User,
                     related_name='features_submitted',)
