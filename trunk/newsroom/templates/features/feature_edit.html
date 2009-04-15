@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Feature{% endblock %}
+
+{% block content %}
+<h1>Edit Feature</h1>
+
+<form action="." method="post" enctype="multipart/form-data">
+    <fieldset>
+    <table>
+    {{ form }}
+    </table>
+    <input id="id_submit" type="submit" value="Submit" />
+    <a href="../">Cancel</a>
+    </fieldset>
+</form>
+{% endblock content %}
+
+{% block app_menu %}
+<h2>Sections</h2>
+<ul>
+  <li><a href="/features/">Features</a></li>
+</ul>
+{% endblock %}
