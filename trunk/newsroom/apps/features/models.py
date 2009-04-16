@@ -5,6 +5,7 @@ from django.contrib.contenttypes import generic
 from core.models import Project
 from photologue.models import Photo
 from bookmarks.models import BookmarkInstance
+from sections.models import SectionPath
 
 class Feature(models.Model):
     """
@@ -38,6 +39,8 @@ class Feature(models.Model):
                         help_text="Suggested date span for use on home page.")
     relevance_ends = models.DateField(
                         "Suggested Relevance Ends",)
+    
+    section = models.ManyToManyField(SectionPath)
 
     # last_featured is not editable and is managed by the front page
     # view code.
