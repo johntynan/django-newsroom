@@ -9,19 +9,15 @@ urlpatterns = patterns('',
         name="features_feature_list"),
 
     url(r'^add/$', 
-        views.feature_add_edit,
+        views.feature_add,
         name="features_feature_add"),
 
     url(r'^(?P<id>\d+)/edit/$',
-        'features.views.feature_edit',
+        views.feature_edit,
         name='features_feature_edit'),
 
     url(r'^(?P<id>\d+)/$', 
         views.feature_detail,
         name="features_feature_detail"),
-
-    url(r'^(?P<id>\d+)/edit/$', 
-        views.feature_add_edit,
-        name="features_feature_edit"),
 
 )
