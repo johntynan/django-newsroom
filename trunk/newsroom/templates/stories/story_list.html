@@ -1,18 +1,5 @@
 {% extends "stories/base.html" %}
 
-{% block context_menu %}
-<h2>Menu</h2>
-<ul id="story-page-list-menu">
-    <li><a href="{% url stories_add_story %}">Add Story</a></li>
-    <li><a href="">Submit Feature</a></li>
-    <li><a href="">Edit Profile</a></li>
-    <li><a href="">Create Blog Post</a></li>
-</ul>
-{% endblock %}
-
-{% block tabs_menu %}
- <a href="">Dashboard</a> | <a href="{% url stories_story_list %}">Stories</a> | <a href="">Features</a>
-{% endblock %}    
 
 {% block main_content %}
 {% for story in stories %}

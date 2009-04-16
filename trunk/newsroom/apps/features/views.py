@@ -1,8 +1,8 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
-from features.models import * 
-from features.forms import *
+from features.models import Feature 
+from features.forms import FeatureForm
 
 def front(request):
     return render_to_response(
@@ -10,7 +10,7 @@ def front(request):
               {},
               context_instance=RequestContext(request))
 
-def feature_add(request):
+def feature_add_edit(request, id=None):
     """
     Process a new feature submission.
     """
@@ -26,8 +26,11 @@ def feature_add(request):
             return HttpResponseRedirect(request.user.get_profile().get_absolute_url())
 
     else:
-        #form = FeatureForm(user=request.user)
-        form = FeatureForm()
+        if id:
+            feature = get_object_or_404(Feature, pk=id)
+            form = FeatureForm(instance=feature)
+        else:
+            form = FeatureForm()
 
     return render_to_response(
               'features/feature_add.html',
