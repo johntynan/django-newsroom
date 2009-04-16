@@ -2,6 +2,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext, Template, Context
+from django.contrib.auth.decorators import login_required
 
 from multimedia.models import Media
 from stories.forms import StoryForm, PageForm
@@ -9,10 +10,12 @@ from stories.models import Story, Page
 
 #TODO: add authentication check decorators
 
+@login_required
 def story_list(request):
     stories = request.user.story_set.all()
     return render_to_response('stories/story_list.html',locals(),context_instance=RequestContext(request))
 
+@login_required
 def add_story(request):
     """
     Create a new Story for the user

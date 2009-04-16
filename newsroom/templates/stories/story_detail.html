@@ -2,6 +2,15 @@
 
 {% block title %}{{ story.headline }}{% endblock %}
 
+{% block context_menu %}
+<h2>Menu</h2>
+<ul id="story-page-list-menu">
+    <li><a href="{% url stories_add_page story.id %}">Add Page</a></li>
+    <li><a href="">Story Preview</a></li>
+    <li><a href="{% url stories_story_list %}">Story List</a></li>
+</ul>
+{% endblock %}
+
 {% block content %}
 <h1>{{ story.headline}}</h1>
     

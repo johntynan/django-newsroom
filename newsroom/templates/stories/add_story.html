@@ -4,7 +4,6 @@
 {% block title %}Add a Story{% endblock %}
 
 {% block context_menu %}{% endblock %}
-{% block tabs_menu %}{% endblock %}
 
 {% block main_content %}
 <h1>Add a Story</h1>
@@ -17,6 +16,7 @@
 <p>TODO: select lead art</p>
 {% display_field form.status %}
 {% display_field form.authors %}
-<input type="submit" value="Save"/>
+<input type="submit" value="Save"/> 
+<a href="{% url stories_story_list %}">Cancel</a>
 </form>
 {% endblock main_content %}

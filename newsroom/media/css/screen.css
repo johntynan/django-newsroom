@@ -11,40 +11,61 @@ body {
 #menu {
     background-color: #fff;
 }
-div#navbar {  
+#navbar {  
     background-color: #8C3;  
     padding: 10px 0;  
 }  
-div#navbar h2 {
+#navbar h2 {
     display: none;
 }
-div#navbar ul {
+#navbar ul {
     list-style: none;
     display: block;
     margin: 0 10px;
 }
 
-div#navbar ul li {
+#navbar ul li {
     float: left;
     margin: 0 1.5em;
     font: bold 1em Arial;
 }
-div#navbar ul li.login {
+#navbar ul li.login {
     float: right;
     margin: 0 1.5em;
 }
 
-div.spacer {
+.spacer {
     background-color: #8FC73E;
     height: 1em;
 }
 
-div#footer {
+#footer {
     background-color: #fff;
     text-align: center;
 }
 
-div#footer p {
+#footer p {
     margin: 0 1em;
+}
+
+#tabs_menu ul {
+    border-bottom: 1px solid #777;
+    margin:0;
+    padding:0;
+    background-color: #abc;
+}
+#tabs_menu li {
+    display: inline;
+    margin: 0;
+    padding: .5em;
+}
+#tabs_menu li a {
+    text-decoration: none;
+}
+body#stories #tabs_menu li.stories {
+    background-color: #fff;
+}
+body#features #tabs_menu li.features {
+    background-color: #fff;
 }
 

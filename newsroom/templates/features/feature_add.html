@@ -1,9 +1,16 @@
-{% extends 'base.html' %}
+{% extends 'features/base.html' %}
 
 {% block title %}Submit a Feature{% endblock %}
 
-{% block content %}
+{# wipe menu on edit screens #}
+{% block menu %}{% endblock %}
+
+{% block main_content %}
+{% if form.instance %}
+<h1>Edit Feature</h1>
+{% else %}
 <h1>Submit a Feature</h1>
+{% endif %}
 
 {% if form.has_errors %}
 <p class="errors">Please correct the following error{{ form.error_dict|pluralize }}:</p>
@@ -17,6 +24,7 @@ through later and contruct a home page.</p>
 <table>
 {{ form }}
 </table>
-<input type="submit" name="submit" />
+<input type="submit" name="submit" value="Save" />
+<a href="{% url features_feature_list %}">Cancel</a>
 </form>
 {% endblock %}
