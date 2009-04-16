@@ -1,4 +1,5 @@
 from django.shortcuts import render_to_response, get_object_or_404
+from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from features.models import Feature 
@@ -10,7 +11,7 @@ def front(request):
               {},
               context_instance=RequestContext(request))
 
-def feature_add_edit(request, id=None):
+def feature_add(request):
     """
     Process a new feature submission.
     """
@@ -22,15 +23,11 @@ def feature_add_edit(request, id=None):
             feature.submitter = request.user
             feature.save()
             request.user.message_set.create(
-                message='Your feature has been submitted.  Thank you.')
-            return HttpResponseRedirect(request.user.get_profile().get_absolute_url())
+                message='Your feature has been submitted.')
+            return HttpResponseRedirect(reverse('features_feature_list'))
 
     else:
-        if id:
-            feature = get_object_or_404(Feature, pk=id)
-            form = FeatureForm(instance=feature)
-        else:
-            form = FeatureForm()
+        form = FeatureForm()
 
     return render_to_response(
               'features/feature_add.html',
@@ -41,17 +38,18 @@ def feature_edit(request, id):
     """
     Edit an existing feature.
     """
-    feature = Feature.objects.get(pk=id)
+    feature = get_object_or_404(Feature, pk=id)
     
     if request.method == "POST":
         form = FeatureForm(request.POST, instance=feature)
         if form.is_valid():
             form.save()
             request.user.message_set.create(
-                message='Your feature has been edited.  Thank you.')
+                message='Your feature has been edited.')
             return HttpResponseRedirect(reverse('features_feature_list'))
     else:
         form = FeatureForm(instance=feature)        
+
     return render_to_response(
               'features/feature_edit.html',
               {'form':form},
