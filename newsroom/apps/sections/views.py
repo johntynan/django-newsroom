@@ -7,6 +7,7 @@ from sections.models import SectionPath
 from django.template import Context, loader
 from django.core.urlresolvers import reverse
 from sections.forms import SectionForm, SectionPathForm
+from features.models import Feature
 
 def sections_list(request):
     sections_list = Section.objects.all()
@@ -14,14 +15,21 @@ def sections_list(request):
             'sections/sections_list.html',
             {'sections_list': sections_list},              
             context_instance=RequestContext(request))
-    
+ 
 def section_detail(request, id):
     section_detail = Section.objects.get(id=id)
+    section_slug = section_detail.slug
+    sec_paths = SectionPath.objects.filter(section__slug=section_slug)
+    features = Feature.objects.filter(section_path__in=sec_paths).distinct()
+
     return render_to_response(
-            'sections/section_detail.html',
-            {'section': section_detail},              
-            context_instance=RequestContext(request))
-    
+            'sections/section_detail.html',{
+                'section': section_detail,
+                'sec_paths': sec_paths,
+                'features': features
+
+             }, context_instance=RequestContext(request))
+
 def section_add(request):
     """
     Process a new section submission.

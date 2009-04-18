@@ -40,7 +40,7 @@ class Feature(models.Model):
     relevance_ends = models.DateField(
                         "Suggested Relevance Ends",)
     
-    section = models.ManyToManyField(SectionPath)
+    section_path = models.ManyToManyField(SectionPath)
 
     # last_featured is not editable and is managed by the front page
     # view code.
