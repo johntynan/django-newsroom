@@ -5,7 +5,12 @@
 {% block content %}
 
 <h1>{{ section }}</h1>
-<p>{{ section.description }}</[p>
+<p>{{ section.description }}</p>
+
+<h1>Features</h1>
+{% for f in features %}
+    <li><a href="{{f.permalink}}">{{f}}</a></a>
+{% endfor %}
 
 <p><a href="/sections/">Return to Sections List</a> | <a href="edit/">Edit Section</a></p>
 
