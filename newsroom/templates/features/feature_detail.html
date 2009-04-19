@@ -14,8 +14,17 @@
 {% block main_content %}
 <h1>{{feature}}</h1>
 
-<dl>
+{% for photo in feature_photo%}
+    {{ photo.thumbnail.url }}
+{% endfor %}
 
+<ul>
+{% for link in feature_link %}
+    <li><a href="{{ link.url }}">{{ link.title }}</a> {{ link.desc }}</li>
+{% endfor %}
+</ul>
+
+<dl>
 <dt>Permalink</dt>
 <dd><a href="{{ feature.permalink }}">{{ feature.permalink }}</a></dd>
 

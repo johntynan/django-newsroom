@@ -4,6 +4,8 @@ from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from features.models import Feature 
 from features.forms import FeatureForm
+from features.models import FeatureImage
+from features.models import FeatureLink
 
 def front(request):
     return render_to_response(
@@ -71,11 +73,15 @@ def feature_detail(request, id):
     """
     Get feature details.
     """
-
     feature = Feature.objects.get(pk=id)
+    feature_link = FeatureLink.objects.filter(feature=id)
+    feature_image = FeatureImage.objects.filter(feature=id)
 
     return render_to_response(
-              'features/feature_detail.html',
-              {'feature':feature},
+              'features/feature_detail.html',{
+              'feature_image': feature_image,
+              'feature_link': feature_link,
+              'feature': feature
+             },
               context_instance=RequestContext(request))
 
