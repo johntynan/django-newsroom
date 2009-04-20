@@ -2,7 +2,7 @@
 #labels Phase-Implementation
 
 = Introduction =
-.
+
 Affiliates have projects.  Stories are related to projects. 
 
 Should we handle maintaining a project page in the same way that the feature manager 
