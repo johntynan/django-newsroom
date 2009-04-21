@@ -36,12 +36,11 @@ class Project(models.Model):
                 help_text='The title of the project. i.e. "The American Dream"')
     slug = models.SlugField(unique=True)
     summary = models.TextField(
-                help_text='Provide a summary that can be used to describe the pr
-oject.')
+                help_text='Provide a summary that can be used to describe the project.')
 
     activity_begins = models.DateField(
-                        help_text="When does production begin for this project?"
-)
+                        help_text="When does production begin for this project?")
+
     activity_ends = models.DateField(
                         help_text="When is all production forcasted to end for this project?")
 
