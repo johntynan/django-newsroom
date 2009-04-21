@@ -3,9 +3,16 @@
 
 = Introduction =
 
-Much of this discussion begins with the questions:
+Much of this discussion begins with the question:
 
-1) Where will a project home page live and how is it rendered.  
+  # Where will a project home page live and how is it rendered.  
+
+An affiliate may have one or more project landing pages or mini-sites.  
+
+The project will have a permalink under either: 
+
+  * http://news21.com/projects/a_project_slug
+  * http://asu.news21.com/projects/a_project_slug
 
 = Schema =
 
