@@ -13,7 +13,7 @@ The word permalink is used to denote a URL that should never change and is a uni
 The project will have a permalink under either: 
 
   * http://news21.com/projects/a_project_slug
-  * http://something.example.com/projects/a_project_slug
+  * http://foo.example.com/projects/a_project_slug
 
 If the latter is used then the project resides under a different domain so the site field is required to render the full URL or permalink.
 
