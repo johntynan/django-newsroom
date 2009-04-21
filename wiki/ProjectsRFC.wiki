@@ -10,16 +10,16 @@ Much of this discussion begins with the questions:
 = Schema =
 
 Project have one or more affiliates and a site.  Stories have one or more projects.
-
+{{{
 story (n) ---- (n) project (1) ----- (n) site
                                    (n)
                                     |
                                     |
                                    (n)
                                affiliate
-
+}}}
 = Model =
-
+{{{
 class Project(models.Model):
     """
     A project is always related to an affiliate and relates to a page
@@ -50,4 +50,4 @@ oject.')
                         help_text="How should comments be treated for stories related to this project?",
                         choices = COMMENT_STATUS_CHOICES,
                         default = COMMENT_STATUS_OPEN,)
-
+}}}
