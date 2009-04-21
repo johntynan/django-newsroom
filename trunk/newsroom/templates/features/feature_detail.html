@@ -14,16 +14,28 @@
 {% block main_content %}
 <h1>{{feature}}</h1>
 
-{% for photo in feature_photo%}
-    {{ photo.thumbnail.url }}
+<p>
+<a href="{{ feature.permalink }}">{{ feature }}</a>
+</p>
+<p>
+    <div style="float:left;">
+{% for i in feature_image%}
+    <img src="{{ i.photo.thumbnail.url }}">
 {% endfor %}
+    </div>
+{{feature.description}}
+<br clear="all">
+</p>
 
+<h2>Related Links</h2>
 <ul>
 {% for link in feature_link %}
     <li><a href="{{ link.url }}">{{ link.title }}</a> {{ link.desc }}</li>
 {% endfor %}
 </ul>
 
+
+<h2>Additional Information</h2>
 <dl>
 <dt>Permalink</dt>
 <dd><a href="{{ feature.permalink }}">{{ feature.permalink }}</a></dd>

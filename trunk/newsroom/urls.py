@@ -48,7 +48,7 @@ urlpatterns = patterns('',
     
     (r'', include('photologue.urls')),
     
-    (r'^blog/', include('basic.blog.urls')),
+    (r'^features/', include('features.urls')),
 
     (r'^comments/', include('django.contrib.comments.urls')), 
     
