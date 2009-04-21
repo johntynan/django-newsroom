@@ -6,12 +6,14 @@ from django.template import Template, Context
 from multimedia.models import Media
 from multimedia.nodes import MediaNode
 from stories.constants import STORY_STATUS_CHOICES, STORY_STATUS_DRAFT
+from core.models import Project
 
 class Story(models.Model):
     """
     A Story is composed of one or more Pages
     """
     authors = models.ManyToManyField(User)
+    projects = models.ManyToManyField(Project)
     headline = models.CharField(max_length=256)
     slug = models.SlugField(unique=True)
     lead_art = models.ForeignKey(Media,null=True,blank=True,related_name="lead_art")
