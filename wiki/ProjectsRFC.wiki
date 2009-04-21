@@ -1,4 +1,4 @@
-#summary Defining how projects fit into django-newsroom
+#summary How projects fit into django-newsroom
 #labels Phase-Implementation
 
 = Introduction =
@@ -7,12 +7,16 @@ Much of this discussion begins with the question:
 
   # Where will a project home page live and how is it rendered.  
 
-An affiliate may have one or more project landing pages or mini-sites.  
+An affiliate domain may have one or more project landing pages or mini-sites with unique URLs or permalinks. 
+The word permalink is used to denote a URL that should never change and is a unique identifier for that resource.
 
 The project will have a permalink under either: 
 
   * http://news21.com/projects/a_project_slug
   * http://asu.news21.com/projects/a_project_slug
+
+If the latter is used then the related site will be used to render the project permalink.  Since the project resides under a different domain the site field is required to render the full URL or permalink.
+
 
 = Schema =
 
