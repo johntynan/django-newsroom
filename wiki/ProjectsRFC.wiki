@@ -12,11 +12,11 @@ Much of this discussion begins with the questions:
 Project have one or more affiliates and a site.  Stories have one or more projects.
 {{{
 story (n) ---- (n) project (1) ----- (n) site
-                                   (n)
-                                    |
-                                    |
-                                   (n)
-                               affiliate
+                          (n)
+                           |
+                           |  
+                         (n)
+                     affiliate
 }}}
 = Model =
 {{{
