@@ -60,4 +60,16 @@ class Project(models.Model):
                         help_text="How should comments be treated for stories related to this project?",
                         choices = COMMENT_STATUS_CHOICES,
                         default = COMMENT_STATUS_OPEN,)
+
+
+class Page(models.Model):
+    """
+    A project landing page, similar to story pages but there are not 
+    multiple pages.
+    """
+    project = models.ForeignKey(Project,unique=True)
+    content = models.TextField(
+                help_text='The landing page for the project.',)
+
+
 }}}
