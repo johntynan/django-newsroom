@@ -16,7 +16,7 @@ story (n) ---- (n) project (1) ----- (n) site
                       |
                       |  
                      (n)
-                     affiliate
+                  affiliate
 }}}
 = Model =
 {{{
