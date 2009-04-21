@@ -15,7 +15,7 @@ The project will have a permalink under either:
   * http://news21.com/projects/a_project_slug
   * http://asu.news21.com/projects/a_project_slug
 
-If the latter is used then the related site will be used to render the project permalink.  Since the project resides under a different domain the site field is required to render the full URL or permalink.
+If the latter is used then the project resides under a different domain so the site field is required to render the full URL or permalink.
 
 
 = Schema =
