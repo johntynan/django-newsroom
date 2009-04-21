@@ -50,6 +50,7 @@
             <li><a href="{% url videos_index %}" title="Videos">Videos</a></li>
             <li><a href="{% url sections_section_list %}" title="Sections">Sections</a></li>
             <li><a href="{% url stories_story_list %}" title="Stories">Stories</a></li>
+            <li><a href="{% url features_feature_list %}" title="Features">Features</a></li>
             {% if user.is_authenticated %}
             <li class="login">Logged in as <a href="{% url profiles_profile_detail user.username %}">{{ user }}</a></li>
             {% else %}

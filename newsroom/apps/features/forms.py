@@ -24,7 +24,7 @@ class FeatureForm(forms.ModelForm):
     
     class Meta:
         model = Feature
-        fields = ('headline','permalink','project','authors','other_credits', 'section_path', 'relevance_begins', 'relevance_ends')
+        fields = ('headline','permalink','description','project','authors','other_credits', 'section_path', 'relevance_begins', 'relevance_ends')
 
 class LinkForm(forms.ModelForm):
     

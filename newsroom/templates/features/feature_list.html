@@ -7,7 +7,8 @@
 
 <ul>
 {% for feature in features %}
-<li><a href="{% url features_feature_detail feature.id %}">{{ feature }}</a>- <a href="{{feature.id}}/edit/">edit</a></li>
+<li><a href="{{feature.permalink}}">{{feature}}</a> {{feature.description}}<br>
+<a href="{% url features_feature_detail feature.id %}">detail</a> - <a href="{{feature.id}}/edit/">edit</a></li>
 {% endfor %}
 </ul>
 

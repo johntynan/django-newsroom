@@ -74,14 +74,15 @@ def feature_detail(request, id):
     Get feature details.
     """
     feature = Feature.objects.get(pk=id)
+    # do not use this: feature_link = feature.featurelink_set.all() - a pain for introspection.
     feature_link = FeatureLink.objects.filter(feature=id)
     feature_image = FeatureImage.objects.filter(feature=id)
 
     return render_to_response(
               'features/feature_detail.html',{
-              'feature_image': feature_image,
+              'feature': feature,
               'feature_link': feature_link,
-              'feature': feature
+              'feature_image': feature_image
              },
               context_instance=RequestContext(request))
 
