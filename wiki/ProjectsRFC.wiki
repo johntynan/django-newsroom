@@ -8,7 +8,7 @@ Much of this discussion begins with the question:
   # Where will a project home page live and how is it rendered.  
 
 An affiliate domain may have one or more project landing pages or mini-sites with unique URLs or permalinks. 
-The word permalink is used to denote a URL that should never change and is a unique identifier for that resource.
+The word permalink is used to denote a URL that should never change and is a unique identifier for that project.  This leads to less confusion for others linking to the site and maximizes search engine ranking.
 
 The project will have a permalink under either: 
 
