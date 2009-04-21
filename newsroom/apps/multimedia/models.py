@@ -1,7 +1,6 @@
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
-from django.contrib.sites.models import Site
 from django.db import models
 from django.db.models.base import ModelBase
 from django.db.models.signals import post_save
@@ -71,7 +70,6 @@ class Media(ParentModel):
     """
     __metaclass__ = MediaBase
     
-    site = models.ForeignKey(Site)
     authors = models.ManyToManyField(User)
     title = models.CharField(max_length=128,blank=True)
     summary = models.TextField(blank=True)

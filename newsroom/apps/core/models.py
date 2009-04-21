@@ -3,9 +3,12 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.contrib.localflavor.us.models import USStateField
 from django.template import Template, Context
+from django.contrib.sites.models import Site
+
 from countries.models import Country
 from aggregator.models import Feed
 from multimedia.models import Media
+from core.constants import COMMENT_STATUS_CHOICES, COMMENT_STATUS_OPEN
 
 class Affiliate(models.Model):
     name = models.CharField(max_length=50)
@@ -35,6 +38,7 @@ class Project(models.Model):
     """
 
     affiliate = models.ManyToManyField(Affiliate)
+    site = models.ForeignKey(Site)
     url = models.URLField(
             blank=True,
             verify_exists=False,
@@ -50,6 +54,12 @@ class Project(models.Model):
                         help_text="When does production begin for this project?")
     activity_ends = models.DateField(
                         help_text="When is all production forcasted to end for this project?")
+
+    comment_status = models.CharField(
+                        max_length=1,
+                        help_text="How should comments be treated for stories related to this project?",
+                        choices = COMMENT_STATUS_CHOICES,
+                        default = COMMENT_STATUS_OPEN,)
 
     def __unicode__(self):
         return self.title
