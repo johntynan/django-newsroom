@@ -85,7 +85,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'core',
     'aggregator',
-    'features',
+    'promos',
     'stories',
     'countries',
     'profiles',
@@ -98,9 +98,9 @@ INSTALLED_APPS = (
     'sections',
     'utils',
     # 'basic.blog',
-    'basic.inlines',
-    'django.contrib.comments',
-    'django.contrib.markup',
+    # 'basic.inlines',
+    # 'django.contrib.comments',
+    # 'django.contrib.markup',
 )
 
 

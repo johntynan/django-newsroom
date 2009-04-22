@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
-{% block title %}Features List{% endblock %}
+{% block title %}Promos List{% endblock %}
 
-{% block body_id %}features{% endblock %}
+{% block body_id %}promos{% endblock %}
 
 {% block content %}
 <div id="tabs_menu">
@@ -10,7 +10,7 @@
     {% block tabs_menu %}
      <li class="dashboard"><a href="/dashboard/">Dashboard</a></li>
      <li class="stories"><a href="{% url stories_story_list %}">Stories</a></li>
-     <li class="features"><a href="{% url features_feature_list %}">Features</a></li>
+     <li class="promos"><a href="{% url promos_promo_list %}">Promos</a></li>
     {% endblock %}
     </ul>
 </div>

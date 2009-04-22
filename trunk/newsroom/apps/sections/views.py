@@ -7,7 +7,7 @@ from sections.models import SectionPath
 from django.template import Context, loader
 from django.core.urlresolvers import reverse
 from sections.forms import SectionForm, SectionPathForm
-from features.models import Feature
+from promos.models import Promo
 
 def sections_list(request):
     sections_list = Section.objects.all()
@@ -20,13 +20,13 @@ def section_detail(request, id):
     section_detail = Section.objects.get(id=id)
     section_slug = section_detail.slug
     sec_paths = SectionPath.objects.filter(section__slug=section_slug)
-    features = Feature.objects.filter(section_path__in=sec_paths).distinct()
+    promos = promo.objects.filter(section_path__in=sec_paths).distinct()
 
     return render_to_response(
             'sections/section_detail.html',{
                 'section': section_detail,
                 'sec_paths': sec_paths,
-                'features': features
+                'promos': promos
 
              }, context_instance=RequestContext(request))
 

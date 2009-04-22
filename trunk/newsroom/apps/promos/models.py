@@ -7,13 +7,13 @@ from photologue.models import Photo
 from bookmarks.models import BookmarkInstance
 from sections.models import SectionPath
 
-class Feature(models.Model):
+class Promo(models.Model):
     """
-    A feature is use to define what will appear on the front page of the site
+    A promo is use to define what will appear on the front page of the site
     for some period of time.
 
     When affiliates want a story or project syndicated through this site
-    they submit a feature.  This is where some data gets saved for the 
+    they submit a promo.  This is where some data gets saved for the 
     editor to sift through later and contruct a home page.
     """
 
@@ -21,17 +21,17 @@ class Feature(models.Model):
     permalink = models.URLField(
                     unique=True,
                     verify_exists=False,
-                    help_text="This should be the published link for the story or project you want featured on news21.com. <br />e.g. http://features.csmonitor.com/globalnews/2009/03/30/ahead-of-north-koreas-planned-rocket-launch-us-dispatches-destroyers/")
+                    help_text="This should be the published link for the story or project you want promod on news21.com. <br />e.g. http://promos.csmonitor.com/globalnews/2009/03/30/ahead-of-north-koreas-planned-rocket-launch-us-dispatches-destroyers/")
     description = models.TextField(
                       blank=True,
-                      help_text="A short paragraph to describe the feature.",)
+                      help_text="A short paragraph to describe the promo.",)
     project = models.ManyToManyField(Project)
     submitter = models.ForeignKey(
                     User,
-                    related_name='features_submitted',)
+                    related_name='promos_submitted',)
     authors = models.ManyToManyField(
                 User,
-                related_name='features_authored',
+                related_name='promos_authored',
                 help_text="The authors of the published work.")
     other_credits = models.TextField(
                       blank=True,
@@ -45,9 +45,9 @@ class Feature(models.Model):
     
     section_path = models.ManyToManyField(SectionPath)
 
-    # last_featured is not editable and is managed by the front page
+    # last_promod is not editable and is managed by the front page
     # view code.
-    last_featured = models.DateTimeField(
+    last_promod = models.DateTimeField(
                         editable=False,
                         blank=True,
                         null=True)
@@ -59,30 +59,30 @@ class Feature(models.Model):
        return self.headline
 
     def get_absolute_url(self):
-        return ('features_feature_detail', 
+        return ('promos_promo_detail', 
                 (), 
                 { 'id': self.id })
     get_absolute_url = models.permalink(get_absolute_url)
 
 
-class FeatureLink(models.Model):
+class PromoLink(models.Model):
     """
-    Links related to feature submissions.
+    Links related to promo submissions.
     """
     title = models.CharField(max_length=200)
     url = models.URLField(verify_exists=False)
     desc = models.TextField('description',blank=True)
-    feature = models.ForeignKey(
-                Feature,
+    promo = models.ForeignKey(
+                Promo,
                 help_text='Related links might be a blog post or other information related to how the piece was built, "behind the scenes", or just links related to the same topic.')
 
     def __unicode__(self):
         return self.title
 
-class FeatureImage(models.Model):
+class PromoImage(models.Model):
     photo = models.ForeignKey(Photo)
-    feature = models.ForeignKey(
-                Feature,
+    promo = models.ForeignKey(
+                Promo,
                 help_text="Photos to help with featuring the piece.  The photos ideally are 16:9 or 4:3 aspect ratio and 1000px wide.  Scaling and thumbnails are handled automatically.",)
 
 

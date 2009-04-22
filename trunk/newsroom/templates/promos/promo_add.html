@@ -1,15 +1,15 @@
-{% extends 'features/base.html' %}
+{% extends 'promos/base.html' %}
 
-{% block title %}Submit a Feature{% endblock %}
+{% block title %}Submit a Promo{% endblock %}
 
 {# wipe menu on edit screens #}
 {% block menu %}{% endblock %}
 
 {% block main_content %}
 {% if form.instance %}
-<h1>Edit Feature</h1>
+<h1>Edit Promo</h1>
 {% else %}
-<h1>Submit a Feature</h1>
+<h1>Submit a Promo</h1>
 {% endif %}
 
 {% if form.has_errors %}
@@ -25,6 +25,6 @@ through later and contruct a home page.</p>
 {{ form }}
 </table>
 <input type="submit" name="submit" value="Save" />
-<a href="{% url features_feature_list %}">Cancel</a>
+<a href="{% url promos_promo_list %}">Cancel</a>
 </form>
 {% endblock %}
