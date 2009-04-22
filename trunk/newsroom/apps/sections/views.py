@@ -20,7 +20,7 @@ def section_detail(request, id):
     section_detail = Section.objects.get(id=id)
     section_slug = section_detail.slug
     sec_paths = SectionPath.objects.filter(section__slug=section_slug)
-    promos = promo.objects.filter(section_path__in=sec_paths).distinct()
+    promos = Promo.objects.filter(section_path__in=sec_paths).distinct()
 
     return render_to_response(
             'sections/section_detail.html',{
