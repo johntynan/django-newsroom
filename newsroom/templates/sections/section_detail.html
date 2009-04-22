@@ -11,11 +11,11 @@
 
 <h1>Features</h1>
 <p>
-{% for f in features %}
-    <li><a href="{{f.permalink}}">{{f}}</a> {{f.description}} </li>
+{% for p in promos %}
+    <li><a href="{{p.permalink}}">{{p}}</a> {{p.description}} </li>
 {% endfor %}
-{% for l in feature_link %}
-    <li><a href="{{f.id}}">{{f}}</a> 
+{% for l in promo_link %}
+    <li><a href="{{l.id}}">{{l}}</a> 
 {% endfor %}
 </p>
 
