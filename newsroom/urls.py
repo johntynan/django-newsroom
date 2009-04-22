@@ -16,8 +16,8 @@ urlpatterns = patterns('',
     #(r'^admin/', include(admin.site.urls)),
     (r'^admin/(.*)', admin.site.root),
     (r'^people/', include('my_profiles.urls')),
-    url(r'^$', 'features.views.front', name="features_front"),
-    (r'^features/', include('features.urls')),
+    url(r'^$', 'promos.views.front', name="promos_front"),
+    (r'^promos/', include('promos.urls')),
 
     url(r'^accounts/register/$',
         'my_profiles.views.register',
@@ -48,7 +48,7 @@ urlpatterns = patterns('',
     
     (r'', include('photologue.urls')),
     
-    (r'^features/', include('features.urls')),
+    (r'^promos/', include('promos.urls')),
 
     (r'^comments/', include('django.contrib.comments.urls')), 
     

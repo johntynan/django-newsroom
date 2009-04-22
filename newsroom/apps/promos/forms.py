@@ -1,12 +1,12 @@
 from django import forms
 from django.forms import widgets
-from features.models import *
+from promos.models import *
 from core.models import *
 from photologue.models import Photo
 
-class FeatureForm(forms.ModelForm):
+class PromoForm(forms.ModelForm):
     """
-    Create our own form based on the Feature model.  
+    Create our own form based on the Promo model.  
 
     We also want to populate the affiliate field with people based on the
     current user making the request.  
@@ -14,7 +14,7 @@ class FeatureForm(forms.ModelForm):
     
     #def __init__(self, user=None, *args, **kwargs):
     #    #queryset=Person.objects.filter()
-    #    super(FeatureForm, self).__init__(*args, **kwargs)
+    #    super(PromoForm, self).__init__(*args, **kwargs)
         #person = user.person_set.get()
         #self.fields['authors'].queryset = \
         #    Person.objects.filter(affiate=person.affiliate)
@@ -23,13 +23,13 @@ class FeatureForm(forms.ModelForm):
 
     
     class Meta:
-        model = Feature
+        model = Promo
         fields = ('headline','permalink','description','project','authors','other_credits', 'section_path', 'relevance_begins', 'relevance_ends')
 
 class LinkForm(forms.ModelForm):
     
     class Meta:
-        model = FeatureLink
+        model = PromoLink
 
 class ImageForm(forms.ModelForm):
 

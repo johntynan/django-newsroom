@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}Edit Feature{% endblock %}
+{% block title %}Edit Promo{% endblock %}
 
 {% block content %}
-<h1>Edit Feature</h1>
+<h1>Edit Promo</h1>
 
 <form action="." method="post" enctype="multipart/form-data">
     <fieldset>
@@ -11,7 +11,7 @@
     {{ form }}
     </table>
     <input id="id_submit" type="submit" value="Submit" />
-    <a href="{% url features_feature_list %}">Cancel</a>
+    <a href="{% url promos_promo_list %}">Cancel</a>
     </fieldset>
 </form>
 {% endblock content %}
@@ -19,6 +19,6 @@
 {% block app_menu %}
 <h2>Sections</h2>
 <ul>
-  <li><a href="/features/">Features</a></li>
+  <li><a href="/promos/">Promos</a></li>
 </ul>
 {% endblock %}
