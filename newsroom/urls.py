@@ -19,6 +19,8 @@ urlpatterns = patterns('',
     url(r'^$', 'promos.views.front', name="promos_front"),
     (r'^promos/', include('promos.urls')),
 
+    (r'^affiliates/', include('core.urls')),
+
     url(r'^accounts/register/$',
         'my_profiles.views.register',
         name='my_profiles_register'),
@@ -37,7 +39,7 @@ urlpatterns = patterns('',
     ( r'^users/(?P<user>\w+)/$', 
       'django.views.generic.simple.redirect_to', 
       {'url':'/people/%(user)s/'} ),
-    
+   
     (r'^stories/',include('stories.urls')),
 
     (r'^sections/',include('sections.urls')),
