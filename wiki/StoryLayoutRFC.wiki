@@ -4,9 +4,9 @@
 
 Stories are composed of pages and these pages will contain layout information to define how the page is rendered.  At the time of this writing this layout feature only relates to the stories module.
 
-= Backend Templates =
+= Templates =
 
-For example, on the backend we start by defining the following templates for a page:
+For example, on the backend we start with a set of pre-defined templates for a page:
 
 {{{
 stories/page_base_1col.html
@@ -16,11 +16,13 @@ stories/page_base_3col_bigleadart.html
 stories/page_base_3col_noart.html
 }}}
 
-Each of these template will have the required html and css associated with them to create a layout structure for a specific page.  
+Each template will have the required html and css associated with them to create a layout structure for a specific page.
 
-= Column Breaks =
+New templates can be installed and should use the available template context and be valid html.  A page in a story might require a special template, for example, and the system should be flexible enough to accommodate that.
 
-The interface to define what layout you would like to use is defined by using column break tags.  So within your page if you want a new column you define a column break, like:
+= Columns =
+
+Column breaks are a bit of text that you insert in your content to define where new columns should be started.  The interface to define what layout you would like to use is defined by using column break tags.  So within your page if you want a new column you define a column break, like:
 
 {{{
 <!-- column break -->
