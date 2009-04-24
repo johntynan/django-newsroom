@@ -24,7 +24,7 @@ class PromoForm(forms.ModelForm):
     
     class Meta:
         model = Promo
-        fields = ('headline','permalink','description','project','authors','other_credits', 'section_path', 'relevance_begins', 'relevance_ends')
+        fields = ('headline','permalink','description','project','authors','other_credits', 'topic_path', 'relevance_begins', 'relevance_ends')
 
 class LinkForm(forms.ModelForm):
     

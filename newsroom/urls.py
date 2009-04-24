@@ -42,7 +42,7 @@ urlpatterns = patterns('',
    
     (r'^stories/',include('stories.urls')),
 
-    (r'^sections/',include('sections.urls')),
+    (r'^topics/',include('topics.urls')),
 
     (r'^videos/',include('videos.urls')),
 

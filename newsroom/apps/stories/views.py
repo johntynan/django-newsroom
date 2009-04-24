@@ -36,6 +36,7 @@ def add_story(request):
                 context_instance=RequestContext(request))
     
 
+@login_required
 def add_page(request,story_id):
     """
     Add a Page to a Story
@@ -45,6 +46,7 @@ def add_page(request,story_id):
     #return render_to_response('stories/story_page_list',locals(),context_instance=RequestContext(request))
     return HttpResponseRedirect(reverse('stories_edit_page',args=[page.id]))
 
+@login_required
 def edit_story(request,story_id):
     story = get_object_or_404(Story,pk=story_id)
     form = StoryForm(instance=story)
@@ -52,16 +54,19 @@ def edit_story(request,story_id):
                 'stories/edit_story.html',
                 locals(),
                 context_instance=RequestContext(request))
-    
+
+@login_required    
 def story_pages(request,story_id):
     story = get_object_or_404(Story,pk=story_id)
     return render_to_response('stories/story_page_list.html',locals(),context_instance=RequestContext(request))
-    
+
+@login_required    
 def story_media(request,story_id):
     story = get_object_or_404(Story,pk=story_id)
     system_media_types = Media.media_types
     return render_to_response('stories/story_media_list.html',locals(),context_instance=RequestContext(request))
 
+@login_required
 def story(request,slug):
     story = get_object_or_404(Story,slug=slug)
     pagenum = request.GET.get('p',1)
@@ -78,6 +83,7 @@ def story(request,slug):
                               locals(),
                               context_instance=RequestContext(request))
 
+@login_required
 def edit_page(request,page_id):
     page = get_object_or_404(Page,pk=page_id)
     story = page.story
@@ -92,13 +98,15 @@ def edit_page(request,page_id):
     return render_to_response('stories/edit_page.html',
                               locals(),
                               context_instance=RequestContext(request))
-    
+
+@login_required
 def story_add_media(request,story_id):
     story = get_object_or_404(Story,pk=story_id)
     media = get_object_or_404(Media,pk=request.POST.get('media_id'))
     story.media.add(media)
     return render_to_response('stories/widgets/story_media_summary.html',locals())
     
+@login_required
 def story_select_media(request,story_id,media_type):
     story = get_object_or_404(Story,pk=story_id)
     MediaType = Media.class_factory(media_type)
