@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'topics/base.html' %}
 
 {% block title %}Sections{% endblock %}
 
@@ -6,22 +6,14 @@
 
 {% block content %}
 
-<h1>Sections</h1>
+<h1>Topics</h1>
 
 <ul>
-{% for o in sections_list %}
+{% for o in topics_list %}
 <li><a href="{{o.id}}">{{o}}</a> - <a href="{{o.id}}/edit/">edit</a></li>
 {% endfor %}
 </ul>
 
 {% endblock %}
 
-{% block app_menu %}
-<h2>Sections</h2>
-<ul>
-  <li><a href="/sections/">Section</a></li>
-  <li><a href="/sections/add/">Add Section</a></li>
-  <li><a href="/sections/path/">View Section Paths</a></li>
-  <li><a href="/sections/path/add/">Add Section Path</a></li>
-</ul>
-{% endblock %}
+

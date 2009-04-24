@@ -1,20 +1,23 @@
-from django.shortcuts import render_to_response, get_object_or_404
-from django.template import RequestContext
+from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
-from topics.models import Topic,TopicPath
-from django.template import Context, loader
-from django.core.urlresolvers import reverse
-from topics.forms import TopicForm, TopicPathForm
-from promos.models import Promo
+from django.shortcuts import render_to_response, get_object_or_404
+from django.template import RequestContext,Context, loader
 
+from promos.models import Promo
+from topics.forms import TopicForm, TopicPathForm
+from topics.models import Topic,TopicPath
+
+@login_required
 def topics_list(request):
     topics_list = Topic.objects.all()
     return render_to_response(
             'topics/topics_list.html',
             {'topics_list': topics_list},              
             context_instance=RequestContext(request))
- 
+
+@login_required
 def topic_detail(request, id):
     topic_detail = Topic.objects.get(id=id)
     topic_slug = topic_detail.slug
@@ -29,6 +32,7 @@ def topic_detail(request, id):
 
              }, context_instance=RequestContext(request))
 
+@login_required
 def topics_add(request):
     """
     Process a new topic submission.
@@ -51,6 +55,7 @@ def topics_add(request):
               {'form':form},
               context_instance=RequestContext(request))
 
+@login_required
 def topic_edit(request, id):
     """
     Edit an existing topic.
@@ -72,6 +77,7 @@ def topic_edit(request, id):
               {'form':form},
               context_instance=RequestContext(request))
 
+@login_required
 def topic_path_list(request):
     topic_path_list = TopicPath.objects.all()
     return render_to_response(
@@ -79,6 +85,7 @@ def topic_path_list(request):
             {'topic_path_list': topic_path_list},              
             context_instance=RequestContext(request))
 
+@login_required
 def topic_path_add(request):
     """
     Process a new topic path.
@@ -100,6 +107,7 @@ def topic_path_add(request):
               {'form':form},
               context_instance=RequestContext(request))
 
+@login_required
 def topic_path_edit(request, id):
     """
     Edit an existing topic path.
@@ -120,3 +128,10 @@ def topic_path_edit(request, id):
               {'form':form},
               context_instance=RequestContext(request))
 
+@login_required
+def topic_path_detail(request,id):
+    """
+    TopicPath details
+    """
+    topic_path = get_object_or_404(TopicPath,pk=id)
+    return render_to_response('topics/topic_path_detail.html',locals(),context_instance=RequestContext(request))
