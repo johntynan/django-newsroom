@@ -24,7 +24,7 @@ class Story(models.Model):
     lead_art = models.ForeignKey(Media,null=True,blank=True,related_name="lead_art")
     media = models.ManyToManyField(Media)
     summary = models.TextField(blank=True)
-    location = models.CharField(max_length=256)
+    location = models.CharField(max_length=256,blank=True)
     status = models.CharField(max_length=1,choices=STORY_STATUS_CHOICES,default=STORY_STATUS_DRAFT)
     created = models.DateTimeField(default=datetime.datetime.now)
     modified = models.DateTimeField(auto_now=True)
