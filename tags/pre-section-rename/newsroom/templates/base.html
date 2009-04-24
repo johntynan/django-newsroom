@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title>{% block title %}{% endblock %} | News21</title>  
+
+    <!-- 960.gs -->
+    <link rel="stylesheet" type="text/css" media="all" href="/media/css/reset.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="/media/css/960.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="/media/css/text.css" />
+
+    <!-- Local stylesheets -->
+    <link rel="stylesheet" type="text/css" media="all" href="/media/css/screen.css" />
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="/media/js/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+       {% block jquery %} 
+          // This is more like it!
+       {% endblock %}
+      });
+    </script>
+
+    {% block extrahead %}{% endblock %}
+</head>
+
+<body id="{% block body_id %}base{% endblock %}">
+
+<div class="container_12" id="container">
+
+
+        <!--Header Div -->
+        <div class="grid_12">
+            <h1>Site Header</h1>
+        </div>
+        <div class="clear">&nbsp;</div>
+        <!-- END HeaderDiv -->
+
+        {% block navbar %}
+        <div class="grid_12" id="navbar">
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="/" title="Front Page">Home</a></li>
+            <li><a href="{% url profiles_profile_list %}" title="People">People</a></li>
+            <li><a href="{% url pl-photo-archive %}" title="Photos">Photos</a></li>
+            <li><a href="{% url pl-gallery-archive %}" title="Galleries">Galleries</a></li>
+            <li><a href="{% url videos_index %}" title="Videos">Videos</a></li>
+            <li><a href="{% url sections_section_list %}" title="Sections">Sections</a></li>
+            <li><a href="{% url stories_story_list %}" title="Stories">Stories</a></li>
+            <li><a href="{% url promos_promo_list %}" title="Promos">Promos</a></li>
+            {% if user.is_authenticated %}
+            <li class="login">Logged in as <a href="{% url profiles_profile_detail user.username %}">{{ user }}</a></li>
+            {% else %}
+            <li class="login"><a href="{% url auth_login %}" title="Login">Login</a></li>
+            {% endif %}
+        </ul>
+        </div>
+        <div class="clear"></div>
+        {% endblock %}
+
+    <div id="content" class="{% block content_class %}grid_9{% endblock %}">
+    
+        {% block messages %}
+        {% if messages %}
+        <ul id="messages">
+            {% for msg in messages %}
+            <li>
+            {{ msg }}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endblock %}
+
+        {% block content %}        
+        <h2>Content</h2>
+
+        <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+
+           
+        <ol>
+            <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+            <li>Aliquam tincidunt mauris eu risus.</li>
+        </ol>
+
+        <blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p></blockquote>
+
+        <h3>Header Level 3</h3>
+
+        <ul>
+            <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+            <li>Aliquam tincidunt mauris eu risus.</li>
+        </ul>
+        {% endblock %}
+    </div>
+
+    <div class="{% block menu_class %}grid_3{% endblock %}" id="menu">
+
+        {% block app_menu %}{% endblock %}
+
+        {% block menu %}
+
+        {% if user.is_authenticated %}
+        {% block context_menu %}
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="{% url stories_add_story %}" title="Add Story">Add Story</a></li>
+            <li><a href="{% url promos_promo_add %}" title="Submit Feature">Submit Promo</a></li>
+            <li><a href="{% url profiles_edit_profile %}" title="Edit Profile">Edit Profile</a></li>
+            <li><a href="{% url auth_logout %}">Logout</a></li>
+        </ul>
+        {% endblock context_menu %}
+            {% if user.is_staff %}
+            <h2>Admin</h2>
+            <ul>
+                <li><a href="/admin">Site Administration</a></li>
+            </ul>
+             {% endif %}
+        {% endif %}
+
+        {% endblock %}
+    </div>
+    <div class="clear">&nbsp;</div>
+
+
+    <!--Spacer-->
+    <div class="grid_12 spacer">
+    </div>
+    <div class="clear">&nbsp;</div>
+    <!--End Spacer-->
+
+    <div class="grid_12" id="footer">
+
+        <div class="grid_4 alpha">
+            <p>Footer part 1</p>
+        </div>
+
+        <div class="grid_4">
+            <p>Footer part 2</p>
+        </div>
+
+        <div class="grid_4 omega">
+            <p>Footer part 3</p>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

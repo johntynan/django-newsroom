@@ -1,0 +1,14 @@
+<div>
+<p>Recently added {{media_type}}s</p>
+<p><a href="" >Add new {{media_type}}</a></p>
+
+{% if object_list %}
+<ul>
+    {% for object in object_list %}
+    <li>{{object.title}}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+</div>
+
+

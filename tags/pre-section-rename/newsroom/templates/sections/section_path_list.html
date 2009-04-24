@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Section Paths{% endblock %}
+
+{% block body_id %}sectionpaths{% endblock %}
+
+{% block content %}
+
+<h1>Section Paths</h1>
+
+<p><a href="/sections/path/add/">Add New Section Path</a></p>
+
+<ul>
+{% for o in section_path_list %}
+<li><a href="{{o.id}}">{{o}}</a> - <a href="{{o.id}}/edit/">edit</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}
+
+{% block app_menu %}
+<h2>Sections</h2>
+<ul>
+  <li><a href="/sections/">Section</a></li>
+  <li><a href="/sections/add/">Add Section</a></li>
+  <li><a href="/sections/path/">View Section Paths</a></li>
+  <li><a href="/sections/path/add/">Add Section Path</a></li>
+</ul>
+{% endblock %}

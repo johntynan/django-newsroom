@@ -1,0 +1,10 @@
+{% if field.errors %}
+<p class="error">{{ field.errors|join:"<br />" }}</p>
+{% endif %}
+<label for="{{ field.auto_id }}">
+    {{ field.label }}
+    {% if field.field.required %}<br />
+<span class="required">required</span>
+    {% endif %}
+</label> 
+{{ field }} <br />

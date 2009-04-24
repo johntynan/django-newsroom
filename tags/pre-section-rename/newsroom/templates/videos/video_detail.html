@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{object.title}} | {% trans "Videos" %} {% endblock %}
+
+{% block body_id %}videos{% endblock %}
+
+{% block extrahead %}
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" 
+      href="http://{{ site.domain }}/rss/videos/" />
+<link rel="alternate" type="application/atom+xml" title="Atom 1.0" 
+      href="http://{{ site.domain }}/atom/videos/" />
+{% endblock %}
+
+{% block content %}
+<h1>{{ object }}</h1>
+
+
+{% include 'videos/video_player.html' %}
+
+<div class="video_meta">
+<h2>Download</h2>
+<p class="file">
+{% if object.video %}<p>{% trans "Video File" %}: <a href="{{MEDIA_URL}}{{ object.video }}">{{ object.video }}</a></p>{% endif %}
+
+<h2>Meta</h2>
+<p class="byline">{% trans "Posted by" %} 
+{{ object.authors.all|join:", " }}
+</p>
+
+<p class="posted">{% trans "Posted on" %} {{ object.pub_date|date:"N j, Y" }}</p>
+
+<h2>Summary</h2>
+<p>{{ object.summary|linebreaks }}</p>
+
+<h2>Tags</h2>  
+<p>
+{% for tag in object.tags %}
+<a href="{% url videos_tag_index tag.name %}" rel="tag">{{tag}}</a>
+{% endfor %}
+</p>
+</div>
+{% endblock %}
+

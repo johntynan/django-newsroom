@@ -1,0 +1,57 @@
+{% extends 'promos/base.html' %}
+
+{% block title %}{{promo}} | Promos{% endblock %}
+
+{% block body_id %}promos{% endblock %}
+
+{% block app_menu %}
+<h2>Promos</h2>
+<ul>
+<li><a href="{% url promos_promo_edit promo.id %}">Edit Promo</a></li>
+</ul>
+{% endblock %}
+
+{% block main_content %}
+<h1>{{promo}}</h1>
+
+<p>
+<a href="{{ promo.permalink }}">{{ promo }}</a>
+</p>
+<p>
+    <div style="float:left;">
+{% for i in promo_image%}
+    <img src="{{ i.photo.thumbnail.url }}">
+{% endfor %}
+    </div>
+{{promo.description}}
+<br clear="all">
+</p>
+
+<h2>Related Links</h2>
+<ul>
+{% for link in promo_link %}
+    <li><a href="{{ link.url }}">{{ link.title }}</a> {{ link.desc }}</li>
+{% endfor %}
+</ul>
+
+
+<h2>Additional Information</h2>
+<dl>
+<dt>Permalink</dt>
+<dd><a href="{{ promo.permalink }}">{{ promo.permalink }}</a></dd>
+
+<dt>Affiliate</dt>
+<dd>{{promo.affiliate}}</dd>
+
+<dt>Submitted by</dt>
+<dd><a href="{{ promo.submitter.get_absolute_url }}"
+    >{{promo.submitter}}</a></dd>
+
+<dt>Authors</dt>
+<dd>
+{{ promo.authors.all|join:", " }}
+</dd>
+
+</dl>
+
+{% endblock %}

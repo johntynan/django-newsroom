@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Videos" %}{% endblock %}
+
+{% block extrahead %}
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" 
+      href="http://{{ site.domain }}/rss/videos/" />
+<link rel="alternate" type="application/atom+xml" title="Atom 1.0" 
+      href="http://{{ site.domain }}/atom/videos/" />
+{% endblock %}
+
+{% block content %}
+
+<h1>Videos</h1>
+
+<p>Here you will find a list of the latest published videos.</p>
+
+{% if calendar %}
+{{ calendar }}
+{% endif %}
+
+{% for video in object_list %}
+<div class="video_thumb">
+  <h3><a href="{{ video.get_absolute_url }}">{{ video.title }}</a></h3>
+  <a href="{{ video.get_absolute_url }}"><img 
+  alt="{{video.title}} Thumbnail" 
+  src="{{ video.frame.thumbnail.url }}" 
+  width="{{ video.frame.thumbnail.width }}"
+  height="{{ video.frame.thumbnail.height }}" /></a>
+  <div class="video_meta">
+  <p class="date">{{ video.start_datetime|date:"l, F jS, Y - P" }}</p>
+  <p class="byline">{% trans "Posted by" %}
+    {% ifnotequal video.user.get_full_name "" %}
+    {{ video.user.get_full_name }}
+    {% else %}
+    {{ video.user.username }}
+    {% endifnotequal %}
+  </p>
+  <p class="desc">{{ video.summary|linebreaks}}</p>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

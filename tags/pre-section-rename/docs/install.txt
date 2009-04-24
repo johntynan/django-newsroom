@@ -1,0 +1,109 @@
+==========================
+Installing django-newsroom
+==========================
+
+Setup working dir with virtualenv
+---------------------------------
+
+easy_install virtualenv
+
+mkdir dev && cd dev
+
+virtualenv newsroom-env
+
+source newsroom-env/bin/activate
+
+cd newsroom-env
+
+
+Get pip
+-------
+
+easy_install pip
+
+# or grab tarball at http://pypi.python.org/pypi/pip and run python setup.py install
+
+
+Get the code
+------------
+
+checkout the project 
+---------------------
+
+svn checkout http://django-newsroom.googlecode.com/svn working
+
+
+check out the project (with write access)
+------------------------------------------------
+
+If you want to get writeable access to svn you have to be a project member and request that through the group. (notice https)
+
+svn checkout https://django-newsroom.googlecode.com/svn working
+
+You also may want to checkout using just part of the tree, in which case you might use something like, appending a subdirectory to the svn path:
+
+svn checkout http://django-newsroom.googlecode.com/svn/trunk working
+
+
+get the external app modules
+----------------------------
+
+pip install -r working/trunk/requirements/external_apps.txt
+
+
+done with dependencies, run the dev server
+------------------------------------------
+
+cd working/trunk/newsroom
+
+./manage.py syncdb
+
+./manage.py runserver
+
+
+Caveats
+-------
+
+
+PIL
+---
+
+Installing PIL with pip failed for us on OSX, we needed to download the source and use the setup.py. http://www.pythonware.com/products/pil/
+
+wget http://effbot.org/downloads/Imaging-1.1.6.tar.gz
+
+tar zxf Imaging-1.1.6.tar.gz
+
+cd Imaging-1.1.6
+
+python setup.py install
+
+django-countries
+----------------
+
+For some reason this project doesn't have a setup.py, so you have to handle it manually.
+
+cd newsroom/apps/
+
+svn co http://django-countries.googlecode.com/svn/trunk django-countries
+
+ln -s django-countries/countries .
+
+photologue
+----------
+
+photologue 3 is still bleeding edge, but we're going to fly with it.
+
+cd newsroom/apps/
+
+svn co http://django-photologue.googlecode.com/svn/branches/3.x/ photologue-3.x
+
+ln -s photologue-3.x/photologue .
+
+
+django basic blog
+-----------------
+
+See BasicBlogInstall
+
+http://code.google.com/p/django-newsroom/wiki/BasicBlogInstall
