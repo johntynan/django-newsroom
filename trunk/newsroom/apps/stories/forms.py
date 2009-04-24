@@ -4,7 +4,7 @@ from stories.models import Story, Page
 class StoryForm(forms.ModelForm):
     class Meta:
         model = Story
-        exclude = ('created','modified','media')
+        exclude = ('created','modified','media','topics','status','projects',)
         
 class PageForm(forms.Form):
     content = forms.CharField(widget=forms.Textarea)
