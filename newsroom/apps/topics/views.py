@@ -15,7 +15,7 @@ def topics_list(request):
             {'topics_list': topics_list},              
             context_instance=RequestContext(request))
  
-def topics_detail(request, id):
+def topic_detail(request, id):
     topic_detail = Topic.objects.get(id=id)
     topic_slug = topic_detail.slug
     sec_paths = TopicPath.objects.filter(topic__slug=topic_slug)

@@ -1,5 +1,5 @@
 from django.db import models
-from stories.models import Story
+
 
 class TopicPath(models.Model):
     """
