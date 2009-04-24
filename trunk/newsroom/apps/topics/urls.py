@@ -23,5 +23,8 @@ urlpatterns = patterns('',
         url(r'^path/(?P<id>\d+)/edit/$',
             views.topic_path_edit,
             name='topics_topic_path_edit'),
+        url(r'^path/(?P<id>\d+)/$',
+            views.topic_path_detail,
+            name='topics_topic_path_detail'),
 )
 

@@ -1,9 +1,9 @@
-{% extends "base.html" %}
+{% extends "topics/base.html" %}
 
-{% block title %}Edit Section{% endblock %}
+{% block title %}Edit Topic{% endblock %}
 
 {% block content %}
-<h1>Edit Section</h1>
+<h1>Edit Topic</h1>
 
 <form action="." method="post" enctype="multipart/form-data">
     <fieldset>
@@ -16,12 +16,4 @@
 </form>
 {% endblock content %}
 
-{% block app_menu %}
-<h2>Sections</h2>
-<ul>
-  <li><a href="/sections/">Section</a></li>
-  <li><a href="/sections/add/">Add Section</a></li>
-  <li><a href="/sections/path/">View Section Paths</a></li>
-  <li><a href="/sections/path/add/">Add Section Path</a></li>
-</ul>
-{% endblock %}
+
