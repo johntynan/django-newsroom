@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Add a Topic{% endblock %}
+
+{% block content %}
+<h1>Add a Topic</h1>
+
+<form method="post">
+{{form.as_p}}
+<input type="submit" value="Save"/>
+</form>
+{% endblock content %}
+
+{% block app_menu %}
+<h2>Topics</h2>
+<ul>
+  <li><a href="{% url topics_topic_list %}">Topic</a></li>
+  <li><a href="{% url topics_topic_add %}">Add Topic</a></li>
+  <li><a href="{% url topics_topic_path_list %}">View Topic Paths</a></li>
+  <li><a href="{% url topics_topic_path_add %}">Add Topic Path</a></li>
+</ul>
+{% endblock %}
+

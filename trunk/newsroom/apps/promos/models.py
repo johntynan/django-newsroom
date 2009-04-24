@@ -5,7 +5,7 @@ from django.contrib.contenttypes import generic
 from core.models import Project
 from photologue.models import Photo
 from bookmarks.models import BookmarkInstance
-from sections.models import SectionPath
+from topics.models import TopicPath
 
 class Promo(models.Model):
     """
@@ -43,7 +43,7 @@ class Promo(models.Model):
     relevance_ends = models.DateField(
                         "Suggested Relevance Ends",)
     
-    section_path = models.ManyToManyField(SectionPath)
+    topic_path = models.ManyToManyField(TopicPath)
 
     # last_promod is not editable and is managed by the front page
     # view code.

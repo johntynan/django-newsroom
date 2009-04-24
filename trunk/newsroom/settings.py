@@ -95,7 +95,7 @@ INSTALLED_APPS = (
     'my_profiles',
     'multimedia',
     'videos',
-    'sections',
+    'topics',
     'utils',
     # 'basic.blog',
     # 'basic.inlines',

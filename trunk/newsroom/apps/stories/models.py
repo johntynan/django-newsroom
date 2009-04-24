@@ -1,12 +1,16 @@
 import datetime, re
+
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save,post_delete
 from django.template import Template, Context
+
+from core.models import Project
 from multimedia.models import Media
 from multimedia.nodes import MediaNode
+from topics.models import TopicPath
 from stories.constants import STORY_STATUS_CHOICES, STORY_STATUS_DRAFT
-from core.models import Project
+
 
 class Story(models.Model):
     """
@@ -16,9 +20,11 @@ class Story(models.Model):
     projects = models.ManyToManyField(Project)
     headline = models.CharField(max_length=256)
     slug = models.SlugField(unique=True)
+    topics = models.ManyToManyField(TopicPath)
     lead_art = models.ForeignKey(Media,null=True,blank=True,related_name="lead_art")
     media = models.ManyToManyField(Media)
     summary = models.TextField(blank=True)
+    location = models.CharField(max_length=256)
     status = models.CharField(max_length=1,choices=STORY_STATUS_CHOICES,default=STORY_STATUS_DRAFT)
     created = models.DateTimeField(default=datetime.datetime.now)
     modified = models.DateTimeField(auto_now=True)
@@ -96,7 +102,7 @@ class StoryIntegrityError(Exception):
 
 class Page(models.Model):
     """
-    A Page represents a 'section' of a Story
+    A Page within a Story
     """
     story = models.ForeignKey(Story)
     content = models.TextField()
