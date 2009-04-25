@@ -51,6 +51,15 @@ get the external app modules
 pip install -r working/trunk/requirements/external_apps.txt
 
 
+create a media directory
+------------------------------------------
+cd working/trunk/newsroom/media
+
+mkdir uploads
+
+chmod 777 uploads
+
+
 done with dependencies, run the dev server
 ------------------------------------------
 
