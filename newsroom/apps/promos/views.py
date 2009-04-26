@@ -7,6 +7,13 @@ from promos.forms import PromoForm
 from promos.models import PromoImage
 from promos.models import PromoLink
 
+from django.conf import settings
+
+if "notification" in settings.INSTALLED_APPS:
+    from notification import models as notification
+else:
+    notification = None
+
 def front(request):
     return render_to_response(
               'promos/front.html',
@@ -24,8 +31,13 @@ def promo_add(request):
             promo = form.save(commit=False)
             promo.submitter = request.user
             promo.save()
+            if notification:
+                to_user  = 'editor'
+                from_user  = 'admin'
+                # notification.send([to_user], "promo_submitted", "you have received a promo from john.", [from_user])
             request.user.message_set.create(
                 message='Your promo has been submitted.')
+
             return HttpResponseRedirect(reverse('promos_promo_list'))
 
     else:

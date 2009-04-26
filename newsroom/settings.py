@@ -97,12 +97,12 @@ INSTALLED_APPS = (
     'videos',
     'topics',
     'utils',
+    'notification',
     # 'basic.blog',
     # 'basic.inlines',
     # 'django.contrib.comments',
     # 'django.contrib.markup',
 )
-
 
 AUTH_PROFILE_MODULE='my_profiles.Profile'
 PHOTOLOGUE_SPEC_MODULE='newsroom.photo_specs'

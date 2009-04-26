@@ -52,6 +52,8 @@ urlpatterns = patterns('',
     
     (r'^promos/', include('promos.urls')),
 
+    (r'^notification/', include('notification.urls')),
+
     (r'^comments/', include('django.contrib.comments.urls')), 
     
 )
