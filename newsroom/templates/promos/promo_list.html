@@ -7,7 +7,7 @@
 
 <ul>
 {% for promo in promos %}
-<li><a href="{{promo.permalink}}">{{promo}}</a> {{promo.description}}<br>
+<li class="{% cycle 'even' 'odd' %}"><a href="{{promo.permalink}}">{{promo}}</a> {{promo.description}}<br>
 <a href="{% url promos_promo_detail promo.id %}">detail</a> - <a href="{{promo.id}}/edit/">edit</a></li>
 {% endfor %}
 </ul>
