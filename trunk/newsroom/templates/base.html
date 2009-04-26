@@ -62,6 +62,20 @@
         {% endblock %}
 
     <div id="content" class="{% block content_class %}grid_9{% endblock %}">
+
+{% block tabs %}
+
+<div id="tabs_menu">
+    <ul> 
+    {% block tabs_menu %}
+     <li class="dashboard"><a href="/dashboard/">Dashboard</a></li>
+     <li class="stories"><a href="{% url stories_story_list %}">Stories</a></li>
+     <li class="promos"><a href="{% url promos_promo_list %}">Promos</a></li>
+    {% endblock %}
+    </ul>
+</div>
+
+{% endblock %}
     
         {% block messages %}
         {% if messages %}
@@ -107,8 +121,6 @@
         {% block context_menu %}
         <h2>Menu</h2>
         <ul>
-            <li><a href="{% url stories_add_story %}" title="Add Story">Add Story</a></li>
-            <li><a href="{% url promos_promo_add %}" title="Submit Feature">Submit Promo</a></li>
             <li><a href="{% url profiles_edit_profile %}" title="Edit Profile">Edit Profile</a></li>
             <li><a href="{% url auth_logout %}">Logout</a></li>
         </ul>

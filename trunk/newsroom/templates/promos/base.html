@@ -1,20 +1,14 @@
 {% extends "base.html" %}
 
-{% block title %}Promos List{% endblock %}
-
-{% block body_id %}promos{% endblock %}
-
 {% block content %}
-<div id="tabs_menu">
-    <ul> 
-    {% block tabs_menu %}
-     <li class="dashboard"><a href="/dashboard/">Dashboard</a></li>
-     <li class="stories"><a href="{% url stories_story_list %}">Stories</a></li>
-     <li class="promos"><a href="{% url promos_promo_list %}">Promos</a></li>
-    {% endblock %}
-    </ul>
-</div>
     
     {% block main_content %}{% endblock %}
     
 {% endblock content%}
+
+{% block app_menu %}
+<h2>Promos</h2>
+<ul>
+    <li><a href="{% url promos_promo_add %}" title="Submit Promo">Submit Promo</a></li>
+</ul>
+{% endblock %}
