@@ -68,4 +68,10 @@ body#stories #tabs_menu li.stories {
 body#promos #tabs_menu li.promos {
     background-color: #fff;
 }
+#content ul li.even {
+    background-color: #fff;
+}
+#content ul li.odd {
+    background-color: #abc;
+}
 

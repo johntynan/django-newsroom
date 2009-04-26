@@ -10,7 +10,7 @@
 
 <ul>
 {% for o in topics_list %}
-<li><a href="{{o.id}}">{{o}}</a> - <a href="{{o.id}}/edit/">edit</a></li>
+<li class="{% cycle 'even' 'odd' %}"><a href="{{o.id}}">{{o}}</a> - <a href="{{o.id}}/edit/">edit</a></li>
 {% endfor %}
 </ul>
 
