@@ -45,9 +45,6 @@
         <ul>
             <li><a href="/" title="Front Page">Home</a></li>
             <li><a href="{% url profiles_profile_list %}" title="People">People</a></li>
-            <li><a href="{% url pl-photo-archive %}" title="Photos">Photos</a></li>
-            <li><a href="{% url pl-gallery-archive %}" title="Galleries">Galleries</a></li>
-            <li><a href="{% url videos_index %}" title="Videos">Videos</a></li>
             <li><a href="{% url topics_topic_list %}" title="Topics">Topics</a></li>
             <li><a href="{% url stories_story_list %}" title="Stories">Stories</a></li>
             <li><a href="{% url promos_promo_list %}" title="Promos">Promos</a></li>
@@ -57,6 +54,16 @@
             <li class="login"><a href="{% url auth_login %}" title="Login">Login</a></li>
             {% endif %}
         </ul>
+<form name="selectnav1">
+<select name="addmedia" OnChange="location.href=selectnav1.addmedia.options[selectedIndex].value">
+     <option selected>Add Media
+     <option value="{% url pl-photo-archive %}">Photos
+     <option value="{% url pl-gallery-archive %}">Galleries
+     <option value="{% url videos_index %}">Videos
+</select>
+</form>
+
+
         </div>
         <div class="clear"></div>
         {% endblock %}
