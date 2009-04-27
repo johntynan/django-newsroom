@@ -32,6 +32,7 @@ class Promo(models.Model):
     authors = models.ManyToManyField(
                 User,
                 related_name='promos_authored',
+                blank=True,
                 help_text="The authors of the published work.")
     other_credits = models.TextField(
                       blank=True,
