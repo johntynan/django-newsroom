@@ -57,18 +57,25 @@ For more info, see: http://www.djangoproject.com/documentation/add_ons/#markup
     'notification',
     'tag-app',
     'django-pagination',
+    'django.contrib.comments',
     'django.contrib.markup',
-}}}
-run:
-{{{
-./manage.py reset blog
-./manage.py syncdb
+
 }}}
 
 10) in newsroom/urls.py add the line:
 {{{
      (r'^blog/', include('blog.urls')),
 }}}
+
+11) run:
+
+
+{{{
+./manage.py reset blog
+./manage.py syncdb
+}}}
+
+
 
 == Blogging ==
 
