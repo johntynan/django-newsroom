@@ -10,7 +10,8 @@
 
 <ul>
 {% for o in topics_list %}
-<li class="{% cycle 'even' 'odd' %}"><a href="{{o.id}}">{{o}}</a> - <a href="{{o.id}}/edit/">edit</a></li>
+<li class="{% cycle 'even' 'odd' %}"><a href="{{o.id}}">{{o}}</a> - {{o.description}}<br>
+<a href="{{o.id}}/edit/">edit</a></li>
 {% endfor %}
 </ul>
 

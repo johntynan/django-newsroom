@@ -98,6 +98,7 @@ INSTALLED_APPS = (
     'topics',
     'utils',
     'notification',
+    # 'jellyroll',
     # 'basic.blog',
     # 'basic.inlines',
     # 'django.contrib.comments',

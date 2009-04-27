@@ -25,7 +25,7 @@ class Promo(models.Model):
     description = models.TextField(
                       blank=True,
                       help_text="A short paragraph to describe the promo.",)
-    project = models.ManyToManyField(Project)
+    project = models.ManyToManyField(Project, blank=True)
     submitter = models.ForeignKey(
                     User,
                     related_name='promos_submitted',)
@@ -43,7 +43,7 @@ class Promo(models.Model):
     relevance_ends = models.DateField(
                         "Suggested Relevance Ends",)
     
-    topic_path = models.ManyToManyField(TopicPath)
+    topic_path = models.ManyToManyField(TopicPath, blank=True)
 
     # last_promod is not editable and is managed by the front page
     # view code.
