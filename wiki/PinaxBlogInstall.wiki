@@ -65,6 +65,13 @@ run:
 ./manage.py syncdb
 }}}
 
+10) in newsroom/urls.py add the line:
+{{{
+     (r'^blog/', include('blog.urls')),
+}}}
+
+== Blogging ==
+
 Add edit/blog entries here:
 
 http://localhost:8000/admin/blog/
