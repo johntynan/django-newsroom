@@ -6,6 +6,7 @@ from promos.models import Promo
 from promos.forms import PromoForm
 from promos.models import PromoImage
 from promos.models import PromoLink
+from django.contrib.auth.models import User
 
 from django.conf import settings
 
@@ -32,9 +33,9 @@ def promo_add(request):
             promo.submitter = request.user
             promo.save()
             if notification:
-                to_user  = 'editor'
-                from_user  = 'admin'
-                # notification.send([to_user], "promo_submitted", "you have received a promo from john.", [from_user])
+                to_user  = User.objects.all()[0]
+                from_user  = User.objects.all()[0]
+                notification.send([to_user], "promo_submitted", "you have received a promo.", [from_user])
             request.user.message_set.create(
                 message='Your promo has been submitted.')
 
