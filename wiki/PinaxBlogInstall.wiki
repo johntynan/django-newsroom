@@ -1,0 +1,74 @@
+#summary integrating pinax blog
+#labels Phase-Deploy
+
+= Integrating Pinax Blog =
+
+== Installation ==
+
+1. download a tarball of pinax here:
+
+http://github.com/pinax/pinax/tree/master
+
+extract archive into a folder
+
+cd into the /pinax/apps directory
+
+copy the blog directory into /newsroom/apps
+
+2. download threadedcomments from here:
+
+http://github.com/ericflo/django-threadedcomments/tree/master
+
+3. download notification from here:
+
+http://github.com/pinax/django-notification/tree/master
+
+copy the threadedcomments directory and the notification into the newsroom/apps folder
+
+4. Install django-pagination:
+
+{{{
+svn checkout http://django-pagination.googlecode.com/svn/trunk/ django-pagination-read-only
+}}}
+
+move the django-pagination folder into newsroom/apps
+
+5. Install django-template-utils into the virtual-env's django instance as described here:
+
+http://code.google.com/p/django-template-utils/
+
+6) Move tag_app directory from pinax/projects/social_project/apps into newsroom/apps
+
+7) Install Markup
+
+Markup and Inlines requires Markdown be installed. To do this, run the following commands from within your virtual env:
+{{{
+easy_install ElementTree
+easy_install Markdown
+}}}
+For more info, see: http://www.djangoproject.com/documentation/add_ons/#markup 
+
+8) Copy base.html to site_base.html
+
+9) add to settings.py INSTALLED_APPS:
+{{{
+    'blog',
+    'threadedcomments',
+    'notification',
+    'tag-app',
+    'django-pagination',
+    'django.contrib.markup',
+}}}
+run:
+{{{
+./manage.py reset blog
+./manage.py syncdb
+}}}
+
+Add edit/blog entries here:
+
+http://localhost:8000/admin/blog/
+
+View them here:
+
+Go to http://localhost:8000/blog
