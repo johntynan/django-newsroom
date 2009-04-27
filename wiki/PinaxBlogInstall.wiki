@@ -73,6 +73,7 @@ For more info, see: http://www.djangoproject.com/documentation/add_ons/#markup
 {{{
 ./manage.py reset blog
 ./manage.py syncdb
+./manage.py runserver
 }}}
 
 
