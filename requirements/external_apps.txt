@@ -13,3 +13,4 @@ django-imagekit
 # see caveats in install
 # -f http://django-photologue.googlecode.com/svn/branches/3.x/photologue#egg=photologue
 -e svn+http://django-bookmarks.googlecode.com/svn/trunk#egg=django-bookmarks
+django-notification
