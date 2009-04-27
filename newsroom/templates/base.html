@@ -34,7 +34,7 @@
 
         <!--Header Div -->
         <div class="grid_12">
-            <h1>Site Header</h1>
+            <h1><a href="/" title="Front Page" style="text-decoration: none;">Home</a></h1>
         </div>
         <div class="clear">&nbsp;</div>
         <!-- END HeaderDiv -->
@@ -43,20 +43,19 @@
         <div class="grid_12" id="navbar">
         <h2>Menu</h2>
         <ul>
-            <li><a href="/" title="Front Page">Home</a></li>
             <li><a href="{% url profiles_profile_list %}" title="People">People</a></li>
-            <li><a href="{% url topics_topic_list %}" title="Topics">Topics</a></li>
             <li><a href="{% url stories_story_list %}" title="Stories">Stories</a></li>
-            <li><a href="{% url promos_promo_list %}" title="Promos">Promos</a></li>
+            <li><a href="{% url topics_topic_list %}" title="Topics">Topics</a></li> 
             {% if user.is_authenticated %}
+            <li><a href="{% url promos_promo_list %}" title="Promos">Promos</a></li>
             <li class="login">Logged in as <a href="{% url profiles_profile_detail user.username %}">{{ user }}</a></li>
             {% else %}
             <li class="login"><a href="{% url auth_login %}" title="Login">Login</a></li>
             {% endif %}
         </ul>
 <form name="selectnav1">
-<select name="addmedia" OnChange="location.href=selectnav1.addmedia.options[selectedIndex].value">
-     <option selected>Add Media
+<select name="browsemedia" OnChange="location.href=selectnav1.browsemedia.options[selectedIndex].value">
+     <option selected>Browse by Media
      <option value="{% url pl-photo-archive %}">Photos
      <option value="{% url pl-gallery-archive %}">Galleries
      <option value="{% url videos_index %}">Videos
