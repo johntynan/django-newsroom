@@ -6,7 +6,8 @@ from videos import views as vid_views
 from django.contrib.sites.models import Site
 
 info_dict = {
-    'queryset': Video.objects.published(site = Site.objects.get_current()),
+    #'queryset': Video.objects.published(site = Site.objects.get_current()),
+    'queryset': Video.objects.all(),
     'date_field': 'pub_date',
 }
 

@@ -2,8 +2,8 @@
 
 {% block title %}Media Inventory for: {{story.headline}}{% endblock %}
 
-{% block context_menu %}
-{{block.super}}
+{% block app_menu %}
+
 {% if system_media_types %}
 <h2>Add Media</h2>
 <ul id="story-add-media-menu">
@@ -12,7 +12,7 @@
     {% endfor %}
 </ul>
 {% endif %}
-{% endblock context_menu %}
+{% endblock app_menu %}
 
 {% block main_content %}
 <div id="media-preview-blocks">

@@ -27,7 +27,7 @@ class Story(models.Model):
     location = models.CharField(max_length=256,blank=True)
     status = models.CharField(max_length=1,choices=STORY_STATUS_CHOICES,default=STORY_STATUS_DRAFT)
     created = models.DateTimeField(default=datetime.datetime.now)
-    modified = models.DateTimeField(auto_now=True)
+    modified = models.DateTimeField()
     
     class Meta:
         verbose_name_plural = 'stories'
@@ -35,6 +35,10 @@ class Story(models.Model):
     
     def __unicode__(self):
         return self.headline
+    
+    def save(self):
+        self.modified = datetime.datetime.now()
+        super(Story,self).save()
     
     @models.permalink
     def get_absolute_url(self):
