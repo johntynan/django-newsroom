@@ -1,16 +1,18 @@
+import datetime
 from django.contrib.auth.models import User
-from django.contrib.contenttypes.models import ContentType
-from django.contrib.contenttypes import generic
+#from django.contrib.contenttypes.models import ContentType
+#from django.contrib.contenttypes import generic
+from django.contrib.sites.models import Site
 from django.db import models
 from django.db.models.base import ModelBase
-from django.db.models.signals import post_save
+#from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
 from tagging.fields import TagField
 
 from multimedia.constants import MEDIA_TYPES, MEDIA_STATUS_CHOICES, MEDIA_STATUS_DRAFT
 from utils.model_inheritance import ParentModel,ChildManager
-from videos.models import Video as NativeVideoModel
+#from videos.models import Video as NativeVideoModel
 
                 
 class _MediaTypesDescriptor(object):
@@ -66,10 +68,11 @@ class Media(ParentModel):
     """
     A generic container for media items.
     
-    
+    Subclasses should provide any specific fields they need for managing their
+    media type.
     """
     __metaclass__ = MediaBase
-    
+    site = models.ForeignKey(Site, verbose_name=_(u'Site'),) 
     authors = models.ManyToManyField(User)
     title = models.CharField(max_length=128,blank=True)
     summary = models.TextField(blank=True)
@@ -81,38 +84,47 @@ class Media(ParentModel):
                         default=MEDIA_STATUS_DRAFT,
                         help_text=_(u'Only published items will appear on the site.'),)
     
-    content_type = models.ForeignKey(ContentType)
-    object_id = models.PositiveIntegerField()
-    media_item = generic.GenericForeignKey('content_type', 'object_id')
+    slug = models.SlugField(
+                    _(u'Slug'),
+                    help_text=_(u'Automatically built from the title.'),)
     
-    #def __unicode__(self):
-    #    """
-    #    experimental: output self as HTML ala Django Forms
-    #    so that template authors can do things like
-    #    {{some_instance.media}}
-    #    """
-    #    pass
+    pub_date = models.DateTimeField(
+                    _(u'Date published'), 
+                    default=datetime.datetime.now,
+                    help_text=_(u'Publication date'),)
+    
+    
+    created_by = models.ForeignKey(
+                            User, 
+                            related_name="videos_created")
+
+    modified_by = models.ForeignKey(
+                            User, 
+                            related_name="videos_modified")
+
+    created = models.DateTimeField(default=datetime.datetime.now)
+    modified = models.DateTimeField()
         
     objects = models.Manager()
     children = ChildManager()
     
     class Meta:
         verbose_name_plural = 'Media'
+        ordering = ['-pub_date']
+        get_latest_by = 'pub_date'
     
     def __unicode__(self): lambda self: self.title
      
     @staticmethod
     def class_factory(media_type):
-        return Media._media_types[media_type]
+        return Media._media_types[media_type.capitalize()]
         
-        
-    #@property
-    #def authors(self):
-    #    """
-    #    Returns a comma separated string of the author names
-    #    """
-    #    #TODO: format first/last if exists
-    #    return ",".join([user.username for user in self.owners.all()])
+    
+    def save(self):
+        self.modified = datetime.datetime.now()
+        super(Media,self).save()
+     
+    
     
     def get_insert_snippet(self):
         """
@@ -145,32 +157,9 @@ class Media(ParentModel):
 
 class Image(Media):
     """
-    A Media container for Photologue Photo instances
+    Image Media 
     """
     pass
     
     
-class Video(Media):
-    """
-    A Media container for Video instances
-    """
-    
-    @staticmethod
-    def associate(sender,**kwargs):
-        """
-        post_save signal handler that associates any new videos.Video instances with a multimedia.Video instance
-        """
-        if kwargs.get('created',False):
-            media_item = kwargs.get('instance')
-            video = Video()
-            video.media_item = media_item
-            video.site = media_item.site
-            video.title = media_item.title
-            video.summary = media_item.summary
-            video.tags = media_item.tag_list
-            video.save()
-            video.authors.add(media_item.authors.all())
-
-
-post_save.connect(Video.associate,NativeVideoModel)   
         

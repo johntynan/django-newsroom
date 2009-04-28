@@ -2,18 +2,15 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, Http404
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-#from photologue.models import Photo
-from utils.response import JsonResponse, JsonErrorResponse
+
 from multimedia.forms import MediaForm
-from multimedia.models import Media, Video, Image
+from multimedia.models import Media#, Video, Image
+from utils.response import JsonResponse, JsonErrorResponse
 
 def browse_by_type(request,media_type):
-    #TODO use introspection to make DRY
-    if "image" == media_type:
-        media_items = Image.objects.all()
-    elif "video" == media_type:
-        #TODO filter by author/owner
-        media_items = Video.objects.all()
+    
+    media_class = Media.class_factory(media_type)
+    media_items = media_class.objects.all()
     
     #if request.is_ajax():
         
@@ -23,16 +20,11 @@ def browse_by_type(request,media_type):
     
 def add_by_type(request,media_type):
     
+    form_class = MediaForm.factory(media_type)
     if request.method == 'POST':
-        pass
+        form = form_class(request.POST)
     else:
-        #if not media_type in Media.media_types:
-        #    return Http404
-        #if "video" == media_type:
-        #    return HttpResponseRedirect(reverse('videos_add_video'))
-        #elif "image" == media_type:
-        #    pass
-        form = MediaForm()
+        form = form_class()
         return render_to_response('multimedia/add_media.html',locals(),context_instance=RequestContext(request))
     
     
