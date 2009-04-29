@@ -5,7 +5,7 @@
 
 == Installation ==
 
-1. download a tarball of pinax here:
+1) download a tarball of pinax here:
 
 http://github.com/pinax/pinax/tree/master
 
