@@ -51,8 +51,11 @@ class Video(Media):
 
     class Meta:
         verbose_name_plural = _(u'videos')
-        
 
+    def get_thumbnail_url(self):
+        return self.video.url
+
+    #TODO update this
     def get_absolute_url(self):
         return ('videos_video_detail', 
                 (), 
