@@ -16,7 +16,18 @@ cd into the /pinax/apps directory
 copy the blog directory into /newsroom/apps
 
 
-2) Copy base.html to site_base.html
+2) Go to: /projects/social_project/templates
+
+copy site_base.html into 
+
+/newsroom/templates
+
+3) copy /pinax/templates/default/blog
+
+to
+
+/newsroom/templates
+
 
 3) add to settings.py INSTALLED_APPS:
 {{{
