@@ -2,7 +2,10 @@ import datetime
 from django.contrib.auth.models import User
 #from django.contrib.contenttypes.models import ContentType
 #from django.contrib.contenttypes import generic
+from django.conf import settings
 from django.contrib.sites.models import Site
+from django.contrib.sites.managers import CurrentSiteManager
+
 from django.db import models
 from django.db.models.base import ModelBase
 #from django.db.models.signals import post_save
@@ -72,7 +75,7 @@ class Media(ParentModel):
     media type.
     """
     __metaclass__ = MediaBase
-    site = models.ForeignKey(Site, verbose_name=_(u'Site'),) 
+    site = models.ForeignKey(Site, verbose_name=_(u'Site')) 
     authors = models.ManyToManyField(User)
     title = models.CharField(max_length=128,blank=True)
     summary = models.TextField(blank=True)
@@ -107,6 +110,7 @@ class Media(ParentModel):
         
     objects = models.Manager()
     children = ChildManager()
+    on_site = CurrentSiteManager()
     
     class Meta:
         verbose_name_plural = 'Media'
@@ -124,7 +128,11 @@ class Media(ParentModel):
         self.modified = datetime.datetime.now()
         super(Media,self).save()
      
-    
+    def get_thumbnail_url(self):
+        """
+        Subclasses should implement this
+        """
+        return "%sgeneric_thumbnail.png" % settings.MEDIA_URL 
     
     def get_insert_snippet(self):
         """
@@ -153,6 +161,9 @@ class Media(ParentModel):
             return "{%% media_insert %d %%}" % self.id
     
     def get_parent_model(self):
+        """
+        Helper method for inheritance
+        """
         return Media
 
 class Image(Media):

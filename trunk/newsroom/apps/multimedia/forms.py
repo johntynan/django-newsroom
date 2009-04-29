@@ -9,7 +9,7 @@ class MediaForm(forms.ModelForm):
         class __MediaForm(forms.ModelForm):
             class Meta:
                 model = media_type
-                exclude = ('slug','created_by', 'modified_by', 'created','modified','frame')
+                exclude = ('site','slug','created_by', 'modified_by', 'created','modified','pub_date','frame')
                 
         return __MediaForm
     
