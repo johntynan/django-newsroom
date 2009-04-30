@@ -35,7 +35,9 @@ to
     'threadedcomments',
     'notification',
     'tag-app',
-    'django-pagination',
+    'pagination',
+    'ajax_validation',
+    'django-openid',
     'django.contrib.comments',
     'django.contrib.markup',
 
