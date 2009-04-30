@@ -1,9 +1,0 @@
-{% extends "multimedia/base.html" %}
-
-{% block content %}
-<h2>Add {{media_type|capfirst}}</h2>
-<form method="post" enctype="multipart/form-data">
-{{form.as_p}}
-<input type="submit" value="Save"/>
-</form>
-{% endblock content %}
