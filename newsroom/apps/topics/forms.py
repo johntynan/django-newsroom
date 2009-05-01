@@ -6,7 +6,7 @@ class TopicForm(forms.ModelForm):
     
     class Meta:
         model = Topic
-        fields = ('title','slug','description',)
+        fields = ('title','slug','description','collection')
 
 class TopicPathForm(forms.ModelForm):
     
