@@ -1,13 +1,12 @@
 {% extends "topics/base.html" %}
 
-{% block title %}{{ topic }}{% endblock %}
+{% block head_title %}{{ topic }}{% endblock %}
 
 {% block main_content %}
 
 <h1>{{ topic }}</h1>
 <p>{{ topic.description }}</p>
 <p><a href="{% url topics_topic_list %}">Return to Topics List</a> | <a href="{% url topics_topic_edit topic.id %}">Edit Topics</a></p>
-
 
 <h1>Promos</h1>
 <ul>

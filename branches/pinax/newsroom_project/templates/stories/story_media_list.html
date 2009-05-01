@@ -2,17 +2,16 @@
 
 {% block title %}Media Inventory for: {{story.headline}}{% endblock %}
 
-{% block app_menu %}
+{% block subnav %}
 
 {% if system_media_types %}
-<h2>Add Media</h2>
 <ul id="story-add-media-menu">
     {% for media_type in system_media_types %}
     <li><a href="{% url stories_story_select_media story.id media_type %}">Add {{media_type}}</a></li>
     {% endfor %}
 </ul>
 {% endif %}
-{% endblock app_menu %}
+{% endblock %}
 
 {% block main_content %}
 <div id="media-preview-blocks">
@@ -26,6 +25,10 @@
         <p style="background:#eee"><b>Quicktag</b><br/>{{media.get_insert_snippet}}</p>
         <p><a href="">Edit</a></p>
     </div>
+{% empty %}
+
+    <div class="media-preview-block" style="width:240px;float:left;border:1px solid"><p>No media available for this story yet.</p></div>
+
 {% endfor %}    
 </div>
 <div style="clear:both"/>
