@@ -1,0 +1,9 @@
+# see caveats in install
+# -e svn+http://django-countries.googlecode.com/svn/trunk#egg=django-countries
+# you need gcc/xcode if you're on a Mac for PIL
+# see caveats in install
+# -f http://django-photologue.googlecode.com/svn/branches/3.x/photologue#egg=photologue
+PIL
+django-imagekit
+# use trunk
+-e svn+http://code.djangoproject.com/svn/django/trunk#egg=django-trunk
