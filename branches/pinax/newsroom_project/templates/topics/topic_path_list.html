@@ -1,0 +1,22 @@
+{% extends 'topics/base.html' %}
+
+{% block title %}Topic Paths{% endblock %}
+
+{# TODO rename sectionpaths? #}
+{% block body_id %}sectionpaths{% endblock %}
+
+{% block main_content %}
+
+<h1>Topic Paths</h1>
+
+<p><a href="{% url topics_topic_path_add %}">Add New Topic Path</a></p>
+
+<ul>
+{% for o in topic_path_list %}
+<li><a href="{% url topics_topic_path_detail o.id %}">{{o}}</a> - <a href="{% url topics_topic_path_edit o.id %}">edit</a></li>
+{% endfor %}
+</ul>
+
+{% endblock %}
+
+

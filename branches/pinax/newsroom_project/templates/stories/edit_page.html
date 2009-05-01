@@ -1,0 +1,70 @@
+{% extends "stories/base.html" %}
+
+{% block title %}Edit Page {{page.pagenum}} : {{ page.story.headline }}{% endblock %}
+
+
+
+{% block jquery %}
+/*
+$('#add_media_types').hide();
+$('#menu_add_media').click(function(){
+    $('.add_media').click(function(){
+        
+        $('#media_selection').load(this.href,function(){
+            $('.media-item',this).append('<a href="#">Add to Page</a>');
+            $('.media-item a',this).click(function(){
+                //TODO: fragile
+                var media_item_id = $(this).parent().attr('id');
+                var parts = media_item_id.split('-');
+                var id = parts[2];
+                $.post('{% url stories_story_add_media page.id %}',{media_id:id},function(data,textStatus){
+                   // if (data.status == 1){
+                        $('#page-media-list').replaceWith(data);
+                        return false;
+                    //}
+                });
+                return false;
+            });
+        });
+        return false;
+    });
+    
+    $('#add_media_types').show();
+    return false;
+});*/
+{% endblock %}
+
+{% block main_content %}
+<h2>Page {{ page.pagenum }} of <a href="{% url stories_story_pages page.story.id %}">{{ page.story.headline }}</a></h2>
+<p>Using {{page.columns|length}} Column{{page.columns|length|pluralize}}</p>
+<div>
+    
+    <div style="float:right;width:300px;background:#DDD;border:1px solid">
+        <h3>Story Media List</h3>
+        
+        {% include "stories/widgets/story_media_summary.html" %}
+        
+        <!--
+        <p><a id="menu_add_media" href="#">Add Media</a></p>
+        <div id="add_media_types">
+            <ul>
+                <li><a class="add_media" href="{% url multimedia_browse "image" %}">Add Image</a></li>
+                <li><a class="add_media" href="{% url multimedia_browse "video" %}">Add Video</a></li>
+            </ul>
+            
+        </div>-->
+        
+    </div>
+    
+    <p>
+        <form method="post">
+            {{form}}
+            <input type="submit" value="Submit"/>
+        </form>
+        
+    </p>
+    <div id="media_selection" style="background:#DDD;margin-top:10px">
+        
+    </div>
+</div>
+{% endblock main_content %}

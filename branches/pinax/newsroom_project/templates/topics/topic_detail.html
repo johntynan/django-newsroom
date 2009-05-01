@@ -1,0 +1,34 @@
+{% extends "topics/base.html" %}
+
+{% block title %}{{ topic }}{% endblock %}
+
+{% block main_content %}
+
+<h1>{{ topic }}</h1>
+<p>{{ topic.description }}</p>
+<p><a href="{% url topics_topic_list %}">Return to Topics List</a> | <a href="{% url topics_topic_edit topic.id %}">Edit Topics</a></p>
+
+
+<h1>Promos</h1>
+<ul>
+{% for p in promos %}
+    <li class="{% cycle 'even' 'odd' %}"><a href="{{p.permalink}}">{{p}}</a> {{p.description}} </li>
+{% endfor %}
+{% for l in promo_link %}
+    <li><a href="{{l.id}}">{{l}}</a> 
+{% endfor %}
+</ul>
+
+
+<h2>Topic Paths</h2>
+<p>
+<ul style="float:left; background-color: #C0C0C0;">
+{% for o in topic.collection.all %}
+    <li><a href="{% url topics_topic_path_detail o.id %}">{{o}}</a> - <a href="{% url topics_topic_path_edit o.id %}">edit</a>
+{% endfor %}
+</ul>
+<span style="margin:10px;"><a href="{% url topics_topic_path_add %}">Add Topic Path</a></span>
+</p>
+
+{% endblock %}
+

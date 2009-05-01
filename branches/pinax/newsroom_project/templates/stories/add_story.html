@@ -1,0 +1,22 @@
+{% extends "stories/base.html" %}
+{% load formfields %}
+
+{% block title %}Add a Story{% endblock %}
+
+{% block context_menu %}{% endblock %}
+
+{% block main_content %}
+<h1>Add a Story</h1>
+
+{# TODO auto-slugify headline (or customize admin) #}
+<form method="post">
+{% display_field form.headline %}
+{% display_field form.slug %}
+{% display_field form.summary %}
+<p>TODO: select lead art</p>
+
+{% display_field form.authors %}
+<input type="submit" value="Save"/> 
+<a href="{% url stories_story_list %}">Cancel</a>
+</form>
+{% endblock main_content %}
