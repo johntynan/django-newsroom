@@ -157,7 +157,7 @@ NOTIFICATION_LANGUAGE_MODULE = 'account.Account'
 EMAIL_CONFIRMATION_DAYS = 2
 EMAIL_DEBUG = DEBUG
 CONTACT_EMAIL = "feedback@example.com"
-SITE_NAME = "Pinax"
+SITE_NAME = "News21"
 LOGIN_URL = "/account/login"
 LOGIN_REDIRECT_URLNAME = "what_next"
 
