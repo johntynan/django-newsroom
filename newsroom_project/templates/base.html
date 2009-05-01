@@ -1,0 +1,107 @@
+{% load i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}" xml:lang="{{ LANGUAGE_CODE }}" lang="{{ LANGUAGE_CODE }}">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>{% if site_name %}{{ site_name }} {% endif %}{% block head_title %}{% endblock %} | Newsroom</title>
+        <!--[if IE]><style>
+            div {
+                zoom: 1; /* trigger hasLayout */
+            }
+        </style><![endif]-->
+        <link rel="stylesheet" href="{{ MEDIA_URL }}css/screen.css" />
+        <link rel="stylesheet" href="{{ MEDIA_URL }}css/firefox.css" />
+        <link rel="stylesheet" href="{{ MEDIA_URL }}css/forms.css" />
+        <link rel="stylesheet" href="{{ MEDIA_URL }}themes/blue/css/blue.css" />
+        <script type="text/javascript" src="{{ MEDIA_URL }}js/libs/jquery-1.2.6.min.js"></script>
+        <script type="text/javascript" src="{{ MEDIA_URL }}js/libs/json.class.js"></script>
+        <script type="text/javascript" src="{{ MEDIA_URL }}js/libs/jquery.form.js"></script>
+
+        {% if LANGUAGE_BIDI %}
+        <style type="text/css" media="screen">
+            div.right_panel {
+                float: left; /* hotfix for sidebar */
+            }
+        </style>
+        {% endif %}
+        {% block extra_head_base %}
+            {% block extra_head %}{% endblock %}
+        {% endblock %}
+    </head>
+    
+    <body>
+        {% if site_wide_announcements %}
+            <div id="site_wide_announcements">
+                <ul>
+                    {% for announcement in site_wide_announcements %}
+                    <li>
+                        <a href="{{ announcement.get_absolute_url }}">{{ announcement }}</a> -
+                        <a href="{% url announcement_hide announcement.pk %}?next={{ request.path }}">{% trans "Hide announcement" %}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        
+        <div id="header">
+        <div id="dashb" class="pwrapper">
+            <a href="" id="dashb-link">My Dashboard</a>
+            <span id="dashb-info">
+                <span class="username">{% block login %}{% endblock %}{% block locale_switcher %}{% endblock %}</span>
+                <span class="separator">&nbsp;</span>
+                <a href="">{% trans "my settings" %}</a>
+                <span class="separator">&nbsp;</span>
+                <a href="">{% trans "logout" %}</a>
+            </span>
+        </div>
+
+        {% block navigation %}
+        <div id="navmenu" class="pwrapper">
+            <div>
+                {% block logo_link_image %}{% endblock %}
+
+                <ul class="nav-dash" {% block tab_id %}{% endblock %}>
+                    {% block tabs %}{% endblock %}
+                </ul>
+
+                <ul id="nav-my">
+                    {% block sec_navigation %}
+                    <li><a class="navbutton" href="">Search</a></li>
+                    <li><a class="navbutton" href="">Users</a></li>
+                    {% endblock %}
+                </ul>
+                <br class="clearboth" />
+            </div>
+        </div>
+        {% endblock %}
+    </div>
+
+    <div id="content">
+        {% if messages %}
+            <ul id="messages">
+                {% for message in messages %}
+                <li id="message_{{ forloop.counter }}"><a href="#" onclick="$('#message_{{ forloop.counter }}').fadeOut(); return false;"><small>{% trans "clear" %}</small></a> {{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <div id="content-action">
+            <h2>{% trans "Quick links" %}</h2>
+            {% block subnav %}&nbsp;{% endblock %}
+        </div>
+        <div id="content-data">
+            {% block body %}
+            <img src="{{ STATIC_URL }}tmp/entry_list.png" />
+            {% endblock %}
+        </div>
+        <br class="clearboth" />
+    </div>
+
+    <div id="footer" class="wrapper">
+    {% block footer %}{% endblock %}
+    </div>
+    {% block extra_body_base %}
+        {% block extra_body %}{% endblock %}
+    {% endblock %}
+</body>
+</html>
+

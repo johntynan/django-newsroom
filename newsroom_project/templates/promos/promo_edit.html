@@ -1,8 +1,8 @@
-{% extends "base.html" %}
+{% extends "promos/base.html" %}
 
 {% block title %}Edit Promo{% endblock %}
 
-{% block content %}
+{% block main_content %}
 <h1>Edit Promo</h1>
 
 <form action="." method="post" enctype="multipart/form-data">
@@ -14,11 +14,5 @@
     <a href="{% url promos_promo_list %}">Cancel</a>
     </fieldset>
 </form>
-{% endblock content %}
-
-{% block app_menu %}
-<h2>Topics</h2>
-<ul>
-  <li><a href="/promos/">Promos</a></li>
-</ul>
 {% endblock %}
+
