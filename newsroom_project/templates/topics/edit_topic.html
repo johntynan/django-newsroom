@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Section{% endblock %}
+
+{% block main_content %}
+<h1>Edit Topic</h1>
+
+<form method="post">
+{{form.as_p}}
+<input type="submit" value="Save"/>
+</form>
+{% endblock %}
+
+{% block subnav %}
+<ul>
+  <li><a href="/sections/">Section</a></li>
+  <li><a href="/sections/add/">Add Section</a></li>
+  <li><a href="/sections/path/">View Section Paths</a></li>
+  <li><a href="/sections/path/add/">Add Section Path</a></li>
+</ul>
+{% endblock %}

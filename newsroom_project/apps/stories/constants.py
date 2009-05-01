@@ -1,0 +1,11 @@
+"""Constants for the stories app"""
+
+STORY_STATUS_DRAFT = 'D'
+STORY_STATUS_PUBLISHED = 'P'
+STORY_STATUS_ARCHIVED = 'A'
+STORY_STATUS_CHOICES = (
+    (STORY_STATUS_DRAFT,'Draft',),
+    (STORY_STATUS_PUBLISHED,'Published',),
+    (STORY_STATUS_ARCHIVED,'Archived',),
+)
+

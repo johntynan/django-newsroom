@@ -1,0 +1,16 @@
+{% extends "site_base.html" %}
+
+{% block body %}
+
+{% block main_content %}{% endblock %}
+
+{% endblock %}
+
+{% block subnav %}
+<ul>
+  <li><a href="{% url topics_topic_list %}">Topics</a></li>
+  <li><a href="{% url topics_topic_add %}">Add Topic</a></li>
+  <li><a href="{% url topics_topic_path_list %}">View Topic Paths</a></li>
+  <li><a href="{% url topics_topic_path_add %}">Add Topic Path</a></li>
+</ul>
+{% endblock %}
