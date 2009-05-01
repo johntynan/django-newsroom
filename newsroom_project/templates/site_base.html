@@ -18,6 +18,7 @@
         <li class="tab_stories"><a href="{% url stories_story_list %}" title="{% trans "Stories" %}" class="navbutton">{% trans "Stories" %}</a></li>
         <li class="tab_media"><a href="" title="{% trans "Media" %}" class="navbutton">{% trans "Media" %}</a></li>
         <li class="tab_promos"><a class="navbutton" href="{% url promos_promo_list %}"">{% trans "Promos" %}</a></li>
+        <li class="tab_topics"><a class="navbutton" href="{% url topics_topic_list %}"">{% trans "Topics" %}</a></li>
         <li class="tab_comments"><a class="navbutton" href="">{% trans "Comment moderation (12)" %}</a></li>
         <li class="tab rtab_notices"><a class="navbutton" href="{% url notification_notices %}">{% trans "Notices" %}{% if notice_unseen_count %} ({{ notice_unseen_count }}){% endif %}</a></li>
 {% endblock %}
