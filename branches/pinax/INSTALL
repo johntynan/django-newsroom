@@ -4,7 +4,7 @@
 2) Checkout django-newsroom pinax branch inside the virtualenv
     svn co https://django-newsroom.googlecode.com/svn/branches/pinax --username
 
-3) Install requirements 
+3) Install DN requirements 
     pip install -r requirements/external_apps.txt
 
 4) Install caveats by hand (photologue-3.x and django-countries) according to
