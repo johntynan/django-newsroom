@@ -1,6 +1,6 @@
-{% extends "base.html" %}
+{% extends "stories/base.html" %}
 
-{% block title %}{{ story.headline }}{% endblock %}
+{% block head_title %}{{ story.headline }}{% endblock %}
 
 {% block app_menu %}
 <h2>Menu</h2>
@@ -11,7 +11,7 @@
 </ul>
 {% endblock %}
 
-{% block content %}
+{% block main_content %}
 <h1>{{ story.headline}}</h1>
     
 <ul>
@@ -19,4 +19,4 @@
     <li><a href="{% url stories_edit_page page.id %}">Page {{page.pagenum}}</a></li>
 {% endfor %}
 </ul>
-{% endblock content %}
+{% endblock %}

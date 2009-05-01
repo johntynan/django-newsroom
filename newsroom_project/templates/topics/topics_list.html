@@ -1,6 +1,6 @@
 {% extends 'topics/base.html' %}
 
-{% block title %}Sections{% endblock %}
+{% block head_title %}Sections{% endblock %}
 
 {% block body_id %}sections{% endblock %}
 
@@ -12,6 +12,8 @@
 {% for o in topics_list %}
 <li class="{% cycle 'even' 'odd' %}"><a href="{{o.id}}">{{o}}</a> - {{o.description}}<br>
 <a href="{{o.id}}/edit/">edit</a></li>
+{% empty %}
+<li>No topics available yet.</li>
 {% endfor %}
 </ul>
 
