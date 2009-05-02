@@ -2,8 +2,6 @@
 
 {% block head_title %}Edit Page {{page.pagenum}} : {{ page.story.headline }}{% endblock %}
 
-
-
 {% block jquery %}
 /*
 $('#add_media_types').hide();
@@ -33,6 +31,14 @@ $('#menu_add_media').click(function(){
     return false;
 });*/
 {% endblock %}
+{% block subnav %}
+<ul>
+<li><a href="{% url stories_story_pages page.story.id %}">List Pages</a></li>
+<li><a href="{% url stories_edit_story page.story.id %}">Edit Story</a></li>
+<li><a href="{% url stories_story_list %}">Story List</a></li>
+</ul>
+{% endblock %}
+
 
 {% block main_content %}
 <h2>Page {{ page.pagenum }} of <a href="{% url stories_story_pages page.story.id %}">{{ page.story.headline }}</a></h2>
