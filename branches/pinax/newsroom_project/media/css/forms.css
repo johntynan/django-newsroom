@@ -1,29 +1,29 @@
 fieldset { border: none; }
-legend { font-size: 1.3em; font-weight: bold; }
+legend { font-weight: bold; }
 
 /* forms */
-input, textarea { padding: 3px; font-family: Arial, "Trebuchet MS", Trebuchet, Verdana, Helvetica, Arial, sans-serif; font-size: 1.4em; vertical-align: middle; }
-select { padding: 0 8px 0 2px; font-size: 1.3em; }
+input, textarea { padding: 3px; font-family: Arial, "Trebuchet MS", Trebuchet, Verdana, Helvetica, Arial, sans-serif; vertical-align: middle; }
+select { padding: 0 8px 0 2px; }
 select option { padding: 0 2px; }
 input[type=submit] { padding: 2px; margin-right: 5px; }
-label { font-size: 1.4em; }
-input[type=text], textarea { border: 1px solid; border-color: #888 #CCC #CCC #888; }
+label {  }
 
 .label { float: left; width: 50px; padding: 4px 2px 0 0; text-align: right; }
 .field input, .field textarea { padding: 3px; border: 1px solid #D6D6D6; border-top-color: #939393; border-left-color: #939393; }
-.checkbox { font-size: 0.8em; vertical-align: middle; }
+.checkbox { vertical-align: middle; }
 
     .form { font-family: Arial; }
-    .form h3 { font-size: 1.4em; color: #555; }
+    .form h3 { color: #555; }
     .form p { clear: both; padding: 2px 0; }
+    form p input, .form p textarea { border: 1px solid; border-color: #888 #CCC #CCC #888; }
     .form label, .form input[type=text], .form textarea { color: #555; }
     .form .errorlist { clear: both; color: red }
     .form .focused { background: #FFF9DF; }
     .form .buttons { padding: 20px 0; }
-    .form .cancel { font-size: 1.2em; }
+    .form .cancel {  }
 
     .form .field { padding: 6px 0; }
-    .form .field label { display: block; font-size: 1.2em; }
+    .form .field label { display: block; }
     .form .field input[type=text] { width: 250px; }
     .form .field input[type=checkbox] { vertical-align: middle; }
 
@@ -49,3 +49,8 @@ input[type=text], textarea { border: 1px solid; border-color: #888 #CCC #CCC #88
 
 .inline-form p { padding: 10px 0; display: block; }
 .inline-form label { padding: 0 0 5px; display: block; }
+
+/* simple forms */
+.inlineLabels label { float: left; width: 90px; padding-right: 10px; font-weight: bold; color: #666; }
+.inlineLabels p { clear: both; }
+.inlineLabels .form_block { padding: 4px 0 4px 100px;  }

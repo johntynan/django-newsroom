@@ -1,3 +1,5 @@
+a { color: #4A5C64 }
+
 #navmenu { background-color: #3E3B36; border-top-color: #555555; border-bottom-color: #546770; }
 
 #dashb { border-bottom-color: #222222; }
@@ -14,14 +16,14 @@
 #stories_tab .tab_stories .navbutton,
 #multimedi_tab .tab_multimedia .navbutton,
 #notices_tab .tab_notices .navbutton,
-#topics_tab .tab_topics .navbutton{ 
+#topics_tab .tab_topics .navbutton{
     background: #DDD; color: #3D4B52; border-bottom-color: #DDD; }
 
 #promos_tab .tab_promos .navbutton:hover,
 #stories_tab .tab_stories .navbutton:hover,
 #multimedi_tab .tab_multimedia .navbutton:hover,
 #notices_tab .tab_notices .navbutton:hover,
-#topics_tab .tab_topics .navbutton:hover { 
+#topics_tab .tab_topics .navbutton:hover {
     background-color: #DDD; }
 
     #content { background-image: url(../images/common/content-bg.gif); }

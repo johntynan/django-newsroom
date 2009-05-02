@@ -1,10 +1,9 @@
 /* general */
 * { padding: 0; margin: 0; }
 html { overflow-y: scroll }
-body { background-color: #FFF; text-align: center; font: 62.5% "Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif; }
+body { background-color: #FFF; text-align: center; font: 62.5% "Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif; color: #222; }
 img { border: none; vertical-align: middle; }
 /* headers */
-h1 { font-size: 2.2em; }
 h1 a { color: #000; text-decoration: none; }
 h3 { color: #666; font-size: 1.4em;  }
 h2 a {  }
@@ -69,7 +68,7 @@ h3.subheadline { padding: 15px 0 0; }
         #navmenu a { float: left; padding: 9px 10px 8px; margin: 0 5px 0 0; background-color: #326342; font-weight: bold; text-decoration: none; }
         */
         .navbutton:hover { background: #396A42; }
-        .navbutton.active { background: #CCE9A2; color: #326342; border-bottom: 1px solid #CCE9A2; } 
+        .navbutton.active { background: #CCE9A2; color: #326342; border-bottom: 1px solid #CCE9A2; }
         .navbutton.active:hover {  }
 
     .nav-dash { float: left; padding: 10px  0 0 30px; }
@@ -80,8 +79,9 @@ h3.subheadline { padding: 15px 0 0; }
 
 #content { padding: 40px 20px 20px; background: #FFF url(../images/common/content-bg.gif) repeat-x; text-align: left; }
 
-    #content-data { float: left; width: 70%; padding-left: 20px;  }
-        #content-data h1 { padding-bottom: 20px; text-align: left; font-size: 2em; }
+    #content-data { float: left; width: 70%; padding-left: 20px; font-size: 1.2em; }
+        #content-data h1 { padding-bottom: 20px; text-align: left; font-size: 1.6em; color: #555; }
+        #content-data p { padding: 4px 0; }
 
     #content-action { float: left; width: 15%; max-width: 230px; min-width: 160px;  }
         #content-action h2 { padding: 3px 8px; margin: 0 0 10px; font-size: 1.4em; color: #4A5C64; text-align: right; background: #E3EDF0; -moz-border-radius: 8px; }
@@ -94,45 +94,7 @@ h3.subheadline { padding: 15px 0 0; }
 
 
 
-/* contacts */
-
-#people-list { }
-    #people-list .person { clear: both; padding: 5px 0 2px; border-bottom: 1px solid #CCC; }
-    #people-list .person img { float: left; padding-right: 10px;  }
-    #people-list .person h3 { padding: 4px 0 3px; font-size: 1.6em; }
-    #people-list .person h3 a { color: #777; }
-    .person .role { font-size: 1.3em; color: #999 }
-
-
-    .note { padding: 10px 0 3px; border-bottom: 1px solid #EFEFEF; }
-    .note h3 { color: #000; }
-    .note h3 .byuser { font-weight: normal; font-size: 0.9em; }
-    .notes .text { padding: 3px 0; color: #555; font-size: 1.3em; }
-
-
-
-
-/* overview hp / project */
-#overview .item { padding-bottom: 25px; }
-        #overview .item h2 a { color: #000; }
-    #overview .item p { clear: both; padding: 8px 0; }
-    #overview .item span { float: left; padding: 3px 2px; font-size: 1.2em; }
-    #overview .item .ovmodule { width: 90px; margin-right: 10px; padding: 3px 4px; text-align: right; color: #FFF; }
-                    .module35 { background-color: #216AB3; }
-                    .module26 { background-color: #78B10D; }
-    #overview .ovdesc { color: #C75C00; }
-    #overview .ovauthor { color: #999999 }
-
-
-
-
-
-
-    /* module */
-    .module {  }
-    .module h2 { padding: 10px 20px 5px 0; }
-    .module p {  }
-
-#footer { clear: both; padding-top: 15px; margin-left: 20px; text-align: left; color: #555; font-size: 1.1em; }
-#footer a { color: #555555; }
-
+/* messages */
+#messages { margin: 0 0 10px; padding: 7px 10px; background-color: #ECF6F8; -moz-border-radius: 5px; }
+    #messages li { padding: 3px 0; font-size: 1.1em; }
+    #messages a { margin: 0 5px; }

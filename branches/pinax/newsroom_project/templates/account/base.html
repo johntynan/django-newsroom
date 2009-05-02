@@ -4,9 +4,11 @@
 
 {% block rtab_id %}id="account_tab"{% endblock %}
 
+{% block action_title %}{% trans "Account options" %}{% endblock %}
+
 {% block subnav %}
     {% if user.is_authenticated %}
-        <ul>
+        <ul class="action-links">
             <li><a href="{% url acct_email %}">{% trans "E-Mail Addresses" %}</a></li>
             <li><a href="/openid/associations/">{% trans "OpenID Associations" %}</a></li>
             {% if user.password %}
