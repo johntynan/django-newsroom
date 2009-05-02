@@ -61,3 +61,9 @@ Another option is when a page is edited you get a page without a left column tha
  # there is probably a set list of available templates
  # page edit screen allows you to change your layout providing visual thumbnail of the layout.
  # page list screen allows you to choose, preview and save different layouts
+
+== Inlines ==
+
+Recently another pluggable was introduced and I'm not sure if this would provide another type of solution.
+
+http://github.com/mintchaos/django_inlines/tree/master
