@@ -52,7 +52,7 @@ Recently Marco introduced a javascript page editor.  So one solution to the page
 
 == Add media in page editor ==
 
-Another option is when a page is edited you get a page without a left column that is a set width, equal to the site published width.  On that page you can add media elements and arrange things, including adding bold/italics and preformatted things like code examples.  Once you are done arranging blocks then click save and the html is posted via ajax to a view that save it.  A redirect takes you back to the edit screen that displays the html code in the textarea.  You could do any additional tweaks if you like there.  
+Another option is when a page is edited the sub nav column goes away and a page layout editor appears at a set width, equal to the published site width.  The page editor allows you to add media elements and arrange things, including adding bold/italics and preformatted things like code examples.  Once you are done arranging blocks then click save and the html is posted via ajax to a view that saves it.  A redirect takes you back to the edit screen that displays the html code in the textarea.  You could do any additional tweaks if you like there.  Editing the HTML gives us more control if we need and allows for edge cases where you might want to embed something the layout editor can't handle.
 
 *HTML is an important skill to have.*
 
