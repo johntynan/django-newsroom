@@ -50,5 +50,6 @@ Recently Marco introduced a javascript page editor.  So one solution to the page
 
 == Choose layout ==
 
+ # there is probably a set list of available templates
  # page edit screen allows you to change your layout providing visual thumbnail of the layout.
  # page list screen allows you to choose, preview and save different layouts
