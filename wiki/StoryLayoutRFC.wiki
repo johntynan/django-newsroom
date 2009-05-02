@@ -35,3 +35,19 @@ The page view will parse the page content and depending on how many column break
 Each of the supported backend templates will be based on a grid layout, like [http://960.gs/ 960.gs].  A  photoshop document or image with the grid structure will be provided.  The grid template can be used to mockup your page in photoshop or on paper, as well as providing you with pixel dimensions for your media within the templates.  
 
 This should be sufficient for the authors to plan their story layout and have a complete idea of story layout before approaching the CMS with their final and vetted media.
+
+= Javascript =
+
+Recently Marco introduced a javascript page editor.  So one solution to the page layout problem might be solved by javascript.  An example process might be:
+
+Example One
+
+Javascript Page Layout Editor
+
+ # create your page content in a textarea introducing media tags or column tags into the content textarea.  Introduce different media elemets.
+
+ # then click save and preview.  the preview screen provides you with each element, text and media as blocks in which you can expand into some constrained layout screen.
+
+Choose layout
+
+ # page edit screen allows you to change your layout providing visual 
