@@ -4,15 +4,20 @@
 {% block head_title %}Edit Story: {{story.headline}}{% endblock %}
 
 {% block subnav %}
-<h2>{% trans "Stories" %}</h2>
+<h2>{% trans "Links" %}</h2>
 <ul class="action-links">
-<li><a href="{% url stories_story_list %}">Story List</a></li>
-<li><a href="{% url stories_story_list %}">Add Story</a></li>
+<li><a href="{% url stories_story_list %}">{% trans "Story List" %}</a></li>
+<li><a href="{% url stories_story_list %}">{% trans "Add Story" %}</a></li>
 </ul>
 
 <h2>{% trans "Actions" %}</h2>
-<ul class="action-links">
-<li><a href="{% url stories_story_list %}">Story List</a></li>
+<ul class="action-links" id="list-actions">
+    <li><a href="{% url stories_story_list %}">{% trans "Add Media" %}</a></li>
+    <li><a href="{% url stories_story_list %}">{% trans "Preview" %}</a></li>
+</ul>
+<ul class="action-links hidden" id="content-actions">
+    <li><a href="{% url stories_story_list %}">{% trans "Add Page" %}</a></li>
+    <li><a href="{% url stories_story_list %}">{% trans "Add Widget" %}</a></li>
 </ul>
 {% endblock %}
 
@@ -22,13 +27,26 @@
 
     {# TODO auto-slugify headline (or customize admin) #}
 
-    <form method="post">
-    <fieldset class="inlineLabels">
-        {{ form.as_p }}
-        <div class="form_block">
-            <input type="submit" value="Save"/>
+    <div class="edit-story-tabs">
+        <div class="tab-links">
+            <a href="" class="active">Publishing info.</a>
+            <a href="">Media</a>
+            <a href="">Content/Pages</a>
+            <br class="clearboth" />
         </div>
-    </fieldset>
-    </form>
+        <div class="tab-contents">
+
+            <form id="form-info" method="post">
+            <fieldset class="inlineLabels">
+                {{ form.as_p }}
+                <div class="form_block">
+                    <input type="submit" value="Save"/>
+                </div>
+            </fieldset>
+            </form>
+
+        </div>
+
+    </div>
 
 {% endblock main_content %}
