@@ -4,15 +4,33 @@
 {% block head_title %}Story List{% endblock %}
 
 {% block main_content %}
-{% for story in stories %}
-<div>
-    <a href="{% url stories_story_pages story.id %}">{{story.headline}}</a>
-    <br/>
-    Pages: {% for page in story.pages %}<a href="{% url stories_edit_page page.id %}">{{page.pagenum}}</a></a>{% endfor %}
-    <br/>
-    Media: {% for item in story.media.all %}{{item.title}}{% endfor %}
-</div>
-{% empty %}
-<p>No stories available at the moment.</p>
-{% endfor%}
+    <h1>Stories</h1>
+
+    {% if stories %}
+        <table cellspacing="0" cellpadding="0" class="list-table">
+        <thead>
+            <tr>
+                <th class="id_col">Id</th>
+                <th>Title</th>
+                <th>Media</th>
+                <th class="count_col">Pages</th>
+                <th class="status_col">Status</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        {% for story in stories %}
+        <tr class="{% cycle '' 'alt-row' %}">
+            <td class="id_col">{{ story.id }}</td>
+            <td><a href="{% url stories_edit_story story.id %}">{{ story.headline }}</a></td>
+            <td>{% for item in story.media.all %}{{ item.title }}{% endfor %}</td>
+            <td class="count-col">{{ story.pages.count }}</td>
+            <td class="status-col">{{ story.status }}</td>
+            <td>{{ story.date }}</td>
+        </tr>
+        {% endfor %}
+        </table>
+    {% else %}
+    <p>No stories available at the moment.</p>
+    {% endif %}
+
 {% endblock %}
