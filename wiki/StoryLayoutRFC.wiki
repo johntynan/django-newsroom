@@ -36,11 +36,9 @@ Each of the supported backend templates will be based on a grid layout, like [ht
 
 This should be sufficient for the authors to plan their story layout and have a complete idea of story layout before approaching the CMS with their final and vetted media.
 
-= Javascript =
+= Examples =
 
 Recently Marco introduced a javascript page editor.  So one solution to the page layout problem might be solved by javascript.  An example process might be:
-
-Example One
 
 Javascript Page Layout Editor
 
@@ -48,6 +46,10 @@ Javascript Page Layout Editor
 
  # then click save and preview.  the preview screen provides you with each element, text and media as blocks in which you can expand into some constrained layout screen.
 
+ # when you save the preview, it uses ajax to post data to a view that saves the html.  which is mostly div tags corresponding to whatever grid system we are using.
+
 Choose layout
 
- # page edit screen allows you to change your layout providing visual 
+ # page edit screen allows you to change your layout providing visual thumbnail of the layout.
+
+ # page list screen allows you to choose, preview and save different layouts
