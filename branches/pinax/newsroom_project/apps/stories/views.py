@@ -50,6 +50,15 @@ def add_page(request,story_id):
 def edit_story(request,story_id):
     story = get_object_or_404(Story,pk=story_id)
     form = StoryForm(instance=story)
+    if request.method == 'POST':
+        form = StoryForm(request.POST,instance=story)
+        if form.is_valid():
+            form.save()
+            request.user.message_set.create(
+                    message='Your story was saved.')
+            return HttpResponseRedirect(reverse('stories_story_list'))
+
+
     return render_to_response(
                 'stories/edit_story.html',
                 locals(),

@@ -2,8 +2,7 @@
 
 {% block head_title %}{{ story.headline }}{% endblock %}
 
-{% block app_menu %}
-<h2>Menu</h2>
+{% block subnav %}
 <ul id="story-page-list-menu">
     <li><a href="{% url stories_add_page story.id %}">Add Page</a></li>
     <li><a href="">Story Preview</a></li>

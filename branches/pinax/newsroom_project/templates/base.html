@@ -79,7 +79,13 @@
         {% endif %}
         <div id="content-action">
             <h2>{% trans "Quick links" %}</h2>
+            {% if user.is_authenticated %}
             {% block subnav %}&nbsp;{% endblock %}
+            {% else %}
+            <ul>
+            <li><a href="http://news21.ning.com">News21 Social</a></li>
+            </ul>
+            {% endif %}
         </div>
         <div id="content-data">
             {% block body %}
