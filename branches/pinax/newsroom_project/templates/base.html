@@ -71,16 +71,7 @@
             </ul>
         {% endif %}
         <div id="content-action">
-            <h2>{% block action_title %}{% trans "Links" %}{% endblock %}</h2>
-            {% if user.is_authenticated %}
-            {% block subnav %}{% endblock %}
-            {% else %}
-            <ul class="action-links">
-                <li><a href="http://news21.ning.com">Social</a></li>
-                <li><a href="http://news21blog.org">Blog</a></li>
-                <li><a href="http://code.google.com/p/django-newsroom/">Code</a></li>
-            </ul>
-            {% endif %}
+            {% block subnav %}&nbsp;{% endblock %}
         </div>
         <div id="content-data">
             {% block body %}

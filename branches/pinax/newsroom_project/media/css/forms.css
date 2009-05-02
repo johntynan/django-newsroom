@@ -15,7 +15,7 @@ label {  }
     .form { font-family: Arial; }
     .form h3 { color: #555; }
     .form p { clear: both; padding: 2px 0; }
-    form p input, .form p textarea { border: 1px solid; border-color: #888 #CCC #CCC #888; }
+    form p input, form p textarea { border: 1px solid; border-color: #888 #CCC #CCC #888; }
     .form label, .form input[type=text], .form textarea { color: #555; }
     .form .errorlist { clear: both; color: red }
     .form .focused { background: #FFF9DF; }

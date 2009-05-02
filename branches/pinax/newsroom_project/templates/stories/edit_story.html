@@ -1,25 +1,34 @@
 {% extends "stories/base.html" %}
-{% load formfields %}
+{% load formfields i18n %}
 
 {% block head_title %}Edit Story: {{story.headline}}{% endblock %}
 
 {% block subnav %}
-<ul>
+<h2>{% trans "Stories" %}</h2>
+<ul class="action-links">
 <li><a href="{% url stories_story_list %}">Story List</a></li>
-<li><a href="{% url stories_story_pages story.id %}">List Pages</a></li>
+<li><a href="{% url stories_story_list %}">Add Story</a></li>
+</ul>
+
+<h2>{% trans "Actions" %}</h2>
+<ul class="action-links">
+<li><a href="{% url stories_story_list %}">Story List</a></li>
 </ul>
 {% endblock %}
 
 {% block main_content %}
 
-<h1>Edit Story: {{story.headline}}</h1>
+    <h1>Edit Story: {{story.headline}}</h1>
 
-{# TODO auto-slugify headline (or customize admin) #}
-<form method="post">
-<table>
-{{ form }}
-</table>
-<input type="submit" value="Save"/>
-</form>
+    {# TODO auto-slugify headline (or customize admin) #}
+
+    <form method="post">
+    <fieldset class="inlineLabels">
+        {{ form.as_p }}
+        <div class="form_block">
+            <input type="submit" value="Save"/>
+        </div>
+    </fieldset>
+    </form>
 
 {% endblock main_content %}

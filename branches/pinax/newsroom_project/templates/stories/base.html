@@ -1,20 +1,27 @@
 {% extends "site_base.html" %}
+{% load i18n %}
 
 {% block head_title %}Stories List{% endblock %}
 
-{% block tab_id %}id="stories_tab"{% endblock %}
+{% block extra_head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/stories.css" />
+{% endblock %}
+
 
 {% block body_id %}stories{% endblock %}
 
+
 {% block body %}
-    
+
     {% block main_content %}
     {% endblock %}
 
 {% endblock %}
 
 {% block subnav %}
-<ul>
+<h2>{% trans "Links" %}</h2>
+<ul class="action-links">
     <li><a href="{% url stories_add_story %}" title="Add Story">Add Story</a></li>
 </ul>
 {% endblock %}

@@ -3,9 +3,27 @@
 
 
 {% block head_title %}{% trans "Welcome" %}{% endblock %}
+
 {% block extra_head %}
-{{ block.super }}
-<link rel="stylesheet" href="{{ MEDIA_URL }}css/dashboard.css" />
+    {{ block.super }}
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/dashboard.css" />
+{% endblock %}
+
+
+{% block subnav %}
+    {% if user.is_authenticated %}
+    <h2>{% trans "Quick Links" %}</h2>
+    <ul class="action-links">
+        <li><a href="{% url stories_add_story %}" title="Add Story">Add Story</a></li>
+    </ul>
+    {% else %}
+    <h2>{% trans "Learn more" %}</h2>
+    <ul class="action-links">
+        <li><a href="http://news21.ning.com">Social</a></li>
+        <li><a href="http://news21blog.org">Blog</a></li>
+        <li><a href="http://code.google.com/p/django-newsroom/">Code</a></li>
+    </ul>
+    {% endif %}
 {% endblock %}
 
 

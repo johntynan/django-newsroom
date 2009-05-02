@@ -86,7 +86,7 @@ h3.subheadline { padding: 15px 0 0; }
     #content-action { float: left; width: 15%; max-width: 230px; min-width: 160px;  }
         #content-action h2 { padding: 3px 8px; margin: 0 0 10px; font-size: 1.4em; color: #4A5C64; text-align: right; background: #E3EDF0; -moz-border-radius: 8px; }
 
-        .action-links { padding-right: 10px; }
+        .action-links { margin-bottom: 20px; padding-right: 10px; }
         .action-links li { padding: 3px 0; font-size: 1.2em; }
             .action-links li a { display: block; padding: 3px 22px 3px 0; background: url(../images/common/icon_object-tools_addlink.gif) no-repeat top right;
                 color: #596E78; text-decoration: none; font-weight: bold; text-align: right; }
@@ -98,3 +98,16 @@ h3.subheadline { padding: 15px 0 0; }
 #messages { margin: 0 0 10px; padding: 7px 10px; background-color: #ECF6F8; -moz-border-radius: 5px; }
     #messages li { padding: 3px 0; font-size: 1.1em; }
     #messages a { margin: 0 5px; }
+
+
+/* tables */
+.list-table { width: 100%; }
+    .list-table thead th { padding: 4px 5px; border: 1px solid #DEDEDE; border-left: none; background: url(../images/tables/bg_fieldset.gif) repeat-x;
+        color: #444; font-weight: bold; font-size: 0.9em }
+
+    .list-table td { padding: 7px 5px; border: 1px solid #DEDEDE; border-left: none; border-top: none; color: #444; font-weight: bold; }
+
+    .list-table .id_col { width: 20px; border-left: 1px solid #DEDEDE; }
+    .list-table .status-col, .list-table .count-col { width: 10px; text-align: center; }
+
+    .list-table .alt-row { background: #F7F7F7; }
