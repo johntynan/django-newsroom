@@ -47,11 +47,7 @@
         <div id="dashb" class="pwrapper">
             <a href="" id="dashb-link">My Dashboard</a>
             <span id="dashb-info">
-                <span class="username">{% block login %}{% endblock %}{% block locale_switcher %}{% endblock %}</span>
-                <span class="separator">&nbsp;</span>
-                <a href="">{% trans "my settings" %}</a>
-                <span class="separator">&nbsp;</span>
-                <a href="">{% trans "logout" %}</a>
+                {% block login %}{% endblock %}{% block locale_switcher %}{% endblock %}
             </span>
         </div>
 
@@ -101,4 +97,3 @@
     {% endblock %}
 </body>
 </html>
-
