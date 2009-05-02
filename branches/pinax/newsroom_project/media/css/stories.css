@@ -1,3 +1,9 @@
 .tab_stories .navbutton { background: #DDD; color: #3D4B52; border-bottom-color: #DDD; }
 .tab_stories .navbutton:hover { background-color: #DDD; }
 
+
+.edit-story-tabs { background: #E3EDF1; padding: 5px; -moz-border-radius: 5px; }
+    .tab-links a { float: left; margin-right: 10px; padding: 8px; color: #14456E; font-weight: bold; text-decoration: none; text-transform: uppercase; }
+    .tab-links a.active { background: #FFF; -moz-border-radius: 5px; -moz-border-radius-bottomleft: 0; -moz-border-radius-bottomright: 0;  }
+.tab-contents { padding: 10px; background: #FFF; -moz-border-radius: 5px; -moz-border-radius-topleft: 0; }
+
