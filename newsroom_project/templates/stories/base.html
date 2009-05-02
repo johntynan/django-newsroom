@@ -14,9 +14,7 @@
 {% endblock %}
 
 {% block subnav %}
-{% if user.is_authenticated %}
 <ul>
     <li><a href="{% url stories_add_story %}" title="Add Story">Add Story</a></li>
 </ul>
-{% endif %}
 {% endblock %}
