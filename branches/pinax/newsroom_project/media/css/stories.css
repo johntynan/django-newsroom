@@ -7,3 +7,12 @@
     .tab-links a.active { background: #FFF; -moz-border-radius: 5px; -moz-border-radius-bottomleft: 0; -moz-border-radius-bottomright: 0;  }
 .tab-contents { padding: 10px; background: #FFF; -moz-border-radius: 5px; -moz-border-radius-topleft: 0; }
 
+
+.thickwindow { padding: 10px; background: #F5F5F5 url(../images/stories/thickwindow-bg.gif) repeat-x; border: 1px solid #CCC; -moz-border-radius: 7px; }
+    .thickwindow h2 { padding: 10px 0; }
+
+    #TB_closeAjaxWindow { text-align: right; }
+
+.list-page-templates { padding: 0 0 20px; }
+.list-page-templates li { clear: both; }
+.list-page-templates img { float: left; margin-right: 10px; }

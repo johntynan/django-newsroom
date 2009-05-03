@@ -10,15 +10,29 @@
 <li><a href="{% url stories_story_list %}">{% trans "Add Story" %}</a></li>
 </ul>
 
-<h2>{% trans "Actions" %}</h2>
-<ul class="action-links" id="list-actions">
-    <li><a href="{% url stories_story_list %}">{% trans "Add Media" %}</a></li>
-    <li><a href="{% url stories_story_list %}">{% trans "Preview" %}</a></li>
-</ul>
-<ul class="action-links hidden" id="content-actions">
-    <li><a href="{% url stories_story_list %}">{% trans "Add Page" %}</a></li>
-    <li><a href="{% url stories_story_list %}">{% trans "Add Widget" %}</a></li>
-</ul>
+<div class="actions-block hidden" id="story-info-actions">
+    <h2>{% trans "Actions" %}</h2>
+    <ul class="action-links">
+        <li><a href="{% url stories_story_list %}">{% trans "Add Media" %}</a></li>
+        <li><a href="{% url stories_story_list %}">{% trans "Preview" %}</a></li>
+    </ul>
+</div>
+
+<div class="actions-block hidden" id="story-media-actions">
+    <h2>{% trans "Actions" %}</h2>
+    <ul class="action-links">
+        <li><a href="{% url stories_story_list %}">{% trans "Add Embed Video" %}</a></li>
+        <li><a href="{% url stories_story_list %}">{% trans "Add Image" %}</a></li>
+    </ul>
+</div>
+
+<div class="actions-block" id="story-content-actions">
+    <h2>{% trans "Actions" %}</h2>
+    <ul class="action-links">
+        <li><a href="{% url stories_story_widgets "page_template" %}?width=750&height=500" class="thickbox">{% trans "Add Page" %}</a></li>
+        <li><a href="{% url stories_story_list %}">{% trans "Add Widget" %}</a></li>
+    </ul>
+</div>
 {% endblock %}
 
 {% block main_content %}
@@ -29,21 +43,33 @@
 
     <div class="edit-story-tabs">
         <div class="tab-links">
-            <a href="" class="active">Publishing info.</a>
-            <a href="">Media</a>
-            <a href="">Content/Pages</a>
+            <a href="" rel="story-info">Publishing info.</a>
+            <a href="" rel="story-media">Media</a>
+            <a href="" class="active" rel="story-content">Content/Pages</a>
             <br class="clearboth" />
         </div>
         <div class="tab-contents">
 
-            <form id="form-info" method="post">
-            <fieldset class="inlineLabels">
-                {{ form.as_p }}
-                <div class="form_block">
-                    <input type="submit" value="Save"/>
-                </div>
-            </fieldset>
-            </form>
+            <div id="story-info" class="tab hidden">
+                <form method="post">
+                <fieldset class="inlineLabels">
+                    {{ form.as_p }}
+                    <div class="form_block">
+                        <input type="submit" value="Save"/>
+                    </div>
+                </fieldset>
+                </form>
+            </div>
+
+
+            <div id="story-media" class="tab hidden">
+
+
+            </div>
+
+
+            <ul id="story-content" class="tab"></ul>
+            <br class="clear" />
 
         </div>
 

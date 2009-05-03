@@ -1,0 +1,23 @@
+.float-left { float: left; }
+    .float-left img { margin: 5px 5px 5px 0; }
+.clear { clear: both; }
+
+.widget-block { position: relative; padding-right: 100px; }
+.widget-block:hover {  }
+
+.widget-block .widget-options { position: absolute; right: 5px; top: 0; width: 90px; }
+
+.widget-options a { display: block; padding: 2px 0 2px 15px; background: url(../images/icons/icon_changelink.gif) no-repeat left 6px;
+    text-decoration: none; }
+.widget-options a:hover { text-decoration: underline; }
+.widget-options a.widget-remove { background-image: url(../images/icons/icon_actionlist-deletelink.gif); color: #CC3D3D }
+.widget-options a.widget-move_up { background-image: url(../images/icons/icon_th_descending.png); color: #9cbe62 }
+.widget-options a.widget-move_down { background-image: url(../images/icons/icon_th_ascending.png); color: #9cbe62 }
+
+
+.w21-image { z-index: 2; background: #FFF; }
+.w21-page_break { clear: both; height: 16px; padding-top: 30px; margin: 0 0 30px 0; font-weight: bold; border-bottom: 1px solid #222; }
+    .w21-page_break .widget-options { display: inline; float: right; }
+    .w21-page_break .widget-options a { display: inline; margin: 0 0 0 12px; background-position: center left; }
+
+#story-content li:hover { cursor: move; }

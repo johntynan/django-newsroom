@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
@@ -34,7 +35,7 @@ def add_story(request):
                 'stories/add_story.html',
                 locals(),
                 context_instance=RequestContext(request))
-    
+
 
 @login_required
 def add_page(request,story_id):
@@ -64,12 +65,12 @@ def edit_story(request,story_id):
                 locals(),
                 context_instance=RequestContext(request))
 
-@login_required    
+@login_required
 def story_pages(request,story_id):
     story = get_object_or_404(Story,pk=story_id)
     return render_to_response('stories/story_page_list.html',locals(),context_instance=RequestContext(request))
 
-@login_required    
+@login_required
 def story_media(request,story_id):
     story = get_object_or_404(Story,pk=story_id)
     system_media_types = Media.media_types
@@ -80,13 +81,13 @@ def story(request,slug):
     story = get_object_or_404(Story,slug=slug)
     pagenum = request.GET.get('p',1)
     page = story.get_page(1)
-    
+
     #render the page content so that media tags are handled
     template = Template("{%% load media_tags %%}%s" %  page.content)
     content = template.render(Context())
-    
+
     #TODO: get the template to use from the story
-    
+
     #TODO: handle column breaks
     return render_to_response('stories/display_page_content.html',
                               locals(),
@@ -114,11 +115,18 @@ def story_add_media(request,story_id):
     media = get_object_or_404(Media,pk=request.POST.get('media_id'))
     story.media.add(media)
     return render_to_response('stories/widgets/story_media_summary.html',locals())
-    
+
 @login_required
 def story_select_media(request,story_id,media_type):
     story = get_object_or_404(Story,pk=story_id)
     MediaType = Media.class_factory(media_type)
-    
+
     object_list = MediaType.objects.filter(authors__pk__exact=request.user.pk)
     return render_to_response('stories/select_media.html',locals(),context_instance=RequestContext(request))
+
+
+@login_required
+def story_widget(request,widget_name):
+
+
+    return render_to_response('stories/widgets/%s.html' % widget_name,locals(),context_instance=RequestContext(request))
