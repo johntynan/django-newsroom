@@ -1,7 +1,8 @@
+# -*- coding: utf-8 -*-
 from django.conf.urls.defaults import *
 
 urlpatterns = patterns('stories.views',
-    
+
     #- EDITIING -
     #list stories
     url('^$','story_list',name='stories_story_list'),
@@ -21,7 +22,9 @@ urlpatterns = patterns('stories.views',
     url(r'^story/(?P<story_id>\d+)/media/add/$','story_add_media',name='stories_story_add_media'),
     #associate media
     url(r'^story/(?P<story_id>\d+)/media/(?P<media_type>\w+)/select/$','story_select_media',name='stories_story_select_media'),
-    
+
+    url(r'^widget/(?P<widget_name>.+)/$','story_widget',name='stories_story_widgets'),
+
     #- PUBLIC  -
     #diplay story
     url('^(?P<slug>[\d\w-]+)/$','story',name="stories_show_story"),
