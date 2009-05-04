@@ -151,6 +151,8 @@ PROMO_MODERATORS = (
     # ('Your Name', 'your_email@domain.com'),
 )
 
+DEFAULT_FROM_EMAIL = 'webmaster@localhost'
+
 ABSOLUTE_URL_OVERRIDES = {
     "auth.user": lambda o: "/profiles/%s/" % o.username,
 }
