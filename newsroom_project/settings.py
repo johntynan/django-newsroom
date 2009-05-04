@@ -147,6 +147,10 @@ INSTALLED_APPS = (
     'videos',
 )
 
+PROMO_MODERATORS = (
+    # ('Your Name', 'your_email@domain.com'),
+)
+
 ABSOLUTE_URL_OVERRIDES = {
     "auth.user": lambda o: "/profiles/%s/" % o.username,
 }
