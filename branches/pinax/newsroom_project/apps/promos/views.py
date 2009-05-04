@@ -10,10 +10,11 @@ from django.contrib.auth.models import User
 
 from django.conf import settings
 
-if "notification" in settings.INSTALLED_APPS:
-    from notification import models as notification
+if "mailer" in settings.INSTALLED_APPS:
+    from mailer import send_mail
 else:
-    notification = None
+    from django.core.mail import send_mail
+
 
 def front(request):
     return render_to_response(
@@ -32,11 +33,8 @@ def promo_add(request):
             promo = form.save(commit=False)
             promo.submitter = request.user
             promo.save()
-            if notification:
-                to_user = [mail_tuple[1] for mail_tuple in settings.PROMO_MODERATORS]
-                from_user  = [mail_tuple[1] for mail_tuple in settings.ADMINS[0]]
-                from_user = from_user[0]
-                notification.send([to_user], "promo_submitted", "you have received a promo.", [from_user])
+            to_user = [mail_tuple[1] for mail_tuple in settings.PROMO_MODERATORS]
+            send_mail("promo_submitted", "you have received a promo.", settings.DEFAULT_FROM_EMAIL, to_user)
             request.user.message_set.create(
                 message='Your promo has been submitted.')
 
