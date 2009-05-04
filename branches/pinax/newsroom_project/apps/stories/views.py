@@ -25,9 +25,9 @@ def add_story(request):
         form = StoryForm(request.POST)
         if form.is_valid():
             story = form.save()
+            request.user.message_set.create(
+                    message='Your story was saved.')
             return HttpResponseRedirect(reverse('stories_edit_story',args=[story.id]))
-        else:
-            print form.errors
     else:
         form = StoryForm()
 
