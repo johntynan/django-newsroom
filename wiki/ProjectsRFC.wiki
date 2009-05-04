@@ -73,3 +73,15 @@ class Page(models.Model):
 
 
 }}}
+
+== An Issues / Projects / Stories Approach == 
+
+Let's not have sub-projects.  Let's have "Issues" which can aggregate projects.  Think of an Issue as the overarching "magazine publication" for an affiliate for a semester.
+
+As a sub-section of issues, let's have "Projects" which can aggregate stories.
+
+In my previous work, we used to have "special preports" which aggregated stories with a specific keyword between a certain date range.  The stories were just displayed on the projects page as a list, with title and description and link back to each story.  This "special report" page had a title and a description.  And an image.  (And a keyword property - similar to topic_path - which was used to gather the stories).  Within each story there was a link back to the special report page as well.  This Special Report is analogous to a project.
+
+I think if we start with this as a bare bones skeleton for projects we could use this as a starting point on which to build from.
+
+I think a lot of how the project page is displayed will be dictated by the students and will be reflective of the project itself.
