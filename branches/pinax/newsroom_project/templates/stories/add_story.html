@@ -10,10 +10,11 @@
 
 {# TODO auto-slugify headline (or customize admin) #}
 <form method="post">
-<table>
-{{ form }}
-</table>
-<input type="submit" value="Save"/> 
-<a href="{% url stories_story_list %}">Cancel</a>
+<fieldset class="inlineLabels">
+    {{ form.as_p }}
+<div class="form_block">
+    <input type="submit" value="Save"/> <a href="{% url stories_story_list %}">Cancel</a>
+</div>
+</fieldset>
 </form>
 {% endblock main_content %}
