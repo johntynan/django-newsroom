@@ -10,7 +10,14 @@ from multimedia.forms import MediaForm
 from multimedia.models import Media#, Video, Image
 from utils.response import JsonResponse, JsonErrorResponse
 
-#TODO: login req?
+@login_required    
+def browse(request):
+
+    media_items = request.user.media_set.all()
+
+    return render_to_response('multimedia/browse_media.html',locals(),context_instance=RequestContext(request))
+
+@login_required    
 def browse_by_type(request,media_type):
     
     media_class = Media.class_factory(media_type)
@@ -31,14 +38,18 @@ def add_by_type(request,media_type):
     form_class = MediaForm.factory(media_type)
     if request.method == 'POST':
         form = form_class(request.POST,request.FILES)
-        media = form.save(commit=False)
-        media.created_by = request.user
-        media.modified_by = request.user
-        media.slug = slugify(media.title)
-        media.site = Site.objects.get_current()
-        media.save()
-        form.save_m2m()
-        return HttpResponseRedirect(reverse(browse_by_type,args=[media_type,]))
+        if form.is_valid():
+            media = form.save(commit=False)
+            media.created_by = request.user
+            media.modified_by = request.user
+            media.slug = slugify(media.title)
+            media.site = Site.objects.get_current()
+            media.save()
+            form.save_m2m()
+            request.user.message_set.create(
+                        message='Your media was saved.')
+            return HttpResponseRedirect(
+                        reverse(browse))
     else:
         form = form_class()
     
