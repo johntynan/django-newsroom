@@ -23,8 +23,11 @@
             <td class="id_col">{{ story.id }}</td>
             <td><a href="{% url stories_edit_story story.id %}">{{ story.headline }}</a></td>
             <td>{% for item in story.media.all %}{{ item.title }}{% endfor %}</td>
-            <td class="count-col">{{ story.pages.count }}</td>
-            <td class="status-col">{{ story.status }}</td>
+            <td class="count-col">
+            {% for p in story.pages %}
+            <a href="{% url stories_edit_page p.id %}">{{ p.pagenum }}</a>
+            {% endfor %}
+            <td class="status-col">{{ story.get_status_display }}</td>
             <td>{{ story.date }}</td>
         </tr>
         {% endfor %}
