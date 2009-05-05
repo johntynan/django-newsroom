@@ -48,3 +48,24 @@ insert_snippet = image.get_insert_snippet()
 In general it would be desirable for insert snippets to be as terse as possible; enough to convey to the author that a media item will show up there and which one it will be. I like the idea of preserving the ability to explicitly send in extra parameters when needed, but I think it makes sense to treat those as rare cases. One idea I had was to create another model that would be used to hold individual options (ex: height,width,startFrame,etc...) which would then be associated with the Media objects. Then during render time the Media object would check for an associated Options object and use the values there. Another attractive approach is to simply add an options field onto Media models and pickle any options in there. 
 
 The primary use case for this is UI that would expose the properties available for the media type when the user is selecting from inventory for adding a story and the user would be able to customize the options inline. 
+
+== Embeds and Media Object Types ==
+
+The site should be able to accommodate embedding code from other sites and integrating content with APIs from other sites.
+
+Embedding should be easily accomplished by authors. A few expected embeds are:
+
+  * Images local to News21 / Slideshow local to News21
+  * Flickr Slideshow / Flickr image
+  * Tables / Excel Spreadsheets (graphs?)
+  * YouTube Video from News21 Account / YouTube video from other accounts / Video local to News21?
+  * SoundSlides multimedia / Flash widgets
+  * Google Maps
+  * Slideshare presentation
+  * Audio ?
+  * PDF/Word files
+  * Links
+  * TagClouds
+  * Etc.
+
+Integrating APIs should be easily accomplished by developers with the ability to hand off an “API object” to authors so that they can easily, say, add data to the web site and have it interact with an api from another source and display the information they are looking for (I realize this is vague or simplified, but it’s a foot in the door).
