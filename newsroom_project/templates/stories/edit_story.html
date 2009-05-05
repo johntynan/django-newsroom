@@ -21,8 +21,8 @@
 <div class="actions-block hidden" id="story-media-actions">
     <h2>{% trans "Actions" %}</h2>
     <ul class="action-links">
-        <li><a href="{% url stories_story_list %}">{% trans "Add Embed Video" %}</a></li>
-        <li><a href="{% url stories_story_list %}">{% trans "Add Image" %}</a></li>
+        <li><a href="{% url multimedia_add 'video' %}">{% trans "Add Embed Video" %}</a></li>
+        <li><a href="{% url multimedia_add 'image' %}">{% trans "Add Image" %}</a></li>
     </ul>
 </div>
 
@@ -64,11 +64,40 @@
 
             <div id="story-media" class="tab hidden">
 
+<p>Recent {{media_type|capfirst}} Items</p>
+<ul id="media-items">
+    {% for item in story.media.all %}
+    <li class="media-item" id="media-item-{{item.id}}"><img src="{{item.get_thumbnail_url}}" />{{item.title}}</li>
+    {% endfor %}
+</ul>
+
 
             </div>
 
 
-            <ul id="story-content" class="tab"></ul>
+            <div id="story-content" class="tab">
+
+{% for page in story.pages %}
+    <div class="page-preview-block" style="width:240px;float:left;border:1px solid">
+        <h2>Page {{page.pagenum}}</h2>
+        <p>{{page.content|truncatewords:30}}</p>
+        <p style="border-bottom:1px solid">Media</p>
+        {%if page.media%}
+        <ul>
+            {% for item in page.media %}
+            <li>{{item}} ({{item.media_type}})</li>
+            {% endfor %}
+        </ul>
+        {%else%}
+        --Empty--
+        {% endif %}
+        <p>{{page.columns|length}} Column{{page.columns|length|pluralize}}</p>
+        {# TODO actual preview URL; delete URL #}
+        <p><a href="{% url stories_edit_page page.id %}">Edit</a>|<a href="{% url stories_show_story story.slug %}">Preview</a>|<a href="">Delete</a></p>
+    </div>
+{% endfor %}    
+            </div>
+
             <br class="clear" />
 
         </div>

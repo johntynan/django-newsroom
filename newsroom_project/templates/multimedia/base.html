@@ -1,1 +1,28 @@
 {% extends "site_base.html" %}
+{% load i18n %}
+
+{% block head_title %}Media List{% endblock %}
+
+{% block extra_head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/media.css" />
+{% endblock %}
+
+
+{% block body_id %}multimedia{% endblock %}
+
+
+{% block body %}
+
+    {% block main_content %}
+    {% endblock %}
+
+{% endblock %}
+
+{% block subnav %}
+<h2>{% trans "Links" %}</h2>
+<ul class="action-links">
+    <li><a href="{% url multimedia_add 'image' %}" title="Add Image">Add Image</a></li>
+    <li><a href="{% url multimedia_add 'video' %}" title="Add Image">Add Video</a></li>
+</ul>
+{% endblock %}
