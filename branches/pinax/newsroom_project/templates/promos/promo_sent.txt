@@ -1,0 +1,10 @@
+{% load i18n %}{% blocktrans %}
+
+You have received the following promo from http://{{ current_site }}/profiles/{{ user }}.
+
+You can view this promo here:
+
+http://{{ current_site }}/promos/{{ object }}
+
+
+{% endblocktrans %}

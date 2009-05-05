@@ -9,6 +9,9 @@ from promos.models import PromoLink
 from django.contrib.auth.models import User
 
 from django.conf import settings
+from django.template.loader import render_to_string
+from django.contrib.sites.models import Site
+
 
 if "mailer" in settings.INSTALLED_APPS:
     from mailer import send_mail
@@ -34,7 +37,8 @@ def promo_add(request):
             promo.submitter = request.user
             promo.save()
             to_user = [mail_tuple[1] for mail_tuple in settings.PROMO_MODERATORS]
-            send_mail("promo_submitted", "you have received a promo.", settings.DEFAULT_FROM_EMAIL, to_user)
+            message = render_to_string('promos/promo_sent.txt', { 'user': request.user , 'current_site': Site.objects.get_current().domain, 'object': promo.id })
+            send_mail("promo_submitted", message, settings.DEFAULT_FROM_EMAIL, to_user)
             request.user.message_set.create(
                 message='Your promo has been submitted.')
 
