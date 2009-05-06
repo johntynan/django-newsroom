@@ -101,4 +101,6 @@ To Add Media
 
 Media Tags will be used, behind the scenes.  The author will not know the difference either way, as they will be editing the story visually.
 
-The raw, rendered html will only be present in the visual editor and in the story as the published story is served to the visitor.
+The raw, rendered html will only be present:
+  * in the visual editor and 
+  * in the published story as it is served to the visitor.
