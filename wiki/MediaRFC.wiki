@@ -69,3 +69,36 @@ Embedding should be easily accomplished by authors. A few expected embeds are:
   * Etc.
 
 Integrating APIs should be easily accomplished by developers with the ability to hand off an “API object” to authors so that they can easily, say, add data to the web site and have it interact with an api from another source and display the information they are looking for (I realize this is vague or simplified, but it’s a foot in the door).
+
+
+== Media Tab ==
+
+When a person goes to the media tab that is global to the entire site:
+
+  * they will see a list of media
+  * they will be able to edit the media on this page
+  * they will NOT be able to ADD media from this page
+
+== Adding Media ==
+
+Media is added through Stories (and possibly other objects, like promos, TBD).
+
+To Add Media
+
+  # First Add a Story
+  # Fill in the metadata, click Save
+  # Click on the Media Tab
+  # Under the Media Tab you will see a list of media:
+    * that is particular to the current story
+    * that is has been added by the current user (across all stories/promos etc).
+    * you may have the option to see a paged list of media in alphabetical order that has been added across all users across the entire site.
+    * you may have the option to browse a gallery of rights cleared images
+  # To add new media, click on the links under the Action Tab to add video or image (and other types to come)
+  # This newly added media object will also gain an association with the story in which it was uploaded.
+  # A media object can be used across many different stories (or perhaps other object types, like promos)
+
+== The Media Tag ==
+
+Media Tags will be used, behind the scenes.  The author will not know the difference either way, as they will be editing the story visually.
+
+The raw, rendered html will only be present in the visual editor and in the story as the published story is served to the visitor.
