@@ -67,3 +67,19 @@ Another option is when a page is edited the sub nav column goes away and a page 
 Recently another pluggable was introduced and I'm not sure if this would provide another type of solution.
 
 http://github.com/mintchaos/django_inlines/tree/master
+
+
+== Process for Pages / Layout ==
+
+  # after you click on the link to add a story and enter the appropriate metadata
+  # and after you upload all the media elements for your story
+  # you will click on the link to add a page
+  # from here you will be presented with a handful of stock designs upon which to base your page
+  # once you select the visual layout you will like for your page, you will be presented with the visual editor
+  # from here you can add either:
+    * text blocks
+    * or media blocks
+  # (These blocks (formerly known as widgets) are simply divs).  Depending on the object type, you'll be presented with different editing options within the visual editor that are appropriate to the content.
+  # These blocks can be arranged in any manner that the author chooses
+  # The author can even add more rows/columns to the layout as he or she sees fit (Milan, we may want to clarify this a bit further).
+  # Some attention will be paid to the ordering of the blocks in the event, down the road, that the content is viewed on a mobile browser so that they can be paged through in a sequential manner.
