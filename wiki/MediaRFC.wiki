@@ -91,6 +91,8 @@ To Add Media
   # Under the Media Tab you will see a list of media:
     * that is particular to the current story
     * that is has been added by the current user (across all stories/promos etc).
+    * Media could also be listed according social relationships using the pinax friends app.  So, if someone is your friend then you can see their media.
+  rather than having that based on project, it could be user based.
     * you may have the option to see a paged list of media in alphabetical order that has been added across all users across the entire site.
     * you may have the option to browse a gallery of rights cleared images
   # To add new media, click on the links under the Action Tab to add video or image (and other types to come)
