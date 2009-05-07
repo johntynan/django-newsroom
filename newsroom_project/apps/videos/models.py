@@ -1,5 +1,6 @@
 from datetime import datetime
 from django.db import models
+from django.conf import settings
 from django.contrib.auth.models import User
 #from django.contrib.sites.models import Site
 from django.utils.translation import ugettext_lazy as _
@@ -10,7 +11,7 @@ from imagekit.models import ImageModel
 from multimedia.models import Media
 
 
-IK_SPEC_MODULE = 'videos.photo_specs'
+IK_SPEC_MODULE = getattr(settings, 'VIDEOS_IMAGEKIT_SPEC', 'videos.ik_specs')
 
 class VideoManager(models.Manager):
 
@@ -25,12 +26,14 @@ class VideoFrame(ImageModel):
     
     image = models.ImageField( upload_to='uploads/videos/%Y/%m/%d/',) 
 
+    def __unicode__(self):
+        return self.image.name
+
     class IKOptions:
 
         spec_module = IK_SPEC_MODULE
         cache_dir = 'videos'
         cache_filename_format = "%(specname)s/%(filename)s.%(extension)s"
-
 
 
 class Video(Media):
@@ -49,11 +52,19 @@ class Video(Media):
                     blank=True, 
                     null=True,help_text=_(u'One frame or image that represents the video.  Should be same width/height as the video.'))
 
+    created_by = models.ForeignKey(
+                            User, 
+                            related_name="videos_created")
+
+    modified_by = models.ForeignKey(
+                            User, 
+                            related_name="videos_modified")
+
     class Meta:
         verbose_name_plural = _(u'videos')
 
     def get_thumbnail_url(self):
-        return self.video.url
+        return self.frame.thumbnail.url
 
     #TODO update this
     def get_absolute_url(self):

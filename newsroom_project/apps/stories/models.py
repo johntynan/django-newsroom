@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save,post_delete
 from django.template import Template, Context
+from django.template.defaultfilters import slugify
 
 from core.models import Project
 from multimedia.models import Media
@@ -19,12 +20,17 @@ class Story(models.Model):
     authors = models.ManyToManyField(User)
     projects = models.ManyToManyField(Project)
     headline = models.CharField(max_length=256)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(
+                unique=True,
+                help_text="Automatically created based on headline, but you can also specify it.")
     topics = models.ManyToManyField(TopicPath)
     lead_art = models.ForeignKey(Media,null=True,blank=True,related_name="lead_art")
     media = models.ManyToManyField(Media)
     summary = models.TextField(blank=True)
-    location = models.CharField(max_length=256,blank=True)
+    location = models.CharField(
+                max_length=256,
+                blank=True,
+                help_text="City, State Country or Zipcode, Country." )
     status = models.CharField(max_length=1,choices=STORY_STATUS_CHOICES,default=STORY_STATUS_DRAFT)
     created = models.DateTimeField(default=datetime.datetime.now)
     modified = models.DateTimeField()
