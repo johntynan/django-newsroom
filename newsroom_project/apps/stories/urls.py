@@ -23,6 +23,8 @@ urlpatterns = patterns('stories.views',
     #associate media
     url(r'^story/(?P<story_id>\d+)/media/(?P<media_type>\w+)/select/$','story_select_media',name='stories_story_select_media'),
 
+
+
     url(r'^widget/(?P<widget_name>.+)/$','story_widget',name='stories_story_widgets'),
 
     #- PUBLIC  -
