@@ -15,8 +15,8 @@
     <div class="actions-block" id="page-text-blocks">
         <h2>{% trans "Options" %}</h2>
         <ul class="action-links">
-            <li><a href="{% url stories_story_list %}">{% trans "Add a new page" %}</a></li>
-            <li><a href="{% url stories_story_list %}">{% trans "Add a template" %}</a></li>
+            <li><a href="" id="add-story-page" title="{% trans "Add a new page" %}">{% trans "Add a new page" %}</a></li>
+            <li><a href="{% url stories_story_widgets "page_template" %}?width=750&height=500" class="thickbox">{% trans "Add a template" %}</a></li>
         </ul>
     </div>
 
@@ -48,7 +48,7 @@
         {% endfor %}
         <br class="clearboth" />
     </div>
-    <div class="tab-contents">
+    <div class="tab-contents clearfix">
     {% for page in story.pages %}
         <div id="story-content-{{ page.pagenum }}" class="tab {% if not forloop.first %}hidden{% endif %}">
             {{ page.content }}
