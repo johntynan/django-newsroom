@@ -3,7 +3,7 @@
 .clear { clear: both; }
 
 .widget-block { position: relative; padding-right: 100px; }
-.widget-block:hover {  }
+.widget-block:hover { cursor: move;  }
 
 .widget-block .widget-options { position: absolute; right: 5px; top: 0; width: 90px; }
 
