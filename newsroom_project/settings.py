@@ -126,6 +126,7 @@ INSTALLED_APPS = (
     'avatar',
     'voting',
     'countries',
+    'tagging',
     #'django_inlines',
 
     # internal (for now)
