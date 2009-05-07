@@ -6,14 +6,16 @@ from django.conf import settings
 from django.contrib.sites.models import Site
 from django.contrib.sites.managers import CurrentSiteManager
 
+
 from django.db import models
 from django.db.models.base import ModelBase
 #from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
+from django.template.defaultfilters import slugify
 
 from tagging.fields import TagField
 
-from multimedia.constants import MEDIA_TYPES, MEDIA_STATUS_CHOICES, MEDIA_STATUS_DRAFT
+from multimedia.constants import MEDIA_TYPES, MEDIA_STATUS_CHOICES, MEDIA_STATUS_DRAFT, LICENSE_CHOICES, LICENSE_DEFAULT
 from utils.model_inheritance import ParentModel,ChildManager
 #from videos.models import Video as NativeVideoModel
 
@@ -67,6 +69,13 @@ class MediaBase(ModelBase):
         #super(MediaBase,cls).__init__(cls,name,bases,attrs)
         
         
+
+class MediaManager(models.Manager):
+
+    def published(self):        
+        return self.filter(status=MEDIA_STATUS_PUBLISHED)
+
+
 class Media(ParentModel):
     """
     A generic container for media items.
@@ -77,10 +86,17 @@ class Media(ParentModel):
     __metaclass__ = MediaBase
     site = models.ForeignKey(Site, verbose_name=_(u'Site')) 
     authors = models.ManyToManyField(User)
-    title = models.CharField(max_length=128,blank=True)
+    title = models.CharField(max_length=128,)
     summary = models.TextField(blank=True)
     attribution = models.TextField(blank=True)
     tags = TagField()
+
+    license = models.CharField(
+                        max_length=100,
+                        choices = LICENSE_CHOICES,
+                        default=LICENSE_DEFAULT,
+                        help_text=_(u'Choose the license you wish to publish this work under.'),)
+
     status = models.CharField(
                         max_length=1,
                         choices=MEDIA_STATUS_CHOICES,
@@ -96,19 +112,19 @@ class Media(ParentModel):
                     default=datetime.datetime.now,
                     help_text=_(u'Publication date'),)
     
-    
-    created_by = models.ForeignKey(
-                            User, 
-                            related_name="videos_created")
+    # not sure how use these fields in a subclass, django gives an error.
+    #created_by = models.ForeignKey(
+    #                        User, 
+    #                        related_name="media_created")
+    #
+    #modified_by = models.ForeignKey(
+    #                        User, 
+    #                        related_name="media_modified")
 
-    modified_by = models.ForeignKey(
-                            User, 
-                            related_name="videos_modified")
-
-    created = models.DateTimeField(default=datetime.datetime.now)
-    modified = models.DateTimeField()
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
         
-    objects = models.Manager()
+    objects = MediaManager()
     children = ChildManager()
     on_site = CurrentSiteManager()
     
@@ -117,7 +133,8 @@ class Media(ParentModel):
         ordering = ['-pub_date']
         get_latest_by = 'pub_date'
     
-    def __unicode__(self): lambda self: self.title
+    def __unicode__(self): 
+        return self.title
      
     @staticmethod
     def class_factory(media_type):
@@ -125,7 +142,8 @@ class Media(ParentModel):
         
     
     def save(self):
-        self.modified = datetime.datetime.now()
+        if not self.slug:
+            self.slug = slugify(self.title)
         super(Media,self).save()
      
     def get_thumbnail_url(self):
@@ -166,11 +184,9 @@ class Media(ParentModel):
         """
         return Media
 
-class Image(Media):
-    """
-    Image Media 
-    """
-    pass
+    def get_absolute_url(self):
+        return reverse('multimedia_detail', 
+                       dict(media_id=self.id,slug=self.slug))
+
+
     
-    
-        

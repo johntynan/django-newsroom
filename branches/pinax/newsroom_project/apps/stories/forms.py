@@ -9,7 +9,6 @@ class StoryForm(forms.ModelForm):
 class PageForm(forms.Form):
     content = forms.CharField(widget=forms.Textarea)
         
-
 #class SelectMediaForm(forms.Form):
 #    
 #    @staticmethod

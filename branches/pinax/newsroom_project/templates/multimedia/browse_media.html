@@ -5,8 +5,8 @@
 {% block subnav %}
 <h2>{% trans "Add Media" %}</h2>
 <ul class="action-links">
-    <li><a href="">Add Video</a></li>
-    <li><a href="">Add Image</a></li>
+    <li><a href="{% url multimedia_add 'video' %}">Add Video</a></li>
+    <li><a href="{% url multimedia_add 'photo' %}">Add Photo</a></li>
 </ul>
 {% endblock %}
 

@@ -11,6 +11,13 @@ from multimedia.models import Media#, Video, Image
 from utils.response import JsonResponse, JsonErrorResponse
 
 @login_required    
+def detail(request,media_id,slug=None):
+
+    object = Media.object.get(pk=media_id)
+
+    return render_to_response('multimedia/media_detail.html',locals(),context_instance=RequestContext(request))
+
+@login_required    
 def browse(request):
 
     media_items = request.user.media_set.all()
@@ -35,7 +42,12 @@ def browse_by_type(request,media_type):
 @login_required    
 def add_by_type(request,media_type):
     
-    form_class = MediaForm.factory(media_type)
+    try:
+        form_class = MediaForm.factory(media_type)
+    except KeyError:
+        # TODO raise an exception more specific than KeyError?
+        raise Http404('Media type not supported.')
+        
     if request.method == 'POST':
         form = form_class(request.POST,request.FILES)
         if form.is_valid():
