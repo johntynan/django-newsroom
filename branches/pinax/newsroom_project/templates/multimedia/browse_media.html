@@ -1,12 +1,24 @@
 {% extends "multimedia/base.html" %}
+{% load i18n %}
+
+
+{% block subnav %}
+<h2>{% trans "Add Media" %}</h2>
+<ul class="action-links">
+    <li><a href="">Add Video</a></li>
+    <li><a href="">Add Image</a></li>
+</ul>
+{% endblock %}
 
 {% block main_content %}
-<p>Recent {{media_type|capfirst}} Items</p>
-<ul id="media-items">
-    {% for item in media_items %}
-    <li class="media-item" id="media-item-{{item.id}}"><img src="{{item.get_thumbnail_url}}" />{{item.title}}</li>
-    {% empty %}
-    <li>You haven't uploaded any media yet.</li>
-    {% endfor %}
+    <p>Recent {{media_type|capfirst}} Items</p>
+    <ul id="media-items">
+        {% if media_items %}
+        {% for item in media_items %}
+        <li class="media-item" id="media-item-{{item.id}}"><img src="{{item.get_thumbnail_url}}" />{{item.title}}</li>
+        {% endfor %}
+        {% else %}
+        <li>You haven't uploaded any media yet.</li>
+        {% endif %}
 </ul>
 {% endblock %}

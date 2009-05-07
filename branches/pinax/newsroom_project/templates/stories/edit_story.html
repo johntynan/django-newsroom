@@ -3,54 +3,38 @@
 
 {% block head_title %}Edit Story: {{story.headline}}{% endblock %}
 
+
+{% block extra_head %}
+    {{ block.super }}
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/stories.js"></script>
+{% endblock %}
+
 {% block subnav %}
-<h2>{% trans "Links" %}</h2>
-<ul class="action-links">
-<li><a href="{% url stories_story_list %}">{% trans "Story List" %}</a></li>
-<li><a href="{% url stories_story_list %}">{% trans "Add Story" %}</a></li>
-</ul>
-
-<div class="actions-block hidden" id="story-info-actions">
-    <h2>{% trans "Actions" %}</h2>
-    <ul class="action-links">
-        <li><a href="{% url stories_story_list %}">{% trans "Add Media" %}</a></li>
-        <li><a href="{% url stories_story_list %}">{% trans "Preview" %}</a></li>
-    </ul>
-</div>
-
-<div class="actions-block hidden" id="story-media-actions">
-    <h2>{% trans "Actions" %}</h2>
-    <ul class="action-links">
-        <li><a href="{% url multimedia_add 'video' %}">{% trans "Add Embed Video" %}</a></li>
-        <li><a href="{% url multimedia_add 'image' %}">{% trans "Add Image" %}</a></li>
-    </ul>
-</div>
-
-<div class="actions-block" id="story-content-actions">
-    <h2>{% trans "Actions" %}</h2>
-    <ul class="action-links">
-        <li><a href="{% url stories_story_widgets "page_template" %}?width=750&height=500" class="thickbox">{% trans "Add Page" %}</a></li>
-        <li><a href="{% url stories_story_list %}">{% trans "Add Widget" %}</a></li>
-    </ul>
-</div>
+    {{ block.super }}
+    <div class="actions-block" id="story-edit-media-actions">
+        <h2>{% trans "Add media to story" %}</h2>
+        <ul class="action-links">
+            <li><a href="{% url stories_story_list %}">{% trans "Add Video" %}</a></li>
+            <li><a href="{% url stories_story_list %}">{% trans "Add Image" %}</a></li>
+        </ul>
+    </div>
 {% endblock %}
 
 {% block main_content %}
 
-    <h1>Edit Story: {{story.headline}}</h1>
+<h1>{{ story.headline }} <span class="headline-options">(<a href="{% url stories_story_pages story.id %}">edit story pages</a>)</span></h1>
 
     {# TODO auto-slugify headline (or customize admin) #}
 
     <div class="edit-story-tabs">
         <div class="tab-links">
-            <a href="" rel="story-info">Properties</a>
+            <a href="" rel="story-info" class="active">Properties</a>
             <a href="" rel="story-media">Media</a>
-            <a href="" class="active" rel="story-content">Content/Pages</a>
             <br class="clearboth" />
         </div>
         <div class="tab-contents">
 
-            <div id="story-info" class="tab hidden">
+            <div id="story-info" class="tab">
                 <form method="post">
                 <fieldset class="inlineLabels">
                     {{ form.as_p }}
@@ -64,38 +48,13 @@
 
             <div id="story-media" class="tab hidden">
 
-<p>Recent {{media_type|capfirst}} Items</p>
-<ul id="media-items">
-    {% for item in story.media.all %}
-    <li class="media-item" id="media-item-{{item.id}}"><img src="{{item.get_thumbnail_url}}" />{{item.title}}</li>
-    {% endfor %}
-</ul>
+                <p>Recent {{media_type|capfirst}} Items</p>
+                <ul id="media-items">
+                    {% for item in story.media.all %}
+                    <li class="media-item" id="media-item-{{item.id}}"><img src="{{item.get_thumbnail_url}}" />{{item.title}}</li>
+                    {% endfor %}
+                </ul>
 
-
-            </div>
-
-
-            <div id="story-content" class="tab">
-
-{% for page in story.pages %}
-    <div class="page-preview-block" style="width:240px;float:left;border:1px solid">
-        <h2>Page {{page.pagenum}}</h2>
-        <p>{{page.content|truncatewords:30}}</p>
-        <p style="border-bottom:1px solid">Media</p>
-        {%if page.media%}
-        <ul>
-            {% for item in page.media %}
-            <li>{{item}} ({{item.media_type}})</li>
-            {% endfor %}
-        </ul>
-        {%else%}
-        --Empty--
-        {% endif %}
-        <p>{{page.columns|length}} Column{{page.columns|length|pluralize}}</p>
-        {# TODO actual preview URL; delete URL #}
-        <p><a href="{% url stories_edit_page page.id %}">Edit</a>|<a href="{% url stories_show_story story.slug %}">Preview</a>|<a href="">Delete</a></p>
-    </div>
-{% endfor %}    
             </div>
 
             <br class="clear" />

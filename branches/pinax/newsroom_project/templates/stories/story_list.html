@@ -1,7 +1,14 @@
 {% extends "stories/base.html" %}
-
+{% load i18n %}
 
 {% block head_title %}Story List{% endblock %}
+
+{% block subnav %}
+    <h2>{% trans "Links" %}</h2>
+    <ul class="action-links">
+        <li><a href="{% url stories_add_story %}" title="Add Story">Add Story</a></li>
+    </ul>
+{% endblock %}
 
 {% block main_content %}
     <h1>Stories</h1>
@@ -21,7 +28,7 @@
         {% for story in stories %}
         <tr class="{% cycle '' 'alt-row' %}">
             <td class="id_col">{{ story.id }}</td>
-            <td><a href="{% url stories_edit_story story.id %}">{{ story.headline }}</a></td>
+            <td><a href="{% url stories_story_pages story.id %}">{{ story.headline }}</a></td>
             <td>{% for item in story.media.all %}{{ item.title }}{% endfor %}</td>
             <td class="count-col">
             {% for p in story.pages %}

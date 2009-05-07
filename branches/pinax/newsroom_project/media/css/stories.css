@@ -1,3 +1,13 @@
+
+.stories-list-link { font-size: 1.2em; height: 43px; }
+    .stories-list-link a { padding: 3px 5px;  }
+    .stories-list-link a:hover { background: #596E78; -moz-border-radius: 4px; text-decoration: none; color: #FFF }
+
+
+.headline-options { font-size: 0.7em; font-weight: normal; }
+    .headline-options a { text-decoration: underline; color: #14456E; }
+        .headline-options a:hover { text-decoration: none; }
+
 .tab_stories .navbutton { background: #DDD; color: #3D4B52; border-bottom-color: #DDD; }
 .tab_stories .navbutton:hover { background-color: #DDD; }
 

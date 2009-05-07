@@ -1,38 +1,59 @@
 {% extends "stories/base.html" %}
-
+{% load i18n %}
 {% block head_title %}Content Overview: {{story.headline}}{% endblock %}
 
+
+{% block extra_head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/pages.css" />
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/pages.js"></script>
+{% endblock %}
+
+
 {% block subnav %}
-<ul id="story-page-list-menu">
-    <li><a href="{% url stories_add_page story.id %}">Add Page</a></li>
-    <li><a href="{% url stories_edit_story story.id %}">Edit Story</a></li>
-    <li><a href="">Story Preview</a></li>
-    <li><a href="{% url stories_story_list %}">Story List</a></li>
-</ul>
+    {{ block.super }}
+    <div class="actions-block" id="page-text-blocks">
+        <h2>{% trans "Options" %}</h2>
+        <ul class="action-links">
+            <li><a href="{% url stories_story_list %}">{% trans "Add a new page" %}</a></li>
+            <li><a href="{% url stories_story_list %}">{% trans "Add a template" %}</a></li>
+        </ul>
+    </div>
+
+    <div class="actions-block" id="page-text-blocks">
+        <h2>{% trans "Text blocks" %}</h2>
+        <ul class="action-links">
+            <li><a href="{% url stories_story_list %}">{% trans "1 collumn" %}</a></li>
+            <li><a href="{% url stories_story_list %}">{% trans "2 collumns" %}</a></li>
+            <li><a href="{% url stories_story_list %}">{% trans "3 collumns" %}</a></li>
+        </ul>
+    </div>
+
+    <div class="actions-block" id="page-media-blocks">
+        <h2>{% trans "Media" %}</h2>
+        <ul class="action-links">
+            <li><a href="{% url stories_story_list %}">{% trans "Image" %}</a></li>
+        </ul>
+    </div>
 {% endblock %}
 
 {% block main_content %}
 
-<div id="page-preview-blocks">
-{% for page in story.pages %}
-    <div class="page-preview-block" style="width:240px;float:left;border:1px solid">
-        <h2>Page {{page.pagenum}}</h2>
-        <p>{{page.content|truncatewords:30}}</p>
-        <p style="border-bottom:1px solid">Media</p>
-        {%if page.media%}
-        <ul>
-            {% for item in page.media %}
-            <li>{{item}} ({{item.media_type}})</li>
-            {% endfor %}
-        </ul>
-        {%else%}
-        --Empty--
-        {% endif %}
-        <p>{{page.columns|length}} Column{{page.columns|length|pluralize}}</p>
-        {# TODO actual preview URL; delete URL #}
-        <p><a href="{% url stories_edit_page page.id %}">Edit</a>|<a href="{% url stories_show_story story.slug %}">Preview</a>|<a href="">Delete</a></p>
+<h1>{{ story.headline }} <span class="headline-options">(<a href="{% url stories_edit_story story.id %}">edit story info</a> / <a href="">manage media</a>)</span></h1>
+
+<div class="edit-story-tabs">
+    <div class="tab-links">
+        {% for page in story.pages %}
+        <a href="" rel="story-content-{{ page.pagenum }}" class="{% if forloop.first %}active{% endif %}">Page {{ page.pagenum }}</a>
+        {% endfor %}
+        <br class="clearboth" />
     </div>
-{% endfor %}    
+    <div class="tab-contents">
+    {% for page in story.pages %}
+        <div id="story-content-{{ page.pagenum }}" class="tab {% if not forloop.first %}hidden{% endif %}">
+            {{ page.content }}
+        </div>
+{% endfor %}
+    </div>
 </div>
-<div style="clear:both"/>
 {% endblock %}
