@@ -205,3 +205,6 @@ class Photo(Media):
         except Photo.DoesNotExist:
             return None
 
+    def get_thumbnail_url(self):
+        return self.image.mediumthumb.url
+

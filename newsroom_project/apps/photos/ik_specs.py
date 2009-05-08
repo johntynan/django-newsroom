@@ -13,6 +13,11 @@ class ResizeThumbnail(processors.Resize):
     height = 75
     crop = True
     
+class ResizeMedThumb(processors.Resize):
+    width = 140
+    height = 100
+    crop = True
+
 class ResizeDisplay(processors.Resize):
     width = 600
     
@@ -27,6 +32,9 @@ class EnhanceSmall(processors.Adjustment):
 class AdminThumbnail(ImageSpec):
     access_as = 'admin_thumbnail'
     processors = [ResizeThumbnail, EnhanceSmall]
+
+class MediumThumb(ImageSpec):
+    processors = [ResizeMedThumb]
 
 class Display(ImageSpec):
     increment_count = True
