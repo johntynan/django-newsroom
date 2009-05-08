@@ -64,7 +64,7 @@ class Video(Media):
         verbose_name_plural = _(u'videos')
 
     def get_thumbnail_url(self):
-        return self.frame.thumbnail.url
+        return self.frame.mediumthumb.url
 
     #TODO update this
     def get_absolute_url(self):
