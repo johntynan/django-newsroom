@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from tagging.models import Tag
 from tagging.fields import TagField
-from videos.constants import VIDEO_STATUS_CHOICES, VIDEO_STATUS_DRAFT, VIDEO_STATUS_PUBLISHED
+from multimedia.constants import MEDIA_STATUS_PUBLISHED
 from imagekit.models import ImageModel
 from multimedia.models import Media
 
@@ -16,7 +16,7 @@ IK_SPEC_MODULE = getattr(settings, 'VIDEOS_IMAGEKIT_SPEC', 'videos.ik_specs')
 class VideoManager(models.Manager):
 
     def published(self, **kwargs):
-        return self.filter(status=VIDEO_STATUS_PUBLISHED, **kwargs)
+        return self.filter(status=MEDIA_STATUS_PUBLISHED, **kwargs)
 
 class VideoFrame(ImageModel):
     """
@@ -32,7 +32,7 @@ class VideoFrame(ImageModel):
     class IKOptions:
 
         spec_module = IK_SPEC_MODULE
-        cache_dir = 'videos'
+        cache_dir = 'ik_cache/videos'
         cache_filename_format = "%(specname)s/%(filename)s.%(extension)s"
 
 

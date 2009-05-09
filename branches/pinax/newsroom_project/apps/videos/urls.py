@@ -12,21 +12,11 @@ info_dict = {
 }
 
 urlpatterns = patterns ('',
+
     url(r'tag/(?P<tag>[^/]+)/$', tagged_object_list,
      dict(model = Video, paginate_by = 10, allow_empty = True),
      name='videos_tag_index'),
-    (r'^(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/(?P<slug>[-\w]+)/$',
-     'django.views.generic.date_based.object_detail', 
-     dict (info_dict, slug_field = 'slug')),
-    (r'^(?P<year>\d{4})/(?P<month>[a-z]{3})/(?P<day>\w{1,2})/$', 
-     'django.views.generic.date_based.archive_day', info_dict),
-    (r'^(?P<year>\d{4})/(?P<month>[a-z]{3})/$', 
-     'django.views.generic.date_based.archive_month', 
-     info_dict),
-    (r'^(?P<year>\d{4})/$', 
-      'django.views.generic.date_based.archive_year', 
-      dict(info_dict, make_object_list=True)),
-    (r'^today/$', 'django.views.generic.date_based.archive_today', info_dict),
+
     url( r'^$', 'django.views.generic.date_based.archive_index', 
         dict(info_dict, template_object_name='object_list'),
         name="videos_index",),
@@ -40,7 +30,7 @@ urlpatterns = patterns ('',
          name='videos_add_video'),
 
     url( '^video/(?P<video_id>\d+)/edit/$',
-         vid_views.video_detail,
-         name='videos_video_detail'),
+         vid_views.video_edit,
+         name='videos_video_edit'),
 
 )
