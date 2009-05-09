@@ -2,7 +2,7 @@
 
 = Setup =
 
-== VirtualEnv ==
+== Get virtualeenv ==
 {{{
 # if not installed
 easy_install virtualenv
