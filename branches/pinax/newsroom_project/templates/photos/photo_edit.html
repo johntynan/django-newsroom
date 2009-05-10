@@ -1,0 +1,13 @@
+{% extends "multimedia/base.html" %}
+
+{% block head_title %}Edit Media: {{object}}{% endblock %}
+
+{% block main_content %}
+<h2>Edit Media: {{object}}</h2>
+<form method="post" enctype="multipart/form-data">
+{{form.as_p}}
+{{image_form.as_p}}
+<input type="submit" value="Save"/>
+<a href="{% url multimedia_browse %}">Cancel</a> 
+</form>
+{% endblock %}
