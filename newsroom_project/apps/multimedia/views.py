@@ -56,8 +56,6 @@ def browse_by_type(request,media_type):
     #media_items = media_class.on_site.all()
     media_items = media_class.objects.filter(authors__in=[request.user])
     
-    print type(media_items[0])
-    print media_items[0].get_thumbnail_url()
     #if request.is_ajax():
         
     #    return JsonResponse()
