@@ -109,7 +109,7 @@ photologue
 
 photologue 3 is still bleeding edge, but we're going to fly with it.
 
-cd newsroom/apps/
+cd working/apps/
 
 svn co http://django-photologue.googlecode.com/svn/branches/3.x/ photologue-3.x
 
@@ -118,7 +118,7 @@ ln -s photologue-3.x/photologue .
 
 create a media directory
 ------------------------------------------
-cd working/trunk/newsroom/media
+cd working/media
 
 mkdir uploads
 
@@ -128,7 +128,7 @@ chmod 777 uploads
 done with dependencies, run the dev server
 ------------------------------------------
 
-cd working/trunk/newsroom
+cd working/
 
 ./manage.py syncdb
 
