@@ -73,7 +73,7 @@ svn checkout http://django-newsroom.googlecode.com/svn/branches/pinax working
 get the external app modules
 ----------------------------
 
-pip install -r working/requirements/external_apps.txt
+pip install -r working/newsroom_project/requirements/external_apps.txt
 
 
 install caveats by hand
@@ -98,7 +98,7 @@ django-countries
 
 For some reason this project doesn't have a setup.py, so you have to handle it manually.
 
-cd working/apps/
+cd working/newsroom_project/apps/
 
 svn co http://django-countries.googlecode.com/svn/trunk django-countries
 
@@ -109,7 +109,7 @@ photologue
 
 photologue 3 is still bleeding edge, but we're going to fly with it.
 
-cd working/apps/
+cd working/newsroom_project/apps/
 
 svn co http://django-photologue.googlecode.com/svn/branches/3.x/ photologue-3.x
 
@@ -118,7 +118,7 @@ ln -s photologue-3.x/photologue .
 
 create a media directory
 ------------------------------------------
-cd working/media
+cd working/newsroom_project/media
 
 mkdir uploads
 
@@ -128,7 +128,7 @@ chmod 777 uploads
 done with dependencies, run the dev server
 ------------------------------------------
 
-cd working/
+cd working/newsroom_project/
 
 ./manage.py syncdb
 
