@@ -22,7 +22,7 @@
                 <th>Media</th>
                 <th class="count_col">Pages</th>
                 <th class="status_col">Status</th>
-                <th>Date</th>
+                <th>Modified</th>
             </tr>
         </thead>
         {% for story in stories %}
@@ -35,7 +35,7 @@
             <a href="{% url stories_edit_page p.id %}">{{ p.pagenum }}</a>
             {% endfor %}
             <td class="status-col">{{ story.get_status_display }}</td>
-            <td>{{ story.date }}</td>
+            <td>{{ story.modified|date:"fa F jS, Y" }}</td>
         </tr>
         {% endfor %}
         </table>
