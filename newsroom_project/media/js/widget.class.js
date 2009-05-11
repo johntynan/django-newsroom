@@ -16,6 +16,24 @@ var widget = {
         return false;
     },
 
+    show_options : function(){
+        $(this).children(".widget-options").removeClass("hidden");
+    },
+
+    hide_options : function(){
+        $(this).children(".widget-options").addClass("hidden");
+    },
+
+    bind_options : function(){
+        var obj = $(".tab-contents .widget-block");
+        obj.bind("mouseover",widget.show_options);
+        obj.bind("mouseout",widget.hide_options);
+        obj.children(".widget-options").children(".widget-remove").bind("click", widget.block_remove);
+        obj.children(".widget-options").children(".widget-move_up").bind("click", widget.block_move_up);
+        obj.removeClass("unbinded");
+    },
+
+    /* add a template to story */
     add_to_story : function(){
 
         $(".widget-add").click(function(){
@@ -26,14 +44,16 @@ var widget = {
 
             $(".tab-contents .tab:not(.hidden)").html(story_content);
 
-            var block_list = $(".tab-contents .widget-block.unbinded");
-            $.each(block_list,function(i,val){
-                $(val).children(".widget-options").children(".widget-remove").bind("click", widget.block_remove);
-                $(val).children(".widget-options").children(".widget-move_up").bind("click", widget.block_move_up);
-                $(val).removeClass("unbinded");
-            });
+            widget.bind_options();
 
             return false;
         });
+    },
+
+    /* add a template to story */
+    add_to_page : function(data){
+        $(".tab-contents .tab:not(.hidden)").append(data);
+        widget.bind_options();
+        return false;
     },
 }

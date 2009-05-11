@@ -126,7 +126,10 @@ def story_select_media(request,story_id,media_type):
 
 
 @login_required
-def story_widget(request,widget_name):
-
-
+def page_widget(request,widget_name):
     return render_to_response('stories/widgets/%s.html' % widget_name,locals(),context_instance=RequestContext(request))
+
+@login_required
+def page_template(request,template_name):
+    return render_to_response('stories/templates/%s.html' % template_name,locals(),context_instance=RequestContext(request))
+

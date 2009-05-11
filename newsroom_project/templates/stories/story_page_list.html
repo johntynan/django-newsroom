@@ -12,20 +12,20 @@
 
 {% block subnav %}
     {{ block.super }}
-    <div class="actions-block" id="page-text-blocks">
+    <div class="actions-block" id="page-option-blocks">
         <h2>{% trans "Options" %}</h2>
         <ul class="action-links">
             <li><a href="" id="add-story-page" title="{% trans "Add a new page" %}">{% trans "Add a new page" %}</a></li>
-            <li><a href="{% url stories_story_widgets "page_template" %}?width=750&height=500" class="thickbox">{% trans "Add a template" %}</a></li>
+            <li><a href="{% url stories_page_templates "page_template" %}?width=750&height=500" class="thickbox">{% trans "Add a template" %}</a></li>
         </ul>
     </div>
 
     <div class="actions-block" id="page-text-blocks">
         <h2>{% trans "Text blocks" %}</h2>
         <ul class="action-links">
-            <li><a href="{% url stories_story_list %}">{% trans "1 collumn" %}</a></li>
-            <li><a href="{% url stories_story_list %}">{% trans "2 collumns" %}</a></li>
-            <li><a href="{% url stories_story_list %}">{% trans "3 collumns" %}</a></li>
+            <li><a href="{% url stories_page_widgets "text_1col" %}" rel="w21-text_1col">{% trans "1 collumn" %}</a></li>
+            <li><a href="{% url stories_page_widgets "text_2col" %}" rel="w21-text_2col">{% trans "2 collumns" %}</a></li>
+            <li><a href="{% url stories_page_widgets "text_3col" %}" rel="w21-text_3col">{% trans "3 collumns" %}</a></li>
         </ul>
     </div>
 
