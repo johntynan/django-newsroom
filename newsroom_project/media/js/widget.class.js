@@ -76,6 +76,7 @@ var widget = {
         var content = $("#textarea-editor_ifr").contents().find("body").html();
         $(".editing-mode").removeClass("editing-mode").children(".widget-content").html(content);
         tb_remove();
+
     },
 
 
