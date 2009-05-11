@@ -50,15 +50,16 @@ def add_page(request,story_id):
 @login_required
 def edit_story(request,story_id):
     story = get_object_or_404(Story,pk=story_id)
-    form = StoryForm(instance=story)
     if request.method == 'POST':
         form = StoryForm(request.POST,instance=story)
         if form.is_valid():
             form.save()
             request.user.message_set.create(
                     message='Your story was saved.')
-            return HttpResponseRedirect(reverse('stories_story_list'))
-
+            return HttpResponseRedirect( 
+                    reverse('stories_story_pages', args=[story.id]))
+    else:
+        form = StoryForm(instance=story)
 
     return render_to_response(
                 'stories/edit_story.html',
@@ -110,10 +111,10 @@ def edit_page(request,page_id):
                               context_instance=RequestContext(request))
 
 @login_required
-def story_add_media(request,story_id):
+def story_add_media(request, story_id, media_type):
     story = get_object_or_404(Story,pk=story_id)
-    media = get_object_or_404(Media,pk=request.POST.get('media_id'))
-    story.media.add(media)
+    #media = get_object_or_404(Media,pk=request.POST.get('media_id'))
+    #story.media.add(media)
     return render_to_response('stories/widgets/story_media_summary.html',locals())
 
 @login_required
