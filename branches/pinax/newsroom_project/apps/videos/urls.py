@@ -26,11 +26,11 @@ urlpatterns = patterns ('',
          name="videos_video_detail",),
 
     url( '^video/add/$',
-         vid_views.add_video,
+         vid_views.video_add_edit,
          name='videos_add_video'),
 
     url( '^video/(?P<video_id>\d+)/edit/$',
-         vid_views.video_edit,
+         vid_views.video_add_edit,
          name='videos_video_edit'),
 
 )

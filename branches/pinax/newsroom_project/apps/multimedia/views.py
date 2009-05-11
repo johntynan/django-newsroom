@@ -15,7 +15,7 @@ from photos import views as photo_views
 def get_form_class(type):
     """
     Providing this helper function for now until multimedia API supports
-    custom forms somehow.  Returns form class for a media type.
+    more.  Returns form class for a media type.
     """
     if type == 'Video':
         return VideoForm
@@ -24,6 +24,14 @@ def get_form_class(type):
     else:
         raise NotImplementedError
 
+def add_edit_child_media(request, media_type, **kwargs):
+
+    if media_type == 'video':
+        return vid_views.video_add_edit(request, **kwargs)
+    elif media_type == 'photo':
+        return photo_views.photo_add_edit(request, **kwargs)
+    else:
+        raise Http404('Media type not supported.')
 
 @login_required    
 def detail(request,media_id,slug=None):
@@ -93,40 +101,44 @@ def add(request,media_type):
     
 
 @login_required    
-def edit(request, media_id):
+def add_edit(request, media_id=None, media_type=None, template=None):
     
-    media = get_object_or_404(Media, pk=media_id)
-    object = media.get_child_object()
+    if media_id:
+        media = get_object_or_404(Media, pk=media_id)
+        object = media.get_child_object()
+        media_type = object.media_type.lower()
 
-    if object.media_type == 'Video':
-        return vid_views.video_edit(request, media_id)
-    elif object.media_type == 'Photo':
-        return photo_views.photo_edit(request, media_id)
-    else:
-        raise Http404('Media type not supported.')
+    kwargs = {}
+
+    if media_id:
+        kwargs['media_id'] = media_id
+    if template:
+        kwargs['template'] = template
+
+    return add_edit_child_media( request, media_type, **kwargs)
 
     # TODO need to refactor 
-    try:
-        #form_class = MediaForm.factory(object.media_type)
-        form_class = get_form_class(object.media_type)
-    except KeyError:
-        # TODO raise an exception more specific than KeyError?
-        raise Http404('Media type not supported.')
-
-    if request.method == 'POST':
-        form = form_class(request.POST,request.FILES, instance=object)
-        if form.is_valid():
-            media = form.save(commit=False)
-            media.modified_by = request.user
-            media.slug = slugify(media.title)
-            media.save()
-            form.save_m2m()
-            request.user.message_set.create(
-                        message='Your media was saved.')
-            return HttpResponseRedirect(reverse(browse))
-
-    else:
-        form = form_class(instance=object)
-
-    return render_to_response('multimedia/edit_media.html',locals(),context_instance=RequestContext(request))
+    #try:
+    #    #form_class = MediaForm.factory(object.media_type)
+    #    form_class = get_form_class(object.media_type)
+    #except KeyError:
+    #    # TODO raise an exception more specific than KeyError?
+    #    raise Http404('Media type not supported.')
+#
+#    if request.method == 'POST':
+#        form = form_class(request.POST,request.FILES, instance=object)
+#        if form.is_valid():
+#            media = form.save(commit=False)
+#            media.modified_by = request.user
+#            media.slug = slugify(media.title)
+#            media.save()
+#            form.save_m2m()
+#            request.user.message_set.create(
+#                        message='Your media was saved.')
+#            return HttpResponseRedirect(reverse(browse))
+#
+#    else:
+#        form = form_class(instance=object)
+#
+#    return render_to_response('multimedia/edit_media.html',locals(),context_instance=RequestContext(request))
     

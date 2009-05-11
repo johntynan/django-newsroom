@@ -3,42 +3,63 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.template.defaultfilters import slugify
+from django.contrib.sites.models import Site
 from photos.forms import PhotoForm, ImageForm
 from photos.models import Photo
 
-def photo_edit(request, photo_id):
-    photo = get_object_or_404(Photo,pk=photo_id)
+def photo_add_edit( request, media_id=None, template='photos/photo_add_edit.html', redirect_to='multimedia_browse'):
+
+    if media_id:
+        photo = get_object_or_404(Photo,pk=media_id)
+    else:
+        photo = None
 
     if request.method == 'POST':
-        form = PhotoForm(request.POST,request.FILES, instance=photo)
-        # don't include instance, only process the POST/FILES data
-        # for the image form
-        image_form = ImageForm(
-                        request.POST, request.FILES,instance=photo.image)
+
+        # Create edit or add form
+        if photo:
+            form = PhotoForm(request.POST,request.FILES, instance=photo)
+            image_form = ImageForm(
+                            request.POST, request.FILES,instance=photo.image)
+        else:
+            form = PhotoForm(request.POST,request.FILES)
+            image_form = ImageForm( request.POST, request.FILES)
+
         if form.is_valid() and image_form.is_valid():
             photo = form.save(commit=False)
+            image = image_form.save(commit=False)
             photo.modified_by = request.user
             photo.slug = slugify(photo.title)
-            image = image_form.save()
-            old_image = None
+            image.modified_by = request.user
+            
+            if not media_id:
+                photo.site = Site.objects.get_current()
+                photo.created_by = request.user
+                image.created_by = request.user
 
-            if image != photo.image:
-                old_image = photo.image
-                photo.image = image
-
+            image.save()
+            photo.image = image
             photo.save()
-            form.save_m2m()
 
-            if old_image:
-                old_image.image.delete()
-                old_image.delete()
+            image_form.save_m2m()
+            form.save_m2m()
 
             request.user.message_set.create(
                         message='Your photo was saved.')            
-            return HttpResponseRedirect(reverse('multimedia_browse'))
-    else:
-        form = PhotoForm(instance=photo)
-        image_form = ImageForm(instance=photo.image)
+            return HttpResponseRedirect(reverse(redirect_to))
 
-    return render_to_response('photos/photo_edit.html',locals(),context_instance=RequestContext(request))
+    else:
+        if photo:
+            form = PhotoForm(instance=photo)
+            image_form = ImageForm(instance=photo.image)
+        else:
+            form = PhotoForm()
+            image_form = ImageForm()
+            
+    return render_to_response(
+                template,
+                {'object':photo,
+                 'form':form,
+                 'image_form':image_form,},
+                context_instance=RequestContext(request))
 

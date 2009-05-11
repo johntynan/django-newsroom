@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.template.defaultfilters import slugify
+from django.contrib.sites.models import Site
 from videos.forms import VideoForm, VideoFrameForm
 from videos.models import Video
 
@@ -33,20 +34,28 @@ def add_video(request):
                 locals(),
                 context_instance=RequestContext(request))
 
-def video_edit(request, video_id):
+def video_add_edit(request, media_id=None, template='videos/video_add_edit.html'):
 
-    video = get_object_or_404(Video,pk=video_id)
+    video = None
+    if media_id:
+        video = get_object_or_404(Video,pk=media_id)
 
     if request.method == 'POST':
-        form = VideoForm(request.POST,request.FILES, instance=video)
-        # don't include instance, only process the POST/FILES data
-        # for the frame form
-        frame_form = VideoFrameForm(
-                        request.POST, request.FILES,instance=video.frame)
+        if video:
+            form = VideoForm(request.POST,request.FILES, instance=video)
+            frame_form = VideoFrameForm(
+                            request.POST, request.FILES,instance=video.frame)
+        else:
+            form = VideoForm(request.POST,request.FILES)
+            frame_form = VideoFrameForm(request.POST, request.FILES)
+            
         if form.is_valid() and frame_form.is_valid():
             video = form.save(commit=False)
             video.modified_by = request.user
             video.slug = slugify(video.title)
+            if not media_id:
+                video.site = Site.objects.get_current()
+                video.created_by = request.user
             frame = frame_form.save()
             old_frame = None
             if frame != video.frame:
@@ -57,18 +66,27 @@ def video_edit(request, video_id):
             form.save_m2m()
 
             if old_frame:
-                print 'try deleting old frame'
+                print 'deleting old frame'
                 old_frame.image.delete()
                 old_frame.delete()
 
             request.user.message_set.create(
-                        message='Your video was saved.')            
+                        message='Your video was saved.')
             return HttpResponseRedirect(reverse('multimedia_browse'))
     else:
-        form = VideoForm(instance=video)
-        frame_form = VideoFrameForm(instance=video.frame)
-
-    return render_to_response('videos/video_edit.html',locals(),context_instance=RequestContext(request))
+        if video:
+            form = VideoForm(instance=video)
+            frame_form = VideoFrameForm(instance=video.frame)
+        else:
+            form = VideoForm()
+            frame_form = VideoFrameForm()
+            
+    return render_to_response(
+                template,
+                {'object': video,
+                 'form':form,
+                 'frame_form':frame_form},
+                context_instance=RequestContext(request))
 
 
 def video_detail(request,video_id,slug):
