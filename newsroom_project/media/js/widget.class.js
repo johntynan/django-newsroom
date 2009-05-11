@@ -24,12 +24,19 @@ var widget = {
         $(this).children(".widget-options").addClass("hidden");
     },
 
+    tb_show : function(){
+        tb_show(null,this.href,false);
+        this.blur();
+        return false;
+    },
+
     bind_options : function(){
         var obj = $(".tab-contents .widget-block");
         obj.bind("mouseover",widget.show_options);
         obj.bind("mouseout",widget.hide_options);
         obj.children(".widget-options").children(".widget-remove").bind("click", widget.block_remove);
         obj.children(".widget-options").children(".widget-move_up").bind("click", widget.block_move_up);
+        obj.children(".widget-options").children(".widget-edit").bind("click", widget.tb_show);
         obj.removeClass("unbinded");
     },
 
