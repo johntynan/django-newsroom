@@ -6,10 +6,10 @@
 <h2>{% trans "Links" %}</h2>
 <ul class="action-links">
     <li>
-    <a href="{% url multimedia_browse_type 'photo' %}">Filter by Image</a>
+    <a href="{% url multimedia_browse_type "photo" %}">Filter by Image</a>
     </li>
     <li>
-    <a href="{% url multimedia_browse_type 'video' %}">Filter by Video</a>
+    <a href="{% url multimedia_browse_type "video" %}">Filter by Video</a>
     </li>
 </ul>
 {% endblock %}
@@ -21,10 +21,10 @@
     <h2>Browse</h2>
     {% endif %}
     {% for item in media_items %}
-    <div class="media-list-block" id="media-item-{{item.id}}" 
+    <div class="media-list-block" id="media-item-{{item.id}}"
          style="width:240px;float:left;border:1px solid">
         <h2>{{item}} :: {{ item.get_child_name }}</h2>
-        <p class="media-thumb"> 
+        <p class="media-thumb">
         <img src="{{item.get_child_object.get_thumbnail_url}}" /></p>
         <p>Dimensions: {{item.get_dimensions}}</p>
         <p>Authors: {{ item.authors.all|join:', ' }}</p>
