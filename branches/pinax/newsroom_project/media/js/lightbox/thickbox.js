@@ -28,7 +28,7 @@ function tb_init(domChunk){
     });
 }
 
-function tb_show(caption, url, imageGroup) {//function called when the user clicks on a thickbox link
+function tb_show(caption, url, imageGroup, callback) {//function called when the user clicks on a thickbox link
 
     try {
         if (typeof document.body.style.maxHeight === "undefined") {//if IE 6
@@ -256,6 +256,7 @@ function tb_show(caption, url, imageGroup) {//function called when the user clic
                         $("#TB_window").css({display:"block"});
                         $("#TB_closeWindowButton").click(tb_remove);
                         widget.add_to_story();
+                        if (callback) callback();
                     });
                 }
 
