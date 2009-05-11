@@ -14,8 +14,7 @@
     <div class="actions-block" id="story-edit-media-actions">
         <h2>{% trans "Add media to story" %}</h2>
         <ul class="action-links">
-            <li><a href="{% url stories_story_list %}">{% trans "Add Video" %}</a></li>
-            <li><a href="{% url stories_story_list %}">{% trans "Add Image" %}</a></li>
+            <li><a href="{% url stories_story_add_media story.id %}">{% trans "Add Media" %}</a></li>
         </ul>
     </div>
 {% endblock %}

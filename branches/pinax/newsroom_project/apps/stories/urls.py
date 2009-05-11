@@ -25,7 +25,9 @@ urlpatterns = patterns('stories.views',
 
 
 
-    url(r'^widget/(?P<widget_name>.+)/$','story_widget',name='stories_story_widgets'),
+    url(r'^widget/(?P<widget_name>.+)/$','page_widget',name='stories_page_widgets'),
+    url(r'^template/(?P<template_name>.+)/$','page_template',name='stories_page_templates'),
+
 
     #- PUBLIC  -
     #diplay story
