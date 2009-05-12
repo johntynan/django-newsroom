@@ -7,8 +7,18 @@ var widget = {
             $("#textarea-editor").val(widget_obj.children(".widget-content").html());
             widget.init_editor();
 
+            if (widget_obj.hasClass("clear"))
+                $("input[value='clear']").attr("checked","checked");
+            else
+                $("input[value='']").attr("checked","checked");
+
             $("#lb-block-save").click(function(){
                 var content = $("#textarea-editor_ifr").contents().find("body").html();
+                var clear_opt = $("input[name='wrap_text']:checked").val();
+                if (clear_opt)
+                    widget_obj.addClass("clear");
+                else
+                    widget_obj.removeClass("clear");
                 widget_obj.children(".widget-content").html(content);
                 tb_remove();
             });
@@ -55,7 +65,7 @@ var widget = {
             theme : "advanced",
             skin : "o2k7",
             skin_variant : "black",
-            width : "700",
+            width : "525",
             height :"350",
             plugins : "safari,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,inlinepopups",
 
