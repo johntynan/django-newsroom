@@ -1,14 +1,22 @@
 var widget = {
 
-    tb_show : function() {
+    text_edit : function(widget_obj){
 
-        var edit_widget = $(this).parent().parent().addClass("editing-mode");
+        function callback_init()
+        {
+            $("#textarea-editor").val(widget_obj.children(".widget-content").html());
+            widget.init_editor();
 
-        tb_show(null,this.href,false,function(){
-            $("#textarea-editor").val(edit_widget.children(".widget-content").html());
-            widget.initMCE();
-        });
-        this.blur();
+            $("#lb-block-save").click(function(){
+                var content = $("#textarea-editor_ifr").contents().find("body").html();
+                widget_obj.children(".widget-content").html(content);
+                tb_remove();
+            });
+
+        };
+
+        var url = widget_obj.children(".widget-options").children(".widget-edit").attr("href");
+        widget.lightbox(url,callback_init);
         return false;
     },
 
@@ -27,29 +35,17 @@ var widget = {
         });
     },
 
-    /* add a template to story */
-    add_to_page : function(data){
-        var new_widget = $(data).appendTo(".tab-contents .tab:not(.hidden)").addClass("editing-mode");
 
-        var url = new_widget.children(".widget-options").children(".widget-edit").attr("href");
 
-        tb_show(null,url,false,function(){
-            $("#textarea-editor").val(new_widget.children(".widget-content").html());
-            widget.initMCE();
-        });
+    /* show a generic lightbox with a callback_init function as parameter */
+    lightbox : function(url,callback_init) {
 
+        tb_show(null,url,false,callback_init);
         return false;
     },
 
-    save_text_editor : function(){
-        var content = $("#textarea-editor_ifr").contents().find("body").html();
-        $(".editing-mode").removeClass("editing-mode").children(".widget-content").html(content);
-        tb_remove();
-
-    },
-
-
-    initMCE : function(){
+    /* init Rich Text Editor */
+    init_editor : function(){
 
         // O2k7 skin (silver)
         tinyMCE.init({
@@ -59,18 +55,21 @@ var widget = {
             theme : "advanced",
             skin : "o2k7",
             skin_variant : "black",
+            width : "700",
+            height :"350",
             plugins : "safari,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,inlinepopups",
 
             // Theme options
-            theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,formatselect,fontsizeselect",
+            theme_advanced_buttons1 : "newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,formatselect,fontsizeselect",
             theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,cleanup,help,code",
             theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,fullscreen",
             theme_advanced_toolbar_location : "top",
             theme_advanced_toolbar_align : "left",
             theme_advanced_statusbar_location : "bottom",
-            theme_advanced_resizing : true,
-
+            theme_advanced_resizing : false,
+            /*
             save_callback : "widget.save_text_editor",
+            */
 
 
             // Example content CSS (should be your site CSS)
