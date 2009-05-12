@@ -1,25 +1,26 @@
 $(document).ready(function(){
 
-    /* reusable function to handle tab clicks */
-    function tab_click()
-    {
+    /********************************************************************************/
+    /*
+    Static events handlers
+    */
+    /********************************************************************************/
+    /* handles tabs clicks */
+    $(".tab-links a").live("click",function(){
         $(".tab-contents .tab").addClass("hidden");
         $("#" + $(this).attr("rel")).removeClass("hidden");
 
         $(".tab-links a").removeClass("active");
         $(this).addClass("active");
         return false;
-    }
 
-    /* handle tab clicks */
-    $(".tab-links a").click(tab_click);
+    });
 
     /* make page contents sortable */
-    $(".tab").sortable();;
+    $(".tab").sortable();
 
     /* add pages to story */
     $("#add-story-page").click(function(){
-
 
         var tab_prefix = "story-content-";
         var last_tab_id = $(".tab-links a:last").attr("rel").replace(tab_prefix,"");
@@ -33,17 +34,34 @@ $(document).ready(function(){
         /* create a new content area */
         $(".tab-contents .tab:last").clone().sortable().appendTo(".tab-contents").attr("id",tab_prefix + new_tab_id).html("");
 
-        new_tab.bind("click",tab_click);
-
         return false;
     });
 
-
-    /* handling text blocks */
+    /* handling text blocks links */
     $("#page-text-blocks a").click(function(){
         $.get($(this).attr("href"),widget.add_to_page);
         return false;
     });
+
+
+
+    /********************************************************************************/
+    /*
+    GLOBAL block event handlers
+    */
+    /********************************************************************************/
+    // mouseover on widgets
+    $(".tab-contents .widget-block").live("mouseover",function(){
+        $(this).children(".widget-options").removeClass("hidden");
+    });
+    // mouseout on widgets
+    $(".tab-contents .widget-block").live("mouseout",function(){
+        $(this).children(".widget-options").addClass("hidden");
+    });
+
+    // text widget events
+    $(".widget-text-block .widget-edit").live("click",widget.tb_show);
+
 
 });
 
