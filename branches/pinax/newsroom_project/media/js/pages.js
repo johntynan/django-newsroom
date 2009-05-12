@@ -39,7 +39,12 @@ $(document).ready(function(){
 
     /* handling text blocks links */
     $("#page-text-blocks a").click(function(){
-        $.get($(this).attr("href"),widget.add_to_page);
+
+        $.get($(this).attr("href"),function(data){
+            var new_widget = $(data).appendTo(".tab-contents .tab:not(.hidden)");
+            widget.text_edit(new_widget);
+        });
+
         return false;
     });
 
@@ -60,7 +65,10 @@ $(document).ready(function(){
     });
 
     // text widget events
-    $(".widget-text-block .widget-edit").live("click",widget.tb_show);
+    $(".widget-text-block .widget-edit").live("click",function(){
+            widget.text_edit($(this).parent().parent());
+            return false;
+    });
 
 
 });
