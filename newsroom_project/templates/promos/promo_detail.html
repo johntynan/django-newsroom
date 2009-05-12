@@ -20,7 +20,7 @@
 <p>
     <div style="float:left;">
 {% for i in promo_image%}
-    <img src="{{ i.photo.thumbnail.url }}">
+    <img src="{{ i.photo.get_thumbnail_url }}">
 {% endfor %}
     </div>
 {{promo.description}}
