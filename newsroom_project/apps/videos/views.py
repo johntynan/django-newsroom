@@ -34,7 +34,7 @@ def add_video(request):
                 locals(),
                 context_instance=RequestContext(request))
 
-def video_add_edit(request, media_id=None, template='videos/video_add_edit.html'):
+def video_add_edit(request, media_id=None, template='videos/video_add_edit.html', redirect_to='multimedia_browse', context_dict={}, story=None):
 
     video = None
     if media_id:
@@ -64,6 +64,8 @@ def video_add_edit(request, media_id=None, template='videos/video_add_edit.html'
 
             video.save()
             form.save_m2m()
+            if story:
+                story.media.add(video)
 
             if old_frame:
                 print 'deleting old frame'
@@ -72,7 +74,7 @@ def video_add_edit(request, media_id=None, template='videos/video_add_edit.html'
 
             request.user.message_set.create(
                         message='Your video was saved.')
-            return HttpResponseRedirect(reverse('multimedia_browse'))
+            return HttpResponseRedirect(reverse(redirect_to))
     else:
         if video:
             form = VideoForm(instance=video)
@@ -81,11 +83,12 @@ def video_add_edit(request, media_id=None, template='videos/video_add_edit.html'
             form = VideoForm()
             frame_form = VideoFrameForm()
             
-    return render_to_response(
-                template,
-                {'object': video,
-                 'form':form,
-                 'frame_form':frame_form},
+    c = {'object': video, 'form':form, 'frame_form':frame_form}
+    context_dict.update(c)
+
+    return render_to_response( 
+                template, 
+                context_dict,
                 context_instance=RequestContext(request))
 
 

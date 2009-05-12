@@ -7,7 +7,7 @@ from django.contrib.sites.models import Site
 from photos.forms import PhotoForm, ImageForm
 from photos.models import Photo
 
-def photo_add_edit( request, media_id=None, template='photos/photo_add_edit.html', redirect_to='multimedia_browse'):
+def photo_add_edit( request, media_id=None, template='photos/photo_add_edit.html', redirect_to='multimedia_browse', context_dict={}, story=None):
 
     if media_id:
         photo = get_object_or_404(Photo,pk=media_id)
@@ -44,6 +44,9 @@ def photo_add_edit( request, media_id=None, template='photos/photo_add_edit.html
             image_form.save_m2m()
             form.save_m2m()
 
+            if story:
+                story.media.add(photo)
+
             request.user.message_set.create(
                         message='Your photo was saved.')            
             return HttpResponseRedirect(reverse(redirect_to))
@@ -56,10 +59,11 @@ def photo_add_edit( request, media_id=None, template='photos/photo_add_edit.html
             form = PhotoForm()
             image_form = ImageForm()
             
+    c = {'object':photo, 'form':form, 'image_form':image_form,}
+    context_dict.update(c)
+
     return render_to_response(
                 template,
-                {'object':photo,
-                 'form':form,
-                 'image_form':image_form,},
+                context_dict,
                 context_instance=RequestContext(request))
 

@@ -19,7 +19,9 @@ urlpatterns = patterns('stories.views',
     #edit page
     url(r'^story/page/(?P<page_id>\d+)/edit/$','edit_page',name='stories_edit_page'),
     #add media
-    url(r'^story/(?P<story_id>\d+)/media/add/(?P<media_type>\w+)/$','story_add_media',name='stories_story_add_media'),
+    url(r'^story/(?P<story_id>\d+)/media/(?P<media_type>\w+)/add/$','story_add_edit_media',name='stories_story_add_media'),
+    #edit media
+    url(r'^story/(?P<story_id>\d+)/media/(?P<media_id>\d+)/edit/$','story_add_edit_media',name='stories_story_edit_media'),
     #associate media
     url(r'^story/(?P<story_id>\d+)/media/(?P<media_type>\w+)/select/$','story_select_media',name='stories_story_select_media'),
 
