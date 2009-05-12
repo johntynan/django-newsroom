@@ -6,6 +6,7 @@ from django.template import RequestContext, Template, Context
 from django.contrib.auth.decorators import login_required
 
 from multimedia.models import Media
+from multimedia import views as media_views
 from stories.forms import StoryForm, PageForm
 from stories.models import Story, Page
 
@@ -111,11 +112,34 @@ def edit_page(request,page_id):
                               context_instance=RequestContext(request))
 
 @login_required
-def story_add_media(request, story_id, media_type):
+def story_add_edit_media(request, story_id, media_type=None, media_id=None):
+    """
+    media_type should be defined on add, and media_id is defined on edit.
+    """
+
     story = get_object_or_404(Story,pk=story_id)
+    kwargs = {}
+
+    if media_id:
+        media = get_object_or_404(Media, pk=media_id)
+        object = media.get_child_object()
+        media_type = object.media_type.lower()
+
+    kwargs['template'] = 'stories/%s_add_edit.html' % media_type
+    kwargs['redirect_to'] = 'stories_story_list'
+    kwargs['context_dict'] = {'story':story,}
+    kwargs['story'] = story
+    if media_id:
+        kwargs['media_id'] = media_id
+
+    return media_views.add_edit_child_media(request, media_type, **kwargs)
+
     #media = get_object_or_404(Media,pk=request.POST.get('media_id'))
     #story.media.add(media)
-    return render_to_response('stories/widgets/story_media_summary.html',locals())
+    #return render_to_response(
+    #            'stories/add_edit_media.html',
+    #            {'story':story,},
+    #            context_instance=RequestContext(request))
 
 @login_required
 def story_select_media(request,story_id,media_type):

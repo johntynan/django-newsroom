@@ -24,14 +24,6 @@ def get_form_class(type):
     else:
         raise NotImplementedError
 
-def add_edit_child_media(request, media_type, **kwargs):
-
-    if media_type == 'video':
-        return vid_views.video_add_edit(request, **kwargs)
-    elif media_type == 'photo':
-        return photo_views.photo_add_edit(request, **kwargs)
-    else:
-        raise Http404('Media type not supported.')
 
 @login_required    
 def detail(request,media_id,slug=None):
@@ -101,7 +93,7 @@ def add(request,media_type):
     
 
 @login_required    
-def add_edit(request, media_id=None, media_type=None, template=None):
+def add_edit(request, media_id=None, media_type=None, template=None, redirect_to='multimedia_browse'):
     
     if media_id:
         media = get_object_or_404(Media, pk=media_id)
@@ -142,3 +134,11 @@ def add_edit(request, media_id=None, media_type=None, template=None):
 #
 #    return render_to_response('multimedia/edit_media.html',locals(),context_instance=RequestContext(request))
     
+def add_edit_child_media(request, media_type, **kwargs):
+
+    if media_type == 'video':
+        return vid_views.video_add_edit(request, **kwargs)
+    elif media_type == 'photo':
+        return photo_views.photo_add_edit(request, **kwargs)
+    else:
+        raise Http404('Media type not supported.')
