@@ -150,7 +150,12 @@ class Media(ParentModel):
         """
         Subclasses should implement this
         """
-        return "%sgeneric_thumbnail.png" % settings.MEDIA_URL 
+        child = self.get_child_object()
+        if hasattr(child,'get_thumbnail_url'):
+            return self.get_child_object().get_thumbnail_url()
+        else:
+            return "%sgeneric_thumbnail.png" % settings.MEDIA_URL 
+
     
     def get_insert_snippet(self):
         """

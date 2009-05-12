@@ -33,8 +33,8 @@
         <h2>{% trans "Media" %}</h2>
         <ul class="action-links">
             {% for item in story.media.all %}
-            <li><img src="{{item.get_child_object.get_thumbnail_url}}" /><a href="{% url stories_story_edit_media story.id item.id %}"
-            >{{item}}</a></li>
+            <li><img src="{{ item.get_thumbnail_url }}" /><a href="{% url stories_story_edit_media story.id item.id %}"
+            >{{ item }}</a></li>
             {% endfor %}
         </ul>
     </div>
