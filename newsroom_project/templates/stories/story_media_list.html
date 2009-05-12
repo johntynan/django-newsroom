@@ -1,35 +1,55 @@
 {% extends "stories/base.html" %}
+{% load formfields i18n %}
 
-{% block title %}Media Inventory for: {{story.headline}}{% endblock %}
+{% block head_title %} Media for {{ story }}{% endblock %}
+
 
 {% block subnav %}
-
-{% if system_media_types %}
-<ul id="story-add-media-menu">
-    {% for media_type in system_media_types %}
-    <li><a href="{% url stories_story_select_media story.id media_type %}">Add {{media_type}}</a></li>
-    {% endfor %}
-</ul>
-{% endif %}
+    {{ block.super }}
+    <div class="actions-block" id="story-edit-media-actions">
+        <h2>{% trans "Add media to story" %}</h2>
+        <ul class="action-links">
+            <li><a href="{% url stories_story_add_media story.id "photo" %}">{% trans "Add Photo" %}</a></li>
+            <li><a href="{% url stories_story_add_media story.id "video" %}">{% trans "Add Video" %}</a></li>
+        </ul>
+    </div>
 {% endblock %}
 
+
 {% block main_content %}
-<div id="media-preview-blocks">
-{% for media in story.media.all %}
-    <div class="media-preview-block" style="width:240px;float:left;border:1px solid">
-        <h2>Thumbnail</h2>
-        <p>Title: {{media.title}}</p>
-        <p>Authors: {{media.authors}}</p>
-        <p>Attribution</p>
-        <p>Description: {{media.summary}}</p>
-        <p style="background:#eee"><b>Quicktag</b><br/>{{media.get_insert_snippet}}</p>
-        <p><a href="">Edit</a></p>
+
+<h1>{{ story.headline }} <span class="headline-options">(<a href="{% url stories_story_pages story.id %}">edit story pages</a>)</span></h1>
+
+    {# TODO auto-slugify headline (or customize admin) #}
+
+    <div class="edit-story-tabs">
+        <div class="tab-links">
+            <a href="{% url stories_edit_story story.id %}" rel="story-info">Properties</a>
+            <a href="" rel="story-media" class="active">Media</a>
+            <br class="clearboth" />
+        </div>
+        <div class="tab-contents">
+
+            <div id="story-info" class="tab hidden">
+            </div>
+            <div id="story-media" class="tab">
+    <h2>Browse</h2>
+
+    {% for item in story.media.all %}
+    <div class="media-list-block" id="media-item-{{item.id}}"
+         style="width:240px;float:left;border:1px solid">
+        <h2>{{item}} :: {{ item.get_child_name }}</h2>
+        <p class="media-thumb">
+        <img src="{{item.get_child_object.get_thumbnail_url}}" /></p>
+        <p>Dimensions: {{item.get_dimensions}}</p>
+        <p>Authors: {{ item.authors.all|join:', ' }}</p>
+        <p>Attribution: {{item.attribution|truncatewords:30}}</p>
+        <p>Summary: {{item.summary|truncatewords:30}}</p>
+        {# TODO actual preview URL; delete URL #}
+        <p><a href="{% url stories_story_edit_media story.id item.id %}">Edit</a>|<a href="{% url multimedia_preview item.id %}">Preview</a>|<a href="">Delete</a></p>
+
     </div>
-{% empty %}
-
-    <div class="media-preview-block" style="width:240px;float:left;border:1px solid"><p>No media available for this story yet.</p></div>
-
-{% endfor %}    
-</div>
-<div style="clear:both"/>
+    {% empty %}
+    <div>You haven't uploaded any {{ media_type }} media yet.</div>
+    {% endfor %}
 {% endblock %}
