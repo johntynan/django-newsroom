@@ -79,10 +79,14 @@ def promo_list(request):
     """
 
     promos = Promo.objects.all()
-
+    for i in promos:
+        promo_image = PromoImage.objects.filter(promo=i.id)
+    
     return render_to_response(
-              'promos/promo_list.html',
-              {'promos':promos},
+                'promos/promo_list.html',{
+                'promos':promos,
+                'promo_image': promo_image,
+                },
               context_instance=RequestContext(request))
 
 def promo_detail(request, id):
@@ -98,7 +102,7 @@ def promo_detail(request, id):
               'promos/promo_detail.html',{
               'promo': promo,
               'promo_link': promo_link,
-              'promo_image': promo_image
+              'promo_image': promo_image,
              },
               context_instance=RequestContext(request))
 
