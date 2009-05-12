@@ -29,7 +29,7 @@
     <div class="edit-story-tabs">
         <div class="tab-links">
             <a href="" rel="story-info" class="active">Properties</a>
-            <a href="" rel="story-media">Media</a>
+            <a href="{% url stories_story_media story.id %}" rel="story-media">Media</a>
             <br class="clearboth" />
         </div>
         <div class="tab-contents">
