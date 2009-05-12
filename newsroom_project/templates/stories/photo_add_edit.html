@@ -1,0 +1,54 @@
+{% extends "stories/base.html" %}
+{% load formfields i18n %}
+
+{% block head_title %}
+{% if object %}
+Edit Photo: {{ object }}
+{% else %}
+Add Photo 
+{% endif %} 
+{% endblock %}
+
+
+{% block main_content %}
+
+<h1>{{ story.headline }} <span class="headline-options">(<a href="{% url stories_story_pages story.id %}">edit story pages</a>)</span></h1>
+
+    {# TODO auto-slugify headline (or customize admin) #}
+
+    <div class="edit-story-tabs">
+        <div class="tab-links">
+            <a href="" rel="story-info" class="active">Properties</a>
+            <a href="" rel="story-media">Media</a>
+            <br class="clearboth" />
+        </div>
+        <div class="tab-contents">
+
+            <div id="story-info" class="tab hidden">
+            </div>
+
+
+            <div id="story-media" class="tab">
+
+            {% if object %}
+            <h2>Edit Photo: {{ object }}</h2>
+            {% else %}
+            <h2>Add Photo</h2>
+            {% endif %} 
+
+            <form method="post" enctype="multipart/form-data">
+            {{form.as_p}}
+            {{image_form.as_p}}
+            <input type="submit" value="Save"/>
+            <a href="{% url stories_story_pages story.id %}">Cancel</a> 
+            </form>
+
+            </div>
+
+            <br class="clear" />
+
+        </div>
+
+    </div>
+
+{% endblock %}
