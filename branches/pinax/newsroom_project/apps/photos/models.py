@@ -165,7 +165,7 @@ class Image(ImageModel):
     class IKOptions:
         spec_module = PHOTOS_IMAGEKIT_SPEC
         save_count_as = 'view_count'
-        cache_dir = 'photos'
+        cache_dir = 'ik_cache/photos'
         cache_filename_format = "%(specname)s/%(filename)s.%(extension)s"
 
 class PhotoManager(models.Manager):
