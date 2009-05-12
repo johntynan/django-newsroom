@@ -2,7 +2,7 @@ from django import forms
 from django.forms import widgets
 from promos.models import *
 from core.models import *
-from photologue.models import Photo
+from photos.models import Photo
 
 class PromoForm(forms.ModelForm):
     """

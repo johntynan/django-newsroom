@@ -147,6 +147,7 @@ INSTALLED_APPS = (
     'topics',
     'videos',
     'photos',
+    'promos'
 )
 
 PROMO_MODERATORS = (
