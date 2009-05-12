@@ -7,10 +7,10 @@
 
 <ul>
 {% for promo in promos %}
-<li class="{% cycle 'even' 'odd' %}">{% for i in promo_image%}
-    <img src="{{ i.photo.get_thumbnail_url }}">
-{% endfor %} <a href="{{promo.permalink}}">{{promo}}</a> {{promo.description}}<br>
-<a href="{% url promos_promo_detail promo.id %}">detail</a> - <a href="{{promo.id}}/edit/">edit</a></li>
+    <li class="{% cycle 'even' 'odd' %}">
+        <a href="{{promo.permalink}}">{{promo}}</a> {{promo.description}}<br>
+        <a href="{% url promos_promo_detail promo.id %}">detail</a> - <a href="{{promo.id}}/edit/">edit</a>
+    </li>
 {% endfor %}
 </ul>
 
