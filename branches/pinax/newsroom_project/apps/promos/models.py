@@ -7,6 +7,7 @@ from photos.models import Photo
 from bookmarks.models import BookmarkInstance
 from topics.models import TopicPath
 
+
 class Promo(models.Model):
     """
     A promo is use to define what will appear on the front page of the site
@@ -26,6 +27,7 @@ class Promo(models.Model):
                       blank=True,
                       help_text="A short paragraph to describe the promo.",)
     project = models.ManyToManyField(Project, blank=True)
+    
     submitter = models.ForeignKey(
                     User,
                     related_name='promos_submitted',)
