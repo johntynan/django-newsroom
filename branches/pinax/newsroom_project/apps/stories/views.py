@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext, Template, Context
 from django.contrib.auth.decorators import login_required
+from django.template.defaultfilters import slugify
 
 from multimedia.models import Media
 from multimedia import views as media_views
@@ -25,7 +26,9 @@ def add_story(request):
     if request.method == 'POST':
         form = StoryForm(request.POST)
         if form.is_valid():
-            story = form.save()
+            story = form.save(commit=False)
+            story.slug = slugify(story.headline)
+            story.save()
             request.user.message_set.create(
                     message='Your story was saved.')
             return HttpResponseRedirect(reverse('stories_edit_story',args=[story.id]))
