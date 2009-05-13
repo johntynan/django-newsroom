@@ -2,10 +2,9 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
-from promos.models import Promo 
-from promos.forms import PromoForm
-from promos.models import PromoImage
-from promos.models import PromoLink
+from promos.models import Promo, PromoImage, PromoLink
+from promos.forms import PromoForm, ImageForm, LinkForm
+
 from django.contrib.auth.models import User
 
 from django.conf import settings
@@ -60,23 +59,28 @@ def promo_edit(request, id):
     promo = get_object_or_404(Promo, pk=id)
 
     PromoImageInlineFormSet = inlineformset_factory(Promo, PromoImage)   
+    PromoLinkInlineFormSet = inlineformset_factory(Promo, PromoLink)  
     if request.method == "POST":
-        formset = PromoImageInlineFormSet(request.POST, request.FILES, instance=promo)
+        formset1 = PromoImageInlineFormSet(request.POST, request.FILES, instance=promo)
+        formset2 = PromoLinkInlineFormSet(request.POST, request.FILES, instance=promo)
         form = PromoForm(request.POST, instance=promo)
-        if formset.is_valid():
-            formset.save()
+        if formset1.is_valid():
+            formset1.save()
+        if formset2.is_valid():
+            formset2.save()
         if form.is_valid():
             form.save()
             request.user.message_set.create(
                 message='Your promo has been edited.')
             return HttpResponseRedirect(reverse('promos_promo_list'))
     else:
-        formset = PromoImageInlineFormSet(instance=promo)
+        formset1 = PromoImageInlineFormSet(instance=promo)
+        formset2 = PromoLinkInlineFormSet(instance=promo)
         form = PromoForm(instance=promo)        
 
     return render_to_response(
               'promos/promo_edit.html',
-              ({'form': form, 'formset': formset}),
+              ({'form': form, 'formset1': formset1, 'formset2': formset2}),
               context_instance=RequestContext(request))
 
 def promo_list(request):
@@ -109,5 +113,48 @@ def promo_detail(request, id):
               'promo_link': promo_link,
               'promo_image': promo_image,
              },
+              context_instance=RequestContext(request))
+    
+    
+def promo_image_add(request):
+    """
+    Process a new promo link submission.
+    """
+
+    if request.method == "POST":
+        form = ImageForm(request.POST)
+        if form.is_valid():
+            form.save()
+            request.user.message_set.create(
+                message='Your promo image has been added.  Thank you.')
+            return HttpResponseRedirect(reverse('promos_promo_list'))
+
+    else:
+        form = ImageForm()
+
+    return render_to_response(
+              'promos/promo_image_add.html',
+              {'form':form},
+              context_instance=RequestContext(request))
+
+def promo_link_add(request):
+    """
+    Process a new promo link submission.
+    """
+
+    if request.method == "POST":
+        form = LinkForm(request.POST)
+        if form.is_valid():
+            form.save()
+            request.user.message_set.create(
+                message='Your promo link has been added.  Thank you.')
+            return HttpResponseRedirect(reverse('promos_promo_list'))
+
+    else:
+        form = LinkForm()
+
+    return render_to_response(
+              'promos/promo_link_add.html',
+              {'form':form},
               context_instance=RequestContext(request))
 
