@@ -42,7 +42,7 @@
 
 {% block main_content %}
 
-<h1>{{ story.headline }} <span class="headline-options">(<a href="{% url stories_edit_story story.id %}">edit story info</a> / <a href="">manage media</a>)</span></h1>
+<h1>{{ story.headline }} <span class="headline-options">(<a href="{% url stories_edit_story story.id %}">edit story info</a> / <a href="{% url stories_story_media story.id %}">manage media</a>)</span></h1>
 <div class="edit-story-tabs">
     <div class="tab-links">
         {% for page in story.pages %}
