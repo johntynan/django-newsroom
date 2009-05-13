@@ -30,9 +30,10 @@ class LinkForm(forms.ModelForm):
     
     class Meta:
         model = PromoLink
-
+        fields = ('title','url','desc','promo')
+        
 class ImageForm(forms.ModelForm):
 
     class Meta:
         model = Photo
-        fields = ('title','image','caption')
+        fields = ('title','image','caption','promo')

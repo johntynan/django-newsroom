@@ -19,5 +19,13 @@ urlpatterns = patterns('',
     url(r'^(?P<id>\d+)/$', 
         views.promo_detail,
         name="promos_promo_detail"),
+    
+    url(r'^image_add/$', 
+        views.promo_image_add,
+        name="promos_promo_image_add"),    
 
+    url(r'^link_add/$', 
+        views.promo_link_add,
+        name="promos_promo_link_add"),
+    
 )
