@@ -66,6 +66,12 @@ class Video(Media):
     def get_thumbnail_url(self):
         return self.frame.mediumthumb.url
 
+    def get_width(self):
+        return self.frame.image.width
+
+    def get_height(self):
+        return self.frame.image.height
+
     #TODO update this
     def get_absolute_url(self):
         return ('videos_video_detail', 

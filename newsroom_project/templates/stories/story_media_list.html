@@ -41,7 +41,7 @@
                     <h2>{{item}} :: {{ item.get_child_name }}</h2>
                     <p class="media-thumb">
                     <img src="{{item.get_child_object.get_thumbnail_url}}" /></p>
-                    <p>Dimensions: {{item.get_dimensions}}</p>
+                    <p>Dimensions: {{ item.get_width }} x {{ item.get_height }}</p>
                     <p>Authors: {{ item.authors.all|join:', ' }}</p>
                     <p>Attribution: {{item.attribution|truncatewords:30}}</p>
                     <p>Summary: {{item.summary|truncatewords:30}}</p>
