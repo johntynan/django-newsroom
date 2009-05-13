@@ -19,7 +19,7 @@ Add Photo
     <div class="edit-story-tabs">
         <div class="tab-links">
             <a href="{% url stories_edit_story story.id %}" rel="story-info">Properties</a>
-            <a href="" rel="story-media" class="active">Media</a>
+            <a href="{% url stories_story_media story.id %}" rel="story-media" class="active">Media</a>
             <br class="clearboth" />
         </div>
         <div class="tab-contents">
