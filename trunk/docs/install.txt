@@ -124,6 +124,14 @@ mkdir uploads
 
 chmod 777 uploads
 
+mkdir ik_cache  
+
+chmod 777 ik_cache
+
+mkdir photos
+
+chmod 777 photos
+
 
 done with dependencies, run the dev server
 ------------------------------------------
