@@ -12,6 +12,7 @@ from django.conf import settings
 from django.template.loader import render_to_string
 from django.contrib.sites.models import Site
 
+from django.forms.models import inlineformset_factory
 
 if "mailer" in settings.INSTALLED_APPS:
     from mailer import send_mail
@@ -57,20 +58,25 @@ def promo_edit(request, id):
     Edit an existing promo.
     """
     promo = get_object_or_404(Promo, pk=id)
-    
+
+    PromoImageInlineFormSet = inlineformset_factory(Promo, PromoImage)   
     if request.method == "POST":
+        formset = PromoImageInlineFormSet(request.POST, request.FILES, instance=promo)
         form = PromoForm(request.POST, instance=promo)
+        if formset.is_valid():
+            formset.save()
         if form.is_valid():
             form.save()
             request.user.message_set.create(
                 message='Your promo has been edited.')
             return HttpResponseRedirect(reverse('promos_promo_list'))
     else:
+        formset = PromoImageInlineFormSet(instance=promo)
         form = PromoForm(instance=promo)        
 
     return render_to_response(
               'promos/promo_edit.html',
-              {'form':form},
+              ({'form': form, 'formset': formset}),
               context_instance=RequestContext(request))
 
 def promo_list(request):
@@ -79,12 +85,11 @@ def promo_list(request):
     """
 
     promos = Promo.objects.all()
-    for i in promos:
-        promo_image = PromoImage.objects.filter(promo=i.id)
-    
+    promo_image = PromoImage.objects.all()
+
     return render_to_response(
                 'promos/promo_list.html',{
-                'promos':promos,
+                'promos': promos,
                 'promo_image': promo_image,
                 },
               context_instance=RequestContext(request))
