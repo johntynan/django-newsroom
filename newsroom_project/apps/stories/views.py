@@ -29,6 +29,7 @@ def add_story(request):
             story = form.save(commit=False)
             story.slug = slugify(story.headline)
             story.save()
+            form.save_m2m()
             request.user.message_set.create(
                     message='Your story was saved.')
             return HttpResponseRedirect(reverse('stories_edit_story',args=[story.id]))
