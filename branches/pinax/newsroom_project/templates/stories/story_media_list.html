@@ -28,28 +28,35 @@
             <a href="" rel="story-media" class="active">Media</a>
             <br class="clearboth" />
         </div>
+
         <div class="tab-contents">
 
             <div id="story-info" class="tab hidden">
             </div>
             <div id="story-media" class="tab">
-    <h2>Browse</h2>
 
-    {% for item in story.media.all %}
-    <div class="media-list-block" id="media-item-{{item.id}}"
-         style="width:240px;float:left;border:1px solid">
-        <h2>{{item}} :: {{ item.get_child_name }}</h2>
-        <p class="media-thumb">
-        <img src="{{item.get_child_object.get_thumbnail_url}}" /></p>
-        <p>Dimensions: {{item.get_dimensions}}</p>
-        <p>Authors: {{ item.authors.all|join:', ' }}</p>
-        <p>Attribution: {{item.attribution|truncatewords:30}}</p>
-        <p>Summary: {{item.summary|truncatewords:30}}</p>
-        {# TODO actual preview URL; delete URL #}
-        <p><a href="{% url stories_story_edit_media story.id item.id %}">Edit</a>|<a href="{% url multimedia_preview item.id %}">Preview</a>|<a href="">Delete</a></p>
+                {% for item in story.media.all %}
+                <div class="media-list-block" id="media-item-{{item.id}}"
+                     style="width:240px;float:left;border:1px solid">
+                    <h2>{{item}} :: {{ item.get_child_name }}</h2>
+                    <p class="media-thumb">
+                    <img src="{{item.get_child_object.get_thumbnail_url}}" /></p>
+                    <p>Dimensions: {{item.get_dimensions}}</p>
+                    <p>Authors: {{ item.authors.all|join:', ' }}</p>
+                    <p>Attribution: {{item.attribution|truncatewords:30}}</p>
+                    <p>Summary: {{item.summary|truncatewords:30}}</p>
+                    {# TODO actual preview URL; delete URL #}
+                    <p><a href="{% url stories_story_edit_media story.id item.id %}">Edit</a>|<a href="{% url multimedia_preview item.id %}">Preview</a>|<a href="">Delete</a></p>
 
+                </div>
+                {% empty %}
+                <div>You haven't uploaded any {{ media_type }} media yet.</div>
+                {% endfor %}
+            </div>
+
+            <br class="clear" />
+
+        </div>
     </div>
-    {% empty %}
-    <div>You haven't uploaded any {{ media_type }} media yet.</div>
-    {% endfor %}
+
 {% endblock %}
