@@ -208,3 +208,8 @@ class Photo(Media):
     def get_thumbnail_url(self):
         return self.image.mediumthumb.url
 
+    def get_width(self):
+        return self.image.image.width
+
+    def get_height(self):
+        return self.image.image.height

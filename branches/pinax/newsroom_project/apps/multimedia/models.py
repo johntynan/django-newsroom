@@ -148,6 +148,7 @@ class Media(ParentModel):
      
     def get_thumbnail_url(self):
         """
+        return the absolute path to the default thumbnail.
         Subclasses should implement this
         """
         child = self.get_child_object()
@@ -156,6 +157,26 @@ class Media(ParentModel):
         else:
             return "%sgeneric_thumbnail.png" % settings.MEDIA_URL 
 
+    def get_height(self):
+        """
+        Return integer or None
+        """
+        child = self.get_child_object()
+        if hasattr(child, 'get_height'):
+            return child.get_height()
+        else:
+            return None
+
+    def get_width(self):
+        """
+        Return integer or None
+        """
+        child = self.get_child_object()
+        if hasattr(child, 'get_width'):
+            return child.get_width()
+        else:
+            return None
+           
     
     def get_insert_snippet(self):
         """
