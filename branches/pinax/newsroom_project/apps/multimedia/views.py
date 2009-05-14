@@ -34,9 +34,14 @@ def detail(request,media_id,slug=None):
 
 def preview(request,media_id):
 
-    object = get_object_or_404(Media, pk=media_id)
+    media = get_object_or_404(Media, pk=media_id)
+    template = 'multimedia/render/%s.html' % media.get_media_type()
+    object = media.get_child_object()
 
-    return render_to_response('multimedia/media_preview.html',locals(),context_instance=RequestContext(request))
+    return render_to_response(
+            template,
+            {'object':object,},
+            context_instance=RequestContext(request))
 
 @login_required    
 def browse(request):
@@ -97,8 +102,7 @@ def add_edit(request, media_id=None, media_type=None, template=None, redirect_to
     
     if media_id:
         media = get_object_or_404(Media, pk=media_id)
-        object = media.get_child_object()
-        media_type = object.media_type.lower()
+        media_type = media.get_media_type()
 
     kwargs = {}
 

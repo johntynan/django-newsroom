@@ -7,3 +7,4 @@ PIL
 django-imagekit
 # use trunk
 -e svn+http://code.djangoproject.com/svn/django/trunk#egg=django-trunk
+django-inlines
