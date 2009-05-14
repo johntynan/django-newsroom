@@ -24,10 +24,6 @@ widget.media.load = function(jquery_obj)
     widget.media.__jquery_obj = jquery_obj;
     widget.media.template_tag(widget.media.__jquery_obj.children(".widget-code").text());
 
-    $.each($("#media-align option"),function(i,val){
-        $("#media-tag .widget-block").removeClass($(val).val());
-    });
-
     /* get caption */
     re = new RegExp('{% media_insert ([0-9]{0,}) "([a-zA-Z]{0,})" "([a-zA-Z-_]{0,})" %}');
     var matches = widget.media.__jquery_obj.children(".widget-code").text().match(re);
@@ -66,8 +62,11 @@ widget.media.__edit_callback = function()
 
     widget.media.__check_align();
 
+    $.each($("#media-align option"),function(i,val){
+        $("#media-tag .widget-block").removeClass($(val).val());
+    });
+
     $("#media-align").change(function(){
-        console.log('changed');
         widget.media.classes($(this).children("option:selected").val());
         $("#template-tag").val(widget.media.template_tag());
     });
