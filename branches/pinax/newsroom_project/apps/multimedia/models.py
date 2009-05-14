@@ -41,20 +41,8 @@ class MediaBase(ModelBase):
         Additionally, each subclass of Media will have a media_type attribute
         indicating the media type string registered with Media. By default this is just
         the class name, but it can be overridden by explicitly adding a media_type attribute
-        to subclass definitions. Ex:
+        to subclass definitions.
 
-        class Test(Media):
-            pass
-
-        class Another(Media):
-            media_type = 'another_media'
-
-        >>> Media.media_types
-        ['Test','another_media']
-
-        >>> t = Test()
-        >>> t.media_type
-        'Test'
         """
         #TODO: media_type doesn't work for Media instances (subclasses OK)
 
