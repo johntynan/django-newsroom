@@ -23,9 +23,9 @@
     <div class="actions-block" id="page-text-blocks">
         <h2>{% trans "Text blocks" %}</h2>
         <ul class="action-links">
-            <li><a href="{% url stories_page_widgets "text_1col" %}" rel="w21-text_1col">{% trans "1 collumn" %}</a></li>
-            <li><a href="{% url stories_page_widgets "text_2col" %}" rel="w21-text_2col">{% trans "2 collumns" %}</a></li>
-            <li><a href="{% url stories_page_widgets "text_3col" %}" rel="w21-text_3col">{% trans "3 collumns" %}</a></li>
+            <li><a href="{% url stories_page_text_widgets "text_1col" %}" rel="w21-text_1col">{% trans "1 collumn" %}</a></li>
+            <li><a href="{% url stories_page_text_widgets "text_2col" %}" rel="w21-text_2col">{% trans "2 collumns" %}</a></li>
+            <li><a href="{% url stories_page_text_widgets "text_3col" %}" rel="w21-text_3col">{% trans "3 collumns" %}</a></li>
         </ul>
     </div>
 
@@ -34,7 +34,7 @@
         <ul class="action-links">
             {% for item in story.media.all %}
             <li>
-                <a href="{% url stories_story_edit_media story.id item.id %}">
+                <a href="{% url stories_page_media_widgets item.id %}">
                     <img src="{{ item.get_thumbnail_url }}" width="30" height="30" />
                     {{ item }}
                 </a>
