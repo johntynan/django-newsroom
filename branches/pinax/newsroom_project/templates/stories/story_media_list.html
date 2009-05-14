@@ -15,6 +15,11 @@
 {% endblock %}
 
 
+{% block extra_head %}
+    {{ block.super }}
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/swfobject.js"></script>
+{% endblock %}
+
 {% block main_content %}
 
 <h1>{{ story.headline }} <span class="headline-options">(<a href="{% url stories_story_pages story.id %}">edit story pages</a>)</span></h1>
@@ -45,7 +50,7 @@
                     <p>Attribution: {{item.attribution|truncatewords:30}}</p>
                     <p>Summary: {{item.summary|truncatewords:30}}</p>
                     <p><a href="{% url stories_story_edit_media story.id item.id %}">Edit</a> | 
-                    <a href="{% url multimedia_preview item.id %}?width={{ item.get_width }}&height={{ item.get_height }}" class="thickbox">Preview</a> |
+                    <a href="{% url multimedia_preview item.id %}?width={{ item.get_width_with_margin }}&height={{ item.get_height_with_margin }}" class="thickbox">Preview</a> |
                     <a href="">Delete</a></p>
 
                 </div>

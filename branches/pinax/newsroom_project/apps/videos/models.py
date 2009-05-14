@@ -79,4 +79,3 @@ class Video(Media):
                 { 'video_id': self.id, 'slug': self.slug })
     get_absolute_url = models.permalink(get_absolute_url)
 
-

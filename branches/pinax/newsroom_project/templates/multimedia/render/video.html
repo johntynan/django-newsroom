@@ -11,7 +11,6 @@
 
 </div>
 
-<script type="text/javascript" src="{{ MEDIA_URL }}js/swfobject.js"></script>
 <script type="text/javascript">
 /* <![CDATA[ */
 
@@ -32,7 +31,7 @@
                     id:"player_{{object.id}}",
                     name:"player_{{object.id}}"
             }
-        swfobject.embedSWF("{{ MEDIA_URL }}swf/player-viral.swf", "placeholder_{{ object.id}}", "320", "196", "9.0.115", false, flashvars, params, attributes);
+        swfobject.embedSWF("{{ MEDIA_URL }}swf/player-viral.swf", "placeholder_{{ object.id}}", "{{ object.get_width }}", "{{ object.get_height }}", "9.0.115", false, flashvars, params, attributes);
     }
 
     createPlayer();    
