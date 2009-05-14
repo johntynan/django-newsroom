@@ -18,6 +18,8 @@ from imagekit.lib import Image
 from multimedia.models import Media
 from multimedia.constants import MEDIA_STATUS_PUBLISHED
 
+from django_inlines import inlines
+
 # Modify image file buffer size.
 PHOTOS_IMAGEKIT_SPEC = getattr(settings, 'PHOTOS_IMAGEKIT_SPEC', 'photos.ik_specs')
 
@@ -153,8 +155,6 @@ class Image(ImageModel):
                                             choices=crop_vert_choices,
                                             default=1)
     view_count = models.PositiveIntegerField(default=0, editable=False)
-    created_by = models.ForeignKey(User, related_name="images_created")
-    modified_by = models.ForeignKey(User, related_name="images_modified")
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
@@ -213,3 +213,9 @@ class Photo(Media):
 
     def get_height(self):
         return self.image.image.height
+
+    def get_inline_code(self):
+        return '{{ photo %d }}' % self.id
+
+inlines.registry.register('photo', inlines.inline_for_model(Photo))
+

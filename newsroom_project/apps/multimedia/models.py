@@ -155,7 +155,7 @@ class Media(ParentModel):
         if hasattr(child,'get_thumbnail_url'):
             return self.get_child_object().get_thumbnail_url()
         else:
-            return "%sgeneric_thumbnail.png" % settings.MEDIA_URL 
+            return "%simages/generic_thumbnail.png" % settings.MEDIA_URL 
 
     def get_height(self):
         """
@@ -214,5 +214,9 @@ class Media(ParentModel):
         return reverse('multimedia_detail', 
                        dict(media_id=self.id,slug=self.slug))
 
-
+    def get_media_type(self):
+        """
+        Return lowercase string the matches media type.
+        """
+        return self.get_child_object().media_type.lower()
     

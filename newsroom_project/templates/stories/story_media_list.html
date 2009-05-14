@@ -3,7 +3,6 @@
 
 {% block head_title %} Media for {{ story }}{% endblock %}
 
-
 {% block subnav %}
     {{ block.super }}
     <div class="actions-block" id="story-edit-media-actions">
@@ -45,8 +44,9 @@
                     <p>Authors: {{ item.authors.all|join:', ' }}</p>
                     <p>Attribution: {{item.attribution|truncatewords:30}}</p>
                     <p>Summary: {{item.summary|truncatewords:30}}</p>
-                    {# TODO actual preview URL; delete URL #}
-                    <p><a href="{% url stories_story_edit_media story.id item.id %}">Edit</a>|<a href="{% url multimedia_preview item.id %}">Preview</a>|<a href="">Delete</a></p>
+                    <p><a href="{% url stories_story_edit_media story.id item.id %}">Edit</a> | 
+                    <a href="{% url multimedia_preview item.id %}?width={{ item.get_width }}&height={{ item.get_height }}" class="thickbox">Preview</a> |
+                    <a href="">Delete</a></p>
 
                 </div>
                 {% empty %}

@@ -7,7 +7,7 @@
 3) Install DN requirements 
     pip install -r requirements/external_apps.txt
 
-4) Install caveats by hand (photologue-3.x and django-countries) according to
+4) Install caveats by hand (django-countries) according to
     http://code.google.com/p/django-newsroom/source/browse/trunk/docs/install.txt#73
 
 5) Make sure you have django trunk
