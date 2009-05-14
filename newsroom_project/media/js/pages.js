@@ -53,7 +53,9 @@ $(document).ready(function(){
 
         $.get($(this).attr("href"),function(data){
             var new_widget = $(data).appendTo(".tab-contents .tab:not(.hidden)");
-            widget.image_edit(new_widget);
+
+            widget.media.load(new_widget);
+            widget.media.edit();
         });
 
         return false;
