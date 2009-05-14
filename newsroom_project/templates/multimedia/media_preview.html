@@ -1,5 +1,3 @@
-{% extends "multimedia/base.html" %}
-
-{% block main_content %}
-<h2>{{object}}</h2>
-{% endblock %}
+<div id="preview-{{object.get_media_type}}" class="thickwindow">
+{% block main_content %}{% endblock %}
+</div>

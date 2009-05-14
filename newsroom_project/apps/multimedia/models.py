@@ -167,6 +167,12 @@ class Media(ParentModel):
         else:
             return None
 
+    def get_height_with_margin(self):
+        """
+        Return integer or None
+        """
+        return self.get_height() + 20
+
     def get_width(self):
         """
         Return integer or None
@@ -176,6 +182,12 @@ class Media(ParentModel):
             return child.get_width()
         else:
             return None
+
+    def get_width_with_margin(self):
+        """
+        Return integer or None
+        """
+        return self.get_width() + 20
            
     
     def get_insert_snippet(self):
