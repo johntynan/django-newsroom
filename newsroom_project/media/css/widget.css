@@ -21,3 +21,10 @@
     .widget-image-block .widget-options a { display: inline; margin: 0 0 0 12px; background-position: center left; }
 
 #story-content li:hover { cursor: move; }
+
+
+
+
+
+#textarea-editor_parent { float: left; }
+.text-editor .lb-options { float: left; width: 190px; padding: 0 0 0 10px; }

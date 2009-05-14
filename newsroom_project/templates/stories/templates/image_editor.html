@@ -1,0 +1,31 @@
+<div id="add-page-template" class="thickwindow">
+    <h2>Edit Photo</h2>
+    <form class="image-editor" method="post" action="" onsubmit="return false;">
+        <div id="image-tag"></div>
+        <div class="lb-options lb-text-options">
+            <h3>Display options</h3>
+            <p>
+                Caption: <input type="text" name="wrap_text" value="" />
+            </p>
+            <p>
+                Align:
+                <select id="image-align">
+                    <option value="float-left">Left</option>
+                    <option value="text-center">center</option>
+                    <option value="float-right">right</option>
+                </select>
+            </p>
+            <p>
+                <input type="checkbox" name="wrap_text" value="clearfix" /> Do not allow other blocks to wrap around this photo
+            </p>
+            <p><input id="template-tag" type="text" value="" disabled="disabled" style="width: 400px;" /></p>
+        </div>
+    </form>
+    <div id='TB_closeAjaxWindow'>
+        <a href="#" id="lb-block-save">Save</a>
+        <span style="float: right;">
+            <a href='#' id='TB_closeWindowButton'>Click to close</a> or press the Esc Key
+        </span>
+    </div>
+    <br class="clear" />
+</div>
