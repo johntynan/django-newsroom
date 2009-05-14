@@ -61,7 +61,7 @@ def edit_story(request,story_id):
             form.save()
             request.user.message_set.create(
                     message='Your story was saved.')
-            return HttpResponseRedirect( 
+            return HttpResponseRedirect(
                     reverse('stories_story_pages', args=[story.id]))
     else:
         form = StoryForm(instance=story)
@@ -154,9 +154,19 @@ def story_select_media(request,story_id,media_type):
     return render_to_response('stories/select_media.html',locals(),context_instance=RequestContext(request))
 
 
+
 @login_required
-def page_widget(request,widget_name):
+def text_widget(request,widget_name):
     return render_to_response('stories/widgets/%s.html' % widget_name,locals(),context_instance=RequestContext(request))
+
+@login_required
+def media_widget(request,media_id):
+
+    media = get_object_or_404(Media, pk=media_id)
+    object = media.get_child_object()
+    media_type = object.media_type.lower()
+
+    return render_to_response('stories/widgets/media_%s.html' % media_type,locals(),context_instance=RequestContext(request))
 
 @login_required
 def page_template(request,template_name):

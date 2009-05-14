@@ -26,8 +26,10 @@ urlpatterns = patterns('stories.views',
     url(r'^story/(?P<story_id>\d+)/media/(?P<media_type>\w+)/select/$','story_select_media',name='stories_story_select_media'),
 
 
-
-    url(r'^widget/(?P<widget_name>.+)/$','page_widget',name='stories_page_widgets'),
+    # to do, remove this from here probably
+    # get an app just for widgets
+    url(r'^text_widget/(?P<widget_name>.+)/$','text_widget',name='stories_page_text_widgets'),
+    url(r'^media_widget/(?P<media_id>\d+)/$','media_widget',name='stories_page_media_widgets'),
     url(r'^template/(?P<template_name>.+)/$','page_template',name='stories_page_templates'),
 
 
