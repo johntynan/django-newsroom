@@ -11,7 +11,7 @@
 .widget-block { position: relative; padding-right: 100px; }
 .widget-block:hover { cursor: move;  }
 
-.widget-block .widget-options { position: absolute; right: 5px; top: 0; width: 90px; }
+.widget-block .widget-options { position: absolute; right: 5px; top: 12px; width: 90px; }
 
 .widget-options a { display: block; padding: 2px 0 2px 15px; background: url(../images/icons/icon_changelink.gif) no-repeat left 6px;
     text-decoration: none; }
