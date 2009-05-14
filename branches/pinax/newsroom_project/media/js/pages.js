@@ -53,7 +53,7 @@ $(document).ready(function(){
 
         $.get($(this).attr("href"),function(data){
             var new_widget = $(data).appendTo(".tab-contents .tab:not(.hidden)");
-            widget.text_edit(new_widget);
+            widget.image_edit(new_widget);
         });
 
         return false;
