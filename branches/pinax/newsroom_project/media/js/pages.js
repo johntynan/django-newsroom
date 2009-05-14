@@ -48,6 +48,17 @@ $(document).ready(function(){
         return false;
     });
 
+    /* handling media blocks links */
+    $("#page-media-blocks a").click(function(){
+
+        $.get($(this).attr("href"),function(data){
+            var new_widget = $(data).appendTo(".tab-contents .tab:not(.hidden)");
+            widget.text_edit(new_widget);
+        });
+
+        return false;
+    });
+
 
 
     /********************************************************************************/

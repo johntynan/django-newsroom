@@ -1,6 +1,11 @@
 <div class="widget-block widget-image-block">
+    {% if media %}
+    <img src="{{ media.get_thumbnail_url }}" />
+    {% else %}
     <img src="{{ MEDIA_URL }}images/widgets/question.jpg" width="200" />
+    {% endif %}
     <div class="widget-code hidden">
+        {{ media.get_insert_snippet|safe }}
     </div>
     {% include "stories/widgets/includes/widget_image_options.html" %}
 </div>

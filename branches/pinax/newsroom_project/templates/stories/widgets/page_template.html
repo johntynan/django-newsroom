@@ -14,17 +14,12 @@
             <br />
             <a href="" class="widget-add">Add to story</a>
             <div class="widget-html hidden widget-page_template">
-                <div class="widget-block w21-image float-left unbinded">
-                    <img src="{{ MEDIA_URL }}images/widgets/question.jpg" width="200" />
-                    <div class="widget-code hidden">
-                    </div>
-                    {% include "stories/widgets/includes/widget_options.html" %}
-                </div>
+                {% include "stories/widgets/media_photo.html" %}
                 <div class="widget-block w21-text_1col unbinded">
                     <p>
                     Now, however, a new study in the Journal of the Geological Society throws all of that into question. The asteroid impact and the dinosaur extinction, argue the authors, may not have been simultaneous, but rather may have occurred 300,000 years apart. That's an eye-blink in geological time, but it's a relevant eye-blink all the same, one that occurred at just the right moment in ancient history to have sent the extinction theory entirely awry. (Read about China's dinosaur fossils.)
                     </p>
-                    {% include "stories/widgets/includes/widget_options.html" %}
+                    {% include "stories/widgets/includes/widget_text_options.html" %}
                 </div>
                 <div class="widget-block w21-text_2col clear unbinded">
                     <table><tr>
@@ -39,7 +34,7 @@
                         </p>
                     </td>
                     </tr></table>
-                    {% include "stories/widgets/includes/widget_options.html" %}
+                    {% include "stories/widgets/includes/widget_text_options.html" %}
                 </div>
             </div>
         </div>
