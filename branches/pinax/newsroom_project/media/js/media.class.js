@@ -14,14 +14,8 @@ widget.media.classes = function(value){if (value)this.__classes = value;return t
 widget.media.__classes = '';
 
 /* template tag */
-widget.media.template_tag = function(value){ if (value) this.__template_tag = value; return this.__template_tag; }
-widget.media.__template_tag = '';
-
-widget.media.get_template_tag = function(){
+widget.media.template_tag = function(){
     return '{% media_insert '+ widget.media.id() + ' "'+ widget.media.caption() +'" "'+ widget.media.classes() +'" %}'
-}
-widget.media.set_template_tag = function(){
-    $("#template-tag").val(widget.media.get_template_tag());
 }
 
 widget.media.load = function(jquery_obj)
@@ -31,7 +25,7 @@ widget.media.load = function(jquery_obj)
 
     /* get caption */
     re = new RegExp('{% media_insert ([0-9]{0,}) "([a-zA-Z]{0,})" "([a-zA-Z-_]{0,})" %}');
-    var matches = widget.media.template_tag().match(re);
+    var matches = widget.media.jquery_obj.children(".widget-code").text().match(re);
     widget.media.id(matches[1]);
     widget.media.caption(matches[2]);
     widget.media.classes(matches[3]);
@@ -61,13 +55,13 @@ widget.media.edit_callback = function()
 
     $("#image-align").change(function(){
         widget.media.classes($(this).children("option:selected").val());
-        widget.media.set_template_tag();
+        $("#template-tag").val(widget.media.template_tag());
     });
 
     /* change caption on template tag keyup event */
     $("#widget-media-caption").keyup(function(){
         widget.media.caption($(this).val());
-        widget.media.set_template_tag();
+        $("#template-tag").val(widget.media.template_tag());
     });
 
     $("#lb-block-save").click(function(){
@@ -75,7 +69,15 @@ widget.media.edit_callback = function()
         var img_tag = $("#image-tag .widget-code").text();
 
         widget.media.jquery_obj.children("img").attr("src",img_src);
-        widget.media.jquery_obj.children(".widget-code").text(img_tag);
+        widget.media.jquery_obj.children(".widget-code").text(widget.media.template_tag());
+
+        var class_options = $("#image-align option");
+
+        $.each(class_options,function(i,val){
+            widget.media.jquery_obj.removeClass($(val).val());
+        });
+
+        widget.media.jquery_obj.addClass(widget.media.classes());
 
         tb_remove();
     });

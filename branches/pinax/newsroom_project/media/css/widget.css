@@ -1,5 +1,11 @@
 .float-left { float: left; }
     .float-left img { margin: 5px 5px 5px 0; }
+
+.float-right { float: right; }
+    .float-right img { margin: 5px 0 5px 5px; }
+
+.text-center { text-align: center; }
+
 .clear { clear: both; }
 
 .widget-block { position: relative; padding-right: 100px; }
