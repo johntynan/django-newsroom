@@ -84,7 +84,7 @@ $(document).ready(function(){
     });
 
     // text widget events
-    $(".widget-image-block .widget-edit").live("click",function(){
+    $(".widget-media-block .widget-edit").live("click",function(){
             widget.media.load($(this).parent().parent());
             widget.media.edit();
             return false;

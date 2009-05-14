@@ -166,7 +166,7 @@ def media_widget(request,media_id):
     object = media.get_child_object()
     media_type = object.media_type.lower()
 
-    return render_to_response('stories/widgets/media_%s.html' % media_type,locals(),context_instance=RequestContext(request))
+    return render_to_response('stories/widgets/media.html',locals(),context_instance=RequestContext(request))
 
 @login_required
 def page_template(request,template_name):
