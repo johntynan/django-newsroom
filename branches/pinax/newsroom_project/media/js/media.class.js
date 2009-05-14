@@ -1,7 +1,7 @@
 // class widget.media
 widget.media = new Object();
 
-widget.media.jquery_obj = '';
+widget.media.__jquery_obj = '';
 
 
 widget.media.id = function(value){if (value)this.__media_id = value;return this.__media_id; }
@@ -13,15 +13,16 @@ widget.media.__caption = '';
 widget.media.classes = function(value){if (value != undefined)this.__classes = value;return this.__classes; }
 widget.media.__classes = '';
 
-/* template tag */
 widget.media.template_tag = function(){
     return '{% media_insert '+ widget.media.id() + ' "'+ widget.media.caption() +'" "'+ widget.media.classes() +'" %}'
 }
 
+
+/* loads properties from jquery_obj html block */
 widget.media.load = function(jquery_obj)
 {
-    widget.media.jquery_obj = jquery_obj;
-    widget.media.template_tag(widget.media.jquery_obj.children(".widget-code").text());
+    widget.media.__jquery_obj = jquery_obj;
+    widget.media.template_tag(widget.media.__jquery_obj.children(".widget-code").text());
 
     $.each($("#media-align option"),function(i,val){
         $("#media-tag .widget-block").removeClass($(val).val());
@@ -29,35 +30,44 @@ widget.media.load = function(jquery_obj)
 
     /* get caption */
     re = new RegExp('{% media_insert ([0-9]{0,}) "([a-zA-Z]{0,})" "([a-zA-Z-_]{0,})" %}');
-    var matches = widget.media.jquery_obj.children(".widget-code").text().match(re);
+    var matches = widget.media.__jquery_obj.children(".widget-code").text().match(re);
     widget.media.id(matches[1]);
     widget.media.caption(matches[2]);
     widget.media.classes(matches[3]);
 };
 
-// method
+
+/* public call to bring up the editor screen */
 widget.media.edit = function()
 {
-    var url = widget.media.jquery_obj.children(".widget-options").children(".widget-edit").attr("href");
-    widget.lightbox(url,widget.media.edit_callback);
+    var url = widget.media.__jquery_obj.children(".widget-options").children(".widget-edit").attr("href");
+    widget.lightbox(url,widget.media.__edit_callback);
     return false;
 };
 
-widget.media.check_align = function()
+/* returns selected option from align select box */
+widget.media.__check_align = function()
 {
     $("#media-align option[value="+ widget.media.classes()+"]").attr("selected","selected");
 };
 
-widget.media.edit_callback = function()
+
+
+/*
+callback for when media editor pop'ups
+handles option clicks and save button
+*/
+widget.media.__edit_callback = function()
 {
-    widget.media.jquery_obj.clone().appendTo("#media-tag");
+    widget.media.__jquery_obj.clone().appendTo("#media-tag");
 
     $("#widget-media-caption").val(widget.media.caption());
     $("#template-tag").val(widget.media.template_tag());
 
-    widget.media.check_align();
+    widget.media.__check_align();
 
     $("#media-align").change(function(){
+        console.log('changed');
         widget.media.classes($(this).children("option:selected").val());
         $("#template-tag").val(widget.media.template_tag());
     });
@@ -72,14 +82,14 @@ widget.media.edit_callback = function()
         var img_src = $("#media-tag .widget-media-block img").attr("src");
         var img_tag = $("#media-tag .widget-code").text();
 
-        widget.media.jquery_obj.children("img").attr("src",img_src);
-        widget.media.jquery_obj.children(".widget-code").text(widget.media.template_tag());
+        widget.media.__jquery_obj.children("img").attr("src",img_src);
+        widget.media.__jquery_obj.children(".widget-code").text(widget.media.template_tag());
 
         $.each($("#media-align option"),function(i,val){
-            widget.media.jquery_obj.removeClass($(val).val());
+            widget.media.__jquery_obj.removeClass($(val).val());
         });
 
-        widget.media.jquery_obj.addClass(widget.media.classes());
+        widget.media.__jquery_obj.addClass(widget.media.classes());
 
         tb_remove();
     });
