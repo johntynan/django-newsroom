@@ -88,7 +88,7 @@ h3.subheadline { padding: 15px 0 0; }
 
         .action-links { margin-bottom: 20px; padding-right: 10px; }
         .action-links li { padding: 3px 0; font-size: 1.2em; }
-            .action-links li a { display: block; padding: 3px 22px 3px 0; background: url(../images/common/icon_object-tools_addlink.gif) no-repeat top right;
+            .action-links li a { display: block; padding: 3px 22px 3px 0; background: url(../images/common/icon_object-tools_addlink.gif) no-repeat center right;
                 color: #596E78; text-decoration: none; font-weight: bold; text-align: right; }
             .action-links li a:hover { color: #99BBCC; }
 

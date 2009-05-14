@@ -49,7 +49,7 @@
                     <p>Authors: {{ item.authors.all|join:', ' }}</p>
                     <p>Attribution: {{item.attribution|truncatewords:30}}</p>
                     <p>Summary: {{item.summary|truncatewords:30}}</p>
-                    <p><a href="{% url stories_story_edit_media story.id item.id %}">Edit</a> | 
+                    <p><a href="{% url stories_story_edit_media story.id item.id %}">Edit</a> |
                     <a href="{% url multimedia_preview item.id %}?width={{ item.get_width_with_margin }}&height={{ item.get_height_with_margin }}" class="thickbox">Preview</a> |
                     <a href="">Delete</a></p>
 
