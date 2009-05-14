@@ -30,41 +30,6 @@ var widget = {
         return false;
     },
 
-    image_edit : function(widget_obj){
-
-        function callback_init()
-        {
-
-            var caption = "";
-            var template_tag = widget_obj.children(".widget-code").text();
-
-            widget_obj.clone().appendTo("#image-tag");
-            $("#template-tag").val(template_tag);
-
-            /* get caption */
-            re = new RegExp('{% media_insert ([0-9]{0,}) "([a-zA-Z]{0,})" %}');
-            console.log(template_tag.match(re));
-
-
-            $("#lb-block-save").click(function(){
-                var img_src = $("#image-tag .widget-image-block img").attr("src");
-                var img_tag = $("#image-tag .widget-code").text();
-
-                widget_obj.children("img").attr("src",img_src);
-                widget_obj.children(".widget-code").text(img_tag);
-
-                console.log($("#image-align option:selected").val());
-
-                tb_remove();
-            });
-
-        };
-
-        var url = widget_obj.children(".widget-options").children(".widget-edit").attr("href");
-        widget.lightbox(url,callback_init);
-        return false;
-    },
-
     /* add a template to story */
     add_to_story : function(){
 
