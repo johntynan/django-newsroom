@@ -83,6 +83,13 @@ $(document).ready(function(){
             return false;
     });
 
+    // text widget events
+    $(".widget-image-block .widget-edit").live("click",function(){
+            widget.media.load($(this).parent().parent());
+            widget.media.edit();
+            return false;
+    });
+
 
 });
 
