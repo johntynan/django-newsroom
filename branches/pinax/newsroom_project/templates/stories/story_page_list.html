@@ -7,6 +7,7 @@
     {{ block.super }}
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/pages.css" />
     <script type="text/javascript" src="{{ MEDIA_URL }}js/pages.js"></script>
+    <script type="text/javascript">var save_url = "{% url stories_save_page story.id %}";</script>
 {% endblock %}
 
 
@@ -57,9 +58,19 @@
     <div class="tab-contents clearfix">
     {% for page in story.pages %}
         <div id="story-content-{{ page.pagenum }}" class="tab {% if not forloop.first %}hidden{% endif %}">
-            {{ page.content }}
+            {{ page.content|safe }}
         </div>
 {% endfor %}
     </div>
+</div>
+<div class="story-submit-buttons">
+    <button id="story-save-pages">Save all pages</button>
+</div>
+<div id="story-prepare" class="hidden">
+
+</div>
+<div id="widget-options" class="hidden">
+    {% include "stories/widgets/includes/widget_media_options.html" %}
+    {% include "stories/widgets/includes/widget_text_options.html" %}
 </div>
 {% endblock %}

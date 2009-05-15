@@ -18,12 +18,19 @@ urlpatterns = patterns('stories.views',
     url(r'^story/(?P<story_id>\d+)/page/add/$','add_page',name='stories_add_page'),
     #edit page
     url(r'^story/page/(?P<page_id>\d+)/edit/$','edit_page',name='stories_edit_page'),
+    #save page - creates or replaces a page
+    url(r'^story/(?P<story_id>\d+)/page/save/$','save_page',name='stories_save_page'),
     #add media
     url(r'^story/(?P<story_id>\d+)/media/(?P<media_type>\w+)/add/$','story_add_edit_media',name='stories_story_add_media'),
     #edit media
     url(r'^story/(?P<story_id>\d+)/media/(?P<media_id>\d+)/edit/$','story_add_edit_media',name='stories_story_edit_media'),
     #associate media
     url(r'^story/(?P<story_id>\d+)/media/(?P<media_type>\w+)/select/$','story_select_media',name='stories_story_select_media'),
+
+
+
+    # ajax request for adding pages
+
 
 
     # to do, remove this from here probably

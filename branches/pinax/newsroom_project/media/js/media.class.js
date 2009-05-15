@@ -22,14 +22,18 @@ widget.media.template_tag = function(){
 widget.media.load = function(jquery_obj)
 {
     widget.media.__jquery_obj = jquery_obj;
-    widget.media.template_tag(widget.media.__jquery_obj.children(".widget-code").text());
+    var template_tag = widget.media.__jquery_obj.children(".widget-code").text();
 
     /* get caption */
     re = new RegExp('{% media_insert ([0-9]{0,}) "([a-zA-Z]{0,})" "([a-zA-Z-_]{0,})" %}');
-    var matches = widget.media.__jquery_obj.children(".widget-code").text().match(re);
-    widget.media.id(matches[1]);
-    widget.media.caption(matches[2]);
-    widget.media.classes(matches[3]);
+    console.log(template_tag);
+    var matches = template_tag.match(re);
+    if (matches)
+    {
+        widget.media.id(matches[1]);
+        widget.media.caption(matches[2]);
+        widget.media.classes(matches[3]);
+    }
 };
 
 

@@ -48,6 +48,39 @@ $(document).ready(function(){
         return false;
     });
 
+
+    /*
+    this is where we save pages
+    this is important stuff
+    */
+    $("#story-save-pages").click(function(){
+        var pages = $(".edit-story-tabs .tab-contents .tab");
+
+        $.each(pages,function(i,val){
+
+            $("#story-prepare").html($(val).html());
+            var blocks = $("#story-prepare .widget-block");
+
+            $.each(blocks,function(i,val){
+
+                var block = $(val);
+                block.children(".widget-options").remove();
+                if (block.hasClass("widget-media-block"))
+                {
+                    var code = block.children(".widget-code");
+                    block.after(code.html());
+                    block.remove();
+                }
+
+            });
+
+            console.log(i);
+            console.log($("#story-prepare").html());
+            /* save url is defined in story_past_list.html by django */
+            $.post(save_url,{ content: $("#story-prepare").html(), pagenum: (i+1), pagecount: pages.length });
+        });
+    });
+
     /* handling media blocks links */
     $("#page-media-blocks a").click(function(){
 
@@ -68,24 +101,44 @@ $(document).ready(function(){
     GLOBAL block event handlers
     */
     /********************************************************************************/
-    // mouseover on widgets
-    $(".tab-contents .widget-block").live("mouseover",function(){
-        $(this).children(".widget-options").removeClass("hidden");
+    // mouseover on media widgets
+    $(".tab-contents .widget-media-block").live("mouseover",function(){
+        $("#widget-media-options").appendTo($(this));
     });
-    // mouseout on widgets
-    $(".tab-contents .widget-block").live("mouseout",function(){
-        $(this).children(".widget-options").addClass("hidden");
+    // mouseout on media widgets
+    /*
+    $(".tab-contents .widget-media-block").live("mouseout",function(){
+        $("#widget-media-options").appendTo($("#widget-options"));
     });
+    */
+    // mouseover on text widgets
+    $(".tab-contents .widget-text-block").live("mouseover",function(){
+        $("#widget-text-options").appendTo($(this));
+    });
+    // mouseout ontext  widgets
+    /*
+    $(".tab-contents .widget-text-block").live("mouseout",function(){
+        $("#widget-text-options").appendTo($("#widget-options"));
+    });
+    */
+    /*
+    $(".tab-contents").mouseout(function(){
+        $("#widget-text-options").appendTo($("#widget-options"));
+        $("#widget-media-options").appendTo($("#widget-options"));
+    });
+    */
 
     // text widget events
-    $(".widget-text-block .widget-edit").live("click",function(){
-            widget.text_edit($(this).parent().parent());
+    $("#widget-text-options .widget-edit").bind("click",function(){
+            var widget_obj = $(this).parent().parent();
+            widget.text_edit(widget_obj);
             return false;
     });
 
     // text widget events
-    $(".widget-media-block .widget-edit").live("click",function(){
-            widget.media.load($(this).parent().parent());
+    $("#widget-media-options .widget-edit").bind("click",function(){
+            var widget_obj = $(this).parent().parent();
+            widget.media.load(widget_obj);
             widget.media.edit();
             return false;
     });
