@@ -25,7 +25,7 @@ var widget = {
 
         };
 
-        var url = widget_obj.children(".widget-options").children(".widget-edit").attr("href");
+        var url = $("#widget-text-options a.widget-edit").attr("href");
         widget.lightbox(url,callback_init);
         return false;
     },

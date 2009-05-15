@@ -1,10 +1,10 @@
-.float-left { float: left; }
-    .float-left img { margin: 5px 5px 5px 0; }
+.clear-float-left { clear:both; float: left; }
+    .clear-float-left img { margin: 5px 5px 5px 0; }
 
-.float-right { float: right; }
-    .float-right img { margin: 5px 0 5px 5px; }
+.clear-float-right { clear:both; float: right; }
+    .clear-float-right img { margin: 5px 0 5px 5px; }
 
-.text-center { text-align: center; }
+.clear-text-center { clear: both; text-align: center; }
 
 .clear { clear: both; }
 

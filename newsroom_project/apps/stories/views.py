@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext, Template, Context
 from django.contrib.auth.decorators import login_required
@@ -10,6 +10,8 @@ from multimedia.models import Media
 from multimedia import views as media_views
 from stories.forms import StoryForm, PageForm
 from stories.models import Story, Page
+
+from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 
 #TODO: add authentication check decorators
 
@@ -50,7 +52,39 @@ def add_page(request,story_id):
     story = get_object_or_404(Story,pk=story_id)
     page = story.add_page()
     #return render_to_response('stories/story_page_list',locals(),context_instance=RequestContext(request))
-    return HttpResponseRedirect(reverse('stories_edit_page',args=[page.id]))
+    #return HttpResponseRedirect(reverse('stories_edit_page',args=[page.id]))
+    return HttpResponse("", mimetype="text/plain")
+
+
+@login_required
+def save_page(request,story_id):
+    """
+    saves (creates or replaces) a story
+    """
+    story = get_object_or_404(Story,pk=story_id)
+    page = None
+    if request.method == 'POST':
+        form = PageForm(request.POST)
+
+        if form.is_valid():
+            pagenum = form.cleaned_data['pagenum']
+            try:
+                page = Page.objects.get(story=story,pagenum=pagenum)
+            except MultipleObjectsReturned:
+                Page.objects.filter(story=story,pagenum=pagenum).delete()
+
+            if not page:
+                page = Page()
+                page.story = story
+            page.content = form.cleaned_data['content']
+            page.pagenum = form.cleaned_data['pagenum']
+            page.save()
+            Page.objects.filter(story=story).filter(pagenum__gt=form.cleaned_data['pagecount']).delete()
+            return HttpResponse("1", mimetype="text/plain")
+        else:
+            return HttpResponse(form.errors, mimetype="text/plain")
+    else:
+        return HttpResponse("-1", mimetype="text/plain")
 
 @login_required
 def edit_story(request,story_id):
