@@ -105,9 +105,11 @@ $(document).ready(function(){
                 tmp_content_field = content_field.clone().appendTo("#save-page-form");
                 tmp_pagenum_field = pagenum_field.clone().appendTo("#save-page-form");
             }
-
-            tmp_content_field.attr("name",content_field.attr("name").replace("0",i)).val($("#story-prepare").html());
-            tmp_pagenum_field.attr("name",content_field.attr("name").replace("0",i)).val(i);
+            if ($("#story-prepare").html())
+            {
+                tmp_content_field.attr("name",content_field.attr("name").replace("0",i)).val($("#story-prepare").html());
+                tmp_pagenum_field.attr("name",pagenum_field.attr("name").replace("0",i)).val(i);
+            }
         });
 
          $('#save-page-form').ajaxSubmit();
