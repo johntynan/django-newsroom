@@ -1,10 +1,11 @@
-import datetime, re
+import datetime
+import re
 
 from django.contrib.auth.models import User
+from django.contrib.sites.models import Site
 from django.db import models
 from django.db.models.signals import post_save,post_delete
 from django.template import Template, Context
-from django.template.defaultfilters import slugify
 
 from core.models import Project
 from multimedia.models import Media
@@ -19,6 +20,7 @@ class Story(models.Model):
     """
     authors = models.ManyToManyField(User)
     projects = models.ManyToManyField(Project)
+    sites = models.ManyToManyField(Site)
     headline = models.CharField(max_length=256)
     slug = models.SlugField(
                 unique=True,

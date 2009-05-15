@@ -3,7 +3,6 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
 from django.template.defaultfilters import slugify
-from django.contrib.sites.models import Site
 from photos.forms import PhotoForm, ImageForm
 from photos.models import Photo
 
@@ -33,7 +32,6 @@ def photo_add_edit( request, media_id=None, template='photos/photo_add_edit.html
             image.modified_by = request.user
             
             if not media_id:
-                photo.site = Site.objects.get_current()
                 photo.created_by = request.user
                 image.created_by = request.user
 
@@ -46,6 +44,9 @@ def photo_add_edit( request, media_id=None, template='photos/photo_add_edit.html
 
             if story:
                 story.media.add(photo)
+                if story.sites.count() > 0:
+                    photo.sites = story.sites.all()
+                    photo.save()
 
             request.user.message_set.create(
                         message='Your photo was saved.')            
