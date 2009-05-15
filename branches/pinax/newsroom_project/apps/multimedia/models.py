@@ -73,7 +73,7 @@ class Media(ParentModel):
     media type.
     """
     __metaclass__ = MediaBase
-    site = models.ForeignKey(Site, verbose_name=_(u'Site'))
+    sites = models.ManyToManyField(Site, verbose_name=_(u'Sites'))
     authors = models.ManyToManyField(User)
     title = models.CharField(max_length=128,)
     summary = models.TextField(blank=True)

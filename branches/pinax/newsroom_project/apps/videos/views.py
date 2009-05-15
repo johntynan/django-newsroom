@@ -66,6 +66,9 @@ def video_add_edit(request, media_id=None, template='videos/video_add_edit.html'
             form.save_m2m()
             if story:
                 story.media.add(video)
+                if story.sites.count() > 0:
+                    video.sites = story.sites.all()
+                    video.save()
 
             if old_frame:
                 print 'deleting old frame'

@@ -18,9 +18,4 @@ class PageForm(forms.ModelForm):
 PageFormSet = formset_factory(PageForm)
 
 
-#class SelectMediaForm(forms.Form):
-#
-#    @staticmethod
-#    def factory(media_type):
-#        pass
 
