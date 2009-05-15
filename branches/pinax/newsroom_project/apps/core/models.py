@@ -1,9 +1,10 @@
-
 from django.contrib.auth.models import User
-from django.db import models
-from django.contrib.localflavor.us.models import USStateField
-from django.template import Template, Context
 from django.contrib.sites.models import Site
+from django.contrib.localflavor.us.models import USStateField
+from django.db import models
+from django.template import Template, Context
+from django.utils.translation import ugettext_lazy as _
+
 
 from countries.models import Country
 from aggregator.models import Feed
@@ -14,10 +15,10 @@ class Affiliate(models.Model):
     name = models.CharField(max_length=50)
     url = models.URLField(
             verify_exists=False,
-            help_text="The affiliates's public web site.",)
+            help_text=_("The affiliates's public web site."),)
     logo = models.ImageField(
             blank=True,
-            upload_to="affiliates",)
+            upload_to=_("affiliates"),)
     city = models.CharField(max_length=100)
     state = USStateField()
     country = models.ForeignKey(Country)
@@ -42,22 +43,22 @@ class Project(models.Model):
     url = models.URLField(
             blank=True,
             verify_exists=False,
-            help_text="Is the project a separate website? Provide the public URL if it has one.",)
+            help_text=_("Is the project a separate website? Provide the public URL if it has one."),)
     title = models.CharField(
                 max_length=100,
-                help_text='The title of the project. i.e. "The American Dream"')
+                help_text=_('The title of the project. i.e. "The American Dream"'))
     slug = models.SlugField(unique=True)
     summary = models.TextField(
-                help_text='Provide a summary that can be used to describe the project.')
+                help_text=_('Provide a summary that can be used to describe the project.'))
 
     activity_begins = models.DateField(
-                        help_text="When does production begin for this project?")
+                        help_text=_("When does production begin for this project?"))
     activity_ends = models.DateField(
-                        help_text="When is all production forcasted to end for this project?")
+                        help_text=_("When is all production forcasted to end for this project?"))
 
     comment_status = models.CharField(
                         max_length=1,
-                        help_text="How should comments be treated for stories related to this project?",
+                        help_text=_("How should comments be treated for stories related to this project?"),
                         choices = COMMENT_STATUS_CHOICES,
                         default = COMMENT_STATUS_OPEN,)
 
@@ -81,7 +82,7 @@ class Page(models.Model):
     """
     project = models.ForeignKey(Project,unique=True)
     content = models.TextField(
-                help_text='The landing page for the project.',)
+                help_text=_('The landing page for the project.'),)
 
     objects = PageManager()
     
