@@ -8,7 +8,7 @@ from django.template.defaultfilters import slugify
 
 from multimedia.models import Media
 from multimedia import views as media_views
-from stories.forms import StoryForm, PageForm
+from stories.forms import StoryForm, PageForm, PageFormSet
 from stories.models import Story, Page
 
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
@@ -64,25 +64,7 @@ def save_page(request,story_id):
     story = get_object_or_404(Story,pk=story_id)
     page = None
     if request.method == 'POST':
-        form = PageForm(request.POST)
-
-        if form.is_valid():
-            pagenum = form.cleaned_data['pagenum']
-            try:
-                page = Page.objects.get(story=story,pagenum=pagenum)
-            except MultipleObjectsReturned:
-                Page.objects.filter(story=story,pagenum=pagenum).delete()
-
-            if not page:
-                page = Page()
-                page.story = story
-            page.content = form.cleaned_data['content']
-            page.pagenum = form.cleaned_data['pagenum']
-            page.save()
-            Page.objects.filter(story=story).filter(pagenum__gt=form.cleaned_data['pagecount']).delete()
-            return HttpResponse("1", mimetype="text/plain")
-        else:
-            return HttpResponse(form.errors, mimetype="text/plain")
+        return HttpResponse("1", mimetype="text/plain")
     else:
         return HttpResponse("-1", mimetype="text/plain")
 
@@ -108,6 +90,7 @@ def edit_story(request,story_id):
 @login_required
 def story_pages(request,story_id):
     story = get_object_or_404(Story,pk=story_id)
+    page_formset = PageFormSet()
     return render_to_response('stories/story_page_list.html',locals(),context_instance=RequestContext(request))
 
 @login_required
