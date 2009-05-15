@@ -62,10 +62,27 @@ def save_page(request,story_id):
     saves (creates or replaces) a story
     """
     story = get_object_or_404(Story,pk=story_id)
-    page = None
-    if request.method == 'POST':
+    page_formset = PageFormSet(request.POST)
+    if page_formset.is_valid():
+        page = None
+        for form in page_formset.cleaned_data:
+            try:
+                page = Page.objects.get(story=story,pagenum=form['pagenum'])
+            except MultipleObjectsReturned:
+                Page.objects.filter(story=story,pagenum=form['pagenum']).delete()
+            except ObjectDoesNotExist:
+                pass
+
+            if not page:
+                page = Page()
+                page.story = story
+                page.pagenum = form['pagenum']
+
+            page.content = form['content']
+            page.save()
         return HttpResponse("1", mimetype="text/plain")
     else:
+        print page_formset.errors
         return HttpResponse("-1", mimetype="text/plain")
 
 @login_required
