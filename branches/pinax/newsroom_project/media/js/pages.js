@@ -48,6 +48,19 @@ $(document).ready(function(){
         return false;
     });
 
+    /* handling media blocks links */
+    $("#page-media-blocks a").click(function(){
+
+        $.get($(this).attr("href"),function(data){
+            var new_widget = $(data).appendTo(".tab-contents .tab:not(.hidden)");
+
+            widget.media.load(new_widget);
+            widget.media.edit();
+        });
+
+        return false;
+    });
+
 
     /*
     this is where we save pages
@@ -81,19 +94,6 @@ $(document).ready(function(){
         });
     });
 
-    /* handling media blocks links */
-    $("#page-media-blocks a").click(function(){
-
-        $.get($(this).attr("href"),function(data){
-            var new_widget = $(data).appendTo(".tab-contents .tab:not(.hidden)");
-
-            widget.media.load(new_widget);
-            widget.media.edit();
-        });
-
-        return false;
-    });
-
 
 
     /********************************************************************************/
@@ -103,6 +103,7 @@ $(document).ready(function(){
     /********************************************************************************/
     // mouseover on media widgets
     $(".tab-contents .widget-media-block").live("mouseover",function(){
+        $("#widget-text-options").appendTo($("#widget-options"));
         $("#widget-media-options").appendTo($(this));
     });
     // mouseout on media widgets
@@ -114,6 +115,7 @@ $(document).ready(function(){
     // mouseover on text widgets
     $(".tab-contents .widget-text-block").live("mouseover",function(){
         $("#widget-text-options").appendTo($(this));
+        $("#widget-media-options").appendTo($("#widget-options"));
     });
     // mouseout ontext  widgets
     /*
@@ -130,17 +132,17 @@ $(document).ready(function(){
 
     // text widget events
     $("#widget-text-options .widget-edit").bind("click",function(){
-            var widget_obj = $(this).parent().parent();
-            widget.text_edit(widget_obj);
-            return false;
+        var widget_obj = $(this).parent().parent();
+        widget.text_edit(widget_obj);
+        return false;
     });
 
     // text widget events
     $("#widget-media-options .widget-edit").bind("click",function(){
-            var widget_obj = $(this).parent().parent();
-            widget.media.load(widget_obj);
-            widget.media.edit();
-            return false;
+        var widget_obj = $(this).parent().parent();
+        widget.media.load(widget_obj);
+        widget.media.edit();
+        return false;
     });
 
 
