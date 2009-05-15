@@ -66,32 +66,51 @@ $(document).ready(function(){
     this is where we save pages
     this is important stuff
     */
+
     $("#story-save-pages").click(function(){
+        $(".widget-options").appendTo("#widget-options");
         var pages = $(".edit-story-tabs .tab-contents .tab");
 
+        $("#save-page-form textarea:not(:first)").remove();
+        content_field = $("#save-page-form textarea:first").val("");
+        $("#save-page-form input[type=text]:not(:first)").remove();
+        pagenum_field = $("#save-page-form input[type=text]:first").val("");
+
+        $("#id_form-TOTAL_FORMS").val(pages.length);
+
+        /* cycle each page in html */
         $.each(pages,function(i,val){
 
+            /* move page content to own div to pre-process html */
             $("#story-prepare").html($(val).html());
-            var blocks = $("#story-prepare .widget-block");
 
+            /* get list of blocks */
+            var blocks = $("#story-prepare .widget-media-block");
+            /* cycle each media block of page and remove unecessary code */
             $.each(blocks,function(i,val){
-
                 var block = $(val);
-                block.children(".widget-options").remove();
-                if (block.hasClass("widget-media-block"))
-                {
-                    var code = block.children(".widget-code");
-                    block.after(code.html());
-                    block.remove();
-                }
-
+                var code = block.children(".widget-code");
+                block.after(code.html());
+                block.remove();
             });
 
             console.log(i);
             console.log($("#story-prepare").html());
             /* save url is defined in story_past_list.html by django */
-            $.post(save_url,{ content: $("#story-prepare").html(), pagenum: (i+1), pagecount: pages.length });
+            //$.post(save_url,{ content: $("#story-prepare").html(), pagenum: (i+1), pagecount: pages.length });
+            tmp_content_field = content_field;
+            tmp_pagenum_field = pagenum_field;
+            if (i !=0)
+            {
+                tmp_content_field = content_field.clone().appendTo("#save-page-form");
+                tmp_pagenum_field = pagenum_field.clone().appendTo("#save-page-form");
+            }
+
+            tmp_content_field.attr("name",content_field.attr("name").replace("0",i)).val($("#story-prepare").html());
+            tmp_pagenum_field.attr("name",content_field.attr("name").replace("0",i)).val(i);
         });
+
+         $('#save-page-form').ajaxSubmit();
     });
 
 
