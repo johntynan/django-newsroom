@@ -6,7 +6,6 @@ from datetime import datetime
 from django.conf import settings
 from django.core.files.base import ContentFile
 from django.core.files.storage import FileSystemStorage
-from django.core.urlresolvers import reverse
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
@@ -16,7 +15,6 @@ from imagekit.models import ImageModel
 from imagekit.lib import Image
 
 from multimedia.models import Media
-from multimedia.constants import MEDIA_STATUS_PUBLISHED
 
 from django_inlines import inlines
 
@@ -55,10 +53,6 @@ class Gallery(Media):
         else:
             return self.photos.all().count()
     photo_count.short_description = _('count')
-
-    def public(self):
-        return self.photos.filter(status=MEDIA_STATUS_PUBLISHED)
-
 
 class GalleryUpload(models.Model):
     zip_file = models.FileField(_('images file (.zip)'),
@@ -167,13 +161,10 @@ class Image(ImageModel):
         save_count_as = 'view_count'
         cache_dir = 'ik_cache/photos'
         cache_filename_format = "%(specname)s/%(filename)s.%(extension)s"
-
-class PhotoManager(models.Manager):
-
-    def published(self):
-        return self.filter(status=MEDIA_STATUS_PUBLISHED)
-
     
+class PhotoManager(models.Manager):
+        pass
+
 class Photo(Media):
 
     image = models.ForeignKey(Image)
@@ -185,23 +176,17 @@ class Photo(Media):
                         related_name="photos_modified")
     objects = PhotoManager()
 
-    def public_galleries(self):
-        """Return the public galleries to which this photo belongs."""
-        return self.galleries.filter(status=MEDIA_STATUS_PUBLISHED)
-
     def get_previous_in_gallery(self, gallery):
         try:
             return self.get_previous_by_date_added(
-                        galleries__exact=gallery,
-                        status=MEDIA_STATUS_PUBLISHED)
+                        galleries__exact=gallery,)
         except Photo.DoesNotExist:
             return None
 
     def get_next_in_gallery(self, gallery):
         try:
             return self.get_next_by_date_added(
-                        galleries__exact=gallery,
-                        status=MEDIA_STATUS_PUBLISHED)
+                        galleries__exact=gallery,)
         except Photo.DoesNotExist:
             return None
 

@@ -2,8 +2,8 @@ from django.contrib import admin
 from models import *
 
 class GalleryAdmin(admin.ModelAdmin):
-    list_display = ('title', 'pub_date', 'photo_count', 'status')
-    list_filter = ['pub_date', 'status']
+    list_display = ('title', 'pub_date', 'photo_count', )
+    list_filter = ['pub_date', ]
     date_hierarchy = 'pub_date'
     prepopulated_fields = {'slug': ('title',)}
     filter_horizontal = ('photos',)
@@ -13,8 +13,8 @@ class ImageAdmin(admin.ModelAdmin):
     list_per_page = 10
 
 class PhotoAdmin(admin.ModelAdmin):
-    list_display = ('title', 'pub_date', 'status', 'get_view_count', 'get_thumbnail_view')
-    list_filter = ['pub_date', 'status']
+    list_display = ('title', 'pub_date', 'get_view_count', 'get_thumbnail_view')
+    list_filter = ['pub_date', ]
     list_per_page = 10
     prepopulated_fields = {'slug': ('title',)}
 
