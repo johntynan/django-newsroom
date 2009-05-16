@@ -10,15 +10,6 @@ MEDIA_TYPES = (
     (MEDIA_TYPE_VIDEO,'Video',),
 )
 
-MEDIA_STATUS_DRAFT = 'D'
-MEDIA_STATUS_PUBLISHED = 'P'
-MEDIA_STATUS_ARCHIVED = 'A'
-MEDIA_STATUS_CHOICES = (
-    (MEDIA_STATUS_DRAFT,'Draft',),
-    (MEDIA_STATUS_PUBLISHED,'Published',),
-    (MEDIA_STATUS_ARCHIVED,'Archived',),
-)
-
 LICENSE_DEFAULT = 'http://creativecommons.org/licenses/by/2.0/'
 LICENSE_CHOICES = (
       ('http://creativecommons.org/licenses/by/2.0/',         'CC Attribution'),
