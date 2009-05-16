@@ -73,10 +73,13 @@ $(document).ready(function(){
 
         $("#save-page-form textarea:not(:first)").remove();
         content_field = $("#save-page-form textarea:first").val("");
+
         $("#save-page-form input[type=text]:not(:first)").remove();
         pagenum_field = $("#save-page-form input[type=text]:first").val("");
 
-        $("#id_form-TOTAL_FORMS").val(pages.length);
+        //$("#id_form-TOTAL_FORMS").val(pages.length);
+
+        var post_vars = { "form-TOTAL_FORMS" : pages.length, "form-INITIAL_FORMS" : 0 }
 
         /* cycle each page in html */
         $.each(pages,function(i,val){
@@ -94,25 +97,15 @@ $(document).ready(function(){
                 block.remove();
             });
 
-            console.log(i);
-            console.log($("#story-prepare").html());
-            /* save url is defined in story_past_list.html by django */
-            //$.post(save_url,{ content: $("#story-prepare").html(), pagenum: (i+1), pagecount: pages.length });
-            tmp_content_field = content_field;
-            tmp_pagenum_field = pagenum_field;
-            if (i !=0)
-            {
-                tmp_content_field = content_field.clone().appendTo("#save-page-form");
-                tmp_pagenum_field = pagenum_field.clone().appendTo("#save-page-form");
-            }
-            if ($("#story-prepare").html())
-            {
-                tmp_content_field.attr("name",content_field.attr("name").replace("0",i)).val($("#story-prepare").html());
-                tmp_pagenum_field.attr("name",pagenum_field.attr("name").replace("0",i)).val(i);
-            }
+            var page_content = $("#story-prepare").html();
+            if (!page_content)
+                page_content = "<br />";
+
+            post_vars[content_field.attr("name").replace("0",i)] = page_content;
+            post_vars[pagenum_field.attr("name").replace("0",i)] = i+1;
         });
 
-         $('#save-page-form').ajaxSubmit();
+        $.post($("#save-page-form").attr("action"),post_vars);
     });
 
 
@@ -163,6 +156,13 @@ $(document).ready(function(){
         var widget_obj = $(this).parent().parent();
         widget.media.load(widget_obj);
         widget.media.edit();
+        return false;
+    });
+
+    $(".widget-options .widget-remove").click(function(){
+        var widget_obj = $(this).parent().parent();
+        $(".widget-options").appendTo($("#widget-options"));
+        widget_obj.remove();
         return false;
     });
 
