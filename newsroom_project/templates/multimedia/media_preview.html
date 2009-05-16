@@ -1,3 +1,7 @@
-<div id="preview-{{object.get_media_type}}" class="thickwindow">
+<div class="widget-block widget-media-block clear {% block extra_classes %}{% endblock %}">
+{% if object %}
 {% block main_content %}{% endblock %}
+{% else %}
+<img src="{{ MEDIA_URL }}images/widgets/question.jpg" width="200" />
+{% endif %}
 </div>
