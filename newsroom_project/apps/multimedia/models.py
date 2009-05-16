@@ -1,24 +1,19 @@
 # -*- coding: utf-8 -*-
 import datetime
 from django.contrib.auth.models import User
-#from django.contrib.contenttypes.models import ContentType
-#from django.contrib.contenttypes import generic
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.contrib.sites.managers import CurrentSiteManager
 
-
 from django.db import models
 from django.db.models.base import ModelBase
-#from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 from django.template.defaultfilters import slugify
 
 from tagging.fields import TagField
 
-from multimedia.constants import MEDIA_TYPES, MEDIA_STATUS_CHOICES, MEDIA_STATUS_DRAFT, LICENSE_CHOICES, LICENSE_DEFAULT
+from multimedia.constants import LICENSE_CHOICES, LICENSE_DEFAULT
 from utils.model_inheritance import ParentModel,ChildManager
-#from videos.models import Video as NativeVideoModel
 
 
 class _MediaTypesDescriptor(object):
@@ -79,23 +74,14 @@ class Media(ParentModel):
     summary = models.TextField(blank=True)
     attribution = models.TextField(blank=True)
     tags = TagField()
-
     license = models.CharField(
                         max_length=100,
                         choices = LICENSE_CHOICES,
                         default=LICENSE_DEFAULT,
                         help_text=_(u'Choose the license you wish to publish this work under.'),)
-
-    status = models.CharField(
-                        max_length=1,
-                        choices=MEDIA_STATUS_CHOICES,
-                        default=MEDIA_STATUS_DRAFT,
-                        help_text=_(u'Only published items will appear on the site.'),)
-
     slug = models.SlugField(
                     _(u'Slug'),
                     help_text=_(u'Automatically built from the title.'),)
-
     pub_date = models.DateTimeField(
                     _(u'Date published'),
                     default=datetime.datetime.now,
