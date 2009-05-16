@@ -1,6 +1,7 @@
 {% extends "stories/base.html" %}
 {% load i18n %}
 {% load media_tags %}
+{% load inlines %}
 {% block head_title %}Content Overview: {{story.headline}}{% endblock %}
 
 
@@ -47,7 +48,7 @@
 
 {% block main_content %}
 
-<h1>{{ story.headline }} <span class="headline-options">(<a href="{% url stories_edit_story story.id %}">edit story info</a> / <a href="{% url stories_story_media story.id %}">manage media</a>)</span></h1>
+<h1>{{ story.headline }}</h1>
 <div class="edit-story-tabs">
     <div class="tab-links">
         <a href="{% url stories_edit_story story.id %}" rel="story-info" style="color: #888;">Properties</a>
@@ -60,7 +61,7 @@
     <div class="tab-contents clearfix">
     {% for page in story.pages %}
         <div id="story-content-{{ page.pagenum }}" class="tab {% if not forloop.first %}hidden{% endif %}">
-            {{ page.content|safe }}
+        {% process_inlines page.content %}
         </div>
     {% endfor %}
     </div>
