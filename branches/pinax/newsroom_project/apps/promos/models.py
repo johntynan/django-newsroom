@@ -40,11 +40,20 @@ class Promo(models.Model):
                       blank=True,
                       help_text="If the authors are not available in the list above please include their names here.",)
 
+    location = models.CharField(
+                max_length=256,
+                blank=True,
+                help_text="City, State Country or Zipcode, Country." )
+
     relevance_begins = models.DateField(
                         "Suggested Relevance Begins",
                         help_text="Suggested date span for use on home page.")
     relevance_ends = models.DateField(
                         "Suggested Relevance Ends",)
+
+    suggested_dates = models.TextField(
+                blank=True,
+                help_text="please use the format: 02/01/2009 - Mother's Day. Use a separate line for each date." )
     
     topic_path = models.ManyToManyField(TopicPath, blank=True)
 
