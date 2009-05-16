@@ -64,8 +64,8 @@ def save_page(request,story_id):
     story = get_object_or_404(Story,pk=story_id)
     page_formset = PageFormSet(request.POST)
     if page_formset.is_valid():
-        page = None
         for form in page_formset.cleaned_data:
+            page = None
             try:
                 page = Page.objects.get(story=story,pagenum=form['pagenum'])
             except MultipleObjectsReturned:
