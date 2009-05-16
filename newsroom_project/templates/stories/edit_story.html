@@ -1,4 +1,4 @@
-{% extends "stories/base.html" %}
+{% extends "stories/base_edit.html" %}
 {% load formfields i18n %}
 
 {% block head_title %}Edit Story: {{story.headline}}{% endblock %}
@@ -30,6 +30,7 @@
         <div class="tab-links">
             <a href="" rel="story-info" class="active">Properties</a>
             <a href="{% url stories_story_media story.id %}" rel="story-media">Media</a>
+            <a href="{% url stories_story_pages story.id %}" rel="story-pages">Pages</a>
             <br class="clearboth" />
         </div>
         <div class="tab-contents">

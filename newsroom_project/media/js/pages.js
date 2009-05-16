@@ -6,7 +6,7 @@ $(document).ready(function(){
     */
     /********************************************************************************/
     /* handles tabs clicks */
-    $(".tab-links a").live("click",function(){
+    $(".tab-links a.page_nav").live("click",function(){
         $(".tab-contents .tab").addClass("hidden");
         $("#" + $(this).attr("rel")).removeClass("hidden");
 
@@ -93,8 +93,7 @@ $(document).ready(function(){
             $.each(blocks,function(i,val){
                 var block = $(val);
                 var code = block.children(".widget-code");
-                block.after(code.html());
-                block.remove();
+                block.html(code.html());
             });
 
             var page_content = $("#story-prepare").html();

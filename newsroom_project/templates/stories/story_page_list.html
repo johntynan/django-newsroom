@@ -1,5 +1,6 @@
 {% extends "stories/base.html" %}
 {% load i18n %}
+{% load media_tags %}
 {% block head_title %}Content Overview: {{story.headline}}{% endblock %}
 
 
@@ -49,8 +50,10 @@
 <h1>{{ story.headline }} <span class="headline-options">(<a href="{% url stories_edit_story story.id %}">edit story info</a> / <a href="{% url stories_story_media story.id %}">manage media</a>)</span></h1>
 <div class="edit-story-tabs">
     <div class="tab-links">
+        <a href="{% url stories_edit_story story.id %}" rel="story-info" style="color: #888;">Properties</a>
+        <a href="{% url stories_story_media story.id %}" rel="story-media" style="color: #888;">Media</a>
         {% for page in story.pages %}
-        <a href="" rel="story-content-{{ page.pagenum }}" class="{% if forloop.first %}active{% endif %}">Page {{ page.pagenum }}</a>
+        <a href="" rel="story-content-{{ page.pagenum }}" class="{% if forloop.first %}active{% endif %} page_nav">Page {{ page.pagenum }}</a>
         {% endfor %}
         <br class="clearboth" />
     </div>
