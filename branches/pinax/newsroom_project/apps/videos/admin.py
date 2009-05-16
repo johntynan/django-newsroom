@@ -3,8 +3,8 @@ from django.utils.translation import ugettext_lazy as _
 from videos.models import Video, VideoFrame
 
 class VideoAdmin(admin.ModelAdmin):
-    list_display = ('title', 'get_thumbnail_view', 'pub_date', 'video', 'status','created_by', 'modified_by',)
-    list_filter = ('pub_date', 'status',)
+    list_display = ('title', 'get_thumbnail_view', 'pub_date', 'video', 'created_by', 'modified_by',)
+    list_filter = ('pub_date', )
     search_fields = ['title','summary']
     date_hierarchy = 'pub_date'
     prepopulated_fields = {'slug': ('title',)}
@@ -12,7 +12,7 @@ class VideoAdmin(admin.ModelAdmin):
     def get_thumbnail_view(self, obj):
         return obj.frame.admin_thumbnail_view()
     get_thumbnail_view.allow_tags = True
-    get_thumbnail_view.short_description = 'Thumbnail'
+    get_thumbnail_view.short_description = _('Thumbnail')
 
 
 class VideoFrameAdmin(admin.ModelAdmin):
