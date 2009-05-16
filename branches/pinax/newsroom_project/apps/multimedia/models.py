@@ -187,9 +187,9 @@ class Media(ParentModel):
         into the snippet in a way that the render method will be able to leverage.
         """
         if len(self.title):
-            return '{%% media_insert %d "%s" "%s" %%}' % (self.id,self.title,"")
+            return '{%% media_insert %d "%s" %%}' % (self.id,self.title)
         else:
-            return "{%% media_insert %d "" "" %%}" % self.id
+            return "{%% media_insert %d "" %%}" % self.id
 
     def get_parent_model(self):
         """
