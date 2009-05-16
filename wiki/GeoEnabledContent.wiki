@@ -28,6 +28,6 @@ I see 2 alternatives possible in order to store the geographic information.
 
 = Open Questions =
 
-* which geographic information do we want to manage ? Address, Point, Line, Polygon
-* which Map do we want to use? Google map, Open street map
-* Do we need [http://geodjango.org/docs/ geodjango] (spatial query) ? 
+ * which geographic information do we want to manage ? Address, Point, Line, Polygon
+ * which Map do we want to use? Google map, Open street map
+ * Do we need [http://geodjango.org/docs/ geodjango] (spatial query) ? 
