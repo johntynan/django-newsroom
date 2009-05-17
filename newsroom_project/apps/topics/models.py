@@ -1,5 +1,5 @@
 from django.db import models
-
+from photos.models import Photo
 
 class TopicPath(models.Model):
     """
@@ -33,10 +33,19 @@ class Topic(models.Model):
     title = models.CharField(max_length=256)
     slug = models.SlugField(unique=True)
     description = models.TextField()
-    collection = models.ManyToManyField( 
+    topic_path = models.ManyToManyField( 
                 TopicPath,
                 blank=True)
+    
+    def __unicode__(self):
+        return self.title
 
-        
+
+class TopicImage(models.Model):
+    photo = models.ForeignKey(Photo)
+    topic = models.ForeignKey(
+                Topic,
+                help_text="Photos to help with featuring the piece.  The photos ideally are 16:9 or 4:3 aspect ratio and 1000px wide.  Scaling and thumbnails are handled automatically.",)
+                
     def __unicode__(self):
         return self.title

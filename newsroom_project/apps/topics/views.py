@@ -6,8 +6,8 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext,Context, loader
 
 from promos.models import Promo
-from topics.forms import TopicForm, TopicPathForm
-from topics.models import Topic,TopicPath
+from topics.forms import TopicForm, TopicPathForm, TopicImageForm
+from topics.models import Topic,TopicPath, TopicImage
 
 @login_required
 def topics_list(request):
@@ -135,3 +135,25 @@ def topic_path_detail(request,id):
     """
     topic_path = get_object_or_404(TopicPath,pk=id)
     return render_to_response('topics/topic_path_detail.html',locals(),context_instance=RequestContext(request))
+
+@login_required   
+def topic_image_add(request):
+    """
+    Process a new topic image submission.
+    """
+
+    if request.method == "POST":
+        form = TopicImageForm(request.POST)
+        if form.is_valid():
+            form.save()
+            request.user.message_set.create(
+                message='Your topic image has been added.  Thank you.')
+            return HttpResponseRedirect(reverse('topics_topic_list'))
+
+    else:
+        form = TopicImageForm()
+
+    return render_to_response(
+              'topics/topic_image_add.html',
+              {'form':form},
+              context_instance=RequestContext(request))

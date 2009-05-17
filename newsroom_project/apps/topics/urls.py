@@ -26,5 +26,8 @@ urlpatterns = patterns('',
         url(r'^path/(?P<id>\d+)/$',
             views.topic_path_detail,
             name='topics_topic_path_detail'),
+        url(r'^image_add/$', 
+            views.topic_image_add,
+            name="topics_topic_image_add"), 
 )
 
