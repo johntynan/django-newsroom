@@ -62,7 +62,8 @@ MEDIA_URL = '/site_media/'
 ADMIN_MEDIA_PREFIX = '/media/admin/'
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+# Override this in local_settings.py
+SECRET_KEY = '2p*n0eo&uet=4k*4ejq#$zf2fg6p4p1=g=sem6do%ktbrfawnk'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
