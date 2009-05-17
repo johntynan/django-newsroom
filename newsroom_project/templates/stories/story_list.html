@@ -30,11 +30,11 @@
             <td class="id_col">{{ story.id }}</td>
             <td><a href="{% url stories_story_pages story.id %}">{{ story.headline }}</a></td>
             <td>{% for item in story.media.all %}
-            <a href="{% url stories_story_edit_media story.id item.id %}">{{ item.title }}</a> 
+            <a href="{% url stories_story_edit_media story.id item.id %}">{{ item.title }}</a>
             {% endfor %}</td>
             <td class="count-col">
             {% for p in story.pages %}
-            <a href="{% url stories_edit_page p.id %}">{{ p.pagenum }}</a>
+            <a href="{% url stories_story_pages story.id %}?page={{ p.id }}">{{ p.pagenum }}</a>
             {% endfor %}
             <td class="status-col">{{ story.get_status_display }}</td>
             <td>{{ story.modified|date:"fa F jS, Y" }}</td>
