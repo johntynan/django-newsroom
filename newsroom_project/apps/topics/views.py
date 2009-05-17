@@ -9,6 +9,8 @@ from promos.models import Promo
 from topics.forms import TopicForm, TopicPathForm, TopicImageForm
 from topics.models import Topic,TopicPath, TopicImage
 
+from django.forms.models import inlineformset_factory
+
 @login_required
 def topics_list(request):
     topics_list = Topic.objects.all()
@@ -61,21 +63,30 @@ def topic_edit(request, id):
     Edit an existing topic.
     """
     topic = Topic.objects.get(pk=id)
+
+    promo = get_object_or_404(Promo, pk=id)
     
+    TopicImageInlineFormSet = inlineformset_factory(Topic, TopicImage)    
+
     if request.method == "POST":
+        formset1 = TopicImageInlineFormSet(request.POST, request.FILES, instance=topic)
         form = TopicForm(request.POST, instance=topic)
+        if formset1.is_valid():
+            formset1.save()
         if form.is_valid():
             form.save()
             request.user.message_set.create(
-                message='Your topic has been edited.  Thank you.')
+                message='Your topic has been edited.')
             return HttpResponseRedirect(reverse('topics_topic_list'))
-
     else:
+        formset1 = TopicImageInlineFormSet(instance=topic)
         form = TopicForm(instance=topic)        
+
     return render_to_response(
               'topics/topic_edit.html',
-              {'form':form},
+              ({'form': form, 'formset1': formset1}),
               context_instance=RequestContext(request))
+
 
 @login_required
 def topic_path_list(request):
