@@ -1,11 +1,13 @@
 from django.contrib import admin
 from stories.models import Story, RelatedContent, Page
 
-class RelatedContentInline(admin.StackedInline):
+class RelatedContentInline(admin.TabularInline):
     model = RelatedContent
+    extra = 1
 
 class PageInline(admin.StackedInline):
     model = Page
+    extra = 2
 
 class StoryAdmin(admin.ModelAdmin):
     search_fields = ['headline','slug','summary']
@@ -14,10 +16,10 @@ class StoryAdmin(admin.ModelAdmin):
     list_display = ('headline','creation_date',
         'modification_date' )
     list_display_links = ('headline',)
-    list_filter = ('status',)
-    filter_horzontal = ('sites',)
+    list_filter = ('status', 'modification_date')
+    filter_horizontal = ('sites',)
 
-    inlines = (RelatedContentInline, PageInline)
+    inlines = (PageInline, RelatedContentInline)
 
 admin.site.register(Story,StoryAdmin)
 
