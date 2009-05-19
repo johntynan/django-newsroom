@@ -1,6 +1,7 @@
 from django.contrib import admin
-from multimedia.models import Media#,Image,Video
+from multimedia.models import Media
 
-admin.site.register(Media)
-#admin.site.register(Image)
-#admin.site.register(Video)
+class MediaAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',)}
+
+admin.site.register(Media, MediaAdmin)
