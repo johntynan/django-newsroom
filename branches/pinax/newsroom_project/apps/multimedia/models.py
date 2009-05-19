@@ -96,8 +96,8 @@ class Media(ParentModel):
     #                        User,
     #                        related_name="media_modified")
 
-    created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)
+    creation_date = models.DateTimeField(auto_now_add=True)
+    modification_date = models.DateTimeField(auto_now=True)
 
     objects = MediaManager()
     children = ChildManager()
