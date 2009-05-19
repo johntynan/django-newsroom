@@ -5,6 +5,16 @@
 {% block main_content %}
 
 <h1>{{ topic }}</h1>
+<p>
+    <div style="float:left;">
+{% for i in topic_image%}
+    <img src="{{ i.photo.get_thumbnail_url }}">
+{% endfor %}
+    </div>
+{{promo.description}}
+<br clear="all">
+</p>
+
 <p>{{ topic.description }}</p>
 <p><a href="{% url topics_topic_list %}">Return to Topics List</a> | <a href="{% url topics_topic_edit topic.id %}">Edit Topics</a></p>
 

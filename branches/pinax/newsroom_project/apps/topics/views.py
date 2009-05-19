@@ -25,13 +25,14 @@ def topic_detail(request, id):
     topic_slug = topic_detail.slug
     sec_paths = TopicPath.objects.filter(topic__slug=topic_slug)
     promos = Promo.objects.filter(topic_path__in=sec_paths).distinct()
-
+    topic_image = TopicImage.objects.filter(topic=id)
+    
     return render_to_response(
             'topics/topic_detail.html',{
                 'topic': topic_detail,
                 'sec_paths': sec_paths,
-                'promos': promos
-
+                'promos': promos,
+                'topic_image': topic_image
              }, context_instance=RequestContext(request))
 
 @login_required
