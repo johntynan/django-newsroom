@@ -1,8 +1,10 @@
 from django.contrib.auth.models import User
+from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.template.defaultfilters import slugify
 from stories.models import Story, StoryIntegrityError
+from stories.models import RelatedContent
 
 def create_story():
     story = Story()
@@ -75,6 +77,31 @@ class StoryTests(TestCase):
         self.failUnlessEqual(self.story.page_one,p4,"Original Page 4 should be the Page 1")
         self.assertRaises(StoryIntegrityError,p4.delete)
 
+class RelatedContentTests(TestCase):
+
+    def setUp(self):
+        self.story = create_story()
+
+    def test_get_relatedcontent_empty(self):
+        """
+        Test get_related content when there is no related
+        content
+        """
+        self.assertEqual(self.story.get_relatedcontent(),
+            {})
+    def test_get_relatedcontent(self):
+        """
+        Test get_relatedcontent when some objects are
+        associated with the
+        """
+        site = Site.objects.all()[0]
+        RelatedContent(story=self.story,
+            object=site).save()
+        self.assertEqual(self.story.get_relatedcontent(),
+            {"site":[site]})
+
+
+            
 class StoryUrlTests(TestCase):
     """
     These tests exercise the views.

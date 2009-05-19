@@ -1,11 +1,13 @@
-import datetime
 import re
 
 from django.contrib.auth.models import User
+from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
 from django.db import models
 from django.db.models.signals import post_save,post_delete
 from django.template import Template, Context
+from django.utils.translation import ugettext_lazy as _
 
 from core.models import Project
 from multimedia.models import Media
@@ -19,35 +21,29 @@ class Story(models.Model):
     A Story is composed of one or more Pages
     """
     authors = models.ManyToManyField(User)
-    projects = models.ManyToManyField(Project)
     sites = models.ManyToManyField(Site)
     headline = models.CharField(max_length=256)
     slug = models.SlugField(
                 unique=True,
-                help_text="Automatically created based on headline, but you can also specify it.")
-    topics = models.ManyToManyField(TopicPath)
+                help_text=_("Automatically created based on headline, but you can also specify it."))
+    topics = models.ManyToManyField(TopicPath, blank=True)
     lead_art = models.ForeignKey(Media,null=True,blank=True,related_name="lead_art")
-    media = models.ManyToManyField(Media)
     summary = models.TextField(blank=True)
     location = models.CharField(
                 max_length=256,
                 blank=True,
-                help_text="City, State Country or Zipcode, Country." )
+                help_text=_("City, State Country or Zipcode, Country." ))
     status = models.CharField(max_length=1,choices=STORY_STATUS_CHOICES,default=STORY_STATUS_DRAFT)
-    created = models.DateTimeField(default=datetime.datetime.now)
-    modified = models.DateTimeField()
+    creation_date = models.DateTimeField(auto_now_add=True)
+    modification_date = models.DateTimeField(auto_now=True )
     
     class Meta:
         verbose_name_plural = 'stories'
-        ordering = ('created',)
+        ordering = ('creation_date',)
     
     def __unicode__(self):
         return self.headline
-    
-    def save(self):
-        self.modified = datetime.datetime.now()
-        super(Story,self).save()
-    
+        
     @models.permalink
     def get_absolute_url(self):
         return ('stories.views.show_story',[self.slug])
@@ -71,8 +67,41 @@ class Story(models.Model):
         new_page.save()
         self.page_set.add(new_page)
         return new_page
+
+    def get_relatedcontent(self):
+        """
+        Return a dict where the keys are the verbose_name
+        of the RelatedContent class and the items are the
+        object list of this particular class.
+        """
+        relatedcontent_dict = {}
+        for relatedcontent in self.relatedcontent_set.all():
+            if relatedcontent_dict.has_key(relatedcontent.object._meta.module_name):
+                object_list = relatedcontent_dict[relatedcontent.object._meta.module_name]
+                object_list.extend(relatedcontent.object)
+                relatedcontent_dict[relatedcontent.object._meta.module_name] = object_list
+            else:
+                relatedcontent_dict[relatedcontent.object._meta.module_name] = [relatedcontent.object]
+        return relatedcontent_dict
+
+
+class RelatedContent(models.Model):
+    """
+    RelatedContent allow you link any django object to
+    a story
+    """
+    story = models.ForeignKey(Story)
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    object = generic.GenericForeignKey()
     
-    
+    class Meta:
+        verbose_name = _("related content")
+        verbose_name_plural = _("related contents")
+
+    def __unicode__(self):
+        return u"%s" % self.object
+
 def new_story_add_page(sender,**kwargs):
     """
     Post-save signal for Story.
