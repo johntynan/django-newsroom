@@ -1,0 +1,32 @@
+#profile-map {
+	width: 960px;
+	height: 400px;
+}
+
+#location-map {
+	width: 960px;
+	height: 400px;
+}
+
+#interest-map {
+	width: 960px;
+	height: 400px;
+}
+
+#search-map {
+	width: 960px;
+	height: 400px;
+}
+
+#signup-map {
+	width: 600px;
+	height: 400px;
+}
+
+.results li {
+	padding-bottom: 20px;
+}
+
+.field .help {
+	display: none;
+}
