@@ -61,3 +61,5 @@ class PhotoUrlTests(TestCase):
         self.assertEqual(self.response.status_code, 302)
         # Check if the photo as been created
         self.assertEqual(1, Photo.objects.count())
+        self.assertEqual(self.story.get_relatedcontent(),
+            {'photo': [Photo.objects.all()[0]]})

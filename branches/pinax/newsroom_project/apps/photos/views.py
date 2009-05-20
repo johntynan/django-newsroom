@@ -5,6 +5,7 @@ from django.template import RequestContext
 from django.template.defaultfilters import slugify
 from photos.forms import PhotoForm, ImageForm
 from photos.models import Photo
+from stories.models import RelatedContent
 
 def photo_add_edit( request, media_id=None, template='photos/photo_add_edit.html', redirect_to='multimedia_browse', context_dict={}, story=None):
 
@@ -43,6 +44,7 @@ def photo_add_edit( request, media_id=None, template='photos/photo_add_edit.html
             form.save_m2m()
 
             if story:
+                RelatedContent(story=story, object=photo).save()
                 if story.sites.count() > 0:
                     photo.sites = story.sites.all()
                     photo.save()
