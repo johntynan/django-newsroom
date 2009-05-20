@@ -6,6 +6,7 @@ from django.template.defaultfilters import slugify
 from django.contrib.sites.models import Site
 from videos.forms import VideoForm, VideoFrameForm
 from videos.models import Video
+from stories.models import RelatedContent
 
 #TODO: add authentication check decorators
 
@@ -65,8 +66,7 @@ def video_add_edit(request, media_id=None, template='videos/video_add_edit.html'
             video.save()
             form.save_m2m()
             if story:
-                # TODO : create the relation with story
-                #story.media.add(video)
+                RelatedContent(story=story, object=video).save()
                 if story.sites.count() > 0:
                     video.sites = story.sites.all()
                     video.save()

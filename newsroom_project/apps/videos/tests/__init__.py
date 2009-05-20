@@ -49,7 +49,7 @@ class VideoUrlTests(TestCase):
                 kwargs={"story_id" : self.story.id,
                     "media_type" : "video"}),
                     {
-                        "title":"test picture",
+                        "title":"test video",
                         "status":"D",
                         "license":"http://creativecommons.org/licenses/by/2.0/",
                          "authors" : (self.user.id,),
@@ -63,3 +63,5 @@ class VideoUrlTests(TestCase):
         self.assertEqual(self.response.status_code, 302)
         # Check if the photo as been created
         self.assertEqual(1, Video.objects.count())
+        self.assertEqual(self.story.get_relatedcontent(),
+            {'video': [Video.objects.all()[0]]})
