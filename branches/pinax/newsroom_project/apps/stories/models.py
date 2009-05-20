@@ -8,13 +8,21 @@ from django.db import models
 from django.db.models.signals import post_save,post_delete
 from django.template import Template, Context
 from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
 
 from core.models import Project
 from multimedia.models import Media
 from multimedia.nodes import MediaNode
 from topics.models import TopicPath
-from stories.constants import STORY_STATUS_CHOICES, STORY_STATUS_DRAFT
+from stories.constants import STORY_STATUS_CHOICES, STORY_STATUS_DRAFT, STORY_STATUS_PUBLISHED
 
+
+class StoryManager(models.Manager):
+
+    def published(self):
+        return self.filter(
+                    sites__in = [Site.objects.get_current()],
+                    status = STORY_STATUS_PUBLISHED,)
 
 class Story(models.Model):
     """
@@ -36,6 +44,7 @@ class Story(models.Model):
     status = models.CharField(max_length=1,choices=STORY_STATUS_CHOICES,default=STORY_STATUS_DRAFT)
     creation_date = models.DateTimeField(auto_now_add=True)
     modification_date = models.DateTimeField(auto_now=True )
+    objects = StoryManager()
     
     class Meta:
         verbose_name_plural = 'stories'

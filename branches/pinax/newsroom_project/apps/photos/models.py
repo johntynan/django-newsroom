@@ -14,13 +14,16 @@ from django.contrib.auth.models import User
 from imagekit.models import ImageModel
 from imagekit.lib import Image
 
-from multimedia.models import Media
+from multimedia.models import Media, MediaManager
 
 from django_inlines import inlines
 
 # Modify image file buffer size.
 PHOTOS_IMAGEKIT_SPEC = getattr(settings, 'PHOTOS_IMAGEKIT_SPEC', 'photos.ik_specs')
 
+
+class GalleryManager(MediaManager):
+    pass
 
 class Gallery(Media):
 
@@ -29,6 +32,8 @@ class Gallery(Media):
                 related_name='galleries', 
                 verbose_name=_('photos'),
                 null=True, blank=True)
+
+    objects = GalleryManager()
 
     def latest(self, limit=0, public=True):
         if limit == 0:
@@ -162,8 +167,8 @@ class Image(ImageModel):
         cache_dir = 'ik_cache/photos'
         cache_filename_format = "%(specname)s/%(filename)s.%(extension)s"
     
-class PhotoManager(models.Manager):
-        pass
+class PhotoManager(MediaManager):
+    pass
 
 class Photo(Media):
 
