@@ -61,7 +61,7 @@ class VideoUrlTests(TestCase):
             frame.close()
             video.close()
         self.assertEqual(self.response.status_code, 302)
-        # Check if the photo as been created
+        # Check if the video as been created
         self.assertEqual(1, Video.objects.count())
         self.assertEqual(self.story.get_relatedcontent(),
             {'video': [Video.objects.all()[0]]})
