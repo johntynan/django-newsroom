@@ -55,7 +55,7 @@ class VideoUrlTests(TestCase):
                          "authors" : (self.user.id,),
                          "sites" : (1,),
                          "video":video,
-                         "frame":frame,
+                         "image":frame,
                     })
         finally:
             frame.close()
