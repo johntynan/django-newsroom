@@ -20,3 +20,12 @@ LICENSE_CHOICES = (
       ('http://creativecommons.org/licenses/by-sa/2.0/',      'CC Attribution-ShareAlike'),
 )
 
+MEDIA_STATUS_DRAFT = 'D'
+MEDIA_STATUS_PUBLISHED = 'P'
+MEDIA_STATUS_ARCHIVED = 'A'
+MEDIA_STATUS_CHOICES = (
+    (MEDIA_STATUS_DRAFT,'Draft',),
+    (MEDIA_STATUS_PUBLISHED,'Published',),
+    (MEDIA_STATUS_ARCHIVED,'Archived',),
+)
+

@@ -15,6 +15,10 @@ from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 
 #TODO: add authentication check decorators
 
+def stories_show(request):
+    stories = Story.objects.published()
+    return render_to_response('stories/stories_show.html',locals(),context_instance=RequestContext(request))
+
 @login_required
 def story_list(request):
     stories = request.user.story_set.all()

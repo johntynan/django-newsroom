@@ -12,7 +12,7 @@ from django.template.defaultfilters import slugify
 
 from tagging.fields import TagField
 
-from multimedia.constants import LICENSE_CHOICES, LICENSE_DEFAULT
+from multimedia.constants import LICENSE_CHOICES, LICENSE_DEFAULT, MEDIA_STATUS_PUBLISHED, MEDIA_STATUS_CHOICES, MEDIA_STATUS_DRAFT
 from utils.model_inheritance import ParentModel,ChildManager
 
 
@@ -57,7 +57,9 @@ class MediaBase(ModelBase):
 class MediaManager(models.Manager):
 
     def published(self):
-        return self.filter(status=MEDIA_STATUS_PUBLISHED)
+        return self.filter(
+                    sites__in=[Site.objects.get_current()],
+                    status = MEDIA_STATUS_PUBLISHED)
 
 
 class Media(ParentModel):
@@ -69,6 +71,7 @@ class Media(ParentModel):
     """
     __metaclass__ = MediaBase
     sites = models.ManyToManyField(Site, verbose_name=_(u'Sites'))
+    status = models.CharField(max_length=1,choices=MEDIA_STATUS_CHOICES,default=MEDIA_STATUS_DRAFT)
     authors = models.ManyToManyField(User)
     title = models.CharField(max_length=128,)
     summary = models.TextField(blank=True)

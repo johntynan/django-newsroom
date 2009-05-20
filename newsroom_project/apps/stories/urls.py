@@ -5,7 +5,7 @@ urlpatterns = patterns('stories.views',
 
     #- EDITIING -
     #list stories
-    url('^$','story_list',name='stories_story_list'),
+    url('^edit/$','story_list',name='stories_story_list'),
     #add story
     url('^story/add/$','add_story',name='stories_add_story'),
     #edit story
@@ -42,6 +42,7 @@ urlpatterns = patterns('stories.views',
 
     #- PUBLIC  -
     #diplay story
-    url('^(?P<slug>[\d\w-]+)/$','story',name="stories_show_story"),
+    url('^(?P<story_id>[\d+])/(?P<slug>[\d\w-]+)/$','story',name="stories_show_story"),
+    url('^$','stories_show',name="stories_show_story"),
 )
 
