@@ -12,7 +12,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         APP_TO_TEST = settings.NEWSROOM_TEST_SUITE
-        print "The following apps is goingt to be tested : "
+        print "The following apps is going to be tested : "
         for app in APP_TO_TEST:
             print "    * %s " % app
             
