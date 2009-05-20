@@ -43,7 +43,6 @@ def photo_add_edit( request, media_id=None, template='photos/photo_add_edit.html
             form.save_m2m()
 
             if story:
-                story.media.add(photo)
                 if story.sites.count() > 0:
                     photo.sites = story.sites.all()
                     photo.save()
