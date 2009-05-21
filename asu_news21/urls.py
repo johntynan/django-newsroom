@@ -1,6 +1,7 @@
 from django.conf.urls.defaults import *
 from django.views.generic.simple import direct_to_template
 from django.conf import settings
+from account.openid_consumer import PinaxConsumer
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
@@ -17,6 +18,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # (r'^admin/', include(admin.site.urls)),
     (r'^$', direct_to_template, {'template': 'front.html'}),
+    (r'^openid/(.*)', PinaxConsumer()),
     (r'^stories/', include('stories.urls')),
     (r'^profiles/', include('basic_profiles.urls')),
     (r'^topics/',include('topics.urls')),
