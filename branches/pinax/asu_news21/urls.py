@@ -23,6 +23,8 @@ urlpatterns = patterns('',
     (r'^account/', include('account.urls')),
     (r'^photos/',include('photos.urls')),
     (r'^videos/',include('videos.urls')),
+    (r'^about/',include('about.urls')),
+    (r'^promos/',include('promos.urls')),
 )
 
 if settings.SERVE_MEDIA:
