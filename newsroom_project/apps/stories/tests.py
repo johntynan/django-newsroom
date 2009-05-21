@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.template.defaultfilters import slugify
 from stories.models import Story, StoryIntegrityError
+from stories.models import Page
 from stories.models import RelatedContent
 
 def create_story():
@@ -15,6 +16,15 @@ def create_story():
     #TODO add an author(s)
     story.save()
     return story
+
+def create_page(story):
+    page = Page()
+    page.story = story
+    page.content = "super page content"
+    page.pagenum = 1
+    page.save()
+    return page
+    
 
 def create_user():
     user =  User.objects.create_user("user", "user@mail.com", "secret")
@@ -108,6 +118,7 @@ class StoryUrlNewsroomTests(TestCase):
     """
     def setUp(self):
         self.story = create_story()
+        self.page = create_page(story=self.story)
         self.user = create_user()
         self.client.login(username="user", password="secret")
     def tearDown(self):
@@ -143,11 +154,21 @@ class StoryUrlNewsroomTests(TestCase):
         self.assertEqual(self.response.status_code, 200)
 
     def test_story_add_page(self):
-        self.assertEqual(1, self.story.page_set.count())
+        self.assertEqual(2, self.story.page_set.count())
         self.response = self.client.get(reverse("stories_add_page",
             kwargs={"story_id":self.story.id}))
         self.assertEqual(self.response.status_code, 200)
-        self.assertEqual(2, self.story.page_set.count())
+        self.assertEqual(3, self.story.page_set.count())
+
+    def test_story_edit_page(self):
+        self.response = self.client.get(reverse("stories_edit_page",
+            kwargs={"page_id":self.page.id}))
+        self.assertEqual(self.response.status_code, 200)
+        self.response = self.client.post(reverse("stories_edit_page",
+            kwargs={"page_id":self.page.id}),
+            {"content":"content of the page",
+            "pagenum":1})
+        self.assertEqual(self.response.status_code, 302)
 
 
 
