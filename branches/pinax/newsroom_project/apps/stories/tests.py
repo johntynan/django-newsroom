@@ -132,6 +132,24 @@ class StoryUrlNewsroomTests(TestCase):
             })
         self.assertEqual(self.response.status_code, 302)
 
+    def test_story_pages(self):
+        self.response = self.client.get(reverse("stories_story_pages",
+            kwargs={"story_id":self.story.id}))
+        self.assertEqual(self.response.status_code, 200)
+
+    def test_story_media(self):
+        self.response = self.client.get(reverse("stories_story_media",
+            kwargs={"story_id":self.story.id}))
+        self.assertEqual(self.response.status_code, 200)
+
+    def test_story_add_page(self):
+        self.assertEqual(1, self.story.page_set.count())
+        self.response = self.client.get(reverse("stories_add_page",
+            kwargs={"story_id":self.story.id}))
+        self.assertEqual(self.response.status_code, 200)
+        self.assertEqual(2, self.story.page_set.count())
+
+
 
     def test_add_story(self):
         self.response = self.client.get(reverse("stories_add_story"))
