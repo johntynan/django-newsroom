@@ -112,8 +112,8 @@ INSTALLED_APPS = (
 
     # external
     #'notification', # must be first
-    #'django_openid',
-    #'emailconfirmation',
+    'django_openid',
+    'emailconfirmation',
     #'mailer',
     #'announcements',
     'pagination',
