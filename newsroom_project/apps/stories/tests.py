@@ -170,7 +170,10 @@ class StoryUrlNewsroomTests(TestCase):
             "pagenum":1})
         self.assertEqual(self.response.status_code, 302)
 
-
+    def test_save_page(self):
+        self.response = self.client.get(reverse("stories_save_page",
+            kwargs={"story_id":self.story.id}))
+        self.assertEqual(self.response.status_code, 200)
 
     def test_add_story(self):
         self.response = self.client.get(reverse("stories_add_story"))
