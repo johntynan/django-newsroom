@@ -112,13 +112,30 @@ class StoryUrlNewsroomTests(TestCase):
         self.client.login(username="user", password="secret")
     def tearDown(self):
         self.client.logout()
-       
 
-    def test_add_story_get_url(self):
-        self.response = self.client.get(reverse("stories_add_story"))
+    def test_story_list_get_url(self):
+        self.response = self.client.get(reverse("stories_story_list"))
         self.assertEqual(self.response.status_code, 200)
 
-    def test_add_story_post_url(self):
+    def test_edit_story(self):
+        self.response = self.client.get(
+            reverse("stories_edit_story",
+                kwargs={"story_id":self.story.id}))
+        self.assertEqual(self.response.status_code, 200)
+        self.response = self.client.post(
+            reverse("stories_edit_story",
+                kwargs={"story_id":self.story.id}),
+            {"headline" : "test story",
+             "summary" : "this story is a modifed test",
+             "authors" : (self.user.id,),
+             "sites" : (1,),
+            })
+        self.assertEqual(self.response.status_code, 302)
+
+
+    def test_add_story(self):
+        self.response = self.client.get(reverse("stories_add_story"))
+        self.assertEqual(self.response.status_code, 200)
         self.response = self.client.post(reverse("stories_add_story"),
             {"headline" : "test story",
              "summary" : "this story is a test",
