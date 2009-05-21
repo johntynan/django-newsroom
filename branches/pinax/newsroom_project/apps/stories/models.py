@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
+from django.contrib.sites.managers import CurrentSiteManager
 from django.db import models
 from django.db.models.signals import post_save,post_delete
 from django.template import Template, Context
@@ -23,6 +24,21 @@ class StoryManager(models.Manager):
         return self.filter(
                     sites__in = [Site.objects.get_current()],
                     status = STORY_STATUS_PUBLISHED,)
+
+class StorySiteManager(models.Manager):
+    """
+    Custom story manager that always filters querysets based on the sites
+    attribute and settings in the project.  This is useful for the
+    publication/public facing sites.
+    """
+
+    def get_query_set(self):
+        return super(StorySiteManager, self).get_query_set().filter(
+                    sites__in = [Site.objects.get_current()],)
+
+    def published(self):
+        return self.filter(status = STORY_STATUS_PUBLISHED)
+
 
 class Story(models.Model):
     """
@@ -45,6 +61,7 @@ class Story(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True)
     modification_date = models.DateTimeField(auto_now=True )
     objects = StoryManager()
+    on_site = StorySiteManager()
     
     class Meta:
         verbose_name_plural = 'stories'
