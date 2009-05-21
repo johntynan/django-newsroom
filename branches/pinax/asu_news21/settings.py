@@ -124,7 +124,7 @@ INSTALLED_APPS = (
     #'voting',
     #'countries',
     #'tagging',
-    #'django_inlines',
+    'django_inlines',
 
     # internal (for now)
     'basic_profiles',
@@ -136,7 +136,7 @@ INSTALLED_APPS = (
 
     # newsroom apps
     'stories',
-    #'multimedia',
+    'multimedia',
     #'aggregator',
     #'core',
     #'utils',
