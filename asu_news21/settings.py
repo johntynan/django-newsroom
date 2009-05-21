@@ -5,6 +5,7 @@ import os.path
 import pinax
 
 PINAX_ROOT = os.path.abspath(os.path.dirname(pinax.__file__))
+NEWSROOM_ROOT = os.path.abspath(os.path.dirname(__file__)+'/../newsroom_project')
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 # tells Pinax to use the default theme
@@ -84,6 +85,7 @@ ROOT_URLCONF = 'asu_news21.urls'
 
 TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(__file__), "templates"),
+    os.path.join(NEWSROOM_ROOT, "templates",),
     os.path.join(PINAX_ROOT, "templates", PINAX_THEME),
 )
 
@@ -94,6 +96,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.media",
     "django.core.context_processors.request",
     "misc.context_processors.site_name",
+    "misc.context_processors.contact_email",
 )
 
 INSTALLED_APPS = (
@@ -113,10 +116,10 @@ INSTALLED_APPS = (
     #'emailconfirmation',
     #'mailer',
     #'announcements',
-    #'pagination',
+    'pagination',
     #'timezones',
     #'ajax_validation',
-    #'uni_form',
+    'uni_form',
     #'avatar',
     #'voting',
     #'countries',
@@ -137,11 +140,10 @@ INSTALLED_APPS = (
     #'aggregator',
     #'core',
     #'utils',
-    #'promos',
+    'promos',
     #'topics',
-    #'videos',
-    #'photos',
-    #'promos'
+    'videos',
+    'photos',
 )
 
 PROMO_MODERATORS = (
