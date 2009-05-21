@@ -102,7 +102,7 @@ class RelatedContentTests(TestCase):
 
 
             
-class StoryUrlTests(TestCase):
+class StoryUrlNewsroomTests(TestCase):
     """
     These tests exercise the views.
     """
@@ -127,6 +127,26 @@ class StoryUrlTests(TestCase):
             })
         self.assertEqual(self.response.status_code, 302)
 
-        
+class StoryUrlPublicationTests(TestCase):
+    """
+    These tests exercise the views.
+    """
+    def setUp(self):
+        self.story = create_story()
+        self.user = create_user()
+        self.client.login(username="user", password="secret")
+    def tearDown(self):
+        self.client.logout()
+
+    def test_show_stories(self):
+        self.response = self.client.get(reverse("stories_show_story"))
+        self.assertEqual(self.response.status_code, 200)
+
+    def test_show_story(self):
+        p1 = self.story.page_one
+        p2,p3,p4 = [self.story.add_page() for i in range(3)]
+        self.response = self.client.get(reverse("stories_show_story"))
+        self.assertEqual(self.response.status_code, 200)
+
         
         
