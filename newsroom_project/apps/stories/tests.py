@@ -8,7 +8,7 @@ from django.template.defaultfilters import slugify
 from stories.models import Story, StoryIntegrityError
 from stories.models import Page
 from stories.models import RelatedContent
-from stories.constants import STORY_STATUS_DRAFT
+from stories.constants import STORY_STATUS_DRAFT, STORY_STATUS_PUBLISHED
 
 def create_draft_story():
     story = Story()
@@ -18,6 +18,21 @@ def create_draft_story():
     story.summary = "Like I said in the headline, this is a test story."
     #TODO add an author(s)
     story.status = STORY_STATUS_DRAFT
+    story.save()
+    story.sites = Site.objects.all()
+    story.save()
+    return story
+
+def create_published_story():
+    story = Story()
+    story.headline = "This Is A Published Story"
+    #normally slugify will be handled by the UI
+    story.slug = slugify(story.headline)
+    story.summary = "Like I said in the headline, this is a published story."
+    #TODO add an author(s)
+    story.status = STORY_STATUS_PUBLISHED
+    story.save()
+    story.sites = Site.objects.all()
     story.save()
     return story
 
@@ -29,7 +44,6 @@ def create_page(story):
     page.save()
     return page
     
-
 def create_user():
     user =  User.objects.create_user("user", "user@mail.com", "secret")
     return user
@@ -105,8 +119,8 @@ class RelatedContentTests(TestCase):
         Test get_related content when there is no related
         content
         """
-        self.assertEqual(self.story_draft.get_relatedcontent(),
-            {})
+        self.assertEqual(self.story_draft.get_relatedcontent(), {})
+
     def test_get_relatedcontent(self):
         """
         Test get_relatedcontent when some objects are
@@ -201,6 +215,8 @@ class StoryUrlPublicationTests(TestCase):
     def setUp(self):
         self.story_draft = create_draft_story()
         self.story_draft.add_page() # Add page 2
+        self.story_published = create_published_story()
+        self.story_published.add_page()
         self.user = create_user()
 
     def tearDown(self):
@@ -208,13 +224,14 @@ class StoryUrlPublicationTests(TestCase):
 
     def test_story_preview(self):
         """
-        Test /sotries/preview/<id>/token
+        Test /stories/preview/<id>/<token>/
         """
         self.response = self.client.get(
             reverse("stories_story_preview_pub",
                     kwargs = {'story_id': self.story_draft.id,
                               'token': self.story_draft.token }))
-        self.assertEqual(self.response.status_code, 200)
+        self.assertEqual(self.response.status_code, 301)
+
 
     def test_story_detail(self):
         """
@@ -238,24 +255,53 @@ class StoryUrlPublicationTests(TestCase):
     def test_page_detail(self):
         self.response = self.client.get(
             reverse("stories_page_detail_pub",
-                    kwargs = {'story_id': self.story_draft.id,
-                              'slug': self.story_draft.slug,
+                    kwargs = {'story_id': self.story_published.id,
+                              'slug': self.story_published.slug,
                               'pagenum' : 1, }))
         self.assertEqual(self.response.status_code, 200)
         
     def test_page_detail_page2(self):
         self.response = self.client.get(
             reverse("stories_page_detail_pub",
-                    kwargs = {'story_id': self.story_draft.id,
-                              'slug': self.story_draft.slug,
+                    kwargs = {'story_id': self.story_published.id,
+                              'slug': self.story_published.slug,
                               'pagenum' : 2, }))
         self.assertEqual(self.response.status_code, 200)
+
 
     def test_page_detail_fix_url(self):
         self.response = self.client.get(
             reverse("stories_page_detail_pub",
-                    kwargs = {'story_id': self.story_draft.id,
+                    kwargs = {'story_id': self.story_published.id,
                               'slug': 'just-made-this-up',
                               'pagenum': 1, }))
         self.assertEqual(self.response.status_code, 301)
+
+    def test_page_detail_not_published(self):
+        self.response = self.client.get(
+            reverse("stories_page_detail_pub",
+                    kwargs = {'story_id': self.story_draft.id,
+                              'slug': self.story_draft.slug,
+                              'pagenum' : 1, }))
+        self.assertEqual(self.response.status_code, 404)
+
+    def test_page_detail_not_on_site(self):
+        self.story_published.sites = []
+        self.story_published.save()
+        self.response = self.client.get(
+            reverse("stories_page_detail_pub",
+                    kwargs = {'story_id': self.story_published.id,
+                              'slug': self.story_published.slug,
+                              'pagenum' : 1, }))
+        self.assertEqual(self.response.status_code, 404)
+
+    def test_page_detail_preview(self):
+        self.response = self.client.get(
+            reverse("stories_page_preview_pub",
+                    kwargs = {'story_id': self.story_draft.id,
+                              'slug': self.story_draft.slug,
+                              'pagenum' : 1, 
+                              'token': self.story_draft.token }))
+        self.assertEqual(self.response.status_code, 200)
+
 
