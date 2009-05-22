@@ -26,8 +26,6 @@ def story_preview(request, story_id, token):
     """
     Support URL /stories/<id>/<TOKEN>
     """
-    print  "coucou we are in"
-
     story = get_object_or_404(Story,id=story_id)
     page=1
     if not (story.token == token and story.status == STORY_STATUS_DRAFT):
