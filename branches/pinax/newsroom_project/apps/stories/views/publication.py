@@ -32,7 +32,8 @@ def story_preview(request, story_id, token):
 
 def page_detail(request, story_id, slug, pagenum, token=None):
     """
-    Render a page of the story.  Also supports preview via a token.
+    Render a story page if it is published or being previewed via a
+    token, otherwise return 404.
     """
 
     try:
