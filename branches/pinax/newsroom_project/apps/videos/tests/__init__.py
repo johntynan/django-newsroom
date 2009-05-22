@@ -7,7 +7,7 @@ from django.test import TestCase
 from django.template.defaultfilters import slugify
 from stories.models import Story
 
-def create_story():
+def create_draft_story():
     story = Story()
     story.headline = "This Is A Test Story"
     #normally slugify will be handled by the UI
@@ -26,7 +26,7 @@ class VideoUrlTests(TestCase):
     These tests exercise the views.
     """
     def setUp(self):
-        self.story = create_story()
+        self.story = create_draft_story()
         self.user = create_user()
         self.client.login(username="user", password="secret")
     def tearDown(self):
