@@ -60,7 +60,15 @@ def add_page(request,story_id):
 @login_required
 def save_page(request,story_id):
     """
-    saves (creates or replaces) a story
+    saves (creates or replaces) pages in a story
+    takes a formset of page forms and saves each form object
+    as a page object related to a story
+
+    note: this view is only used for ajax requests
+    response descriptions:
+    1 : sucessfull
+    -1 : invalid formset
+    0 : invalid request
     """
     story = get_object_or_404(Story,pk=story_id)
     if request.POST:
@@ -86,8 +94,9 @@ def save_page(request,story_id):
                 page.save()
             return HttpResponse("1", mimetype="text/plain")
         else:
-            print page_formset.errors
             return HttpResponse("-1", mimetype="text/plain")
+
+    return HttpResponse("0", mimetype="text/plain")
 
 @login_required
 def edit_story(request,story_id):
