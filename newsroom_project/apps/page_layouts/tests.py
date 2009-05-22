@@ -19,18 +19,11 @@ def create_page_layout():
     page_layout.description = "Like I said, this is a test page layout."
     page_layout.image = "/site_media/images/widgets/page_layouts/one_column.png"
     page_layout.save()
-    # print page_layout.title
-    # print page_layout.html
-    # print page_layout.description
-    # print page_layout.image
-    # return page_layout
 
     c = Client()
     response = c.get('/page_layouts/index.json')
     response.status_code
-    print  response.status_code
-    print response.content 
-    return response.content
+
 
 
 class PageLayoutTests(TestCase):
