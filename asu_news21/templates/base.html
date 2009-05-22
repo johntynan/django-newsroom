@@ -43,7 +43,7 @@
         <h2>Menu</h2>
         <ul>
             <li><a href="{% url profile_list %}" title="People">People</a></li>
-            <li><a href="{% url stories_show_story %}" title="Stories">Stories</a></li>
+            <li><a href="{% url stories_story_list_pub %}" title="Stories">Stories</a></li>
             <li><a href="{% url topics_topic_list %}" title="Topics">Topics</a></li> 
             {% if user.is_authenticated %}
             <li class="login">Logged in as <a href="{% url profile_detail user.username %}">{{ user }}</a></li>
