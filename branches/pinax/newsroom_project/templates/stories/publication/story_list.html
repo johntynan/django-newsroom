@@ -1,0 +1,28 @@
+{% extends "stories/base.html" %}
+{% load i18n %}
+
+{% block head_title %}Stories{% endblock %}
+
+{% block subnav %}{% endblock %}
+
+{% block main_content %}
+    <h1>Stories</h1>
+
+    <ul>
+    {% for story in stories %}
+        <li>
+        <img src="{{ story.lead_art.get_thumbnail_url }}" />
+        <h2><a href="{% url stories_page_detail_pub story.id story.slug 1 %}"
+        >{{ story.headline }}</a></h2>
+        <p>{{ story.published_date|date:"fa F jS, Y" }}  by
+        {% for a in story.authors.all %}
+            {{a}},
+        {% endfor %}
+        </p>
+        <p>{{story.summary}}</p>
+        </li>
+    {% empty %}
+    <li>No published stories yet.</li>
+    {% endfor %}
+
+{% endblock %}

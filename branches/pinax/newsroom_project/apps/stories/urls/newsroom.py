@@ -5,7 +5,7 @@ urlpatterns = patterns('stories.views.newsroom',
 
     #- EDITIING -
     #list stories
-    url('^edit/$','story_list',name='stories_story_list'),
+    url('^list/$','story_list',name='stories_story_list'),
     #add story
     url('^story/add/$','add_story',name='stories_add_story'),
     #edit story
