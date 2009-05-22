@@ -148,6 +148,7 @@ INSTALLED_APPS = (
     'topics',
     'videos',
     'photos',
+    'page_layouts',
     'promos'
 )
 

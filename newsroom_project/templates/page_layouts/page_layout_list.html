@@ -1,0 +1,25 @@
+{% extends 'page_layouts/base.html' %}
+
+{% block head_title %}Page Layouts{% endblock %}
+
+{% block body_id %}Page Layouts{% endblock %}
+
+{% block main_content %}
+
+<h1>Page Layouts</h1>
+
+<p>
+    <a href="./index.json">View Page Layout List as JSON</a>
+</p>
+<ul>
+{% for o in page_layout_list %}
+<li class="{% cycle 'even' 'odd' %}"><a href="{{o.id}}">{{o}}</a> - {{o.description}}<br>
+<img src="{{o.image}}">
+{% empty %}
+<li>No page layouts available yet.</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
+
+

@@ -1,0 +1,11 @@
+{% extends "site_base.html" %}
+
+{% block tab_id %}id="topics_tab"{% endblock %}
+
+{% block body %}
+
+{% block main_content %}{% endblock %}
+
+{% endblock %}
+
+

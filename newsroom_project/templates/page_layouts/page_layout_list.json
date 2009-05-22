@@ -1,0 +1,13 @@
+{
+{% for o in page_layout_list %}
+    {
+        "title":"{{o.title}}",
+        "html":"{{o.html}}",
+        "description":"{{o.description}}"
+        "image":"{{o.image}}" 
+    },
+{% empty %}
+{% endfor %}
+}
+
+
