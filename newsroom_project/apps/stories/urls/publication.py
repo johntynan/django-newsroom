@@ -5,7 +5,11 @@ from django.conf.urls.defaults import *
 
 urlpatterns = patterns('stories.views.publication',
 
-    ('^(?P<story_id>[\d+])/$','story_detail'),
+    url('^preview/(?P<story_id>[\d+])/(?P<token>[\dabcdef]+)/$',
+        'story_preview',
+        name="stories_story_preview_pub"),
+
+   url ('^(?P<story_id>[\d+])/$','story_detail'),
 
     url('^(?P<story_id>[\d+])/(?P<slug>[\d\w-]+)/$',
         'story_detail',

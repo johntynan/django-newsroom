@@ -1,6 +1,7 @@
 import re
 
 from django.contrib.auth.models import User
+from django.contrib.auth.models import get_hexdigest
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
@@ -76,6 +77,9 @@ class Story(models.Model):
     @property
     def pages(self):
         return self.page_set.all()
+    @property
+    def token(self):
+        return get_hexdigest("md5", settings.SECRET_KEY, self.slug)
         
     @property
     def page_one(self):
