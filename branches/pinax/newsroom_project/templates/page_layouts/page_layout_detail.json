@@ -1,0 +1,8 @@
+{
+    {
+        "title":"{{page_layout.title}}",
+        "html":"{{page_layout.html}}",
+        "description":"{{page_layout.description}}"
+        "image":"{{page_layout.image}}" 
+    }
+}

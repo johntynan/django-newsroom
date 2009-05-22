@@ -1,0 +1,22 @@
+{% extends "page_layouts/base.html" %}
+
+{% block head_title %}{{ page_layout }}{% endblock %}
+
+{% block main_content %}
+
+<h1>{{ page_layout }}</h1>
+<p>
+{{ page_layout.description }}
+</p>
+<form>
+    <textarea>{{ page_layout.html }}</textarea>
+</form>
+<img src="{{ page_layout.image }}">
+
+<p><a href="./json">view page_layout as JSON</a></p>
+<p><a href="{% url page_layout_list %}">Return to Page Layout List</a></p>
+
+
+
+{% endblock %}
+
