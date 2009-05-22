@@ -206,6 +206,16 @@ class StoryUrlPublicationTests(TestCase):
     def tearDown(self):
         pass
 
+    def test_story_preview(self):
+        """
+        Test /sotries/preview/<id>/token
+        """
+        self.response = self.client.get(
+            reverse("stories_story_preview_pub",
+                    kwargs = {'story_id': self.story_draft.id,
+                              'token': self.story_draft.token }))
+        self.assertEqual(self.response.status_code, 200)
+
     def test_story_detail(self):
         """
         Test redirects for shortcut or outdated slug urls.
