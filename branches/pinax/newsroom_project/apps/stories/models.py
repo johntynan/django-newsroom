@@ -114,6 +114,16 @@ class Story(models.Model):
         return relatedcontent_dict
 
 
+    def is_published(self):
+        if self.status == STORY_STATUS_PUBLISHED:
+            return True
+        return False
+
+    def is_draft(self):
+        if self.status == STORY_STATUS_DRAFT:
+            return True
+        return False
+    
 class RelatedContent(models.Model):
     """
     RelatedContent allow you link any django object to
