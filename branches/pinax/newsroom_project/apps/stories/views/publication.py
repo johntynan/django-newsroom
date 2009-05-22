@@ -2,7 +2,7 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext, Template, Context
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponsePermanentRedirect, HttpResponseNotFound
+from django.http import HttpResponsePermanentRedirect, Http404
 from django.core.urlresolvers import reverse
 
 from stories.models import Story, Page
@@ -49,7 +49,7 @@ def page_detail(request, story_id, slug, pagenum, token=None):
                         status=STORY_STATUS_PUBLISHED)
 
     except Story.DoesNotExist:
-        return HttpResponseNotFound()
+        raise Http404
 
     page = get_object_or_404(Page, story=story, pagenum=pagenum)
 
