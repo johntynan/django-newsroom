@@ -7,6 +7,9 @@ from django.test.client import Client
 from page_layouts.models import PageLayout
 from page_layouts.views import page_layout_list
 
+def create_user():
+    user =  User.objects.create_user("user", "user@mail.com", "secret")
+    return user
 
 
 def create_page_layout():
