@@ -28,7 +28,7 @@ class StoryManager(models.Manager):
 class StorySiteManager(models.Manager):
     """
     Custom story manager that always filters querysets based on the sites
-    attribute and settings in the project.  This is useful for the
+    attribute and settings.py of the django project.  This is useful for the
     publication/public facing sites.
     """
 
