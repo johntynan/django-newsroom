@@ -188,24 +188,56 @@ class StoryUrlNewsroomTests(TestCase):
 
 class StoryUrlPublicationTests(TestCase):
     """
-    These tests exercise the views.
+    These tests exercise the publication views.
     """
     def setUp(self):
         self.story = create_story()
+        self.story.add_page() # Add page 2
         self.user = create_user()
-        self.client.login(username="user", password="secret")
+
     def tearDown(self):
-        self.client.logout()
+        pass
 
-    def test_show_stories(self):
-        self.response = self.client.get(reverse("stories_show_story"))
+    def test_story_detail(self):
+        """
+        Test redirects for shortcut or outdated slug urls.
+        """
+        self.response = self.client.get(
+            reverse("stories_story_detail_pub",
+                    kwargs = {'story_id': self.story.id,
+                              'slug': self.story.slug }))
+        self.assertEqual(self.response.status_code, 301)
+
+    def test_story_detail_no_slug(self):
+        """
+        Test /stories/<id>/
+        """
+        list_url = reverse('stories_story_list_pub')
+        url = '%s%s/' % (list_url, self.story.id)
+        self.response = self.client.get(url)
+        self.assertEqual(self.response.status_code, 301)
+
+    def test_page_detail(self):
+        self.response = self.client.get(
+            reverse("stories_page_detail_pub",
+                    kwargs = {'story_id': self.story.id,
+                              'slug': self.story.slug,
+                              'pagenum' : 1, }))
+        self.assertEqual(self.response.status_code, 200)
+        
+    def test_page_detail_page2(self):
+        self.response = self.client.get(
+            reverse("stories_page_detail_pub",
+                    kwargs = {'story_id': self.story.id,
+                              'slug': self.story.slug,
+                              'pagenum' : 2, }))
         self.assertEqual(self.response.status_code, 200)
 
-    def test_show_story(self):
-        p1 = self.story.page_one
-        p2,p3,p4 = [self.story.add_page() for i in range(3)]
-        self.response = self.client.get(reverse("stories_show_story"))
-        self.assertEqual(self.response.status_code, 200)
+    def test_page_detail_fix_url(self):
+        self.response = self.client.get(
+            reverse("stories_page_detail_pub",
+                    kwargs = {'story_id': self.story.id,
+                              'slug': 'just-made-this-up',
+                              'pagenum': 1, }))
+        self.assertEqual(self.response.status_code, 301)
 
-        
-        

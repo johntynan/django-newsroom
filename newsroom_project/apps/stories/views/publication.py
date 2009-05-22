@@ -2,32 +2,47 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext, Template, Context
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponsePermanentRedirect
+from django.core.urlresolvers import reverse
 
-from stories.models import Story
+from stories.models import Story, Page
 
 
+def story_detail(request, story_id, slug=None):
+    """
+    Support URL /stories/<id>/ and /stories/<id>/<slug>/
+    Our permalinks must specific a page, since stories always have pages.
+    So this always redirects to page detail url.
+    """
 
+    story = get_object_or_404(Story,id=story_id)
+    return HttpResponsePermanentRedirect(
+                reverse('stories_page_detail_pub',
+                        args=[story.id, story.slug, 1]))
 
-@login_required
-def story(request,slug):
-    story = get_object_or_404(Story,slug=slug)
-    pagenum = request.GET.get('p',1)
-    page = story.get_page(1)
+def page_detail(request, story_id, slug, pagenum):
+    """
+    Each page has a permalink.
+    """
 
-    #render the page content so that media tags are handled
-    template = Template("{%% load media_tags %%}%s" %  page.content)
-    content = template.render(Context())
+    story = get_object_or_404(Story,id=story_id)
+    page = get_object_or_404(Page, story=story, pagenum=pagenum)
 
-    #TODO: get the template to use from the story
+    if slug != story.slug:
+        return HttpResponsePermanentRedirect(
+                    reverse('stories_page_detail_pub',
+                            args=[story.id, story.slug, pagenum]))
+        
+    return render_to_response(
+                'stories/publication/page_detail.html',
+                {'page':page,
+                'story':story,},
+                context_instance=RequestContext(request))
 
-    #TODO: handle column breaks
-    return render_to_response('stories/display_page_content.html',
-                              locals(),
-                              context_instance=RequestContext(request))
-
-#TODO: add authentication check decorators
-
-def stories_show(request):
+def story_list(request):
     stories = Story.objects.published()
-    return render_to_response('stories/stories_show.html',locals(),context_instance=RequestContext(request))
+    return render_to_response(
+                'stories/publication/story_list.html',
+                locals(),
+                context_instance=RequestContext(request))
 

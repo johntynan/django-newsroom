@@ -1,0 +1,10 @@
+{% extends 'stories/base.html' %}
+
+{% block head_title %}{{ story.headline }}, Page {{page.pagenum }}{% endblock %}
+
+{% block subnav %}{% endblock %}
+
+{% block main_content %}
+<h1>{{story.headline}}</h1>
+{{ page.content|safe }}
+{% endblock %}
