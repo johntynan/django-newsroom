@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
+from django.contrib.auth.models import get_hexdigest
 from django.contrib.sites.models import Site
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.template.defaultfilters import slugify
@@ -43,6 +45,10 @@ class StoryTests(TestCase):
         #self.failUnlessEqual(self._page_count(1),"New stories should have exactly one page")
         self._verify_page_count(1,msg="New stories should have exactly one page")
         self.failUnlessEqual(self.story.pages[0].pagenum,1,"First page should be 1")
+
+    def test_story_token(self):
+        TOKEN = get_hexdigest("md5", settings.SECRET_KEY, self.story.slug)
+        self.assertEqual(TOKEN, self.story.token)
         
     def test_story_always_has_one_or_more_pages(self):
         p1 = self.story.pages[0]
