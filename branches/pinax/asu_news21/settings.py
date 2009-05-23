@@ -13,6 +13,7 @@ PINAX_THEME = 'default'
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+INLINE_DEBUG = DEBUG
 
 # tells Pinax to serve media through django.views.static.serve.
 SERVE_MEDIA = DEBUG
