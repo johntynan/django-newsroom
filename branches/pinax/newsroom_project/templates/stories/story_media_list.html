@@ -39,7 +39,7 @@
             </div>
             <div id="story-media" class="tab">
 
-                {% for item in story.media.all %}
+                {% for item in story.get_relatedcontent %}
                 <div class="media-list-block" id="media-item-{{item.id}}"
                      style="width:240px;float:left;border:1px solid">
                     <h2>{{item}} :: {{ item.get_child_name }}</h2>

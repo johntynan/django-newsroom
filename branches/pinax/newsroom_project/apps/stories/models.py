@@ -17,6 +17,11 @@ from multimedia.nodes import MediaNode
 from topics.models import TopicPath
 from stories.constants import STORY_STATUS_CHOICES, STORY_STATUS_DRAFT, STORY_STATUS_PUBLISHED
 
+from django_inlines import inlines
+from django_inlines.samples import YoutubeInline
+
+inlines.registry.register('youtube', YoutubeInline)
+
 
 class StoryManager(models.Manager):
 
