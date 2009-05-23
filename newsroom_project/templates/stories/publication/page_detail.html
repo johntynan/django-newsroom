@@ -1,4 +1,5 @@
 {% extends 'stories/base.html' %}
+{% load inlines %}
 
 {% block head_title %}{{ story.headline }}, Page {{page.pagenum }}{% endblock %}
 
@@ -6,5 +7,5 @@
 
 {% block main_content %}
 <h1>{{story.headline}}</h1>
-{{ page.content|safe }}
+{% process_inlines page.content %}
 {% endblock %}
