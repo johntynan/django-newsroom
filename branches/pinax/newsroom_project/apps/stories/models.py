@@ -11,7 +11,6 @@ from django.template import Template, Context
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
-from core.models import Project
 from multimedia.models import Media
 from multimedia.nodes import MediaNode
 from topics.models import TopicPath
