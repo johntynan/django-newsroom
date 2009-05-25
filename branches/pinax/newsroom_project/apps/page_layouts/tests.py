@@ -17,7 +17,7 @@ def create_page_layout():
     page_layout.title = "This Is A Test Page Layout"
     page_layout.html = "<p>html here</p>"
     page_layout.description = "Like I said, this is a test page layout."
-    page_layout.image = "/site_media/images/widgets/page_layouts/one_column.png"
+    page_layout.image = "images/widgets/page_layouts/one_column.png"
     page_layout.save()
 
     c = Client()
@@ -30,8 +30,7 @@ class PageLayoutTests(TestCase):
     
     def setUp(self):
         self.page_layout = create_page_layout()
-        # print page_layout_list
-        
+    
 
 class PageLayoutUrlTests(TestCase):
     """
@@ -48,7 +47,3 @@ class PageLayoutUrlTests(TestCase):
         self.response = self.client.get(reverse("page_layout_list"))
         self.assertEqual(self.response.status_code, 200)
 
-
-        
-        
-        
