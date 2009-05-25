@@ -53,4 +53,4 @@ class TopicImage(models.Model):
                 help_text="Photos to help with featuring the piece.  The photos ideally are 16:9 or 4:3 aspect ratio and 1000px wide.  Scaling and thumbnails are handled automatically.",)
                 
     def __unicode__(self):
-        return self.title
+        return self.photo.title
