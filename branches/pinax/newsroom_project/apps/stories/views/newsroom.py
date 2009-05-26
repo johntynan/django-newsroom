@@ -76,7 +76,6 @@ def save_page(request,story_id):
         if page_formset.is_valid():
 
             for form in page_formset.forms:
-                import ipdb; ipdb.set_trace()
                 page = None
                 try:
                     page = Page.objects.get(story=story,pagenum=form['pagenum'])
