@@ -4,18 +4,8 @@ import os
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.test import TestCase
-from django.template.defaultfilters import slugify
-from stories.models import Story
+from stories.tests import create_draft_story
 
-def create_draft_story():
-    story = Story()
-    story.headline = "This Is A Test Story"
-    #normally slugify will be handled by the UI
-    story.slug = slugify(story.headline)
-    story.summary = "Like I said in the headline, this is a test story."
-    #TODO add an author(s)
-    story.save()
-    return story
 
 def create_user():
     user =  User.objects.create_user("user", "user@mail.com", "secret")
