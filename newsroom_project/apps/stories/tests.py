@@ -224,6 +224,15 @@ class StoryUrlPublicationTests(TestCase):
     def tearDown(self):
         pass
 
+    def test_story_list(self):
+        """
+        Test /stories/
+        """
+        self.response = self.client.get(
+            reverse("stories_story_list_pub",
+                    kwargs = {}))
+        self.assertEqual(self.response.status_code, 200)
+
     def test_story_preview(self):
         """
         Test /stories/preview/<id>/<token>/
@@ -305,5 +314,8 @@ class StoryUrlPublicationTests(TestCase):
                               'pagenum' : 1, 
                               'token': self.story_draft.token }))
         self.assertEqual(self.response.status_code, 200)
+
+
+
 
 
