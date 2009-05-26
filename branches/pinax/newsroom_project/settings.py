@@ -129,6 +129,7 @@ INSTALLED_APPS = (
     'countries',
     'tagging',
     'django_inlines',
+    'supertagging',
 
     # internal (for now)
     'basic_profiles',
@@ -171,6 +172,20 @@ CONTACT_EMAIL = "feedback@example.com"
 SITE_NAME = "News21"
 LOGIN_URL = "/account/login"
 LOGIN_REDIRECT_URLNAME = "what_next"
+
+# Open Calais Integration with django-supertagging
+SUPERTAGGING_AUTO_PROCESS = True
+SUPERTAGGING_CALAIS_API_KEY = 'your api key'
+SUPERTAGGING_MODULES = {
+    'stories.story' : {
+        'fields':(
+            {'name' : 'headline'},
+            {'name': 'summary'})},
+    'stories.page' : {
+        'fields' : (
+            {'name' : 'content'})}
+}
+
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.

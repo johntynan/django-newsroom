@@ -16,6 +16,7 @@ from multimedia.nodes import MediaNode
 from topics.models import TopicPath
 from stories.constants import STORY_STATUS_CHOICES, STORY_STATUS_DRAFT, STORY_STATUS_PUBLISHED
 
+from supertagging.fields import SuperTagField
 from django_inlines import inlines
 from django_inlines.samples import YoutubeInline
 
@@ -57,6 +58,7 @@ class Story(models.Model):
     topics = models.ManyToManyField(TopicPath, blank=True)
     lead_art = models.ForeignKey(Media,null=True,blank=True,related_name="lead_art")
     summary = models.TextField(blank=True)
+    tags = SuperTagField()
     location = models.CharField(
                 max_length=256,
                 blank=True,
@@ -190,6 +192,7 @@ class Page(models.Model):
     """
     story = models.ForeignKey(Story)
     content = models.TextField()
+    tags = SuperTagField()
     pagenum = models.PositiveIntegerField()
     
     objects = PageManager()
