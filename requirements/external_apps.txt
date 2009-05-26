@@ -8,3 +8,6 @@ django-imagekit
 # use trunk
 -e svn+http://code.djangoproject.com/svn/django/trunk#egg=django-trunk
 django-inlines
+#-e bzr+http://bazaar.launchpad.net/%7Epopulous/django-geotagging/geotags/#egg=django-geotagging
+-e svn+http://python-calais.googlecode.com/svn/trunk#egg=python-calais
+-e svn+http://opensource.washingtontimes.com/projects/public/django-supertagging/trunk@66#egg=django-supertagging
