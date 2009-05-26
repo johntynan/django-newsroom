@@ -21,7 +21,9 @@ class VideoFrame(ImageModel):
     of a video.
     """
     
-    image = models.ImageField( upload_to='uploads/videos/%Y/%m/%d/',) 
+    image = models.ImageField(
+        upload_to='uploads/videos/%Y/%m/%d/',
+        max_length=255)
 
     def __unicode__(self):
         return self.image.name
@@ -41,7 +43,8 @@ class Video(Media):
     video = models.FileField(
                         upload_to='uploads/videos/%Y/%m/%d/', 
                         verbose_name=_(u'Video file'),
-                        help_text=_(u'Select the video for upload, supported encodings are h.264 and flash video.'),)
+                        help_text=_(u'Select the video for upload, supported encodings are h.264 and flash video.'),
+                        max_length=255)
 
     frame = models.ForeignKey(
                     VideoFrame, 

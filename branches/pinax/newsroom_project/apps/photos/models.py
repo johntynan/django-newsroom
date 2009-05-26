@@ -146,7 +146,7 @@ class Image(ImageModel):
         (1, 'center'),
         (2, 'bottom'),
     )
-    image = models.ImageField(_('image'), upload_to='uploads/photos/%Y/%m/%d')
+    image = models.ImageField(_('image'), upload_to='uploads/photos/%Y/%m/%d', max_length=255)
     crop_horz = models.PositiveIntegerField(_('crop horizontal'),
                                             choices=crop_horz_choices,
                                             default=1)
