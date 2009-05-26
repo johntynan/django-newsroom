@@ -70,6 +70,6 @@ def story_list(request):
     stories = Story.objects.published()
     return render_to_response(
                 'stories/publication/story_list.html',
-                locals(),
+                {"stories":stories},
                 context_instance=RequestContext(request))
 
