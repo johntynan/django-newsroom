@@ -162,6 +162,7 @@ class StoryUrlNewsroomTests(TestCase):
              "summary" : "this story is a modifed test",
              "authors" : (self.user.id,),
              "sites" : (1,),
+             "status":'D',
             })
         self.assertEqual(self.response.status_code, 302)
 
@@ -205,6 +206,7 @@ class StoryUrlNewsroomTests(TestCase):
              "summary" : "this story is a test",
              "authors" : (self.user.id,),
              "sites" : (1,),
+             "status":'D',
             })
         self.assertEqual(self.response.status_code, 302)
 
