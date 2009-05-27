@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.conf import settings
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext, Template, Context
 from django.contrib.auth.decorators import login_required
@@ -63,7 +64,8 @@ def page_detail(request, story_id, slug, pagenum, token=None):
     return render_to_response(
                 'stories/publication/page_detail.html',
                 {'page':page,
-                'story':story,},
+                'story':story,
+                'google_key':settings.GOOGLE_MAPS_API_KEY},
                 context_instance=RequestContext(request))
 
 def story_list(request):

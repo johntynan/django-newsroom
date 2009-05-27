@@ -20,6 +20,8 @@ from supertagging.fields import SuperTagField
 from django_inlines import inlines
 from django_inlines.samples import YoutubeInline
 
+from geotags.models import Point,Line, MultiLine, Polygon
+
 inlines.registry.register('youtube', YoutubeInline)
 
 
@@ -119,6 +121,14 @@ class Story(models.Model):
                 relatedcontent_dict[relatedcontent.object._meta.module_name] = [relatedcontent.object]
         return relatedcontent_dict
 
+    def get_geotags(self):
+#        import ipdb; ipdb.set_trace()
+        geo_dict = {}
+        geo_dict['point'] = Point.objects.filter(content_type=ContentType.objects.get_for_model(self.__class__()), object_id=self.id)
+        geo_dict['line'] = Line.objects.filter(content_type=ContentType.objects.get_for_model(self.__class__()), object_id=self.id)
+        geo_dict['multiline'] = MultiLine.objects.filter(content_type=ContentType.objects.get_for_model(self.__class__()), object_id=self.id)
+        geo_dict['polygon'] = Polygon.objects.filter(content_type=ContentType.objects.get_for_model(self.__class__()), object_id=self.id)
+        return geo_dict
 
     def is_published(self):
         if self.status == STORY_STATUS_PUBLISHED:
