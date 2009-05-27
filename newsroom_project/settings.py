@@ -195,7 +195,6 @@ GOOGLE_MAPS_API_KEY = 'Add your key there'
 # This is needed to be able to run the test suite with geodjango
 TEST_RUNNER='django.contrib.gis.tests.run_tests'
 POSTGIS_TEMPLATE='template_postgis'
-TEST_RUNNER='django.contrib.gis.tests.run_tests'
 #POSTGIS_SQL_PATH='/usr/share/postgresql-8.3-postgis'
 
 
