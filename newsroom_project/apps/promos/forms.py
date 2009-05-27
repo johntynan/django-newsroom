@@ -36,4 +36,4 @@ class ImageForm(forms.ModelForm):
 
     class Meta:
         model = Photo
-        fields = ('title','image','caption','promo')
+#        fields = ('title','image','caption','promo')
