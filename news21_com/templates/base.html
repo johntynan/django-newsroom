@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+  <head>
+
+    <title>{% block head_title %}{% endblock %} | {% if site_name %}{{ site_name }}{% endif %}</title>
+
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="" />
+    <meta name="copyright" content="" />
+    <meta name="description" content="" />
+
+    <meta name="robots" content="all" />
+
+    <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}themes/esser/css/reset.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}themes/esser/css/960.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}themes/esser/css/text.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}themes/esser/css/site.css" />
+
+    <!--[if lt IE 7]>
+    <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}themes/esser/css/ie6.css" />
+    <![endif]-->
+
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-1.3.min.js"></script>
+
+    {% block extrahead %}{% endblock %}
+
+  </head>
+
+  <body id="{% block body_id %}body_base{% endblock %}">
+
+    <div id="shadow">
+
+      <div id="wrapper" class="container_12">
+
+        <!-- HEADER -->
+
+        <div id="header" class="grid_12">
+
+          <div id="logo"><a href="/"><img src="{{ MEDIA_URL }}themes/esser/images/header/news21.gif" alt="News 21" /></a></div>
+
+          <div id="tagline"><img src="{{ MEDIA_URL }}themes/esser/images/header/innovate-investigate-collaborate.gif" alt="Innovate_Investigate_Collaborate." /></div>
+
+          <ul>
+          {% block navbar %}
+            <li><a href="{% url topics_topic_list %}"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/topics.gif" alt="Topics" /></a></li>
+            <li><a href="/about/"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/about.gif" alt="About" /></a>
+              <ul>
+                <li><a href="#">The Initiative</a></li>
+                <li><a href="#">Participants</a></li>
+
+                <li><a href="#">Contributors</a></li>
+                <li><a href="#">News Partners</a></li>
+              </ul>
+            </li>
+           {% endblock %}
+          </ul>
+
+          <form id="search-form" action="" method="post">
+            <fieldset>
+
+              <input name="keywords" type="text" value="" class="input" />
+              <input name="search" type="image" src="{{ MEDIA_URL }}themes/esser/images/header/buttons/search.gif" alt="Search" class="search" />
+            </fieldset>
+          </form>
+
+        </div>
+
+
+
+        <div id="home" class="{% block content_grid %}grid_9{% endblock %}">
+        {% if messages %}
+            <ul id="messages">
+                {% for message in messages %}
+                <li id="message_{{ forloop.counter }}"><a href="#" onclick="
+$('#message_{{ forloop.counter }}').fadeOut(); return false;"><small>clear</small></a> {{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+          <div id="content">
+        {% block body %}{% endblock %}
+          </div><!-- close content div //-->
+
+        </div>
+
+
+        {% block sidebar %}
+        <div id="sidebar" class="grid_3">
+
+          {% block sidebar_about %}
+          <div id="about-news21" class="box">
+
+            <div class="header"><img src="{{ MEDIA_URL }}themes/esser/images/headers/about-news21.gif" alt="About News21" /></div>
+
+            <div class="padding">
+
+              <p>This site is a project sponsored by the Carnegie Corporation and Knight Foundation, featuring innovative approaches to storytelling and reporting from more than fellows associated with top U.S. journalism programs. Their goal:  push the boundaries of new forms of journalism. Beyond the eight main schools listed below, also involved are fellows from Harvard, Texas, Missouri and Nebraska.</p>
+
+            </div>
+
+          </div>
+          {% endblock %}
+
+          {% block sidebar_topics %}
+          <div id="topics" class="box">
+
+            <div class="header"><img src="{{ MEDIA_URL }}themes/esser/images/headers/2009-topics.gif" alt="2009 Topics" /></div>
+
+            <div class="padding">
+
+              <ul>
+                <li><a href="#">The Latino Experience Across America</a></li>
+                <li><a href="#">Urban Reporting, Demographics and the American Tapestry</a></li>
+                <li><a href="#">Charter Schools: A Lends Into Education Across the USA</a></li>
+                <li><a href="#">The U.S. Political landscape - racial Identity and Attitudes</a></li>
+                <li><a href="#">Changing America: Population and Energy Use</a></li>
+
+                <li><a href="#">Urban Youth and the New America</a></li>
+                <li><a href="#">Southwestern Shifts: New Communication and New Realties</a></li>
+                <li><a href="#">Teen America: Technology, Identity and Empowerment</a></li>
+              </ul>
+
+            </div>
+
+          </div>
+          {% endblock %}
+
+          {% block sidebar_orgs %}
+          <div id="university-newsrooms" class="box">
+
+            <div class="header"><img src="{{ MEDIA_URL }}themes/esser/images/headers/university-newsrooms.gif" alt="University Nerwsrooms" /></div>
+
+            <div class="padding">
+
+              <ul class="left">
+                <li><a href="#">Arizona State</a></li>
+                <li><a href="#">Berkeley</a></li>
+                <li><a href="#">Columbia</a></li>
+
+                <li><a href="#">Maryland</a></li>
+              </ul>
+
+              <ul class="right">
+                <li><a href="#">North Carolina</a></li>
+                <li><a href="#">Northwestern</a></li>
+                <li><a href="#">South Carolina</a></li>
+
+                <li><a href="#">Syracuse</a></li>
+              </ul>
+
+              <div class="clear"></div>
+
+            </div>
+
+          </div>
+          {% endblock %}
+
+        </div>
+        {% endblock %}
+
+        <!-- FOOTER -->
+
+        <div id="footer">
+
+          <div id="buttons" class="grid_4">
+
+            <ul>
+              <li><a href="#"><img src="{{ MEDIA_URL }}themes/esser/images/footer/buttons/contact-news21.gif" alt="Contact News21" /></a></li>
+              <li><a href="#"><img src="{{ MEDIA_URL }}themes/esser/images/footer/buttons/archive.gif" alt="Archive" /></a></li>
+
+            </ul>
+
+          </div>
+
+          <div id="bookmarks" class="grid_4">
+
+            <ul>
+              <li><a href="http://ning.news21.com/"><img src="{{ MEDIA_URL }}themes/esser/images/footer/bookmarks/ng.gif" alt="Ning Blogs" /></a></li>
+              <li><a href="#"><img src="{{ MEDIA_URL }}themes/esser/images/footer/bookmarks/facebook.gif" alt="Facebook" /></a></li>
+              <li><a href="http://www.youtube.com/news21"><img src="{{ MEDIA_URL }}themes/esser/images/footer/bookmarks/youtube.gif" alt="YouTube" /></a></li>
+
+              <li><a href="#"><img src="{{ MEDIA_URL }}themes/esser/images/footer/bookmarks/linkedin.gif" alt="LinkedIn" /></a></li>
+              <li><a href="#"><img src="{{ MEDIA_URL }}themes/esser/images/footer/bookmarks/rss.gif" alt="RSS" /></a></li>
+              <li><a href="#"><img src="{{ MEDIA_URL }}themes/esser/images/footer/bookmarks/email.gif" alt="Email" /></a></li>
+            </ul>
+
+          </div>
+
+          <div id="sponsors" class="grid_4">
+
+            <ul>
+
+              <li><a href="http://www.carnegie.org/" rel="external"><img src="{{ MEDIA_URL }}themes/esser/images/footer/sponsors/carnegie-corporation.gif" alt="Carnegie Corporation of New York" /></a></li>
+              <li><a href="http://www.knightfoundation.org/" rel="external"><img src="{{ MEDIA_URL }}themes/esser/images/footer/sponsors/knight-foundation.gif" alt="John S. and James L. Knight Foundation" /></a></li>
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div id="bottom"></div>
+
+  </body>
+
+</html>
+

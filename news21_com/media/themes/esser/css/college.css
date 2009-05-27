@@ -1,0 +1,91 @@
+
+/**
+ * College
+ */
+ 
+h1, h2 {
+  margin: 5px 0;
+}
+
+h1 {
+  font-size: 42px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+
+/**
+ * Sub Header
+ */
+
+#subheader {
+  height: 26px;
+  overflow:hidden;
+  margin-bottom: -10px;
+}
+
+#subheader img {
+  float: left;
+  width: 192px;
+  height: 26px;
+  border-right: 1px solid #7c7c7d;
+}
+
+#subheader p {
+  float: left;
+  line-height: 24px;
+  margin: 0 10px;
+  padding: 0;
+}
+
+#subheader p strong {
+  padding-right: 24px;
+}
+
+#subheader p em {
+  font-style: normal;
+  text-transform: uppercase;
+}
+
+
+/**
+ * Headlines
+ */
+
+#headlines {
+  min-height: 348px;
+  height: auto !important;
+  height: 348px;
+  border-top: 1px solid #767677;
+  border-bottom: 1px solid #767677;
+  margin: 10px 0;
+}
+
+#headlines ul {
+  margin-top: 30px;
+}
+
+#headlines .grid_5 {
+  margin: 0;
+}
+
+#headlines .grid_4 {
+  float: right;
+  margin: 10px 0;
+}
+
+
+/**
+ * Box
+ */
+
+.box {
+  background: #a6a6a7 url(../images/bgs/box.jpg) 0 39px repeat-x;
+}
+
+.box .header img {
+  background: #797a7b;
+  border-bottom: 1px solid #7c7c7d;
+}

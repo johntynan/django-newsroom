@@ -1,0 +1,41 @@
+{% extends 'site_base.html' %}
+
+{% block head_title %}Welcome{% endblock %}
+
+{% block body_id %}front{% endblock %}
+
+{# wipe topics sidebar #}
+{% block sidebar_topics %}{% endblock %}
+
+{% block body %}
+<div id="flash" class="box">
+<img src="{{ MEDIA_URL }}themes/esser/images/flash/home.jpg" alt="" />
+</div>
+
+          <div id="topics" class="box">
+
+            <div class="header"><img src="{{ MEDIA_URL }}themes/esser/images/headers/main-topic.gif" alt="2009 Topics: EXPLORATIONS IN A CHANGING AMERICA" /></div>
+
+            <div class="padding">
+
+              <ul>
+                <li><a href="#">The Latino Experience Across America</a></li>
+
+                <li><a href="#">Urban Reporting, Demographics and the American Tapestry</a></li>
+                <li><a href="#">Charter Schools: A Lends Into Education Across the USA</a></li>
+                <li><a href="#">The U.S. Political landscape - racial Identity and Attitudes</a></li>
+              </ul>
+
+              <ul>
+                <li><a href="#">Changing America: Population and Energy Use</a></li>
+
+                <li><a href="#">Urban Youth and the New America</a></li>
+                <li><a href="#">Southwestern Shifts: New Communication and New Realties</a></li>
+                <li><a href="#">Teen America: Technology, Identity and Empowerment</a></li>
+              </ul>
+
+              <div class="clear"></div>
+
+            </div>
+          </div>
+{% endblock %}

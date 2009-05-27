@@ -1,0 +1,89 @@
+/**
+ * Basic HTML
+ */
+ 
+body {
+  background: #404041 url(../images/bgs/body.gif) center top;
+  color: #363636;
+  font-family: Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+a:focus {
+  outline: 0;
+}
+
+hr {
+  border: 0 #7c7c7d solid;
+  border-top-width: 1px;
+  clear: both;
+  height: 0;
+}
+
+ol {
+  list-style: decimal;
+}
+
+ol li {
+  margin-left: 25px;
+}
+
+ul {
+
+}
+
+ul li {
+  padding-bottom: 8px;
+  line-height: 14px;
+}
+
+ul.arrows li {
+  background: url(../images/bgs/li-arrow.gif) 0 6px no-repeat;
+  padding-left: 10px;
+}
+
+ul.arrows li strong {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+
+
+/**
+ * Headings
+ */
+
+h1 {
+  font-size: 28px;
+  line-height: normal;
+}
+
+h2 {
+  font-family: 'Helvetica Bold', Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: normal;
+}
+
+
+/**
+ * Spacing
+ */
+ 
+p,
+dl,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+ul,
+pre,
+table,
+address {
+  margin: 10px 0;
+}
