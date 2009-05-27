@@ -7,9 +7,77 @@
 {# wipe topics sidebar #}
 {% block sidebar_topics %}{% endblock %}
 
+
+{% block extrahead %}
+<script type="text/javascript" src="{{ MEDIA_URL }}js/swfobject.js"></script>
+{% endblock %}
+
 {% block body %}
 <div id="flash" class="box">
-<img src="{{ MEDIA_URL }}themes/esser/images/flash/home.jpg" alt="" />
+	<div id="flashcontent">TiltViewer requires JavaScript and the latest Flash player. <a href="http://www.macromedia.com/go/getflashplayer/">Get Flash here.</a></div>
+	<script type="text/javascript">
+	
+		var fo = new SWFObject("{{ MEDIA_URL}}uploads/projects/2009/05/27/news21tiltview/TiltViewer.swf", "viewer", "100%", "500", "9.0.28", "#000000");			
+		
+		// TILTVIEWER CONFIGURATION OPTIONS
+		// To use an option, uncomment it by removing the "//" at the start of the line
+		// For a description of config options, go to: 
+		// http://www.airtightinteractive.com/projects/tiltviewer/config_options.html
+															
+		//FLICKR GALLERY OPTIONS
+		// To use images from Flickr, uncomment this block
+		//fo.addVariable("useFlickr", "true");
+		//fo.addVariable("user_id", "48508968@N00");
+		//fo.addVariable("tags", "jump,smile");
+		//fo.addVariable("tag_mode", "all");
+		//fo.addVariable("showTakenByText", "true");		
+		
+		// XML GALLERY OPTIONS
+		// To use local images defined in an XML document, use this block		
+		fo.addVariable("useFlickr", "false");
+		fo.addVariable("xmlURL", "gallery.xml");
+		fo.addVariable("maxJPGSize","600");
+		
+		//GENERAL OPTIONS		
+		fo.addVariable("useReloadButton", "false");
+		fo.addVariable("columns", "3");
+		fo.addVariable("rows", "2");
+		//fo.addVariable("showFlipButton", "true");
+		//fo.addVariable("showLinkButton", "true");
+		//fo.addVariable("linkLabel", "Click this Link!!");
+		//fo.addVariable("frameColor", "0xff0000");
+		fo.addVariable("backColor", "0x999999");
+		//fo.addVariable("bkgndInnerColor", "0xFF00FF");
+		//fo.addVariable("bkgndOuterColor", "0x0000FF");				
+		//fo.addVariable("langGoFull", "Go Fullscreen");
+		//fo.addVariable("langExitFull", "Exit Fullscreen");
+		//fo.addVariable("langAbout", "About");	
+		
+		//PRO OPTIONS
+		//fo.addVariable("bkgndTransparent", "true");
+		//fo.addVariable("showFullscreenOption", "true");
+		fo.addVariable("frameWidth", "20");
+		fo.addVariable("zoomedInDistance", "1000");
+		fo.addVariable("zoomedOutDistance", "2700");
+		//fo.addVariable("fontName", "Times");
+		fo.addVariable("titleFontSize", "60");
+		fo.addVariable("descriptionFontSize", "25");
+		//fo.addVariable("linkFontSize", "41");
+		//fo.addVariable("linkTarget", "_self");
+		//fo.addVariable("navButtonColor", "0xFF00FF");
+		//fo.addVariable("flipButtonColor", "0x0000FF");
+		//fo.addVariable("textColor", "0xFFFFFF");
+		//fo.addVariable("linkTextColor", "0x000000");
+		//fo.addVariable("linkBkgndColor", "0xFFFFFF");
+		//fo.addVariable("enableSounds", "true");
+		fo.addVariable("tiltAmountIn", "20");
+		fo.addVariable("tiltAmountOut", "40");
+				
+		// END TILTVIEWER CONFIGURATION OPTIONS
+		fo.addParam("allowFullScreen","true");
+		fo.addParam("base","{{ MEDIA_URL}}uploads/projects/2009/05/27/news21tiltview/");
+		fo.write("flashcontent");			
+	</script>	
 </div>
 
           <div id="topics" class="box">
