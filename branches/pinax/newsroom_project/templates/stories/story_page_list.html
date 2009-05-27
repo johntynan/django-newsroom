@@ -53,6 +53,7 @@
     <div class="tab-links">
         <a href="{% url stories_edit_story story.id %}" rel="story-info" style="color: #888;">Properties</a>
         <a href="{% url stories_story_media story.id %}" rel="story-media" style="color: #888;">Media</a>
+        <a href="{% url stories_story_add_edit_point story.id %}" rel="story-media">Geotag</a>
         {% for page in story.pages %}
         <a href="" rel="story-content-{{ page.pagenum }}" class="{% if forloop.first %}active{% endif %} page_nav">Page {{ page.pagenum }}</a>
         {% endfor %}

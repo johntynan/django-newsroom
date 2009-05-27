@@ -12,3 +12,16 @@
 
 5) Make sure you have django trunk
     pip install -e svn+http://code.djangoproject.com/svn/django/trunk#egg=django-trunk
+
+6) Create the database from your postgis template
+   createdb -T template_postgis -O <db user> -h localhost -p5432 -U <db user> -W <db name>
+
+7) Create the tables in your db
+    ./manage.py syncdb
+
+8) Add the so-called “Google” projection to your spatial database’s spatial_ref_sys table 
+    from django.contrib.gis.utils import add_postgis_srs
+    add_postgis_srs(900913)
+
+9) Run the test suite to make sure that everything is properly setup
+    ./manage.py test stories videos photos page_layouts

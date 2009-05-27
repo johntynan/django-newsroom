@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.core.urlresolvers import reverse
+from django.conf import settings
+from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -177,6 +179,41 @@ def story_add_edit_media(request, story_id, media_type=None, media_id=None):
     #            context_instance=RequestContext(request))
 
 @login_required
+def story_add_edit_geotag(request,story_id, 
+    template=None, form_class=None, geotag_class=None):
+    """
+    This view determines the content_type and the
+    object_id for the given story (story_id) then it returns
+    the response of add_edit_geotag.
+    """
+    story = get_object_or_404(Story, pk=story_id)
+    story_content_type = ContentType.objects.get_for_model(story)
+    try:
+        geotag = geotag_class.objects.get(content_type__pk=story_content_type.id,
+                               object_id=story.id)
+    except ObjectDoesNotExist:
+        geotag = None
+    if request.method == "POST":
+        form = form_class(request.POST, instance=geotag)
+        if form.is_valid():
+            new_object = form.save(commit=False)
+            new_object.object = story
+            new_object.save()
+            return HttpResponseRedirect(
+                reverse('stories_story_pages', args=[story.id]))
+    form = form_class(instance=geotag)
+
+    context = RequestContext(request, {
+        "form": form,
+        "geo_type": form_class._meta.model._meta.verbose_name,
+        "story": story,
+        "google_key": settings.GOOGLE_MAPS_API_KEY,
+        "geotag": geotag,
+    })
+    return render_to_response(template, context_instance=context )
+    
+
+@login_required
 def story_select_media(request,story_id,media_type):
     story = get_object_or_404(Story,pk=story_id)
     MediaType = Media.class_factory(media_type)
@@ -202,4 +239,6 @@ def media_widget(request,media_id):
 @login_required
 def page_template(request,template_name):
     return render_to_response('stories/templates/%s.html' % template_name,locals(),context_instance=RequestContext(request))
+
+
 

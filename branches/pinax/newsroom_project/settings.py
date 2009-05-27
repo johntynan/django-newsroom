@@ -111,7 +111,9 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.humanize',
     'django.contrib.admindocs',
+    'geotags',
     'django.contrib.admin',
+    'django.contrib.gis',
     'django.contrib.markup',
 
     # external
@@ -185,6 +187,16 @@ SUPERTAGGING_MODULES = {
         'fields' : (
             {'name' : 'content'})}
 }
+
+
+# Google map
+GOOGLE_MAPS_API_KEY = 'Add your key there'
+
+# This is needed to be able to run the test suite with geodjango
+TEST_RUNNER='django.contrib.gis.tests.run_tests'
+POSTGIS_TEMPLATE='template_postgis'
+TEST_RUNNER='django.contrib.gis.tests.run_tests'
+#POSTGIS_SQL_PATH='/usr/share/postgresql-8.3-postgis'
 
 
 # local_settings.py can be used to override environment-specific settings

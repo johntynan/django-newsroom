@@ -1,12 +1,11 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
-from django.views.generic.simple import direct_to_template
 from django.contrib import admin
+from django.views.generic.simple import direct_to_template
+
 from account.openid_consumer import PinaxConsumer
 
 admin.autodiscover()
-
-import os
 
 urlpatterns = patterns('',
     url(r'^$', direct_to_template, {"template": "homepage.html"}, name="home"),
