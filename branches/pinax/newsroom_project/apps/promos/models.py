@@ -1,10 +1,6 @@
 from django.db import models
-from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User
-from django.contrib.contenttypes import generic
-# from core.models import Project
 from photos.models import Photo
-from bookmarks.models import BookmarkInstance
 from topics.models import TopicPath
 
 
