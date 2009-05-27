@@ -2,7 +2,7 @@ import sys
 
 from django.core.management.base import BaseCommand
 from utils import settings
-from django.test.simple import run_tests
+from django.contrib.gis.tests import run_tests
 
 class Command(BaseCommand):
     option_list = BaseCommand.option_list + ()
