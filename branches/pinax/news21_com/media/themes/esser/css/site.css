@@ -1,0 +1,324 @@
+
+/**
+ * Shadow
+ */
+ 
+#shadow {
+  background: url(/site_media/themes/esser/images/bgs/shadow.png) center top repeat-y;
+}
+
+
+/**
+ * Wrapper
+ */
+ 
+#wrapper {
+  background: #fff;
+}
+
+
+/**
+ * Header
+ */
+ 
+#header {
+  height: 37px;
+  background: #747374 url(/site_media/themes/esser/images/bgs/header.gif) right top repeat-x;
+  border-top: 1px solid #7c7c7d;
+  border-bottom: 1px solid #7c7c7d;
+  margin-top: 10px;
+}
+
+#header #logo { 
+  float: left;
+}
+
+#header #logo img {
+  position: relative;
+  top: -1px;
+  z-index: 10;
+}
+
+#header #tagline {
+  float: left;
+  width: 390px;
+  height: 37px;
+  border-left: 1px solid #7c7c7d;
+  border-right: 1px solid #7c7c7d;
+}
+
+#header ul {
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+#header ul li {
+  position: relative;
+  float: left;
+  margin: 0;
+  padding: 0;
+  border-right: 1px solid #9b9b9c;
+}
+
+#header ul li a img {
+  float: left;
+}
+
+#header ul li ul {
+  background: #404040;
+  display: none;
+  position: absolute;
+  width: 140px;
+  height: auto;
+  top: 38px;
+  left: 0;
+  padding: 4px 0px;
+}
+
+#header ul li ul li {
+  float: none;
+  display: block;
+  border: 0;
+}
+
+#header ul li ul li a {
+  background: url(/site_media/themes/esser/images/header/buttons/bgs/subnav.gif) right 6px no-repeat;
+  color: #fff;
+  float: left;
+  clear: left;
+  padding: 2px 12px;
+  text-decoration: none;
+}
+
+#header ul li ul li a:hover {
+  background: url(/site_media/themes/esser/images/header/buttons/bgs/subnav-over.gif) right 6px no-repeat;
+  color: #f29812;
+}
+
+#header form input.input {
+  float: left;
+  width: 132px;
+  border: 1px solid #9c9c9c;
+  font-size: 12px;
+  margin: 8px 6px 0 12px;
+  padding: 2px;
+  display: inline;
+}
+
+#header form input.search {
+  float: right;
+}
+
+
+/**
+ * Content
+ */
+
+#front #content {
+    margin:0;
+    border:0;
+}
+
+#content {
+  border-top: 1px solid #767677;
+  margin-top: 10px;
+}
+
+#content .grid_7,
+#content .grid_2 {
+  margin: 0;
+}
+
+#content .grid_2 {
+  float: right;
+}
+
+#content .image-with-caption {
+  float: left;
+  width: 300px;
+  height: auto;
+  margin-right: 20px;
+  display: inline;
+}
+
+#content .image-with-caption p {
+  font-size: 10px;
+  margin: 5px 0;
+}
+
+#content blockquote {
+  border-top: 1px solid #7c7c7d;
+  border-bottom: 1px solid #7c7c7d;
+  margin-top: 180px;
+}
+
+#content blockquote p {
+  border-top: 1px solid #7c7c7d;
+  border-bottom: 1px solid #7c7c7d;
+  font-size: 32px;
+  line-height: normal;
+  margin: 3px 0;
+  padding: 10px 0;
+
+}
+
+
+/**
+ * About News21
+ */
+
+#about-news21 {
+  min-height: 348px;
+  height: auto !important;
+  height: 348px;
+}
+
+
+/**
+ * Home Topics
+ */
+
+#home #topics ul {
+  float: left;
+  width: 335px;
+}
+
+
+/**
+ * University Newsrooms
+ */
+ 
+#university-newsrooms ul {
+  width: 95px;
+  float: left;
+}
+
+
+/**
+ * Quick Links
+ */
+ 
+#quick-links ul {
+  float: left;
+}
+
+
+/**
+ * Footer
+ */
+ 
+#footer {
+  clear: both;
+  height: 48px;
+  background: url(/site_media/themes/esser/images/footer/corner.gif) left bottom no-repeat;
+  border-top: 1px solid #7c7c7d;
+}
+
+#footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#footer ul li {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+#footer #sponsors {
+  height: 48px;
+  overflow: hidden;
+}
+
+#footer #buttons {
+  text-align: left;
+  white-space: nowrap;
+  overflow: visible;
+}
+
+#footer #buttons ul {
+  margin-top: 12px;
+}
+
+#footer #buttons ul li {
+  margin-right: 3px;
+}
+
+#footer #bookmarks {
+  text-align: center;
+}
+
+#footer #bookmarks ul {
+  margin-top: 12px;
+}
+
+#footer #bookmarks ul li {
+  margin-left: 3px;
+}
+
+#footer #sponsors {
+  text-align: right;
+}
+
+#footer #sponsors ul li {
+  margin-left: 21px;
+}
+
+
+/**
+ * Bottom
+ */
+ 
+#bottom {
+  background: url(/site_media/themes/esser/images/bgs/bottom.png) top center no-repeat;
+  height: 25px;
+}
+
+
+/**
+ * Box
+ */
+
+.box {
+  background: #a6a6a7 url(/site_media/themes/esser/images/bgs/box.jpg) 0 27px repeat-x;
+  border-top: 1px solid #7c7c7d;
+  border-bottom: 1px solid #7c7c7d;
+  color: #fff;
+  margin: 10px 0;
+}
+
+.box a {
+  color: #fff;
+}
+
+.box .header img {
+  background: #e88f0a;
+  border-bottom: 1px solid #7c7c7d;
+}
+
+.box .padding {
+  padding: 5px 15px;
+}
+
+
+/**
+ * Misc Classes
+ */
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.noborders {
+  border: 0;
+}
+
+.nomargins {
+  margin: 0;
+}
