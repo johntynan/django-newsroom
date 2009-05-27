@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls.defaults import *
+from geotags.models import Line, Point, Polygon
+from geotags.forms import PointForm
 
 urlpatterns = patterns('stories.views.newsroom',
 
@@ -26,6 +28,11 @@ urlpatterns = patterns('stories.views.newsroom',
     url(r'^story/(?P<story_id>\d+)/media/(?P<media_id>\d+)/edit/$','story_add_edit_media',name='stories_story_edit_media'),
     #associate media
     url(r'^story/(?P<story_id>\d+)/media/(?P<media_type>\w+)/select/$','story_select_media',name='stories_story_select_media'),
+    # associate point
+    url(r'^story/(?P<story_id>\d+)/point/$', 'story_add_edit_geotag',
+        {"form_class":PointForm, "geotag_class":Point,
+         "template":"stories/story_add_edit_point.html"}
+        , name="stories_story_add_edit_point"),
 
 
 

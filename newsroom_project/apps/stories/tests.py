@@ -1,14 +1,19 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.models import get_hexdigest
+from django.contrib.gis.utils import add_postgis_srs
 from django.contrib.sites.models import Site
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.template.defaultfilters import slugify
+
+from geotags.models import Point
+
 from stories.models import Story, StoryIntegrityError
 from stories.models import Page
 from stories.models import RelatedContent
 from stories.constants import STORY_STATUS_DRAFT, STORY_STATUS_PUBLISHED
+
 
 def create_draft_story():
     story = Story()
@@ -209,6 +214,17 @@ class StoryUrlNewsroomTests(TestCase):
              "status":'D',
             })
         self.assertEqual(self.response.status_code, 302)
+
+    def test_add_point_post_url(self):
+        add_postgis_srs(900913)
+        self.assertEqual(0, Point.objects.count())
+        self.response = self.client.post(reverse('stories_story_add_edit_point',
+            kwargs={"story_id" : self.story_draft.id}),
+            {"point" : "SRID=900913;POINT(-13161849.549963182 4036247.7234083386)"})
+        self.assertEqual(self.response.status_code, 302)
+        self.assertEqual(1, Point.objects.count())
+        self.assertEqual(self.story_draft, Point.objects.all()[0].object)
+
 
 class StoryUrlPublicationTests(TestCase):
     """
