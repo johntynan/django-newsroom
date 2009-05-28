@@ -27,6 +27,7 @@ urlpatterns = patterns('',
     (r'^videos/',include('videos.urls')),
     (r'^multimedia/',include('multimedia.urls')),
     (r'^page_layouts/',include('page_layouts.urls')),
+    (r'^geotags/', include('geotags.urls')),
 
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/(.*)', admin.site.root),
