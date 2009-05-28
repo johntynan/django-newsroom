@@ -115,7 +115,7 @@ class Story(models.Model):
         for relatedcontent in self.relatedcontent_set.all():
             if relatedcontent_dict.has_key(relatedcontent.object._meta.module_name):
                 object_list = relatedcontent_dict[relatedcontent.object._meta.module_name]
-                object_list.extend(relatedcontent.object)
+                object_list.append(relatedcontent.object)
                 relatedcontent_dict[relatedcontent.object._meta.module_name] = object_list
             else:
                 relatedcontent_dict[relatedcontent.object._meta.module_name] = [relatedcontent.object]
