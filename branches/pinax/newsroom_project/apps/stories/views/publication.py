@@ -62,7 +62,7 @@ def page_detail(request, story_id, slug, pagenum, token=None):
                             args=[story.id, story.slug, pagenum]))
         
     return render_to_response(
-                'stories/publication/page_detail.html',
+                'stories/page_detail.html',
                 {'page':page,
                 'story':story,
                 'google_key':settings.GOOGLE_MAPS_API_KEY},
@@ -71,7 +71,7 @@ def page_detail(request, story_id, slug, pagenum, token=None):
 def story_list(request):
     stories = Story.objects.published()
     return render_to_response(
-                'stories/publication/story_list.html',
+                'stories/story_list.html',
                 {"stories":stories},
                 context_instance=RequestContext(request))
 

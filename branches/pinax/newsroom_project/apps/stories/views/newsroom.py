@@ -21,7 +21,7 @@ from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 @login_required
 def story_list(request):
     stories = request.user.story_set.all()
-    return render_to_response('stories/story_list.html',locals(),context_instance=RequestContext(request))
+    return render_to_response('stories/story_edit_list.html',locals(),context_instance=RequestContext(request))
 
 @login_required
 def add_story(request):
