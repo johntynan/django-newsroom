@@ -1,8 +1,19 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
-from photos.models import Photo
 from topics.models import TopicPath
 
+"billboard", "thumbnail", "medium billboard", "original"
+IMAGE_KIND_BILLBOARD = 'B'
+IMAGE_KIND_THUMBNAIL = 'T'
+IMAGE_KIND_MEDIUM = 'M'
+IMAGE_KIND_ORIGINAL = 'O'
+IMAGE_KIND_CHOICES = (
+    (IMAGE_KIND_BILLBOARD,'Billboard'),
+    (IMAGE_KIND_THUMBNAIL, 'Thumbnail'),
+    (IMAGE_KIND_MEDIUM, 'Medium'),
+    (IMAGE_KIND_ORIGINAL, 'Original'),
+)
 
 class Promo(models.Model):
     """
@@ -88,11 +99,18 @@ class PromoLink(models.Model):
         return self.title
 
 class PromoImage(models.Model):
-    photo = models.ForeignKey(Photo)
+    attribution = models.CharField(_('attibution'), max_length=100)
+    caption = models.CharField(_('caption'), max_length=100)
+    image_kind =models.CharField(_('Image kind'),
+        max_length=1,
+        choices=IMAGE_KIND_CHOICES,
+        default=IMAGE_KIND_BILLBOARD)
+    image = models.ImageField(_('image'),
+        upload_to='uploads/promos/%Y/%m/%d',
+        max_length=255)
     promo = models.ForeignKey(
                 Promo,
                 help_text="Photos to help with featuring the piece.  The photos ideally are 16:9 or 4:3 aspect ratio and 1000px wide.  Scaling and thumbnails are handled automatically.",)
-
 
     def __unicode__(self):
         return self.photo.title

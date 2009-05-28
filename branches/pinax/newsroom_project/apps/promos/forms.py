@@ -1,8 +1,6 @@
 from django import forms
-from django.forms import widgets
 from promos.models import *
 from core.models import *
-from photos.models import Photo
 
 class PromoForm(forms.ModelForm):
     """
@@ -30,10 +28,11 @@ class LinkForm(forms.ModelForm):
     
     class Meta:
         model = PromoLink
-        fields = ('title','url','desc','promo')
+        fields = ('title','url','desc')
         
 class ImageForm(forms.ModelForm):
 
     class Meta:
-        model = Photo
-#        fields = ('title','image','caption','promo')
+        model = PromoImage
+        exclude =('promo',)
+        

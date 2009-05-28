@@ -5,8 +5,6 @@ from django.http import HttpResponseRedirect
 from promos.models import Promo, PromoImage, PromoLink
 from promos.forms import PromoForm, ImageForm, LinkForm
 
-from django.contrib.auth.models import User
-
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.contrib.sites.models import Site
@@ -52,11 +50,11 @@ def promo_add(request):
               {'form':form},
               context_instance=RequestContext(request))
 
-def promo_edit(request, id):
+def promo_edit(request, promo_id):
     """
     Edit an existing promo.
     """
-    promo = get_object_or_404(Promo, pk=id)
+    promo = get_object_or_404(Promo, pk=promo_id)
 
     PromoImageInlineFormSet = inlineformset_factory(Promo, PromoImage)   
     PromoLinkInlineFormSet = inlineformset_factory(Promo, PromoLink)  
@@ -80,7 +78,10 @@ def promo_edit(request, id):
 
     return render_to_response(
               'promos/promo_edit.html',
-              ({'form': form, 'formset1': formset1, 'formset2': formset2}),
+              ({'form': form,
+              'formset1': formset1,
+              'formset2': formset2,
+              'promo':promo}),
               context_instance=RequestContext(request))
 
 def promo_list(request):
@@ -98,14 +99,14 @@ def promo_list(request):
                 },
               context_instance=RequestContext(request))
 
-def promo_detail(request, id):
+def promo_detail(request, promo_id):
     """
     Get promo details.
     """
-    promo = Promo.objects.get(pk=id)
+    promo = Promo.objects.get(pk=promo_id)
     # do not use this: promo_link = promo.promolink_set.all() - a pain for introspection.
-    promo_link = PromoLink.objects.filter(promo=id)
-    promo_image = PromoImage.objects.filter(promo=id)
+    promo_link = PromoLink.objects.filter(promo=promo_id)
+    promo_image = PromoImage.objects.filter(promo=promo_id)
 
     return render_to_response(
               'promos/promo_detail.html',{
@@ -116,7 +117,7 @@ def promo_detail(request, id):
               context_instance=RequestContext(request))
     
     
-def promo_image_add(request):
+def promo_image_add(request, promo_id):
     """
     Process a new promo link submission.
     """
@@ -137,7 +138,7 @@ def promo_image_add(request):
               {'form':form},
               context_instance=RequestContext(request))
 
-def promo_link_add(request):
+def promo_link_add(request, promo_id):
     """
     Process a new promo link submission.
     """

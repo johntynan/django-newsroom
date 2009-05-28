@@ -12,19 +12,19 @@ urlpatterns = patterns('',
         views.promo_add,
         name="promos_promo_add"),
 
-    url(r'^(?P<id>\d+)/edit/$',
+    url(r'^(?P<promo_id>\d+)/edit/$',
         views.promo_edit,
         name='promos_promo_edit'),
 
-    url(r'^(?P<id>\d+)/$', 
+    url(r'^(?P<promo_id>\d+)/$',
         views.promo_detail,
         name="promos_promo_detail"),
     
-    url(r'^image_add/$', 
+    url(r'^(?P<promo_id>\d+)/image_add/$',
         views.promo_image_add,
         name="promos_promo_image_add"),    
 
-    url(r'^link_add/$', 
+    url(r'^(?P<promo_id>\d+)/link_add/$',
         views.promo_link_add,
         name="promos_promo_link_add"),
     
