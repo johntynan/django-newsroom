@@ -57,10 +57,10 @@
            {% endblock %}
           </ul>
 
-          <form id="search-form" action="http://newsinitiative.org/search" method="get">
+          <form action="/search/" method="get">
             <fieldset>
 
-              <input name="searchterm" type="text" value="" class="input" />
+              <input name="q" type="text" value="{{ request.GET.q }}" class="input" />
               <input name="search" type="image" src="{{ MEDIA_URL }}themes/esser/images/header/buttons/search.gif" alt="Search" class="search" />
             </fieldset>
           </form>
