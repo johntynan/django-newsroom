@@ -18,25 +18,9 @@
 
 {% block logo_link_image %}<div class="project-title">News21</div>{% endblock %}
 
-{% block tabs %}
-    {% if user.is_authenticated %}
-    {% endif %}
-{% endblock %}
-
 {% block sec_navigation %}
-
     {% if user.is_authenticated %}
         <li><a class="navbutton" href="">Search</a></li>
         <li><a class="navbutton" href="{% url profile_list %}">Users</a></li>
     {% endif %}
-{% endblock %}
-
-{% block footer %}
-<div class="legal">
-    {% trans "&copy; 2009 News21" %}
-    - <a href="{% url about %}">{% trans "About" %}</a>
-    - <a href="{% url terms %}">{% trans "Terms of Service" %}</a>
-    - <a href="{% url privacy %}">{% trans "Privacy Policy" %}</a>
-    - <a href="{% url dmca %}">{% trans "DMCA Notice" %}</a>
-</div>
 {% endblock %}

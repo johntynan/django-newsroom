@@ -1,23 +1,40 @@
-{% extends 'site_base.html' %}
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>TiltViewer</title>
+<script type="text/javascript" src="swfobject.js"></script>
+<style type="text/css">	
+	/* hide from ie on mac \*/
+	html {
+		height: 100%;
+		overflow: hidden;
+	}
+	
+	#flashcontent {
+		height: 100%;
+	}
+	/* end hide */
 
-{% block head_title %}Welcome{% endblock %}
+	body {
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		background-color: #000000;
+		color:#ffffff;
+		font-family:sans-serif;
+		font-size:40;
+	}
 
-{% block body_id %}front{% endblock %}
-
-{# wipe topics sidebar #}
-{% block sidebar_topics %}{% endblock %}
-
-
-{% block extrahead %}
-<script type="text/javascript" src="{{ MEDIA_URL }}js/swfobject.js"></script>
-{% endblock %}
-
-{% block body %}
-<div id="flash" class="box">
+	a {	
+		color:#cccccc;
+	}
+</style>
+</head>
+<body>
 	<div id="flashcontent">TiltViewer requires JavaScript and the latest Flash player. <a href="http://www.macromedia.com/go/getflashplayer/">Get Flash here.</a></div>
 	<script type="text/javascript">
 	
-		var fo = new SWFObject("{{ MEDIA_URL}}flash/news21tiltview/TiltViewer.swf", "viewer", "100%", "100%", "9.0.28", "#000000");			
+		var fo = new SWFObject("TiltViewer.swf", "viewer", "100%", "100%", "9.0.28", "#000000");			
 		
 		// TILTVIEWER CONFIGURATION OPTIONS
 		// To use an option, uncomment it by removing the "//" at the start of the line
@@ -35,7 +52,7 @@
 		// XML GALLERY OPTIONS
 		// To use local images defined in an XML document, use this block		
 		fo.addVariable("useFlickr", "false");
-		fo.addVariable("xmlURL", "{{ MEDIA_URL}}flash/news21tiltview/gallery.xml");
+		fo.addVariable("xmlURL", "gallery.xml");
 		fo.addVariable("maxJPGSize","600");
 		
 		//GENERAL OPTIONS		
@@ -77,33 +94,6 @@
 		
 		fo.addParam("allowFullScreen","true");
 		fo.write("flashcontent");			
-	</script>
-</div>
-
-          <div id="topics" class="box">
-
-            <div class="header"><img src="{{ MEDIA_URL }}themes/esser/images/headers/main-topic.gif" alt="2009 Topics: EXPLORATIONS IN A CHANGING AMERICA" /></div>
-
-            <div class="padding">
-
-              <ul>
-                <li><a href="http://asu.news21.com">The Latino Experience Across America</a></li>
-
-                <li><a href="http://berkeley.news21.com">Urban Reporting, Demographics and the American Tapestry</a></li>
-                <li><a href="http://columbia.news21.com">Charter Schools: A Lends Into Education Across the USA</a></li>
-                <li><a href="http://umd.news21.com">The U.S. Political landscape - racial Identity and Attitudes</a></li>
-              </ul>
-
-              <ul>
-                <li><a href="http://unc.news21.com">Changing America: Population and Energy Use</a></li>
-
-                <li><a href="http://northwestern.news21.com">Urban Youth and the New America</a></li>
-                <li><a href="http://usc.news21.com">Southwestern Shifts: New Communication and New Realties</a></li>
-                <li><a href="http://syracuse.news21.com">Teen America: Technology, Identity and Empowerment</a></li>
-              </ul>
-
-              <div class="clear"></div>
-
-            </div>
-          </div>
-{% endblock %}
+	</script>	
+</body>
+</html>
