@@ -197,6 +197,10 @@ TEST_RUNNER='django.contrib.gis.tests.run_tests'
 POSTGIS_TEMPLATE='template_postgis'
 #POSTGIS_SQL_PATH='/usr/share/postgresql-8.3-postgis'
 
+# You can get the GeoIP data sets with this script.
+# http://bazaar.launchpad.net/%7Epopulous/django-geotagging/geotags/annotate/head%3A/geotagging_demo_project/geoip_datasets/get_geoip_datasets.sh
+GEOIP_PATH=PROJECT_ROOT
+
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.
