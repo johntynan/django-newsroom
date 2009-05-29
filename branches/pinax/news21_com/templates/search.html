@@ -1,0 +1,31 @@
+{% extends 'site_base.html' %}
+
+{% block head_title %}Search{% endblock %}
+
+{% block body_id %}search_body{% endblock %}
+
+{# wipe topics sidebar #}
+{% block sidebar_topics %}{% endblock %}
+
+
+{% block extrahead %}
+<script type="text/javascript" src="{{ MEDIA_URL }}js/swfobject.js"></script>
+{% endblock %}
+
+{% block body %}
+
+<div id="cse" style="width:100%;">Loading...</div>
+
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">
+   google.load('search', '1');
+   google.setOnLoadCallback(function() {
+        sc = new google.search.CustomSearchControl('005517685523726248670:pujuo2igaec');
+        sc.draw('cse');
+        sc.execute('{{ request.GET.q }}');
+        //searchControl = new GSearchControl();
+        //alert(searchControl);
+   }, true);
+</script>
+
+{% endblock %}
