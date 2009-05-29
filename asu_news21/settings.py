@@ -5,7 +5,7 @@ import os.path
 import pinax
 
 PINAX_ROOT = os.path.abspath(os.path.dirname(pinax.__file__))
-NEWSROOM_ROOT = os.path.abspath(os.path.dirname(__file__)+'/../newsroom_project')
+NEWSROOM_ROOT = os.path.abspath(os.path.dirname(__file__)+'/../asu_news21')
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 # tells Pinax to use the default theme
@@ -25,7 +25,8 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'sqlite3'    # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'ado_mssql'.
-DATABASE_NAME = '../newsroom_project/dev.db'       # Or path to database file if using sqlite3.
+DATABASE_NAME = os.path.join(NEWSROOM_ROOT, "dev.db"),
+# Or path to database file if using sqlite3.
 DATABASE_USER = ''             # Not used with sqlite3.
 DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
@@ -52,7 +53,7 @@ USE_I18N = True
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
 
-MEDIA_ROOT = os.path.join(os.path.dirname(__file__), "static")
+MEDIA_ROOT = os.path.join(os.path.dirname(__file__), "media")
 
 # URL that handles the media served from MEDIA_ROOT.
 # Example: "http://media.lawrence.com"
@@ -63,8 +64,8 @@ MEDIA_URL = '/site_media/'
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/media/admin/'
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = '123-90@#LKJ2p*n0eo&uet=4k*4ejq#$zf2fg6p4p1=g=sem6do%ktbrfawnk'
+# Make this unique, and override in local_settings.py
+SECRET_KEY = '123-90@#LKJ2p*n0e&e=k4j#z2g6p4p1=g=sem6do%ktbrfawnk'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -162,8 +163,8 @@ NOTIFICATION_LANGUAGE_MODULE = 'account.Account'
 
 EMAIL_CONFIRMATION_DAYS = 2
 EMAIL_DEBUG = DEBUG
-CONTACT_EMAIL = "feedback@example.com"
-SITE_NAME = "News21@ASU"
+CONTACT_EMAIL = "feedback@news21.com"
+SITE_NAME = "asu.News21"
 LOGIN_URL = "/account/login"
 LOGIN_REDIRECT_URLNAME = "what_next"
 

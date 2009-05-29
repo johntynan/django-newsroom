@@ -1,0 +1,26 @@
+
+/**
+ * Shadow
+ */
+ 
+#shadow {
+  background: none;
+}
+
+
+/**
+ * Footer
+ */
+
+#footer {
+  height: 48px;
+}
+
+
+/**
+ * Bottom
+ */
+
+#bottom {
+  display: none;
+}
