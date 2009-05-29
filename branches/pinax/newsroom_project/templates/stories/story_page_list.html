@@ -17,11 +17,15 @@
     <div class="actions-block" id="page-option-blocks">
         <h2>{% trans "Options" %}</h2>
         <ul class="action-links">
-            <li><a href="" id="add-story-page" title="{% trans "Add a new page" %}">{% trans "Add a new page" %}</a></li>
-            <li><a href="{% url stories_page_templates "page_template" %}?width=750&height=500" class="thickbox">{% trans "Add a template" %}</a></li>
+            <li>
+                <a href="{% url stories_page_templates "page_template" %}?width=750&height=500" id="add-story-page" title="{% trans "Add a new page" %}"  class="thickbox">
+                {% trans "Add a new page" %}
+                </a>
+            </li>
         </ul>
     </div>
 
+    <!--
     <div class="actions-block" id="page-text-blocks">
         <h2>{% trans "Text blocks" %}</h2>
         <ul class="action-links">
@@ -30,18 +34,21 @@
             <li><a href="{% url stories_page_text_widgets "text_3col" %}" rel="w21-text_3col">{% trans "3 columns" %}</a></li>
         </ul>
     </div>
+    -->
 
     <div class="actions-block" id="page-media-blocks">
         <h2>{% trans "Media" %}</h2>
         <ul class="action-links">
-            {% for item in story.media.all %}
+            {% with story.get_relatedcontent as media_list %}
+            {% for item in media_list.photo %}
             <li>
-                <a href="{% url stories_page_media_widgets item.id %}">
-                    <img src="{{ item.get_thumbnail_url }}" width="30" height="30" />
-                    {{ item }}
+                <a href="">
+                    <img src="" width="30" height="30" />
+                    {{ item.title }}
                 </a>
             </li>
             {% endfor %}
+            {% endwith %}
         </ul>
     </div>
 {% endblock %}
@@ -53,7 +60,7 @@
     <div class="tab-links">
         <a href="{% url stories_edit_story story.id %}" rel="story-info" style="color: #888;">Properties</a>
         <a href="{% url stories_story_media story.id %}" rel="story-media" style="color: #888;">Media</a>
-        <a href="{% url stories_story_add_edit_point story.id %}" rel="story-media">Geotag</a>
+        <a href="{% url stories_story_add_edit_point story.id %}" rel="story-media" style="color: #888;">Geotag</a>
         {% for page in story.pages %}
         <a href="" rel="story-content-{{ page.pagenum }}" class="{% if forloop.first %}active{% endif %} page_nav">Page {{ page.pagenum }}</a>
         {% endfor %}
@@ -62,7 +69,14 @@
     <div class="tab-contents clearfix">
     {% for page in story.pages %}
         <div id="story-content-{{ page.pagenum }}" class="tab {% if not forloop.first %}hidden{% endif %}">
-        {% process_inlines page.content %}
+            <div class="story-container">
+                <div class="fleft width_1-4">
+                    {% include "stories/widgets/text_1col.html" %}
+                </div>
+                <div class="fright width_3-4">
+                    {% include "stories/widgets/text_1col.html" %}
+                </div>
+            </div>
         </div>
     {% endfor %}
     </div>

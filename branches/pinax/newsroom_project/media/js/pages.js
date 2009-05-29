@@ -6,18 +6,24 @@ $(document).ready(function(){
     */
     /********************************************************************************/
     /* handles tabs clicks */
-    $(".tab-links a.page_nav").live("click",function(){
+    function trigger_tab_click(jquery_obj)
+    {
+
         $(".tab-contents .tab").addClass("hidden");
-        $("#" + $(this).attr("rel")).removeClass("hidden");
+        $("#" + jquery_obj.attr("rel")).removeClass("hidden");
 
         $(".tab-links a").removeClass("active");
-        $(this).addClass("active");
-        return false;
+        jquery_obj.addClass("active");
 
+        return false;
+    }
+    $(".tab-links a.page_nav").live("click",function(){
+        return trigger_tab_click($(this));;
     });
 
     /* make page contents sortable */
-    $(".tab").sortable();
+    //$(".tab").sortable();
+
 
     /* add pages to story */
     $("#add-story-page").click(function(){
@@ -34,7 +40,7 @@ $(document).ready(function(){
         /* create a new content area */
         $(".tab-contents .tab:last").clone().sortable().appendTo(".tab-contents").attr("id",tab_prefix + new_tab_id).html("");
 
-        return false;
+        return trigger_tab_click($(".tab-links a:last"));
     });
 
     /* handling text blocks links */
