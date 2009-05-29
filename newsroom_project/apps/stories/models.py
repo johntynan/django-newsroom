@@ -70,32 +70,32 @@ class Story(models.Model):
     modification_date = models.DateTimeField(auto_now=True )
     objects = StoryManager()
     on_site = StorySiteManager()
-    
+
     class Meta:
         verbose_name_plural = 'stories'
         ordering = ('creation_date',)
-    
+
     def __unicode__(self):
         return self.headline
-        
+
     @models.permalink
     def get_absolute_url(self):
         return ('stories.views.show_story',[self.slug])
-        
+
     @property
     def pages(self):
         return self.page_set.all()
     @property
     def token(self):
         return get_hexdigest("md5", settings.SECRET_KEY, self.slug)
-        
+
     @property
     def page_one(self):
         return self.get_page(1)
-        
+
     def get_page(self,num):
         return self.page_set.get(pagenum=num)
-        
+
     def add_page(self):
         """
         Creates a new page for this story. Returns the newly created page
@@ -139,7 +139,7 @@ class Story(models.Model):
         if self.status == STORY_STATUS_DRAFT:
             return True
         return False
-    
+
 class RelatedContent(models.Model):
     """
     RelatedContent allow you link any django object to
@@ -149,7 +149,7 @@ class RelatedContent(models.Model):
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
     object = generic.GenericForeignKey()
-    
+
     class Meta:
         verbose_name = _("related content")
         verbose_name_plural = _("related contents")
@@ -160,27 +160,27 @@ class RelatedContent(models.Model):
 def new_story_add_page(sender,**kwargs):
     """
     Post-save signal for Story.
-    All stories should have at least one page. 
+    All stories should have at least one page.
     """
     story = kwargs.get('instance',None)
     new = kwargs.get('created',False)
     if new and story:
         story.add_page()
-        
+
 post_save.connect(new_story_add_page,sender=Story)
 
 class PageManager(models.Manager):
     """
     Provides methods that take care of managing the ordering of Pages
     """
-    
+
     def new_page(self,story):
         """
         create a new page with the correct page number assigned
         """
         next_page = self.filter(story=story).count()+1
         return self.create(story=story,pagenum=next_page)
-        
+
     def update_page_order(self,story):
         """
         ensures that there are no gaps in page numbers
@@ -204,15 +204,15 @@ class Page(models.Model):
     content = models.TextField()
     tags = SuperTagField()
     pagenum = models.PositiveIntegerField()
-    
+
     objects = PageManager()
-    
+
     class Meta:
         ordering = ('pagenum',)
-        
+
     def __unicode__(self):
         return u"%s: Page %d" % (self.story.headline,self.pagenum)
-    
+
     def delete(self):
         """
         Re-orders the remaining pages
@@ -221,17 +221,17 @@ class Page(models.Model):
         if self.story.pages.count() == 1:
             raise StoryIntegrityError
         super(Page,self).delete()
-        
+
     @property
     def url(self):
         return "%s?p=%d" % (self.story.get_absolute_url(),self.pagenum,)
-        
+
     @property
     def columns(self):
         """
         Split the page's content into columns based on HTML comments containing
         "Column Break".
-        
+
         The split is done with regex so it is forgiving of the formatting. Examples:
             <!--columnbreak-->
             <!--   COLUMN   BREAK   -->
@@ -241,19 +241,19 @@ class Page(models.Model):
         colbrk = re.compile(r'<!--\s*column\s*break\s*-->',re.IGNORECASE)
         cols = re.split(colbrk,self.content)
         return cols
-    
+
     @property
     def media(self):
         return self.detect_media()
-    
+
     def detect_media(self):
         #TODO: strip out inserts that aren't the story media list
         template = Template("{%% load media_tags %%}%s" %  self.content)
         return [ Media.objects.get(pk=node.media_id.resolve(Context())).get_child_object() for node in template.nodelist if isinstance(node,MediaNode) ]
-    
+
 def reorder_story_pages(sender,**kwargs):
     story = kwargs['instance'].story
     Page.objects.update_page_order(story)
-    
+
 post_delete.connect(reorder_story_pages,Page)
 

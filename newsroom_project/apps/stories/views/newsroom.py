@@ -122,12 +122,15 @@ def edit_story(request,story_id):
 def story_pages(request,story_id):
     story = get_object_or_404(Story,pk=story_id)
     page_formset = PageFormSet()
+
     return render_to_response('stories/story_page_list.html',locals(),context_instance=RequestContext(request))
 
 @login_required
 def story_media(request,story_id):
     story = get_object_or_404(Story,pk=story_id)
     system_media_types = Media.media_types
+    related_content = story.get_relatedcontent()
+    print related_content
     return render_to_response('stories/story_media_list.html',locals(),context_instance=RequestContext(request))
 
 
@@ -179,7 +182,7 @@ def story_add_edit_media(request, story_id, media_type=None, media_id=None):
     #            context_instance=RequestContext(request))
 
 @login_required
-def story_add_edit_geotag(request,story_id, 
+def story_add_edit_geotag(request,story_id,
     template=None, form_class=None, geotag_class=None):
     """
     This view determines the content_type and the
@@ -211,7 +214,7 @@ def story_add_edit_geotag(request,story_id,
         "geotag": geotag,
     })
     return render_to_response(template, context_instance=context )
-    
+
 
 @login_required
 def story_select_media(request,story_id,media_type):
