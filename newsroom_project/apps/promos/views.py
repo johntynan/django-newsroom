@@ -1,5 +1,6 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 from promos.models import Promo, PromoImage, PromoLink
@@ -16,13 +17,14 @@ if "mailer" in settings.INSTALLED_APPS:
 else:
     from django.core.mail import send_mail
 
-
+@login_required
 def front(request):
     return render_to_response(
               'promos/front.html',
               {},
               context_instance=RequestContext(request))
 
+@login_required
 def promo_add(request):
     """
     Process a new promo submission.
@@ -50,40 +52,30 @@ def promo_add(request):
               {'form':form},
               context_instance=RequestContext(request))
 
+@login_required
 def promo_edit(request, promo_id):
     """
     Edit an existing promo.
     """
     promo = get_object_or_404(Promo, pk=promo_id)
 
-    PromoImageInlineFormSet = inlineformset_factory(Promo, PromoImage)   
-    PromoLinkInlineFormSet = inlineformset_factory(Promo, PromoLink)  
     if request.method == "POST":
-        formset1 = PromoImageInlineFormSet(request.POST, request.FILES, instance=promo)
-        formset2 = PromoLinkInlineFormSet(request.POST, request.FILES, instance=promo)
         form = PromoForm(request.POST, instance=promo)
-        if formset1.is_valid():
-            formset1.save()
-        if formset2.is_valid():
-            formset2.save()
         if form.is_valid():
             form.save()
             request.user.message_set.create(
                 message='Your promo has been edited.')
             return HttpResponseRedirect(reverse('promos_promo_list'))
     else:
-        formset1 = PromoImageInlineFormSet(instance=promo)
-        formset2 = PromoLinkInlineFormSet(instance=promo)
         form = PromoForm(instance=promo)        
 
     return render_to_response(
               'promos/promo_edit.html',
               ({'form': form,
-              'formset1': formset1,
-              'formset2': formset2,
               'promo':promo}),
               context_instance=RequestContext(request))
 
+@login_required
 def promo_list(request):
     """
     Get index of promos.
@@ -99,6 +91,7 @@ def promo_list(request):
                 },
               context_instance=RequestContext(request))
 
+@login_required
 def promo_detail(request, promo_id):
     """
     Get promo details.
@@ -116,16 +109,19 @@ def promo_detail(request, promo_id):
              },
               context_instance=RequestContext(request))
     
-    
+@login_required
 def promo_image_add(request, promo_id):
     """
     Process a new promo link submission.
     """
-
+    promo = get_object_or_404(Promo, pk=promo_id)
+#    import ipdb; ipdb;ipdb.set_trace()
     if request.method == "POST":
-        form = ImageForm(request.POST)
+        form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            promo_image = form.save(commit=False)
+            promo_image.promo = promo
+            promo_image.save()
             request.user.message_set.create(
                 message='Your promo image has been added.  Thank you.')
             return HttpResponseRedirect(reverse('promos_promo_list'))
@@ -138,15 +134,19 @@ def promo_image_add(request, promo_id):
               {'form':form},
               context_instance=RequestContext(request))
 
+@login_required
 def promo_link_add(request, promo_id):
     """
     Process a new promo link submission.
     """
-
+    promo = get_object_or_404(Promo, pk=promo_id)
     if request.method == "POST":
         form = LinkForm(request.POST)
         if form.is_valid():
-            form.save()
+            promo_link = form.save(commit=False)
+            promo_link.promo = promo
+            promo_link.save()
+
             request.user.message_set.create(
                 message='Your promo link has been added.  Thank you.')
             return HttpResponseRedirect(reverse('promos_promo_list'))
