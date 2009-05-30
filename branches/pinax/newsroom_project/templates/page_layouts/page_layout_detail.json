@@ -1,8 +1,0 @@
-{
-    {
-        "title":"{{page_layout.title}}",
-        "html":"{{page_layout.html}}",
-        "description":"{{page_layout.description}}"
-        "image":"{{ MEDIA_URL }}{{page_layout.image}}" 
-    }
-}
