@@ -1,14 +1,3 @@
-{ "page_layouts" : [
-{% for o in page_layout_list %}
-    {
-        "title":"{{o.title}}",
-        "html":"{{o.html}}",
-        "description":"{{o.description}}",
-        "image":"{{ MEDIA_URL }}{{o.image}}" 
-    }
-    {% if forloop.last %}{% else %},{% endif %}
-{% empty %}
-{% endfor %}
-]}
+{{ page_layout_list }}
 
 
