@@ -44,13 +44,13 @@
 
           <ul class="dropdown">
           {% block navbar %}
-            <li><a href="{% url topics_topic_list %}"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/topics.gif" alt="Topics" /></a></li>
-            <li onmouseover="this.style.visibility='hidden';" onmouseout="this.style.visibility='visible';"><a href="http://news21.com/about/"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/about.gif" alt="About" /></a>
+            <li><a href="http://news21.com/topics/"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/topics.gif" alt="Topics" /></a></li>
+            <li onmouseover="$('ul.sub_menu').show();" onmouseout="$('ul.sub_menu').hide();"><a href="http://news21.com/about/"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/about.gif" alt="About" /></a>
               <ul class="sub_menu">
-                <li><a href="#">The Initiative</a></li>
-                <li><a href="#">Participants</a></li>
-                <li><a href="#">Contributors</a></li>
-                <li><a href="#">News Partners</a></li>
+                <li><a href="http://news21.com/topics#initiative">The Initiative</a></li>
+                <li><a href="http://news21.com/topics#participants">Participants</a></li>
+                <!-- <li><a href="#">Contributors</a></li>
+                <li><a href="#">News Partners</a></li> -->
               </ul>
             </li>
            {% endblock %}

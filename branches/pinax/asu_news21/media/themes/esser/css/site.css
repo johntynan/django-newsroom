@@ -67,7 +67,7 @@
 
 #header ul li ul {
   background: #404040;
-  /* display: none; */
+  display: none;
   position: absolute;
   width: 140px;
   height: auto;
