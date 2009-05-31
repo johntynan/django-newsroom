@@ -23,6 +23,8 @@
     <![endif]-->
 
     <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-1.3.min.js"></script>
+    <script type="text/javascript" language="javascript" src="{{ MEDIA_URL }}js/jquery.dropdownPlain.js"></script>
+
 
     {% block extrahead %}{% endblock %}
 
@@ -42,11 +44,11 @@
 
           <div id="tagline"><img src="{{ MEDIA_URL }}themes/esser/images/header/innovate-investigate-collaborate.gif" alt="Innovate_Investigate_Collaborate." /></div>
 
-          <ul>
+          <ul class="dropdown">
           {% block navbar %}
             <li><a href="{% url topics_topic_list %}"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/topics.gif" alt="Topics" /></a></li>
-            <li><a href="http://news21.com/about/"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/about.gif" alt="About" /></a>
-              <ul>
+            <li onmouseover="this.style.visibility='hidden';" onmouseout="this.style.visibility='visible';"><a href="http://news21.com/about/"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/about.gif" alt="About" /></a>
+              <ul class="sub_menu">
                 <li><a href="#">The Initiative</a></li>
                 <li><a href="#">Participants</a></li>
                 <li><a href="#">Contributors</a></li>
