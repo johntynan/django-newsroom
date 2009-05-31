@@ -1,11 +1,12 @@
-import os
-
+from django.contrib.auth.models import User
+from django.contrib.gis.gdal.geometries import Point
+from django.contrib.gis.utils.srs import add_postgis_srs
 from django.core.urlresolvers import reverse
 from django.test import TestCase
-from promos.models import Promo, PromoImage, PromoLink
-from django.contrib.auth.models import User
-
+import os
 from promos.models import Promo
+from promos.models import PromoImage
+from promos.models import PromoLink
 
 def create_user():
     user = User.objects.create_user("user","joe@foo.com", "secret")
@@ -111,3 +112,13 @@ class PromoImageUrlTests(TestCase):
             'relevance_ends':'02/01/2009'})
         self.assertEqual(self.response.status_code, 302)
         self.assertEqual(1, Promo.objects.count())
+
+    def test_add_point_post_url(self):
+        add_postgis_srs(900913)
+        self.assertEqual(0, Point.objects.count())
+        self.response = self.client.post(reverse('promos_promo_add_edit_point',
+            kwargs={"promo_id" : self.promo.id}),
+            {"point" : "SRID=900913;POINT(-13161849.549963182 4036247.7234083386)"})
+        self.assertEqual(self.response.status_code, 302)
+        self.assertEqual(1, Point.objects.count())
+        self.assertEqual(self.promo, Point.objects.all()[0].object)

@@ -1,7 +1,9 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.models import ContentType
 from topics.models import TopicPath
+from geotags.models import Point,Line, MultiLine, Polygon
 
 "billboard", "thumbnail", "medium billboard", "original"
 IMAGE_KIND_BILLBOARD = 'B'
@@ -82,6 +84,14 @@ class Promo(models.Model):
                 (), 
                 { 'id': self.id })
     get_absolute_url = models.permalink(get_absolute_url)
+
+    def get_geotags(self):
+        geo_dict = {}
+        geo_dict['point'] = Point.objects.filter(content_type=ContentType.objects.get_for_model(self.__class__()), object_id=self.id)
+        geo_dict['line'] = Line.objects.filter(content_type=ContentType.objects.get_for_model(self.__class__()), object_id=self.id)
+        geo_dict['multiline'] = MultiLine.objects.filter(content_type=ContentType.objects.get_for_model(self.__class__()), object_id=self.id)
+        geo_dict['polygon'] = Polygon.objects.filter(content_type=ContentType.objects.get_for_model(self.__class__()), object_id=self.id)
+        return geo_dict
 
 
 class PromoLink(models.Model):

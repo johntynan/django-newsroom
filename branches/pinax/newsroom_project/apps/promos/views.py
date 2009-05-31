@@ -1,16 +1,21 @@
-from django.shortcuts import render_to_response, get_object_or_404
-from django.core.urlresolvers import reverse
-from django.contrib.auth.decorators import login_required
-from django.template import RequestContext
-from django.http import HttpResponseRedirect
-from promos.models import Promo, PromoImage, PromoLink
-from promos.forms import PromoForm, ImageForm, LinkForm
-
 from django.conf import settings
-from django.template.loader import render_to_string
+from django.contrib.auth.decorators import login_required
+from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
+from django.core.exceptions import ObjectDoesNotExist
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+from django.template.loader import render_to_string
+from promos.forms import ImageForm
+from promos.forms import LinkForm
+from promos.forms import PromoForm
+from promos.models import Promo
+from promos.models import PromoImage
+from promos.models import PromoLink
 
-from django.forms.models import inlineformset_factory
 
 if "mailer" in settings.INSTALLED_APPS:
     from mailer import send_mail
@@ -158,4 +163,38 @@ def promo_link_add(request, promo_id):
               'promos/promo_link_add.html',
               {'form':form},
               context_instance=RequestContext(request))
+
+@login_required
+def promo_add_edit_geotag(request,promo_id,
+    template=None, form_class=None, geotag_class=None):
+    """
+    This view determines the content_type and the
+    object_id for the given promo (promo_id) then it returns
+    the response of add_edit_geotag.
+    """
+    promo = get_object_or_404(Promo, pk=promo_id)
+    promo_content_type = ContentType.objects.get_for_model(promo)
+    try:
+        geotag = geotag_class.objects.get(content_type__pk=promo_content_type.id,
+                               object_id=promo.id)
+    except ObjectDoesNotExist:
+        geotag = None
+    if request.method == "POST":
+        form = form_class(request.POST, instance=geotag)
+        if form.is_valid():
+            new_object = form.save(commit=False)
+            new_object.object = promo
+            new_object.save()
+            return HttpResponseRedirect(
+                reverse('promos_promo_detail', args=[promo.id]))
+    form = form_class(instance=geotag)
+
+    context = RequestContext(request, {
+        "form": form,
+        "geo_type": form_class._meta.model._meta.verbose_name,
+        "promo": promo,
+        "google_key": settings.GOOGLE_MAPS_API_KEY,
+        "geotag": geotag,
+    })
+    return render_to_response(template, context_instance=context )
 
