@@ -32,6 +32,10 @@ class StoryManager(models.Manager):
                     sites__in = [Site.objects.get_current()],
                     status = STORY_STATUS_PUBLISHED,)
 
+    def get_for_author(self, author):
+        return self.filter(authors = author)
+
+
 class StorySiteManager(models.Manager):
     """
     Custom story manager that always filters querysets based on the sites
@@ -45,6 +49,7 @@ class StorySiteManager(models.Manager):
 
     def published(self):
         return self.filter(status = STORY_STATUS_PUBLISHED)
+
 
 
 class Story(models.Model):

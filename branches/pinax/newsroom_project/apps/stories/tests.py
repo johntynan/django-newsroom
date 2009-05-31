@@ -15,29 +15,31 @@ from stories.models import RelatedContent
 from stories.constants import STORY_STATUS_DRAFT, STORY_STATUS_PUBLISHED
 
 
-def create_draft_story():
+def create_draft_story(headline=None, user=None):
     story = Story()
-    story.headline = "This Is A Test Story"
+    story.headline = headline
     #normally slugify will be handled by the UI
     story.slug = slugify(story.headline)
     story.summary = "Like I said in the headline, this is a test story."
-    #TODO add an author(s)
     story.status = STORY_STATUS_DRAFT
     story.save()
     story.sites = Site.objects.all()
+    if user:
+        story.authors.add(user)
     story.save()
     return story
 
-def create_published_story():
+def create_published_story(headline=None, user=None):
     story = Story()
-    story.headline = "This Is A Published Story"
+    story.headline = headline
     #normally slugify will be handled by the UI
     story.slug = slugify(story.headline)
     story.summary = "Like I said in the headline, this is a published story."
-    #TODO add an author(s)
     story.status = STORY_STATUS_PUBLISHED
     story.save()
     story.sites = Site.objects.all()
+    if user:
+        story.authors.add(user)
     story.save()
     return story
 
@@ -56,11 +58,23 @@ def create_user():
 class StoryTests(TestCase):
     
     def setUp(self):
-        self.story_draft = create_draft_story()
+        self.user = create_user()
+        self.story_draft = create_draft_story(
+                headline="draft story")
+        self.story_published = create_published_story(
+                headline="published story")
+        self.story_draft_with_author = create_draft_story(
+                headline="draft story with author",
+                user=self.user)
+
         
     def _verify_page_count(self,count,story=None,msg=""):
         s = story if story else self.story_draft
         self.failUnlessEqual(s.pages.count(),count,msg)
+
+    def test_get_story_for_author(self):
+        self.assertEqual(list(Story.objects.get_for_author(self.user)),
+            list(Story.objects.filter(authors=self.user )))
     
     def test_create_story(self):
         #self.failUnlessEqual(self._page_count(1),"New stories should have exactly one page")
@@ -117,7 +131,8 @@ class StoryTests(TestCase):
 class RelatedContentTests(TestCase):
 
     def setUp(self):
-        self.story_draft = create_draft_story()
+        self.story_draft = create_draft_story(
+                headline="draft story")
 
     def test_get_relatedcontent_empty(self):
         """
@@ -144,9 +159,15 @@ class StoryUrlNewsroomTests(TestCase):
     These tests exercise the views.
     """
     def setUp(self):
-        self.story_draft = create_draft_story()
-        self.page = create_page(story=self.story_draft)
         self.user = create_user()
+        self.story_draft = create_draft_story(
+                headline="draft story")
+        self.story_published = create_published_story(
+                headline="published story")
+        self.story_draft_with_author = create_draft_story(
+                headline="draft story with author",
+                user=self.user)
+        self.page = create_page(story=self.story_draft)
         self.client.login(username="user", password="secret")
     def tearDown(self):
         self.client.logout()
@@ -231,11 +252,19 @@ class StoryUrlPublicationTests(TestCase):
     These tests exercise the publication views.
     """
     def setUp(self):
-        self.story_draft = create_draft_story()
-        self.story_draft.add_page() # Add page 2
-        self.story_published = create_published_story()
-        self.story_published.add_page()
         self.user = create_user()
+        self.story_draft = create_draft_story(
+                headline="draft story")
+        self.story_draft.add_page() # Add page 2
+        
+        self.story_published = create_published_story(
+                headline="published story")
+        self.story_published.add_page()
+        
+        self.story_draft_with_author = create_draft_story(
+                headline="draft story with author",
+                user=self.user)
+        
 
     def tearDown(self):
         pass

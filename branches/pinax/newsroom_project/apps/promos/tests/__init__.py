@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.contrib.gis.gdal.geometries import Point
+from geotags.models import Point
 from django.contrib.gis.utils.srs import add_postgis_srs
 from django.core.urlresolvers import reverse
 from django.test import TestCase

@@ -17,8 +17,11 @@ class VideoUrlTests(TestCase):
     These tests exercise the views.
     """
     def setUp(self):
-        self.story = create_draft_story()
         self.user = create_user()
+        self.story_draft = create_draft_story(
+                headline="draft story")
+
+
         self.client.login(username="user", password="secret")
     def tearDown(self):
         self.client.logout()
@@ -26,7 +29,7 @@ class VideoUrlTests(TestCase):
     def test_add_video_get_url(self):
         self.response = self.client.get(
             reverse("stories_story_add_media",
-            kwargs={"story_id" : self.story.id,
+            kwargs={"story_id" : self.story_draft.id,
                 "media_type" : "video"}))
         self.assertEqual(self.response.status_code, 200)
 
@@ -37,7 +40,7 @@ class VideoUrlTests(TestCase):
             video =  open(os.path.join(TESTS_DIR, "test_video.flv"))
             self.response = self.client.post(
                 reverse("stories_story_add_media",
-                kwargs={"story_id" : self.story.id,
+                kwargs={"story_id" : self.story_draft.id,
                     "media_type" : "video"}),
                     {
                         "title":"test video",
@@ -54,5 +57,5 @@ class VideoUrlTests(TestCase):
         self.assertEqual(self.response.status_code, 302)
         # Check if the video as been created
         self.assertEqual(1, Video.objects.count())
-        self.assertEqual(self.story.get_relatedcontent(),
+        self.assertEqual(self.story_draft.get_relatedcontent(),
             {'video': [Video.objects.all()[0]]})
