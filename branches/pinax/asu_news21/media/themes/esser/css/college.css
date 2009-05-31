@@ -12,7 +12,7 @@ h1 {
 }
 
 h2 {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 
@@ -21,6 +21,7 @@ h2 {
  */
 
 #subheader {
+  font-size: 16px;
   height: 26px;
   overflow:hidden;
   margin-bottom: -10px;
