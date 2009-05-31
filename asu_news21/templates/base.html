@@ -44,9 +44,14 @@
 
           <ul class="dropdown">
           {% block navbar %}
-            <li><a href="http://news21.com/topics/"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/topics.gif" alt="Topics" /></a></li>
-            <li onmouseover="$('ul.sub_menu').show();" onmouseout="$('ul.sub_menu').hide();"><a href="http://news21.com/about/"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/about.gif" alt="About" /></a>
-              <ul class="sub_menu">
+            <li><a href="http://news21.com/topics/"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/topics.gif" alt="Topics" /></a>
+              <ul class="topic_sub_menu">
+                <li><a href="#">One</a></li>
+                <li><a href="#">Two</a></li>
+                <li><a href="#">Three</a></li>
+              </ul>
+            <li onmouseover="$('ul.about_sub_menu').show();" onmouseout="$('ul.about_sub_menu').hide();"><a href="http://news21.com/about/"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/about.gif" alt="About" /></a>
+              <ul class="about_sub_menu">
                 <li><a href="http://news21.com/topics#initiative">The Initiative</a></li>
                 <li><a href="http://news21.com/topics#participants">Participants</a></li>
                 <!-- <li><a href="#">Contributors</a></li>
