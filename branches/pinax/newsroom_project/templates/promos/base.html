@@ -1,4 +1,11 @@
 {% extends "site_base.html" %}
+{% load i18n %}
+
+{% block extra_head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/promos.css" />
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/widget.css" />
+{% endblock %}
 
 {% block body_id %}promos{% endblock %}
 
@@ -11,7 +18,9 @@
 {% endblock body %}
 
 {% block subnav %}
-<ul>
-    <li><a href="{% url promos_promo_add %}" title="Submit Promo">Submit Promo</a></li>
-</ul>
+<h2>{% trans "Links" %}</h2>
+<ul class="action-links">
+        <li><a href="{% url promos_promo_list %}">promo list</a></li>
+        <li><a href="{% url promos_promo_list %}">Add promo</a></li>
+ </ul>
 {% endblock %}

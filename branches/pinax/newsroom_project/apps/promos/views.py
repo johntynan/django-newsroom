@@ -111,6 +111,7 @@ def promo_detail(request, promo_id):
               'promo': promo,
               'promo_link': promo_link,
               'promo_image': promo_image,
+              'google_key': settings.GOOGLE_MAPS_API_KEY,
              },
               context_instance=RequestContext(request))
     
@@ -136,7 +137,8 @@ def promo_image_add(request, promo_id):
 
     return render_to_response(
               'promos/promo_image_add.html',
-              {'form':form},
+              {'form':form,
+              'promo':promo},
               context_instance=RequestContext(request))
 
 @login_required
@@ -161,7 +163,8 @@ def promo_link_add(request, promo_id):
 
     return render_to_response(
               'promos/promo_link_add.html',
-              {'form':form},
+              {'form':form,
+              'promo':promo},
               context_instance=RequestContext(request))
 
 @login_required
