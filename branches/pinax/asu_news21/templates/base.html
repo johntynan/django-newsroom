@@ -38,18 +38,17 @@
 
         <div id="header" class="grid_12">
 
-          <div id="logo"><a href="/"><img src="{{ MEDIA_URL }}themes/esser/images/header/news21.gif" alt="News 21" /></a></div>
+          <div id="logo"><a href="http://news21.com/"><img src="{{ MEDIA_URL }}themes/esser/images/header/news21.gif" alt="News 21" /></a></div>
 
           <div id="tagline"><img src="{{ MEDIA_URL }}themes/esser/images/header/innovate-investigate-collaborate.gif" alt="Innovate_Investigate_Collaborate." /></div>
 
           <ul>
           {% block navbar %}
             <li><a href="{% url topics_topic_list %}"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/topics.gif" alt="Topics" /></a></li>
-            <li><a href="/about/"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/about.gif" alt="About" /></a>
+            <li><a href="http://news21.com/about/"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/about.gif" alt="About" /></a>
               <ul>
                 <li><a href="#">The Initiative</a></li>
                 <li><a href="#">Participants</a></li>
-
                 <li><a href="#">Contributors</a></li>
                 <li><a href="#">News Partners</a></li>
               </ul>
@@ -57,7 +56,7 @@
            {% endblock %}
           </ul>
 
-          <form action="/search/" method="get">
+          <form action="http://news21.com/search/" method="get">
             <fieldset>
 
               <input name="q" type="text" value="{{ request.GET.q }}" class="input" />
@@ -69,9 +68,9 @@
 
         <div id="subheader" class="grid_12">
           <p>
-          <div class="affiliate"><strong><a href="http://asu.news21.com">ASU</a></strong></div>
+          <div class="affiliate"><strong><a href="/">ASU</a></strong></div>
 
-          <div class="project"><a href="http://asu.news21.com" class="subheading_link"><em>Latino America</em> &ndash; migration patterns and cultural issues</a></div>
+          <div class="project"><a href="/" class="subheading_link"><em>Latino America</em> &ndash; migration patterns and cultural issues</a></div>
           </p>
         </div>
 
