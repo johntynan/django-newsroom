@@ -1,5 +1,29 @@
 {% extends "stories/base.html" %}
 
+{% block extra_head %}
+    {{ block.super }}
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key={{ google_key }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+        var map = new GMap2(document.getElementById('map'));
+        map.setMapType(G_PHYSICAL_MAP);
+
+        {% if story.get_geotags.point %}
+        // Geotag Used
+        var point = new GLatLng({{ story.get_geotags.point.0.point.y }}, {{ story.get_geotags.point.0.point.x }});
+        marker = new GMarker(point);
+        map.setCenter(point, 15);
+        GEvent.addListener(marker, 'click', function() {
+            marker.openInfoWindowHtml('<strong style="color: #000"> {{ story.headline }}</strong><br /><span style="display: block; line-height: 12px; font-size: 10px; color: #000;">{{ story.summary }}<br /></span>');
+            return;
+        });
+        map.addOverlay(marker);
+
+        {% endif %}
+        });
+    </script>
+{% endblock %}
+
 {% block head_title %}{{ story.headline }}{% endblock %}
 
 {% block subnav %}

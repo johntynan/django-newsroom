@@ -2,6 +2,23 @@
 
 {% block title %}{{promo}} | Promos{% endblock %}
 
+{% block extra_head %}
+    {{ block.super }}
+    {% if promo.get_geotags.point %}
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key={{ google_key }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+        var map = new GMap2(document.getElementById('map'));
+        map.setMapType(G_PHYSICAL_MAP);
+        var point = new GLatLng({{ promo.get_geotags.point.0.point.y }}, {{ promo.get_geotags.point.0.point.x }});
+        marker = new GMarker(point);
+        map.setCenter(point, 15);
+        map.addOverlay(marker);
+        });
+    </script>
+    {% endif %}
+{% endblock %}
+
 {% block body_id %}promos{% endblock %}
 
 {% block app_menu %}
@@ -20,10 +37,11 @@
 
 {% block main_content %}
 <h1>{{promo}}</h1>
+{% if promo.get_geotags.point %}
+    <div id="map" style="height: 200px; width: 200px; -moz-border-radius: 5px; border: 3px solid #DDD;"></div>
+{% endif %}
 
-<p>
-<a href="{{ promo.permalink }}">{{ promo }}</a>
-</p>
+<p><a href="{{ promo.permalink }}">{{ promo }}</a></p>
 <p>
     <div style="float:left;">
 {% for i in promo_image%}

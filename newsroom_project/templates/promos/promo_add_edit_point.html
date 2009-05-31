@@ -1,0 +1,60 @@
+{% extends "promos/base.html" %}
+{% load i18n %}
+
+{% block extra_head %}
+    {{ block.super }}
+    {{ form.media }}
+{% endblock %}
+
+{% block head_title %}Add a Promo Image{% endblock %}
+
+
+{% block main_content %}
+<h1>Add a Promo Image</h1>
+
+<form onSubmit="return false;">
+    <input type="text" size="75"  maxlength="75" id="id_address" />
+    <a href="#" onclick="move_to_geocode();">{% trans "Center the map" %}</a>
+</form>
+<br /><br />
+
+<form action="." method="post" enctype="multipart/form-data" >
+    <fieldset>
+    <table>
+    {{ form }}
+    </table>
+    <input id="id_submit" type="submit" value="Submit" />
+    <a href="../">Cancel</a>
+    </fieldset>
+</form>
+
+<script type="text/javascript">
+     function move_to_geocode(){
+         geodjango_func = eval('geodjango_' + jQuery('span[id$=_admin_map]').attr('id').split('_')[1])
+         address = jQuery("#id_address")[0].value;
+         gkey = "{{ google_key }}";
+         google_geocoder_query = "http://maps.google.com/maps/geo?q="+address+"&output=json&oe=utf8&sensor=false&key=" + gkey + "&callback=?";
+         jQuery.getJSON(google_geocoder_query,
+                        function(data){
+                         lon = data["Placemark"][0]["Point"]["coordinates"][0];
+                         lat = data["Placemark"][0]["Point"]["coordinates"][1];
+                         zoom_lvl = 15;
+                         console.log(" lon : " + lon +"lat : "+ lat);
+                         geocoder_projection = new OpenLayers.Projection("EPSG:4326")
+                         lonlat = new OpenLayers.LonLat(lon, lat);
+                         lonlat.transform(geocoder_projection,geodjango_func.map.getProjectionObject());
+
+                         if (geodjango_func.is_point) {
+                             $("#id_point").text("POINT (" + lonlat.lon + ' ' + lonlat.lat + ")");
+                             var wkt = "POINT (" + lonlat.lon + ' ' + lonlat.lat + ")";
+                             var admin_geom = geodjango_func.read_wkt(wkt);
+                             geodjango_func.layers.vector.addFeatures([admin_geom]);
+                         }
+                         geodjango_func.map.setCenter(lonlat, zoom_lvl);
+                        })
+
+
+     }
+
+</script>
+{% endblock %}

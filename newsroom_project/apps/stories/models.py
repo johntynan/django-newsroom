@@ -122,7 +122,6 @@ class Story(models.Model):
         return relatedcontent_dict
 
     def get_geotags(self):
-#        import ipdb; ipdb.set_trace()
         geo_dict = {}
         geo_dict['point'] = Point.objects.filter(content_type=ContentType.objects.get_for_model(self.__class__()), object_id=self.id)
         geo_dict['line'] = Line.objects.filter(content_type=ContentType.objects.get_for_model(self.__class__()), object_id=self.id)

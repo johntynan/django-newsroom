@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.conf.urls.defaults import *
-from geotags.models import Line, Point, Polygon
+from geotags.models import Point
 from geotags.forms import PointForm
 
 urlpatterns = patterns('stories.views.newsroom',
