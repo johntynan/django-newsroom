@@ -13,11 +13,11 @@
 {% endblock %}
 
 {% block body %}
-<div id="flash" class="box">
+<div id="flash" class="box" style="background: #ffffff">
 	<div id="flashcontent">TiltViewer requires JavaScript and the latest Flash player. <a href="http://www.macromedia.com/go/getflashplayer/">Get Flash here.</a></div>
 	<script type="text/javascript">
 	
-		var fo = new SWFObject("{{ MEDIA_URL}}themes/esser/swf/NEWS21v3.swf", "viewer", "700", "350", "9.0.28", "#FFF");			
+		var fo = new SWFObject("{{ MEDIA_URL}}themes/esser/swf/NEWS21v3.swf", "viewer", "700", "350", "9.0.28", "#FFFFFF");			
 		
 		// TILTVIEWER CONFIGURATION OPTIONS
 		// To use an option, uncomment it by removing the "//" at the start of the line
@@ -75,6 +75,7 @@
 				
 		// END TILTVIEWER CONFIGURATION OPTIONS
 		fo.addParam("allowFullScreen","true");
+		fo.addParam("wmode","transparent");
 		//fo.addParam("base","{{ MEDIA_URL}}uploads/projects/2009/05/27/news21tiltview/");
 		fo.write("flashcontent");			
 	</script>	
