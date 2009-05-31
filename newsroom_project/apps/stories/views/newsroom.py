@@ -130,7 +130,6 @@ def story_media(request,story_id):
     story = get_object_or_404(Story,pk=story_id)
     system_media_types = Media.media_types
     related_content = story.get_relatedcontent()
-    print related_content
     return render_to_response('stories/story_media_list.html',locals(),context_instance=RequestContext(request))
 
 
