@@ -42,16 +42,21 @@
 
           <div id="tagline"><img src="{{ MEDIA_URL }}themes/esser/images/header/innovate-investigate-collaborate.gif" alt="Innovate_Investigate_Collaborate." /></div>
 
-          <ul>
+          <ul class="dropdown">
           {% block navbar %}
-            <li><a href="{% url topics_topic_list %}"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/topics.gif" alt="Topics" /></a></li>
-            <li><a href="/about/"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/about.gif" alt="About" /></a>
-              <ul>
-                <li><a href="#">The Initiative</a></li>
-                <li><a href="#">Participants</a></li>
-
-                <li><a href="#">Contributors</a></li>
-                <li><a href="#">News Partners</a></li>
+            <li><a href="{% url topics_topic_list %}"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/topics.gif" alt="Topics" /></a>
+              <ul class="topic_sub_menu">
+                <li><a href="#">One</a></li>
+                <li><a href="#">Two</a></li>
+                <li><a href="#">Three</a></li>
+              </ul>
+            </li>
+            <li onmouseover="$('ul.about_sub_menu').show();" onmouseout="$('ul.about_sub_menu').hide();"><a href="/about/"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/about.gif" alt="About" /></a>
+              <ul class="about_sub_menu">
+                <li><a href="http://news21.com/about#initiative">The Initiative</a></li>
+                <li><a href="http://news21.com/about#participants">Participants</a></li>
+                <!-- <li><a href="#">Contributors</a></li>
+                <li><a href="#">News Partners</a></li> -->
               </ul>
             </li>
            {% endblock %}
