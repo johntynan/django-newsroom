@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}themes/esser/css/960.css" />
     <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}themes/esser/css/text.css" />
     <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}themes/esser/css/site.css" />
-
+    <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}themes/esser/css/college.css" />
     <!--[if lt IE 7]>
     <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}themes/esser/css/ie6.css" />
     <![endif]-->
@@ -64,9 +64,16 @@
               <input name="search" type="image" src="{{ MEDIA_URL }}themes/esser/images/header/buttons/search.gif" alt="Search" class="search" />
             </fieldset>
           </form>
-
         </div>
+        <!-- SUB HEADER -->
 
+        <div id="subheader" class="grid_12">
+          <p>
+          <div class="affiliate" style="float: left;"><strong><a href="http://asu.news21.com">Arizona State University</a></strong></div>
+
+          <div class="project"><a href="http://asu.news21.com" class="subheading_link"><em>Latino America</em> &ndash; migration patterns and cultural issues</a></div>
+          </p>
+        </div>
 
 
         <div id="home" class="{% block content_grid %}grid_9{% endblock %}">
@@ -97,7 +104,7 @@ $('#message_{{ forloop.counter }}').fadeOut(); return false;"><small>clear</smal
             <div class="padding">
 
 <p>
-This site is an alliance of more than 90 students from 12 universities  exploring new approaches to in-depth digital journalism.  Carnegie-Knight fellows from Harvard, Missouri, Nebraska and Texas join teams of fellows from the eight schools listed below.  
+<strong>This site is an alliance of more than 90 students from 12 universities  exploring new approaches to in-depth digital journalism.  Carnegie-Knight fellows from Harvard, Missouri, Nebraska and Texas join teams of fellows from the eight schools listed below.</strong>  
 </p>
 <p>
 <strong>These projects are in their early stages.  They are shared here with elements to be refined in July and August.  Please return to see our work take shape.</strong>
@@ -214,4 +221,3 @@ This site is an alliance of more than 90 students from 12 universities  explorin
   </body>
 
 </html>
-
