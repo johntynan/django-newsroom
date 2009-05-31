@@ -32,45 +32,36 @@
 {% block main_content %}
 <h1>{{promo}}</h1>
 {% if promo.get_geotags.point %}
-    <div id="map" style="height: 200px; width: 200px; -moz-border-radius: 5px; border: 3px solid #DDD;"></div>
+    <div id="map" style="height: 200px; width: 200px; -moz-border-radius: 5px; border: 3px solid #DDD; float:right;"></div>
 {% endif %}
+<div id="info" style="float:left; ">
+    <p><a href="{{ promo.permalink }}">{{ promo }}</a></p>
+    <p>
+        <div style="float:left;">
+    {% for i in promo_image%}
+        <img src="{{ i.photo.get_thumbnail_url }}">
+    {% endfor %}
+        </div>
+    {{promo.description}}
+    <br clear="all">
+    </p>
 
-<p><a href="{{ promo.permalink }}">{{ promo }}</a></p>
-<p>
-    <div style="float:left;">
-{% for i in promo_image%}
-    <img src="{{ i.photo.get_thumbnail_url }}">
-{% endfor %}
-    </div>
-{{promo.description}}
-<br clear="all">
-</p>
+    <h2>Related Links</h2>
+    <ul>
+    {% for link in promo_link %}
+        <li><a href="{{ link.url }}">{{ link.title }}</a> {{ link.desc }}</li>
+    {% endfor %}
+    </ul>
 
-<h2>Related Links</h2>
-<ul>
-{% for link in promo_link %}
-    <li><a href="{{ link.url }}">{{ link.title }}</a> {{ link.desc }}</li>
-{% endfor %}
-</ul>
-
-
-<h2>Additional Information</h2>
-<dl>
-<dt>Permalink</dt>
-<dd><a href="{{ promo.permalink }}">{{ promo.permalink }}</a></dd>
-
-<dt>Affiliate</dt>
-<dd>{{promo.affiliate}}</dd>
-
-<dt>Submitted by</dt>
-<dd><a href="{{ promo.submitter.get_absolute_url }}"
-    >{{promo.submitter}}</a></dd>
-
-<dt>Authors</dt>
-<dd>
-{{ promo.authors.all|join:", " }}
-</dd>
-</dl>
+    <h2>Additional Information</h2>
+    <dt>Submitted by</dt>
+    <dd><a href="{{ promo.submitter.get_absolute_url }}">{{promo.submitter}}</a></dd>
+    <dt>Authors</dt>
+    <dd>
+    {{ promo.authors.all|join:", " }}
+    </dd>
+    </dl>
+</div>
 {% endblock %}
 
 
