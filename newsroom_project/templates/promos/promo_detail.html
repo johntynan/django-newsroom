@@ -1,4 +1,5 @@
 {% extends 'promos/base.html' %}
+{% load i18n %}
 
 {% block title %}{{promo}} | Promos{% endblock %}
 
@@ -25,13 +26,6 @@
 <h2>Promos</h2>
 <ul>
 <li><a href="{% url promos_promo_edit promo.id %}">Edit Promo</a></li>
-</ul>
-{% endblock %}
-
-{% block subnav %}
-<ul>
-    <li><a href="{% url promos_promo_image_add promo_id=promo.id %}" title="Submit Promo">Submit Promo Image</a></li>
-    <li><a href="{% url promos_promo_link_add promo_id=promo.id %}" title="Submit Promo">Submit Promo Link</a></li>
 </ul>
 {% endblock %}
 
@@ -76,7 +70,8 @@
 <dd>
 {{ promo.authors.all|join:", " }}
 </dd>
-
 </dl>
-
 {% endblock %}
+
+
+

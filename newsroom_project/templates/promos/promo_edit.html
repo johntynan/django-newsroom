@@ -1,25 +1,43 @@
 {% extends "promos/base.html" %}
+{% load i18n %}
 
 {% block title %}Edit Promo{% endblock %}
 
-{% block subnav %}
-<ul>
-    <li><a href="{% url promos_promo_image_add promo_id=promo.id %}" title="Submit Promo">Submit Promo Image</a></li>
-    <li><a href="{% url promos_promo_link_add promo_id=promo.id %}" title="Submit Promo">Submit Promo Link</a></li>
-</ul>
-{% endblock %}
 
 {% block main_content %}
 <h1>Edit Promo</h1>
+<div class="edit-promo-tabs">
+    <div class="tab-links">
+        <a href="" rel="promo-info" class="active">Edit</a>
+        <a href="{% url promos_promo_add_edit_point promo_id=promo.id %}" rel="promo-info" title="Geotag">Geotag</a>
+        <br class="clearboth" />
+    </div>
+    <div class="tab-contents">
 
-<form action="." method="post" enctype="multipart/form-data">
-    <fieldset>
-    <table>
-    {{ form }}
-    </table>
-    <input id="id_submit" type="submit" value="Submit" />
-    <a href="{% url promos_promo_list %}">Cancel</a>
-    </fieldset>
-</form>
+        <form action="." method="post" enctype="multipart/form-data">
+            <fieldset>
+            <table>
+            {{ form }}
+            </table>
+            <input id="id_submit" type="submit" value="Submit" />
+            <a href="{% url promos_promo_list %}">Cancel</a>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
 {% endblock %}
+
+
+
+{% block subnav %}
+<h2>{% trans "Links" %}</h2>
+<ul class="action-links">
+    <li><a href="{% url promos_promo_list %}">promo list</a></li>
+    <li><a href="{% url promos_promo_list %}">Add promo</a></li>
+    <li><a href="{% url promos_promo_image_add promo_id=promo.id %}" title="Add an image">Add an image</a></li>
+    <li><a href="{% url promos_promo_link_add promo_id=promo.id %}" title="Add a link">Add an link </a></li>
+ </ul>
+{% endblock %}
+
 

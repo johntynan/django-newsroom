@@ -23,9 +23,9 @@
 
 {% block tabs %}
     {% if user.is_authenticated %}
-        <li class="tab_dashboard"><a href="/" title="{% trans "Dashboard" %}" class="navbutton">{% trans "Dashboard" %}</a></li>
-        <li class="tab_stories"><a href="{% url stories_story_list %}" title="{% trans "Stories" %}" class="navbutton">{% trans "Stories" %}</a></li>
-        <li class="tab_promos"><a class="navbutton" href="{% url promos_promo_list %}">{% trans "Promos" %}</a></li>
+        <li class="tab_dashboard"><a href="/" title="{% trans 'Dashboard' %}" class="navbutton">{% trans "Dashboard" %}</a></li>
+        <li class="tab_stories"><a href="{% url stories_story_list %}" title="{% trans 'Stories' %}" class="navbutton">{% trans "Stories" %}</a></li>
+        <li class="tab_promos"><a class="navbutton" href="{% url promos_promo_list %}" title="{% trans 'Promos' %}">{% trans "Promos" %}</a></li>
         <li class="tab_topics"><a class="navbutton" href="{% url topics_topic_list %}">{% trans "Topics" %}</a></li>
         <li class="tab_notices"><a class="navbutton" href="{% url notification_notices %}">{% trans "Notices" %}{% if notice_unseen_count %} ({{ notice_unseen_count }}){% endif %}</a></li>
     {% endif %}
