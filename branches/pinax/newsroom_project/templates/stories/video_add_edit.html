@@ -38,10 +38,15 @@ Add Video
             {% endif %} 
 
             <form method="post" enctype="multipart/form-data">
+            <fieldset class="inlineLabels">
             {{form.as_p}}
             {{frame_form.as_p}}
+            
+            <div class="form_block">
             <input type="submit" value="Save"/>
             <a href="{% url stories_edit_story story.id %}">Cancel</a> 
+            </div>
+            </fieldset>
             </form>
 
             </div>
