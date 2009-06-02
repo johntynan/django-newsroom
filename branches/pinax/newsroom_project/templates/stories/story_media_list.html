@@ -1,4 +1,4 @@
-{% extends "stories/base.html" %}
+{% extends "stories/base_story.html" %}
 {% load formfields i18n %}
 
 {% block head_title %} Media for {{ story }}{% endblock %}
@@ -20,49 +20,33 @@
     <script type="text/javascript" src="{{ MEDIA_URL }}js/swfobject.js"></script>
 {% endblock %}
 
-{% block main_content %}
 
-<h1>{{ story.headline }} <span class="headline-options">(<a href="{% url stories_story_pages story.id %}">edit story pages</a>)</span></h1>
+{% block media_css %}active{% endblock %}
 
-    {# TODO auto-slugify headline (or customize admin) #}
+{% block tab_contents %}
 
-    <div class="edit-story-tabs">
-        <div class="tab-links">
-            <a href="{% url stories_edit_story story.id %}" rel="story-info">Properties</a>
-            <a href="{% url stories_story_media story.id %}" rel="story-media" class="active">Media</a>
-             <a href="{% url stories_story_add_edit_point story.id %}" rel="story-media">Geotag</a>
-            <br class="clearboth" />
-        </div>
-
-        <div class="tab-contents">
-
-            <div id="story-info" class="tab hidden">
-            </div>
-            <div id="story-media" class="tab">
-                <h2>Photos</h2>
-                {% for item in story.get_relatedcontent.photo %}
-                <div class="media-list-block" id="media-item-{{item.id}}"
-                     style="width:240px;float:left;border:1px solid">
-                    <h2>{{item}} :: {{ item.get_child_name }}</h2>
-                    <p class="media-thumb">
-                    <img src="{{item.get_child_object.get_thumbnail_url}}" /></p>
-                    <p>Dimensions: {{ item.get_width }} x {{ item.get_height }}</p>
-                    <p>Authors: {{ item.authors.all|join:', ' }}</p>
-                    <p>Attribution: {{item.attribution|truncatewords:30}}</p>
-                    <p>Summary: {{item.summary|truncatewords:30}}</p>
-                    <p><a href="{% url stories_story_edit_media story.id item.id %}">Edit</a> |
-                    <a href="{% url multimedia_preview item.id %}?width={{ item.get_width_with_margin }}&height={{ item.get_height_with_margin }}" class="thickbox">Preview</a> |
-                    <a href="">Delete</a></p>
-
-                </div>
-                {% empty %}
-                <div>You haven't uploaded any {{ media_type }} media yet.</div>
-                {% endfor %}
-            </div>
-
-            <br class="clear" />
+    <div id="story-media" class="tab">
+        <h2>Photos</h2>
+        {% for item in story.get_relatedcontent.photo %}
+        <div class="media-list-block" id="media-item-{{item.id}}"
+                style="width:240px;float:left;border:1px solid">
+            <h2>{{item}} :: {{ item.get_child_name }}</h2>
+            <p class="media-thumb">
+            <img src="{{item.get_child_object.get_thumbnail_url}}" /></p>
+            <p>Dimensions: {{ item.get_width }} x {{ item.get_height }}</p>
+            <p>Authors: {{ item.authors.all|join:', ' }}</p>
+            <p>Attribution: {{item.attribution|truncatewords:30}}</p>
+            <p>Summary: {{item.summary|truncatewords:30}}</p>
+            <p><a href="{% url stories_story_edit_media story.id item.id %}">Edit</a> |
+            <a href="{% url multimedia_preview item.id %}?width={{ item.get_width_with_margin }}&height={{ item.get_height_with_margin }}" class="thickbox">Preview</a> |
+            <a href="">Delete</a></p>
 
         </div>
+        {% empty %}
+        <div>You haven't uploaded any {{ media_type }} media yet.</div>
+        {% endfor %}
     </div>
+
+    <br class="clear" />
 
 {% endblock %}

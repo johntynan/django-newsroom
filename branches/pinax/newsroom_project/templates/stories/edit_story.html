@@ -1,8 +1,7 @@
-{% extends "stories/base.html" %}
+{% extends "stories/base_story.html" %}
 {% load formfields i18n %}
 
 {% block head_title %}Edit Story: {{story.headline}}{% endblock %}
-
 
 {% block extra_head %}
     {{ block.super }}
@@ -20,48 +19,31 @@
     </div>
 {% endblock %}
 
-{% block main_content %}
+{% block properties_css %}active{% endblock %}
 
-<h1>{{ story.headline }} <span class="headline-options">(<a href="{% url stories_story_pages story.id %}">edit story pages</a>)</span></h1>
+{% block tab_contents %}
 
-    {# TODO auto-slugify headline (or customize admin) #}
 
-    <div class="edit-story-tabs">
-        <div class="tab-links">
-            <a href="" rel="story-info" class="active">Properties</a>
-            <a href="{% url stories_story_media story.id %}" rel="story-media">Media</a>
-            <a href="{% url stories_story_add_edit_point story.id %}" rel="story-media">Geotag</a>
-            <a href="{% url stories_story_pages story.id %}" rel="story-pages">Pages</a>
-            <br class="clearboth" />
-        </div>
-        <div class="tab-contents">
-
-            <div id="story-info" class="tab">
-                <form method="post">
-                <fieldset class="inlineLabels">
-                    {{ form.as_p }}
-                    <div class="form_block">
-                        <input type="submit" value="Save"/>
-                    </div>
-                </fieldset>
-                </form>
+    <div id="story-info" class="tab">
+        <form method="post">
+        <fieldset class="inlineLabels">
+            {{ form.as_p }}
+            <div class="form_block">
+                <input type="submit" value="Save"/>
             </div>
+        </fieldset>
+        </form>
+    </div>
 
 
-            <div id="story-media" class="tab hidden">
+    <div id="story-media" class="tab hidden">
 
-                <p>Recent {{media_type|capfirst}} Items</p>
-                <ul id="media-items">
-                    {% for item in story.media.all %}
-                    <li class="media-item" id="media-item-{{item.id}}"><img src="{{item.get_thumbnail_url}}" />{{item.title}}</li>
-                    {% endfor %}
-                </ul>
-
-            </div>
-
-            <br class="clear" />
-
-        </div>
+        <p>Recent {{media_type|capfirst}} Items</p>
+        <ul id="media-items">
+            {% for item in story.media.all %}
+            <li class="media-item" id="media-item-{{item.id}}"><img src="{{item.get_thumbnail_url}}" />{{item.title}}</li>
+            {% endfor %}
+        </ul>
 
     </div>
 

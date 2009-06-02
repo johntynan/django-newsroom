@@ -1,0 +1,46 @@
+{% extends "stories/base.html" %}
+{% load formfields i18n %}
+
+{% block head_title %}Edit Story: {{story.headline}}{% endblock %}
+
+
+{% block extra_head %}
+    {{ block.super }}
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/stories.js"></script>
+{% endblock %}
+
+{% block subnav %}
+    {{ block.super }}
+    <div class="actions-block" id="story-edit-media-actions">
+        <h2>{% trans "Add media to story" %}</h2>
+        <ul class="action-links">
+            <li><a href="{% url stories_story_add_media story.id "photo" %}">{% trans "Add Photo" %}</a></li>
+            <li><a href="{% url stories_story_add_media story.id "video" %}">{% trans "Add Video" %}</a></li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block main_content %}
+
+<h1>{{ story.headline }} <span class="headline-options">(<a href="{% url stories_story_pages story.id %}">edit story pages</a>)</span></h1>
+
+    {# TODO auto-slugify headline (or customize admin) #}
+
+    <div class="edit-story-tabs">
+        <div class="tab-links">
+            <a href="{% url stories_edit_story story.id %}" rel="story-info" class="{% block properties_css %}{% endblock %}">Properties</a>
+            <a href="{% url stories_story_media story.id %}" rel="story-media" class="{% block media_css %}{% endblock %}">Media</a>
+            <a href="{% url stories_story_add_edit_point story.id %}" rel="story-media" class="{% block geotag_css %}{% endblock %}">Geotag</a>
+            <a href="{% url stories_story_pages story.id %}" rel="story-pages">Pages</a>
+            <br class="clearboth" />
+        </div>
+        <div class="tab-contents">
+            {% block tab_contents %}{% endblock %}
+
+            <br class="clear" />
+
+        </div>
+
+    </div>
+
+{% endblock %}
