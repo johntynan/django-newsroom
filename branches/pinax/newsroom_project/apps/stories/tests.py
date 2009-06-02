@@ -13,6 +13,7 @@ from stories.models import Story, StoryIntegrityError
 from stories.models import Page
 from stories.models import RelatedContent
 from stories.constants import STORY_STATUS_DRAFT, STORY_STATUS_PUBLISHED
+from utils.helpers import user_objects_qs
 
 
 def create_draft_story(headline=None, user=None):
@@ -51,22 +52,25 @@ def create_page(story):
     page.save()
     return page
     
-def create_user():
-    user =  User.objects.create_user("user", "user@mail.com", "secret")
+def create_user(username):
+    user =  User.objects.create_user(username, username+"@mail.com", "secret")
     return user
 
 class StoryTests(TestCase):
     
     def setUp(self):
-        self.user = create_user()
+        self.user = create_user("user")
         self.story_draft = create_draft_story(
                 headline="draft story")
-        self.story_published = create_published_story(
-                headline="published story")
-        self.story_draft_with_author = create_draft_story(
-                headline="draft story with author",
+        self.story_draft_with_user = create_draft_story(
+                headline="draft story with user",
                 user=self.user)
+ 
 
+    def test_user_objects_qs(self):
+        user_stories = user_objects_qs(Story, self.user)
+        self.assertEqual(user_stories.count(), 1)
+        self.assertEqual(user_stories.all()[0], self.story_draft_with_user)
         
     def _verify_page_count(self,count,story=None,msg=""):
         s = story if story else self.story_draft
@@ -159,15 +163,19 @@ class StoryUrlNewsroomTests(TestCase):
     These tests exercise the views.
     """
     def setUp(self):
-        self.user = create_user()
+        self.user = create_user("user")
+        self.other_user = create_user("other_user")
         self.story_draft = create_draft_story(
                 headline="draft story")
         self.story_published = create_published_story(
                 headline="published story")
-        self.story_draft_with_author = create_draft_story(
-                headline="draft story with author",
+        self.story_draft_with_user = create_draft_story(
+                headline="draft story with user",
                 user=self.user)
-        self.page = create_page(story=self.story_draft)
+        self.story_draft_with_other_user = create_draft_story(
+                headline="draft story with other user",
+                user=self.other_user)
+        self.page_with_user = create_page(story=self.story_draft_with_user)
         self.client.login(username="user", password="secret")
     def tearDown(self):
         self.client.logout()
@@ -179,11 +187,11 @@ class StoryUrlNewsroomTests(TestCase):
     def test_edit_story(self):
         self.response = self.client.get(
             reverse("stories_edit_story",
-                kwargs={"story_id":self.story_draft.id}))
+                kwargs={"story_id":self.story_draft_with_user.id}))
         self.assertEqual(self.response.status_code, 200)
         self.response = self.client.post(
             reverse("stories_edit_story",
-                kwargs={"story_id":self.story_draft.id}),
+                kwargs={"story_id":self.story_draft_with_user.id}),
             {"headline" : "test story",
              "summary" : "this story is a modifed test",
              "authors" : (self.user.id,),
@@ -194,34 +202,34 @@ class StoryUrlNewsroomTests(TestCase):
 
     def test_story_pages(self):
         self.response = self.client.get(reverse("stories_story_pages",
-            kwargs={"story_id":self.story_draft.id}))
+            kwargs={"story_id":self.story_draft_with_user.id}))
         self.assertEqual(self.response.status_code, 200)
 
     def test_story_media(self):
         self.response = self.client.get(reverse("stories_story_media",
-            kwargs={"story_id":self.story_draft.id}))
+            kwargs={"story_id":self.story_draft_with_user.id}))
         self.assertEqual(self.response.status_code, 200)
 
     def test_story_add_page(self):
-        self.assertEqual(2, self.story_draft.page_set.count())
+        self.assertEqual(2, self.story_draft_with_user.page_set.count())
         self.response = self.client.get(reverse("stories_add_page",
-            kwargs={"story_id":self.story_draft.id}))
+            kwargs={"story_id":self.story_draft_with_user.id}))
         self.assertEqual(self.response.status_code, 200)
-        self.assertEqual(3, self.story_draft.page_set.count())
+        self.assertEqual(3, self.story_draft_with_users.page_set.count())
 
     def test_story_edit_page(self):
         self.response = self.client.get(reverse("stories_edit_page",
-            kwargs={"page_id":self.page.id}))
+            kwargs={"page_id":self.page_with_user.id}))
         self.assertEqual(self.response.status_code, 200)
         self.response = self.client.post(reverse("stories_edit_page",
-            kwargs={"page_id":self.page.id}),
+            kwargs={"page_id":self.page_with_user.id}),
             {"content":"content of the page",
             "pagenum":1})
         self.assertEqual(self.response.status_code, 302)
 
     def test_save_page(self):
         self.response = self.client.get(reverse("stories_save_page",
-            kwargs={"story_id":self.story_draft.id}))
+            kwargs={"story_id":self.story_draft_with_user.id}))
         self.assertEqual(self.response.status_code, 200)
 
     def test_add_story(self):
@@ -240,11 +248,11 @@ class StoryUrlNewsroomTests(TestCase):
         add_postgis_srs(900913)
         self.assertEqual(0, Point.objects.count())
         self.response = self.client.post(reverse('stories_story_add_edit_point',
-            kwargs={"story_id" : self.story_draft.id}),
+            kwargs={"story_id" : self.story_draft_with_user.id}),
             {"point" : "SRID=900913;POINT(-13161849.549963182 4036247.7234083386)"})
         self.assertEqual(self.response.status_code, 302)
         self.assertEqual(1, Point.objects.count())
-        self.assertEqual(self.story_draft, Point.objects.all()[0].object)
+        self.assertEqual(self.story_draft_with_user, Point.objects.all()[0].object)
 
 
 class StoryUrlPublicationTests(TestCase):
@@ -252,18 +260,26 @@ class StoryUrlPublicationTests(TestCase):
     These tests exercise the publication views.
     """
     def setUp(self):
-        self.user = create_user()
+
+        self.user = create_user("user")
+        self.other_user = create_user("other_user")
         self.story_draft = create_draft_story(
                 headline="draft story")
-        self.story_draft.add_page() # Add page 2
-        
+        self.story_draft.add_page()
         self.story_published = create_published_story(
                 headline="published story")
         self.story_published.add_page()
-        
-        self.story_draft_with_author = create_draft_story(
-                headline="draft story with author",
+
+        self.story_draft_with_user = create_draft_story(
+                headline="draft story with user",
                 user=self.user)
+        self.story_draft_with_user.add_page()
+        self.story_draft_with_other_user = create_draft_story(
+                headline="draft story with other user",
+                user=self.other_user)
+        self.story_draft_with_other_user.add_page()
+        self.page_with_user = create_page(story=self.story_draft_with_user)
+        self.client.login(username="user", password="secret")
         
 
     def tearDown(self):
