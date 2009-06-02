@@ -198,14 +198,20 @@ class Photo(Media):
     def get_thumbnail_url(self):
         return self.image.mediumthumb.url
 
+    def get_thumbnail_30x30(self):
+        return self.image.thumbnail30x30.url
+
     def get_width(self):
-        return self.image.image.width
+        return self.image.get_width()
 
     def get_height(self):
-        return self.image.image.height
+        return self.image.get_height()
 
     def get_inline_code(self):
-        return '{{ photo %d }}' % self.id
+        """ hack until django_inlines supports this feature """
+        return '%s photo %d %s' % (settings.INLINES_START_TAG, 
+                                   self.id,
+                                   settings.INLINES_END_TAG)
 
 inlines.registry.register('photo', inlines.inline_for_model(Photo))
 
