@@ -12,11 +12,11 @@ from multimedia.models import Media
 from multimedia import views as media_views
 from stories.forms import StoryForm, PageForm, PageFormSet
 from stories.models import Story, Page
+from utils.helpers import user_objects_qs
 
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 
 #TODO: add authentication check decorators
-
 
 @login_required
 def story_list(request):
@@ -52,7 +52,8 @@ def add_page(request,story_id):
     """
     Add a Page to a Story
     """
-    story = get_object_or_404(Story,pk=story_id)
+    user_stories = user_objects_qs(Story, request.user)
+    story = get_object_or_404(user_stories,pk=story_id)
     page = story.add_page()
     #return render_to_response('stories/story_page_list',locals(),context_instance=RequestContext(request))
     #return HttpResponseRedirect(reverse('stories_edit_page',args=[page.id]))
@@ -72,7 +73,8 @@ def save_page(request,story_id):
     -1 : invalid formset
     0 : invalid request
     """
-    story = get_object_or_404(Story,pk=story_id)
+    user_stories = user_objects_qs(Story, request.user)
+    story = get_object_or_404(user_stories,pk=story_id)
     if request.POST:
         page_formset = PageFormSet(request.POST)
         if page_formset.is_valid():
@@ -101,7 +103,8 @@ def save_page(request,story_id):
 
 @login_required
 def edit_story(request,story_id):
-    story = get_object_or_404(Story,pk=story_id)
+    user_stories = user_objects_qs(Story, request.user)
+    story = get_object_or_404(user_stories,pk=story_id)
     if request.method == 'POST':
         form = StoryForm(request.POST,instance=story)
         if form.is_valid():
@@ -120,20 +123,22 @@ def edit_story(request,story_id):
 
 @login_required
 def story_pages(request,story_id):
-    story = get_object_or_404(Story,pk=story_id)
+    user_stories = user_objects_qs(Story, request.user)
+    story = get_object_or_404(user_stories,pk=story_id)
     page_formset = PageFormSet()
 
     return render_to_response('stories/story_page_list.html',locals(),context_instance=RequestContext(request))
 
 @login_required
 def story_media(request,story_id):
-    story = get_object_or_404(Story,pk=story_id)
+    user_stories = user_objects_qs(Story, request.user)
+    story = get_object_or_404(user_stories,pk=story_id)
     system_media_types = Media.media_types
     related_content = story.get_relatedcontent()
     return render_to_response('stories/story_media_list.html',locals(),context_instance=RequestContext(request))
 
 
-
+#TODO: Check the security on this view
 @login_required
 def edit_page(request,page_id):
     page = get_object_or_404(Page,pk=page_id)
@@ -156,7 +161,8 @@ def story_add_edit_media(request, story_id, media_type=None, media_id=None):
     media_type should be defined on add, and media_id is defined on edit.
     """
 
-    story = get_object_or_404(Story,pk=story_id)
+    user_stories = user_objects_qs(Story, request.user)
+    story = get_object_or_404(user_stories,pk=story_id)
     kwargs = {}
 
     if media_id:
@@ -188,7 +194,8 @@ def story_add_edit_geotag(request,story_id,
     object_id for the given story (story_id) then it returns
     the response of add_edit_geotag.
     """
-    story = get_object_or_404(Story, pk=story_id)
+    user_stories = user_objects_qs(Story, request.user)
+    story = get_object_or_404(user_stories,pk=story_id)
     story_content_type = ContentType.objects.get_for_model(story)
     try:
         geotag = geotag_class.objects.get(content_type__pk=story_content_type.id,
@@ -217,7 +224,8 @@ def story_add_edit_geotag(request,story_id,
 
 @login_required
 def story_select_media(request,story_id,media_type):
-    story = get_object_or_404(Story,pk=story_id)
+    user_stories = user_objects_qs(Story, request.user)
+    story = get_object_or_404(user_stories,pk=story_id)
     MediaType = Media.class_factory(media_type)
 
     object_list = MediaType.objects.filter(authors__pk__exact=request.user.pk)
@@ -229,6 +237,7 @@ def story_select_media(request,story_id,media_type):
 def text_widget(request,widget_name):
     return render_to_response('stories/widgets/%s.html' % widget_name,locals(),context_instance=RequestContext(request))
 
+# TODO: Check the security of this view
 @login_required
 def media_widget(request,media_id):
 
