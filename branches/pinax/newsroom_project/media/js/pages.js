@@ -175,8 +175,8 @@ $(document).ready(function(){
 
 
     /* add a template to story */
-    $(".widget-add").live("click",function(){
-        var widget_block = $(this).parent().children(".widget-html");
+    $(".layout-add").live("click",function(){
+        var widget_block = $(this).parent().children(".layout-html");
         var story_content = $(".tab-contents .tab:not(.hidden)").html();
 
         story_content += widget_block.html();

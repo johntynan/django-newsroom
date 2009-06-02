@@ -4,38 +4,15 @@
     </p>
     <p>You can add as many pages as you want. After you are done, press the Esc key to exit</p>
     <br />
-    <div class="list-page-templates">
-        <div class="page-template">
-            <img src="{{ MEDIA_URL }}images/widgets/pages/layout1.png" />
-            <h3>Basic</h3>
-            <p>
-                One picture + text
-            </p>
-            <br />
-            <a href="" class="widget-add">Add to story</a>
-            <div class="widget-html hidden widget-page_template">
-                {% include "stories/widgets/text_1col.html" %}
-                {% include "stories/widgets/media.html" %}
-                {% include "stories/widgets/text_1col.html" %}
-                {% include "stories/widgets/text_2col.html" %}
-            </div>
-        </div>
+    <div id="page-layout-list">
 
-        <div class="page-template">
-            <img src="{{ MEDIA_URL }}images/widgets/pages/layout1.png" />
-            <h3>Extended</h3>
-            <p>
-                Two photos + text
-            </p>
+        <div class="page-layout hidden">
+            <img src="" class="page-layout-image" />
+            <h3 class="page-layout-title"></h3>
+            <p class="page-layout-description"></p>
             <br />
-            <a href="" class="widget-add">Add to story</a>
-            <div class="widget-html hidden widget-page_template">
-                {% include "stories/widgets/text_2col.html" %}
-                {% include "stories/widgets/media.html" %}
-                {% include "stories/widgets/text_1col.html" %}
-                {% include "stories/widgets/text_2col.html" %}
-                {% include "stories/widgets/media.html" %}
-                {% include "stories/widgets/text_1col.html" %}
+            <a href="" class="layout-add">Add to story</a>
+            <div class="layout-html hidden">
             </div>
         </div>
 
