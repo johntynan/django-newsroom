@@ -132,7 +132,7 @@ INSTALLED_APPS = (
     'tagging',
     'django_inlines',
     'supertagging',
-    'django_extensions',
+    #'django_extensions',
 
     # internal (for now)
     'basic_profiles',
