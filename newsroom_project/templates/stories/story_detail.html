@@ -1,4 +1,4 @@
-{% extends "stories/base.html" %}
+{% extends "stories/base_story.html" %}
 
 {% block extra_head %}
     {{ block.super }}
@@ -34,9 +34,9 @@
 </ul>
 {% endblock %}
 
-{% block main_content %}
+{% block tab_contents %}
 <h1>{{ story.headline}}</h1>
-    
+
 <ul>
 {% for page in story.pages %}
     <li><a href="{% url stories_edit_page page.id %}">Page {{page.pagenum}}</a></li>
