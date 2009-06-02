@@ -8,12 +8,17 @@ from imagekit import processors
 # create your own processors. Processors are configured by subclassing and
 # overriding specific class variables.
 
+class ResizeThumbnail30x30(processors.Resize):
+    width = 30 
+    height = 30
+    crop = True
+
 class ResizeThumbnail(processors.Resize):
     width = 100
     height = 75
     crop = True
     
-class ResizeMedThumb(processors.Resize):
+class ResizeMedThumbnail(processors.Resize):
     width = 140
     height = 100
     crop = True
@@ -34,7 +39,10 @@ class AdminThumbnail(ImageSpec):
     processors = [ResizeThumbnail, EnhanceSmall]
 
 class MediumThumb(ImageSpec):
-    processors = [ResizeMedThumb]
+    processors = [ResizeMedThumbnail]
+
+class Thumbnail30x30(ImageSpec):
+    processors = [ResizeThumbnail30x30, EnhanceSmall]
 
 class Display(ImageSpec):
     increment_count = True

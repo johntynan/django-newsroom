@@ -48,7 +48,7 @@
             {% for item in media_list.photo %}
             <li>
                 <a href="">
-                    <img src="" width="30" height="30" />
+                    <img src="{{ item.get_thumbnail_30x30 }}" width="30" height="30" />
                     {{ item.title }}
                 </a>
             </li>
