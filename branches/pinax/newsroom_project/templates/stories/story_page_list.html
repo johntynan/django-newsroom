@@ -9,6 +9,11 @@
     {{ block.super }}
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/pages.css" />
     <script type="text/javascript" src="{{ MEDIA_URL }}js/pages.js"></script>
+    <script type="text/javascript">
+        //var ?width=750&height=500
+        var page_layout_list_url = "{% url page_layout_list_json %}";
+
+    </script>
 {% endblock %}
 
 
@@ -18,7 +23,7 @@
         <h2>{% trans "Options" %}</h2>
         <ul class="action-links">
             <li>
-                <a href="{% url stories_page_templates "page_template" %}?width=750&height=500" id="add-story-page" title="{% trans "Add a new page" %}"  class="thickbox">
+                <a href="{% url stories_page_templates "page_template" %}" id="add-story-page" title="{% trans "Add a new page" %}">
                 {% trans "Add a new page" %}
                 </a>
             </li>
@@ -70,12 +75,6 @@
     {% for page in story.pages %}
         <div id="story-content-{{ page.pagenum }}" class="tab {% if not forloop.first %}hidden{% endif %}">
             <div class="story-container">
-                <div class="fleft width_1-4">
-                    {% include "stories/widgets/text_1col.html" %}
-                </div>
-                <div class="fright width_3-4">
-                    {% include "stories/widgets/text_1col.html" %}
-                </div>
             </div>
         </div>
     {% endfor %}

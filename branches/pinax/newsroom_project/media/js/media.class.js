@@ -42,6 +42,7 @@ widget.media.edit = function()
 };
 
 /* returns selected option from align select box */
+/*
 widget.media.__check_align = function()
 {
     $.each($("#media-align option"),function(i,val){
@@ -58,7 +59,7 @@ widget.media.__set_align_class = function()
     });
     widget.media.__jquery_obj.addClass($("#media-align option:selected").val());
 }
-
+*/
 
 
 /*
@@ -72,11 +73,13 @@ widget.media.__edit_callback = function()
     $("#widget-media-caption").val(widget.media.caption());
     $("#template-tag").val(widget.media.template_tag());
 
+    /*
     widget.media.__check_align();
 
     $.each($("#media-align option"),function(i,val){
         $("#media-tag .widget-block").removeClass($(val).val());
     });
+    */
 
     /* change caption on template tag keyup event */
     $("#widget-media-caption").keyup(function(){
@@ -91,11 +94,13 @@ widget.media.__edit_callback = function()
         widget.media.__jquery_obj.children("img").attr("src",img_src);
         widget.media.__jquery_obj.children(".widget-code").text(widget.media.template_tag());
 
+        /*
         $.each($("#media-align option"),function(i,val){
             widget.media.__jquery_obj.removeClass($(val).val());
         });
 
         widget.media.__set_align_class();
+        */
 
         tb_remove();
     });

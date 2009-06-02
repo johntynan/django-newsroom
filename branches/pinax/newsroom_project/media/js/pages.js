@@ -40,6 +40,8 @@ $(document).ready(function(){
         /* create a new content area */
         $(".tab-contents .tab:last").clone().sortable().appendTo(".tab-contents").attr("id",tab_prefix + new_tab_id).html("");
 
+        widget.layout_list();
+
         return trigger_tab_click($(".tab-links a:last"));
     });
 
@@ -168,6 +170,20 @@ $(document).ready(function(){
         var widget_obj = $(this).parent().parent();
         $(".widget-options").appendTo($("#widget-options"));
         widget_obj.remove();
+        return false;
+    });
+
+
+    /* add a template to story */
+    $(".widget-add").live("click",function(){
+        var widget_block = $(this).parent().children(".widget-html");
+        var story_content = $(".tab-contents .tab:not(.hidden)").html();
+
+        story_content += widget_block.html();
+
+        $(".tab-contents .tab:not(.hidden)").html(story_content);
+
+        tb_remove();
         return false;
     });
 
