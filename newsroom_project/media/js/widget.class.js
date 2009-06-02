@@ -1,5 +1,21 @@
 var widget = {
 
+    layout_list : function(){
+
+        function callback_init()
+        {
+            alert('lol');
+        }
+
+        var url = $("#add-story-page").attr("href");
+        // add ? to the url, because of the random parameter added by thickbox
+        url += "?";
+
+        widget.lightbox(url,callback_init);
+
+        return false;
+    },
+
     text_edit : function(widget_obj){
 
         function callback_init()
@@ -30,23 +46,6 @@ var widget = {
         return false;
     },
 
-    /* add a template to story */
-    add_to_story : function(){
-
-        $(".widget-add").click(function(){
-            var widget_block = $(this).parent().children(".widget-html");
-            var story_content = $(".tab-contents .tab:not(.hidden)").html();
-
-            story_content += widget_block.html();
-
-            $(".tab-contents .tab:not(.hidden)").html(story_content);
-
-            tb_remove();
-            return false;
-        });
-    },
-
-
 
     /* show a generic lightbox with a callback_init function as parameter */
     lightbox : function(url,callback_init) {
@@ -66,7 +65,7 @@ var widget = {
             theme : "advanced",
             skin : "o2k7",
             skin_variant : "black",
-            width : "525",
+            width : "725",
             height :"350",
             plugins : "safari,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,inlinepopups",
 

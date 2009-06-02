@@ -255,7 +255,6 @@ function tb_show(caption, url, imageGroup, callback) {//function called when the
                         tb_init("#TB_ajaxContent a.thickbox");
                         $("#TB_window").css({display:"block"});
                         $("#TB_closeWindowButton").click(tb_remove);
-                        widget.add_to_story();
                         if (callback) callback();
                     });
                 }
