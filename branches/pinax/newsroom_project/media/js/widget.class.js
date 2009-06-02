@@ -4,7 +4,11 @@ var widget = {
 
         function callback_init()
         {
-            alert('lol');
+            $.getJSON(page_layout_list_url,function(data){
+
+                console.log('hello');
+
+            })
         }
 
         var url = $("#add-story-page").attr("href");
