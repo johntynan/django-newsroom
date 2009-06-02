@@ -180,6 +180,7 @@ class StoryUrlNewsroomTests(TestCase):
     def tearDown(self):
         self.client.logout()
 
+    # TODO add test with multiple users
     def test_story_list_get_url(self):
         self.response = self.client.get(reverse("stories_story_list"))
         self.assertEqual(self.response.status_code, 200)
@@ -215,7 +216,7 @@ class StoryUrlNewsroomTests(TestCase):
         self.response = self.client.get(reverse("stories_add_page",
             kwargs={"story_id":self.story_draft_with_user.id}))
         self.assertEqual(self.response.status_code, 200)
-        self.assertEqual(3, self.story_draft_with_users.page_set.count())
+        self.assertEqual(3, self.story_draft_with_user.page_set.count())
 
     def test_story_edit_page(self):
         self.response = self.client.get(reverse("stories_edit_page",
