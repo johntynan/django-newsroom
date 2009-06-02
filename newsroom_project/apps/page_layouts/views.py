@@ -30,7 +30,7 @@ def page_layout_detail(request, id):
 # @login_required
 def page_layout_list_json(request):
     page_layout_list = serializers.serialize("json", PageLayout.objects.all())
-    return HttpResponse(page_layout_list, mimetype="text/javascript")
+    return HttpResponse(page_layout_list, mimetype="application/json")
 
 
 # @login_required
