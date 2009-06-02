@@ -1,24 +1,21 @@
 from photos.models import Photo
 import os.path
 import os
-from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.test import TestCase
-from stories.tests import create_draft_story
+from stories.tests import create_draft_story, create_user
 
 
-def create_user():
-    user =  User.objects.create_user("user", "user@mail.com", "secret")
-    return user
 
 class PhotoUrlTests(TestCase):
     """
     These tests exercise the views.
     """
     def setUp(self):
-        self.user = create_user()
+        self.user = create_user("user")
         self.story_draft = create_draft_story(
-                headline="draft story")
+                headline="draft story",
+                user=self.user)
 
         self.client.login(username="user", password="secret")
     def tearDown(self):
