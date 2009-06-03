@@ -77,9 +77,11 @@
                 {% endfor %}
             </ul>
         {% endif %}
+        {% block subnav-outer %}
         <div id="content-action">
             {% block subnav %}&nbsp;{% endblock %}
         </div>
+        {% endblock %}
         <div id="content-data">
             {% block body %}
             <img src="{{ STATIC_URL }}tmp/entry_list.png" />
