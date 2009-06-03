@@ -51,13 +51,7 @@
 <div class="story-submit-buttons">
     <button id="story-save-pages">Save all pages</button>
 </div>
-<div id="story-prepare" class="hidden">
-
-</div>
-<div id="widget-options" class="hidden">
-    {% include "stories/widgets/includes/widget_media_options.html" %}
-    {% include "stories/widgets/includes/widget_text_options.html" %}
-</div>
+<div id="story-prepare" class="hidden"></div>
 <form id="save-page-form" class="hidden" method="post" action="{% url stories_save_page story.id %}">
     {{ page_formset }}
 </form>
