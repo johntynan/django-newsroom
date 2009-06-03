@@ -1,4 +1,7 @@
+# -*- coding: utf-8 -*-
 from django.contrib import admin
-from page_layouts.models import PageLayout
+from page_layouts.models import PageLayout, TextWidget, ImageWidget
 
 admin.site.register(PageLayout)
+admin.site.register(TextWidget)
+admin.site.register(ImageWidget)
