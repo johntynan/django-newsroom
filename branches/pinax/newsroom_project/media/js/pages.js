@@ -166,13 +166,6 @@ $(document).ready(function(){
         return false;
     });
 
-    $(".widget-options .widget-remove").click(function(){
-        var widget_obj = $(this).parent().parent();
-        $(".widget-options").appendTo($("#widget-options"));
-        widget_obj.remove();
-        return false;
-    });
-
 
     /* add a template to story */
     $(".layout-add").live("click",function(){
