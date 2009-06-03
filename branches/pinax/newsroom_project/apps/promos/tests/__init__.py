@@ -8,8 +8,8 @@ from promos.models import Promo
 from promos.models import PromoImage
 from promos.models import PromoLink
 
-def create_user():
-    user = User.objects.create_user("user","joe@foo.com", "secret")
+def create_user(username):
+    user =  User.objects.create_user(username, username+"@mail.com", "secret")
     return user
 
 def create_promo(user):
@@ -19,11 +19,13 @@ def create_promo(user):
                     relevance_ends='2009-02-03')
     promo.submitter = user
     promo.save()
+    promo.authors.add(user)
+    promo.save()
     return promo
 
 class PromoImageUrlTests(TestCase):
     def setUp(self):
-        self.user = create_user()
+        self.user = create_user("user")
         self.promo = create_promo(user=self.user)
         self.client.login(username="user", password="secret")
     def tearDown(self):
