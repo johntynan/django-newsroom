@@ -40,7 +40,7 @@
         {% endfor %}
         <br class="clearboth" />
     </div>
-    <div class="tab-contents clearfix">
+    <div class="tab-contents clearfix container_12">
     {% for page in story.pages %}
         <div id="story-content-{{ page.pagenum }}" class="tab {% if not forloop.first %}hidden{% endif %}">
             {% process_inlines page.content %}
