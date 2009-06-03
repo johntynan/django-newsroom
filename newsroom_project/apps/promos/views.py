@@ -15,6 +15,7 @@ from promos.forms import PromoForm
 from promos.models import Promo
 from promos.models import PromoImage
 from promos.models import PromoLink
+from utils.helpers import user_objects_qs
 
 
 if "mailer" in settings.INSTALLED_APPS:
@@ -62,7 +63,8 @@ def promo_edit(request, promo_id):
     """
     Edit an existing promo.
     """
-    promo = get_object_or_404(Promo, pk=promo_id)
+    user_promos = user_objects_qs(Promo, request.user)
+    promo = get_object_or_404(user_promos, pk=promo_id)
 
     if request.method == "POST":
         form = PromoForm(request.POST, instance=promo)
@@ -86,12 +88,12 @@ def promo_list(request):
     Get index of promos.
     """
 
-    promos = Promo.objects.all()
+    user_promos = user_objects_qs(Promo, request.user)
     promo_image = PromoImage.objects.all()
 
     return render_to_response(
                 'promos/promo_list.html',{
-                'promos': promos,
+                'promos': user_promos,
                 'promo_image': promo_image,
                 },
               context_instance=RequestContext(request))
@@ -101,7 +103,8 @@ def promo_detail(request, promo_id):
     """
     Get promo details.
     """
-    promo = Promo.objects.get(pk=promo_id)
+    user_promos = user_objects_qs(Promo, request.user)
+    promo = get_object_or_404(user_promos, pk=promo_id)
     # do not use this: promo_link = promo.promolink_set.all() - a pain for introspection.
     promo_link = PromoLink.objects.filter(promo=promo_id)
     promo_image = PromoImage.objects.filter(promo=promo_id)
@@ -120,8 +123,8 @@ def promo_image_add(request, promo_id):
     """
     Process a new promo link submission.
     """
-    promo = get_object_or_404(Promo, pk=promo_id)
-#    import ipdb; ipdb;ipdb.set_trace()
+    user_promos = user_objects_qs(Promo, request.user)
+    promo = get_object_or_404(user_promos, pk=promo_id)
     if request.method == "POST":
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
@@ -146,7 +149,8 @@ def promo_link_add(request, promo_id):
     """
     Process a new promo link submission.
     """
-    promo = get_object_or_404(Promo, pk=promo_id)
+    user_promos = user_objects_qs(Promo, request.user)
+    promo = get_object_or_404(user_promos, pk=promo_id)
     if request.method == "POST":
         form = LinkForm(request.POST)
         if form.is_valid():
@@ -175,7 +179,8 @@ def promo_add_edit_geotag(request,promo_id,
     object_id for the given promo (promo_id) then it returns
     the response of add_edit_geotag.
     """
-    promo = get_object_or_404(Promo, pk=promo_id)
+    user_promos = user_objects_qs(Promo, request.user)
+    promo = get_object_or_404(user_promos, pk=promo_id)
     promo_content_type = ContentType.objects.get_for_model(promo)
     try:
         geotag = geotag_class.objects.get(content_type__pk=promo_content_type.id,
