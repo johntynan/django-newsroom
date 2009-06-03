@@ -10,7 +10,7 @@
 
 .widget-block { position: relative; }
 
-.widget-block .widget-options { position: absolute; right: 0px; top: 0px; opacity: 0.8; padding: 5px; background: #EFEFEF; }
+.widget-block .widget-options { position: absolute; right: 0px; top: 0px; opacity: 0.9; padding: 3px; background: #EFEFEF; }
 .widget-block .widget-options a:hover { text-decoration: underline; }
 
 .widget-options a { padding: 2px 8px 2px 15px; background: url(../images/icons/icon_changelink.gif) no-repeat left 6px;
