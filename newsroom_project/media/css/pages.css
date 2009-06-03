@@ -1,3 +1,9 @@
+#content-action, #content-data { float: none; width: 970px; }
+#content-data h1 { padding-bottom: 10px; }
+.action-links li { float: left; padding-right: 20px; }
+
+.tab-contents { width: 940px; }
+
 .fright { float: right; }
 .fleft { float: left; }
 
