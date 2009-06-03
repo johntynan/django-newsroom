@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load media_tags %}
 {% load inlines %}
-{% block head_title %}Content Overview: {{story.headline}}{% endblock %}
+{% block head_title %}Content Overview: {{ story.headline }}{% endblock %}
 
 
 {% block extra_head %}
@@ -10,9 +10,7 @@
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/pages.css" />
     <script type="text/javascript" src="{{ MEDIA_URL }}js/pages.js"></script>
     <script type="text/javascript">
-        //var ?width=750&height=500
         var page_layout_list_url = "{% url page_layout_list_json %}";
-
     </script>
 {% endblock %}
 
@@ -76,9 +74,7 @@
     <div class="tab-contents clearfix">
     {% for page in story.pages %}
         <div id="story-content-{{ page.pagenum }}" class="tab {% if not forloop.first %}hidden{% endif %}">
-            <div class="story-container">
-            {{ page.content }}
-            </div>
+            {% process_inlines page.content %}
         </div>
     {% endfor %}
     </div>

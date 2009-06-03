@@ -4,6 +4,7 @@ var widget = {
 
         function callback_init()
         {
+            /*
             $.getJSON(page_layout_list_url,function(data){
                 var base_layout = $("#page-layout-list .page-layout:first");
                 $.each(data, function(i,item){
@@ -15,6 +16,7 @@ var widget = {
                     cur_layout.children(".layout-html").html(item.fields.html);
                 });
             })
+            */
         }
 
         var url = $("#add-story-page").attr("href");
