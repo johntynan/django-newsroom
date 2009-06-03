@@ -41,6 +41,7 @@
     </div>
     -->
 
+    <!--
     <div class="actions-block" id="page-media-blocks">
         <h2>{% trans "Media" %}</h2>
         <ul class="action-links">
@@ -56,6 +57,7 @@
             {% endwith %}
         </ul>
     </div>
+    -->
 {% endblock %}
 
 {% block main_content %}
@@ -75,6 +77,7 @@
     {% for page in story.pages %}
         <div id="story-content-{{ page.pagenum }}" class="tab {% if not forloop.first %}hidden{% endif %}">
             <div class="story-container">
+            {{ page.content }}
             </div>
         </div>
     {% endfor %}
