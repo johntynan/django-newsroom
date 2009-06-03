@@ -9,7 +9,7 @@ var widget = {
 
         var url = $("#add-story-page").attr("href");
         // add ? to the url, because of the random parameter added by thickbox
-        url += "?";
+        url += '?height=450px';
 
         widget.lightbox(url,callback_init);
 
