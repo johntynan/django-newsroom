@@ -42,6 +42,9 @@ def promo_add(request):
             promo = form.save(commit=False)
             promo.submitter = request.user
             promo.save()
+#            promo.authors = form.cleaned_data["authors"]
+#            promo.save()
+            form.save_m2m()
             to_user = [mail_tuple[1] for mail_tuple in settings.PROMO_MODERATORS]
             message = render_to_string('promos/promo_sent.txt', { 'user': request.user , 'current_site': Site.objects.get_current().domain, 'object': promo.id })
             send_mail("promo_submitted", message, settings.DEFAULT_FROM_EMAIL, to_user)

@@ -90,12 +90,17 @@ class PromoImageUrlTests(TestCase):
         self.response = self.client.post(reverse(
             "promos_promo_add",
             kwargs={}),
-            {'headline':'promo headline',
+            {'headline':'Add: promo headline',
             'permalink':'http://promos.csmonitor.com/promo_test/',
+            'authors': (self.user.id,),
             'relevance_begins':'02/01/2009',
             'relevance_ends':'02/01/2009'})
         self.assertEqual(self.response.status_code, 302)
         self.assertEqual(2, Promo.objects.count())
+        created_promo = Promo.objects.get(headline="Add: promo headline")
+#        import ipdb; ipdb.set_trace()
+        self.assertEqual(self.response.context["user"],
+                created_promo.authors.all()[0])
 
     def test_edit_promo_get_url(self):
         self.response = self.client.get(reverse(
