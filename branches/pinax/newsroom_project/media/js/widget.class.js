@@ -41,8 +41,7 @@ var widget = {
 
         };
 
-        var url = $("#widget-text-options a.widget-edit").attr("href");
-        widget.lightbox(url,callback_init);
+        widget.lightbox(page_text_editor_url,callback_init);
         return false;
     },
 
