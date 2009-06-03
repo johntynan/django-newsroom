@@ -2,6 +2,12 @@
 
 {% block title %}Submit a Promo{% endblock %}
 
+{% block jquery %}
+    {{ block.super }}
+    $("#id_relevance_begins").datepicker({'altField':'input#id_relevance_begins'})
+    $("#id_relevance_ends").datepicker({'altField':'input#id_relevance_ends'})
+{% endblock %}
+
 {# wipe menu on edit screens #}
 {% block menu %}{% endblock %}
 

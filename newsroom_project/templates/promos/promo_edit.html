@@ -3,6 +3,12 @@
 
 {% block title %}Edit Promo{% endblock %}
 
+{% block jquery %}
+    {{ block.super }}
+    $("#id_relevance_begins").datepicker({'altField':'input#id_relevance_begins'})
+    $("#id_relevance_ends").datepicker({'altField':'input#id_relevance_ends'})
+{% endblock %}
+
 
 {% block main_content %}
 <h1>Edit Promo</h1>
