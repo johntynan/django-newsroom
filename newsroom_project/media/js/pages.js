@@ -122,45 +122,16 @@ $(document).ready(function(){
     GLOBAL block event handlers
     */
     /********************************************************************************/
-    // mouseover on media widgets
-    $(".tab-contents .widget-media-block").live("mouseover",function(){
-        $("#widget-text-options").appendTo($("#widget-options"));
-        $("#widget-media-options").appendTo($(this));
-    });
-    // mouseout on media widgets
-    /*
-    $(".tab-contents .widget-media-block").live("mouseout",function(){
-        $("#widget-media-options").appendTo($("#widget-options"));
-    });
-    */
-    // mouseover on text widgets
-    $(".tab-contents .widget-text-block").live("mouseover",function(){
-        $("#widget-text-options").appendTo($(this));
-        $("#widget-media-options").appendTo($("#widget-options"));
-    });
-    // mouseout ontext  widgets
-    /*
-    $(".tab-contents .widget-text-block").live("mouseout",function(){
-        $("#widget-text-options").appendTo($("#widget-options"));
-    });
-    */
-    /*
-    $(".tab-contents").mouseout(function(){
-        $("#widget-text-options").appendTo($("#widget-options"));
-        $("#widget-media-options").appendTo($("#widget-options"));
-    });
-    */
-
     // text widget events
-    $("#widget-text-options .widget-edit").bind("click",function(){
-        var widget_obj = $(this).parent().parent();
+    $(".widget-text-block").live("click",function(){
+        var widget_obj = $(this);
         widget.text_edit(widget_obj);
         return false;
     });
 
-    // text widget events
-    $("#widget-media-options .widget-edit").bind("click",function(){
-        var widget_obj = $(this).parent().parent();
+    // media widget events
+    $(".widget-media-block").live("click",function(){
+        var widget_obj = $(this);
         widget.media.load(widget_obj);
         widget.media.edit();
         return false;

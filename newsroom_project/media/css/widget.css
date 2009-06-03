@@ -9,7 +9,9 @@
 .clear { clear: both; }
 
 .widget-block { position: relative; }
+.widget-block:hover { cursor: pointer; }
 
+/*
 .widget-block .widget-options { position: absolute; right: 0px; top: 0px; opacity: 0.9; padding: 3px; background: #EFEFEF; }
 .widget-block .widget-options a:hover { text-decoration: underline; }
 
@@ -19,7 +21,7 @@
 .widget-options a.widget-remove { background-image: url(../images/icons/icon_actionlist-deletelink.gif); color: #CC3D3D }
 .widget-options a.widget-move_up { background-image: url(../images/icons/icon_th_descending.png); color: #9cbe62 }
 .widget-options a.widget-move_down { background-image: url(../images/icons/icon_th_ascending.png); color: #9cbe62 }
-
+*/
 
 
 #story-content li:hover { cursor: move; }
