@@ -27,6 +27,6 @@
     #TB_window #lb-block-save:visited { color: #FFF; }
     #TB_window #lb-block-save:hover { background-color: #777; }
 
-.list-page-templates { padding: 0 0 20px; }
-.list-page-templates .page-template { float: left; width: 45%; padding-bottom: 10px;  }
-.list-page-templates img { float: left; margin-right: 10px; }
+#page-layout-list { padding: 0 0 20px; height: 250px; overflow: auto; }
+#page-layout-list .page-layout { float: left; width: 45%; padding-bottom: 10px;  }
+#page-layout-list img { float: left; margin-right: 10px; }

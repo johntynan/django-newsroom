@@ -5,19 +5,6 @@ var widget = {
         function callback_init()
         {
             $("#page-layout-list").load("/page_layouts/snippet.html");
-            /*
-            $.getJSON(page_layout_list_url,function(data){
-                var base_layout = $("#page-layout-list .page-layout:first");
-                $.each(data, function(i,item){
-                    console.log();
-                    var cur_layout = base_layout.clone().appendTo("#page-layout-list").removeClass("hidden");
-                    cur_layout.children(".page-layout-image").attr("src","/" + item.fields.image);
-                    cur_layout.children(".page-layout-title").text(item.fields.title);
-                    cur_layout.children(".page-layout-description").text(item.fields.description);
-                    cur_layout.children(".layout-html").html(item.fields.html);
-                });
-            })
-            */
         }
 
         var url = $("#add-story-page").attr("href");
