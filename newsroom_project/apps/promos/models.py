@@ -62,7 +62,7 @@ class Promo(models.Model):
 
     suggested_dates = models.TextField(
                 blank=True,
-                help_text="please use the format: 02/01/2009 - Mother's Day. Use a separate line for each date." )
+                help_text="please use the format: '2009-02-01' - Mother's Day. Use a separate line for each date." )
     
     topic_path = models.ManyToManyField(TopicPath, blank=True)
 

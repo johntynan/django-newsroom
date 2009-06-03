@@ -5,8 +5,14 @@
 
 {% block jquery %}
     {{ block.super }}
-    $("#id_relevance_begins").datepicker({'altField':'input#id_relevance_begins'})
-    $("#id_relevance_ends").datepicker({'altField':'input#id_relevance_ends'})
+    $("#id_relevance_begins").datepicker({
+        altField:'input#id_relevance_begins',
+        appendText: '(yyyy-mm-dd)',
+        altFormat: 'yy-mm-dd'});
+    $("#id_relevance_ends").datepicker({
+        altField:'input#id_relevance_ends',
+        appendText: '(yyyy-mm-dd)',
+        altFormat: 'yy-mm-dd'});
 {% endblock %}
 
 
