@@ -38,7 +38,7 @@ $(document).ready(function(){
         new_tab.text(new_tab.text().replace(last_tab_id,new_tab_id));
 
         /* create a new content area */
-        $(".tab-contents .tab:last").clone().sortable().appendTo(".tab-contents").attr("id",tab_prefix + new_tab_id).html("");
+        $(".tab-contents .tab:last").clone().appendTo(".tab-contents").attr("id",tab_prefix + new_tab_id).html("");
 
         widget.layout_list();
 
