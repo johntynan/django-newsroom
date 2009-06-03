@@ -2,6 +2,8 @@
 from django.db import models
 from photos.models import Photo
 
+from django_inlines import inlines
+
 class PageLayout(models.Model):
     """
     PageLayouts are...
@@ -37,3 +39,6 @@ class ImageWidget(models.Model):
     def __unicode__(self):
         return self.title
 
+
+inlines.registry.register('text_widget', inlines.inline_for_model(TextWidget))
+inlines.registry.register('image_widget', inlines.inline_for_model(ImageWidget))
