@@ -10,9 +10,9 @@
 
 .widget-block { position: relative; }
 
-.widget-block .widget-options { position: absolute; left: 0px; top: 0px; width: 90px; padding: 5px; background: #EFEFEF; }
+.widget-block .widget-options { position: absolute; right: 0px; top: 0px; width: 120px; opacity: 0.8; padding: 5px; background: #EFEFEF; }
 
-.widget-options a { display: block; padding: 2px 0 2px 15px; background: url(../images/icons/icon_changelink.gif) no-repeat left 6px;
+.widget-options a { display: block; padding: 2px 8px 2px 15px; background: url(../images/icons/icon_changelink.gif) no-repeat left 6px;
     text-decoration: none; }
 .widget-options a:hover { text-decoration: underline; }
 .widget-options a.widget-remove { background-image: url(../images/icons/icon_actionlist-deletelink.gif); color: #CC3D3D }
