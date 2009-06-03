@@ -11,6 +11,9 @@
     <script type="text/javascript" src="{{ MEDIA_URL }}js/pages.js"></script>
     <script type="text/javascript">
         var page_layout_list_url = "{% url page_layout_list_json %}";
+        var page_text_editor_url = "{% url stories_page_templates "text_editor" %}?width=750&height=500"
+        var page_media_editor_url = "{% url stories_page_templates "media_editor" %}?width=750&height=500"
+
     </script>
 {% endblock %}
 

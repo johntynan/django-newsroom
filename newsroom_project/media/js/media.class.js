@@ -36,8 +36,7 @@ widget.media.load = function(jquery_obj)
 /* public call to bring up the editor screen */
 widget.media.edit = function()
 {
-    var url = $("#widget-media-options .widget-edit").attr("href");
-    widget.lightbox(url,widget.media.__edit_callback);
+    widget.lightbox(page_media_editor_url,widget.media.__edit_callback);
     return false;
 };
 
