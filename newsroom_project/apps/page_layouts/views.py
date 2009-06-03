@@ -20,6 +20,14 @@ def page_layout_list(request):
             context_instance=RequestContext(request))
 
 # @login_required
+def page_layout_list_snippet(request):
+    page_layout_list = PageLayout.objects.all()
+    return render_to_response(
+            'page_layouts/page_layout_list_snippet.html',
+            {'page_layout_list': page_layout_list},
+            context_instance=RequestContext(request))
+
+# @login_required
 def page_layout_detail(request, id):
     page_layout = PageLayout.objects.get(id=id)
     return render_to_response(
