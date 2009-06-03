@@ -4,6 +4,7 @@ var widget = {
 
         function callback_init()
         {
+            $("#page-layout-list").load("/page_layouts/snippet.html");
             /*
             $.getJSON(page_layout_list_url,function(data){
                 var base_layout = $("#page-layout-list .page-layout:first");
