@@ -37,7 +37,7 @@ urlpatterns = patterns('promos.views',
     # KML feeds
     url(r'^kml_feed/(?P<geotag_class_name>[a-z]+)/$',kml_feed,
         name="geotags-kml_feed"),
-    url(r'^kml_feed/(?P<geotag_class_name>[a-z]+)/(?P<content_type_name>[a-z ]+)/$',kml_feed,
+    url(r'^kml_feed/(?P<geotag_class_name>[a-z]+)/(?P<content_type_name>[a-z ]+)/promos.kml',kml_feed,
         name="geotags-kml_feed_per_contenttype"),
 
     # KML Feeds visualiser
