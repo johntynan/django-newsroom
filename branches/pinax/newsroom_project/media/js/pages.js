@@ -8,7 +8,6 @@ $(document).ready(function(){
     /* handles tabs clicks */
     function trigger_tab_click(jquery_obj)
     {
-
         $(".tab-contents .tab").addClass("hidden");
         $("#" + jquery_obj.attr("rel")).removeClass("hidden");
 
@@ -17,6 +16,7 @@ $(document).ready(function(){
 
         return false;
     }
+
     $(".tab-links a.page_nav").live("click",function(){
         return trigger_tab_click($(this));;
     });
@@ -45,38 +45,12 @@ $(document).ready(function(){
         return trigger_tab_click($(".tab-links a:last"));
     });
 
-    /* handling text blocks links */
-    $("#page-text-blocks a").click(function(){
-
-        $.get($(this).attr("href"),function(data){
-            var new_widget = $(data).appendTo(".tab-contents .tab:not(.hidden)");
-            widget.text_edit(new_widget);
-        });
-
-        return false;
-    });
-
-    /* handling media blocks links */
-    $("#page-media-blocks a").click(function(){
-
-        $.get($(this).attr("href"),function(data){
-            var new_widget = $(data).appendTo(".tab-contents .tab:not(.hidden)");
-
-            widget.media.load(new_widget);
-            widget.media.edit();
-        });
-
-        return false;
-    });
-
-
     /*
     this is where we save pages
     this is important stuff
     */
 
     $("#story-save-pages").click(function(){
-        $(".widget-options").appendTo("#widget-options");
         var pages = $(".edit-story-tabs .tab-contents .tab");
 
         $("#save-page-form textarea:not(:first)").remove();
@@ -91,24 +65,7 @@ $(document).ready(function(){
 
         /* cycle each page in html */
         $.each(pages,function(i,val){
-
-            /* move page content to own div to pre-process html */
-            $("#story-prepare").html($(val).html());
-
-            /* get list of blocks */
-            var blocks = $("#story-prepare .widget-media-block");
-            /* cycle each media block of page and remove unecessary code */
-            $.each(blocks,function(i,val){
-                var block = $(val);
-                var code = block.children(".widget-code");
-                block.html(code.html());
-            });
-
-            var page_content = $("#story-prepare").html();
-            if (!page_content)
-                page_content = "<br />";
-
-            post_vars[content_field.attr("name").replace("0",i)] = page_content;
+            post_vars[content_field.attr("name").replace("0",i)] = $(val).html();
             post_vars[pagenum_field.attr("name").replace("0",i)] = i+1;
         });
 
