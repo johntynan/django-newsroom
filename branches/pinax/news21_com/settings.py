@@ -168,6 +168,15 @@ SITE_NAME = "News21"
 LOGIN_URL = "/account/login"
 LOGIN_REDIRECT_URLNAME = "what_next"
 
+
+# geotags 
+# default key is for localhost/local development
+GOOGLE_MAPS_API_KEY = 'ABQIAAAAnfs7bKE82qgb3Zc2YyS-oBT2yXp_ZAY8_ufC3CFXhHIE1NvwkxSySz_REpPq-4WZA27OwgbtyR3VcA'
+
+# django_inlines
+INLINES_START_TAG = '<%'
+INLINES_END_TAG = '%>'
+
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.
 try:
