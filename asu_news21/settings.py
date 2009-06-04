@@ -5,7 +5,7 @@ import os.path
 import pinax
 
 PINAX_ROOT = os.path.abspath(os.path.dirname(pinax.__file__))
-NEWSROOM_ROOT = os.path.abspath(os.path.dirname(__file__)+'/../asu_news21')
+NEWSROOM_ROOT = os.path.abspath(os.path.dirname(__file__)+'/../newsroom_project')
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 # tells Pinax to use the default theme
@@ -109,6 +109,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.humanize',
     'django.contrib.admindocs',
+    'geotags',
     'django.contrib.admin',
     'django.contrib.markup',
 
@@ -167,6 +168,14 @@ CONTACT_EMAIL = "feedback@news21.com"
 SITE_NAME = "asu.News21"
 LOGIN_URL = "/account/login"
 LOGIN_REDIRECT_URLNAME = "what_next"
+
+# geotags 
+# default key is for localhost/local development
+GOOGLE_MAPS_API_KEY = 'ABQIAAAAnfs7bKE82qgb3Zc2YyS-oBT2yXp_ZAY8_ufC3CFXhHIE1NvwkxSySz_REpPq-4WZA27OwgbtyR3VcA'
+
+# django_inlines
+INLINES_START_TAG = '<%'
+INLINES_END_TAG = '%>'
 
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.
