@@ -85,7 +85,7 @@ class Story(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('stories.views.show_story',[self.slug])
+        return ('stories.views.publication.story_detail', [self.id])
 
     @property
     def pages(self):

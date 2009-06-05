@@ -1,6 +1,7 @@
 <div class="photo_inline">
     <br/>
-    diplay the photo inline
+    display the photo inline
     <br/>
-    <img src="{{ object.image.image.url }}" style="width:{{ width }}px" height="{{ height }}px"; "/>
+    {# <img src="{% ifequal width 380 %}{{ object.image.display380.url }}{% else %}{% ifequal width 940 %}{{ object.image.display940.url }}{% else %}{{ object.image.display600.url }}{% endifequal %}{% endifequal %}" />#}
+    <img src="{{ object.image.display600.url }}" />
 </div>
