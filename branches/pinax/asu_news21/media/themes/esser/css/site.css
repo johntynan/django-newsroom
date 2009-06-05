@@ -125,10 +125,11 @@
   margin-top: 10px;
 }
 
-#content .grid_7,
+/*#content .grid_7,
 #content .grid_2 {
   margin: 0;
 }
+*/
 
 #content .grid_2 {
   float: right;
@@ -145,12 +146,6 @@
 #content .image-with-caption p {
   font-size: 10px;
   margin: 5px 0;
-}
-
-#content blockquote {
-  border-top: 1px solid #7c7c7d;
-  border-bottom: 1px solid #7c7c7d;
-  margin-top: 180px;
 }
 
 #content blockquote p {
@@ -321,4 +316,8 @@
 
 .nomargins {
   margin: 0;
+}
+
+#paging_nav {
+    text-align: center;
 }
