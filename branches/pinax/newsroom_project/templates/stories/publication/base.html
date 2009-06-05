@@ -5,8 +5,7 @@
 
 {% block extra_head %}
     {{ block.super }}
-    <link rel="stylesheet" href="{{ MEDIA_URL }}css/stories.css" />
-    <link rel="stylesheet" href="{{ MEDIA_URL }}css/widget.css" />
+    <!--link rel="stylesheet" href="{{ MEDIA_URL }}css/pages.css" //-->
 {% endblock %}
 
 
@@ -15,7 +14,13 @@
 
 {% block body %}
 
-    {% block main_content %}
+    {% block main_content %}{% endblock %}
+
+    {% block paging_nav %}
+    <div class="clear"></div>
+    <div id="paging_nav">
+    <p>page nav goes here</p>
+    </div>
     {% endblock %}
 
 {% endblock %}
