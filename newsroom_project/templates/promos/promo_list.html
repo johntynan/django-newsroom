@@ -16,10 +16,9 @@
         {% for promo in promos %}
         <tr class="{% cycle '' 'alt-row' %}">
                     <td class="id_col">{{ promo.id }}</td>
-                    <td><a href="{{promo.permalink}}">{{promo}}</a></td>
+                    <td><a href="{% url promos_promo_edit promo_id=promo.id %}">{{promo}}</a></td>
                     <td>
                         <a href="{% url promos_promo_detail promo_id=promo.id %}">detail</a>
-                        <a href="{% url promos_promo_edit promo_id=promo.id %}">edit</a>
                     </td>
         </tr>
         {% endfor %}
