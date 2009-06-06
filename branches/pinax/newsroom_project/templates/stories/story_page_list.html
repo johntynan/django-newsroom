@@ -12,7 +12,8 @@
     <script type="text/javascript">
         var page_layout_list_url = "{% url page_layout_list_json %}?width=750&height=500";
         var page_text_editor_url = "{% url stories_page_templates "text_editor" %}?width=750&height=500";
-        var page_media_editor_url = "{% url stories_page_templates "media_editor" %}?width=750&height=500";
+        var page_media_list_url = "{% url stories_page_templates "media_list" %}?width=750&height=500";
+        var page_media_source_url = "{% url stories_story_media story.id %}";
     </script>
 {% endblock %}
 
@@ -26,7 +27,22 @@
 <ul class="action-links">
     <li>
         <a href="{% url stories_page_templates "page_template" %}" id="add-story-page" title="{% trans "Add a new page" %}">
-        {% trans "Add a new page" %}
+        {% trans "Add new page" %}
+        </a>
+    </li>
+    <li>
+        <a href="{% url stories_page_templates "page_template" %}" id="add-layout" title="{% trans "Add a template" %}">
+        {% trans "Add template" %}
+        </a>
+    </li>
+    <li>
+        <a href="{% url stories_page_templates "page_template" %}" id="clear-page" title="{% trans "Clear page" %}">
+        {% trans "Clear page" %}
+        </a>
+    </li>
+    <li>
+        <a href="{% url stories_page_templates "page_template" %}" id="remove-page" title="{% trans "Remove page" %}">
+        {% trans "Remove page" %}
         </a>
     </li>
 </ul>

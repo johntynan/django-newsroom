@@ -15,6 +15,8 @@ from tagging.fields import TagField
 from multimedia.constants import LICENSE_CHOICES, LICENSE_DEFAULT, MEDIA_STATUS_PUBLISHED, MEDIA_STATUS_CHOICES, MEDIA_STATUS_DRAFT
 from utils.model_inheritance import ParentModel,ChildManager
 
+from django.core.urlresolvers import reverse
+
 
 class _MediaTypesDescriptor(object):
     def __get__(self,obj,type=None):

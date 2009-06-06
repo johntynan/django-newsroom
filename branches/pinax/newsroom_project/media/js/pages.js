@@ -45,6 +45,14 @@ $(document).ready(function(){
         return trigger_tab_click($(".tab-links a:last"));
     });
 
+    /* add templates to page */
+    $("#add-layout").click(function(){
+
+        widget.layout_list();
+
+        return false;
+    });
+
     /*
     this is where we save pages
     this is important stuff
@@ -87,13 +95,11 @@ $(document).ready(function(){
     });
 
     // media widget events
-    $(".widget-media-block").live("click",function(){
+    $(".widget-image-block").live("click",function(){
         var widget_obj = $(this);
-        widget.media.load(widget_obj);
-        widget.media.edit();
+        widget.image_change(widget_obj);
         return false;
     });
-
 
     /* add a template to story */
     $(".layout-add").live("click",function(){

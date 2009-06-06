@@ -1,0 +1,6 @@
+{% for item in story.get_relatedcontent.photo %}
+<li>
+    <a href="{{ item.get_thumbnail_url }}" class="media-item"><img src="{{ item.get_child_object.get_thumbnail_url }}" /></a>
+    <h3>{{ item }} -- {{ item.get_child_name }}</h3>
+</li>
+{% endfor %}
