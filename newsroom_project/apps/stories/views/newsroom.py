@@ -139,10 +139,13 @@ def story_pages(request,story_id):
 
 @login_required
 def story_media(request,story_id):
+
     user_stories = user_objects_qs(Story, request.user)
     story = get_object_or_404(user_stories,pk=story_id)
     system_media_types = Media.media_types
     related_content = story.get_relatedcontent()
+    if request.is_ajax():
+        return render_to_response('stories/story_media_list_ajax.html',locals(),context_instance=RequestContext(request))
     return render_to_response('stories/story_media_list.html',locals(),context_instance=RequestContext(request))
 
 

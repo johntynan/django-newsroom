@@ -45,6 +45,26 @@ var widget = {
         return false;
     },
 
+    image_change : function(widget_obj){
+
+        function callback_init()
+        {
+            $("#ajax-media-list").load(page_media_source_url,function(){
+
+                $("#ajax-media-list .media-item").click(function(){
+                    var media_url = $(this).attr("href");
+                    widget_obj.children("img").attr("src",media_url);
+                    return false;
+                });
+
+            });
+            return true;
+        };
+
+        widget.lightbox(page_media_list_url,callback_init);
+        return false;
+    },
+
 
     /* show a generic lightbox with a callback_init function as parameter */
     lightbox : function(url,callback_init) {
