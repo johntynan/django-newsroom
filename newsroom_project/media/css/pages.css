@@ -8,3 +8,10 @@
     #remove-page:hover { color: #E04141; }
 
 #clear-page { background-image: url(../images/common/icon_object-tools_clearlink.gif); }
+div.story-submit-buttons { display: none; padding: 10px 0; text-align: right; }
+li.story-submit-buttons { float: right; padding: 0 10px; }
+
+.story-container { clear: both; }
+
+.widget-image-size { position: absolute; width: 100%; top: 5px; left: 0; text-align: center; }
+.widget-image-size span { padding: 5px; background: #EFEFEF; }
