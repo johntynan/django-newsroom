@@ -21,8 +21,24 @@ $(document).ready(function(){
         return trigger_tab_click($(this));;
     });
 
-    /* make page contents sortable */
-    //$(".tab").sortable();
+    /* resets page numeration */
+    function reorder_pages()
+    {
+        var re_content = "story-content-[0-9]{0,}";
+        var re_tab = "Page\s\d{0,}";
+
+        var page_list = $(".tab-links .page_nav");
+
+        $.each(page_list,function(i,node){
+            var node = $(node);
+            var page_title = "Page " + (i+1);
+
+            node.text(page_title);
+
+        });
+
+
+    }
 
 
     /* add pages to story */
@@ -47,8 +63,35 @@ $(document).ready(function(){
 
     /* add templates to page */
     $("#add-layout").click(function(){
-
         widget.layout_list();
+        return false;
+    });
+
+    $("#clear-page").click(function(){
+        $(".tab-contents .tab:not(.hidden)").html("");
+        return false;
+    });
+
+    $("#remove-page").click(function(){
+        var count_tabs = $(".tab-links .page_nav");
+        if (count_tabs.length < 2)
+        {
+            alert("You are not allowed to remove the last page");
+            return false;
+        }
+
+        var remove_content = $(".tab-contents .tab:not(.hidden)");
+        var remove_tab = $(".tab-links .page_nav.active");
+
+        if (remove_tab.text() == "Page 1") remove_tab.next().addClass("active");
+        else remove_tab.prev().addClass("active");
+        remove_tab.remove();
+
+        if (remove_tab.text() == "Page 1") remove_content.next().removeClass("hidden");
+        else remove_content.prev().removeClass("hidden");
+        remove_content.remove();
+
+        reorder_pages();
 
         return false;
     });
