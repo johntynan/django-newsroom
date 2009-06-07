@@ -3,3 +3,8 @@
 
 .action-links { padding: 3px 5px 7px; width: 100%; overflow: hidden; margin: 0; }
 .action-links li { float: left; padding-right: 20px; font-size: 1em; }
+
+#remove-page { color: #C00000; background-image: url(../images/common/icon_inline-item-tools_deletelink_hover.gif); }
+    #remove-page:hover { color: #E04141; }
+
+#clear-page { background-image: url(../images/common/icon_object-tools_clearlink.gif); }
