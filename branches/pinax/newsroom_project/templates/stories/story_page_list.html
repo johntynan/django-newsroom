@@ -45,6 +45,9 @@
         {% trans "Remove page" %}
         </a>
     </li>
+    <li class="story-submit-buttons">
+        <button class="story-save-pages">Save all pages</button>
+    </li>
 </ul>
 <br class="clear" />
 
@@ -67,7 +70,7 @@
     </div>
 </div>
 <div class="story-submit-buttons">
-    <button id="story-save-pages">Save all pages</button>
+    <button class="story-save-pages">Save all pages</button>
 </div>
 <div id="story-prepare" class="hidden"></div>
 <form id="save-page-form" class="hidden" method="post" action="{% url stories_save_page story.id %}">

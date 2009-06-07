@@ -101,7 +101,7 @@ $(document).ready(function(){
     this is important stuff
     */
 
-    $("#story-save-pages").click(function(){
+    $(".story-save-pages").click(function(){
         var pages = $(".edit-story-tabs .tab-contents .tab");
 
         $("#save-page-form textarea:not(:first)").remove();
@@ -141,6 +141,19 @@ $(document).ready(function(){
     $(".widget-image-block").live("click",function(){
         var widget_obj = $(this);
         widget.image_change(widget_obj);
+        return false;
+    });
+
+    // image widget events
+    $(".widget-image-block").live("mouseover",function(){
+        var widget_obj = $(this).children("img:first");
+        $(this).append('<div class="widget-image-size"><span class="size">Size: ' + widget_obj.width() + 'px (width) by ' + widget_obj.height() + 'px (height)</span></div>');
+        return false;
+    });
+
+    // image widget events
+    $(".widget-image-block").live("mouseout",function(){
+        $(this).children(".widget-image-size").remove();
         return false;
     });
 
