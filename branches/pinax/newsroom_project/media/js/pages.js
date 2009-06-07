@@ -58,6 +58,8 @@ $(document).ready(function(){
 
         widget.layout_list();
 
+        reorder_pages();
+
         return trigger_tab_click($(".tab-links a:last"));
     });
 
