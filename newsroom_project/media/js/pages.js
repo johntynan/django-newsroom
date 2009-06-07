@@ -94,7 +94,7 @@ $(document).ready(function(){
         return false;
     });
 
-    // media widget events
+    // image widget events
     $(".widget-image-block").live("click",function(){
         var widget_obj = $(this);
         widget.image_change(widget_obj);
