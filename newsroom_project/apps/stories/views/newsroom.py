@@ -77,15 +77,13 @@ def save_page(request,story_id):
     """
     user_stories = user_objects_qs(Story, request.user)
     story = get_object_or_404(user_stories,pk=story_id)
-    #post = {}
-    #post['form-0-content'] = "abc"
-    #post['form-0-pagenum'] = "1"
-    #post['form-INITIAL_FORMS'] = "0"
-    #post['form-TOTAL_FORMS'] = "1"
 
     if request.POST:
         page_formset = PageFormSet(request.POST)
         if page_formset.is_valid():
+
+            # remove extra pages from story
+            Page.objects.filter(story=story,pagenum__gt=len(page_formset.forms)).delete()
 
             for form in page_formset.forms:
                 page = None
