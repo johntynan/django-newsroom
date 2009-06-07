@@ -102,6 +102,7 @@ $(document).ready(function(){
     */
 
     $(".story-save-pages").click(function(){
+        var ajax_loader = $(this).parent().addClass("ajax-loader");
         var pages = $(".edit-story-tabs .tab-contents .tab");
 
         $("#save-page-form textarea:not(:first)").remove();
@@ -120,7 +121,14 @@ $(document).ready(function(){
             post_vars[pagenum_field.attr("name").replace("0",i)] = i+1;
         });
 
-        $.post($("#save-page-form").attr("action"),post_vars);
+        $.post($("#save-page-form").attr("action"),post_vars,function(response){
+            ajax_loader.removeClass("ajax-loader");
+            if (response == 1)
+            {
+                $(".save-pages-sucess").css("display","inline").fadeOut(1200);
+
+            }
+        });
     });
 
 
@@ -147,7 +155,7 @@ $(document).ready(function(){
     // image widget events
     $(".widget-image-block").live("mouseover",function(){
         var widget_obj = $(this).children("img:first");
-        $(this).append('<div class="widget-image-size"><span class="size">Size: ' + widget_obj.width() + 'px (width) by ' + widget_obj.height() + 'px (height)</span></div>');
+        $(this).append('<div class="widget-image-size"><span class="size">Size: ' + widget_obj.width() + 'px (w) by ' + widget_obj.height() + 'px (h)</span></div>');
         return false;
     });
 
