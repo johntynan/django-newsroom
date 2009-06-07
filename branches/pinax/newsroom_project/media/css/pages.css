@@ -15,3 +15,9 @@ li.story-submit-buttons { float: right; padding: 0 10px; }
 
 .widget-image-size { position: absolute; width: 100%; top: 5px; left: 0; text-align: center; }
 .widget-image-size span { padding: 5px; background: #EFEFEF; }
+
+.save-pages-sucess, .ajax-loader-gif { display: none; }
+
+
+.ajax-loader .ajax-loader-gif { display: inline; }
+.ajax-loader .story-save-pages { display: none; }
