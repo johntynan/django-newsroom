@@ -1,0 +1,30 @@
+#How to create page layouts for newsroom
+
+= Introduction =
+
+This page describes how to create new page layouts form newsroom
+
+
+= Details =
+
+layouts themselves are stored in the database for easier editing, under the *page_layouts* app. Layouts consist of html built using 960gs CSS grid, example:
+
+{{{
+<div class="story-container">
+    <div class="grid_8">
+    <% image_widget 1 height=250 %>
+    <% text_widget 2 %>
+    </div>
+    <div class="grid_4">
+    <% image_widget 1 height=200 %>
+    <% text_widget 3 %>
+    </div>
+</div>
+}}}
+
+
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
