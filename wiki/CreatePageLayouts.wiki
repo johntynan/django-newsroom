@@ -1,4 +1,4 @@
-#How to create page layouts for newsroom
+# How to create page layouts for newsroom
 
 = Introduction =
 
@@ -24,7 +24,7 @@ layouts themselves are stored in the database for easier editing, under the *pag
 
 
 Various inline widgets can be added to the layout itself to reduce visual html. The currents widgets are:
-* text_widget (<% text_widget id %>) uses TextWidget model on page_layouts to allow for different combinations and text formatting.
-* image_widget (<% image_widget height=200 %>) is an inline that can receive both width and height as a parameter. If width is not present, it will use width="100%"
+  * text_widget (<% text_widget id %>) uses TextWidget model on page_layouts to allow for different combinations and text formatting.
+  * image_widget (<% image_widget height=200 %>) is an inline that can receive both width and height as a parameter. If width is not present, it will use width="100%"
 
 New inlines can be created on page_layout's models.py, to allow for more combinations
