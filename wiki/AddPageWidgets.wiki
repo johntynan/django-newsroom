@@ -21,3 +21,18 @@ In order to enable an editing interface for the widget, two files are needed:
   * pages.js
   * widget.class.js
 
+
+==pages.js==
+This is the js handler for events. Is is where events are binded to enable specific actions on specific widgets. For example, to change images on an image widget, we do this:
+{{{
+// image widget events
+$(".widget-image-block").live("click",function(){
+    var widget_obj = $(this);
+    widget.image_change(widget_obj);
+    return false;
+});
+}}}
+This will bind the click event to a function in the widget class. For simplicity, and because there are not many widgets yet, a single class was created to handle functionality (show image gallery + change select image).
+
+
+==widget.class.js==
