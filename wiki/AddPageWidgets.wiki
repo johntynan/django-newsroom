@@ -1,0 +1,23 @@
+#How to enable page widgets
+
+= Introduction =
+
+This page will describe how to add page widgets to the page editor, in order to enable the editing interface.
+
+
+= Details =
+
+Page widgets are a set of predefined html tied with javascript to enable dynamic edition of html content. Page widgets rely heavily on javascript/ajax to work, and it's relatively easy to add new ones.
+
+In order to create a new page widget, markup must be defined. Here is the example of the image widget:
+{{{
+<div class="widget-block widget-image-block">
+    <img width="100%" height="300" src=""/>
+</div>
+}}}
+
+The magic here is in the class attribute for the the div. By specifying "widget-image-block" we are enabling specific behaviour to occur for these type of "objects".
+In order to enable an editing interface for the widget, two files are needed:
+  * pages.js
+  * widget.class.js
+
