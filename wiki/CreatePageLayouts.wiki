@@ -12,19 +12,19 @@ layouts themselves are stored in the database for easier editing, under the *pag
 {{{
 <div class="story-container">
     <div class="grid_8">
-    <% image_widget 1 height=250 %>
+    <% image_widget height=250 %>
     <% text_widget 2 %>
     </div>
     <div class="grid_4">
-    <% image_widget 1 height=200 %>
+    <% image_widget height=200 %>
     <% text_widget 3 %>
     </div>
 </div>
 }}}
 
 
+Various inline widgets can be added to the layout itself to reduce visual html. The currents widgets are:
+* text_widget (<% text_widget id %>) uses TextWidget model on page_layouts to allow for different combinations and text formatting.
+* image_widget (<% image_widget height=200 %>) is an inline that can receive both width and height as a parameter. If width is not present, it will use width="100%"
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+New inlines can be created on page_layout's models.py, to allow for more combinations
