@@ -19,7 +19,13 @@
     {% block paging_nav %}
     <div class="clear"></div>
     <div id="paging_nav">
-    <p>page nav goes here</p>
+
+        <div id="story-content-{{ page.pagenum }}" class="tab {% if not forloop.first %}hidden{% endif %}">
+    {% for page in story.pages %}
+            <a href="../{{ page.pagenum }}">{{ page.pagenum }}</a>
+    {% endfor %}
+        </div>
+
     </div>
     {% endblock %}
 
