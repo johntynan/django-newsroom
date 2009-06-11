@@ -6,11 +6,7 @@ Jody had mentioned that she would  like us to be able to login via our @news21.c
 
 = Details =
 
-I am beginning to test this:
 
-http://django-openid.googlecode.com/svn/trunk/openid.html
-
-And will write more soon.
 
 
 
@@ -26,5 +22,9 @@ http://django-openid.googlecode.com/svn/trunk/openid.html
 http://www.openidenabled.com/python-openid/
 
 May also be useful to know about:
+
+http://code.google.com/apis/apps/sso/saml_reference_implementation.html
+
+http://code.google.com/p/appengine-openid-provider/
 
 http://pypi.python.org/pypi/AuthKit
