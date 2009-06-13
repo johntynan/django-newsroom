@@ -1,0 +1,17 @@
+{% extends "flash/base.html" %}
+
+{% block head_title %}Add a Flash Archive{% endblock %}
+
+{% block main_content %}
+<h1>Add a Flash Archive</h1>
+
+<form enctype="multipart/form-data" method="post">
+    <fieldset>
+    <table>
+    {{ form }}
+    </table>
+    <input id="id_submit" type="submit" value="Submit" />
+    <a href="../">Cancel</a>
+    </fieldset>
+</form>
+{% endblock %}

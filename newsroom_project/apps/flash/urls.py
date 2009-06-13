@@ -9,5 +9,10 @@ urlpatterns = patterns('flash.views',
     url(r'^(?P<id>\d+)/$', 
         'flash_detail',
         name='flash_flash_detail'),
-
+    url(r'^add/$',
+        'flash_add',
+        name='flash_flash_add'),
+    url(r'^archive_add/$', 
+        'flash_archive_add',
+        name="flash_flash_archive_add"), 
 )
