@@ -1,0 +1,15 @@
+{% extends "site_base.html" %}
+
+{% block tab_id %}id="flash_tab"{% endblock %}
+
+{% block body %}
+
+{% block main_content %}{% endblock %}
+
+{% endblock %}
+
+{% block subnav %}
+<ul>
+  <li><a href="{% url flash_flash_list %}">Flash List</a></li>
+</ul>
+{% endblock %}

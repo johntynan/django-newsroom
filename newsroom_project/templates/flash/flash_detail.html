@@ -1,0 +1,14 @@
+{% extends "flash/base.html" %}
+
+{% block head_title %}{{ flash_detail }}{% endblock %}
+
+{% block main_content %}
+
+<h1>{{ flash_detail }}</h1>
+
+<ul>
+    <li>ID: {{flash_detail.id}}</li>
+    <li>Title: {{flash_detail.title}}</li>
+</ul>
+{% endblock %}
+
