@@ -153,7 +153,10 @@ INSTALLED_APPS = (
     'videos',
     'photos',
     'page_layouts',
-    'promos'
+    'promos',
+    'feeds',
+    'maps',
+    'flash'
 )
 
 PROMO_MODERATORS = (
@@ -191,7 +194,10 @@ SUPERTAGGING_MODULES = {
 
 
 # Google map
-GOOGLE_MAPS_API_KEY = 'Add your key there'
+GOOGLE_MAPS_API_KEY = 'Add your key in local_settings.py'
+
+# Google Analytics
+GOOGLE_ANALYTICS_KEY = ''
 
 # This is needed to be able to run the test suite with geodjango
 TEST_RUNNER='django.contrib.gis.tests.run_tests'
