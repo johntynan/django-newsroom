@@ -1,0 +1,21 @@
+{% extends 'flash/base.html' %}
+
+{% block head_title %}Sections{% endblock %}
+
+{% block body_id %}sections{% endblock %}
+
+{% block main_content %}
+
+<h1>Flash List</h1>
+
+<ul>
+{% for o in flash_list %}
+<li><a href="{{o.id}}">{{o}}</a><br>
+{% empty %}
+<li>No flash submitted yet.</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
+
+

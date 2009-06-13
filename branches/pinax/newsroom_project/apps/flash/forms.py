@@ -1,4 +1,5 @@
 from django import forms
+from flash.models import Flash, FlashArchive
 
 class FlashForm(forms.ModelForm):
 
