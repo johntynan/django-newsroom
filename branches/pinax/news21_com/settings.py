@@ -99,6 +99,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
     "misc.context_processors.site_name",
     "misc.context_processors.contact_email",
+    "news21_com.context_processors.google_analytics",
 )
 
 INSTALLED_APPS = (
@@ -172,6 +173,9 @@ LOGIN_REDIRECT_URLNAME = "what_next"
 # geotags 
 # default key is for localhost/local development
 GOOGLE_MAPS_API_KEY = 'ABQIAAAAnfs7bKE82qgb3Zc2YyS-oBT2yXp_ZAY8_ufC3CFXhHIE1NvwkxSySz_REpPq-4WZA27OwgbtyR3VcA'
+
+# Google Analytics
+GOOGLE_ANALYTICS_KEY = ''
 
 # django_inlines
 INLINES_START_TAG = '<%'
