@@ -15,7 +15,8 @@ from django.core.files.storage import FileSystemStorage
 from flash.models import Flash, FlashArchive
 from flash.forms import FlashForm, FlashArchiveForm
 
-import zipfile
+import sys, zipfile, os, os.path
+
 
 @login_required
 def flash_list(request):
@@ -53,7 +54,6 @@ def flash_add(request):
             return HttpResponseRedirect(reverse('flash_flash_list'))
 
     else:
-        #form = TopicForm(user=request.user)
         form = FlashForm()
 
     return render_to_response(
@@ -77,7 +77,7 @@ def flash_archive_add(request):
             flash_archive = request.FILES
             filename = str(flash_archive['file'])
 
-            handle_uploaded_file(request.FILES['file'], filename, message)
+            handle_uploaded_file(request, request.FILES['file'], filename)
             
             request.user.message_set.create(message=message)
             return HttpResponseRedirect(reverse('flash_flash_list'))
@@ -91,18 +91,36 @@ def flash_archive_add(request):
               context_instance=RequestContext(request))
 
 
-def handle_uploaded_file(zip_file, filename, message):
+def handle_uploaded_file(request, zip_file, filename):
     if zip_file.content_type != 'application/zip':
         message='File upload must be a valid ZIP archive.'
+        request.user.message_set.create(message=message)
+        return HttpResponseRedirect(reverse('flash_flash_list'))
     else:
-        try:
-            fileandpath = settings.MEDIA_ROOT + '/flash/unzipped/' + filename
-            destination = open(fileandpath, 'wb+')
-            for chunk in zip_file.chunks():
-                destination.write(chunk)
-            destination.close()
-            fileandpath
+        workingdir = settings.MEDIA_ROOT + '/flash/unzipped/' 
+        foldername = filename.strip('.zip')
+        fullpath = workingdir + foldername
+        message = settings.MEDIA_ROOT + '/flash/unzipped/' 
+        tempfile = open(fullpath+'.zip', 'wb+')
+        
+        for chunk in zip_file.chunks():
+            tempfile.write(chunk)
+                          
+        zfile = zipfile.ZipFile(tempfile)
+        os.mkdir(os.path.join(workingdir, foldername))
 
-        except:
-            message='could not unzip file'
-    return zip_file, message # Return the zip_file
+        for name in zfile.namelist():
+            if name.endswith('/'):
+                os.mkdir(os.path.join(workingdir, name))
+            else:
+                message = name
+                # outfile = open(os.path.join(dir, name), 'wb')
+                # outfile.write(zfile.read(name))
+                # outfile.close()
+
+        tempfile.close()
+        message = 'your file has been unzipped'
+
+    
+    request.user.message_set.create(message=message)
+    return HttpResponseRedirect(reverse('flash_flash_list'))
