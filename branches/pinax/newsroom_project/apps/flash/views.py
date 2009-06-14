@@ -113,13 +113,11 @@ def handle_uploaded_file(request, zip_file, filename):
             if name.endswith('/'):
                 os.mkdir(os.path.join(workingdir, name))
             else:
-                message = name
+                data = zfile.read(name)
                 newfile = os.path.join(workingdir, foldername, name)
-                open(newfile, "wb")
-                newfile.write(zfile.read(zfile.name()))
-                # newfile.write(zfile.read(name))
-                # newfile.write()
-                newfile.close()
+                tempdata = open(newfile, "wb")
+                tempdata.writelines(data)
+                tempdata.close()
 
         tempfile.close()
         message = 'your file has been unzipped'
