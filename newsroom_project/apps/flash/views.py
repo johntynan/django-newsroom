@@ -66,7 +66,7 @@ def flash_archive_add(request):
     """
 
     if request.method == "POST":
-        form = FlashArchiveForm(request.POST)
+        form = FlashArchiveForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             request.user.message_set.create(
