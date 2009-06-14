@@ -12,4 +12,3 @@ class FlashArchiveForm(forms.ModelForm):
 
     class Meta:
         model = FlashArchive
-
