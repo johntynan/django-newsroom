@@ -13,7 +13,9 @@ class PageLayout(models.Model):
     title = models.CharField(max_length=256)
     html = models.TextField()
     description = models.TextField()
-    image = models.ImageField(upload_to="page_layouts")
+    image = models.ImageField(
+                upload_to="images/widgets/page_layouts",
+                help_text="A small image of the layout, 240wide.  Upload new images and also add via svn.")
 
     def __unicode__(self):
         return self.title

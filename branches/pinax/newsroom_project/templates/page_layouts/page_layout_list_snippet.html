@@ -2,11 +2,10 @@
 
 {% for o in page_layout_list %}
 <div class="page-layout">
-    <img src="/{{ o.image }}" class="page-layout-image" />
+    <img alt="thumbnail" class="layout-add" src="{{ MEDIA_URL }}{{ o.image }}" class="page-layout-image" />
     <h3 class="page-layout-title">{{ o.title }}</h3>
     <p class="page-layout-description">{{ o.description }}</p>
-    <br />
-    <a href="" class="layout-add">Add to story</a>
+    <!--a href="" class="layout-add">Add to story</a-->
     <div class="layout-html hidden">
         {% process_inlines o.html %}
     </div>
