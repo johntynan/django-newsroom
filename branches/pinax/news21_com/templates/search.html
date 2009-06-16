@@ -14,66 +14,114 @@
 
 {% block body %}
 
-<div id="searchcontrol" style="width:100%;">Loading...</div>
+<div id="searchControl" style="width:100%;">Loading...</div>
+<div id="searchForm" style="width:100%;">Loading...</div>
 
 <script src="http://www.google.com/jsapi" type="text/javascript"></script>
 <script type="text/javascript">
     google.load('search', '1');
     function cse() {
-        searchControl = new google.search.CustomSearchControl('005517685523726248670:pujuo2igaec');
-        searchControl.draw(document.getElementById("searchcontrol"));
-        searchControl.execute('{{ request.GET.q }}');
-        //searchControl = new GSearchControl();
-        //alert(searchControl);
+        var sFormDiv = document.getElementById("searchForm");
+        var sControlDiv = document.getElementById("searchControl");
 
-        var siteSearch = new google.search.WebSearch();
-        siteSearch.setSiteRestriction("http://news21.com/");
-        siteSearch.setUserDefinedLabel("News21.com");
-        siteSearch.setUserDefinedClassSuffix("siteSearch");
-        searchControl.addSearcher(siteSearch);
+        // create a search control
+        this.sControl = new google.search.CustomSearchControl('005517685523726248670:pujuo2igaec');
+        this.searchForm = new google.search.SearchForm(true, sFormDiv);
 
-        var siteSearch = new google.search.WebSearch();
-        siteSearch.setSiteRestriction("http://asu.news21.com/");
-        siteSearch.setUserDefinedLabel("Arizona State");
-        siteSearch.setUserDefinedClassSuffix("siteSearch");
-        searchControl.addSearcher(siteSearch);
+        // bind clear and submit functions
+        this.searchForm.setOnSubmitCallback(this, cse.prototype.onSubmit);
+        this.searchForm.setOnClearCallback(this, cse.prototype.onClear);
 
-        var siteSearch = new google.search.WebSearch();
-        siteSearch.setSiteRestriction("http://berkeley.news21.com/");
-        siteSearch.setUserDefinedLabel("Berkeley");
-        siteSearch.setUserDefinedClassSuffix("siteSearch");
-        searchControl.addSearcher(siteSearch);
+        // set up for large result sets
+        this.sControl.setResultSetSize(google.search.Search.LARGE_RESULTSET);
 
-        var siteSearch = new google.search.WebSearch();
-        siteSearch.setSiteRestriction("http://news21.jrn.columbia.edu/");
-        siteSearch.setUserDefinedLabel("Columbia");
-        siteSearch.setUserDefinedClassSuffix("siteSearch");
-        searchControl.addSearcher(siteSearch);
+        var searcher;
+        var options;
 
-        var siteSearch = new google.search.WebSearch();
-        siteSearch.setSiteRestriction("http://umd.news21.com/");
-        siteSearch.setUserDefinedLabel("Maryland");
-        siteSearch.setUserDefinedClassSuffix("siteSearch");
-        searchControl.addSearcher(siteSearch);
+        // configure search control for
+        searcher = new google.search.WebSearch();
+        options = new google.search.SearcherOptions();
+        searcher.setSiteRestriction("http://news21.com/");
+        searcher.setUserDefinedLabel("News21.com");
+        searcher.setUserDefinedClassSuffix("siteSearch");
+        this.sControl.addSearcher(searcher, options);
 
-        var siteSearch = new google.search.WebSearch();
-        siteSearch.setSiteRestriction("http://news21.jomc.unc.edu/");
-        siteSearch.setUserDefinedLabel("North Carolina");
-        siteSearch.setUserDefinedClassSuffix("siteSearch");
-        searchControl.addSearcher(siteSearch);
+        searcher = new google.search.WebSearch();
+        options = new google.search.SearcherOptions();
+        searcher.setSiteRestriction("http://asu.news21.com/");
+        searcher.setUserDefinedLabel("Arizona State");
+        searcher.setUserDefinedClassSuffix("siteSearch");
+        this.sControl.addSearcher(searcher, options);
 
-        var siteSearch = new google.search.WebSearch();
-        siteSearch.setSiteRestriction("http://news21.uscannenberg.org/");
-        siteSearch.setUserDefinedLabel("USC");
-        siteSearch.setUserDefinedClassSuffix("siteSearch");
-        searchControl.addSearcher(siteSearch);
-        
-        var siteSearch = new google.search.WebSearch();
-        siteSearch.setSiteRestriction("http://youngandthewireless.com/");
-        siteSearch.setUserDefinedLabel("Syracuse");
-        siteSearch.setUserDefinedClassSuffix("siteSearch");
-        searchControl.addSearcher(siteSearch); 
+        searcher = new google.search.WebSearch();
+        options = new google.search.SearcherOptions();
+        searcher.setSiteRestriction("http://berkeley.news21.com/");
+        searcher.setUserDefinedLabel("Berkeley");
+        searcher.setUserDefinedClassSuffix("siteSearch");
+        this.sControl.addSearcher(searcher, options);
+
+        searcher = new google.search.WebSearch();
+        options = new google.search.SearcherOptions();
+        searcher.setSiteRestriction("http://news21.jrn.columbia.edu/");
+        searcher.setUserDefinedLabel("Columbia");
+        searcher.setUserDefinedClassSuffix("siteSearch");
+        this.sControl.addSearcher(searcher, options);
+
+        searcher = new google.search.WebSearch();
+        options = new google.search.SearcherOptions();
+        searcher.setSiteRestriction("http://umd.news21.com/");
+        searcher.setUserDefinedLabel("Maryland");
+        searcher.setUserDefinedClassSuffix("siteSearch");
+        this.sControl.addSearcher(searcher, options);
+
+        searcher = new google.search.WebSearch();
+        options = new google.search.SearcherOptions();
+        searcher.setSiteRestriction("http://news21.jomc.unc.edu/");
+        searcher.setUserDefinedLabel("North Carolina");
+        searcher.setUserDefinedClassSuffix("siteSearch");
+        this.sControl.addSearcher(searcher, options);
+
+        searcher = new google.search.WebSearch();
+        options = new google.search.SearcherOptions();
+        searcher.setSiteRestriction("http://news21.uscannenberg.org/");
+        searcher.setUserDefinedLabel("USC");
+        searcher.setUserDefinedClassSuffix("siteSearch");
+        this.sControl.addSearcher(searcher, options);
+
+        searcher = new google.search.WebSearch();
+        options = new google.search.SearcherOptions();
+        searcher.setSiteRestriction("http://youngandthewireless.com/");
+        searcher.setUserDefinedLabel("Syracuse");
+        searcher.setUserDefinedClassSuffix("siteSearch");
+        this.sControl.addSearcher(searcher, options);
+
+
+        // draw the search control in tabbed mode
+        var drawOptions = new google.search.DrawOptions();
+        drawOptions.setDrawMode(GSearchControl.DRAW_MODE_TABBED);
+        this.sControl.draw(sControlDiv, drawOptions);
+
+        // execute a starter search
+        this.searchForm.execute('{{ request.GET.q }}');
     }
+
+    // when the form fires a submit, grab its
+    // value and call the search control
+    cse.prototype.onSubmit = function(form) {
+    var q = form.input.value;
+    if (q && q!= "") {
+        this.sControl.execute(q);
+        }
+    return false;
+    }
+
+    // when the form fires a clear, call the search control
+    cse.prototype.onClear = function(form) {
+        this.sControl.clearAllResults();
+        form.input.value = "";
+        return false;
+    }
+
     function OnLoad() {
         new cse();
     }
