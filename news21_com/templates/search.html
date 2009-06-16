@@ -19,7 +19,7 @@
 <script src="http://www.google.com/jsapi" type="text/javascript"></script>
 <script type="text/javascript">
     google.load('search', '1');
-    google.setOnLoadCallback(function() {
+    function cse() {
         searchControl = new google.search.CustomSearchControl('005517685523726248670:pujuo2igaec');
         searchControl.draw(document.getElementById("searchcontrol"));
         searchControl.execute('{{ request.GET.q }}');
@@ -73,11 +73,11 @@
         siteSearch.setUserDefinedLabel("Syracuse");
         siteSearch.setUserDefinedClassSuffix("siteSearch");
         searchControl.addSearcher(siteSearch); 
-
-
-
-        
-   }, true);
+    }
+    function OnLoad() {
+        new cse();
+    }
+    google.setOnLoadCallback(OnLoad, true);
 </script>
 
 {% endblock %}
