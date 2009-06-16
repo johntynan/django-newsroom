@@ -7,20 +7,76 @@
 {# wipe topics sidebar #}
 {% block sidebar_topics %}{% endblock %}
 
+{# wipe sidebar altogether #}
+{% block sidebar %}{% endblock %}
+
+{% block content_grid %}grid_12{% endblock %}
 
 {% block body %}
 
-<div id="cse" style="width:100%;">Loading...</div>
+<div id="searchcontrol" style="width:100%;">Loading...</div>
 
 <script src="http://www.google.com/jsapi" type="text/javascript"></script>
 <script type="text/javascript">
-   google.load('search', '1');
-   google.setOnLoadCallback(function() {
-        sc = new google.search.CustomSearchControl('005517685523726248670:pujuo2igaec');
-        sc.draw('cse');
-        sc.execute('{{ request.GET.q }}');
+    google.load('search', '1');
+    google.setOnLoadCallback(function() {
+        searchControl = new google.search.CustomSearchControl('005517685523726248670:pujuo2igaec');
+        searchControl.draw(document.getElementById("searchcontrol"));
+        searchControl.execute('{{ request.GET.q }}');
         //searchControl = new GSearchControl();
         //alert(searchControl);
+
+        var siteSearch = new google.search.WebSearch();
+        siteSearch.setSiteRestriction("http://news21.com/");
+        siteSearch.setUserDefinedLabel("News21.com");
+        siteSearch.setUserDefinedClassSuffix("siteSearch");
+        searchControl.addSearcher(siteSearch);
+
+        var siteSearch = new google.search.WebSearch();
+        siteSearch.setSiteRestriction("http://asu.news21.com/");
+        siteSearch.setUserDefinedLabel("Arizona State");
+        siteSearch.setUserDefinedClassSuffix("siteSearch");
+        searchControl.addSearcher(siteSearch);
+
+        var siteSearch = new google.search.WebSearch();
+        siteSearch.setSiteRestriction("http://berkeley.news21.com/");
+        siteSearch.setUserDefinedLabel("Berkeley");
+        siteSearch.setUserDefinedClassSuffix("siteSearch");
+        searchControl.addSearcher(siteSearch);
+
+        var siteSearch = new google.search.WebSearch();
+        siteSearch.setSiteRestriction("http://news21.jrn.columbia.edu/");
+        siteSearch.setUserDefinedLabel("Columbia");
+        siteSearch.setUserDefinedClassSuffix("siteSearch");
+        searchControl.addSearcher(siteSearch);
+
+        var siteSearch = new google.search.WebSearch();
+        siteSearch.setSiteRestriction("http://umd.news21.com/");
+        siteSearch.setUserDefinedLabel("Maryland");
+        siteSearch.setUserDefinedClassSuffix("siteSearch");
+        searchControl.addSearcher(siteSearch);
+
+        var siteSearch = new google.search.WebSearch();
+        siteSearch.setSiteRestriction("http://news21.jomc.unc.edu/");
+        siteSearch.setUserDefinedLabel("North Carolina");
+        siteSearch.setUserDefinedClassSuffix("siteSearch");
+        searchControl.addSearcher(siteSearch);
+
+        var siteSearch = new google.search.WebSearch();
+        siteSearch.setSiteRestriction("http://news21.uscannenberg.org/");
+        siteSearch.setUserDefinedLabel("USC");
+        siteSearch.setUserDefinedClassSuffix("siteSearch");
+        searchControl.addSearcher(siteSearch);
+        
+        var siteSearch = new google.search.WebSearch();
+        siteSearch.setSiteRestriction("http://youngandthewireless.com/");
+        siteSearch.setUserDefinedLabel("Syracuse");
+        siteSearch.setUserDefinedClassSuffix("siteSearch");
+        searchControl.addSearcher(siteSearch); 
+
+
+
+        
    }, true);
 </script>
 
