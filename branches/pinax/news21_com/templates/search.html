@@ -34,6 +34,9 @@
 
         // set up for large result sets
         this.sControl.setResultSetSize(google.search.Search.LARGE_RESULTSET);
+        
+        // set links to open in the same window
+        this.sControl.setLinkTarget(GSearch.LINK_TARGET_SELF);
 
         var searcher;
         var options;
