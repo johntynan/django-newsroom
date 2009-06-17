@@ -18,7 +18,22 @@
 <div id="searchForm" style="width:100%;">Loading...</div>
 
 <script src="http://www.google.com/jsapi" type="text/javascript"></script>
-<script type="text/javascript">
+<script type="text/javascript">//<![CDATA[
+
+    function getElementsByClassName(c, t, p){
+    if(!p){p=document}
+        var els = p.getElementsByTagName(t?t:'*');
+        var re = new RegExp('\\b'+c+'\\b');
+        var rels = [];
+    for(var i=0;i<els.length;i++){
+        var el=els[i];
+        if(el.className.match(re)){
+            rels.push(el)
+        }
+    }
+    return rels;
+}
+
     google.load('search', '1');
     function cse() {
         var sFormDiv = document.getElementById("searchForm");
@@ -36,10 +51,12 @@
         this.sControl.setResultSetSize(google.search.Search.LARGE_RESULTSET);
         
         // set links to open in the same window
+
         this.sControl.setLinkTarget(GSearch.LINK_TARGET_SELF);
 
         var searcher;
         var options;
+
 
         // configure search control for
         searcher = new google.search.WebSearch();
@@ -106,14 +123,33 @@
 
         // execute a starter search
         this.searchForm.execute('{{ request.GET.q }}');
+        
+        // now we find and select the correct tab
+        var tabs=getElementsByClassName('gsc-tabHeader','div',sControlDiv);
+        var re=new RegExp('^All News21$'); // Local would be the string you need to replace as necessary, to correspond with the value of the tab
+        for(var i=0;i<tabs.length;i++){
+            var tab=tabs[i];
+            if(tab.firstChild.nodeValue.match(re)){
+                if(tab.dispatchEvent){
+                    var ev=document.createEvent('MouseEvents');
+                    ev.initEvent('click',true,true);
+                    tab.dispatchEvent(ev);
+                }else if(tab.fireEvent){
+                    tab.fireEvent('onclick')
+                }else{
+                    tab.onclick()
+                }
+            return
+            }
+        }
     }
 
     // when the form fires a submit, grab its
     // value and call the search control
     cse.prototype.onSubmit = function(form) {
-    var q = form.input.value;
-    if (q && q!= "") {
-        this.sControl.execute(q);
+        var q = form.input.value;
+        if (q && q!= "") {
+            this.sControl.execute(q);
         }
     return false;
     }
@@ -128,7 +164,9 @@
     function OnLoad() {
         new cse();
     }
-    google.setOnLoadCallback(OnLoad, true);
-</script>
+
+google.setOnLoadCallback(OnLoad, true);
+
+//]]></script>
 
 {% endblock %}
