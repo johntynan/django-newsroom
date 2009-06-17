@@ -104,7 +104,7 @@
         searcher = new google.search.WebSearch();
         options = new google.search.SearcherOptions();
         searcher.setSiteRestriction("http://news21.uscannenberg.org/");
-        searcher.setUserDefinedLabel("USC");
+        searcher.setUserDefinedLabel("Southern&nbsp;California");
         searcher.setUserDefinedClassSuffix("siteSearch");
         this.sControl.addSearcher(searcher, options);
 
@@ -115,6 +115,12 @@
         searcher.setUserDefinedClassSuffix("siteSearch");
         this.sControl.addSearcher(searcher, options);
 
+        searcher = new google.search.WebSearch();
+        options = new google.search.SearcherOptions();
+        searcher.setSiteRestriction("http://news21blog.org/");
+        searcher.setUserDefinedLabel("News21Blog");
+        searcher.setUserDefinedClassSuffix("siteSearch");
+        this.sControl.addSearcher(searcher, options);
 
         // draw the search control in tabbed mode
         var drawOptions = new google.search.DrawOptions();
@@ -126,7 +132,9 @@
         
         // now we find and select the correct tab
         var tabs=getElementsByClassName('gsc-tabHeader','div',sControlDiv);
-        var re=new RegExp('^All News21$'); // Local would be the string you need to replace as necessary, to correspond with the value of the tab
+        // var affiliate = '^All News21$'
+        var affiliate = '^{{ request.GET.affiliate }}$'
+        var re=new RegExp(affiliate); // Local would be the string you need to replace as necessary, to correspond with the value of the tab
         for(var i=0;i<tabs.length;i++){
             var tab=tabs[i];
             if(tab.firstChild.nodeValue.match(re)){

@@ -75,6 +75,7 @@
 
           <form action="/search/" method="get">
             <fieldset>
+              <input name="affiliate" type="hidden" value="" />
               <input name="q" type="text" value="{{ request.GET.q }}" class="input" />
               <input name="search" type="image" src="{{ MEDIA_URL }}themes/esser/images/header/buttons/search.gif" alt="Search" class="search" />
             </fieldset>
