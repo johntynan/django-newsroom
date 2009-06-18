@@ -1,4 +1,6 @@
-#summary Installing GEOS from source poses some interesting issues for geodjango as outlined below.
+#summary Installing GEOS from source poses some interesting issues for geodjango as outlined below with great thanks to rcoup , springmeyer, adamfast and jbronn at the #geodjango channel at irc.freenode.net
+
+
 
 = Introduction =
 
