@@ -1,4 +1,5 @@
-from django.http import HttpResponseRedirect
+import simplejson as json
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
@@ -69,3 +70,25 @@ def photo_add_edit( request, media_id=None, template='photos/photo_add_edit.html
                 context_dict,
                 context_instance=RequestContext(request))
 
+def gallery_detail(request, media_id, slug=False, json=False) :
+    object = get_object_or_404(Gallery,pk=media_id)
+    pass
+
+def photo_detail(request, media_id, slug=False, 
+                 template='photos/photo_detail.html', 
+                 serializer='json', 
+                 context_dict={}):
+    
+    photo = get_object_or_404(Photo,pk=media_id)
+
+    if request.is_ajax():
+        data = json.dumps(photo.get_json_object())
+        print data
+        return HttpResponse(data, mimetype='application/json')
+
+    context_dict.update({'object':photo,})
+
+    return render_to_response(
+                template,
+                context_dict,
+                context_instance=RequestContext(request))

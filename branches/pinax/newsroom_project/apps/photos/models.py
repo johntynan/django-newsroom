@@ -198,14 +198,29 @@ class Photo(Media):
     def get_thumbnail_url(self):
         return self.image.mediumthumb.url
 
-    def get_thumbnail_30x30(self):
+    def get_thumbnail30x30_url(self):
         return self.image.thumbnail30x30.url
 
+    def get_display380_url(self):
+        return self.image.display380.url
+        
+    def get_display600_url(self):
+        return self.image.display600.url
+
+    def get_display140_url(self):
+        return self.image.display140.url
+
+    def get_display940_url(self):
+        return self.image.display940.url
+
+    def get_original_url(self):
+        return self.image.image.url
+        
     def get_width(self):
-        return self.image.get_width()
+        return self.image.image.width
 
     def get_height(self):
-        return self.image.get_height()
+        return self.image.image.height
 
     def get_inline_code(self):
         """ hack until django_inlines supports this feature """
@@ -213,5 +228,13 @@ class Photo(Media):
                                    self.id,
                                    settings.INLINES_END_TAG)
 
+    def get_json_object(self):
+        """not used but leaving around for now"""
+        return [{ self.id : 
+                 { 'display380': self.get_display380_url,
+                   'original': self.get_original_url,
+                   'title' : self.title, }}]
+
 inlines.registry.register('photo', inlines.inline_for_model(Photo))
+
 

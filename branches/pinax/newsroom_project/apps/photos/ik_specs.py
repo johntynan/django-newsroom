@@ -23,14 +23,18 @@ class ResizeMedThumbnail(processors.Resize):
     height = 100
     crop = True
 
-class ResizeDisplay600(processors.Resize):
-    width = 600
-    
 class ResizeDisplay940(processors.Resize):
     width = 940
     
+class ResizeDisplay600(processors.Resize):
+    width = 600
+
 class ResizeDisplay380(processors.Resize):
     width = 380
+    
+class ResizeDisplay140(processors.Resize):
+    width = 140
+    
     
 class EnhanceSmall(processors.Adjustment):
     contrast = 1.2
@@ -53,11 +57,13 @@ class Thumbnail30x30(ImageSpec):
 class Display940(ImageSpec):
     processors = [ResizeDisplay940]
 
+class Display140(ImageSpec):
+    processors = [ResizeDisplay140]
+
 class Display380(ImageSpec):
     processors = [ResizeDisplay380]
 
 class Display600(ImageSpec):
-    increment_count = True
     processors = [ResizeDisplay600]
         
 class Thumbnail(ImageSpec):

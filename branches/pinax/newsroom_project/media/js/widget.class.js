@@ -49,8 +49,13 @@ var widget = {
 
         function callback_init()
         {
+            /*** 
+            Calls view at /newsroom/story/2/media/ via ajax and renders
+            templates/stories/story_media_list_ajax.html which loops through
+            story.get_relatedcontent, a dict of related media, like: {'photo':
+            [<Photo: green dragons>, <Photo: squirrel>]} 
+            ***/
             $("#ajax-media-list").load(page_media_source_url,function(){
-
                 $("#ajax-media-list .media-item").click(function(){
                     var media_url = $(this).attr("href");
                     widget_obj.children("img").attr("src",media_url);
@@ -60,7 +65,8 @@ var widget = {
             });
             return true;
         };
-
+	    // load the greybox content from 
+        // /newsroom/template/media_list/?width=750&height=500
         widget.lightbox(page_media_list_url,callback_init);
         return false;
     },
