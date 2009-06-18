@@ -1,0 +1,10 @@
+#summary Installing GEOS from source poses some interesting issues for geodjango as outlined below.
+
+= Introduction =
+
+Finding the path
+
+Finding the right Spherical Mercartor Projection 
+
+= Details =
+
