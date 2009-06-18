@@ -1,6 +1,11 @@
 {% for item in story.get_relatedcontent.photo %}
-<li>
-    <a href="{{ item.get_thumbnail_url }}" class="media-item"><img src="{{ item.get_child_object.get_thumbnail_url }}" /></a>
+<li id="media-item-{{ item.id }}">
+    <img src="{{ item.get_child_object.get_thumbnail_url }}" />
     <h3>{{ item }} -- {{ item.get_child_name }}</h3>
+    <a href="{{ item.get_display140_url }}" class="media-item">140px</a> | 
+    <a href="{{ item.get_display380_url }}" class="media-item">380px</a> | 
+    <a href="{{ item.get_display600_url }}" class="media-item">600px</a> | 
+    <a href="{{ item.get_display940_url }}" class="media-item">940px</a> | 
+    <a href="{{ item.get_original_url }}" class="media-item">Original</a>
 </li>
 {% endfor %}

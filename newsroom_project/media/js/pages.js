@@ -157,7 +157,9 @@ $(document).ready(function(){
     // image widget events
     $(".widget-image-block").live("mouseover",function(){
         var widget_obj = $(this).children("img:first");
-        $(this).append('<div class="widget-image-size"><span class="size">Size: ' + widget_obj.width() + 'px (w) by ' + widget_obj.height() + 'px (h)</span></div>');
+        // just display width for now, height is variable
+        //$(this).append('<div class="widget-image-size"><span class="size">Size: ' + widget_obj.width() + 'px (w) by ' + widget_obj.height() + 'px (h)</span></div>');
+        $(this).append('<div class="widget-image-size"><span class="size">Size: ' + widget_obj.width() + 'px wide</span></div>');
         return false;
     });
 
