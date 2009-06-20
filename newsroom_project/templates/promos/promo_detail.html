@@ -31,13 +31,22 @@
 
 {% block main_content %}
 <h1>{{promo}}</h1>
-{% if promo.get_geotags.point %}
-    <div id="map" style="height: 200px; width: 200px; -moz-border-radius: 5px; border: 3px solid #DDD; float:right;"></div>
-{% endif %}
-<div id="info" style="float:left; ">
+<div class="edit-promo-tabs">
+    <div class="tab-links">
+        <a href="{% url promos_promo_edit promo_id=promo.id %}" rel="promo-info">Properties</a>
+        <a href="{% url promos_promo_add_edit_point promo_id=promo.id %}" rel="promo-info" title="Geotag">Geotag</a>
+        <a href="{% url promos_promo_image_list promo_id=promo.id %}">Images</a>
+        <a href="{% url promos_promo_link_list promo_id=promo.id %}">Related Links</a>
+        <a href="">Dates</a>
+        <a href="{% url promos_promo_detail promo_id=promo.id %}" class="active">Detail</a>
+        <br class="clearboth" />
+    </div>
+    <div class="tab-contents" style="float:left; ">
     <p><a href="{{ promo.permalink }}">{{ promo }}</a></p>
     <p>
         <div style="float:left;">
+        {{ promo_image.get_absolute_url }}
+        {{ promo_image.photo.get_thumbnail_url }}
     {% for i in promo_image%}
         <img src="{{ i.photo.get_thumbnail_url }}">
     {% endfor %}
@@ -61,8 +70,19 @@
     {{ promo.authors.all|join:", " }}
     </dd>
     </dl>
+    </div>
+    <div>
+    {% if promo.get_geotags.point %}
+    <div id="map" style="height: 200px; width: 200px; -moz-border-radius: 5px; border: 3px solid #DDD; float:right;"></div>
+    {% endif %}
+    </div>
 </div>
 {% endblock %}
-
+{% block subnav %}
+<h2>Links</h2>
+<ul class="action-links">
+    <li><a href="{% url promos_promo_list %}">promo list</a></li>
+ </ul>
+{% endblock %}
 
 

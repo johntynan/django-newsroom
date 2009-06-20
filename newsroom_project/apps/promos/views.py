@@ -100,7 +100,7 @@ def promo_list(request):
                 'promo_image': promo_image,
                 },
               context_instance=RequestContext(request))
-
+            
 @login_required
 def promo_detail(request, promo_id):
     """
@@ -113,14 +113,38 @@ def promo_detail(request, promo_id):
     promo_image = PromoImage.objects.filter(promo=promo_id)
 
     return render_to_response(
-              'promos/promo_detail.html',{
-              'promo': promo,
-              'promo_link': promo_link,
-              'promo_image': promo_image,
-              'google_key': settings.GOOGLE_MAPS_API_KEY,
+            'promos/promo_detail.html',{
+            'promo': promo,
+            'promo_link': promo_link,
+            'promo_image': promo_image,
+            'google_key': settings.GOOGLE_MAPS_API_KEY,
              },
               context_instance=RequestContext(request))
-    
+
+@login_required
+def promo_image_list(request, promo_id):
+    user_promos = user_objects_qs(Promo, request.user)
+    promo = get_object_or_404(user_promos, pk=promo_id)
+    promo_image = PromoImage.objects.filter(promo=promo_id)
+    return render_to_response(
+            'promos/promo_image_list.html',{
+            'promo':promo,
+            'promo_image':promo_image,
+            },
+            context_instance=RequestContext(request))
+
+@login_required
+def promo_link_list(request, promo_id):
+    user_promos = user_objects_qs(Promo, request.user)
+    promo = get_object_or_404(user_promos, pk=promo_id)
+    promo_link = PromoLink.objects.filter(promo=promo_id)
+    return render_to_response(
+            'promos/promo_link_list.html',{
+            'promo':promo,
+            'promo_link':promo_link,
+            },
+            context_instance=RequestContext(request))
+
 @login_required
 def promo_image_add(request, promo_id):
     """
@@ -142,7 +166,7 @@ def promo_image_add(request, promo_id):
         form = ImageForm()
 
     return render_to_response(
-              'promos/promo_image_add.html',
+              'promos/promo_link_add.html',
               {'form':form,
               'promo':promo},
               context_instance=RequestContext(request))

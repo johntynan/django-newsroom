@@ -1,11 +1,9 @@
-{% extends "promos/base.html" %}
-{% load i18n %}
+{% extends 'promos/base.html' %}
 
-{% block head_title %}Add a Promo Image{% endblock %}
-
+{% block title %}Promo Image List{% endblock %}
 
 {% block main_content %}
-<h1>Add a Promo Image</h1>
+<h1>{{ promo.headline }}</h1>
 <div class="edit-promo-tabs">
     <div class="tab-links">
         <a href="{% url promos_promo_edit promo_id=promo.id %}" rel="promo-info">Properties</a>
@@ -13,24 +11,28 @@
         <a href="" class="active">Images</a>
         <a href="{% url promos_promo_link_list promo_id=promo.id %}">Related Links</a>
         <a href="">Dates</a>
+        <a href="{% url promos_promo_detail promo_id=promo.id %}">Detail</a>
         <br class="clearboth" />
     </div>
     <div class="tab-contents">
-<form action="." method="post" enctype="multipart/form-data" >
-    <fieldset>
-    <table>
-    {{ form }}
-    </table>
-    <input id="id_submit" type="submit" value="Submit" />
-    <a href="../">Cancel</a>
-    </fieldset>
-</form>
-{% endblock %}
+    {% for i in promo_image%}
+    <h2>{{ i.caption }}</h2>
+    <p>
+        <img src="/site_media/{{ i.image }}"><br />
+    <strong>Attribution</strong>: {{ i.attribution }}<br />
+    <strong>Image Kind</strong>: {{ i.image_kind }}<br />
+    </p>
+
+    {% endfor %}
     </div>
 </div>
+
+{% endblock %}
+
 {% block subnav %}
-<h2>{% trans "Links" %}</h2>
+<h2>Links</h2>
 <ul class="action-links">
     <li><a href="{% url promos_promo_list %}">promo list</a></li>
+    <li><a href="{% url promos_promo_image_add promo_id=promo.id%}" title="Add an image">Add an image</a></li>
  </ul>
 {% endblock %}

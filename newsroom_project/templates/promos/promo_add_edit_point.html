@@ -6,15 +6,19 @@
     {{ form.media }}
 {% endblock %}
 
-{% block head_title %}Add a Promo Image{% endblock %}
+{% block head_title %}Geotag Promo{% endblock %}
 
 
 {% block main_content %}
 <h1>{{ promo.headline }}</h1>
 <div class="edit-promo-tabs">
     <div class="tab-links">
-        <a href="{% url promos_promo_edit promo_id=promo.id %}" rel="promo-info" >Edit</a>
+        <a href="{% url promos_promo_edit promo_id=promo.id %}" rel="promo-info">Properties</a>
         <a href="#" rel="promo-info" title="Geotag" class="active">Geotag</a>
+        <a href="{% url promos_promo_image_list promo_id=promo.id %}">Images</a>
+        <a href="{% url promos_promo_link_list promo_id=promo.id %}">Related Links</a>
+        <a href="">Dates</a>
+        <a href="{% url promos_promo_detail promo_id=promo.id %}">Detail</a>
         <br class="clearboth" />
     </div>
     <div class="tab-contents">
@@ -71,8 +75,5 @@
 <h2>{% trans "Links" %}</h2>
 <ul class="action-links">
     <li><a href="{% url promos_promo_list %}">promo list</a></li>
-    <li><a href="{% url promos_promo_list %}">Add promo</a></li>
-    <li><a href="{% url promos_promo_image_add promo_id=promo.id %}" title="Add an image">Add an image</a></li>
-    <li><a href="{% url promos_promo_link_add promo_id=promo.id %}" title="Add a link">Add an link </a></li>
- </ul>
+</ul>
 {% endblock %}
