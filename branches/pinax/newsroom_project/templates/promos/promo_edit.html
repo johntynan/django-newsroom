@@ -1,7 +1,7 @@
 {% extends "promos/base.html" %}
 {% load i18n %}
 
-{% block title %}Edit Promo{% endblock %}
+{% block title %}Add/Edit Promo{% endblock %}
 
 {% block jquery %}
     {{ block.super }}
@@ -17,11 +17,15 @@
 
 
 {% block main_content %}
-<h1>Edit Promo</h1>
+<h1>{{ promo.headline }}</h1>
 <div class="edit-promo-tabs">
     <div class="tab-links">
-        <a href="" rel="promo-info" class="active">Edit</a>
+        <a href="" rel="promo-info" class="active">Properties</a>
         <a href="{% url promos_promo_add_edit_point promo_id=promo.id %}" rel="promo-info" title="Geotag">Geotag</a>
+        <a href="{% url promos_promo_image_list promo_id=promo.id %}">Images</a>
+        <a href="{% url promos_promo_link_list promo_id=promo.id %}">Related Links</a>
+        <a href="">Dates</a>
+        <a href="{% url promos_promo_detail promo_id=promo.id %}">Detail</a>
         <br class="clearboth" />
     </div>
     <div class="tab-contents">
@@ -46,9 +50,6 @@
 <h2>{% trans "Links" %}</h2>
 <ul class="action-links">
     <li><a href="{% url promos_promo_list %}">promo list</a></li>
-    <li><a href="{% url promos_promo_list %}">Add promo</a></li>
-    <li><a href="{% url promos_promo_image_add promo_id=promo.id %}" title="Add an image">Add an image</a></li>
-    <li><a href="{% url promos_promo_link_add promo_id=promo.id %}" title="Add a link">Add an link </a></li>
  </ul>
 {% endblock %}
 
