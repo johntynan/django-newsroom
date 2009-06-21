@@ -162,7 +162,7 @@ def promo_image_add(request, promo_id):
             promo_image.save()
             request.user.message_set.create(
                 message='Your promo image has been added.  Thank you.')
-            return HttpResponseRedirect(reverse('promos_image_list'))
+            return HttpResponseRedirect(reverse('promos_promo_image_list', args=[promo.id]))
 
     else:
         form = ImageForm()
@@ -189,7 +189,7 @@ def promo_link_add(request, promo_id):
 
             request.user.message_set.create(
                 message='Your promo link has been added.  Thank you.')
-            return HttpResponseRedirect(reverse('promos_promo_link_list'))
+            return HttpResponseRedirect(reverse('promos_promo_link_list', args=[promo.id]))
 
     else:
         form = LinkForm()
@@ -228,7 +228,7 @@ def promo_date_add(request, promo_id):
             
             request.user.message_set.create(
                 message='Your promo date has been added.  Thank you.')
-            return HttpResponseRedirect(reverse('promos_promo_date_list'))
+            return HttpResponseRedirect(reverse('promos_promo_date_list', args=[promo.id]))
 
     else:
         form = DateForm()
