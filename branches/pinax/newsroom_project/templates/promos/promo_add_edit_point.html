@@ -17,7 +17,7 @@
         <a href="#" rel="promo-info" title="Geotag" class="active">Geotag</a>
         <a href="{% url promos_promo_image_list promo_id=promo.id %}">Images</a>
         <a href="{% url promos_promo_link_list promo_id=promo.id %}">Related Links</a>
-        <a href="">Dates</a>
+        <a href="{% url promos_promo_date_list promo_id=promo.id %}">Suggested Dates</a>
         <a href="{% url promos_promo_detail promo_id=promo.id %}">Detail</a>
         <br class="clearboth" />
     </div>

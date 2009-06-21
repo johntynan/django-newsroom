@@ -1,18 +1,25 @@
 {% extends "promos/base.html" %}
 {% load i18n %}
 
-{% block head_title %}Add a Promo Link{% endblock %}
+{% block head_title %}Add a Suggested Date for Promo{% endblock %}
 
+{% block jquery %}
+    {{ block.super }}
+    $("#id_promo_date").datepicker({
+        altField:'input#id_promo_date',
+        appendText: '(yyyy-mm-dd)',
+        altFormat: 'yy-mm-dd'});
+{% endblock %}
 
 {% block main_content %}
-<h1>Add a Promo Link</h1>
+<h1>Add a Suggested Date for Promo</h1>
 <div class="edit-promo-tabs">
     <div class="tab-links">
         <a href="{% url promos_promo_edit promo_id=promo.id %}" rel="promo-info">Properties</a>
-        <a href="#" rel="promo-info" title="Geotag">Geotag</a>
+        <a href="{% url promos_promo_add_edit_point promo_id=promo.id %}" rel="promo-info" title="Geotag">Geotag</a>
         <a href="{% url promos_promo_image_list promo_id=promo.id %}">Images</a>
-        <a href="{% url promos_promo_link_list promo_id=promo.id %}" class="active">Related Links</a>
-        <a href="{% url promos_promo_date_list promo_id=promo.id %}">Suggested Dates</a>
+        <a href="{% url promos_promo_link_list promo_id=promo.id %}">Related Links</a>
+        <a href="{% url promos_promo_date_list promo_id=promo.id %}" class="active">Suggested Dates</a>
         <a href="{% url promos_promo_detail promo_id=promo.id %}">Detail</a>
         <br class="clearboth" />
     </div>
@@ -27,10 +34,11 @@
     </fieldset>
 </form>
 {% endblock %}
-
+    </div>
+</div>
 {% block subnav %}
 <h2>Links</h2>
-  <ul class="action-links">
+<ul class="action-links">
     <li><a href="{% url promos_promo_list %}">Promo List</a></li>
  </ul>
 {% endblock %}

@@ -45,6 +45,7 @@ class Promo(models.Model):
                 related_name='promos_authored',
                 blank=True,
                 help_text="The authors of the published work.")
+
     other_credits = models.TextField(
                       blank=True,
                       help_text="If the authors are not available in the list above please include their names here.",)
@@ -54,17 +55,19 @@ class Promo(models.Model):
                 blank=True,
                 help_text="City, State Country or Zipcode, Country." )
 
-    relevance_begins = models.DateField(
-                        "Suggested Relevance Begins",
-                        help_text="Suggested date span for use on home page.")
-    relevance_ends = models.DateField(
-                        "Suggested Relevance Ends",)
-
-    suggested_dates = models.TextField(
-                blank=True,
-                help_text="please use the format: '2009-02-01' - Mother's Day. Use a separate line for each date." )
     
     topic_path = models.ManyToManyField(TopicPath, blank=True)
+
+    relevance_begins = models.DateField(
+                        "Suggested Relevance Begins",
+                        blank=True,
+                        null=True,
+                        help_text="Start Date for use on home page.")
+    relevance_ends = models.DateField(
+                        "Relevance Ends",
+                        blank=True,
+                        null=True,
+                        help_text="End Date for use on home page.")
 
     # last_promod is not editable and is managed by the front page
     # view code.
@@ -72,9 +75,6 @@ class Promo(models.Model):
                         editable=False,
                         blank=True,
                         null=True)
-    expires = models.DateTimeField(
-                blank=True,
-                null=True,)
     
     def __unicode__(self):
        return self.headline
@@ -94,6 +94,22 @@ class Promo(models.Model):
         return geo_dict
 
 
+class PromoDate(models.Model):
+    """
+    Links related to promo submissions.
+    """
+    title = models.CharField(max_length=200)
+    desc = models.TextField('description',blank=True)
+    promo_date = models.DateField(
+                        "Promo Date",
+                        help_text="End Date for use on home page.")
+    promo = models.ForeignKey(
+                Promo,
+                help_text='Suggested date for showcasing a promo on the home page.')
+
+    def __unicode__(self):
+        return self.title
+    
 class PromoLink(models.Model):
     """
     Links related to promo submissions.

@@ -37,7 +37,15 @@ urlpatterns = patterns('promos.views',
     url(r'^(?P<promo_id>\d+)/link_add/$',
         'promo_link_add',
         name="promos_promo_link_add"),
-    
+
+    url(r'^(?P<promo_id>\d+)/date/$',
+        'promo_date_list',
+        name="promos_promo_date_list"),
+
+    url(r'^(?P<promo_id>\d+)/date_add/$',
+        'promo_date_add',
+        name="promos_promo_date_add"),
+            
     url(r'^(?P<promo_id>\d+)/point/$', 'promo_add_edit_geotag',
         {"form_class":PointForm, "geotag_class":Point,
          "template":"promos/promo_add_edit_point.html"}
