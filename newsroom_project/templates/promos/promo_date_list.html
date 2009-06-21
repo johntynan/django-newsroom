@@ -1,6 +1,6 @@
 {% extends 'promos/base.html' %}
 
-{% block title %}Promo Link List{% endblock %}
+{% block title %}Promo Date List{% endblock %}
 
 {% block main_content %}
 <h1>{{ promo.headline }}</h1>
@@ -9,29 +9,31 @@
         <a href="{% url promos_promo_edit promo_id=promo.id %}" rel="promo-info">Properties</a>
         <a href="{% url promos_promo_add_edit_point promo_id=promo.id %}" rel="promo-info" title="Geotag">Geotag</a>
         <a href="{% url promos_promo_image_list promo_id=promo.id %}">Images</a>
-        <a href="" class="active">Related Links</a>
-        <a href="{% url promos_promo_date_list promo_id=promo.id %}">Suggested Dates</a>
+        <a href="{% url promos_promo_link_list promo_id=promo.id %">Related Links</a>
+        <a href="" class="active">Suggested Dates</a>
         <a href="{% url promos_promo_detail promo_id=promo.id %}">Detail</a>
         <br class="clearboth" />
     </div>
     <div class="tab-contents">
-    {% if promo_link %}
+    {% if promo_date %}
     <table cellspacing="0" cellpadding="0" class="list-table">
         <thead>
             <tr>
-                <th class="id_col">Site</th>
+                <th>Title</th>
+                <th>Date</th>
                 <th>Description</th>
             </tr>
         </thead>
-        {% for i in promo_link%}
+        {% for i in promo_date%}
         <tr class="{% cycle '' 'alt-row' %}">
-            <td><a href="{{i.url}}">{{ i }}</a></td>
-            <td>{{i.desc}}</td>
+            <td>{{i}}</td>
+            <td>{{i.promo_date}}</td>
+            <td>{{i.description}}</td>
         </tr>
         {% endfor %}
     </table>
     {% else %}
-        <p>You haven't submitted any links yet.</p>
+        <p>You haven't submitted any dates yet.</p>
     {% endif %}
     </div>
 </div>
@@ -42,6 +44,6 @@
 <h2>Links</h2>
 <ul class="action-links">
     <li><a href="{% url promos_promo_list %}">Promo List</a></li>
-    <li><a href="{% url promos_promo_link_add promo_id=promo.id%}" title="Add a Link">Add a Link</a></li>
+    <li><a href="{% url promos_promo_date_add promo_id=promo.id%}" title="Add a Date">Add a Date</a></li>
  </ul>
 {% endblock %}

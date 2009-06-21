@@ -12,9 +12,11 @@ from django.template.loader import render_to_string
 from promos.forms import ImageForm
 from promos.forms import LinkForm
 from promos.forms import PromoForm
+from promos.forms import DateForm
 from promos.models import Promo
 from promos.models import PromoImage
 from promos.models import PromoLink
+from promos.models import PromoDate
 from utils.helpers import user_objects_qs
 
 
@@ -160,13 +162,13 @@ def promo_image_add(request, promo_id):
             promo_image.save()
             request.user.message_set.create(
                 message='Your promo image has been added.  Thank you.')
-            return HttpResponseRedirect(reverse('promos_promo_list'))
+            return HttpResponseRedirect(reverse('promos_image_list'))
 
     else:
         form = ImageForm()
 
     return render_to_response(
-              'promos/promo_link_add.html',
+              'promos/promo_image_add.html',
               {'form':form,
               'promo':promo},
               context_instance=RequestContext(request))
@@ -187,13 +189,52 @@ def promo_link_add(request, promo_id):
 
             request.user.message_set.create(
                 message='Your promo link has been added.  Thank you.')
-            return HttpResponseRedirect(reverse('promos_promo_list'))
+            return HttpResponseRedirect(reverse('promos_promo_link_list'))
 
     else:
         form = LinkForm()
 
     return render_to_response(
               'promos/promo_link_add.html',
+              {'form':form,
+              'promo':promo},
+              context_instance=RequestContext(request))
+
+@login_required
+def promo_date_list(request, promo_id):
+    user_promos = user_objects_qs(Promo, request.user)
+    promo = get_object_or_404(user_promos, pk=promo_id)
+    promo_date = PromoDate.objects.filter(promo=promo_id)
+    return render_to_response(
+            'promos/promo_date_list.html',{
+            'promo':promo,
+            'promo_date':promo_date,
+            },
+            context_instance=RequestContext(request))
+
+@login_required
+def promo_date_add(request, promo_id):
+    """
+    Process a new promo date submission.
+    """
+    user_promos = user_objects_qs(Promo, request.user)
+    promo = get_object_or_404(user_promos, pk=promo_id)
+    if request.method == "POST":
+        form = DateForm(request.POST)
+        if form.is_valid():
+            promo_date = form.save(commit=False)
+            promo_date.promo = promo
+            promo_date.save()
+            
+            request.user.message_set.create(
+                message='Your promo date has been added.  Thank you.')
+            return HttpResponseRedirect(reverse('promos_promo_date_list'))
+
+    else:
+        form = DateForm()
+
+    return render_to_response(
+              'promos/promo_date_add.html',
               {'form':form,
               'promo':promo},
               context_instance=RequestContext(request))

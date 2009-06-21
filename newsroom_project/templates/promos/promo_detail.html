@@ -37,30 +37,68 @@
         <a href="{% url promos_promo_add_edit_point promo_id=promo.id %}" rel="promo-info" title="Geotag">Geotag</a>
         <a href="{% url promos_promo_image_list promo_id=promo.id %}">Images</a>
         <a href="{% url promos_promo_link_list promo_id=promo.id %}">Related Links</a>
-        <a href="">Dates</a>
+        <a href="{% url promos_promo_date_list promo_id=promo.id %}">Suggested Dates</a>
         <a href="{% url promos_promo_detail promo_id=promo.id %}" class="active">Detail</a>
         <br class="clearboth" />
     </div>
-    <div class="tab-contents" style="float:left; ">
-    <p><a href="{{ promo.permalink }}">{{ promo }}</a></p>
-    <p>
-        <div style="float:left;">
-        {{ promo_image.get_absolute_url }}
-        {{ promo_image.photo.get_thumbnail_url }}
-    {% for i in promo_image%}
-        <img src="{{ i.photo.get_thumbnail_url }}">
-    {% endfor %}
-        </div>
-    {{promo.description}}
+    <div class="tab-contents">
+    <h1>{{promo}}</h1>
+    <p><a href="{{ promo.permalink }}">{{ promo.permalink }}</a></p>
+    <p>{{promo.description}}</p>
+
+    <h2>Geotag</h2>
+    {% if promo.get_geotags.point %}
+    <div id="map" style="height: 200px; width: 200px; -moz-border-radius: 5px; border: 3px solid #DDD;"></div>
+    {% else %}
+        <p>You haven't geotagged this promo yet.</p>
+    {% endif %}
+
+
+    <h2>Images</h2>
+    {% if promo_image %}
+    <table cellspacing="0" cellpadding="0" class="list-table">
+        <thead>
+            <tr>
+                <th class="id_col">Caption</th>
+                <th>Attribution</th>
+                <th>Kind</th>
+            </tr>
+        </thead>
+        {% for i in promo_image%}
+        <tr class="{% cycle '' 'alt-row' %}">
+            <td><a href="{{i.url}}">{{ i }}</a></td>
+            <td>{{ i.attribution }}</td>
+            <td>{{ i.image_kind }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>You haven't submitted any links yet.</p>
+    {% endif %}
+
+    <h2>Related Links</h2>
+    {% if promo_link %}
+    <table cellspacing="0" cellpadding="0" class="list-table">
+        <thead>
+            <tr>
+                <th class="id_col">Site</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        {% for i in promo_link%}
+        <tr class="{% cycle '' 'alt-row' %}">
+            <td><a href="{{i.url}}">{{ i }}</a></td>
+            <td>{{i.desc}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>You haven't submitted any links yet.</p>
+    {% endif %}
+
     <br clear="all">
     </p>
 
-    <h2>Related Links</h2>
-    <ul>
-    {% for link in promo_link %}
-        <li><a href="{{ link.url }}">{{ link.title }}</a> {{ link.desc }}</li>
-    {% endfor %}
-    </ul>
 
     <h2>Additional Information</h2>
     <dt>Submitted by</dt>
@@ -70,11 +108,6 @@
     {{ promo.authors.all|join:", " }}
     </dd>
     </dl>
-    </div>
-    <div>
-    {% if promo.get_geotags.point %}
-    <div id="map" style="height: 200px; width: 200px; -moz-border-radius: 5px; border: 3px solid #DDD; float:right;"></div>
-    {% endif %}
     </div>
 </div>
 {% endblock %}
