@@ -189,7 +189,8 @@ def promo_link_add(request, promo_id):
 
             request.user.message_set.create(
                 message='Your promo link has been added.  Thank you.')
-            return HttpResponseRedirect(reverse('promos_promo_link_list', args=[promo.id]))
+            return HttpResponseRedirect(
+                reverse('promos_promo_link_list', args=[promo.id]))
 
     else:
         form = LinkForm()

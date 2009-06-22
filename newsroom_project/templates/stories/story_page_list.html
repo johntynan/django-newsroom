@@ -8,7 +8,7 @@
 {% block extra_head %}
     {{ block.super }}
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/pages.css" />
-    <link rel="stylesheet" href="{{ MEDIA_URL }}css/page_layouts.css" />
+    <link rel="stylesheet" href="{{ MEDIA_URL }}common/page_layouts.css" />
     <script type="text/javascript" src="{{ MEDIA_URL }}js/pages.js"></script>
     <script type="text/javascript">
         var page_layout_list_url = "{% url page_layout_list_json %}?width=750&height=500";

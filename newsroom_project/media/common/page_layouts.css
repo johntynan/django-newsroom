@@ -1,0 +1,44 @@
+blockquote {
+    font-size:2.213em;
+    border:0;
+    margin: 20px 0 40px 0;
+}
+.media, .content{
+    position: relative;
+}
+#first_page_simple h1 {
+    text-align: right;
+    color: #ccc;
+    font-variant: small-caps;
+}
+#first_page_simple .overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    width: 120px;
+    color: white;
+}
+#first_page_simple .media_caption {
+    font: .885em normal italic;
+    margin: 5px 0;
+    font-family: sans-serif;
+}
+#first_page_simple .intro, 
+#first_page_simple .note {
+    font-family: Georgia, "Times New Roman", Serif;
+    font-size: 1.234em;
+}
+.intro .widget-content p:first-child:first-letter {
+    display: block;
+    float: left;
+    /*border: 1px solid black;*/
+    padding: 0;
+    margin:  10px 10px 0 0;
+    font-size: 100px;
+    line-height: 1em;
+}
+#first_page_simple .note {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
