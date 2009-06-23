@@ -11,7 +11,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', direct_to_template, {"template": "homepage.html"}, name="home"),
-    
+    url(r'authsub_login/', direct_to_template, {"template": "authsub_login.html"}, name="authsub_login"),
+
     (r'^about/', include('about.urls')),
     (r'^account/', include('account.urls')),
     (r'^openid/(.*)', PinaxConsumer()),
