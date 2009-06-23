@@ -1,9 +1,19 @@
-blockquote {
+/****
+This css file contains the style definitions for all page layouts.  When you
+create a new layout add the style definitions here.  To avoid css conflicts
+prefix every style rule with the div id used to identify the layout.  As page
+layouts grow in number and variety this file/solution will need to be
+refactored.
+****/
+
+/****************** first page simple ********************/
+
+#first_page_simple blockquote {
     font-size:2.213em;
     border:0;
     margin: 20px 0 40px 0;
 }
-.media, .content{
+#first_page_simple .media, .content{
     position: relative;
 }
 #first_page_simple h1 {
@@ -28,7 +38,7 @@ blockquote {
     font-family: Georgia, "Times New Roman", Serif;
     font-size: 1.234em;
 }
-.intro .widget-content p:first-child:first-letter {
+#first_page_simple .intro .widget-content p:first-child:first-letter {
     display: block;
     float: left;
     /*border: 1px solid black;*/
@@ -42,3 +52,51 @@ blockquote {
     bottom: 0;
     right: 0;
 }
+
+/****************** cover page simple ********************/
+
+#cover_page_simple .cover {
+    position: relative;
+}
+#cover_page_simple .headline {
+    position: absolute;
+    top: 200px;
+    left: 20px;
+    width: 525px;
+    text-align: right;
+    font-family: Helvetica, Arial, sans-serif;
+}
+#cover_page_simple .headline h1 {
+    font-size: 5em;
+    color: white;
+    text-shadow: black 0.042em 0.043em 0.042em; 
+    padding: 10px;
+    text-align: right;
+    /* drop shadow currently only supported in safari */
+}
+#cover_page_simple .headline h2 {
+    color: white;
+    margin-right: 50px;
+    font-weight: bold;
+    font-size: 1.278em;
+}
+#cover_page_simple .headline p {
+    color: white;
+    margin-left: 150px;
+    margin-right: 50px;
+    margin-top: 10px;
+    font-size: 1.123em;
+    font-weight: bold;
+}
+#cover_page_simple .media_caption {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    width: 120px;
+    color: #aaa;
+    font-family: sans-serif;
+}
+#cover_page_simple .media_caption p {
+    font: .885em normal italic;
+}
+
