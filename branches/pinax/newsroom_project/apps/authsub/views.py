@@ -24,8 +24,9 @@ def get_auth_sub_url(next):
     scope = GOOGLE_CONTACTS_URI
     secure = False
     session = True
+    hd = 'news21.com'
     contacts_service = gdata.contacts.service.ContactsService()
-    return contacts_service.GenerateAuthSubURL(next, scope, secure, session);
+    return contacts_service.GenerateAuthSubURL(next, scope, secure, session, hd);
 
 def login(request, redirect_to=None):
     if redirect_to is None:
