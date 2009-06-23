@@ -31,8 +31,9 @@ class Promo(models.Model):
     permalink = models.URLField(
                     unique=True,
                     verify_exists=False,
-                    help_text="This should be the published link for the story or project you want promod on news21.com. <br />e.g. http://promos.csmonitor.com/globalnews/2009/03/30/ahead-of-north-koreas-planned-rocket-launch-us-dispatches-destroyers/")
+                    help_text="This should be the published link for the story or project you want promoted on news21.com. <br />e.g. http://newsinitiative.org/story/2007/06/18/drums_draw_strangers_to_bahai/")
     description = models.TextField(
+                      "Summary / Nut Graph",
                       blank=True,
                       help_text="A short paragraph to describe the promo.",)
     # project = models.ManyToManyField(Project, blank=True)
