@@ -29,6 +29,7 @@ class Promo(models.Model):
 
     headline =  models.CharField(max_length=255)
     permalink = models.URLField(
+                    "URL",
                     unique=True,
                     verify_exists=False,
                     help_text="This should be the published link for the story or project you want promoted on news21.com. <br />e.g. http://newsinitiative.org/story/2007/06/18/drums_draw_strangers_to_bahai/")
