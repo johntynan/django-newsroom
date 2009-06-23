@@ -1,0 +1,23 @@
+{% extends "site_base.html" %}
+{% load i18n %}
+
+
+{% block head_title %}{% trans "Welcome" %}{% endblock %}
+
+{% block extra_head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/dashboard.css" />
+{% endblock %}
+
+
+
+{% block body %}
+
+{% blocktrans %}
+
+<a href="/authsub/login">sign on with google</a>
+
+{% endblocktrans %}
+
+
+{% endblock %}

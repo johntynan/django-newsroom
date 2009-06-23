@@ -28,8 +28,9 @@ def get_auth_sub_url(next):
     return contacts_service.GenerateAuthSubURL(next, scope, secure, session);
 
 def login(request, redirect_to=None):
-    # if redirect_to is None:
+    if redirect_to is None:
     #    redirect_to = reverse('invitations_contacts')
+        redirect_to = ('/')
     if "token" in request.GET:
         # add token to session for now
         request.session['authsub_token'] = request.GET["token"]
