@@ -5,6 +5,8 @@ from django.views.generic.simple import direct_to_template
 
 from account.openid_consumer import PinaxConsumer
 
+from authsub import *
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -30,6 +32,8 @@ urlpatterns = patterns('',
     (r'^geotags/', include('geotags.urls')),
     (r'^feeds/', include('feeds.urls')),
     (r'^maps/', include('maps.urls')),
+    (r'^flash/', include('flash.urls')),
+    (r'^authsub/', include('authsub.urls')),
     
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/(.*)', admin.site.root),
