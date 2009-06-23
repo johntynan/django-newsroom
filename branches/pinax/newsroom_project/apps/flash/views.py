@@ -101,7 +101,7 @@ def handle_uploaded_file(request, zip_file, filename):
         foldername = filename.strip('.zip')
         fullpath = workingdir + foldername
         message = settings.MEDIA_ROOT + '/flash/unzipped/' 
-        tempfile = open(fullpath+'.zip', 'wb+')
+        tempfile = open(fullpath+'.zip', 'rb+')
         
         for chunk in zip_file.chunks():
             tempfile.write(chunk)
@@ -114,8 +114,9 @@ def handle_uploaded_file(request, zip_file, filename):
                 os.mkdir(os.path.join(workingdir, name))
             else:
                 data = zfile.read(name)
-                newfile = os.path.join(workingdir, foldername, name)
-                tempdata = open(newfile, "wb")
+                # newfile = os.path.join(workingdir, foldername, name)
+                newfile = os.path.join(workingdir, name)
+                tempdata = open(newfile, "rb")
                 tempdata.writelines(data)
                 tempdata.close()
 
@@ -125,3 +126,5 @@ def handle_uploaded_file(request, zip_file, filename):
     
     request.user.message_set.create(message=message)
     return HttpResponseRedirect(reverse('flash_flash_list'))
+
+
