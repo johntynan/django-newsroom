@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load media_tags %}
 {% load inlines %}
-{% block head_title %}Content Overview: {{ story.headline }}{% endblock %}
+{% block head_title %}Story: {{ story.headline }}{% endblock %}
 
 
 {% block extra_head %}
@@ -27,24 +27,24 @@
 
 <ul class="action-links">
     <li>
-        <a href="{% url stories_page_templates "page_template" %}" id="add-story-page" title="{% trans "Add a new page" %}">
-        {% trans "Add new page" %}
-        </a>
+        <a href="{% url stories_page_templates "page_template" %}" 
+           id="add-story-page" title="{% trans "Add a new page" %}"
+           >{% trans "Add new page" %}</a>
     </li>
     <li>
-        <a href="{% url stories_page_templates "page_template" %}" id="add-layout" title="{% trans "Add a layout" %}">
-        {% trans "Add layout" %}
-        </a>
+        <a href="{% url stories_page_templates "page_template" %}" 
+           id="add-layout" title="{% trans "Add a layout" %}"
+           >{% trans "Add layout" %}</a>
     </li>
     <li>
-        <a href="{% url stories_page_templates "page_template" %}" id="clear-page" title="{% trans "Clear page" %}">
-        {% trans "Clear page" %}
-        </a>
+        <a href="{% url stories_page_templates "page_template" %}" 
+           id="clear-page" title="{% trans "Clear page" %}"
+           >{% trans "Clear page" %}</a>
     </li>
     <li>
-        <a href="{% url stories_page_templates "page_template" %}" id="remove-page" title="{% trans "Remove page" %}">
-        {% trans "Remove page" %}
-        </a>
+        <a href="{% url stories_page_templates "page_template" %}" 
+           id="remove-page" title="{% trans "Remove page" %}"
+           >{% trans "Remove page" %}</a>
     </li>
     <li class="story-submit-buttons">
         <span class="save-pages-sucess">All pages were saved sucessfully</span>
