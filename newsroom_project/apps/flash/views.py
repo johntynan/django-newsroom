@@ -139,7 +139,9 @@ def handle_uploaded_file(request, zip_file, filename):
                 os.mkdir(os.path.join(workingdir, name))
             else:
                 data = zfile.read(name)
+                # this should work
                 # newfile = os.path.join(workingdir, foldername, name)
+                # works with swfobject_2_2.zip
                 newfile = os.path.join(workingdir, name)
                 tempdata = open(newfile, "wb")
                 tempdata.writelines(data)
