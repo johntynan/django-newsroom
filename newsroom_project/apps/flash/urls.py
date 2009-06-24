@@ -15,4 +15,7 @@ urlpatterns = patterns('flash.views',
     url(r'^archive_add/$', 
         'flash_archive_add',
         name="flash_flash_archive_add"), 
+    url(r'^object_add/$', 
+        'flash_object_add',
+        name="flash_flash_object_add"),
 )
