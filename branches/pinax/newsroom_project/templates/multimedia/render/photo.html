@@ -1,4 +1,5 @@
 {% extends 'multimedia/media_preview.html' %}
+{% block extra_classes %}{% endblock %}
 {% block main_content %}
-<img src="{{ object.image.image.url }}" alt="" />
+<img src="{{ object.get_display380_url }}" alt="" />
 {% endblock %}

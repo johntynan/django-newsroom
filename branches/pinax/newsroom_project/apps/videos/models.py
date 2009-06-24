@@ -72,6 +72,9 @@ class Video(Media):
     def get_height(self):
         return self.frame.image.height
 
+    def get_original_url(self):
+        return self.video.url
+
     #TODO update this
     def get_absolute_url(self):
         return ('videos_video_detail', 
