@@ -12,8 +12,8 @@ from django.template.loader import render_to_string
 
 from django.core.files.storage import FileSystemStorage
 
-from flash.models import Flash, FlashArchive
-from flash.forms import FlashForm, FlashArchiveForm
+from flash.models import Flash, FlashArchive, FlashObject
+from flash.forms import FlashForm, FlashArchiveForm, FlashObjectForm
 
 import sys, zipfile, os, os.path
 
@@ -42,7 +42,7 @@ def flash_detail(request, id):
 @login_required
 def flash_add(request):
     """
-    Process a new Flash object.
+    Process a new Flash project.
     """
 
     if request.method == "POST":
@@ -50,7 +50,7 @@ def flash_add(request):
         if form.is_valid():
             form.save()
             request.user.message_set.create(
-                message='Your Flash object been added.  Thank you.')
+                message='Your Flash project been added.  Thank you.')
             return HttpResponseRedirect(reverse('flash_flash_list'))
 
     else:
@@ -60,7 +60,29 @@ def flash_add(request):
               'flash/flash_add.html',
               {'form':form},
               context_instance=RequestContext(request))
-    
+ 
+@login_required
+def flash_object_add(request):
+    """
+    Process a new Flash object.
+    """
+
+    if request.method == "POST":
+        form = FlashObjectForm(request.POST)
+        if form.is_valid():
+            form.save()
+            request.user.message_set.create(
+                message='Your Flash object been added.  Thank you.')
+            return HttpResponseRedirect(reverse('flash_flash_list'))
+
+    else:
+        form = FlashObjectForm()
+
+    return render_to_response(
+              'flash/flash_object_add.html',
+              {'form':form},
+              context_instance=RequestContext(request))
+               
 @login_required   
 def flash_archive_add(request):
     """
@@ -101,7 +123,7 @@ def handle_uploaded_file(request, zip_file, filename):
         foldername = filename.strip('.zip')
         fullpath = workingdir + foldername
         message = settings.MEDIA_ROOT + '/flash/unzipped/' 
-        tempfile = open(fullpath+'.zip', 'rb+')
+        tempfile = open(fullpath+'.zip', 'wb+')
         
         for chunk in zip_file.chunks():
             tempfile.write(chunk)
@@ -116,7 +138,7 @@ def handle_uploaded_file(request, zip_file, filename):
                 data = zfile.read(name)
                 # newfile = os.path.join(workingdir, foldername, name)
                 newfile = os.path.join(workingdir, name)
-                tempdata = open(newfile, "rb")
+                tempdata = open(newfile, "wb")
                 tempdata.writelines(data)
                 tempdata.close()
 
