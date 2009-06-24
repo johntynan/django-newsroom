@@ -17,6 +17,7 @@ from flash.forms import FlashForm, FlashArchiveForm, FlashObjectForm
 
 import sys, zipfile, os, os.path
 
+from utils.helpers import user_objects_qs
 
 @login_required
 def flash_list(request):
@@ -30,13 +31,15 @@ def flash_list(request):
             {'flash_list': flash_list},              
             context_instance=RequestContext(request))
     
-@login_required
 def flash_detail(request, id):
     flash_detail = Flash.objects.get(id=id)
+    flash_object = FlashObject.objects.filter(flash=id)
+    
 
     return render_to_response(
             'flash/flash_detail.html',{
-                'flash_detail': flash_detail
+                'flash_detail': flash_detail,
+                'flash_object': flash_object
              }, context_instance=RequestContext(request))
 
 @login_required
