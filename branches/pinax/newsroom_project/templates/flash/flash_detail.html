@@ -22,7 +22,7 @@
 {% endfor %}
         <!--[if !IE]>-->
 {% for i in flash_object %}
-        <object type="application/x-shockwave-flash" data="/site_media/flash/unzipped/{{ flash_detail.flash_archive }}/{{ i }}" width="300" height="120">
+        <object type="application/x-shockwave-flash" data="/site_media/flash/unzipped/{{ flash_detail.flash_archive }}/{{ i }}" width="{{ flash_detail.width }}" height="{{ flash_detail.height }}">
 {% endfor %}
         <!--<![endif]-->
 

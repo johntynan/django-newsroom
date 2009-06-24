@@ -14,6 +14,8 @@ class Flash(models.Model):
     title = models.CharField(
                 "Flash Project",
                 max_length=255)
+    width = models.CharField(max_length=5)
+    height = models.CharField(max_length=5)
     embed = models.TextField(
                 "Embed / HTML",
                 blank=True,
