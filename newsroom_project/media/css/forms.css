@@ -53,4 +53,4 @@ label {  }
 /* simple forms */
 .inlineLabels label { float: left; width: 90px; padding-right: 10px; font-weight: bold; color: #666; }
 .inlineLabels p { clear: both; }
-.inlineLabels .form_block { padding: 4px 0 4px 100px;  }
+/*.inlineLabels .form_block { padding: 4px 0 4px 100px;  }*/

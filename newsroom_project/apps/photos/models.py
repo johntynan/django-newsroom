@@ -198,6 +198,9 @@ class Photo(Media):
     def get_thumbnail_url(self):
         return self.image.mediumthumb.url
 
+    def get_thumbnail_width(self):
+        return self.image.mediumthumb.get_width()
+
     def get_thumbnail30x30_url(self):
         return self.image.thumbnail30x30.url
 

@@ -57,11 +57,12 @@ class MediaBase(ModelBase):
 
 
 class MediaManager(models.Manager):
+    pass
 
-    def published(self):
-        return self.filter(
-                    sites__in=[Site.objects.get_current()],
-                    status = MEDIA_STATUS_PUBLISHED)
+    #def published(self):
+    #    return self.filter(
+    #                sites__in=[Site.objects.get_current()],
+    #                status = MEDIA_STATUS_PUBLISHED)
 
 
 class Media(ParentModel):
@@ -151,7 +152,7 @@ class Media(ParentModel):
         """
         Return integer or None
         """
-        return self.get_height() + 20
+        return self.get_height() + 40
 
     def get_width(self):
         """

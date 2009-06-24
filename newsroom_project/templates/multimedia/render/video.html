@@ -1,5 +1,4 @@
 <div id="placeholder_{{object.id}}">
-
 <p><a href="http://get.adobe.com/flashplayer">Get Flash</a> to see this player.</p>
 </div>
 <div class="controls">
@@ -16,7 +15,7 @@
 
     function createPlayer() {
         var flashvars = {
-                file:"{{ MEDIA_URL }}{{ object.video }}", 
+                file:"{{ object.get_original_url }}", 
                 autostart:"false",
                 controlbar:"none",
                 //enablejs: true,

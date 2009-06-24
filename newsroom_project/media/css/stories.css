@@ -1,4 +1,6 @@
 
+.rounded-block { -moz-border-radius-bottomleft:8px; -moz-border-radius-bottomright:8px; -moz-border-radius-topleft:8px; -moz-border-radius-topright:8px; background:#E3EDF0 none repeat scroll 0 0; color:#4A5C64; text-align:center; margin: 0 10px; }
+
 .stories-list-link { font-size: 1.2em; height: 43px; }
     .stories-list-link a { padding: 3px 5px;  }
     .stories-list-link a:hover { background: #596E78; -moz-border-radius: 4px; text-decoration: none; color: #FFF }
@@ -37,3 +39,13 @@
 #ajax-media-list { height: 350px; overflow: auto;  }
 #ajax-media-list li { float: left; width: 49%; padding: 6px 0; }
 #ajax-media-list li img { float: left; }
+
+#story-media .media-list-block { margin: 0; overflow: auto; width: 350px; float: left; margin-bottom: 40px;}
+#story-media .media-list-block.odd { clear: left; }
+#story-media .media-list-block .media-thumb { float:left; overflow: none; }
+#story-media .media-list-block p { margin: 0 10px; }
+#story-media .media-list-block p.rounded-block { margin: 10px; padding: 10px; }
+#story-media .media-list-block .action-links a {  text-decoration: none; margin: 0; padding: 10px 30px; }
+#story-media .media-list-block .action-links a.delete {  margin-left: 75px; }
+#story-media .media-list-block .action-links a:hover {  background-color: #d3dDe0; }
+#story-media .media-list-block .action-links .delete { color: red; url("/site_media/common/icon_inline-item-tools_deletelink_hover.gif");  }
