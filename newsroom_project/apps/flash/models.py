@@ -1,7 +1,9 @@
 from django.db import models
 
 class FlashArchive(models.Model):
-    title = models.CharField(max_length=255) 
+    title = models.CharField(
+                "Folder Name",
+                max_length=255) 
     file = models.FileField(upload_to='flash')
 
     def __unicode__(self):
@@ -9,7 +11,9 @@ class FlashArchive(models.Model):
 
     
 class Flash(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(
+                "Flash Project",
+                max_length=255)
     embed = models.TextField(
                 "Embed / HTML",
                 blank=True,
