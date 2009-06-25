@@ -152,7 +152,7 @@ class Media(ParentModel):
         """
         Return integer or None
         """
-        return self.get_height() + 40
+        return self.get_height() + 30
 
     def get_width(self):
         """
@@ -169,7 +169,6 @@ class Media(ParentModel):
         Return integer or None
         """
         return self.get_width() + 20
-
 
     def get_insert_snippet(self):
         """

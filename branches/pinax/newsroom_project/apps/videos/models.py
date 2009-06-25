@@ -69,8 +69,14 @@ class Video(Media):
     def get_width(self):
         return self.frame.image.width
 
+    def get_width_with_margin(self):
+        return self.get_width() + 20
+
     def get_height(self):
         return self.frame.image.height
+
+    def get_height_with_margin(self):
+        return self.get_height() + 50
 
     def get_original_url(self):
         return self.video.url
