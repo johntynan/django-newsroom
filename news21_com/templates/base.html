@@ -29,7 +29,8 @@
   <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js?pub=news21"></script>
   <script type="text/javascript">
   var addthis_config = {
-    username: 'news21', services_compact: 'email, favorites, twitter, facebook, google, digg, myspace, reddit, live, linkedin, more',
+    username: 'news21', 
+    services_compact: 'email, favorites, twitter, facebook, google, digg, myspace, reddit, live, linkedin, more',
   }
   </script>
   <!-- AddThis Button END -->
@@ -200,9 +201,8 @@ $('#message_{{ forloop.counter }}').fadeOut(); return false;"><small>clear</smal
               <li><a href="http://www.linkedin.com/groups?gid=1498937"><img src="{{ MEDIA_URL }}themes/esser/images/footer/bookmarks/linkedin.gif" alt="LinkedIn" /></a></li>
               <!--li><a href="#"><img src="{{ MEDIA_URL }}themes/esser/images/footer/bookmarks/rss.gif" alt="RSS" /></a></li-->
               <!--li><a href="#"><img src="{{ MEDIA_URL }}themes/esser/images/footer/bookmarks/email.gif" alt="Email" /></a></li-->
-              <li><span class="addthis_toolbox"><span class="custom_images"><a class="addthis_button_compact"><img src="{{ MEDIA_URL }}themes/esser/images/footer/bookmarks/email.gif" width="22" height="22" alt="Twitter" /></a></span></span></li>
+              <li><span class="addthis_toolbox"><span class="custom_images"><a addthis:ui_click="true" class="addthis_button_compact"><img src="{{ MEDIA_URL }}themes/esser/images/footer/bookmarks/email.gif" width="22" height="22" alt="Share" /></a></span></span></li>
             </ul>
-
           </div>
 
           <div id="sponsors" class="grid_4">
