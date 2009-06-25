@@ -212,6 +212,8 @@ GEOIP_PATH=PROJECT_ROOT
 INLINES_START_TAG = '<%'
 INLINES_END_TAG = '%>'
 
+VIDEOS_IMAGEKIT_SPEC='photos.ik_specs'
+
 # local_settings.py can be used to override environment-specific settings
 # like database and email that differ between development and production.
 try:

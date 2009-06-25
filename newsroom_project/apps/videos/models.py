@@ -66,6 +66,9 @@ class Video(Media):
     def get_thumbnail_url(self):
         return self.frame.mediumthumb.url
 
+    def get_display140_url(self):
+        return self.frame.display140.url
+
     def get_width(self):
         return self.frame.image.width
 
