@@ -73,6 +73,29 @@ var widget = {
     },
 
 
+    popup_set : function(widget_obj){
+
+        function callback_init(){
+            $("#ajax-media-list").load(page_media_source_url,function(){
+                $("#ajax-media-list .media-item").click(function(){
+                    var media_url = $(this).attr("href");
+                    console.log('hi');
+                    widget_obj.css("background-image", "url("+media_url+")");
+                    //console.log(widget_obj);
+                    //console.log(widget_obj.height());
+                    //widget_obj.attr('height',widget_obj.height());
+                    //widget_obj.children("img").removeAttr("width");
+                    widget.remove_lightbox();
+                    return false;
+                });
+            });
+            return true;
+        }
+
+        widget.lightbox(page_media_list_url, callback_init);
+        return false;
+    },
+
     /* show a generic lightbox with a callback_init function as parameter */
     lightbox : function(url,callback_init) {
 
