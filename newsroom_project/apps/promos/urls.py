@@ -51,5 +51,8 @@ urlpatterns = patterns('promos.views',
          "template":"promos/promo_add_edit_point.html"}
         , name="promos_promo_add_edit_point"),
     
-    
+    url(r'^(?P<promo_id>\d+)/preview01',
+        'promo_preview',
+        name="promos_promo_preview01"),
+            
 )

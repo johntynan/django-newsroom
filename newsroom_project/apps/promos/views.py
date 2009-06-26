@@ -275,3 +275,19 @@ def promo_add_edit_geotag(request,promo_id,
     })
     return render_to_response(template, context_instance=context )
 
+def promo_preview(request, promo_id):
+    """
+    Get promo details.
+    """
+    promo = Promo.objects.get(id=promo_id)
+    promo_link = PromoLink.objects.filter(promo=promo_id)
+    promo_image = PromoImage.objects.filter(promo=promo_id)
+
+    return render_to_response(
+            'promos/preview01.html',{
+            'promo': promo,
+            'promo_link': promo_link,
+            'promo_image': promo_image,
+            'google_key': settings.GOOGLE_MAPS_API_KEY,
+             },
+              context_instance=RequestContext(request))
