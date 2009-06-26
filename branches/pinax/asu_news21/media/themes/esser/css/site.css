@@ -314,10 +314,9 @@
   border: 0;
 }
 
-.nomargins {
-  margin: 0;
-}
+.nomargins { margin: 0; }
 
-#paging_nav {
-    text-align: center;
-}
+#paging_nav { text-align: center; }
+
+.thickwindow { padding: 10px; background-color: #F5F5F5; border: 1px solid #CCC; -moz-border-radius: 7px; }
+    .thickwindow h2 { padding: 10px 0; }
