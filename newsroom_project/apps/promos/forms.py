@@ -19,6 +19,10 @@ class PromoForm(forms.ModelForm):
     #     self.fields['permalink'].widget = widgets.TextInput()
     #    #self.fields['authors'].widget = widgets.SelectMultiple()
 
+    headline = forms.CharField(widget=forms.TextInput(attrs={'size':'100'}))
+    permalink = forms.CharField(widget=forms.TextInput(attrs={'size':'100'}))
+    description = forms.CharField(widget=forms.Textarea(attrs = {'cols':76,'rows':8}))
+    other_credits = forms.CharField(widget=forms.Textarea(attrs = {'cols':40,'rows':3}))
     
     class Meta:
         model = Promo
