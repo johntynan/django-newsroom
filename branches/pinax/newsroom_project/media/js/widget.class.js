@@ -79,12 +79,15 @@ var widget = {
             $("#ajax-media-list").load(page_media_source_url,function(){
                 $("#ajax-media-list .media-item").click(function(){
                     var media_url = $(this).attr("href");
-                    console.log('hi');
+                    var popup_url = $(this).siblings('.popup-url').attr('href');
                     widget_obj.css("background-image", "url("+media_url+")");
-                    //console.log(widget_obj);
+                    console.log(popup_url);
                     //console.log(widget_obj.height());
                     //widget_obj.attr('height',widget_obj.height());
-                    //widget_obj.children("img").removeAttr("width");
+                    console.log(widget_obj.children(".thickbox"));
+                    widget_obj.children(".thickbox").attr("href", popup_url);
+                    //console.log(widget_obj.children("img"));
+                    //.removeAttr("width");
                     widget.remove_lightbox();
                     return false;
                 });

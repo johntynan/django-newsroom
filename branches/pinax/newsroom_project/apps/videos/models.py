@@ -3,6 +3,7 @@ from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
 #from django.contrib.sites.models import Site
+from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 from tagging.models import Tag
 from tagging.fields import TagField
@@ -83,6 +84,12 @@ class Video(Media):
 
     def get_original_url(self):
         return self.video.url
+
+    def get_popup_url(self):
+        return '%s?width=%s&amp;height=%s' % ( 
+                    reverse('multimedia_preview', args=[self.id]),
+                    self.get_width_with_margin(),
+                    self.get_height_with_margin())
 
     #TODO update this
     def get_absolute_url(self):
