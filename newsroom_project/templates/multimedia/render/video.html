@@ -32,7 +32,7 @@
                     id:"player_{{object.id}}",
                     name:"player_{{object.id}}"
             }
-        swfobject.embedSWF("{{ MEDIA_URL }}swf/player-viral.swf", "placeholder_{{ object.id}}", "{{ object.get_width }}", "{{ object.get_height }}", "9.0.115", false, flashvars, params, attributes);
+        swfobject.embedSWF("{{ MEDIA_URL }}common/swf/player-viral.swf", "placeholder_{{ object.id}}", "{{ object.get_width }}", "{{ object.get_height }}", "9.0.115", false, flashvars, params, attributes);
     }
 
     createPlayer();    
