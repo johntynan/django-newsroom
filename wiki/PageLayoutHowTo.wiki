@@ -1,4 +1,4 @@
-# Let's go through the process of adding a page layout that supports a video.
+#summary Let's go through the process of adding a page layout that supports a video.
 
 = Introduction =
 
