@@ -73,6 +73,23 @@ class PopupInline(inlines.TemplateInline):
         image_url = "%scommon/images/play_button.png" % settings.MEDIA_URL
         return { 'image_url': image_url }
 
+class VideoInline(inlines.TemplateInline):
+    """
+    Works similarly as image_widget inline from django_inlines perspective.
+    The rest is handled with javascript in the page editor.
+    """
+
+    help_text = "Configures a video element on the page."
+
+    inline_args = [
+        dict(name='height', help_text="In pixels"),
+        dict(name='width', help_text="In pixels"),
+        ]
+
+    def get_context(self):
+        pass
+
 inlines.registry.register('text_widget', inlines.inline_for_model(TextWidget))
 inlines.registry.register('image_widget', ImageInline)
 inlines.registry.register('popup_widget', PopupInline)
+inlines.registry.register('video_widget', VideoInline)

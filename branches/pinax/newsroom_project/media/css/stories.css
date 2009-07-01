@@ -39,7 +39,7 @@
 #ajax-media-list { height: 350px; overflow: auto;  }
 #ajax-media-list li { float: left; width: 49%; padding: 6px 0; }
 #ajax-media-list li img { float: left; }
-#ajax-media-list .popup-url { display: none; }
+#ajax-media-list .popup-url, #ajax-media-list .render-url { display: none; }
 
 #story-media .media-list-block { margin: 0; overflow: auto; width: 350px; float: left; margin-bottom: 40px;}
 #story-media .media-list-block.odd { clear: left; }
