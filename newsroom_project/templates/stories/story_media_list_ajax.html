@@ -6,7 +6,8 @@
     <a href="{{ item.object.get_display380_url }}" class="media-item">380px</a> | 
     <a href="{{ item.object.get_display600_url }}" class="media-item">600px</a> | 
     <a href="{{ item.object.get_display940_url }}" class="media-item">940px</a> | 
-    <a href="{{ item.object.get_original_url }}" class="media-item">Original</a> | 
-    <a href="{{ item.object.get_popup_url }}" class="popup-url">Popup</a>
+    <a href="{{ item.object.get_original_url }}" class="media-item">Raw</a> 
+    <a href="{{ item.object.get_popup_url }}" class="hidden popup-url">Popup</a> 
+    <a href="{{ item.object.get_render_url }}" class="hidden render-url">Render</a> 
 </li>
 {% endfor %}

@@ -91,6 +91,9 @@ class Video(Media):
                     self.get_width_with_margin(),
                     self.get_height_with_margin())
 
+    def get_render_url(self):
+        return reverse('multimedia_preview', args=[self.id])
+
     #TODO update this
     def get_absolute_url(self):
         return ('videos_video_detail', 

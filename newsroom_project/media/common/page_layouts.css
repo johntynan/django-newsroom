@@ -6,20 +6,28 @@ layouts grow in number and variety this file/solution will need to be
 refactored.
 ****/
 
-/****************** first page simple ********************/
+/****************** rules common to most layouts ********************/
 
-#first_page_simple blockquote {
+blockquote {
     font-size:2.213em;
     border:0;
     margin: 20px 0 40px 0;
 }
-#first_page_simple .media, .content{
-    position: relative;
+
+.media_caption {
+    font-style: italic;
 }
+
+/****************** first page simple ********************/
+
 #first_page_simple h1 {
     text-align: right;
     color: #ccc;
     font-variant: small-caps;
+    margin-bottom: 10px;
+}
+#first_page_simple .media, .content{
+    position: relative;
 }
 #first_page_simple .overlay {
     position: absolute;
@@ -29,7 +37,7 @@ refactored.
     color: white;
 }
 #first_page_simple .media_caption {
-    font: .885em normal italic;
+    font-size: .885em;
     margin: 5px 0;
     font-family: sans-serif;
 }
@@ -55,6 +63,12 @@ refactored.
 
 /****************** cover page simple ********************/
 
+#cover_page_simple h1 {
+    text-align: right;
+    color: #ccc;
+    font-variant: small-caps;
+    margin-bottom: 10px;
+}
 #cover_page_simple .cover {
     position: relative;
 }
@@ -97,6 +111,22 @@ refactored.
     font-family: sans-serif;
 }
 #cover_page_simple .media_caption p {
-    font: .885em normal italic;
+    font-size: .885em;
 }
 
+/****************** inner page video ********************/
+
+#inner_page_video h1 {
+    text-align: right;
+    color: #ccc;
+    font-variant: small-caps;
+    margin-bottom: 10px;
+}
+
+#inner_page_video p:first-child {
+   margin-top: 0; 
+}
+
+#inner_page_video .media_caption p {
+   margin-top: 10px; 
+}

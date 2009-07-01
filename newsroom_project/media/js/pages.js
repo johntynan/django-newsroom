@@ -189,5 +189,11 @@ $(document).ready(function(){
         return false;
     });
 
+    // handle video widget events
+    $(".widget-video-block").live("click",function(){
+        var widget_obj = $(this);
+        widget.video_set(widget_obj);
+        return false;
+    });
 });
 
