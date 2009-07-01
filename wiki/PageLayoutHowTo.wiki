@@ -14,9 +14,9 @@ Let's go through the process of adding a page layout that supports a video.
 
 First thing I do is create a mockup page using typical Django templates on the publication site.  
 
- # modify templates/stories/publication/page_detail.html to include a template rather than rendering from the db.  There is a comment block in that file to quickly switch from rendering a page from the db vs including another template.
- # create the new page mockup code in templates/page_layouts/example_page_video.html and play with the parent and include templates until your mockup is loading.
- # modify the css and html; code the new layout.  try to use existing style page design patterns if possible.   All css for each page layout lives in one file: media/common/page_layouts.css, for now.  After you modify this file you should also make sure that the old page layouts didn't break.  Be smart with your CSS and follow the existing patterns relating to CSS selectors.
+ # modify `templates/stories/publication/page_detail.html` to include a template rather than rendering from the db.  There is a comment block in that file to quickly switch from rendering a page from the db vs including another template.
+ # create the new page mockup code in `templates/page_layouts/example_page_video.html` and play with the parent and include templates until your mockup is loading.
+ # modify the css and html; code the new layout.  try to use existing style page design patterns if possible.   All css for each page layout lives in one file: `media/common/page_layouts.css`, for now.  After you modify this file you should also make sure that the old page layouts didn't break.  Be smart with your CSS and follow the existing patterns relating to CSS selectors.
 
 Here is how my html for the two column inner_page_video layout looks:
 
