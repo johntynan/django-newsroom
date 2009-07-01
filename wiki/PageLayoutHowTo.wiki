@@ -1,5 +1,4 @@
-#Let's go through the process in adding a page layout that supports a video.
-
+# Let's go through the process of adding a page layout that supports a video.
 
 = Introduction =
 
@@ -9,7 +8,7 @@ In order for a page to get rendered in a publication you need:
   #Javascript to handle the widgets and actually create the proper html that is saved to the database in the page body text field.
   # All relevant javascript and css used in the page editor need to also be present in the publication site.
 
-Let's go through the process in adding a page layout that supports a video.
+Let's go through the process of adding a page layout that supports a video.
 
 = Create the Mockup =
 
@@ -175,5 +174,3 @@ Then define the javascript that processes the onclick event in `media/js/widget.
         return false;
     },
 }}}
-
-
