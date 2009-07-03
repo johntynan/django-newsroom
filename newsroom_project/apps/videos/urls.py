@@ -21,15 +21,15 @@ urlpatterns = patterns ('',
         dict(info_dict, template_object_name='object_list'),
         name="videos_index",),
 
-    url( '^video/(?P<video_id>\d+)/(?P<slug>[-\w]+)/$',
+    url( r'^video/(?P<video_id>\d+)/(?P<slug>[-\w]+)/$',
          vid_views.video_detail,
          name="videos_video_detail",),
 
-    url( '^video/add/$',
+    url( r'^video/add/$',
          vid_views.video_add_edit,
          name='videos_add_video'),
 
-    url( '^video/(?P<video_id>\d+)/edit/$',
+    url( r'^video/(?P<video_id>\d+)/edit/$',
          vid_views.video_add_edit,
          name='videos_video_edit'),
 

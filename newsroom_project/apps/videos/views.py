@@ -10,31 +10,6 @@ from stories.models import RelatedContent
 
 #TODO: add authentication check decorators
 
-def add_video(request):
-    """
-    Create a new Video for the user
-    """
-    if request.method == 'POST':
-        form = VideoForm(request.POST, request.FILES)
-        if form.is_valid():
-            video = form.save(commit=False)
-            video.created_by = request.user
-            video.modified_by = request.user
-            video.slug = slugify(video.title)
-            video.save()
-            # we need to save authors in extra step because they are manytomany
-            form.save_m2m()
-            request.user.message_set.create(
-                    message='Your video has been saved.')
-            return HttpResponseRedirect(reverse('videos_video_detail',args=[video.id]))
-    else:
-        form = VideoForm()
-
-    return render_to_response(
-                'videos/video_add.html',
-                locals(),
-                context_instance=RequestContext(request))
-
 def video_add_edit(request, media_id=None, template='videos/video_add_edit.html', redirect_to='multimedia_browse', context_dict={}, story=None):
 
     video = None
@@ -102,6 +77,4 @@ def video_detail(request,video_id,slug):
                 'videos/video_detail.html',
                 {'object':video,},
                 context_instance=RequestContext(request))
-
-
 
