@@ -8,7 +8,7 @@ from django.forms.formsets import formset_factory
 class StoryForm(forms.ModelForm):
     class Meta:
         model = Story
-        exclude = ('slug','created','modified','media',)
+        exclude = ('tags','slug','created','modified','media',)
 
 class PageForm(forms.ModelForm):
     class Meta:
