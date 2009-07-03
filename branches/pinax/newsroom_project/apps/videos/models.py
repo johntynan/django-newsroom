@@ -51,7 +51,8 @@ class Video(Media):
                     VideoFrame, 
                     verbose_name=_(u'First Frame'),
                     blank=True, 
-                    null=True,help_text=_(u'One frame or image that represents the video.  Should be same width/height as the video.'))
+                    null=True,
+                    help_text=_(u'One frame or image that represents the video.  Should be same width/height as the video.'))
 
     created_by = models.ForeignKey(
                             User, 
