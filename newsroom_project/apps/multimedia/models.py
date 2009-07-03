@@ -125,16 +125,20 @@ class Media(ParentModel):
             self.slug = slugify(self.title)
         super(Media,self).save()
 
-    def get_thumbnail_url(self):
-        """
-        return the absolute path to the default thumbnail.
-        Subclasses should implement this
-        """
-        child = self.get_child_object()
-        if hasattr(child,'get_thumbnail_url'):
-            return self.get_child_object().get_thumbnail_url()
-        else:
-            return "%simages/generic_thumbnail.png" % settings.MEDIA_URL
+    # I don't think this is necessary anymore, just causes recursion errors.
+    #def get_thumbnail_url(self):
+    #    pass
+    #    """
+    #    return the absolute path to the default thumbnail.
+    #    Subclasses should implement this
+    #    """
+    #    child = self.get_child_object()
+    #    import ipdb
+    #    ipdb.set_trace()
+    #    if hasattr(child,'get_thumbnail_url'):
+    #        return self.get_child_object().get_thumbnail_url()
+    #    else:
+    #        return "%simages/generic_thumbnail.png" % settings.MEDIA_URL
 
     def get_height(self):
         """

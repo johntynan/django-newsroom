@@ -26,20 +26,27 @@ def flashproject_add_edit(request, media_id=None, template='flash/flashproject_a
             frame_form = PosterFrameForm(request.POST, request.FILES)
             
         if form.is_valid() and frame_form.is_valid():
+
             fp = form.save(commit=False)
             fp.modified_by = request.user
             fp.slug = slugify(fp.title)
+
             if not media_id:
                 fp.site = Site.objects.get_current()
                 fp.created_by = request.user
+
             frame = frame_form.save()
             old_frame = None
+
+            # TODO there is a bug here that 
             if frame != fp.poster_frame:
                 old_frame = fp.poster_frame
                 fp.poster_frame = frame
 
             fp.save()
             form.save_m2m()
+            fp.process_zipfile()
+
             if story:
                 RelatedContent(story=story, object=fp).save()
                 if story.sites.count() > 0:
@@ -56,7 +63,7 @@ def flashproject_add_edit(request, media_id=None, template='flash/flashproject_a
     else:
         if fp:
             form = FlashProjectForm(instance=fp)
-            frame_form = PosterFrameForm(instance=fp.frame)
+            frame_form = PosterFrameForm(instance=fp.poster_frame)
         else:
             form = FlashProjectForm()
             frame_form = PosterFrameForm()
