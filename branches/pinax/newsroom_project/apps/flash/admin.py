@@ -1,6 +1,5 @@
 from django.contrib import admin
-from flash.models import *
+from flash.models import FlashProject, PosterFrame
 
-admin.site.register(Flash)
-admin.site.register(FlashArchive)
-admin.site.register(FlashObject)
+admin.site.register(FlashProject)
+admin.site.register(PosterFrame)
