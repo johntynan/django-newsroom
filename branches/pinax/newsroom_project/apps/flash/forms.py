@@ -9,15 +9,15 @@ def handle_uploaded_file(f):
 
 class FlashProjectForm(forms.ModelForm):
 
-    zip_file = forms.FileField()
+    zip_file = forms.FileField(
+                    help_text="Zip file containing a subdirectory with flash project inside of it.")
 
     class Meta:
         model = FlashProject
-        exclude = ('modified_by', 'created_by')
+        fields = ('title', 'authors','license','status','summary','attribution','width','height','flash_compat','zip_file')
 
     def clean(self):
-        cleaned_data = self.cleaned_data
-        return cleaned_data
+        return self.cleaned_data
 
 class PosterFrameForm(forms.ModelForm):
 

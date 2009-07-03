@@ -11,6 +11,7 @@ from multimedia.models import Media
 from utils.response import JsonResponse, JsonErrorResponse
 from videos import views as vid_views
 from photos import views as photo_views
+from flash import views as flash_views
 
 def get_form_class(type):
     """
@@ -144,5 +145,7 @@ def add_edit_child_media(request, media_type, **kwargs):
         return vid_views.video_add_edit(request, **kwargs)
     elif media_type == 'photo':
         return photo_views.photo_add_edit(request, **kwargs)
+    elif media_type == 'flashproject':
+        return flash_views.flashproject_add_edit(request, **kwargs)
     else:
         raise Http404('Media type not supported.')
