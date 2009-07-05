@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core.urlresolvers import reverse
+from django.core.exceptions import ObjectDoesNotExist
 from django.template import RequestContext
 from django.template.defaultfilters import slugify
 from django.contrib.sites.models import Site
@@ -10,7 +11,7 @@ from stories.models import RelatedContent
 
 #TODO: add authentication check decorators
 
-def video_add_edit(request, media_id=None, template='videos/video_add_edit.html', redirect_to='multimedia_browse', context_dict={}, story=None):
+def video_add_edit(request, media_id=None, template='videos/video_add_edit.html', redirect_to='', context_dict={}, story=None):
 
     video = None
     if media_id:
@@ -40,8 +41,14 @@ def video_add_edit(request, media_id=None, template='videos/video_add_edit.html'
 
             video.save()
             form.save_m2m()
+
             if story:
-                RelatedContent(story=story, object=video).save()
+                # check if the relation exists, if not create it.
+                try:
+                    RelatedContent.objects.get(story=story, object_id=video.id)
+                except ObjectDoesNotExist:
+                     RelatedContent(story=story, object=video).save()
+
                 if story.sites.count() > 0:
                     video.sites = story.sites.all()
                     video.save()
@@ -53,7 +60,7 @@ def video_add_edit(request, media_id=None, template='videos/video_add_edit.html'
 
             request.user.message_set.create(
                         message='Your video was saved.')
-            return HttpResponseRedirect(reverse(redirect_to))
+            return HttpResponseRedirect(redirect_to)
     else:
         if video:
             form = VideoForm(instance=video)

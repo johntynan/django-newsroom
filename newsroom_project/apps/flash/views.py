@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core.urlresolvers import reverse
+from django.core.exceptions import ObjectDoesNotExist
 from django.template import RequestContext
 from django.template.defaultfilters import slugify
 from django.contrib.sites.models import Site
@@ -10,8 +11,9 @@ from stories.models import RelatedContent
 
 #TODO: add authentication check decorators
 
-def flashproject_add_edit(request, media_id=None, template='flash/flashproject_add_edit.html', redirect_to='multimedia_browse', context_dict={}, story=None):
+def flashproject_add_edit(request, media_id=None, template='flash/flashproject_add_edit.html', redirect_to='', context_dict={}, story=None):
 
+    messages = []
     fp = None
     if media_id:
         fp = get_object_or_404(FlashProject,pk=media_id)
@@ -45,10 +47,20 @@ def flashproject_add_edit(request, media_id=None, template='flash/flashproject_a
 
             fp.save()
             form.save_m2m()
-            fp.process_zipfile()
+            messages.append('Your flash project was saved.')
+
+            try:
+                fp.process_zipfile()
+            except Exception, e:
+                messages.append('But the zip file could not be processed: '+str(e))
 
             if story:
-                RelatedContent(story=story, object=fp).save()
+                # check if the relation exists, if not create it.
+                try:
+                    RelatedContent.objects.get(story=story, object_id=fp.id)
+                except ObjectDoesNotExist:
+                    RelatedContent(story=story, object=fp).save()
+
                 if story.sites.count() > 0:
                     fp.sites = story.sites.all()
                     fp.save()
@@ -58,8 +70,8 @@ def flashproject_add_edit(request, media_id=None, template='flash/flashproject_a
                 old_frame.delete()
 
             request.user.message_set.create(
-                        message='Your flash project was saved.')
-            return HttpResponseRedirect(reverse(redirect_to))
+                        message=' '.join(messages))
+            return HttpResponseRedirect(redirect_to)
     else:
         if fp:
             form = FlashProjectForm(instance=fp)
