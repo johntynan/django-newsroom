@@ -115,3 +115,9 @@ class FlashProject(Media):
     def get_thumbnail_url(self):
         return self.poster_frame.mediumthumb.url
 
+    def get_original_url(self):
+        try:
+            return self.zip_file.url
+        except ValueError:
+            pass
+
