@@ -17,7 +17,7 @@ class FlashProjectForm(forms.ModelForm):
 
     class Meta:
         model = FlashProject
-        fields = ('title', 'authors','license','status','summary','attribution','width','height','flash_compat','zip_file')
+        fields = ('title', 'authors','license','status','summary','attribution','width','height','flash_compat','loader_swf','zip_file')
 
     def clean(self):
         return self.cleaned_data

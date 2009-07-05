@@ -52,6 +52,7 @@ def flashproject_add_edit(request, media_id=None, template='flash/flashproject_a
             try:
                 fp.process_zipfile()
             except Exception, e:
+                #import ipdb; ipdb.set_trace()
                 messages.append('But the zip file could not be processed: '+str(e))
 
             if story:
