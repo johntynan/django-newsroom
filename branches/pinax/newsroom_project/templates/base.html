@@ -79,6 +79,11 @@
                 {% endfor %}
             </ul>
         {% endif %}
+        {% if form.errors %}
+            <ul id="messages" class="errors">
+                <li><a href="" title="{% trans "clear" %}"><small>{% trans "clear " %}</small></a> Shoot, form didn't validate, please take a look at the form.</a></li>
+            </ul>
+        {% endif %}
         {% block subnav-outer %}
         <div id="content-action">
             {% block subnav %}&nbsp;{% endblock %}

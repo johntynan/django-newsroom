@@ -2,13 +2,14 @@ import simplejson as json
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core.urlresolvers import reverse
+from django.core.exceptions import ObjectDoesNotExist
 from django.template import RequestContext
 from django.template.defaultfilters import slugify
 from photos.forms import PhotoForm, ImageForm
 from photos.models import Photo
 from stories.models import RelatedContent
 
-def photo_add_edit( request, media_id=None, template='photos/photo_add_edit.html', redirect_to='multimedia_browse', context_dict={}, story=None):
+def photo_add_edit( request, media_id=None, template='photos/photo_add_edit.html', redirect_to='', context_dict={}, story=None):
 
     if media_id:
         photo = get_object_or_404(Photo,pk=media_id)
@@ -45,14 +46,19 @@ def photo_add_edit( request, media_id=None, template='photos/photo_add_edit.html
             form.save_m2m()
 
             if story:
-                RelatedContent(story=story, object=photo).save()
+                try:
+                    # check if the relation exists, if not create it.
+                    RelatedContent.objects.get(story=story, object_id=photo.id)
+                except ObjectDoesNotExist:
+                    RelatedContent(story=story, object=photo).save()
+
                 if story.sites.count() > 0:
                     photo.sites = story.sites.all()
                     photo.save()
 
             request.user.message_set.create(
                         message='Your photo was saved.')            
-            return HttpResponseRedirect(reverse(redirect_to))
+            return HttpResponseRedirect(redirect_to)
 
     else:
         if photo:

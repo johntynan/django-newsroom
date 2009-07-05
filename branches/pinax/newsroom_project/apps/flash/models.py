@@ -96,15 +96,15 @@ class FlashProject(Media):
         if os.path.isfile(self.zip_file.path):
             try:
                 zip = zipfile.ZipFile(self.zip_file.path)
-                import ipdb
-                ipdb.set_trace()
+                #import ipdb
+                #ipdb.set_trace()
             except BadZipfile:
                 self.zip_file.delete()
                 raise BadZipfile, "File is not a zip file."
 
-            bad_file = zip.testzip()
-            if bad_file:
-                raise Exception('"%s" in the .zip archive is corrupt.' % bad_file)
+            #bad_file = zip.testzip()
+            #if bad_file:
+            #    raise Exception('"%s" in the .zip archive is corrupt.' % bad_file)
 
     def get_width(self):
         return self.width

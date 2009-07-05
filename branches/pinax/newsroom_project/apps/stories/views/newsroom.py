@@ -179,7 +179,7 @@ def story_add_edit_media(request, story_id, media_type=None, media_id=None):
         media_type = object.media_type.lower()
 
     kwargs['template'] = 'stories/%s_add_edit.html' % media_type
-    kwargs['redirect_to'] = 'stories_story_list'
+    kwargs['redirect_to'] = reverse('stories_story_media', args=[story.id])
     kwargs['context_dict'] = {'story':story,}
     kwargs['story'] = story
     if media_id:
