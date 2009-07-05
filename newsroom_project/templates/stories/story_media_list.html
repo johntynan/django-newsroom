@@ -27,7 +27,9 @@
             <p>Authors: {{ item.object.authors.all|join:', ' }}</p>
             <p>Attribution: {{item.object.attribution|truncatewords:30}}</p>
             <p>Summary: {{item.object.summary|truncatewords:20}}</p>
+            {% if item.object.get_original_url %}
             <p><a href="{{ item.object.get_original_url }}">Original File</a></p>
+            {% endif %}
             <p class="action-links rounded-block">
             <a href="{% url stories_story_edit_media story.id item.object.id %}">Edit</a> 
             <a class="delete" href="">Delete</a></p>
