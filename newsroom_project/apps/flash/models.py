@@ -38,7 +38,7 @@ class FlashProject(Media):
 
     loader_swf = models.CharField(
                     max_length=255, 
-                    help_text="Filename of the swf used to start the flash movie.")
+                    help_text="Path to the swf used to start the flash movie.")
 
     width = models.CharField(
                 max_length=4,
@@ -140,15 +140,23 @@ class FlashProject(Media):
     def get_width(self):
         return self.width
 
+    def get_width_with_margin(self):
+        return int(self.get_width()) + 20
+
     def get_height(self):
         return self.height
+
+    def get_height_with_margin(self):
+        return int(self.get_height()) + 40
 
     def get_thumbnail_url(self):
         return self.poster_frame.mediumthumb.url
 
-    def get_original_url(self):
-        try:
-            return self.zip_file.url
-        except ValueError:
-            pass
+    def get_loader_url(self):
+        """
+        Return relative URL to loader swf
+        """
+        return '%s/%s/%s' % (os.path.dirname(self.zip_file.url),
+                                 slugify(self.title),
+                                 self.loader_swf)
 

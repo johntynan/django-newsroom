@@ -1,0 +1,48 @@
+<div class="thickwindow">
+<div id="flash_placeholder">
+<p><a href="http://get.adobe.com/flashplayer">Get Flash</a> to see this player.</p>
+</div>
+</div>
+
+<script type="text/javascript" src="{{ MEDIA_URL }}common/js/swfobject.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+
+    function createPlayer() {
+        var flashvars = {
+                //file:"{{ object.get_original_url }}", 
+                //autostart:"false",
+                //controlbar:"over",
+                //image:"{{ object.frame.image.url }}", 
+                //skin:"{{ MEDIA_URL }}common/swf/modieus.swf",
+                //showicons:"false",
+                //showdigits:"false",
+                //displayheight:'175',
+                //enablejs: true,
+                //searchbar:false,
+                //hownavigation: false,
+        }
+        var params = {
+                allowfullscreen:"true", 
+                allowscriptaccess:"always"
+        }
+        var attributes = {
+                    id:"vid_player",
+                    name:"vid_player"
+        }
+        swfobject.embedSWF("{{ object.get_loader_url }}", "flash_placeholder", "{{ object.get_width }}", "{{ object.get_height }}", "9.0.115", false, flashvars, params, attributes);
+    }
+
+    createPlayer();    
+
+    var vid_player = null; 
+    /* swf does a callback */
+    function playerReady(thePlayer) { 
+        vid_player  = document.getElementById("vid_player"); 
+        //addListeners();
+    }
+
+/* ]]> */
+</script>
+
+
