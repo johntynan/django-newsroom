@@ -10,8 +10,9 @@ MEDIA_TYPES = (
     (MEDIA_TYPE_VIDEO,'Video',),
 )
 
-LICENSE_DEFAULT = 'http://creativecommons.org/licenses/by/2.0/'
+LICENSE_DEFAULT = 'http://news21.com'
 LICENSE_CHOICES = (
+      ('http://news21.com',                                   'All Rights Reserved'),
       ('http://creativecommons.org/licenses/by/2.0/',         'CC Attribution'),
       ('http://creativecommons.org/licenses/by-nd/2.0/',      'CC Attribution-NoDerivs'),
       ('http://creativecommons.org/licenses/by-nc-nd/2.0/',   'CC Attribution-NonCommercial-NoDerivs'),
