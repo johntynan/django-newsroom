@@ -1,17 +1,18 @@
 <div class="thickwindow">
-<div id="placeholder_{{object.id}}">
+<div id="flash_placeholder">
 <p><a href="http://get.adobe.com/flashplayer">Get Flash</a> to see this player.</p>
 </div>
-<div class="controls">
-<a href="javascript:player_{{ object.id }}.sendEvent('PLAY')">Play/Pause</a>
-<a href="javascript:player_{{ object.id }}.sendEvent('SEEK', currentPosition-10);">&lt;&lt;</a>
-<a href="javascript:player_{{ object.id }}.sendEvent('SEEK', currentPosition+10);">&gt;&gt;</a>
+<!--div class="controls">
+<a href="javascript:vid_player.sendEvent('PLAY')">Play/Pause</a>
+<a href="javascript:vid_player.sendEvent('SEEK', currentPosition-10);">&lt;&lt;</a>
+<a href="javascript:vid_player.sendEvent('SEEK', currentPosition+10);">&gt;&gt;</a>
 
 <span id="player_time"></span>
 
-</div>
+</div-->
 </div>
 
+<script type="text/javascript" src="{{ MEDIA_URL }}common/js/swfobject.js"></script>
 <script type="text/javascript">
 /* <![CDATA[ */
 
@@ -19,8 +20,12 @@
         var flashvars = {
                 file:"{{ object.get_original_url }}", 
                 autostart:"false",
-                controlbar:"none",
+                controlbar:"over",
+                skin:"{{ MEDIA_URL }}common/swf/modieus.swf",
                 image:"{{ object.frame.image.url }}", 
+                //showicons:"false",
+                //showdigits:"false",
+                //displayheight:'175',
                 //enablejs: true,
                 //searchbar:false,
                 //hownavigation: false,
@@ -30,32 +35,33 @@
                 allowscriptaccess:"always"
         }
         var attributes = {
-                    id:"player_{{object.id}}",
-                    name:"player_{{object.id}}"
+                    id:"vid_player",
+                    name:"vid_player"
             }
-        swfobject.embedSWF("{{ MEDIA_URL }}common/swf/player-viral.swf", "placeholder_{{ object.id}}", "{{ object.get_width }}", "{{ object.get_height }}", "9.0.115", false, flashvars, params, attributes);
+        swfobject.embedSWF("{{ MEDIA_URL }}common/swf/player-viral.swf", "flash_placeholder", "{{ object.get_width }}", "{{ object.get_height }}", "9.0.115", false, flashvars, params, attributes);
     }
 
     createPlayer();    
 
-    var player_{{ object.id }} = null; 
+    var vid_player = null; 
     /* swf does a callback */
     function playerReady(thePlayer) { 
-        player_{{ object.id }}  = document.getElementById("player_{{object.id}}"); 
-        addListeners();
+        vid_player  = document.getElementById("vid_player"); 
+        //addListeners();
     }
 
     /* 
 http://home5.inet.tele.dk/nyboe/flash/mediaplayer4/JW_API_xmpl_6-2-0-0.html
     */
+    /*
     function addListeners() {
-        if (player_{{ object.id }}) { 
+        if (vid_player) { 
             //player.addControllerListener("ITEM", "itemListener");
             //player.addControllerListener("MUTE", "muteListener");
 
             //player.addModelListener("LOADED", "loadedListener");
             //player.addModelListener("STATE", "stateListener");
-            player_{{ object.id }}.addModelListener("TIME", "positionListener");
+            vid_player.addModelListener("TIME", "positionListener");
 
             //player.addViewListener("VOLUME", "volumeListener");
         } else {
