@@ -192,13 +192,14 @@ class PromoBillboard(models.Model):
 
     supporting_text_color = models.CharField(max_length=6, choices=HEADLINE_COLORS, default='White')
 
-    link = models.ManyToManyField(
+    link = models.ForeignKey(
                 PromoLink,
                 related_name='billboard_url',
                 blank=True,
+                null=True,
                 help_text="Link to the story, related story or project that this billboard is promoting.  If blank, the main url that you submitted with your pitch will be promoted. ")
 
-    image = models.ManyToManyField(
+    image = models.ForeignKey(
                 PromoImage,
                 blank=False,
                 help_text="Image to appear on the home page.")
