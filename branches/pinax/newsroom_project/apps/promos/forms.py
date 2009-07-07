@@ -22,7 +22,7 @@ class PromoForm(forms.ModelForm):
     headline = forms.CharField(widget=forms.TextInput(attrs={'size':'100'}))
     permalink = forms.CharField(widget=forms.TextInput(attrs={'size':'100'}))
     description = forms.CharField(widget=forms.Textarea(attrs = {'cols':76,'rows':8}))
-    other_credits = forms.CharField(widget=forms.Textarea(attrs = {'cols':40,'rows':3}))
+    other_credits = forms.CharField(required=False,widget=forms.Textarea(attrs = {'cols':40,'rows':3}))
     
     class Meta:
         model = Promo
@@ -45,3 +45,12 @@ class DateForm(forms.ModelForm):
     class Meta:
         model = PromoDate
         exclude =('promo')
+
+class BillboardForm(forms.ModelForm):
+    headline = forms.CharField(widget=forms.TextInput(attrs={'size':'100'}))
+    supporting_text = forms.CharField(required=False,widget=forms.Textarea(attrs = {'cols':76,'rows':8}))
+
+    class Meta:
+        model = PromoBillboard
+        exclude =('promo','start_date')
+

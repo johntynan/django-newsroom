@@ -50,7 +50,19 @@ urlpatterns = patterns('promos.views',
         {"form_class":PointForm, "geotag_class":Point,
          "template":"promos/promo_add_edit_point.html"}
         , name="promos_promo_add_edit_point"),
-    
+
+    url(r'^(?P<promo_id>\d+)/billboard/$',
+        'promo_billboard_list',
+        name="promos_promo_billboard_list"),
+
+    url(r'^(?P<promo_id>\d+)/billboard_add/$',
+        'promo_billboard_add',
+        name="promos_promo_billboard_add"),
+
+    url(r'^(?P<promo_id>\d+)/billboard_detail/$',
+        'promo_billboard_detail',
+        name="promos_promo_billboard_detail"),
+
     url(r'^(?P<promo_id>\d+)/preview01',
         'promo_preview',
         name="promos_promo_preview01"),
