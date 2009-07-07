@@ -23,13 +23,15 @@
                 <th class="id_col">Campaign</th>
                 <th>Headline</th>
                 <th>Supporting Text</th>
+                <th>Actions</th>
             </tr>
         </thead>
         {% for i in promo_billboard%}
         <tr class="{% cycle '' 'alt-row' %}">
-            <td><a href="{{i.url}}">{{ i }}</a></td>
+            <td><a href="{{i.url}}">{{ i }}</a> </td>
             <td>{{i.headline}}</td>
             <td>{{i.supporting_text}}</td>
+            <td><a href="{% url promos_promo_billboard_detail promo_id=i.promo_id,billboard_id=i.id %}">preview</a></td>
         </tr>
         {% endfor %}
     </table>
