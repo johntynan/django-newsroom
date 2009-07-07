@@ -21,8 +21,9 @@
 
 <div>
 <h1><a href="{{ billboard.link }}" style="text-decoration:none;">{{ billboard.title }}</a></h1>
+<p class="">{% firstof billboard.link.url billboard.promo.permalink %}</p>
 <a href="{{ billboard.link }}" style="text-decoration:none;"><img src="/site_media/{{ billboard.image }}" style="width:700px; height: auto; position:relative; left:0px; top:0px;z-index:0;" /></a>
-<p style="position:relative; left:{{billboard.supporting_text_position_horizontal}}px; top:{{billboard.supporting_text_position_vertical}}px;z-index:1;color:#{{billboard.supporting_text_color}};width:{{billboard.supporting_text_width}}px;text-align:{{billboard.supporting_text_alignment}}"><strong>{{ billboard.supporting_text }}</strong>
+<p style="position:relative; left:{{billboard.supporting_ntext_position_horizontal}}px; top:{{billboard.supporting_text_position_vertical}}px;z-index:1;color:#{{billboard.supporting_text_color}};width:{{billboard.supporting_text_width}}px;text-align:{{billboard.supporting_text_alignment}}"><strong>{{ billboard.supporting_text }}</strong>
     </p>
 </div>
 
