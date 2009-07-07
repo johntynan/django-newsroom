@@ -59,7 +59,7 @@ urlpatterns = patterns('promos.views',
         'promo_billboard_add',
         name="promos_promo_billboard_add"),
 
-    url(r'^(?P<promo_id>\d+)/billboard_detail/$',
+    url(r'^(?P<promo_id>\d+)/billboard_detail/(?P<billboard_id>\d+)$',
         'promo_billboard_detail',
         name="promos_promo_billboard_detail"),
 

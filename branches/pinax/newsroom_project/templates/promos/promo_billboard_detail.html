@@ -1,11 +1,11 @@
 {% extends "promos/base.html" %}
 {% load i18n %}
 
-{% block head_title %}Add a Promo Billboard{% endblock %}
+{% block head_title %}Preview Promo Billboard{% endblock %}
 
 
 {% block main_content %}
-<h1>Add a Promo Billboard</h1>
+<h1>Preview Promo Billboard -- {{ billboard }}</h1>
 <div class="edit-promo-tabs">
     <div class="tab-links">
         <a href="{% url promos_promo_edit promo_id=promo.id %}" rel="promo-info">Pitch</a>
@@ -20,7 +20,7 @@
     <div class="tab-contents">
 
 <div>
-<h1 style="position:relative; left:{{billboard.headline_position_horizontal}}px; top:{{billboard.headline_position_vertical}}px;z-index:1;color:#{{billboard.headline_color}};width:{{billboard.headline_width}}px;text-align:{{billboard.headline_alignment}}">{{ promo.headline }}</h1>
+<h1>test {{ billboard.title }}</h1>
 <a href="{{ main_promo.permalink }}" style="text-decoration:none;"><img src="/site_media/{{ promo_image.image }}" style="width:700px; height: auto; position:relative; left:0px; top:0px;z-index:0;" /></a>
 <p style="position:relative; left:{{billboard.supporting_text_position_horizontal}}px; top:{{billboard.supporting_text_position_vertical}}px;z-index:1;color:#{{billboard.supporting_text_color}};width:{{billboard.supporting_text_width}}px;text-align:{{billboard.supporting_text_alignment}}"><strong>{{billboard.supporting_text }}</strong>
     </p>
