@@ -20,11 +20,12 @@
 <h1>{{ promo.headline }}</h1>
 <div class="edit-promo-tabs">
     <div class="tab-links">
-        <a href="" rel="promo-info" class="active">Properties</a>
+        <a href="" rel="promo-info" class="active">Pitch</a>
         <a href="{% url promos_promo_add_edit_point promo_id=promo.id %}" rel="promo-info" title="Geotag">Geotag</a>
         <a href="{% url promos_promo_image_list promo_id=promo.id %}">Images</a>
         <a href="{% url promos_promo_link_list promo_id=promo.id %}">Related Links</a>
         <a href="{% url promos_promo_date_list promo_id=promo.id %}">Suggested Dates</a>
+        <a href="{% url promos_promo_billboard_list promo_id=promo.id %}">Billboards</a>
         <a href="{% url promos_promo_detail promo_id=promo.id %}">Detail</a>
         <br class="clearboth" />
     </div>

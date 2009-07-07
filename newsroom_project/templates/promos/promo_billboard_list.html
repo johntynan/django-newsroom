@@ -1,6 +1,6 @@
 {% extends 'promos/base.html' %}
 
-{% block title %}Promo Date List{% endblock %}
+{% block title %}Promo Billboard List{% endblock %}
 
 {% block main_content %}
 <h1>{{ promo.headline }}</h1>
@@ -10,31 +10,31 @@
         <a href="{% url promos_promo_add_edit_point promo_id=promo.id %}" rel="promo-info" title="Geotag">Geotag</a>
         <a href="{% url promos_promo_image_list promo_id=promo.id %}">Images</a>
         <a href="{% url promos_promo_link_list promo_id=promo.id %}">Related Links</a>
-        <a href="" class="active">Suggested Dates</a>
-        <a href="{% url promos_promo_billboard_list promo_id=promo.id %}">Billboards</a>
+        <a href="{% url promos_promo_date_list promo_id=promo.id %}">Suggested Dates</a>
+        <a href="" class="active">Billboards</a>
         <a href="{% url promos_promo_detail promo_id=promo.id %}">Detail</a>
         <br class="clearboth" />
     </div>
     <div class="tab-contents">
-    {% if promo_date %}
+    {% if promo_billboard %}
     <table cellspacing="0" cellpadding="0" class="list-table">
         <thead>
             <tr>
-                <th>Title</th>
-                <th>Date</th>
-                <th>Description</th>
+                <th class="id_col">Campaign</th>
+                <th>Headline</th>
+                <th>Supporting Text</th>
             </tr>
         </thead>
-        {% for i in promo_date%}
+        {% for i in promo_billboard%}
         <tr class="{% cycle '' 'alt-row' %}">
-            <td>{{i}}</td>
-            <td>{{i.promo_date}}</td>
-            <td>{{i.description}}</td>
+            <td><a href="{{i.url}}">{{ i }}</a></td>
+            <td>{{i.headline}}</td>
+            <td>{{i.supporting_text}}</td>
         </tr>
         {% endfor %}
     </table>
     {% else %}
-        <p>You haven't submitted any dates yet.</p>
+        <p>You haven't submitted any billboards yet.</p>
     {% endif %}
     </div>
 </div>
@@ -45,6 +45,6 @@
 <h2>Links</h2>
 <ul class="action-links">
     <li><a href="{% url promos_promo_list %}">Promo List</a></li>
-    <li><a href="{% url promos_promo_date_add promo_id=promo.id%}" title="Add a Date">Add a Date</a></li>
+    <li><a href="{% url promos_promo_billboard_add promo_id=promo.id%}" title="Add a Link">Add a Billboard</a></li>
  </ul>
 {% endblock %}
