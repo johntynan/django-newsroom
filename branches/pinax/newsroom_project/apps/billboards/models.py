@@ -28,9 +28,11 @@ class Billboard(models.Model):
 
     headline = models.CharField(max_length=225)
 
-    headline_position_horizontal = models.CharField(max_length=3)
+    headline_position_horizontal = models.CharField(max_length=4)
 
-    headline_position_vertical = models.CharField(max_length=3)
+    headline_position_vertical = models.CharField(max_length=4)
+
+    headline_width = models.CharField(max_length=4)
 
     headline_alignment = models.CharField(max_length=25, choices=HEADLINE_ALIGN)
 
@@ -44,9 +46,11 @@ class Billboard(models.Model):
 
     supporting_text = models.TextField(blank=True)
 
-    supporting_text_position_horizontal = models.CharField(max_length=3)
+    supporting_text_position_horizontal = models.CharField(max_length=4)
 
-    supporting_text_position_vertical = models.CharField(max_length=3)
+    supporting_text_position_vertical = models.CharField(max_length=4)
+
+    supporting_text_width = models.CharField(max_length=4)
 
     supporting_text_alignment = models.CharField(max_length=25, choices=HEADLINE_ALIGN)
 
