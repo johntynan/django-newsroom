@@ -9,14 +9,8 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.template.loader import render_to_string
-from promos.forms import ImageForm
-from promos.forms import LinkForm
-from promos.forms import PromoForm
-from promos.forms import DateForm
-from promos.models import Promo
-from promos.models import PromoImage
-from promos.models import PromoLink
-from promos.models import PromoDate
+from promos.forms import *
+from promos.models import *
 from utils.helpers import user_objects_qs
 
 
@@ -274,6 +268,65 @@ def promo_add_edit_geotag(request,promo_id,
         "geotag": geotag,
     })
     return render_to_response(template, context_instance=context )
+
+@login_required
+def promo_billboard_list(request, promo_id):
+    user_promos = user_objects_qs(Promo, request.user)
+    promo = get_object_or_404(user_promos, pk=promo_id)
+    promo_billboard = PromoBillboard.objects.filter(promo=promo_id)
+    return render_to_response(
+            'promos/promo_billboard_list.html',{
+            'promo':promo,
+            'promo_billboard':promo_billboard,
+            },
+            context_instance=RequestContext(request))
+
+@login_required
+def promo_billboard_add(request, promo_id):
+    """
+    Process a new promo billboard submission.
+    """
+    user_promos = user_objects_qs(Promo, request.user)
+    promo = get_object_or_404(user_promos, pk=promo_id)
+    if request.method == "POST":
+        form = BillboardForm(request.POST)
+        if form.is_valid():
+            promo_billboard = form.save(commit=False)
+            promo_billboard.promo = promo
+            promo_billboard.save()
+
+            request.user.message_set.create(
+                message='Your promo billboard has been added.  Thank you.')
+            return HttpResponseRedirect(
+                reverse('promos_promo_billboard_list', args=[promo.id]))
+
+    else:
+        form = BillboardForm()
+
+    return render_to_response(
+              'promos/promo_billboard_add.html',
+              {'form':form,
+              'promo':promo},
+              context_instance=RequestContext(request))
+
+@login_required
+def promo_billboard_detail(request, promo_id, billboard_id):
+    """
+    Get promo details.
+    """
+    user_promos = user_objects_qs(Promo, request.user)
+    promo = get_object_or_404(user_promos, pk=promo_id)
+
+    user_billboards = user_objects_qs(PromoBillboard, request.user)
+    billboard = get_object_or_404(user_billboards, pk=billboard_id)
+
+    return render_to_response(
+            'promos/promo_billboard_detail.html',{
+            'promo': promo,
+            'billboard': billboard,
+
+             },
+              context_instance=RequestContext(request))
 
 def promo_preview(request, promo_id):
     """
