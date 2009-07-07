@@ -16,16 +16,12 @@
 
 <h1 style="position:relative; top:-250px; left:-50px;"></h1>
 
-    {% for i in promo_image%}
 <div>
-<h1 style="position:relative; left:200px; top:65px;z-index:1;color:white;">{{ promo.headline }}</h1>
-<a href="{{ promo.permalink }}" style="text-decoration:none;"><img src="/site_media/{{ i.image }}" style="width:700px; height: auto; position:relative; left:0px; top:0px;z-index:0;" /></a>
-<p style="position:relative; left:400px; top:-75px;z-index:1;color:white;">{{ i.caption }}<br />
-    {{ i.attribution }}<br />
+<h1 style="position:relative; left:{{billboard.headline_position_horizontal}}px; top:{{billboard.headline_position_vertical}}px;z-index:1;color:#{{billboard.headline_color}};width:{{billboard.headline_width}}px;text-align:{{billboard.headline_alignment}}">{{ main_promo.headline }}</h1>
+<a href="{{ main_promo.permalink }}" style="text-decoration:none;"><img src="/site_media/{{ promo_image.image }}" style="width:700px; height: auto; position:relative; left:0px; top:0px;z-index:0;" /></a>
+<p style="position:relative; left:{{billboard.supporting_text_position_horizontal}}px; top:{{billboard.supporting_text_position_vertical}}px;z-index:1;color:#{{billboard.supporting_text_color}};width:{{billboard.supporting_text_width}}px;text-align:{{billboard.supporting_text_alignment}}"><strong>{{billboard.supporting_text }}</strong>
     </p>
 </div>
-
-    {% endfor %}
 
           <div id="topics" class="box">
 

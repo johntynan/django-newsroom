@@ -27,15 +27,16 @@ def billboard_list(request):
             context_instance=RequestContext(request))
     
 def billboard_detail(request, id):
-    billboard_detail = Billboard.objects.get(id=id)
-    main_promo = billboard_detail.main_promo
+    billboard = Billboard.objects.get(id=id)
+    main_promo = billboard.main_promo
     promo_image = PromoImage.objects.filter(promo=main_promo)
     
 
     return render_to_response(
             'billboards/billboard_detail.html',{
-                'billboards_billboard_detail': billboard_detail,
-                'promo_image': promo_image
+                'billboard': billboard,
+                'main_promo': main_promo,
+                'promo_image': promo_image[0]
              }, context_instance=RequestContext(request))
 
 @login_required
