@@ -1,0 +1,26 @@
+{% extends "site_base.html" %}
+{% load i18n %}
+
+{% block extra_head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/billboards.css" />
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/widget.css" />
+{% endblock %}
+
+{% block body_id %}billboards{% endblock %}
+
+{% block tab_id %}id="billboards_tab"{% endblock %}
+
+{% block body %}
+    
+    {% block main_content %}{% endblock %}
+    
+{% endblock body %}
+
+{% block subnav %}
+<h2>{% trans "Links" %}</h2>
+<ul class="action-links">
+        <li><a href="{% url billboards_billboard_list %}">Billboard List</a></li>
+        <li><a href="{% url billboards_billboard_add %}">Add Billboard</a></li>
+ </ul>
+{% endblock %}
