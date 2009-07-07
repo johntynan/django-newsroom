@@ -10,7 +10,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.template.loader import render_to_string
 
-from promos.models import Promo
+from promos.models import Promo, PromoImage
 from billboards.models import Billboard
 from billboards.forms import BillboardForm
 
@@ -28,13 +28,14 @@ def billboard_list(request):
     
 def billboard_detail(request, id):
     billboard_detail = Billboard.objects.get(id=id)
-    billboard_object = BillboardObject.objects.filter(billboard=id)
+    main_promo = billboard_detail.main_promo
+    promo_image = PromoImage.objects.filter(promo=main_promo)
     
 
     return render_to_response(
             'billboards/billboard_detail.html',{
                 'billboards_billboard_detail': billboard_detail,
-                'billboards_billboard_object': billboard_object
+                'promo_image': promo_image
              }, context_instance=RequestContext(request))
 
 @login_required
