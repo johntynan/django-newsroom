@@ -1,5 +1,4 @@
 from django import forms
-from django.core.files.storage import FileSystemStorage
 from billboards.models import Billboard
 
 class BillboardForm(forms.ModelForm):

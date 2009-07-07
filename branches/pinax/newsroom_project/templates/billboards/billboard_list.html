@@ -1,0 +1,31 @@
+{% extends 'billboards/base.html' %}
+
+{% block title %}Billboards List{% endblock %}
+
+{% block main_content %}
+<h1>Billboards</h1>
+{% if billboards %}
+    <table cellspacing="0" cellpadding="0" class="list-table">
+        <thead>
+            <tr>
+                <th class="id_col">Id</th>
+                <th>Title</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        {% for billboard in billboard_list %}
+        <tr class="{% cycle '' 'alt-row' %}">
+                    <td class="id_col">{{ billboard.id }}</td>
+                    <td>{{billboard}}</td>
+                    <td>
+                        <a href="{% url billboards_billboard_edit billboard_id=billboard.id %}">Properties</a> | 
+                        <a href="{% url billboards_billboard_detail billboard_id=billboard.id %}">Preview</a> | 
+                    </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>You haven't submitted any billboards yet.</p>
+{% endif %}
+
+{% endblock %}

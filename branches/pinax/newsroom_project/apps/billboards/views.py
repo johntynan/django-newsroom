@@ -10,7 +10,9 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.template.loader import render_to_string
 
-from promo.models import Promo
+from promos.models import Promo
+from billboards.models import Billboard
+from billboards.forms import BillboardForm
 
 @login_required
 def billboard_list(request):
@@ -20,8 +22,8 @@ def billboard_list(request):
 
     billboard_list = Billboard.objects.all()
     return render_to_response(
-            'billboard/billboard_list.html',
-            {'billboard_list': billboard_list},              
+            'billboards/billboard_list.html',
+            {'billboards_billboard_list': billboard_list},              
             context_instance=RequestContext(request))
     
 def billboard_detail(request, id):
@@ -30,9 +32,9 @@ def billboard_detail(request, id):
     
 
     return render_to_response(
-            'billboard/billboard_detail.html',{
-                'billboard_detail': billboard_detail,
-                'billboard_object': billboard_object
+            'billboards/billboard_detail.html',{
+                'billboards_billboard_detail': billboard_detail,
+                'billboards_billboard_object': billboard_object
              }, context_instance=RequestContext(request))
 
 @login_required
@@ -47,13 +49,13 @@ def billboard_add(request):
             form.save()
             request.user.message_set.create(
                 message='Your Billboard project been added.  Thank you.')
-            return HttpResponseRedirect(reverse('billboard_billboard_list'))
+            return HttpResponseRedirect(reverse('billboards_billboard_list'))
 
     else:
         form = BillboardForm()
 
     return render_to_response(
-              'billboard/billboard_add.html',
+              'billboards/billboard_add.html',
               {'form':form},
               context_instance=RequestContext(request))
  
