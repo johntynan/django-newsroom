@@ -294,6 +294,7 @@ def promo_billboard_add(request, promo_id):
             promo_billboard = form.save(commit=False)
             promo_billboard.promo = promo
             promo_billboard.save()
+            form.save_m2m()
 
             request.user.message_set.create(
                 message='Your promo billboard has been added.  Thank you.')
