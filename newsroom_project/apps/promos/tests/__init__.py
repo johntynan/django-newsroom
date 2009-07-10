@@ -92,13 +92,13 @@ class PromoImageUrlTests(TestCase):
             kwargs={}),
             {'headline':'Add: promo headline',
             'permalink':'http://promos.csmonitor.com/promo_test/',
+            'description':'description of the promo',
             'authors': (self.user.id,),
             'relevance_begins':'02/01/2009',
             'relevance_ends':'02/01/2009'})
         self.assertEqual(self.response.status_code, 302)
         self.assertEqual(2, Promo.objects.count())
         created_promo = Promo.objects.get(headline="Add: promo headline")
-#        import ipdb; ipdb.set_trace()
         self.assertEqual(self.response.context["user"],
                 created_promo.authors.all()[0])
 
@@ -115,6 +115,7 @@ class PromoImageUrlTests(TestCase):
             kwargs={"promo_id":self.promo.id}),
             {'headline':'promo headline modified',
             'permalink':'http://promos.csmonitor.com/promo_test/',
+            'description':'description of the promo',
             'relevance_begins':'02/01/2009',
             'relevance_ends':'02/01/2009'})
         self.assertEqual(self.response.status_code, 302)
