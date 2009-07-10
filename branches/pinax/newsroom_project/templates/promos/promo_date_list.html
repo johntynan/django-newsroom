@@ -23,6 +23,7 @@
                 <th>Title</th>
                 <th>Date</th>
                 <th>Description</th>
+                <th>Action</th>
             </tr>
         </thead>
         {% for i in promo_date%}
@@ -30,6 +31,7 @@
             <td>{{i}}</td>
             <td>{{i.promo_date}}</td>
             <td>{{i.description}}</td>
+            <td><a href="./{{ i.id }}/edit">Edit</a> | <a href="./{{ i.id }}/delete">Delete</a></td>
         </tr>
         {% endfor %}
     </table>

@@ -33,11 +33,12 @@
 <h1>{{promo}}</h1>
 <div class="edit-promo-tabs">
     <div class="tab-links">
-        <a href="{% url promos_promo_edit promo_id=promo.id %}" rel="promo-info">Properties</a>
+        <a href="{% url promos_promo_edit promo_id=promo.id %}" rel="promo-info">Pitch</a>
         <a href="{% url promos_promo_add_edit_point promo_id=promo.id %}" rel="promo-info" title="Geotag">Geotag</a>
         <a href="{% url promos_promo_image_list promo_id=promo.id %}">Images</a>
         <a href="{% url promos_promo_link_list promo_id=promo.id %}">Related Links</a>
         <a href="{% url promos_promo_date_list promo_id=promo.id %}">Suggested Dates</a>
+        <a href="{% url promos_promo_billboard_list promo_id=promo.id %}">Billboards</a>
         <a href="{% url promos_promo_detail promo_id=promo.id %}" class="active">Detail</a>
         <br class="clearboth" />
     </div>
@@ -95,6 +96,53 @@
     {% else %}
         <p>You haven't submitted any links yet.</p>
     {% endif %}
+
+    <h2>Dates</h2>
+
+    {% if promo_date %}
+    <table cellspacing="0" cellpadding="0" class="list-table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        {% for i in promo_date%}
+        <tr class="{% cycle '' 'alt-row' %}">
+            <td>{{i}}</td>
+            <td>{{i.promo_date}}</td>
+            <td>{{i.description}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>You haven't submitted any dates yet.</p>
+    {% endif %}
+
+    <h2>Billboards</h2>
+
+    {% if promo_billboard %}
+    <table cellspacing="0" cellpadding="0" class="list-table">
+        <thead>
+            <tr>
+                <th class="id_col">Campaign</th>
+                <th>Headline</th>
+                <th>Supporting Text</th>
+            </tr>
+        </thead>
+        {% for i in promo_billboard %}
+        <tr class="{% cycle '' 'alt-row' %}">
+            <td><a href="{{i.url}}">{{ i }}</a> </td>
+            <td>{{i.headline}}</td>
+            <td>{{i.supporting_text }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p>You haven't submitted any billboards yet.</p>
+    {% endif %}
+
 
     <br clear="all">
     </p>

@@ -338,12 +338,121 @@ def promo_preview(request, promo_id):
     promo = Promo.objects.get(id=promo_id)
     promo_link = PromoLink.objects.filter(promo=promo_id)
     promo_image = PromoImage.objects.filter(promo=promo_id)
+    promo_date = PromoDate.objects.filter(promo=promo_id)
+    promo_billboard = PromoBillboard.objects.filter(promo=promo_id)
 
     return render_to_response(
             'promos/preview01.html',{
             'promo': promo,
             'promo_link': promo_link,
             'promo_image': promo_image,
+            'promo_date': promo_date,
+            'promo_billboard': promo_billboard,
             'google_key': settings.GOOGLE_MAPS_API_KEY,
              },
               context_instance=RequestContext(request))
+
+@login_required
+def promo_link_edit(request, promo_id, link_id):
+    """
+    Edit promo link.
+    """
+    user_promos = user_objects_qs(Promo, request.user)
+    promo = get_object_or_404(user_promos, pk=promo_id)
+    promo_link = PromoLink.objects.filter(promo=promo_id)
+
+    if request.method == "POST":
+        form = LinkForm(request.POST, instance=promo_link)
+        if form.is_valid():
+            form.save()
+            request.user.message_set.create(
+                message='Your promo link has been edited.')
+            return HttpResponseRedirect(reverse('promos_promo_link_list'))
+    else:
+        form = LinkForm(instance=promo_link)        
+
+    return render_to_response(
+              'promos/promo_link_edit.html',
+              ({'form': form,
+              'promo':promo,
+              'promo_link':promo_link}),
+              context_instance=RequestContext(request))
+
+@login_required
+def promo_image_edit(request, promo_id, image_id):
+    """
+    Edit promo image.
+    """
+    user_promos = user_objects_qs(Promo, request.user)
+    promo = get_object_or_404(user_promos, pk=promo_id)
+    promo_image = PromoImage.objects.filter(promo=promo_id)
+
+    if request.method == "POST":
+        form = ImageForm(request.POST, instance=promo_image)
+        if form.is_valid():
+            form.save()
+            request.user.message_set.create(
+                message='Your promo image has been edited.')
+            return HttpResponseRedirect(reverse('promos_promo_image_list'))
+    else:
+        form = LinkForm(instance=promo_image)        
+
+    return render_to_response(
+              'promos/promo_image_edit.html',
+              ({'form': form,
+              'promo':promo,
+              'promo_image':promo_image}),
+              context_instance=RequestContext(request))
+
+@login_required
+def promo_date_edit(request, promo_id, date_id):
+    """
+    Edit promo date.
+    """
+    user_promos = user_objects_qs(Promo, request.user)
+    promo = get_object_or_404(user_promos, pk=promo_id)
+    promo_date = PromoDate.objects.filter(promo=promo_id)
+
+    if request.method == "POST":
+        form = DateForm(request.POST, instance=promo_date)
+        if form.is_valid():
+            form.save()
+            request.user.message_set.create(
+                message='Your promo date has been edited.')
+            return HttpResponseRedirect(reverse('promos_promo_date_list'))
+    else:
+        form = DateForm(instance=promo_link)
+
+    return render_to_response(
+              'promos/promo_date_edit.html',
+              ({'form': form,
+              'promo':promo,
+              'promo_date':promo_date}),
+              context_instance=RequestContext(request))
+
+@login_required
+def promo_billboard_edit(request, promo_id, billboard_id):
+    """
+    Edit promo billboard.
+    """
+    user_promos = user_objects_qs(Promo, request.user)
+    promo = get_object_or_404(user_promos, pk=promo_id)
+    promo_billboard = PromoBillboard.objects.filter(promo=promo_id)
+
+    if request.method == "POST":
+        form = BillboardForm(request.POST, instance=promo_billboard)
+        if form.is_valid():
+            form.save()
+            request.user.message_set.create(
+                message='Your promo billboard has been edited.')
+            return HttpResponseRedirect(reverse('promos_promo_billboard_list'))
+    else:
+        form = BillboardForm(instance=promo_billboard)        
+
+    return render_to_response(
+              'promos/promo_billboard_edit.html',
+              ({'form': form,
+              'promo':promo,
+              'promo_link':promo_billboard}),
+              context_instance=RequestContext(request))
+

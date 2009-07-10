@@ -1,14 +1,16 @@
-{% extends 'promos/base.html' %}
+{% extends "promos/base.html" %}
+{% load i18n %}
 
-{% block title %}Promo Image List{% endblock %}
+{% block head_title %}Add a Promo Image{% endblock %}
+
 
 {% block main_content %}
-<h1>{{ promo.headline }}</h1>
+<h1>Add a Promo Image</h1>
 <div class="edit-promo-tabs">
     <div class="tab-links">
         <a href="{% url promos_promo_edit promo_id=promo.id %}" rel="promo-info">Pitch</a>
         <a href="{% url promos_promo_add_edit_point promo_id=promo.id %}" rel="promo-info" title="Geotag">Geotag</a>
-        <a href="" class="active">Images</a>
+        <a href="{% url promos_promo_image_list promo_id=promo.id %}" class="active">Images</a>
         <a href="{% url promos_promo_link_list promo_id=promo.id %}">Related Links</a>
         <a href="{% url promos_promo_date_list promo_id=promo.id %}">Suggested Dates</a>
         <a href="{% url promos_promo_billboard_list promo_id=promo.id %}">Billboards</a>
@@ -16,26 +18,21 @@
         <br class="clearboth" />
     </div>
     <div class="tab-contents">
-    {% for i in promo_image%}
-    <h2>{{ i.caption }}</h2>
-    <p>
-        <img src="/site_media/{{ i.image }}"><br />
-    <strong>Attribution</strong>: {{ i.attribution }}<br />
-    <strong>Image Kind</strong>: {{ i.image_kind }}<br />
-    <strong><a href="./{{ i.id }}/edit">Edit</a></strong><br />
-    <strong><a href="./{{ i.id }}/delete">Delete</a></strong><br />
-    </p>
-
-    {% endfor %}
+<form action="." method="post" enctype="multipart/form-data" >
+    <fieldset>
+    <table>
+    {{ form }}
+    </table>
+    <input id="id_submit" type="submit" value="Submit" />
+    <a href="../">Cancel</a>
+    </fieldset>
+</form>
+{% endblock %}
     </div>
 </div>
-
-{% endblock %}
-
 {% block subnav %}
-<h2>Links</h2>
+<h2>{% trans "Links" %}</h2>
 <ul class="action-links">
     <li><a href="{% url promos_promo_list %}">promo list</a></li>
-    <li><a href="{% url promos_promo_image_add promo_id=promo.id%}" title="Add an image">Add an image</a></li>
  </ul>
 {% endblock %}
