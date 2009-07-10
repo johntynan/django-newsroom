@@ -4,6 +4,7 @@ from zipfile import BadZipfile
 from django.db import models
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
+from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from multimedia.models import Media
@@ -159,4 +160,7 @@ class FlashProject(Media):
         return '%s/%s/%s' % (os.path.dirname(self.zip_file.url),
                                  slugify(self.title),
                                  self.loader_swf)
+
+    def get_render_url(self):
+            return reverse('multimedia_preview', args=[self.id])
 

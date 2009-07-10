@@ -6,6 +6,7 @@ from datetime import datetime
 from django.conf import settings
 from django.core.files.base import ContentFile
 from django.core.files.storage import FileSystemStorage
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
@@ -218,7 +219,10 @@ class Photo(Media):
 
     def get_original_url(self):
         return self.image.image.url
-        
+
+    def get_render_url(self):
+        return reverse('multimedia_preview', args=[self.id])
+
     def get_width(self):
         return self.image.image.width
 

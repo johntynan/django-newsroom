@@ -130,3 +130,20 @@ blockquote {
 #inner_page_video .media_caption p {
    margin-top: 10px; 
 }
+
+/****************** inner page flash ********************/
+
+#inner_page_flash h1 {
+    text-align: right;
+    color: #ccc;
+    font-variant: small-caps;
+    margin-bottom: 10px;
+}
+
+#inner_page_flash p:first-child {
+   margin-top: 0; 
+}
+
+#inner_page_flash .media_caption p {
+   margin-top: 10px; 
+}
