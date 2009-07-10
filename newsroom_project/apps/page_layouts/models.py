@@ -89,7 +89,19 @@ class VideoInline(inlines.TemplateInline):
     def get_context(self):
         pass
 
+class FlashInline(inlines.TemplateInline):
+
+    help_text = "Configures a flash element on the page."
+    inline_args = [
+        dict(name='height', help_text="In pixels"),
+        dict(name='width', help_text="In pixels"),
+        ]
+
+    def get_context(self):
+        pass
+
 inlines.registry.register('text_widget', inlines.inline_for_model(TextWidget))
 inlines.registry.register('image_widget', ImageInline)
 inlines.registry.register('popup_widget', PopupInline)
 inlines.registry.register('video_widget', VideoInline)
+inlines.registry.register('flash_widget', FlashInline)

@@ -195,5 +195,12 @@ $(document).ready(function(){
         widget.video_set(widget_obj);
         return false;
     });
+
+    // handle flash widget events
+    $(".widget-flash-block").live("click",function(){
+        var widget_obj = $(this);
+        widget.flash_set(widget_obj);
+        return false;
+    });
 });
 

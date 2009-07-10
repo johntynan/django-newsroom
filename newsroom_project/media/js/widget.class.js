@@ -99,6 +99,24 @@ var widget = {
         return false;
     },
 
+    flash_set : function(widget_obj){
+
+        function callback_init(){
+            $("#ajax-media-list").load(page_media_source_url,function(){
+                $("#ajax-media-list .media-item").click(function(){
+                    var render_url = $(this).siblings('.render-url').attr('href');
+                    widget_obj.load(render_url);
+                    widget.remove_lightbox();
+                    return false;
+                });
+            });
+            return true;
+        }
+
+        widget.lightbox(page_media_list_url, callback_init);
+        return false;
+    },
+
     video_set : function(widget_obj){
 
         function callback_init(){
