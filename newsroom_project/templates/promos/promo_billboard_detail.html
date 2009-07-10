@@ -19,15 +19,20 @@
     </div>
     <div class="tab-contents">
 
+
+{% ifequal billboard.billboard_type "0" %}
 <div>
 <h1><a href="{% firstof billboard.link.url billboard.promo.permalink %}" style="text-decoration:none;position:relative; left:{{ billboard.headline_position_horizontal }}px; top:{{ billboard.headline_position_vertical }}px;z-index:1;">{{ billboard.title }}</a></h1>
-
 <a href="{% firstof billboard.link.url billboard.promo.permalink %}" style="text-decoration:none;"><img src="{{ billboard.image.image.url }}" style="width:700px; height: auto;z-index:0;" /></a>
-<p style="position:relative; left:{{billboard.supporting_ntext_position_horizontal}}px; top:{{billboard.supporting_text_position_vertical}}px;z-index:1;color:#{{billboard.supporting_text_color}};width:{{billboard.supporting_text_width}}px;text-align:{{billboard.supporting_text_alignment}}"><strong>{{ billboard.supporting_text }}</strong>
+<p style="position:relative; left:{{billboard.supporting_text_position_horizontal}}px; top:{{billboard.supporting_text_position_vertical}}px;z-index:1;color:#{{billboard.supporting_text_color}};width:{{billboard.supporting_text_width}}px;text-align:{{billboard.supporting_text_alignment}}"><strong>{{ billboard.supporting_text | safe }}</strong>
     </p>
 </div>
-
-
+{% ifequal billboard.billboard_type "1" %}
+<div>
+<a href="{% firstof billboard.link.url billboard.promo.permalink %}" style="text-decoration:none;"><img src="{{ billboard.image.image.url }}" style="width:700px; height: auto;z-index:0;" /></a>
+</div>
+{% endifequal %}
+{% endifequal %}
 
 {% endblock %}
 

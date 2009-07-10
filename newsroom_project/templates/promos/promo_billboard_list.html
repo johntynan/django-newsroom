@@ -31,7 +31,7 @@
             <td><a href="{{i.url}}">{{ i }}</a> </td>
             <td>{{i.headline}}</td>
             <td>{{i.supporting_text}}</td>
-            <td><a href="{% url promos_promo_billboard_detail promo_id=i.promo_id,billboard_id=i.id %}">preview</a></td>
+            <td><a href="{% url promos_promo_billboard_detail promo_id=i.promo_id,billboard_id=i.id %}">Preview</a> | <a href="./{{ i.id }}/edit">Edit</a> | <a href="./{{ i.id }}/delete">Delete</a></td>
         </tr>
         {% endfor %}
     </table>
