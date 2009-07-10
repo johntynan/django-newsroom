@@ -7,7 +7,7 @@ from django.test.client import Client
 
 import os
 
-from flash.models import Flash, FlashArchive
+#from flash.models import Flash, FlashArchive
 
 def create_user():
     user =  User.objects.create_user("user", "user@mail.com", "secret")
