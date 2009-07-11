@@ -174,3 +174,5 @@ class PromoImageUrlTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.template[0].name,
                          'promos/promo_billboard_add_no_image.html')
+        
+        
