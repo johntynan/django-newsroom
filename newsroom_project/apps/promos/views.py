@@ -257,7 +257,7 @@ def promo_add_edit_geotag(request,promo_id,
             new_object.object = promo
             new_object.save()
             return HttpResponseRedirect(
-                reverse('promos_promo_detail', args=[promo.id]))
+                reverse('promos_promo_add_edit_point', args=[promo.id]))
     form = form_class(instance=geotag)
 
     context = RequestContext(request, {
