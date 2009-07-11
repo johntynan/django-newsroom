@@ -69,6 +69,11 @@
                            })
         };
         jQuery('#id_address').parent().find('a').click(move_to_geocode);
+        if ("{{ geotag }}" == "None") {
+            zoom_lvl = 4;
+            lonlat = new OpenLayers.LonLat(-11065635.709248047, 4813698.292617189);
+            geodjango_func.map.setCenter(lonlat, zoom_lvl);
+        };
     });
 
 </script>
