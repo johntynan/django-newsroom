@@ -4,7 +4,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.sites.models import Site
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect, Http404
+from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -288,6 +288,11 @@ def promo_billboard_add(request, promo_id):
     """
     user_promos = user_objects_qs(Promo, request.user)
     promo = get_object_or_404(user_promos, pk=promo_id)
+    if promo.promoimage_set.count() == 0:
+        return render_to_response(
+              'promos/promo_billboard_add_no_image.html',
+              {'promo':promo},
+              context_instance=RequestContext(request))
     if request.method == "POST":
         form = BillboardForm(request.POST)
         if form.is_valid():
