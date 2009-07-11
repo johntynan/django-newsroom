@@ -1,7 +1,10 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
 from django.contrib import admin
-from django.views.generic.simple import direct_to_template
+from django.views.generic.simple import redirect_to, direct_to_template
+from django.views.generic.list_detail import object_list
+
+from promos.models import PromoBillboard
 
 from account.openid_consumer import PinaxConsumer
 
@@ -9,8 +12,18 @@ from authsub import *
 
 admin.autodiscover()
 
+info_dict = {
+    'queryset':PromoBillboard.objects.all(),
+    "paginate_by":20,
+    "template_name":"dashboard.html",
+    "extra_context" : {}
+
+}
+
 urlpatterns = patterns('',
-    url(r'^$', direct_to_template, {"template": "homepage.html"}, name="home"),
+    url('^$', redirect_to, {'url': '/page/1/'}),
+    url(r'^page/(?P<page>[0-9]+)/$', object_list, dict(info_dict)),
+    
     url(r'authsub_login/', direct_to_template, {"template": "authsub_login.html"}, name="authsub_login"),
 
     (r'^about/', include('about.urls')),

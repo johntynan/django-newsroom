@@ -23,15 +23,17 @@
                 <th class="id_col">Campaign</th>
                 <th>Headline</th>
                 <th>Supporting Text</th>
+                <th>Promo headline</th>
                 <th>Actions</th>
             </tr>
         </thead>
-        {% for i in promo_billboard%}
+        {% for billboard in promo_billboard%}
         <tr class="{% cycle '' 'alt-row' %}">
-            <td><a href="{{i.url}}">{{ i }}</a> </td>
-            <td>{{i.headline}}</td>
-            <td>{{i.supporting_text}}</td>
-            <td><a href="{% url promos_promo_billboard_detail promo_id=i.promo_id,billboard_id=i.id %}">Preview</a> | <a href="./{{ i.id }}/edit">Edit</a> | <a href="./{{ i.id }}/delete">Delete</a></td>
+            <td><a href="{{billboard.url}}">{{ billboard }}</a> </td>
+            <td>{{billboard.headline}}</td>
+            <td>{{billboard.supporting_text}}</td>
+            <td><a href='{% url  promos_promo_edit promo_id=billboard.promo.id %}'>{{ billboard.promo.headline }}</a></td>
+            <td><a href="{% url promos_promo_billboard_detail promo_id=billboard.promo_id,billboard_id=billboard.id %}">Preview</a> | <a href="./{{ billboard.id }}/edit">Edit</a> | <a href="./{{ billboard.id }}/delete">Delete</a></td>
         </tr>
         {% endfor %}
     </table>
