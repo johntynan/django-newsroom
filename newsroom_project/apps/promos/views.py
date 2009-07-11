@@ -308,6 +308,8 @@ def promo_billboard_add(request, promo_id):
 
     else:
         form = BillboardForm()
+        form.fields["image"].queryset = promo.promoimage_set.filter(
+            image_kind="B")
 
     return render_to_response(
               'promos/promo_billboard_add.html',
