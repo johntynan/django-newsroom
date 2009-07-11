@@ -44,7 +44,7 @@
 <script type="text/javascript">
     jQuery(document).ready(function() {
         var geodjango_func = eval('geodjango_' + jQuery('span[id$=_admin_map]').attr('id').split('_')[1]);
-        geodjango_func.map.zoomTo(2);
+        geodjango_func.map.zoomOut();
         function move_to_geocode(){
             address = jQuery("#id_address")[0].value;
             gkey = "{{ google_key }}";
