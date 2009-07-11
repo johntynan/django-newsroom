@@ -7,6 +7,7 @@ import os
 from promos.models import Promo
 from promos.models import PromoImage
 from promos.models import PromoLink
+from promos.models import PromoBillboard
 
 def create_user(username):
     user =  User.objects.create_user(username, username+"@mail.com", "secret")
@@ -22,6 +23,7 @@ def create_promo(user):
     promo.authors.add(user)
     promo.save()
     return promo
+
 
 class PromoImageUrlTests(TestCase):
     def setUp(self):
@@ -130,3 +132,33 @@ class PromoImageUrlTests(TestCase):
         self.assertEqual(self.response.status_code, 302)
         self.assertEqual(1, Point.objects.count())
         self.assertEqual(self.promo, Point.objects.all()[0].object)
+        
+    def test_add_billboard_url(self):
+        # TODO : Improve this
+        self.test_add_promo_image_post_url()
+        
+        self.assertEqual(1, Promo.objects.count())
+        self.assertEqual(0, PromoBillboard.objects.count())
+        self.response = self.client.post(reverse(
+            "promos_promo_billboard_add",
+            kwargs={"promo_id":self.promo.id}),
+            {'headline':'Add: promo headline',
+            'permalink':'http://promos.csmonitor.com/promo_test/',
+            'description':'description of the promo',
+            'headline_position_horizontal':100,
+            'headline_position_vertical':100,
+            'headline_width':300,
+            'supporting_color':'#9ACD32',
+            'headline_alignment':'left',
+            'supporting_text_position_horizontal':0,
+            'title':'tilte',
+            'billboard_type':1,
+            'supporting_text_width':100,
+            'supporting_text_alignment':"left",
+            'supporting_text_position_vertical':0,
+            'supporting_text_color':'#9ACD32',
+            'headline_color':'#9ACD32',
+            'image':1
+            })
+        self.assertEqual(self.response.status_code, 302)
+        self.assertEqual(1, PromoBillboard.objects.count())

@@ -437,7 +437,7 @@ def promo_billboard_edit(request, promo_id, billboard_id):
     """
     user_promos = user_objects_qs(Promo, request.user)
     promo = get_object_or_404(user_promos, pk=promo_id)
-    promo_billboard = PromoBillboard.objects.filter(promo=promo_id)
+    promo_billboard = PromoBillboard.objects.get(id=billboard_id)
 
     if request.method == "POST":
         form = BillboardForm(request.POST, instance=promo_billboard)
@@ -445,7 +445,9 @@ def promo_billboard_edit(request, promo_id, billboard_id):
             form.save()
             request.user.message_set.create(
                 message='Your promo billboard has been edited.')
-            return HttpResponseRedirect(reverse('promos_promo_billboard_list'))
+            return HttpResponseRedirect(
+                reverse('promos_promo_billboard_list',
+                        args=[promo.id]))
     else:
         form = BillboardForm(instance=promo_billboard)        
 
