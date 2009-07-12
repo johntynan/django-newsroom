@@ -13,8 +13,7 @@ from authsub import *
 admin.autodiscover()
 
 info_dict = {
-    'queryset':PromoBillboard.objects.all(),
-    "paginate_by":20,
+    'queryset':PromoBillboard.objects.all().order_by('title'),
     "template_name":"dashboard.html",
     "extra_context" : {}
 
@@ -23,6 +22,7 @@ info_dict = {
 urlpatterns = patterns('',
     url('^$', redirect_to, {'url': '/page/1/'}),
     url(r'^page/(?P<page>[0-9]+)/$', object_list, dict(info_dict)),
+    url(r'^page/(?P<page>last)/$', object_list, dict(info_dict)),
     
     url(r'authsub_login/', direct_to_template, {"template": "authsub_login.html"}, name="authsub_login"),
 

@@ -1,6 +1,6 @@
 {% extends "site_base.html" %}
 {% load i18n %}
-
+{% load pagination_tags %}
 
 {% block head_title %}{% trans "Welcome" %}{% endblock %}
 
@@ -30,10 +30,11 @@
 {% block body %}
 
     {% if user.is_authenticated %}
+    {% autopaginate object_list 10 %}
     <table cellspacing="0" cellpadding="0" class="list-table">
         <thead>
             <tr>
-                <th class="id_col">Campaign</th>
+                <th class="id_col">Title</th>
                 <th>Headline</th>
                 <th>Supporting Text</th>
                 <th>Promo headline</th>
@@ -42,7 +43,7 @@
         </thead>
         {% for object in object_list %}
         <tr class="{% cycle '' 'alt-row' %}">
-            <td><a href="{{object.url}}">{{ object }}</a> </td>
+            <td><a href="{{object.url}}">{{ object.title }}</a> </td>
             <td>{{object.headline}}</td>
             <td>{{object.supporting_text}}</td>
             <td><a href='{% url  promos_promo_edit promo_id=object.promo.id %}'>{{ object.promo.headline }}</a></td>
@@ -50,7 +51,7 @@
         </tr>
         {% endfor %}
     </table>
-
+    {% paginate %}
     {% else %}
         {% blocktrans %}
             <p><b>Pinax</b> is a <a href="http://djangoproject.com/">Django</a> project intended to provide a starting point for websites. By integrating numerous reusable Django apps to take care of the things that many sites have in common, it lets you focus on what makes your site different.</p>
