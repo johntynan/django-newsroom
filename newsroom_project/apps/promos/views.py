@@ -304,7 +304,8 @@ def promo_billboard_add(request, promo_id):
 
             request.user.message_set.create(
                 message='Your promo billboard has been added.  Thank you.')
-            notification.send(settings.PROMO_MODERARTORS,
+            notification.send(
+                User.objects.filter(email__in=settings.PROMO_MODERATORS),
                 "promo_billboard",
                 "A billboard has been created : %s",
                 [promo_billboard],
