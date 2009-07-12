@@ -12,6 +12,7 @@ from django.template.loader import render_to_string
 from promos.forms import *
 from promos.models import *
 from utils.helpers import user_objects_qs
+from notification import models as notification
 
 
 if "mailer" in settings.INSTALLED_APPS:
@@ -303,6 +304,11 @@ def promo_billboard_add(request, promo_id):
 
             request.user.message_set.create(
                 message='Your promo billboard has been added.  Thank you.')
+            notification.send(settings.PROMO_MODERARTORS,
+                "promo_billboard",
+                "A billboard has been created : %s",
+                [promo_billboard],
+                now=True)
             return HttpResponseRedirect(
                 reverse('promos_promo_billboard_list', args=[promo.id]))
 
