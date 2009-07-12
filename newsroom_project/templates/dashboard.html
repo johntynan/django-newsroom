@@ -34,18 +34,18 @@
     <table cellspacing="0" cellpadding="0" class="list-table">
         <thead>
             <tr>
-                <th class="id_col">Title</th>
+                <th class="id_col">Campaign</th>
                 <th>Headline</th>
-                <th>Supporting Text</th>
+                <th>Start date</th>
                 <th>Promo headline</th>
                 <th>Actions</th>
             </tr>
         </thead>
         {% for object in object_list %}
         <tr class="{% cycle '' 'alt-row' %}">
-            <td><a href="{{object.url}}">{{ object.title }}</a> </td>
+            <td>{{ object.title }}</a> </td>
             <td>{{object.headline}}</td>
-            <td>{{object.supporting_text}}</td>
+            <td>{{object.start_date}}</td>
             <td><a href='{% url  promos_promo_edit promo_id=object.promo.id %}'>{{ object.promo.headline }}</a></td>
             <td><a href="{% url promos_promo_billboard_detail promo_id=object.promo_id,billboard_id=object.id %}">Preview</a> | <a href="./{{ object.id }}/edit">Edit</a> | <a href="./{{ object.id }}/delete">Delete</a></td>
         </tr>
