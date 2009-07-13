@@ -5,4 +5,4 @@ You have received the following billboard from http://{{ current_site }}/profile
 You can view this billboard here:
 
 {% endblocktrans %}
-{% url promos_promo_billboard_detail promo_id=billboard.promo_id,billboard_id=billboard.id   %}
+http://{{ current_site }}/{% url promos_promo_billboard_detail promo_id=billboard.promo_id,billboard_id=billboard.id   %}
