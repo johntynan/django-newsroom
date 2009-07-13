@@ -442,6 +442,23 @@ def promo_date_edit(request, promo_id, date_id):
               'promo_date':promo_date}),
               context_instance=RequestContext(request))
 
+
+def promo_billboard_homepage(request):
+    """
+    Get promo details.
+    """
+
+    billboard_id = '1'
+    billboards = PromoBillboard.objects.all()
+    billboard = get_object_or_404(billboards, pk=billboard_id)
+
+    return render_to_response(
+            'promos/promo_billboard_homepage.html',{
+            'billboard': billboard,
+
+             },
+              context_instance=RequestContext(request))
+
 @login_required
 def promo_billboard_edit(request, promo_id, billboard_id):
     """
