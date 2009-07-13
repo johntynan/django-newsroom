@@ -530,7 +530,7 @@ class QuerysetCalendar(HTMLCalendar):
                 
                 for item in self.queryset_by_date[day]:
                     body.append('<li>')
-                    body.append('<a href="%s">' % item)
+                    body.append('<a href="%s">' % item.get_absolute_url())
                     body.append(esc(item))
                     body.append('</a></li>')
                 body.append('</ul>')
