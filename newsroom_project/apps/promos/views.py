@@ -15,10 +15,7 @@ from utils.helpers import user_objects_qs
 from notification import models as notification
 
 
-if "mailer" in settings.INSTALLED_APPS:
-    from mailer import send_mail
-else:
-    from django.core.mail import send_mail
+from django.core.mail import send_mail
 
 @login_required
 def front(request):
@@ -304,12 +301,13 @@ def promo_billboard_add(request, promo_id):
 
             request.user.message_set.create(
                 message='Your promo billboard has been added.  Thank you.')
-            notification.send(
-                User.objects.filter(email__in=settings.PROMO_MODERATORS),
-                "promo_billboard",
-                "A billboard has been created : %s",
-                [promo_billboard],
-                now=True)
+            to_user = [mail_tuple[1] for mail_tuple in settings.PROMO_MODERATORS]
+            message = render_to_string('promos/billboard_sent.txt',
+                                       { 'user': request.user ,
+                                        'current_site': Site.objects.get_current().domain,
+                                        'promo': promo,
+                                        'billboard':promo_billboard})
+            send_mail("billboard_submitted", message, settings.DEFAULT_FROM_EMAIL, to_user)
             return HttpResponseRedirect(
                 reverse('promos_promo_billboard_list', args=[promo.id]))
 
