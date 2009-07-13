@@ -52,5 +52,5 @@ class BillboardForm(forms.ModelForm):
 
     class Meta:
         model = PromoBillboard
-        exclude =('promo','start_date')
+        exclude =('promo')
 

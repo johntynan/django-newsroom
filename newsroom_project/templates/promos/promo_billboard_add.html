@@ -3,6 +3,13 @@
 
 {% block head_title %}Add a Promo Billboard{% endblock %}
 
+{% block jquery %}
+    {{ block.super }}
+    $("#id_start_date").datepicker({
+        altField:'input#id_promo_date',
+        appendText: '(yyyy-mm-dd)',
+        altFormat: 'yy-mm-dd'});
+{% endblock %}
 
 {% block main_content %}
 <h1>Add a Promo Billboard</h1>
@@ -21,7 +28,27 @@
 <form action="." method="post">
     <fieldset>
     <table>
-    {{ form }}
+    {% for field in form %}
+    {% ifequal field.name 'start_date' %}
+    {% if user.is_staff %}
+    <tr>
+        <th>{{ field.label_tag }}:</th>
+        <td>
+            {{ field.errors }}
+            {{ field }}
+        </td>
+    </tr>
+    {% endif %}
+    {% else %}
+    <tr>
+        <th>{{ field.label_tag }}:</th>
+        <td>
+            {{ field.errors }}
+            {{ field }}
+        </td>
+    </tr>
+    {% endifequal %}
+    {% endfor %}
     </table>
     <input id="id_submit" type="submit" value="Submit" />
     <a href="../">Cancel</a>
