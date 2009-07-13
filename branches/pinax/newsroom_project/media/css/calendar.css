@@ -1,0 +1,15 @@
+/*table.month {width: 80%;}*/
+table.month tr {height:80px;}
+table.month tr th {width: 120px; border-bottom: solid; background-color: light-yellow;}
+table.month tr th.mon {background-color: grey;}
+table.month tr td.mon {background-color: grey;}
+table.month tr th.wed {background-color: grey;}
+table.month tr td.wed {background-color: grey;}
+table.month tr th.fri {background-color: grey;}
+table.month tr td.fri {background-color: grey;}
+table.month tr th.sun {background-color: grey;}
+table.month tr td.sun {background-color: grey;}
+table.month tr td {width: 120px; border-bottom: dashed;}
+
+table.month tr td.today {background-color: orange;}
+table.month tr td.noday {background-color: black;}
