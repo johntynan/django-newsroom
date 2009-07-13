@@ -78,6 +78,10 @@ urlpatterns = patterns('promos.views',
     url(r'(?P<promo_id>\d+)/billboard/(?P<billboard_id>\d+)/edit/$',
         'promo_billboard_edit',
         name='promos_promo_billboard_edit'),
+    
+    url(r'(?P<promo_id>\d+)/billboard/(?P<billboard_id>\d+)/delete/$',
+        'promo_billboard_delete',
+        name='promos_promo_billboard_delete'),
 
 )
 
@@ -98,7 +102,5 @@ urlpatterns = patterns('promos.views',
         'promo_date_delete',
         name='promos_promo_date_delete'),
 
-    url(r'(?P<promo_id>\d+)/billboard/(?P<billboard_id>\d+)/edit/$',
-        'promo_billboard_delete',
-        name='promos_promo_billboard_delete'),
+
 '''
