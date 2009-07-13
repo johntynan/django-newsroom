@@ -1,5 +1,10 @@
 {% extends 'promos/base.html' %}
 
+{% block extra_head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/calendar.css" />
+{% endblock %}
+
 {% block title %}Promo Billboard List{% endblock %}
 
 {% block main_content %}
