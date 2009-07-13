@@ -359,4 +359,12 @@ class PromoBillboard(models.Model):
 
     def __unicode__(self):
         return self.title
+    
+    def get_absolute_url(self):
+        return ('promos_promo_billboard_detail', 
+                (), 
+                {'promo_id': self.promo.id,
+                 'billboard_id': self.id })
+    get_absolute_url = models.permalink(get_absolute_url)
+
 
