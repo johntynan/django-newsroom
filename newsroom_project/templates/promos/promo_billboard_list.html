@@ -33,7 +33,7 @@
             <td>{{billboard.headline}}</td>
             <td>{{billboard.supporting_text}}</td>
             <td><a href='{% url  promos_promo_edit promo_id=billboard.promo.id %}'>{{ billboard.promo.headline }}</a></td>
-            <td><a href="{% url promos_promo_billboard_detail promo_id=billboard.promo_id,billboard_id=billboard.id %}">Preview</a> | <a href="{% url promos_promo_billboard_edit promo_id=billboard.promo_id,billboard_id=billboard.id %}">Edit</a> | <a href="{# url promos_promo_billboard_delete promo_id=billboard.promo_id,billboard_id=billboard.id #}">Delete</a></td>
+            <td><a href="{% url promos_promo_billboard_detail promo_id=billboard.promo_id,billboard_id=billboard.id %}">Preview</a> | <a href="{% url promos_promo_billboard_edit promo_id=billboard.promo_id,billboard_id=billboard.id %}">Edit</a> | <a href="{% url promos_promo_billboard_delete promo_id=billboard.promo_id,billboard_id=billboard.id %}">Delete</a></td>
         </tr>
         {% endfor %}
     </table>

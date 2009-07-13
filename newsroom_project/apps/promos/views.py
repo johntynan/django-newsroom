@@ -469,4 +469,25 @@ def promo_billboard_edit(request, promo_id, billboard_id):
               'promo':promo,
               'promo_link':promo_billboard}),
               context_instance=RequestContext(request))
+    
+@login_required
+def promo_billboard_delete(request, promo_id, billboard_id):
+    user_promos = user_objects_qs(Promo, request.user)
+    promo = get_object_or_404(user_promos, pk=promo_id)
+    promo_billboard = PromoBillboard.objects.get(id=billboard_id)
+    post_delete_redirect = reverse('promos_promo_billboard_list',
+                                   args=[promo.id])
+    
+    if request.method == 'POST':
+        promo_billboard.delete()
+        request.user.message_set.create(message=("The %(verbose_name)s was deleted.") % {"verbose_name": PromoBillboard._meta.verbose_name})
+        return HttpResponseRedirect(post_delete_redirect)
+    else:
+        template_name = "promos/promo_billboard_confirm_delete.html"
+        return render_to_response(
+            template_name,
+            ({'promo':promo,
+              'billboard':promo_billboard}),
+            context_instance=RequestContext(request))
+            
 
