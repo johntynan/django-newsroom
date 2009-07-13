@@ -83,6 +83,10 @@ urlpatterns = patterns('promos.views',
         'promo_billboard_delete',
         name='promos_promo_billboard_delete'),
 
+    url(r'^billboard_homepage/$', 
+        'promo_billboard_homepage',
+        name="promos_promo_billboard_homepage"),
+
 )
 
 '''
