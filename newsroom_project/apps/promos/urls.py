@@ -82,6 +82,10 @@ urlpatterns = patterns('promos.views',
     url(r'(?P<promo_id>\d+)/billboard/(?P<billboard_id>\d+)/delete/$',
         'promo_billboard_delete',
         name='promos_promo_billboard_delete'),
+    
+    url(r'(?P<promo_id>\d+)/billboard/calendar/(?P<year>\d+)/(?P<month>\d+)/$',
+        'promo_billboard_calendar',
+        name='promos_promo_billboard_calendar'),
 
     url(r'^billboard_homepage/$', 
         'promo_billboard_homepage',

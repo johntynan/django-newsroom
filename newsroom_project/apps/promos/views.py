@@ -1,3 +1,5 @@
+from calendar import HTMLCalendar
+from datetime import date
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.contenttypes.models import ContentType
@@ -9,11 +11,13 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.template.loader import render_to_string
+from django.utils.html import conditional_escape as esc
+from django.utils.safestring import mark_safe
+from itertools import groupby
+from notification import models as notification
 from promos.forms import *
 from promos.models import *
 from utils.helpers import user_objects_qs
-from notification import models as notification
-
 
 from django.core.mail import send_mail
 
@@ -315,7 +319,6 @@ def promo_billboard_add(request, promo_id):
         form = BillboardForm()
         form.fields["image"].queryset = promo.promoimage_set.filter(
             image_kind="B")
-
     return render_to_response(
               'promos/promo_billboard_add.html',
               {'form':form,
@@ -506,5 +509,64 @@ def promo_billboard_delete(request, promo_id, billboard_id):
             ({'promo':promo,
               'billboard':promo_billboard}),
             context_instance=RequestContext(request))
-            
+
+
+
+class QuerysetCalendar(HTMLCalendar):
+
+    def __init__(self, queryset, field):
+        self.field = field
+        super(QuerysetCalendar, self).__init__()
+        self.queryset_by_date = self.group_by_day(queryset)
+
+    def formatday(self, day, weekday):
+        if day != 0:
+            cssclass = self.cssclasses[weekday]
+            if date.today() == date(self.year, self.month, day):
+                cssclass += ' today'
+            if day in self.queryset_by_date:
+                cssclass += ' filled'
+                body = ['<ul>']
+                
+                for item in self.queryset_by_date[day]:
+                    body.append('<li>')
+                    body.append('<a href="%s">' % item)
+                    body.append(esc(item))
+                    body.append('</a></li>')
+                body.append('</ul>')
+                return self.day_cell(cssclass, '%d %s' % (day, ''.join(body)))
+            return self.day_cell(cssclass, day)
+        return self.day_cell('noday', '&nbsp;')
+
+    def formatmonth(self, year, month):
+        self.year, self.month = year, month
+        return super(QuerysetCalendar, self).formatmonth(year, month)
+
+    def group_by_day(self, queryset):
+        field = lambda item: getattr(item, self.field).day
+        return dict(
+            [(day, list(items)) for day, items in groupby(queryset, field)]
+        )
+
+    def day_cell(self, cssclass, body):
+        return '<td class="%s">%s</td>' % (cssclass, body)
+
+    
+def promo_billboard_calendar(request, promo_id, year, month):
+    user_promos = user_objects_qs(Promo, request.user)
+    promo = get_object_or_404(user_promos, pk=promo_id)
+    billboard_qs = promo.promobillboard_set.all().order_by('start_date').filter(
+        start_date__year=year, start_date__month=month
+    )
+    cal = QuerysetCalendar(billboard_qs, "start_date").formatmonth(int(year), int(month))
+    return render_to_response('promos/promo_billboard_calendar.html',
+                              {'calendar': mark_safe(cal),
+                               "year":year,
+                               'month':month,
+                               'promo':promo,
+                               'billboard_qs':billboard_qs},
+                              context_instance=RequestContext(request))
+
+    
+    
 
