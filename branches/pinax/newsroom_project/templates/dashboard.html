@@ -43,23 +43,25 @@
                 <th>Submitter</th>
                 <th>Campaign</th>
                 <th>Headline</th>
-                <th>Suggested date</th>
+                <th class="{sorter: false}">Suggested date</th>
                 <th>Published date</th>
             </tr>
         </thead>
-        {% for object in object_list %}
-        <tr class="{% cycle '' 'alt-row' %}">
-            <td>{{ object.promo.submitter }}</td>
-            <td>{{ object.title }}</a> </td>
-            <td>{{object.headline}}</td>
-            <td>
-                {% for date in object.promo.promodate_set.all %}
-                    {{ date }}: {{ date.promo_date }}<br/>
-                {% endfor %}
-            </td>
-            <td>{{ object.start_date }}</td>
-        </tr>
-        {% endfor %}
+        <tbody>
+            {% for object in object_list %}
+            <tr class="{% cycle '' 'alt-row' %}">
+                <td>{{ object.promo.submitter }}</td>
+                <td>{{ object.title }}</a> </td>
+                <td>{{object.headline}}</td>
+                <td>
+                    {% for date in object.promo.promodate_set.all %}
+                        {{ date }}: {{ date.promo_date }}<br/>
+                    {% endfor %}
+                </td>
+                <td>{{ object.start_date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
     {% paginate %}
     {% else %}
