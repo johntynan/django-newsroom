@@ -1,7 +1,7 @@
 {% extends "promos/base.html" %}
 {% load i18n %}
 
-{% block head_title %}Delete a Promo Billboard{% endblock %}
+{% block head_title %}Delete a Promo Date{% endblock %}
 
 
 {% block main_content %}
@@ -12,13 +12,13 @@
         <a href="#" rel="promo-info" title="Geotag">Geotag</a>
         <a href="{% url promos_promo_image_list promo_id=promo.id %}">Images</a>
         <a href="{% url promos_promo_link_list promo_id=promo.id %}">Related Links</a>
-        <a href="{% url promos_promo_date_list promo_id=promo.id %}">Suggested Dates</a>
-        <a href="{% url promos_promo_billboard_list promo_id=promo.id %}" class="active">Billboards</a>
+        <a href="{% url promos_promo_date_list promo_id=promo.id %}" class="active">Suggested Dates</a>
+        <a href="{% url promos_promo_billboard_list promo_id=promo.id %}">Billboards</a>
         <a href="{% url promos_promo_detail promo_id=promo.id %}">Detail</a>
         <br class="clearboth" />
     </div>
     <div class="tab-contents">
-<p>Are you sure you want to delete : {{ billboard }} ?</p>        
+<p>Are you sure you want to delete : {{ date }} ?</p>        
 <form action="." method="post">
     <input id="id_submit" type="submit" value="Submit" />
     <a href="../">Cancel</a>
