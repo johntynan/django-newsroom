@@ -201,11 +201,11 @@ def promo_link_add(request, promo_id):
 def promo_date_list(request, promo_id):
     user_promos = user_objects_qs(Promo, request.user)
     promo = get_object_or_404(user_promos, pk=promo_id)
-    promo_date = PromoDate.objects.filter(promo=promo_id)
+    promo_dates = PromoDate.objects.filter(promo=promo_id)
     return render_to_response(
             'promos/promo_date_list.html',{
             'promo':promo,
-            'promo_date':promo_date,
+            'promo_dates':promo_dates,
             },
             context_instance=RequestContext(request))
 

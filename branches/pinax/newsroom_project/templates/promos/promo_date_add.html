@@ -5,7 +5,11 @@
 
 {% block jquery %}
     {{ block.super }}
-    $("#id_promo_date").datepicker({
+    $("#id_start_date").datepicker({
+        altField:'input#id_promo_date',
+        appendText: '(yyyy-mm-dd)',
+        altFormat: 'yy-mm-dd'});
+    $("#id_end_date").datepicker({
         altField:'input#id_promo_date',
         appendText: '(yyyy-mm-dd)',
         altFormat: 'yy-mm-dd'});
