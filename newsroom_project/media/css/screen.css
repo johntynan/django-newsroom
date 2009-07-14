@@ -107,8 +107,15 @@ h3.subheadline { padding: 15px 0 0; }
 
 /* tables */
 .list-table { width: 100%; }
-    .list-table thead th { padding: 4px 5px; border: 1px solid #DEDEDE; border-left: none; background: url(../images/tables/bg_fieldset.gif) repeat-x;
-        color: #444; font-weight: bold; font-size: 0.9em }
+    .list-table thead tr {
+        padding: 4px 5px;
+        border: 1px solid #DEDEDE;
+        border-left: none;
+        background: url(../images/tables/bg_fieldset.gif) repeat-x;
+        color: #444; font-weight: bold; font-size: 0.9em;
+        width: 200px;
+        height: 30px
+    }
 
     .list-table td { padding: 7px 5px; border: 1px solid #DEDEDE; border-left: none; border-top: none; color: #444; font-weight: bold; }
 
@@ -116,3 +123,12 @@ h3.subheadline { padding: 15px 0 0; }
     .list-table .status-col, .list-table .count-col { width: 10px; text-align: center; }
 
     .list-table .alt-row { background: #F7F7F7; }
+    .list-table thead tr .header {
+	background-image: url(../images/tables/bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+    }
+    .list-table thead tr .headerSortUp {background-image: url(../images/tables/asc.gif);}
+    .list-table thead tr .headerSortDown {background-image: url(../images/tables/desc.gif);}
+
