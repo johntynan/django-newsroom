@@ -13,6 +13,14 @@ urlpatterns = patterns('promos.views',
     url(r'^add/$', 
         'promo_add',
         name="promos_promo_add"),
+    
+    url(r'^billboard/calendar/(?P<year>\d+)/(?P<month>\d+)/$',
+        'billboard_calendar',
+        name='promos_billboard_calendar'),
+    
+    url(r'^billboard/calendar/now/$',
+        'billboard_calendar_now',
+        name='promos_billboard_calendar_now'),
 
     url(r'^(?P<promo_id>\d+)/edit/$',
         'promo_edit',

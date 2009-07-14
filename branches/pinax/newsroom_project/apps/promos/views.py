@@ -645,4 +645,33 @@ def promo_billboard_calendar_now(request,promo_id):
                                     year=unicode(today.year),
                                     month=unicode(today.month))
     
+def billboard_calendar(request, year, month):
+    """
+    Displays a monthly calendar view of `year`/`month`
+    """
+    month = int(month)
+    year = int(year)
+    billboard_qs = PromoBillboard.objects.all().order_by('start_date').filter(
+        start_date__year=year, start_date__month=month
+    )
+    cal = QuerysetCalendar(billboard_qs, "start_date").formatmonth(year, month)
+    return render_to_response('promos/billboard_calendar.html',
+                              {'calendar': mark_safe(cal),
+                               'previous_year':year-1,
+                               "year":year,
+                               'next_year':year+1,
+                               'previous_month':month-1,
+                               'month':month,
+                               'next_month':month+1,
+                               'billboard_qs':billboard_qs},
+                              context_instance=RequestContext(request))
 
+    
+def billboard_calendar_now(request):
+    """
+    Displays a monthly calendar view of the current month
+    """
+    today = date.today()
+    return billboard_calendar(request,
+                              year=unicode(today.year),
+                              month=unicode(today.month))
