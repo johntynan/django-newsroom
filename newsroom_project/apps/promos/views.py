@@ -426,7 +426,7 @@ def promo_date_edit(request, promo_id, date_id):
     """
     user_promos = user_objects_qs(Promo, request.user)
     promo = get_object_or_404(user_promos, pk=promo_id)
-    promo_date = PromoDate.objects.filter(promo=promo_id)
+    promo_date = PromoDate.objects.get(id=date_id)
 
     if request.method == "POST":
         form = DateForm(request.POST, instance=promo_date)
@@ -434,9 +434,10 @@ def promo_date_edit(request, promo_id, date_id):
             form.save()
             request.user.message_set.create(
                 message='Your promo date has been edited.')
-            return HttpResponseRedirect(reverse('promos_promo_date_list'))
+            return HttpResponseRedirect(reverse('promos_promo_date_list',
+                                                kwargs={"promo_id":promo.id}))
     else:
-        form = DateForm(instance=promo_link)
+        form = DateForm(instance=promo_date)
 
     return render_to_response(
               'promos/promo_date_edit.html',
