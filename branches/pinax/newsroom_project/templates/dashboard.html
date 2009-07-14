@@ -12,8 +12,14 @@
 
 {% block jquery %}
     {{ block.super }}
-    $("table.list-table").tablesorter();
+    $("table.list-table").tablesorter(
+        {
+            headers:
+                {3: {sorter: false},}
+        }
+    );
 {% endblock %}
+
 
 
 {% block subnav %}
