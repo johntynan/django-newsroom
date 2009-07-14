@@ -24,6 +24,7 @@
                         <a href="{% url promos_promo_link_list promo_id=promo.id %}">Related&nbsp;Links</a> | 
                         <a href="{% url promos_promo_date_list promo_id=promo.id %}">Dates</a> | 
                         <a href="{% url promos_promo_billboard_list promo_id=promo.id %}">Billboards</a> |
+                        <a href='{% url promos_promo_billboard_calendar_now promo_id=promo.id %}'>Calendar</a> |
                         <a href="{% url promos_promo_detail promo_id=promo.id %}">Details</a> | 
                     </td>
         </tr>

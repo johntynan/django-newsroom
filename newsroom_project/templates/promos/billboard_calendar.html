@@ -1,0 +1,27 @@
+{% extends 'promos/base.html' %}
+
+{% block extra_head %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/calendar.css" />
+{% endblock %}
+
+{% block title %}Promo Billboard List{% endblock %}
+
+{% block main_content %}
+<h1>{{ promo.headline }}</h1>
+<div class="edit-promo-tabs">
+    <div class="tab-contents">
+        <div id="month_navigation">
+            <p><a href='{% url promos_billboard_calendar_now %}'>current month</a></p>
+            <p><a href='{% url promos_billboard_calendar year=year,month=previous_month %}'><< previous month</a> | <a href='{% url promos_billboard_calendar year=year,month=next_month %}'>next month >></a></p>
+        </div>
+    {% if billboard_qs.count %}
+        {{calendar}}
+    {% else %}
+        <p>You haven't submitted any billboards yet.</p>
+    {% endif %}
+    </div>
+</div>
+
+{% endblock %}
+
