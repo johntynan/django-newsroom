@@ -7,6 +7,12 @@
 {% block extra_head %}
     {{ block.super }}
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/dashboard.css" />
+    <script type="text/javascript" src="{{ MEDIA_URL }}/js/jquery.tablesorter.min.js"></script>
+{% endblock %}
+
+{% block jquery %}
+    {{ block.super }}
+    $("table.list-table").tablesorter();
 {% endblock %}
 
 
@@ -34,7 +40,7 @@
     <table cellspacing="0" cellpadding="0" class="list-table">
         <thead>
             <tr>
-                <th class="id_col">Submitter</th>
+                <th>Submitter</th>
                 <th>Campaign</th>
                 <th>Headline</th>
                 <th>Suggested date</th>
