@@ -21,9 +21,11 @@
         <br class="clearboth" />
     </div>
     <div class="tab-contents">
+        <div id="month_navigation">
+            <p><a href='{% url promos_promo_billboard_calendar_now promo_id=promo.id %}'>current month</a></p>
+            <p><a href='{% url promos_promo_billboard_calendar promo_id=promo.id,year=year,month=previous_month %}'><< previous month</a> | <a href='{% url promos_promo_billboard_calendar promo_id=promo.id,year=year,month=next_month %}'>next month >></a></p>
+        </div>
     {% if billboard_qs.count %}
-        <div id="year">{{ year }}</div>
-        <div id="month">{{ month }}</div>
         {{calendar}}
     {% else %}
         <p>You haven't submitted any billboards yet.</p>

@@ -611,20 +611,38 @@ class QuerysetCalendar(HTMLCalendar):
 
     
 def promo_billboard_calendar(request, promo_id, year, month):
+    """
+    Displays a monthly calendar view of `year`/`month`
+    """
+    month = int(month)
+    year = int(year)
     user_promos = user_objects_qs(Promo, request.user)
     promo = get_object_or_404(user_promos, pk=promo_id)
     billboard_qs = promo.promobillboard_set.all().order_by('start_date').filter(
         start_date__year=year, start_date__month=month
     )
-    cal = QuerysetCalendar(billboard_qs, "start_date").formatmonth(int(year), int(month))
+    cal = QuerysetCalendar(billboard_qs, "start_date").formatmonth(year, month)
     return render_to_response('promos/promo_billboard_calendar.html',
                               {'calendar': mark_safe(cal),
+                               'previous_year':year-1,
                                "year":year,
+                               'next_year':year+1,
+                               'previous_month':month-1,
                                'month':month,
+                               'next_month':month+1,
                                'promo':promo,
                                'billboard_qs':billboard_qs},
                               context_instance=RequestContext(request))
 
     
+def promo_billboard_calendar_now(request,promo_id):
+    """
+    Displays a monthly calendar view of the current month
+    """
+    today = date.today()
+    return promo_billboard_calendar(request,
+                                    promo_id=promo_id,
+                                    year=unicode(today.year),
+                                    month=unicode(today.month))
     
 
