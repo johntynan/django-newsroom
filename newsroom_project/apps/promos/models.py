@@ -255,9 +255,14 @@ class PromoDate(models.Model):
     """
     title = models.CharField(max_length=200)
     description = models.TextField('description',blank=True)
-    promo_date = models.DateField(
-                        "Promo Date",
-                        help_text="Suggested date for showcasing a promo on the home page.")
+    start_date = models.DateField(
+                        "Start Date",
+                        help_text="Suggested start date for showcasing a promo on the home page.")
+    end_date = models.DateField(
+                        "End Date",
+                        blank=True,
+                        null=True,
+                        help_text="Suggested end date for showcasing a promo on the home page.")
     promo = models.ForeignKey(
                 Promo,
                 help_text='Suggested date for showcasing a promo on the home page.')

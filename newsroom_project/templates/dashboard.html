@@ -67,7 +67,7 @@
                 <td>{{object.headline}}</td>
                 <td>
                     {% for date in object.promo.promodate_set.all %}
-                        {{ date }}: {{ date.promo_date }}<br/>
+                        {{ date }}: {{ date.start_date }} - {{ date.end_date }}<br/>
                     {% endfor %}
                 </td>
                 <td>{{ object.start_date }}</td>

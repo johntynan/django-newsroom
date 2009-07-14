@@ -16,21 +16,23 @@
         <br class="clearboth" />
     </div>
     <div class="tab-contents">
-    {% if promo_date %}
+    {% if promo_dates %}
     <table cellspacing="0" cellpadding="0" class="list-table">
         <thead>
             <tr>
                 <th>Title</th>
-                <th>Date</th>
+                <th>Start date</th>
+                <th>End date</th>
                 <th>Description</th>
                 <th>Action</th>
             </tr>
         </thead>
-        {% for i in promo_date%}
+        {% for promo_date in promo_dates%}
         <tr class="{% cycle '' 'alt-row' %}">
-            <td>{{i}}</td>
-            <td>{{i.promo_date}}</td>
-            <td>{{i.description}}</td>
+            <td>{{ promo_date }}</td>
+            <td>{{promo_date.start_date}}</td>
+            <td>{{promo_date.end_date}}</td>
+            <td>{{promo_date.description}}</td>
             <td><a href="./{{ i.id }}/edit">Edit</a> | <a href="./{{ i.id }}/delete">Delete</a></td>
         </tr>
         {% endfor %}
