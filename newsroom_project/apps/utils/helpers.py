@@ -13,6 +13,6 @@ def user_objects_qs(klass, user):
     if user.is_staff:
         return queryset
     else:
-        queryset = queryset.filter(authors=user)
+        queryset = queryset.filter(submitter=user)
         return queryset
     
