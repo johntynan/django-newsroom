@@ -82,6 +82,18 @@ urlpatterns = patterns('promos.views',
     url(r'(?P<promo_id>\d+)/billboard/(?P<billboard_id>\d+)/delete/$',
         'promo_billboard_delete',
         name='promos_promo_billboard_delete'),
+
+    url(r'(?P<promo_id>\d+)/date/(?P<date_id>\d+)/delete/$',
+        'promo_date_delete',
+        name='promos_promo_date_delete'),
+
+    url(r'(?P<promo_id>\d+)/link/(?P<link_id>\d+)/delete/$',
+        'promo_link_delete',
+        name='promos_promo_link_delete'),
+
+    url(r'(?P<promo_id>\d+)/image/(?P<image_id>\d+)/delete/$',
+        'promo_image_delete',
+        name='promos_promo_image_delete'),
     
     url(r'(?P<promo_id>\d+)/billboard/calendar/(?P<year>\d+)/(?P<month>\d+)/$',
         'promo_billboard_calendar',
@@ -97,18 +109,5 @@ urlpatterns = patterns('promos.views',
     url(r'^delete/$', 
         'promo_delete',
         name="promos_promo_delete"),
-
-    url(r'(?P<promo_id>\d+)/link/(?P<link_id>\d+)/delete/$',
-        'promo_link_delete',
-        name='promos_promo_link_delete'),
-
-    url(r'(?P<promo_id>\d+)/image/(?P<image_id>\d+)/delete/$',
-        'promo_image_delete',
-        name='promos_promo_image_delete'),
-
-    url(r'(?P<promo_id>\d+)/date/(?P<date_id>\d+)/dlete/$',
-        'promo_date_delete',
-        name='promos_promo_date_delete'),
-
 
 '''

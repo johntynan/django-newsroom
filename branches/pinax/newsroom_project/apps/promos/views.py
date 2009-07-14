@@ -510,7 +510,65 @@ def promo_billboard_delete(request, promo_id, billboard_id):
               'billboard':promo_billboard}),
             context_instance=RequestContext(request))
 
+@login_required
+def promo_image_delete(request, promo_id, image_id):
+    user_promos = user_objects_qs(Promo, request.user)
+    promo = get_object_or_404(user_promos, pk=promo_id)
+    promo_image = PromoImage.objects.get(id=image_id)
+    post_delete_redirect = reverse('promos_promo_image_list',
+                                   args=[promo.id])
+    
+    if request.method == 'POST':
+        promo_image.delete()
+        request.user.message_set.create(message=("The %(verbose_name)s was deleted.") % {"verbose_name": PromoImage._meta.verbose_name})
+        return HttpResponseRedirect(post_delete_redirect)
+    else:
+        template_name = "promos/promo_image_confirm_delete.html"
+        return render_to_response(
+            template_name,
+            ({'promo':promo,
+              'image':promo_image}),
+            context_instance=RequestContext(request))
 
+@login_required
+def promo_link_delete(request, promo_id, link_id):
+    user_promos = user_objects_qs(Promo, request.user)
+    promo = get_object_or_404(user_promos, pk=promo_id)
+    promo_link = PromoLink.objects.get(id=link_id)
+    post_delete_redirect = reverse('promos_promo_link_list',
+                                   args=[promo.id])
+    
+    if request.method == 'POST':
+        promo_link.delete()
+        request.user.message_set.create(message=("The %(verbose_name)s was deleted.") % {"verbose_name": PromoLink._meta.verbose_name})
+        return HttpResponseRedirect(post_delete_redirect)
+    else:
+        template_name = "promos/promo_link_confirm_delete.html"
+        return render_to_response(
+            template_name,
+            ({'promo':promo,
+              'link':promo_link}),
+            context_instance=RequestContext(request))
+
+@login_required
+def promo_date_delete(request, promo_id, date_id):
+    user_promos = user_objects_qs(Promo, request.user)
+    promo = get_object_or_404(user_promos, pk=promo_id)
+    promo_date = PromoDate.objects.get(id=date_id)
+    post_delete_redirect = reverse('promos_promo_date_list',
+                                   args=[promo.id])
+    
+    if request.method == 'POST':
+        promo_date.delete()
+        request.user.message_set.create(message=("The %(verbose_name)s was deleted.") % {"verbose_name": PromoDate._meta.verbose_name})
+        return HttpResponseRedirect(post_delete_redirect)
+    else:
+        template_name = "promos/promo_date_confirm_delete.html"
+        return render_to_response(
+            template_name,
+            ({'promo':promo,
+              'date':promo_date}),
+            context_instance=RequestContext(request))
 
 class QuerysetCalendar(HTMLCalendar):
 
