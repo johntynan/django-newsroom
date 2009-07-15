@@ -454,14 +454,13 @@ def promo_billboard_homepage(request):
     """
     Get promo details.
     """
-
-    billboard_id = '1'
-    billboards = PromoBillboard.objects.all()
-    billboard = get_object_or_404(billboards, pk=billboard_id)
-
+    today = date.today()
+    
+    billboards = PromoBillboard.objects.filter(start_date=date.today())
+    
     return render_to_response(
             'promos/promo_billboard_homepage.html',{
-            'billboard': billboard,
+            'billboards': billboards,
 
              },
               context_instance=RequestContext(request))
