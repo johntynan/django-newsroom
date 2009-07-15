@@ -67,7 +67,7 @@
         </thead>
         {% for promo_image in promo.promoimage_set.all %}
         <tr class="{% cycle '' 'alt-row' %}">
-            <td><a href="{{ promo_image.url }}">{{ promo_image }}</a></td>
+            <td><a href="{% url promos_promo_image_edit promo_id=promo.id,image_id=promo_image.id %}">{{ promo_image }}</a></td>
             <td>{{ promo_image.attribution }}</td>
             <td>{{ promo_image.get_image_kind_display }}</td>
         </tr>
@@ -88,7 +88,7 @@
         </thead>
         {% for promo_link in promo.promolink_set.all %}
         <tr class="{% cycle '' 'alt-row' %}">
-            <td><a href="{{ promo_link.url }}">{{ promo_link }}</a></td>
+            <td><a href="{% url promos_promo_link_edit promo_id=promo.id,link_id=promo_link.id %}">{{ promo_link }}</a></td>
             <td>{{ promo_link.desc }}</td>
         </tr>
         {% endfor %}
@@ -111,7 +111,7 @@
         </thead>
         {% for promo_date in promo.promodate_set.all %}
         <tr class="{% cycle '' 'alt-row' %}">
-            <td>{{ promo_date }}</td>
+            <td><a href="{% url promos_promo_date_edit promo_id=promo.id,date_id=promo_date.id %}">{{ promo_date }}</a></td>
             <td>{{ promo_date.start_date }}</td>
             <td>{{ promo_date.end_date }}</td>
             <td>{{ promo_date.description }}</td>
@@ -135,7 +135,7 @@
         </thead>
         {% for promo_billboard in promo.promobillboard_set.all %}
         <tr class="{% cycle '' 'alt-row' %}">
-            <td><a href="{{ promo_billboard.url }}">{{ promo_billboard }}</a> </td>
+            <td><a href="{% url promos_promo_billboard_edit promo_id=promo.id,billboard_id=promo_billboard.id %}">{{ promo_billboard }}</a> </td>
             <td>{{ promo_billboard.headline }}</td>
             <td>{{ promo_billboard.supporting_text }}</td>
         </tr>
@@ -165,6 +165,7 @@
 <h2>Links</h2>
 <ul class="action-links">
     <li><a href="{% url promos_promo_list %}">promo list</a></li>
+    <li><a href='{% url promos_promo_billboard_calendar_now promo_id=promo.id %}'>Calendar</a></li>
  </ul>
 {% endblock %}
 
