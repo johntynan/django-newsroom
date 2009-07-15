@@ -20,16 +20,20 @@ class PromoForm(forms.ModelForm):
     #    #self.fields['authors'].widget = widgets.SelectMultiple()
 
     headline = forms.CharField(widget=forms.TextInput(attrs={'size':'100'}))
-    permalink = forms.CharField(widget=forms.TextInput(attrs={'size':'100'}))
-    description = forms.CharField(widget=forms.Textarea(attrs = {'cols':76,'rows':8}))
+    permalink = forms.CharField(label='URL',widget=forms.TextInput(attrs={'size':'100'}))
+    description = forms.CharField(label='Summary / Nut Graph',widget=forms.Textarea(attrs = {'cols':76,'rows':8}))
     other_credits = forms.CharField(required=False,widget=forms.Textarea(attrs = {'cols':40,'rows':3}))
-    
+    location = forms.CharField(label='Primary Location',help_text='City, State, Country or ZIP code, Country.',widget=forms.TextInput())
+
     class Meta:
         model = Promo
         fields = ('headline','permalink','description','authors','other_credits', 'location', 'topic_path')
 
 class LinkForm(forms.ModelForm):
-    
+
+    title = forms.CharField(label='Title/Teaser',widget=forms.TextInput(attrs={'size':'100'}))
+    url = forms.CharField(widget=forms.TextInput(attrs={'size':'100'}))
+   
     class Meta:
         model = PromoLink
         fields = ('title','url','desc')

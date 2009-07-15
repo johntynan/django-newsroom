@@ -5,15 +5,15 @@ from django.contrib.contenttypes.models import ContentType
 from topics.models import TopicPath
 from geotags.models import Point,Line, MultiLine, Polygon
 
-"billboard", "thumbnail", "medium billboard", "original"
+"billboard", "small", "medium", "original"
 IMAGE_KIND_BILLBOARD = 'B'
-IMAGE_KIND_THUMBNAIL = 'T'
+IMAGE_KIND_SMALL = 'S'
 IMAGE_KIND_MEDIUM = 'M'
 IMAGE_KIND_ORIGINAL = 'O'
 IMAGE_KIND_CHOICES = (
-    (IMAGE_KIND_BILLBOARD,'Billboard - 700px to 940px wide'),
-    (IMAGE_KIND_MEDIUM, 'Medium - 400px wide'),
-    (IMAGE_KIND_THUMBNAIL, 'Thumbnail - 120px x 120px'),
+    (IMAGE_KIND_BILLBOARD,'Billboard - 700px x 360px'),
+    (IMAGE_KIND_MEDIUM, 'Medium - 400px x 205px'),
+    (IMAGE_KIND_SMALL, 'Small - 120px x 100px'),
     (IMAGE_KIND_ORIGINAL, 'Original'),
 )
 
@@ -208,7 +208,7 @@ class Promo(models.Model):
     location = models.CharField(
                 max_length=256,
                 blank=True,
-                help_text="City, State Country or Zipcode, Country." )
+                help_text="City, State, Country or ZIP code, Country." )
 
     
     topic_path = models.ManyToManyField(TopicPath, blank=True)
@@ -253,8 +253,8 @@ class PromoDate(models.Model):
     """
     Links related to promo submissions.
     """
-    title = models.CharField(max_length=200)
-    description = models.TextField('description',blank=True)
+    title = models.CharField("Description",max_length=200)
+    description = models.TextField('Explanation',blank=True)
     start_date = models.DateField(
                         "Start Date",
                         help_text="Suggested start date for showcasing a promo on the home page.")
@@ -276,7 +276,10 @@ class PromoLink(models.Model):
     """
     title = models.CharField(max_length=200)
     url = models.URLField(verify_exists=False)
-    desc = models.TextField('description',blank=True)
+    desc = models.TextField('description',
+            blank=True,
+            help_text="Please provide any related links that might richly supplement the main package/story featured with this promo submission.  They could be from your incubator or another.")
+
     promo = models.ForeignKey(
                 Promo,
                 help_text='Related links might be a blog post or other information related to how the piece was built, "behind the scenes", or just links related to the same topic.')
@@ -285,8 +288,8 @@ class PromoLink(models.Model):
         return self.title
 
 class PromoImage(models.Model):
-    attribution = models.CharField(_('attibution'), max_length=100)
-    caption = models.CharField(_('caption'), max_length=100)
+    attribution = models.CharField(_('Credit'), max_length=100)
+    caption = models.CharField(_('Description / Alt Tag'), max_length=100)
     image_kind =models.CharField(_('Image kind'),
         max_length=1,
         choices=IMAGE_KIND_CHOICES,
