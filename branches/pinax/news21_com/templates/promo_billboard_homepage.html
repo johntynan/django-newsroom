@@ -1,0 +1,45 @@
+{% extends 'promos/base.html' %}
+
+{% block head_title %}Welcome{% endblock %}
+
+{% block body_id %}front{% endblock %}
+
+{# wipe topics sidebar #}
+{% block sidebar_topics %}{% endblock %}
+
+
+{% block extra_head %}
+<script type="text/javascript" src="{{ MEDIA_URL }}js/swfobject.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.cycle.all.min.js"></script>
+{% endblock %}
+
+{% block jquery %}
+    $('#billboards').cycle({
+        fx: 'fade', 
+        timeout: 6000, 
+        delay: -2000 ,
+    });
+{% endblock %}
+
+{% block body %}
+<div id="billboards">
+{% for billboard in billboards %}
+    {% ifequal billboard.billboard_type '0' %}
+        <div>
+            <h1><a href="{% firstof billboard.link.url billboard.promo.permalink %}" style="text-decoration:none;position:relative; left:{{ billboard.headline_position_horizontal }}px; top:{{ billboard.headline_position_vertical }}px;z-index:1;color:{{ billboard.headline_color }};">{{ billboard.title }}</a></h1>
+            <a href="{% firstof billboard.link.url billboard.promo.permalink %}" style="text-decoration:none;"><img src="{{ billboard.image.image.url }}" style="width:700px; height: auto;z-index:0;" /></a>
+            {% autoescape off %}
+            <p style="position:relative; left:{{billboard.supporting_text_position_horizontal}}px; top:{{billboard.supporting_text_position_vertical}}px;z-index:1;color:{{billboard.supporting_text_color}};width:{{billboard.supporting_text_width}}px;text-align:{{billboard.supporting_text_alignment}};"><strong>{{ billboard.supporting_text}}</strong></p>
+            {% endautoescape %}
+        </div>
+    {% else %}
+            {% ifequal billboard.billboard_type '1' %}
+                <div>
+                    <a href="{% firstof billboard.link.url billboard.promo.permalink %}" style="text-decoration:none;"><img src="{{ billboard.image.image.url }}" style="width:700px; height: auto;z-index:0;" /></a>
+                </div>
+            {% endifequal %}
+    {% endifequal %}
+{% endfor %}
+</div>
+
+{% endblock %}
