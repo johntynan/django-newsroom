@@ -35,7 +35,8 @@
         <th>{{ field.label_tag }}:</th>
         <td>
             {{ field.errors }}
-            {{ field }}
+            {{ field }}<br />
+            {{ field.help_text }}
         </td>
     </tr>
     {% endif %}
@@ -44,7 +45,8 @@
         <th>{{ field.label_tag }}:</th>
         <td>
             {{ field.errors }}
-            {{ field }}
+            {{ field }}<br />
+            {{ field.help_text }}
         </td>
     </tr>
     {% endifequal %}
