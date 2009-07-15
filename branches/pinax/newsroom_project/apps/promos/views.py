@@ -374,7 +374,7 @@ def promo_link_edit(request, promo_id, link_id):
     """
     user_promos = user_objects_qs(Promo, request.user)
     promo = get_object_or_404(user_promos, pk=promo_id)
-    promo_link = PromoLink.objects.filter(promo=promo_id)
+    promo_link = PromoLink.objects.get(id=link_id, promo=promo_id)
 
     if request.method == "POST":
         form = LinkForm(request.POST, instance=promo_link)
@@ -400,7 +400,7 @@ def promo_image_edit(request, promo_id, image_id):
     """
     user_promos = user_objects_qs(Promo, request.user)
     promo = get_object_or_404(user_promos, pk=promo_id)
-    promo_image = PromoImage.objects.filter(promo=promo_id)
+    promo_image = PromoImage.objects.get(id=image_id,promo=promo_id)
 
     if request.method == "POST":
         form = ImageForm(request.POST, instance=promo_image)
@@ -410,7 +410,7 @@ def promo_image_edit(request, promo_id, image_id):
                 message='Your promo image has been edited.')
             return HttpResponseRedirect(reverse('promos_promo_image_list'))
     else:
-        form = LinkForm(instance=promo_image)        
+        form = ImageForm(instance=promo_image)        
 
     return render_to_response(
               'promos/promo_image_edit.html',
