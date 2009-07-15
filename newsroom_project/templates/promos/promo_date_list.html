@@ -50,5 +50,6 @@
 <ul class="action-links">
     <li><a href="{% url promos_promo_list %}">Promo List</a></li>
     <li><a href="{% url promos_promo_date_add promo_id=promo.id%}" title="Add a Date">Add a Date</a></li>
+    <li><a href='{% url promos_promo_billboard_calendar_now promo_id=promo.id %}'>Calendar</a></li>
  </ul>
 {% endblock %}
