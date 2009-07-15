@@ -107,14 +107,10 @@ def promo_detail(request, promo_id):
     user_promos = user_objects_qs(Promo, request.user)
     promo = get_object_or_404(user_promos, pk=promo_id)
     # do not use this: promo_link = promo.promolink_set.all() - a pain for introspection.
-    promo_link = PromoLink.objects.filter(promo=promo_id)
-    promo_image = PromoImage.objects.filter(promo=promo_id)
 
     return render_to_response(
             'promos/promo_detail.html',{
             'promo': promo,
-            'promo_link': promo_link,
-            'promo_image': promo_image,
             'google_key': settings.GOOGLE_MAPS_API_KEY,
              },
               context_instance=RequestContext(request))
