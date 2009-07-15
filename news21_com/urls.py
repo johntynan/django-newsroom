@@ -17,7 +17,7 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # (r'^admin/', include(admin.site.urls)),
-    (r'^$','views.promo_billboard_homepage'),
+    (r'^$', direct_to_template, {'template': 'front.html'}),
     (r'^search/', direct_to_template, {'template': 'search.html'}),
     (r'^topics/$', direct_to_template, {'template': 'topics.html'}),
     (r'^openid/(.*)', PinaxConsumer()),
@@ -28,6 +28,7 @@ urlpatterns = patterns('',
     (r'^photos/',include('photos.urls')),
     (r'^videos/',include('videos.urls')),
     (r'^about/',include('about.urls')),
+    (r'^test/','views.promo_billboard_homepage'),
     (r'^promos/',include('promos.urls')),
 )
 
