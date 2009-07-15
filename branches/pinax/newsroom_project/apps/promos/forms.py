@@ -33,6 +33,7 @@ class LinkForm(forms.ModelForm):
 
     title = forms.CharField(label='Title/Teaser',widget=forms.TextInput(attrs={'size':'100'}))
     url = forms.CharField(widget=forms.TextInput(attrs={'size':'100'}))
+    desc = forms.CharField(help_text='Please provide any related links that might richly supplement the main package/story featured with this promo submission.  They could be from your incubator or another.', widget=forms.Textarea(attrs = {'cols':40,'rows':3}))
    
     class Meta:
         model = PromoLink

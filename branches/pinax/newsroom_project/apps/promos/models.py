@@ -253,7 +253,7 @@ class PromoDate(models.Model):
     """
     Links related to promo submissions.
     """
-    title = models.CharField("Description",max_length=200)
+    title = models.CharField("Relevancy / Description",max_length=200)
     description = models.TextField('Explanation',blank=True)
     start_date = models.DateField(
                         "Start Date",
