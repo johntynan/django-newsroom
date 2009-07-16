@@ -21,8 +21,9 @@ def promo_billboard_homepage(request):
     Get promo details.
     """
     today = date.today()
-    billboards = PromoBillboard.objects.filter(start_date=date.today())
-    
+    # billboards = PromoBillboard.objects.filter(start_date__lte=date.today()).order_by('?')[:1]
+    billboards = PromoBillboard.objects.filter(start_date__lte=date.today()).order_by('-start_date')[:1]
+
     return render_to_response(
             'promo_billboard_homepage.html',{
             'billboards': billboards,
