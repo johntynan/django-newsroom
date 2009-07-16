@@ -22,24 +22,44 @@
 {% endblock %}
 
 {% block body %}
-<div id="billboards">
+<div id="billboards" style="width:700px;height:360px;">
 {% for billboard in billboards %}
     {% ifequal billboard.billboard_type '0' %}
-        <div>
+        <div style="background: #5c8eb2 url({{ billboard.image.image.url }});width:700px; height:360px;z-index:0; no-repeat;cursor:pointer;cursor:hand;" OnClick="window.location='{% firstof billboard.link.url billboard.promo.permalink %}'">
             <h1><a href="{% firstof billboard.link.url billboard.promo.permalink %}" style="text-decoration:none;position:relative; left:{{ billboard.headline_position_horizontal }}px; top:{{ billboard.headline_position_vertical }}px;z-index:1;color:{{ billboard.headline_color }};">{{ billboard.title }}</a></h1>
-            <a href="{% firstof billboard.link.url billboard.promo.permalink %}" style="text-decoration:none;"><img src="{{ billboard.image.image.url }}" style="width:700px; height: auto;z-index:0;" /></a>
             {% autoescape off %}
             <p style="position:relative; left:{{billboard.supporting_text_position_horizontal}}px; top:{{billboard.supporting_text_position_vertical}}px;z-index:1;color:{{billboard.supporting_text_color}};width:{{billboard.supporting_text_width}}px;text-align:{{billboard.supporting_text_alignment}};"><strong>{{ billboard.supporting_text}}</strong></p>
             {% endautoescape %}
         </div>
     {% else %}
             {% ifequal billboard.billboard_type '1' %}
-                <div>
-                    <a href="{% firstof billboard.link.url billboard.promo.permalink %}" style="text-decoration:none;"><img src="{{ billboard.image.image.url }}" style="width:700px; height: auto;z-index:0;" /></a>
+                <div style="background: #5c8eb2 url({{ billboard.image.image.url }});width:700px; height:360px;z-index:0; no-repeat;cursor:pointer;cursor:hand;" OnClick="window.location='{% firstof billboard.link.url billboard.promo.permalink %}'">
                 </div>
             {% endifequal %}
     {% endifequal %}
 {% endfor %}
 </div>
 
+          <div id="topics" class="box">
+
+            <div class="header"><img src="{{ MEDIA_URL }}themes/esser/images/headers/main-topic.gif" alt="2009 Topics: EXPLORATIONS IN A CHANGING AMERICA" /></div>
+
+            <div style="padding: 0px 5px;">
+              <ul>
+                <li><strong><a href="http://asu.news21.com/">The Latino Experience Across America</a></strong></li>
+                <li><strong><a href="http://berkeley.news21.com/">Intersections: Bay Area Communities at the Crossroads</a></strong></li>
+                <li><strong><a href="http://columbia.news21.com/">Charter Explosion: Hybrid Schools in Public Education</a></strong></li>
+                <li style="white-space:nowrap;"><strong><a href="http://www.thenewvoters.com">The New Voters: Identity & U.S. Politics</a></strong></li>
+              </ul>
+              <ul style="margin: 10px">
+                <li><strong><a href="http://unc.news21.com/">Powering a Nation: Quest for Energy in a Growing USA</a></strong></li>
+                <li style="white-space:nowrap;"><strong><a href="http://northwestern.news21.com/">Young Urbanites: A Diverse Generation Confronts Its Future</a></strong></li>
+                <li><strong><a href="http://usc.news21.com/">Southwestern Shifts: New Communities & New Realities</a></strong></li>
+                <li><strong><a href="http://syracuse.news21.com">The Young & the Wireless: Net Gen Rising</a></strong></li>
+              </ul>
+
+              <div class="clear"></div>
+
+            </div>
+          </div>
 {% endblock %}
