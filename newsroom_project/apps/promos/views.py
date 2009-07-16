@@ -380,7 +380,8 @@ def promo_link_edit(request, promo_id, link_id):
             form.save()
             request.user.message_set.create(
                 message='Your promo link has been edited.')
-            return HttpResponseRedirect(reverse('promos_promo_link_list'))
+            return HttpResponseRedirect(reverse('promos_promo_link_list',
+                                                kwargs={"promo_id":promo.id}))
     else:
         form = LinkForm(instance=promo_link)        
 
@@ -409,7 +410,8 @@ def promo_image_edit(request, promo_id, image_id):
             form.save()
             request.user.message_set.create(
                 message='Your promo image has been edited.')
-            return HttpResponseRedirect(reverse('promos_promo_image_list'))
+            return HttpResponseRedirect(reverse('promos_promo_image_list',
+                                        kwargs={"promo_id":promo.id}))
     else:
         form = ImageForm(instance=promo_image)        
 
