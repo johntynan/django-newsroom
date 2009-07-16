@@ -18,7 +18,7 @@ from promos.models import *
 
 def promo_billboard_homepage(request):
     """
-    Get promo details.
+    Send ONLY the latest billboard to the homepage whose start date is less than or equal to today 
     """
     today = date.today()
     # billboards = PromoBillboard.objects.filter(start_date__lte=date.today()).order_by('?')[:1]
