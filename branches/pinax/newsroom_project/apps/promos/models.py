@@ -313,10 +313,10 @@ class PromoBillboard(models.Model):
 
     headline = models.CharField(max_length=225)
 
-    headline_position_horizontal = models.CharField(default=100,max_length=4)
+    headline_position_horizontal = models.CharField(default=0,max_length=4)
 
     headline_position_vertical = models.CharField(
-                            default=100,
+                            default=0,
                             max_length=4,
                             help_text="Headlines are relative from the the top left of the image.")
 
@@ -331,9 +331,9 @@ class PromoBillboard(models.Model):
     supporting_text_position_horizontal = models.CharField(default=0, max_length=4)
 
     supporting_text_position_vertical = models.CharField(
-                            default=-200,
+                            default=0,
                             max_length=4,
-                            help_text="Supporting text is relative from the the bottom left of the image.")
+                            help_text="Supporting text is relative from the the bottom left of the headline.")
 
     supporting_text_width = models.CharField(default=300, max_length=4)
 
@@ -346,7 +346,7 @@ class PromoBillboard(models.Model):
                 related_name='billboard_url',
                 blank=True,
                 null=True,
-                help_text="Link to the story, related story or project that this billboard is promoting.  If blank, the main url that you submitted with your pitch will be promoted. ")
+                help_text='Link to the story, related story or project that this billboard is promoting.  If blank, the main url that you submitted with your pitch will be promoted. ')
 
     image = models.ForeignKey(
                 PromoImage,
