@@ -28,7 +28,7 @@ urlpatterns = patterns('',
     (r'^photos/',include('photos.urls')),
     (r'^videos/',include('videos.urls')),
     (r'^about/',include('about.urls')),
-    (r'^test/','views.promo_billboard_homepage'),
+    (r'^test/','news21_com.views.promo_billboard_homepage'),
     (r'^promos/',include('promos.urls')),
 )
 
