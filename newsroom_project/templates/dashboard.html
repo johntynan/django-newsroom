@@ -29,8 +29,6 @@
     {% if user.is_authenticated %}
     <h2>{% trans "Links" %}</h2>
     <ul class="action-links">
-        <li><a href="{% url stories_add_story %}" title="Add Story">Add Story</a></li>
-        <li><a href="{% url stories_add_story %}" title="Add Story">Add Media</a></li>
         <li><a href='{% url promos_billboard_calendar_now %}'>Calendar</a></li>
         
     </ul>
