@@ -12,6 +12,8 @@ from django.template import RequestContext
 from django.template.loader import render_to_string
 from django.utils.html import conditional_escape as esc
 from django.utils.safestring import mark_safe
+from django.contrib.flatpages.models import FlatPage
+
 
 from promos.forms import *
 from promos.models import *
@@ -24,9 +26,23 @@ def promo_billboard_homepage(request):
     # billboards = PromoBillboard.objects.filter(start_date__lte=date.today()).order_by('?')[:1]
     billboards = PromoBillboard.objects.filter(start_date__lte=date.today()).order_by('-start_date')[:1]
 
+    home1 = []
+    home2 = []
+    home3 = []
+    flatpages = FlatPage.objects.all()
+    for x in flatpages:
+        if x.url == '/home1/':
+            home1.append(x)
+        elif x.url == '/home2/':
+            home2.append(x)
+        elif x.url == '/home3/':
+            home3.append(x)
+
     return render_to_response(
             'promo_billboard_homepage.html',{
             'billboards': billboards,
-
+            'home1': home1,
+            'home2': home2,
+            'home3': home3,
              },
               context_instance=RequestContext(request))
