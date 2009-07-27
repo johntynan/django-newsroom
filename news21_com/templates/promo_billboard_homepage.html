@@ -33,6 +33,28 @@
     </div>
 {% endfor %}
 
+<div style="width:100%;height:auto;">
+{% for home1 in home1 %}
+<div style="width:33%; float:right;height:200px;">
+<h2>{{ home1.title }}</h2>
+<p>{{ home1.content }}</p>
+</div>
+{% endfor %}
+{% for home2 in home2 %}
+<div style="width:33%; float:right;height:200px;">
+<h2>{{ home2.title }}</h2>
+<p>{{ home2.content }}</p>
+</div>
+{% endfor %}
+{% for home3 in home3 %}
+<div style="width:33%;height:200px;">
+<h2>{{ home3.title }}</h2>
+<p>{{ home3.content }}</p>
+</div>
+{% endfor %}
+</div>
+
+
           <div id="topics" class="box">
 
             <div class="header"><img src="{{ MEDIA_URL }}themes/esser/images/headers/main-topic.gif" alt="2009 Topics: EXPLORATIONS IN A CHANGING AMERICA" /></div>
