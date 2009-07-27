@@ -37,19 +37,26 @@
 {% for home1 in home1 %}
 <div style="width:33%; float:right;height:200px;">
 <h2>{{ home1.title }}</h2>
+{% autoescape off %}
 <p>{{ home1.content }}</p>
+{% endautoescape %}
 </div>
 {% endfor %}
 {% for home2 in home2 %}
 <div style="width:33%; float:right;height:200px;">
 <h2>{{ home2.title }}</h2>
+{% autoescape off %}
 <p>{{ home2.content }}</p>
+{% endautoescape %}
 </div>
 {% endfor %}
 {% for home3 in home3 %}
 <div style="width:33%;height:200px;">
 <h2>{{ home3.title }}</h2>
+{% autoescape off %}
 <p>{{ home3.content }}</p>
+{% endautoescape %}
+
 </div>
 {% endfor %}
 </div>
