@@ -33,32 +33,6 @@
     </div>
 {% endfor %}
 
-{% for home1 in home1 %}
-<div style="width:210px;height:200px;background:white;float:left;position:relative;top:0px;float:left;margin-left:10px;margin-right:10px;" class="grid_3">
-<h2>{{ home1.title }}</h2>
-{% autoescape off %}
-<p>{{ home1.content }}</p>
-{% endautoescape %}
-</div>
-{% endfor %}
-{% for home2 in home2 %}
-<div style="width:220px;height:200px;background:white;float:left;margin-left:10px;margin-right:10px;" class="grid_3">
-<h2>{{ home2.title }}</h2>
-{% autoescape off %}
-<p>{{ home2.content }}</p>
-{% endautoescape %}
-</div>
-{% endfor %}
-{% for home3 in home3 %}
-<div style="width:210px;height:200px;background:white;float:left;margin-left:10px;">
-<h2>{{ home3.title }}</h2>
-{% autoescape off %}
-<p>{{ home3.content }}</p>
-{% endautoescape %}
-{% endfor %}
-</div>
-
-
           <div id="topics" class="box">
 
             <div class="header"><img src="{{ MEDIA_URL }}themes/esser/images/headers/main-topic.gif" alt="2009 Topics: EXPLORATIONS IN A CHANGING AMERICA" /></div>
@@ -82,3 +56,72 @@
             </div>
           </div>
 {% endblock %}
+
+{% block body_extra %}
+&nbsp;
+<table style="width:100%">
+<tr>
+
+<td style="width:1%;"></td>
+
+{% for home1 in home1 %}
+<th style="width:30%;background-color:#ED930E;font-size:17px;color:white;">{{ home1.title }}</th>
+{% endfor %}
+
+<td style="width:2%;"></td>
+
+{% for home2 in home2 %}
+<th style="width:30%;background-color:#ED930E;font-size:17px;color:white;">{{ home2.title }}</th>
+{% endfor %}
+
+<td style="width:2%;"></td>
+
+{% for home3 in home3 %}
+<th style="width:30%;background-color:#ED930E;font-size:17px;color:white;">{{ home3.title }}</th>
+{% endfor %}
+
+<td style="width:1%;"></td>
+
+</tr>
+<tr>
+
+<td></td>
+
+{% for home1 in home1 %}
+<td style="height:200px;">
+{% autoescape off %}
+<p>{{ home1.content }}</p>
+{% endautoescape %}
+</td>
+{% endfor %}
+
+<td></td>
+
+{% for home2 in home2 %}
+<td style="height:200px;">
+{% autoescape off %}
+<p>{{ home2.content }}</p>
+{% endautoescape %}
+</td>
+{% endfor %}
+
+<td></td>
+
+{% for home3 in home3 %}
+<td style="height:200px;">
+{% autoescape off %}
+<p>{{ home3.content }}</p>
+{% endautoescape %}
+</td>
+{% endfor %}
+
+<td></td>
+
+</tr>
+</table>
+
+{% endblock %}
+
+
+
+

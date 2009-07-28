@@ -178,6 +178,10 @@ $('#message_{{ forloop.counter }}').fadeOut(); return false;"><small>clear</smal
         </div>
         {% endblock %}
 
+        <div>
+        {% block body_extra %}{% endblock %}
+        </div>
+
         <!-- FOOTER -->
 
         <div id="footer">
