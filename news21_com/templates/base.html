@@ -66,7 +66,18 @@
             <li onmouseover="$('ul.about_sub_menu').show();" onmouseout="$('ul.about_sub_menu').hide();"><a href="/about/"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/about.gif" alt="About" /></a>
               <ul class="about_sub_menu">
                 <li><a href="/about#initiative">The Initiative</a></li>
-                <li><a href="/about#participants">Participants</a></li>
+                <li><a href="/about#participants" onmouseover="$('ul.participants_sub_menu').show();" onclick="$('ul.participants_sub_menu').hide();">Participants</a>
+                <ul class="participants_sub_menu">
+                    <li style="margin-left:10px;" onclick="$('ul.participants_sub_menu').hide();"><a href="http://asu.news21.com/">Arizona</a></li>
+                    <li style="margin-left:10px;" onclick="$('ul.participants_sub_menu').hide();"><a href="http://berkeley.news21.com/">Berkeley</a></li>
+                    <li style="margin-left:10px;" onclick="$('ul.participants_sub_menu').hide();"><a href="http://columbia.news21.com/">Columbia</a></li>
+                    <li style="margin-left:10px;" onclick="$('ul.participants_sub_menu').hide();"><a href="http://www.thenewvoters.com">Maryland</a></li>
+                    <li style="margin-left:10px;" onclick="$('ul.participants_sub_menu').hide();"><a href="http://unc.news21.com/">North Carolina</a></li>
+                    <li style="margin-left:10px;" onclick="$('ul.participants_sub_menu').hide();"><a href="http://northwestern.news21.com">Northwestern</a></li>
+                    <li style="margin-left:10px;" onclick="$('ul.participants_sub_menu').hide();"><a href="http://usc.news21.com/">Southern California</a></li>
+                    <li style="margin-left:10px;" onclick="$('ul.participants_sub_menu').hide();"><a href="http://syracuse.news21.com/">Syracuse</a></li>
+                </ul>
+                </li>
                 <!-- <li><a href="#">Contributors</a></li>
                 <li><a href="#">News Partners</a></li> -->
               </ul>
