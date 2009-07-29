@@ -12,7 +12,7 @@ IMAGE_KIND_MEDIUM = 'M'
 IMAGE_KIND_ORIGINAL = 'O'
 IMAGE_KIND_CHOICES = (
     (IMAGE_KIND_BILLBOARD,'Billboard - 700px x 360px'),
-    (IMAGE_KIND_MEDIUM, 'Medium - 400px x 205px'),
+    (IMAGE_KIND_MEDIUM, 'Medium - 274px x 130px'),
     (IMAGE_KIND_SMALL, 'Small - 120px x 100px'),
     (IMAGE_KIND_ORIGINAL, 'Original'),
 )
