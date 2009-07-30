@@ -18,6 +18,10 @@ from django.contrib.flatpages.models import FlatPage
 from promos.forms import *
 from promos.models import *
 
+from promos.models import Promo
+from topics.models import Topic, TopicPath, TopicImage
+
+
 def promo_billboard_homepage(request):
     """
     Send ONLY the latest billboard to the homepage whose start date is less than or equal to today 
@@ -46,3 +50,28 @@ def promo_billboard_homepage(request):
             'home3': home3,
              },
               context_instance=RequestContext(request))
+
+
+def topics_list(request):
+    topics_list = Topic.objects.all()
+    return render_to_response(
+            'topics_list.html',
+            {'topics_list': topics_list},              
+            context_instance=RequestContext(request))
+
+def topic_detail(request, id):
+    topics_list = Topic.objects.all()
+    topic_detail = Topic.objects.get(id=id)
+    topic_slug = topic_detail.slug
+    sec_paths = TopicPath.objects.filter(topic__slug=topic_slug)
+    promos = Promo.objects.filter(topic_path__in=sec_paths).distinct()
+    topic_image = TopicImage.objects.filter(topic=id)
+    
+    return render_to_response(
+            'topic_detail.html',{
+                'topics_list': topics_list,
+                'topic': topic_detail,
+                'sec_paths': sec_paths,
+                'promos': promos,
+                'topic_image': topic_image
+             }, context_instance=RequestContext(request))

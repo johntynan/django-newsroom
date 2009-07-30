@@ -322,3 +322,11 @@
 .nomargins {
   margin: 0;
 }
+
+#content ul li.even {
+    background-color: #fff;
+}
+#content ul li.odd {
+    background-color: #B2B2B4;
+}
+
