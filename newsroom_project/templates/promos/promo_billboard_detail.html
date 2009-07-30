@@ -19,11 +19,13 @@
     </div>
     <div class="tab-contents">
 
+{% comment %}
 <p>
 Billboard preview has been temporarily disabled. Look for this to be restored shortly.
 </p>
+{% endcomment %}
 
-{# comment #}
+
 <div id="billboards" style="width:700px;height:360px;">
     {% ifequal billboard.billboard_type '0' %}
         <div style="background: #5c8eb2 url({{ billboard.image.image.url }});width:700px; height:360px;z-index:0; no-repeat;cursor:pointer;cursor:hand;" OnClick="window.location='{% firstof billboard.link.url billboard.promo.permalink %}'">
@@ -40,7 +42,6 @@ Billboard preview has been temporarily disabled. Look for this to be restored sh
     {% endifequal %}
 </div>
 
-{# endcomment #}
 
 
 {% endblock %}
