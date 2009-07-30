@@ -329,8 +329,7 @@ def promo_billboard_detail(request, promo_id, billboard_id):
     user_promos = user_objects_qs(Promo, request.user)
     promo = get_object_or_404(user_promos, pk=promo_id)
 
-    user_billboards = user_objects_qs(PromoBillboard, request.user)
-    billboard = get_object_or_404(user_billboards, pk=billboard_id)
+    billboard = PromoBillboard.objects.get(pk=billboard_id)
     if promo != billboard.promo:
         raise Http404()  
 
