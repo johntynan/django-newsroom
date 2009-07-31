@@ -21,7 +21,6 @@ from promos.models import *
 from promos.models import Promo
 from topics.models import Topic, TopicPath, TopicImage
 
-
 def promo_billboard_homepage(request):
     """
     Send ONLY the latest billboard to the homepage whose start date is less than or equal to today 
@@ -34,6 +33,7 @@ def promo_billboard_homepage(request):
     home2 = []
     home3 = []
     status = []
+    about_text = []
     flatpages = FlatPage.objects.all()
     for x in flatpages:
         if x.url == '/home1/':
@@ -44,6 +44,8 @@ def promo_billboard_homepage(request):
             home3.append(x)
         elif x.url == '/status/':
             status.append(x)
+        elif x.url == '/abouttext/':
+            about_text.append(x)
 
     return render_to_response(
             'promo_billboard_homepage.html',{
@@ -52,6 +54,7 @@ def promo_billboard_homepage(request):
             'home2': home2,
             'home3': home3,
             'status': status,
+            'about_text':about_text,
              },
               context_instance=RequestContext(request))
 

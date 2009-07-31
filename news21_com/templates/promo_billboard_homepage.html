@@ -131,5 +131,12 @@
 {% endfor %}
 {% endblock %}
 
-
-
+{% block about_text %}
+{% for about_text in about_text %}
+<div>
+{% autoescape off %}
+<p>{{ about_text.content }}</p>
+{% endautoescape %}
+</div>
+{% endfor %}
+{% endblock %}
