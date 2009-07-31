@@ -490,7 +490,10 @@ def promo_billboard_edit(request, promo_id, billboard_id):
                         args=[promo.id]))
     else:
         form = BillboardForm(instance=promo_billboard)        
-
+        form.fields["image"].queryset = promo.promoimage_set.filter(
+            image_kind="B", promo__id=promo.id)
+        form.fields["link"].queryset = promo.promolink_set.filter(
+            promo__id=promo.id)
     return render_to_response(
               'promos/promo_billboard_edit.html',
               ({'form': form,
