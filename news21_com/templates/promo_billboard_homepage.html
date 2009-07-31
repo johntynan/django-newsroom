@@ -87,7 +87,7 @@
 <td></td>
 
 {% for home1 in home1 %}
-<td style="height:200px;">
+<td style="height:200px;vertical-align:top;">
 {% autoescape off %}
 <p>{{ home1.content }}</p>
 {% endautoescape %}
@@ -97,7 +97,7 @@
 <td></td>
 
 {% for home2 in home2 %}
-<td style="height:200px;">
+<td style="height:200px;vertical-align:top;">
 {% autoescape off %}
 <p>{{ home2.content }}</p>
 {% endautoescape %}
@@ -107,7 +107,7 @@
 <td></td>
 
 {% for home3 in home3 %}
-<td style="height:200px;">
+<td style="height:200px;vertical-align:top;">
 {% autoescape off %}
 <p>{{ home3.content }}</p>
 {% endautoescape %}
@@ -121,6 +121,15 @@
 
 {% endblock %}
 
+{% block sidebar_status %}
+{% for status in status %}
+<div>
+{% autoescape off %}
+<p>{{ status.content }}</p>
+{% endautoescape %}
+</div>
+{% endfor %}
+{% endblock %}
 
 
 
