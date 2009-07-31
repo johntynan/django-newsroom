@@ -33,6 +33,7 @@ def promo_billboard_homepage(request):
     home1 = []
     home2 = []
     home3 = []
+    status = []
     flatpages = FlatPage.objects.all()
     for x in flatpages:
         if x.url == '/home1/':
@@ -41,6 +42,8 @@ def promo_billboard_homepage(request):
             home2.append(x)
         elif x.url == '/home3/':
             home3.append(x)
+        elif x.url == '/status/':
+            status.append(x)
 
     return render_to_response(
             'promo_billboard_homepage.html',{
@@ -48,6 +51,7 @@ def promo_billboard_homepage(request):
             'home1': home1,
             'home2': home2,
             'home3': home3,
+            'status': status,
              },
               context_instance=RequestContext(request))
 
