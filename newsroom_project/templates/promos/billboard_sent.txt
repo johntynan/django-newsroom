@@ -5,4 +5,4 @@ You have received the following billboard from http://newsroom.news21.com/profil
 You can view this billboard here:
 
 {% endblocktrans %}
-http://newsroom.news21.com/{% url promos_promo_billboard_detail promo_id=billboard.promo_id,billboard_id=billboard.id   %}
+http://newsroom.news21.com{% url promos_promo_billboard_detail promo_id=billboard.promo_id,billboard_id=billboard.id   %}
