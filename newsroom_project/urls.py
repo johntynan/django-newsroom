@@ -20,7 +20,7 @@ info_dict = {
 }
 
 urlpatterns = patterns('',
-    url('^$', redirect_to, {'url': '/page/1/'}),
+    url('^$', redirect_to, {'url': '/promos/'}),
     url(r'^page/(?P<page>[0-9]+)/$', object_list, dict(info_dict)),
     url(r'^page/(?P<page>last)/$', object_list, dict(info_dict)),
     
