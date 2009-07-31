@@ -314,7 +314,9 @@ def promo_billboard_add(request, promo_id):
     else:
         form = BillboardForm()
         form.fields["image"].queryset = promo.promoimage_set.filter(
-            image_kind="B")
+            image_kind="B", promo__id=promo.id)
+        form.fields["link"].queryset = promo.promolink_set.filter(
+            promo__id=promo.id)
     return render_to_response(
               'promos/promo_billboard_add.html',
               {'form':form,
