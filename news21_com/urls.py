@@ -26,11 +26,13 @@ urlpatterns = patterns('',
     (r'^photos/',include('photos.urls')),
     (r'^videos/',include('videos.urls')),
     (r'^about/',include('about.urls')),
+    (r'^feeds/', include('feeds.urls')),
     (r'^test/','news21_com.views.promo_billboard_homepage'),
     (r'^promos/',include('promos.urls')),
     (r'^topics/', direct_to_template, {'template': 'topics.html'}),
     (r'^topics_list/', 'news21_com.views.topics_list'),
     (r'^topic_detail/(.*)', 'news21_com.views.topic_detail'),
+    (r'^topic_feed/(.*)', 'news21_com.views.topic_feed'),
 )
 
 if settings.SERVE_MEDIA:
