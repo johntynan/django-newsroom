@@ -34,11 +34,19 @@ Billboard preview has been temporarily disabled. Look for this to be restored sh
             <p style="position:relative; left:{{billboard.supporting_text_position_horizontal}}px; top:{{billboard.supporting_text_position_vertical}}px;z-index:1;color:{{billboard.supporting_text_color}};width:{{billboard.supporting_text_width}}px;text-align:{{billboard.supporting_text_alignment}};"><strong>{{ billboard.supporting_text}}</strong></p>
             {% endautoescape %}
         </div>
-    {% else %}
+        {% else %}
             {% ifequal billboard.billboard_type '1' %}
                 <div style="background: #5c8eb2 url({{ billboard.image.image.url }});width:700px; height:360px;z-index:0; no-repeat;cursor:pointer;cursor:hand;" OnClick="window.location='{% firstof billboard.link.url billboard.promo.permalink %}'">
                 </div>
+            {% else %}
+                {% ifequal billboard.billboard_type '2' %}
+                    <div style="background: #5c8eb2 url({{ billboard.image.image.url }});width:700px; height:360px;z-index:0; no-repeat;cursor:pointer;cursor:hand;" OnClick="window.location='{% firstof billboard.link.url billboard.promo.permalink %}'">
+                {% autoescape off %}
+                    <div>{{ billboard.supporting_text}}</div>
+                {% endautoescape %}
+                    </div>
             {% endifequal %}
+        {% endifequal %}
     {% endifequal %}
 </div>
 

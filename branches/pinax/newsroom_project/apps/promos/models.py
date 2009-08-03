@@ -20,6 +20,7 @@ IMAGE_KIND_CHOICES = (
 BILLBOARD_TYPE = (
     ('0', 'Billboard with Text Overlay'),
     ('1', 'Billboard Image with Link (No Text)'),
+    ('2', 'Billboard Image with Link (Custom HTML Supporting Text)'),
 )
 
 COLOR_TABLE = (
