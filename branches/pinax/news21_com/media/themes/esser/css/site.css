@@ -3,16 +3,20 @@
  */
 
 a:link {
-  color:#404040
+  color:#AAAAAB;
+  font-weight:700;
 } 
 a:visited {
-  color:#f29812
+  color:#f29812;
+  font-weight:700;
 }
 a:hover {
-  color:#f29812
+  color:#f29812;
+  font-weight:700;
 }
 a:active {
-  color:#f29812
+  color:#f29812;
+  font-weight:700;
 }
 /**
  * Shadow
