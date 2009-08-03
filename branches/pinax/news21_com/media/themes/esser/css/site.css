@@ -1,4 +1,19 @@
+/**
+ * Links
+ */
 
+a:link {
+  color:#404040
+} 
+a:visited {
+  color:#f29812
+}
+a:hover {
+  color:#f29812
+}
+a:active {
+  color:#f29812
+}
 /**
  * Shadow
  */
