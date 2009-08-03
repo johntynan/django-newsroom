@@ -19,7 +19,7 @@
     <div class="billboard" id="billboard" title="{{ billboard.image.caption }} : {{ billboard.image.attribution }}">
     {% ifequal billboard.billboard_type '0' %}
         <div style="background: #5c8eb2 url({{ billboard.image.image.url }});width:700px; height:360px;z-index:0; no-repeat;cursor:pointer;cursor:hand;" OnClick="window.location='{% firstof billboard.link.url billboard.promo.permalink %}'" ONMOUSEOVER="window.status = '{% firstof billboard.link.url billboard.promo.permalink %}';return true;">
-            <h1><a href="{% firstof billboard.link.url billboard.promo.permalink %}" style="text-decoration:none;position:relative; left:{{ billboard.headline_position_horizontal }}px; top:{{ billboard.headline_position_vertical }}px;z-index:1;color:{{ billboard.headline_color }};">{{ billboard.headline }}</a></h1>
+            {% autoescape off %}<h1><a href="{% firstof billboard.link.url billboard.promo.permalink %}" style="text-decoration:none;position:relative; left:{{ billboard.headline_position_horizontal }}px; top:{{ billboard.headline_position_vertical }}px;z-index:1;color:{{ billboard.headline_color }};">{{ billboard.headline }}</a></h1>{% endautoescape %}
             {% autoescape off %}
             <p style="position:relative; left:{{billboard.supporting_text_position_horizontal}}px; top:{{billboard.supporting_text_position_vertical}}px;z-index:1;color:{{billboard.supporting_text_color}};width:{{billboard.supporting_text_width}}px;text-align:{{billboard.supporting_text_alignment}};"><strong>{{ billboard.supporting_text}}</strong></p>
             {% endautoescape %}
