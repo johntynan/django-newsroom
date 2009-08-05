@@ -54,8 +54,8 @@
 
           <div id="tagline"><img src="{{ MEDIA_URL }}themes/esser/images/header/innovate-investigate-collaborate.gif" alt="Innovate_Investigate_Collaborate." /></div>
 
-          <ul class="dropdown"><!-- onmouseout="$('ul.participants_sub_menu').hide();" -->
           {% block navbar %}
+          <ul class="dropdown"><!-- onmouseout="$('ul.participants_sub_menu').hide();" -->
             <li><a href="/topics/"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/topics.gif" alt="Topics" /></a>
               <ul class="topic_sub_menu">
                 <li><a href="#">One</a></li>
@@ -82,8 +82,8 @@
                 <li><a href="#">News Partners</a></li> -->
               </ul>
             </li>
-           {% endblock %}
           </ul>
+           {% endblock %}
 
           <form action="/search/" method="get">
             <fieldset>

@@ -9,9 +9,188 @@
 
 
 {% block extrahead %}
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.dropdownPlain.js"></script>
+
+<style type="text/css">
+/**
+ * Begin Header Navigation Styles
+ */
+
+#header ul {
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+#header ul li {
+  position: relative;
+  float: left;
+  margin: 0;
+  padding: 0;
+  border-right: 1px solid #9b9b9c;
+}
+
+#header ul li a img {
+  float: left;
+}
+
+#header ul li ul li {
+  float: none;
+  display: block;
+  border: 0;
+}
+
+
+
+/**
+#header ul li ul {
+  background: #404040;
+  display: none;
+  position: absolute;
+  width: 140px;
+  height: auto;
+  top: 38px;
+  left: 0;
+  padding: 4px 0px;
+}
+
+#header ul li ul li a {
+  background: url(/site_media/themes/esser/images/header/buttons/bgs/subnav.gif) right 6px no-repeat;
+  color: #fff;
+  float: left;
+  clear: left;
+  padding: 2px 12px;
+  text-decoration: none;
+}
+#header ul li ul li a:hover {
+  background: url(/site_media/themes/esser/images/header/buttons/bgs/subnav-over.gif) right 6px no-repeat;
+  color: #f29812;
+}
+*/
+
+
+
+
+/**
+ * End Header Navigation Styles
+ */
+
+/* 
+	LEVEL ONE
+*/
+ul.dropdown                         { position: relative; }
+ul.dropdown li                      { font-weight: bold; float: left; zoom: 1; background: #ccc;}
+ul.dropdown a:hover		            { color: #000; }
+ul.dropdown a:active                { color: #ffa500; }
+ul.dropdown li a                    { display: block; padding: 4px 8px; border-right: 1px solid #333;
+	 								  color: #222; }
+ul.dropdown li:last-child a         { border-right: none; } /* Doesn't work in IE */
+ul.dropdown li.hover,
+ul.dropdown li:hover                { color: black; position: relative; }
+ul.dropdown li.hover a              { color: white; }
+
+
+/* 
+	LEVEL TWO
+
+ul.dropdown ul width: 170px; 
+*/
+
+ul.dropdown ul 						{ visibility: hidden; position: absolute; top:35px; left: 0; }
+ul.dropdown ul li 					{ font-weight: normal; background: #404040; color: #000; 
+									  border-bottom: 1px solid #ccc; float: none; }
+									  
+                                    /* IE 6 & 7 Needs Inline Block */
+ul.dropdown ul li a					{ border-right: none; width: 100%; display: inline-block; }
+
+/* 
+	LEVEL THREE
+*/
+ul.dropdown ul ul 					{ left: 100%; top: 0; }
+ul.dropdown li:hover > ul 			{ visibility: visible; }
+}
+</style>
+
 {% endblock %}
 
+          {% block navbar %}
 
+          <ul class="dropdown" style="list-style: none">
+            <li><a href="/topics/" style="padding: 0px 0px;"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/topics.gif" alt="Topics" /></a>
+              <ul class="dropdown">
+                <li><a href="/about#participants">School</a>
+                <ul style="width: 140px;">
+                    <li><a href="http://asu.news21.com/">Arizona</a></li>
+                    <li><a href="http://berkeley.news21.com/">Berkeley</a></li>
+                    <li><a href="http://columbia.news21.com/">Columbia</a></li>
+                    <li><a href="http://www.thenewvoters.com">Maryland</a></li>
+                    <li><a href="http://unc.news21.com/">North Carolina</a></li>
+                    <li><a href="http://northwestern.news21.com">Northwestern</a></li>
+                    <li><a href="http://usc.news21.com/">Southern California</a></li>
+                    <li><a href="http://syracuse.news21.com/">Syracuse</a></li>
+                </ul>
+                </li>
+                <li><a href="/topics_list">Project</a>
+                <ul class="sub_menu" style="width: 220px;">
+                    <li><a href="http://asu.news21.com/">The Latino Experience Across America</a></li>
+                    <li><a href="http://berkeley.news21.com/">Intersections: Bay Area Communities at the Crossroads</a></li>
+                    <li><a href="http://columbia.news21.com/">Charter Explosion: Hybrid Schools in Public Education</a></li>
+                    <li><a href="http://www.thenewvoters.com">The New Voters: Identity &amp; U.S. Politics</a></li>
+                    <li><a href="http://unc.news21.com/">Powering a Nation: Quest for Energy in a Changing USA</a></li>
+                    <li><a href="http://northwestern.news21.com/">Northwestern: Young Urban Adults and the New America</a></li>
+                    <li><a href="http://usc.news21.com/">Southwestern Shifts: New Communities &amp; New Realities</a></li>
+                    <li><a href="http://syracuse.news21.com">The Young &amp; the Wireless: Net Gen Rising</a></li>
+                </ul>
+                </li>
+                <li><a href="/topics_list">Category</a>
+                <ul class="sub_menu" style="width: 140px;">
+                <li><a href="/topic_detail/2">Culture</a></li>
+                <li><a href="/topic_detail/1">Cities</a></li>
+                <li><a href="/topic_detail/3">Demographics</a></li>
+                <li><a href="/topic_detail/4">Economics</a></li>
+                <li><a href="/topic_detail/5">Education</a></li>
+                <li><a href="/topic_detail/6">Employment</a></li>
+                <li><a href="/topic_detail/7">Environment</a></li>
+                <li><a href="/topic_detail/8">Gender</a></li>
+                <li><a href="/topic_detail/9">Health</a></li>
+                <li><a href="/topic_detail/10">Immigration</a></li>
+                <li><a href="/topic_detail/11">Neighborhoods</a></li>
+                <li><a href="/topic_detail/12">Policy</a></li>
+                <li><a href="/topic_detail/13">Politics</a></li>
+                <li><a href="/topic_detail/14">Poverty</a></li>
+                <li><a href="/topic_detail/15">Race</a></li>
+                <li><a href="/topic_detail/16">Regions</a></li>
+                <li><a href="/topic_detail/17">Spirituality</a></li>
+                <li><a href="/topic_detail/18">Technology</a></li>
+                <li><a href="/topic_detail/19">Urban Issues</a></li>
+                <li><a href="/topic_detail/20">Youth</a></li>
+                </ul>
+                </li>
+              </ul>
+            </li>
+
+
+            <li><a href="/about/" style="padding: 0px 0px;"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/about.gif" alt="About"></a>
+              <ul class="sub_menu">
+                <li><a href="/about#initiative">The Initiative</a></li>
+                <li><a href="/about#participants" onmouseover="$('ul.participants_sub_menu').show();">Participants</a>
+                <ul class="sub_menu" style="width: 140px;">
+                    <li><a href="http://asu.news21.com/">Arizona</a></li>
+                    <li><a href="http://berkeley.news21.com/">Berkeley</a></li>
+                    <li><a href="http://columbia.news21.com/">Columbia</a></li>
+                    <li><a href="http://www.thenewvoters.com">Maryland</a></li>
+                    <li><a href="http://unc.news21.com/">North Carolina</a></li>
+                    <li><a href="http://northwestern.news21.com">Northwestern</a></li>
+                    <li><a href="http://usc.news21.com/">Southern California</a></li>
+                    <li><a href="http://syracuse.news21.com/">Syracuse</a></li>
+                </ul>
+                </li>
+                <!-- <li><a href="#">Contributors</a></li>
+                <li><a href="#">News Partners</a></li> -->
+              </ul>
+            </li>
+          </ul>
+           {% endblock %}
 
 {% block body %}
 
