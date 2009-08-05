@@ -24,3 +24,10 @@
 #bottom {
   display: none;
 }
+
+/**
+ * Header Dropdown Navigation
+ */
+ul.dropdown ul li { 
+    display: inline; width: 100%; 
+} 

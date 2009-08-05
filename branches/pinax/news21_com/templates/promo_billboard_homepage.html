@@ -7,73 +7,21 @@
 {# wipe topics sidebar #}
 {% block sidebar_topics %}{% endblock %}
 
+    {% block stylesheets %}
+    <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}themes/esser/css/reset.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}themes/esser/css/960.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}themes/esser/css/text.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}themes/esser/css/site_test.css" />
+
+    <!--[if lt IE 7]>
+    <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}themes/esser/css/ie6.css" />
+    <![endif]-->
+    {% endblock %}
 
 {% block extrahead %}
     <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.dropdownPlain.js"></script>
 
 <style type="text/css">
-/**
- * Begin Header Navigation Styles
- */
-
-#header ul {
-  float: left;
-  margin: 0;
-  padding: 0;
-}
-
-#header ul li {
-  position: relative;
-  float: left;
-  margin: 0;
-  padding: 0;
-  border-right: 1px solid #9b9b9c;
-}
-
-#header ul li a img {
-  float: left;
-}
-
-#header ul li ul li {
-  float: none;
-  display: block;
-  border: 0;
-}
-
-
-
-/**
-#header ul li ul {
-  background: #404040;
-  display: none;
-  position: absolute;
-  width: 140px;
-  height: auto;
-  top: 38px;
-  left: 0;
-  padding: 4px 0px;
-}
-
-#header ul li ul li a {
-  background: url(/site_media/themes/esser/images/header/buttons/bgs/subnav.gif) right 6px no-repeat;
-  color: #fff;
-  float: left;
-  clear: left;
-  padding: 2px 12px;
-  text-decoration: none;
-}
-#header ul li ul li a:hover {
-  background: url(/site_media/themes/esser/images/header/buttons/bgs/subnav-over.gif) right 6px no-repeat;
-  color: #f29812;
-}
-*/
-
-
-
-
-/**
- * End Header Navigation Styles
- */
 
 /* 
 	LEVEL ONE
@@ -96,7 +44,7 @@ ul.dropdown li.hover a              { color: white; }
 ul.dropdown ul width: 170px; 
 */
 
-ul.dropdown ul 						{ visibility: hidden; position: absolute; top:35px; left: 0; }
+ul.dropdown ul 						{ visibility: hidden; position: absolute; top:36px; left: 0; }
 ul.dropdown ul li 					{ font-weight: normal; background: #404040; color: #000; 
 									  border-bottom: 1px solid #ccc; float: none; }
 									  
