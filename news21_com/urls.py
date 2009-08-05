@@ -34,6 +34,7 @@ urlpatterns = patterns('',
     (r'^topics_list/', 'news21_com.views.topics_list'),
     (r'^topic_detail/(.*)', 'news21_com.views.topic_detail'),
     (r'^topic_feed/(.*)', 'news21_com.views.topic_feed'),
+    (r'^about/history/','news21_com.views.about_history'),
 )
 
 if settings.SERVE_MEDIA:
