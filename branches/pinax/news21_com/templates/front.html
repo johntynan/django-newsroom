@@ -46,19 +46,17 @@
             <div class="header"><img src="{{ MEDIA_URL }}themes/esser/images/headers/main-topic.gif" alt="2009 Topics: EXPLORATIONS IN A CHANGING AMERICA" /></div>
 
             <div style="padding: 0px 5px;">
-              <ul>
-                <li><strong><a href="http://asu.news21.com/">The Latino Experience Across America</a></strong></li>
-                <li><strong><a href="http://berkeley.news21.com/">Intersections: Bay Area Communities at the Crossroads</a></strong></li>
-                <li><strong><a href="http://columbia.news21.com/">Charter Explosion: Hybrid Schools in Public Education</a></strong></li>
-                <li style="white-space:nowrap;"><strong><a href="http://www.thenewvoters.com">The New Voters: Identity & U.S. Politics</a></strong></li>
-              </ul>
-              <ul style="margin: 10px">
-                <li><strong><a href="http://unc.news21.com/">Powering a Nation: Quest for Energy in a Changing USA</a></strong></li>
-                <li style="white-space:nowrap;"><strong><a href="http://northwestern.news21.com/">Young Urban Adults and the New America</a></strong></li>
-                <li><strong><a href="http://usc.news21.com/">Southwestern Shifts: New Communities & New Realities</a></strong></li>
-                <li><strong><a href="http://syracuse.news21.com">The Young & the Wireless: Net Gen Rising</a></strong></li>
-              </ul>
+{% block fronttopics %}
 
+{% for front_topics in front_topics %}
+
+    {% autoescape off %}
+    {{ front_topics.content }}
+    {% endautoescape %}
+
+{% endfor %}
+
+{% endblock %}
               <div class="clear"></div>
 
             </div>

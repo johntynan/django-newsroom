@@ -37,6 +37,7 @@ def front(request):
     home3 = []
     status = []
     about_text = []
+    front_topics = []
     flatpages = FlatPage.objects.all()
     for x in flatpages:
         if x.url == '/home1/':
@@ -49,6 +50,8 @@ def front(request):
             status.append(x)
         elif x.url == '/abouttext/':
             about_text.append(x)
+        elif x.url == '/front/topics/':
+            front_topics.append(x)
 
     return render_to_response(
             'front.html',{
@@ -58,6 +61,7 @@ def front(request):
             'home3': home3,
             'status': status,
             'about_text':about_text,
+            'front_topics': front_topics,
              },
               context_instance=RequestContext(request))
 
@@ -74,6 +78,7 @@ def test_homepage(request):
     home3 = []
     status = []
     about_text = []
+    front_topics = []
     flatpages = FlatPage.objects.all()
     for x in flatpages:
         if x.url == '/home1/':
@@ -86,6 +91,8 @@ def test_homepage(request):
             status.append(x)
         elif x.url == '/abouttext/':
             about_text.append(x)
+        elif x.url == '/front/topics/':
+            front_topics.append(x)
 
     return render_to_response(
             'promo_billboard_homepage.html',{
@@ -94,7 +101,8 @@ def test_homepage(request):
             'home2': home2,
             'home3': home3,
             'status': status,
-            'about_text':about_text,
+            'about_text': about_text,
+            'front_topics': front_topics,
              },
               context_instance=RequestContext(request))
 
@@ -145,3 +153,20 @@ def topic_feed(request, id):
                 'feed_link': feed_link,
                 'feed_description': feed_description
              }, context_instance=RequestContext(request))
+
+def about_history(request):
+    """
+    Send the News21 history from flatpages to a template. 
+    """
+
+    news21_history = []
+    flatpages = FlatPage.objects.all()
+    for x in flatpages:
+        if x.url == '/about/history/':
+            news21_history.append(x)
+
+    return render_to_response(
+            'about/history.html',{
+            'news21_history':news21_history,
+             },
+              context_instance=RequestContext(request))
