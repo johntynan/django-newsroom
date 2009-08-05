@@ -23,7 +23,45 @@ from promos.models import *
 from promos.models import Promo
 from topics.models import Topic, TopicPath, TopicImage
 
-def promo_billboard_homepage(request):
+
+def front(request):
+    """
+    Send ONLY the latest billboard to the homepage whose start date is less than or equal to today 
+    """
+    today = date.today()
+    # billboards = PromoBillboard.objects.filter(start_date__lte=date.today()).order_by('?')[:1]
+    billboards = PromoBillboard.objects.filter(start_date__lte=date.today()).order_by('-start_date')[:1]
+
+    home1 = []
+    home2 = []
+    home3 = []
+    status = []
+    about_text = []
+    flatpages = FlatPage.objects.all()
+    for x in flatpages:
+        if x.url == '/home1/':
+            home1.append(x)
+        elif x.url == '/home2/':
+            home2.append(x)
+        elif x.url == '/home3/':
+            home3.append(x)
+        elif x.url == '/status/':
+            status.append(x)
+        elif x.url == '/abouttext/':
+            about_text.append(x)
+
+    return render_to_response(
+            'front.html',{
+            'billboards': billboards,
+            'home1': home1,
+            'home2': home2,
+            'home3': home3,
+            'status': status,
+            'about_text':about_text,
+             },
+              context_instance=RequestContext(request))
+
+def test_homepage(request):
     """
     Send ONLY the latest billboard to the homepage whose start date is less than or equal to today 
     """
