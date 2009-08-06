@@ -35,6 +35,8 @@ urlpatterns = patterns('',
     (r'^topic_detail/(.*)', 'news21_com.views.topic_detail'),
     (r'^topic_feed/(.*)', 'news21_com.views.topic_feed'),
     (r'^about/history/','news21_com.views.about_history'),
+    (r'^incubators/','news21_com.views.incubators_list'),
+    (r'^incubators/detail/(.*)', 'news21_com.views.incubator_detail'),
 )
 
 if settings.SERVE_MEDIA:

@@ -1,0 +1,43 @@
+{% extends 'site_base.html' %} 
+
+{% block head_title %}{{ topic }}{% endblock %}
+
+{% block body_id %}topics{% endblock %}
+
+{% block body %}
+
+<div id="topic_detail" stylesheet="float:right;" class="grid_7">
+
+    <h1>{{ topic }}</h1>
+    <p>
+        <div style="float:left;">
+    {% for i in topic_image%}
+        <img src="{{ i.photo.get_thumbnail_url }}">
+    {% endfor %}
+        </div>
+    {{ topic.description }}
+    <br clear="all">
+    </p>
+
+
+    <ul>
+    {% for p in promos %}
+        <li class="{% cycle 'even' 'odd' %}"><a href="{{p.permalink}}">{{p}}</a> {{p.description}} </li>
+    {% endfor %}
+    {% for l in promo_link %}
+        <li><a href="{{l.id}}">{{l}}</a> 
+    {% endfor %}
+    </ul>
+
+</div>
+
+<div id="topic_nav" class="grid_2">
+    <ul>
+    {% for o in topics_list %}
+    <li class="{% cycle 'even' 'odd' %}"><a href="../topic_detail/{{o.id}}">{{o}}</a>
+    {% empty %}
+    <li>No topics submitted yet.</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}
