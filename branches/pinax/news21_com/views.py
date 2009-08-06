@@ -108,14 +108,14 @@ def test_homepage(request):
 
 
 def topics_list(request):
-    topics_list = Topic.objects.all()
+    topics_list = Topic.objects.all().exclude(id__range=(21, 31)) 
     return render_to_response(
             'topics_list.html',
             {'topics_list': topics_list},              
             context_instance=RequestContext(request))
 
 def topic_detail(request, id):
-    topics_list = Topic.objects.all()
+    topics_list = Topic.objects.all().exclude(id__range=(21, 31)) 
     topic_detail = Topic.objects.get(id=id)
     topic_slug = topic_detail.slug
     sec_paths = TopicPath.objects.filter(topic__slug=topic_slug)
@@ -170,3 +170,29 @@ def about_history(request):
             'news21_history':news21_history,
              },
               context_instance=RequestContext(request))
+
+def incubators_list(request):
+    topics_list = Topic.objects.all().filter(id__range=(21, 31))
+    return render_to_response(
+            'incubators_list.html',
+            {'incubators_list': incubators_list},              
+            context_instance=RequestContext(request))
+
+def incubator_detail(request, id):
+    topics_list = Topic.objects.all().filter(id__range=(21, 31))
+    topic_detail = Topic.objects.get(id=id)
+    topic_slug = topic_detail.slug
+    sec_paths = TopicPath.objects.filter(topic__slug=topic_slug)
+    promos = Promo.objects.filter(topic_path__in=sec_paths).distinct()
+    topic_image = TopicImage.objects.filter(topic=id)
+
+    return render_to_response(
+            'incubator_detail.html',{
+                'topics_list': topics_list,
+                'topic': topic_detail,
+                'sec_paths': sec_paths,
+                'promos': promos,
+                'topic_image': topic_image
+             }, context_instance=RequestContext(request))
+
+
