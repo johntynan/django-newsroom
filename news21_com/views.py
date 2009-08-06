@@ -147,11 +147,34 @@ def topic_feed(request, id):
     topic_image = TopicImage.objects.filter(topic=id)
 
     feed_title = 'News21.com topic feed: ' + topic_detail.slug
-    feed_link = 'http://news21.com/topic_detail/' + topic_detail.slug + '/'
+    feed_link = 'http://news21.com/topics/detail/' + topic_detail.slug + '/'
     feed_description = topic_detail.slug
     
     return render_to_response(
             'topics/topic_feed.rss',{
+                'topic': topic_detail,
+                'sec_paths': sec_paths,
+                'promos': promos,
+                'topic_image': topic_image,
+                'feed_title': feed_title,
+                'feed_link': feed_link,
+                'feed_description': feed_description
+             }, context_instance=RequestContext(request))
+
+def topic_feed_detail(request, id):
+    topics_list = Topic.objects.all().exclude(id__range=(21, 31)).order_by('title')
+    topic_detail = Topic.objects.get(id=id)
+    topic_slug = topic_detail.slug
+    sec_paths = TopicPath.objects.filter(topic__slug=topic_slug)
+    promos = Promo.objects.filter(topic_path__in=sec_paths).distinct()
+    topic_image = TopicImage.objects.filter(topic=id)
+
+    feed_title = 'News21.com topic feed: ' + topic_detail.slug
+    feed_link = 'http://news21.com/topics/detail/' + topic_detail.slug + '/'
+    feed_description = topic_detail.slug
+    
+    return render_to_response(
+            'topics/topic_feed_detail.rss',{
                 'topic': topic_detail,
                 'sec_paths': sec_paths,
                 'promos': promos,
