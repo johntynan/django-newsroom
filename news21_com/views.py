@@ -108,14 +108,14 @@ def test_homepage(request):
 
 
 def topics_list(request):
-    topics_list = Topic.objects.all().exclude(id__range=(21, 31)) 
+    topics_list = Topic.objects.all().exclude(id__range=(21, 31)).order_by('title') 
     return render_to_response(
             'topics_list.html',
             {'topics_list': topics_list},              
             context_instance=RequestContext(request))
 
 def topic_detail(request, id):
-    topics_list = Topic.objects.all().exclude(id__range=(21, 31)) 
+    topics_list = Topic.objects.all().exclude(id__range=(21, 31)).order_by('title') 
     topic_detail = Topic.objects.get(id=id)
     topic_slug = topic_detail.slug
     sec_paths = TopicPath.objects.filter(topic__slug=topic_slug)
@@ -132,7 +132,7 @@ def topic_detail(request, id):
              }, context_instance=RequestContext(request))
 
 def topic_feed(request, id):
-    topics_list = Topic.objects.all().exclude(id__range=(21, 31)) 
+    topics_list = Topic.objects.all().exclude(id__range=(21, 31)).order_by('title')
     topic_detail = Topic.objects.get(id=id)
     topic_slug = topic_detail.slug
     sec_paths = TopicPath.objects.filter(topic__slug=topic_slug)
@@ -172,14 +172,14 @@ def about_history(request):
               context_instance=RequestContext(request))
 
 def incubators_list(request):
-    topics_list = Topic.objects.all().filter(id__range=(21, 31))
+    incubators_list = Topic.objects.all().filter(id__range=(21, 31)).order_by('title')
     return render_to_response(
             'incubators/incubators_list.html',
             {'incubators_list': incubators_list},              
             context_instance=RequestContext(request))
 
 def incubator_detail(request, id):
-    topics_list = Topic.objects.all().filter(id__range=(21, 31))
+    incubators_list = Topic.objects.all().filter(id__range=(21, 31)).order_by('title')
     topic_detail = Topic.objects.get(id=id)
     topic_slug = topic_detail.slug
     sec_paths = TopicPath.objects.filter(topic__slug=topic_slug)
@@ -188,7 +188,7 @@ def incubator_detail(request, id):
 
     return render_to_response(
             'incubators/incubator_detail.html',{
-                'topics_list': topics_list,
+                'incubators_list': incubators_list,
                 'topic': topic_detail,
                 'sec_paths': sec_paths,
                 'promos': promos,

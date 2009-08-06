@@ -33,7 +33,7 @@
 
 <div id="topic_nav" class="grid_2">
     <ul>
-    {% for o in topics_list %}
+    {% for o in incubators_list %}
     <li class="{% cycle 'even' 'odd' %}"><a href="../topic_detail/{{o.id}}">{{o}}</a>
     {% empty %}
     <li>No topics submitted yet.</li>

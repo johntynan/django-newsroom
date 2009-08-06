@@ -1,15 +1,15 @@
 {% extends 'site_base.html' %} 
 
-{% block head_title %}Topics{% endblock %}
+{% block head_title %}Incubators{% endblock %}
 
 {% block body_id %}topics{% endblock %}
 
 {% block body %}
 
-<h1>Topics</h1>
+<h1>Incubators</h1>
 
 <ul>
-{% for o in topics_list %}
+{% for o in incubators_list %}
 <li class="{% cycle 'even' 'odd' %}"><a href="./detail/{{o.id}}">{{o}}</a> {{o.description}}<br>
 {% empty %}
 <li>No topics submitted yet.</li>
