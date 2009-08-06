@@ -64,10 +64,10 @@ ul.dropdown li:hover > ul 			{ visibility: visible; }
           {% block navbar %}
 
           <ul class="dropdown" style="list-style: none">
-            <li><a href="/topics/" style="padding: 0px 0px;"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/topics.gif" alt="Topics" /></a>
+            <li><a href="/topics/" style="z-index:1;padding: 0px 0px;"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/topics.gif" alt="Topics" /></a>
               <ul class="dropdown">
                 <li><a href="/about#participants">School</a>
-                <ul style="width: 140px;">
+                <ul style="z-index:1;width: 140px;">
                     <li><a href="http://asu.news21.com/">Arizona</a></li>
                     <li><a href="http://berkeley.news21.com/">Berkeley</a></li>
                     <li><a href="http://columbia.news21.com/">Columbia</a></li>
@@ -79,7 +79,7 @@ ul.dropdown li:hover > ul 			{ visibility: visible; }
                 </ul>
                 </li>
                 <li><a href="/topics_list">Project</a>
-                <ul class="sub_menu" style="width: 220px;">
+                <ul class="sub_menu" style="z-index:1;width: 220px;">
                     <li><a href="http://asu.news21.com/">The Latino Experience Across America</a></li>
                     <li><a href="http://berkeley.news21.com/">Intersections: Bay Area Communities at the Crossroads</a></li>
                     <li><a href="http://columbia.news21.com/">Charter Explosion: Hybrid Schools in Public Education</a></li>
@@ -91,7 +91,7 @@ ul.dropdown li:hover > ul 			{ visibility: visible; }
                 </ul>
                 </li>
                 <li><a href="/topics_list">Category</a>
-                <ul class="sub_menu" style="width: 140px;">
+                <ul class="sub_menu" style="z-index:1;width: 140px;">
                 <li><a href="/topic_detail/2">Culture</a></li>
                 <li><a href="/topic_detail/1">Cities</a></li>
                 <li><a href="/topic_detail/3">Demographics</a></li>
@@ -119,10 +119,10 @@ ul.dropdown li:hover > ul 			{ visibility: visible; }
 
 
             <li><a href="/about/" style="padding: 0px 0px;"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/about.gif" alt="About"></a>
-              <ul class="sub_menu">
+              <ul class="sub_menu" style="z-index:1;">
                 <li><a href="/about#initiative">The Initiative</a></li>
                 <li><a href="/about#participants">Participants</a>
-                <ul class="sub_menu" style="width: 140px;">
+                <ul class="sub_menu" style="z-index:1;width: 140px;">
                     <li><a href="http://asu.news21.com/">Arizona</a></li>
                     <li><a href="http://berkeley.news21.com/">Berkeley</a></li>
                     <li><a href="http://columbia.news21.com/">Columbia</a></li>
@@ -171,15 +171,24 @@ ul.dropdown li:hover > ul 			{ visibility: visible; }
 
           <div id="topics" class="box">
 
-            <div class="header"><img src="{{ MEDIA_URL }}themes/esser/images/headers/main-topic.gif" alt="2009 Topics: EXPLORATIONS IN A CHANGING AMERICA" /></div>
+            <div style="position:relative;top:-1px;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">
+{% block fronttopics_heading %}
+
+{% for home6 in home6 %}
+    {% autoescape off %}
+    {{ home6.title }}
+    {% endautoescape %}
+{% endfor %}
+
+{% endblock %}</div>
 
             <div style="padding: 0px 5px;">
 {% block fronttopics %}
 
-{% for front_topics in front_topics %}
+{% for home6 in home6 %}
 
     {% autoescape off %}
-    {{ front_topics.content }}
+    {{ home6.content }}
     {% endautoescape %}
 
 {% endfor %}
@@ -265,11 +274,19 @@ ul.dropdown li:hover > ul 			{ visibility: visible; }
 {% endfor %}
 {% endblock %}
 
-{% block about_text %}
-{% for about_text in about_text %}
+{% block about_heading %}
+{% for home4 in home4 %}
+{% autoescape off %}
+{{ home4.title }}
+{% endautoescape %}
+{% endfor %}
+{% endblock %}
+
+{% block home4 %}
+{% for home4 in home4 %}
 <div>
 {% autoescape off %}
-<p>{{ about_text.content }}</p>
+<p>{{ home4.content }}</p>
 {% endautoescape %}
 </div>
 {% endfor %}
