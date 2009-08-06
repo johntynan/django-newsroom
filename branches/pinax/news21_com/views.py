@@ -117,7 +117,7 @@ def test_homepage(request):
 def topics_list(request):
     topics_list = Topic.objects.all().exclude(id__range=(21, 31)).order_by('title') 
     return render_to_response(
-            'topics_list.html',
+            'topics/topics_list.html',
             {'topics_list': topics_list},              
             context_instance=RequestContext(request))
 
@@ -130,7 +130,7 @@ def topic_detail(request, id):
     topic_image = TopicImage.objects.filter(topic=id)
     
     return render_to_response(
-            'topic_detail.html',{
+            'topics/topic_detail.html',{
                 'topics_list': topics_list,
                 'topic': topic_detail,
                 'sec_paths': sec_paths,
@@ -151,7 +151,7 @@ def topic_feed(request, id):
     feed_description = topic_detail.slug
     
     return render_to_response(
-            'topic_feed.rss',{
+            'topics/topic_feed.rss',{
                 'topic': topic_detail,
                 'sec_paths': sec_paths,
                 'promos': promos,
@@ -195,7 +195,7 @@ def school_detail(request, id):
 
     return render_to_response(
             'schools/school_detail.html',{
-                'school_list': schools_list,
+                'school_list': school_list,
                 'topic': topic_detail,
                 'sec_paths': sec_paths,
                 'promos': promos,
