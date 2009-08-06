@@ -291,3 +291,21 @@ ul.dropdown li:hover > ul 			{ visibility: visible; }
 </div>
 {% endfor %}
 {% endblock %}
+
+{% block newsrooms_heading %}
+{% for home5 in home5 %}
+{% autoescape off %}
+{{ home5.title }}
+{% endautoescape %}
+{% endfor %}
+{% endblock %}
+
+{% block newsrooms_text %}
+{% for home5 in home5 %}
+<div>
+{% autoescape off %}
+<p>{{ home5.content }}</p>
+{% endautoescape %}
+</div>
+{% endfor %}
+{% endblock %}
