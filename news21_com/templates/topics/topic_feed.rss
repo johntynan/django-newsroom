@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<rss version="2.0">
+
+<channel>
+    <title>{{ feed_title }}</title>
+    <link>{{ feed_link }}</link>
+    <description>{{ feed_description }}</description>
+    {% for p in promos %}
+        <item> 
+            <title>{{p}}</title>
+            <link>{{p.permalink}}</link>
+            <description>{{p.description}}</description>
+        </item>
+    {% endfor %}
+</channel>
+</rss>
+
