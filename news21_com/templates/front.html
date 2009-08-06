@@ -43,15 +43,24 @@
 
           <div id="topics" class="box">
 
-            <div class="header"><img src="{{ MEDIA_URL }}themes/esser/images/headers/main-topic.gif" alt="2009 Topics: EXPLORATIONS IN A CHANGING AMERICA" /></div>
+            <div style="position:relative;top:-1px;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">
+{% block fronttopics_heading %}
+
+{% for home6 in home6 %}
+    {% autoescape off %}
+    {{ home6.title }}
+    {% endautoescape %}
+{% endfor %}
+
+{% endblock %}</div>
 
             <div style="padding: 0px 5px;">
 {% block fronttopics %}
 
-{% for front_topics in front_topics %}
+{% for home6 in home6 %}
 
     {% autoescape off %}
-    {{ front_topics.content }}
+    {{ home6.content }}
     {% endautoescape %}
 
 {% endfor %}
@@ -137,11 +146,19 @@
 {% endfor %}
 {% endblock %}
 
-{% block about_text %}
-{% for about_text in about_text %}
+{% block about_heading %}
+{% for home4 in home4 %}
+{% autoescape off %}
+{{ home4.title }}
+{% endautoescape %}
+{% endfor %}
+{% endblock %}
+
+{% block home4 %}
+{% for home4 in home4 %}
 <div>
 {% autoescape off %}
-<p>{{ about_text.content }}</p>
+<p>{{ home4.content }}</p>
 {% endautoescape %}
 </div>
 {% endfor %}

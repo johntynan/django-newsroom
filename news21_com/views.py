@@ -35,9 +35,10 @@ def front(request):
     home1 = []
     home2 = []
     home3 = []
+    home4 = []
+    home5 = []
+    home6 = []
     status = []
-    about_text = []
-    front_topics = []
     flatpages = FlatPage.objects.all()
     for x in flatpages:
         if x.url == '/home1/':
@@ -46,12 +47,14 @@ def front(request):
             home2.append(x)
         elif x.url == '/home3/':
             home3.append(x)
+        elif x.url == '/home4/':
+            home4.append(x)
+        elif x.url == '/home5/':
+            home5.append(x)
+        elif x.url == '/home6/':
+            home6.append(x)
         elif x.url == '/status/':
             status.append(x)
-        elif x.url == '/abouttext/':
-            about_text.append(x)
-        elif x.url == '/front/topics/':
-            front_topics.append(x)
 
     return render_to_response(
             'front.html',{
@@ -59,9 +62,10 @@ def front(request):
             'home1': home1,
             'home2': home2,
             'home3': home3,
+            'home4': home4,
+            'home5': home5,
+            'home6': home6,
             'status': status,
-            'about_text':about_text,
-            'front_topics': front_topics,
              },
               context_instance=RequestContext(request))
 
@@ -76,9 +80,10 @@ def test_homepage(request):
     home1 = []
     home2 = []
     home3 = []
+    home4 = []
+    home5 = []
+    home6 = []
     status = []
-    about_text = []
-    front_topics = []
     flatpages = FlatPage.objects.all()
     for x in flatpages:
         if x.url == '/home1/':
@@ -87,12 +92,14 @@ def test_homepage(request):
             home2.append(x)
         elif x.url == '/home3/':
             home3.append(x)
+        elif x.url == '/home4/':
+            home4.append(x)
+        elif x.url == '/home5/':
+            home5.append(x)
+        elif x.url == '/home6/':
+            home6.append(x)
         elif x.url == '/status/':
             status.append(x)
-        elif x.url == '/abouttext/':
-            about_text.append(x)
-        elif x.url == '/front/topics/':
-            front_topics.append(x)
 
     return render_to_response(
             'promo_billboard_homepage.html',{
@@ -100,12 +107,12 @@ def test_homepage(request):
             'home1': home1,
             'home2': home2,
             'home3': home3,
+            'home4': home4,
+            'home5': home5,
+            'home6': home6,
             'status': status,
-            'about_text': about_text,
-            'front_topics': front_topics,
              },
               context_instance=RequestContext(request))
-
 
 def topics_list(request):
     topics_list = Topic.objects.all().exclude(id__range=(21, 31)).order_by('title') 

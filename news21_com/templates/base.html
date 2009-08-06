@@ -69,7 +69,7 @@
               </ul>
             </li>
             <li onmouseover="$('ul.about_sub_menu').show();" onmouseout="$('ul.about_sub_menu').hide();"><a href="/about/"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/about.gif" alt="About" /></a>
-              <ul class="about_sub_menu">
+              <ul class="about_sub_menu" style="z-index:1;">
                 <li><a href="/about#initiative">The Initiative</a></li>
                 <li><a href="/about#participants" onmouseover="$('ul.participants_sub_menu').show();" onclick="$('ul.participants_sub_menu').hide();">Participants</a>
                 <ul class="participants_sub_menu">
@@ -125,7 +125,7 @@ $('#message_{{ forloop.counter }}').fadeOut(); return false;"><small>clear</smal
           {% block sidebar_about %}
           <div id="about-news21" class="box">
 
-            <div class="header"><img src="{{ MEDIA_URL }}themes/esser/images/headers/about-news21.gif" alt="About News21" /></div>
+            <div style="position:relative;top:-1px;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{% block about_heading %}About News21{% endblock %}</div>
 
             <div class="padding">
 
@@ -149,7 +149,7 @@ $('#message_{{ forloop.counter }}').fadeOut(); return false;"><small>clear</smal
           {% block sidebar_topics %}
           <div id="topics" class="box">
 
-            <div class="header"><img src="{{ MEDIA_URL }}themes/esser/images/headers/2009-topics.gif" alt="2009 Topics" /></div>
+            <div style="position:relative;top:-1px;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">2009 Topics</div>
 
             <div class="padding">
 
@@ -172,7 +172,7 @@ $('#message_{{ forloop.counter }}').fadeOut(); return false;"><small>clear</smal
           {% block sidebar_orgs %}
           <div id="university-newsrooms" class="box">
 
-            <div class="header"><img src="{{ MEDIA_URL }}themes/esser/images/headers/university-newsrooms.gif" alt="University Nerwsrooms" /></div>
+            <div style="position:relative;top:-1px;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{% block newsrooms_heading %}University Nerwsrooms{% endblock %}</div>
 
             <div class="padding" style="padding: 5px 10px;">
 
