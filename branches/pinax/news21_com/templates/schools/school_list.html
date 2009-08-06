@@ -1,0 +1,21 @@
+{% extends 'site_base.html' %} 
+
+{% block head_title %}Schools{% endblock %}
+
+{% block body_id %}topics{% endblock %}
+
+{% block body %}
+
+<h1>Schools</h1>
+
+<ul>
+{% for o in school_list %}
+<li class="{% cycle 'even' 'odd' %}"><a href="./detail/{{o.id}}">{{o}}</a> {{o.description}}<br>
+{% empty %}
+<li>No topics submitted yet.</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
+
+

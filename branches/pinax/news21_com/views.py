@@ -178,15 +178,15 @@ def about_history(request):
              },
               context_instance=RequestContext(request))
 
-def incubators_list(request):
-    incubators_list = Topic.objects.all().filter(id__range=(21, 31)).order_by('title')
+def school_list(request):
+    school_list = Topic.objects.all().filter(id__range=(21, 31)).order_by('title')
     return render_to_response(
-            'incubators/incubators_list.html',
-            {'incubators_list': incubators_list},              
+            'schools/school_list.html',
+            {'school_list': school_list},              
             context_instance=RequestContext(request))
 
-def incubator_detail(request, id):
-    incubators_list = Topic.objects.all().filter(id__range=(21, 31)).order_by('title')
+def school_detail(request, id):
+    school_list = Topic.objects.all().filter(id__range=(21, 31)).order_by('title')
     topic_detail = Topic.objects.get(id=id)
     topic_slug = topic_detail.slug
     sec_paths = TopicPath.objects.filter(topic__slug=topic_slug)
@@ -194,8 +194,8 @@ def incubator_detail(request, id):
     topic_image = TopicImage.objects.filter(topic=id)
 
     return render_to_response(
-            'incubators/incubator_detail.html',{
-                'incubators_list': incubators_list,
+            'schools/school_detail.html',{
+                'school_list': schools_list,
                 'topic': topic_detail,
                 'sec_paths': sec_paths,
                 'promos': promos,
