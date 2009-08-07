@@ -30,7 +30,7 @@ urlpatterns = patterns('',
     (r'^feeds/', include('feeds.urls')),
     (r'^test/','news21_com.views.test_homepage'),
     (r'^promos/',include('promos.urls')),
-    (r'^topics/$', 'news21_com.views.topics_list'),
+    (r'^topics/$', 'news21_com.views.topics_page'),
     (r'^topics/list/$', 'news21_com.views.topics_list'),
     (r'^topics/detail/(.*)$', 'news21_com.views.topic_detail'),
     (r'^topics/feed/$', 'news21_com.views.topic_feed'),
@@ -38,6 +38,8 @@ urlpatterns = patterns('',
     (r'^about/history/','news21_com.views.about_history'),
     (r'^schools/$','news21_com.views.school_list'),
     (r'^schools/detail/(.*)$', 'news21_com.views.school_detail'),
+    # keep this url for Gannet, until things change for good
+    (r'^topic_feed/(.*)$', 'news21_com.views.topic_feed_detail'),
 )
 
 if settings.SERVE_MEDIA:

@@ -5,10 +5,10 @@
     <title>{{ feed_title }}</title>
     <link>{{ feed_link }}</link>
     <description>{{ feed_description }}</description>
-    {% for p in promos %}
+    {% for p in topics_list %}
         <item> 
             <title>{{p}}</title>
-            <link>{{p.permalink}}</link>
+            <link>http://news21.com/topics/feed/{{p.id}}/</link>
             <description>{{p.description}}</description>
         </item>
     {% endfor %}

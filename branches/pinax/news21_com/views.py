@@ -114,6 +114,13 @@ def test_homepage(request):
              },
               context_instance=RequestContext(request))
 
+def topics_page(request):
+    topics_list = Topic.objects.all().exclude(id__range=(21, 31)).order_by('title') 
+    return render_to_response(
+            'topics/topics.html',
+            {'topics_list': topics_list},              
+            context_instance=RequestContext(request))
+
 def topics_list(request):
     topics_list = Topic.objects.all().exclude(id__range=(21, 31)).order_by('title') 
     return render_to_response(
@@ -138,27 +145,19 @@ def topic_detail(request, id):
                 'topic_image': topic_image
              }, context_instance=RequestContext(request))
 
-def topic_feed(request, id):
+def topic_feed(request):
     topics_list = Topic.objects.all().exclude(id__range=(21, 31)).order_by('title')
-    topic_detail = Topic.objects.get(id=id)
-    topic_slug = topic_detail.slug
-    sec_paths = TopicPath.objects.filter(topic__slug=topic_slug)
-    promos = Promo.objects.filter(topic_path__in=sec_paths).distinct()
-    topic_image = TopicImage.objects.filter(topic=id)
 
-    feed_title = 'News21.com topic feed: ' + topic_detail.slug
-    feed_link = 'http://news21.com/topics/detail/' + topic_detail.slug + '/'
-    feed_description = topic_detail.slug
+    feed_title = 'News21.com Topics '
+    feed_link = 'http://news21.com/topics/feed/'
+    feed_description = 'RSS Feed of Topics and Stories from across all of News21'
     
     return render_to_response(
             'topics/topic_feed.rss',{
-                'topic': topic_detail,
-                'sec_paths': sec_paths,
-                'promos': promos,
-                'topic_image': topic_image,
                 'feed_title': feed_title,
                 'feed_link': feed_link,
-                'feed_description': feed_description
+                'feed_description': feed_description,
+                'topics_list': topics_list
              }, context_instance=RequestContext(request))
 
 def topic_feed_detail(request, id):
