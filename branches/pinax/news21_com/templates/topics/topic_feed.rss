@@ -8,7 +8,7 @@
     {% for p in topics_list %}
         <item> 
             <title>{{p}}</title>
-            <link>http://news21.com/topics/feed/{{p.id}}/</link>
+            <link>http://news21.com/topics/feed/{{p.id}}</link>
             <description>{{p.description}}</description>
         </item>
     {% endfor %}
