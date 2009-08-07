@@ -34,7 +34,7 @@
 <div id="topic_nav" class="grid_2">
     <ul>
     {% for o in school_list %}
-    <li class="{% cycle 'even' 'odd' %}"><a href="../detail/{{o.id}}">{{o}}</a>
+    <li class="{% cycle 'even' 'odd' %}"><a href="/schools/{{o.slug}}">{{o}}</a>
     {% empty %}
     <li>No topics submitted yet.</li>
     {% endfor %}
