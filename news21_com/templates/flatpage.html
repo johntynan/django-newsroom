@@ -1,0 +1,24 @@
+{% extends "site_base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{{ flatpage.title }}{% endblock %}
+
+{% block body %}
+          <div class="grid_9">
+
+            <a name="top"></a>
+{% for flatpage in flatpage %}
+    <h1>{% autoescape off %}{{ flatpage.title }}{% endautoescape %}</h1>
+
+    <div>{% autoescape off %}
+    {{ flatpage.content }}
+    {% endautoescape %}</div>
+
+{% endfor %}
+
+          </div>
+
+
+
+{% endblock %}

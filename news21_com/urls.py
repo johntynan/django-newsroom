@@ -38,8 +38,17 @@ urlpatterns = patterns('',
     (r'^about/history/','news21_com.views.about_history'),
     (r'^schools/$','news21_com.views.school_list'),
     (r'^schools/(?P<slug>[-\w]+)/$', 'news21_com.views.school_detail'),
+    (r'^about/history/','news21_com.views.about_history'),
+    (r'^initiative/$','news21_com.views.initiative'),
+    (r'^initiative/curriculum/$','news21_com.views.initiative_curriculum'),
+    (r'^initiative/news21/$','news21_com.views.initiative_news21'),
+    (r'^initiative/news21/abcnews/$','news21_com.views.initiative_abcnews'),
+    (r'^initiative/participants/$','news21_com.views.initiative_participants'),
+    (r'^initiative/vision/$','news21_com.views.initiative_vision'),
+    (r'^taskforce/$','news21_com.views.taskforce'),
+    (r'^taskforce/manifesto/$','news21_com.views.taskforce_manifesto'),
     # keep this url for Gannet, until things change for good
-    (r'^topic_feed/(.*)$', 'news21_com.views.topic_feed_detail'),
+    (r'^topic_feed/(.*)$', 'news21_com.views.topic_feed_detail')
 )
 
 if settings.SERVE_MEDIA:

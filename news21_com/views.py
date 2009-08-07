@@ -228,4 +228,131 @@ def school_detail(request, slug=None):
                 #'topic_image': topic_image
              }, context_instance=RequestContext(request))
 
+def initiative(request):
+    """
+    Send the initiative from flatpages to a template. 
+    """
+    flatpage = []
+    flatpages = FlatPage.objects.all()
+    for x in flatpages:
+        if x.url == '/initiative/':
+            flatpage.append(x)
 
+    return render_to_response(
+            'flatpage.html',{
+            'flatpage':flatpage,
+             },
+              context_instance=RequestContext(request))
+
+def initiative_curriculum(request):
+    """
+    Send the initiative_curriculum from flatpages to a template. 
+    """
+    flatpage = []
+    flatpages = FlatPage.objects.all()
+    for x in flatpages:
+        if x.url == '/initiative/curriculum/':
+            flatpage.append(x)
+
+    return render_to_response(
+            'flatpage.html',{
+            'flatpage':flatpage,
+             },
+              context_instance=RequestContext(request))
+
+def initiative_news21(request):
+    """
+    Send the initiative_news21 from flatpages to a template. 
+    """
+    flatpage = []
+    flatpages = FlatPage.objects.all()
+    for x in flatpages:
+        if x.url == '/initiative/news21/':
+            flatpage.append(x)
+
+    return render_to_response(
+            'flatpage.html',{
+            'flatpage':flatpage,
+             },
+              context_instance=RequestContext(request))
+
+def initiative_abcnews(request):
+    """
+    Send the initiative_abcnews from flatpages to a template. 
+    """
+    flatpage = []
+    flatpages = FlatPage.objects.all()
+    for x in flatpages:
+        if x.url == '/initiative/news21/abcnews/':
+            flatpage.append(x)
+
+    return render_to_response(
+            'flatpage.html',{
+            'flatpage':flatpage,
+             },
+              context_instance=RequestContext(request))
+
+def initiative_participants(request):
+    """
+    Send the initiative_participants from flatpages to a template. 
+    """
+    flatpage = []
+    flatpages = FlatPage.objects.all()
+    for x in flatpages:
+        if x.url == '/initiative/participants/':
+            flatpage.append(x)
+
+    return render_to_response(
+            'flatpage.html',{
+            'flatpage':flatpage,
+             },
+              context_instance=RequestContext(request))
+
+def initiative_vision(request):
+    """
+    Send the initiative_vision from flatpages to a template. 
+    """
+    flatpage = []
+    flatpages = FlatPage.objects.all()
+    for x in flatpages:
+        if x.url == '/initiative/vision/':
+            flatpage.append(x)
+
+    return render_to_response(
+            'flatpage.html',{
+            'flatpage':flatpage,
+             },
+              context_instance=RequestContext(request))
+
+
+def taskforce(request):
+    """
+    Send the taskforce from flatpages to a template. 
+    """
+    flatpage = []
+    flatpages = FlatPage.objects.all()
+    for x in flatpages:
+        if x.url == '/taskforce/':
+            flatpage.append(x)
+
+    return render_to_response(
+            'flatpage.html',{
+            'flatpage':flatpage,
+             },
+              context_instance=RequestContext(request))
+
+def taskforce_manifesto(request):
+    """
+    Send the taskforce_manifesto from flatpages to a template. 
+    """
+    flatpage = []
+    flatpages = FlatPage.objects.all()
+    for x in flatpages:
+        if x.url == '/taskforce/manifesto/':
+            flatpage.append(x)
+
+    return render_to_response(
+            'flatpage.html',{
+            'flatpage':flatpage,
+             },
+              context_instance=RequestContext(request))
