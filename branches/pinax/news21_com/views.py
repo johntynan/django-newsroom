@@ -115,21 +115,21 @@ def test_homepage(request):
               context_instance=RequestContext(request))
 
 def topics_page(request):
-    topics_list = Topic.objects.all().exclude(id__range=(21, 31)).order_by('title') 
+    topics_list = Topic.objects.all().exclude(id__range=(21, 32)).order_by('title') 
     return render_to_response(
             'topics/topics.html',
             {'topics_list': topics_list},              
             context_instance=RequestContext(request))
 
 def topics_list(request):
-    topics_list = Topic.objects.all().exclude(id__range=(21, 31)).order_by('title') 
+    topics_list = Topic.objects.all().exclude(id__range=(21, 32)).order_by('title') 
     return render_to_response(
             'topics/topics_list.html',
             {'topics_list': topics_list},              
             context_instance=RequestContext(request))
 
 def topic_detail(request, id):
-    topics_list = Topic.objects.all().exclude(id__range=(21, 31)).order_by('title') 
+    topics_list = Topic.objects.all().exclude(id__range=(21, 32)).order_by('title') 
     topic_detail = Topic.objects.get(id=id)
     topic_slug = topic_detail.slug
     sec_paths = TopicPath.objects.filter(topic__slug=topic_slug)
@@ -146,7 +146,7 @@ def topic_detail(request, id):
              }, context_instance=RequestContext(request))
 
 def topic_feed(request):
-    topics_list = Topic.objects.all().exclude(id__range=(21, 31)).order_by('title')
+    topics_list = Topic.objects.all().exclude(id__range=(21, 32)).order_by('title')
 
     feed_title = 'News21.com Topics '
     feed_link = 'http://news21.com/topics/feed/'
@@ -161,7 +161,7 @@ def topic_feed(request):
              }, context_instance=RequestContext(request))
 
 def topic_feed_detail(request, id):
-    topics_list = Topic.objects.all().exclude(id__range=(21, 31)).order_by('title')
+    topics_list = Topic.objects.all().exclude(id__range=(21, 32)).order_by('title')
     topic_detail = Topic.objects.get(id=id)
     topic_slug = topic_detail.slug
     sec_paths = TopicPath.objects.filter(topic__slug=topic_slug)
@@ -201,14 +201,14 @@ def about_history(request):
               context_instance=RequestContext(request))
 
 def school_list(request):
-    school_list = Topic.objects.all().filter(id__range=(21, 31)).order_by('title')
+    school_list = Topic.objects.all().filter(id__range=(21, 32)).order_by('title')
     return render_to_response(
             'schools/school_list.html',
             {'school_list': school_list},              
             context_instance=RequestContext(request))
 
 def school_detail(request, id):
-    school_list = Topic.objects.all().filter(id__range=(21, 31)).order_by('title')
+    school_list = Topic.objects.all().filter(id__range=(21, 32)).order_by('title')
     topic_detail = Topic.objects.get(id=id)
     topic_slug = topic_detail.slug
     sec_paths = TopicPath.objects.filter(topic__slug=topic_slug)
