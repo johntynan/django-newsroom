@@ -28,25 +28,21 @@
 */
 ul.dropdown                         { position: relative; }
 ul.dropdown li                      { font-weight: bold; float: left; zoom: 1; background: #ccc;}
-ul.dropdown a:hover		            { color: #000; }
-ul.dropdown a:active                { color: #ffa500; }
-ul.dropdown li a                    { display: block; padding: 4px 8px; border-right: 1px solid #333;
-	 								  color: #222;   background: url(/site_media/themes/esser/images/header/buttons/bgs/subnav.gif) right 1px no-repeat;}
+ul.dropdown a:hover		            { color: #f29812; }
+ul.dropdown a:active                { color: #f29812; }
+ul.dropdown li a                    { display: block; padding: 4px 8px; border-right: 1px solid #333; color: white;}
 ul.dropdown li:last-child a         { border-right: none; } /* Doesn't work in IE */
 ul.dropdown li.hover,
-ul.dropdown li:hover                { color: black; position: relative; }
-ul.dropdown li.hover a              { color: white; }
+ul.dropdown li:hover                { color: white; position: relative; }
 
 
 /* 
 	LEVEL TWO
-
-ul.dropdown ul width: 170px; 
 */
 
 ul.dropdown ul 						{ visibility: hidden; position: absolute; top:36px; left: 0; }
 ul.dropdown ul li 					{ font-weight: normal; background: #404040; color: #000; 
-									  border-bottom: 1px solid #ccc; float: none; }
+									  border-bottom: 1px solid #ccc; float: none; padding-right:7px;}
 									  
                                     /* IE 6 & 7 Needs Inline Block */
 ul.dropdown ul li a					{ border-right: none; width: 100%; display: inline-block; }
@@ -66,8 +62,8 @@ ul.dropdown li:hover > ul 			{ visibility: visible; }
           <ul class="dropdown" style="list-style: none">
             <li><a href="/topics/" style="z-index:1;padding: 0px 0px;"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/topics.gif" alt="Topics" /></a>
               <ul class="dropdown">
-                <li><a href="/topics/school/">School</a>
-                <ul style="z-index:1;width: 140px;">
+                <li><a href="/schools/">School</a>
+                <ul style="z-index:1;width: 130px;">
                     <li><a href="/schools/asu">Arizona</a></li>
                     <li><a href="/schools/berkeley">Berkeley</a></li>
                     <li><a href="/schools/columbia">Columbia</a></li>
@@ -82,8 +78,8 @@ ul.dropdown li:hover > ul 			{ visibility: visible; }
                     <li><a href="/schools/texas">Texas</a></li>
                 </ul>
                 </li>
-                <li><a href="/topics_list">Project</a>
-                <ul class="sub_menu" style="z-index:1;width: 220px;">
+                <li><a href="/about/#participants">Project</a>
+                <ul class="sub_menu" style="z-index:1; width: 260px;">
                     <li><a href="http://asu.news21.com/">The Latino Experience Across America</a></li>
                     <li><a href="http://berkeley.news21.com/">Intersections: Bay Area Communities at the Crossroads</a></li>
                     <li><a href="http://columbia.news21.com/">Charter Explosion: Hybrid Schools in Public Education</a></li>
@@ -94,8 +90,8 @@ ul.dropdown li:hover > ul 			{ visibility: visible; }
                     <li><a href="http://syracuse.news21.com">The Young &amp; the Wireless: Net Gen Rising</a></li>
                 </ul>
                 </li>
-                <li><a href="/topics_list">Category</a>
-                <ul class="sub_menu" style="z-index:1;width: 140px;">
+                <li><a href="/topics/list/">Category</a>
+                <ul class="sub_menu" style="z-index:1;width: 120px;">
                 <li><a href="/topics/cities">Cities</a></li>
                 <li><a href="/topics/culture">Culture</a></li>
                 <li><a href="/topics/demographics">Demographics</a></li>
