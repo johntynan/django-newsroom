@@ -306,10 +306,8 @@ ul.dropdown li:hover > ul 			{ visibility: visible; }
 
 {% block home5_text %}
 {% for home5 in home5 %}
-<div>
 {% autoescape off %}
-<p>{{ home5.content }}</p>
+{{ home5.content }}
 {% endautoescape %}
-</div>
 {% endfor %}
 {% endblock %}
