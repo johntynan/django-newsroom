@@ -66,6 +66,10 @@ a:active {
   border-right: 1px solid #7c7c7d;
 }
 
+/**
+ * Begin Header Navigation Styles
+ */
+
 #header ul {
   float: left;
   margin: 0;
@@ -84,6 +88,15 @@ a:active {
   float: left;
 }
 
+#header ul li ul li {
+  float: none;
+  display: block;
+  border: 0;
+}
+
+
+
+/**
 #header ul li ul {
   background: #404040;
   display: none;
@@ -95,12 +108,6 @@ a:active {
   padding: 4px 0px;
 }
 
-#header ul li ul li {
-  float: none;
-  display: block;
-  border: 0;
-}
-
 #header ul li ul li a {
   background: url(/site_media/themes/esser/images/header/buttons/bgs/subnav.gif) right 6px no-repeat;
   color: #fff;
@@ -109,11 +116,15 @@ a:active {
   padding: 2px 12px;
   text-decoration: none;
 }
-
 #header ul li ul li a:hover {
   background: url(/site_media/themes/esser/images/header/buttons/bgs/subnav-over.gif) right 6px no-repeat;
   color: #f29812;
 }
+*/
+
+/**
+ * End Header Navigation Styles
+ */
 
 #header form input.input {
   float: left;
@@ -348,4 +359,42 @@ a:active {
 #content ul li.odd {
     background-color: #B2B2B4;
 }
+
+/* 
+	Begin Dropdown Navigation Styles
+*/
+
+/* 
+	LEVEL ONE
+*/
+ul.dropdown                         { position: relative; }
+ul.dropdown li                      { font-weight: bold; float: left; zoom: 1; background: #ccc;}
+ul.dropdown a:hover		            { color: #f29812; }
+ul.dropdown a:active                { color: #f29812; }
+ul.dropdown li a                    { display: block; padding: 4px 8px; border-right: 1px solid #333; color: white;}
+ul.dropdown li:last-child a         { border-right: none; } /* Doesn't work in IE */
+ul.dropdown li.hover,
+ul.dropdown li:hover                { color: white; position: relative; }
+
+
+/* 
+	LEVEL TWO
+*/
+
+ul.dropdown ul 						{ visibility: hidden; position: absolute; top:36px; left: 0; }
+ul.dropdown ul li 					{ font-weight: normal; background: #404040; color: #000; 
+									  border-bottom: 1px solid #ccc; float: none; padding-right:7px;}
+									  
+                                    /* IE 6 & 7 Needs Inline Block */
+ul.dropdown ul li a					{ border-right: none; width: 100%; display: inline-block; }
+
+/* 
+	LEVEL THREE
+*/
+ul.dropdown ul ul 					{ left: 100%; top: 0; }
+ul.dropdown li:hover > ul 			{ visibility: visible; }
+
+/* 
+	End Dropdown Navigation Styles
+*/
 

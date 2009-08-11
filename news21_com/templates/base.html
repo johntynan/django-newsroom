@@ -28,6 +28,7 @@
 
     {% block javascripts %}
     <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-1.3.min.js"></script>
+    <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.dropdownPlain.js"></script>
 
   <!-- AddThis Button START -->
   <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js?pub=news21"></script>
@@ -60,29 +61,41 @@
           <div id="tagline"><img src="{{ MEDIA_URL }}themes/esser/images/header/innovate-investigate-collaborate.gif" alt="Innovate_Investigate_Collaborate." /></div>
 
           {% block navbar %}
-          <ul class="dropdown"><!-- onmouseout="$('ul.participants_sub_menu').hide();" -->
-            <li><a href="/topics/"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/topics.gif" alt="Topics" /></a>
-              <ul class="topic_sub_menu">
-                <li><a href="#">One</a></li>
-                <li><a href="#">Two</a></li>
-                <li><a href="#">Three</a></li>
-              </ul>
-            </li>
-            <li onmouseover="$('ul.about_sub_menu').show();" onmouseout="$('ul.about_sub_menu').hide();"><a href="/about/"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/about.gif" alt="About" /></a>
-              <ul class="about_sub_menu" style="z-index:1;">
-                <li><a href="/about#initiative">The Initiative</a></li>
-                <li><a href="/about#participants" onmouseover="$('ul.participants_sub_menu').show();" onclick="$('ul.participants_sub_menu').hide();">Participants</a>
-                <ul class="participants_sub_menu">
-                    <li style="margin-left:10px;" onclick="$('ul.participants_sub_menu').hide();"><a href="http://asu.news21.com/">Arizona</a></li>
-                    <li style="margin-left:10px;" onclick="$('ul.participants_sub_menu').hide();"><a href="http://berkeley.news21.com/">Berkeley</a></li>
-                    <li style="margin-left:10px;" onclick="$('ul.participants_sub_menu').hide();"><a href="http://columbia.news21.com/">Columbia</a></li>
-                    <li style="margin-left:10px;" onclick="$('ul.participants_sub_menu').hide();"><a href="http://www.thenewvoters.com">Maryland</a></li>
-                    <li style="margin-left:10px;" onclick="$('ul.participants_sub_menu').hide();"><a href="http://unc.news21.com/">North Carolina</a></li>
-                    <li style="margin-left:10px;" onclick="$('ul.participants_sub_menu').hide();"><a href="http://northwestern.news21.com">Northwestern</a></li>
-                    <li style="margin-left:10px;" onclick="$('ul.participants_sub_menu').hide();"><a href="http://usc.news21.com/">Southern California</a></li>
-                    <li style="margin-left:10px;" onclick="$('ul.participants_sub_menu').hide();"><a href="http://syracuse.news21.com/">Syracuse</a></li>
+          <ul class="dropdown" style="list-style: none">
+            <li><a href="/topics/" style="z-index:1;padding: 0px 0px;"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/topics.gif" alt="Topics" /></a>
+              <ul class="dropdown" style="z-index:1; width: 105px;">
+                <li><a href="/schools/">By Newsroom</a>
+                <ul class="sub_menu" style="z-index:1;width: 140px;">
+                    <li><a href="http://asu.news21.com/">Arizona</a></li>
+                    <li><a href="http://berkeley.news21.com/">Berkeley</a></li>
+                    <li><a href="http://columbia.news21.com/">Columbia</a></li>
+                    <li><a href="http://umd.news21.com/">Maryland</a></li>
+                    <li><a href="http://unc.news21.com/">North Carolina</a></li>
+                    <li><a href="http://northwestern.news21.com/">Northwestern</a></li>
+                    <li><a href="http://usc.news21.com/">Southern California</a></li>
+                    <li><a href="http://syracuse.news21.com/">Syracuse</a></li>
                 </ul>
                 </li>
+                <li><a href="/about/#participants">By Project</a>
+                <ul class="sub_menu" style="z-index:1; width: 160px;">
+                    <li><a href="http://asu.news21.com/">The Latino Experience</a></li>
+                    <li><a href="http://berkeley.news21.com/">Intersections</a></li>
+                    <li><a href="http://columbia.news21.com/">Charter School Explosion</a></li>
+                    <li><a href="http://umd.news21.com/">The New Voters</a></li>
+                    <li><a href="http://unc.news21.com/">Powering a Nation</a></li>
+                    <li><a href="http://northwestern.news21.com/">Young Urban Adults</a></li>
+                    <li><a href="http://usc.news21.com/">Southwestern Shifts</a></li>
+                    <li><a href="http://syracuse.news21.com">The Young &amp; the Wireless</a></li>
+                </ul>
+                </li>
+              </ul>
+            </li>
+
+
+            <li><a href="/about/" style="padding: 0px 0px;"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/about.gif" alt="About"></a>
+              <ul class="dropdown" style="z-index:1; width: 90px;">
+                <li><a href="/about#initiative">The Initiative</a></li>
+                <li><a href="/about#participants">Participants</a></li>
                 <!-- <li><a href="#">Contributors</a></li>
                 <li><a href="#">News Partners</a></li> -->
               </ul>
@@ -154,7 +167,7 @@ $('#message_{{ forloop.counter }}').fadeOut(); return false;"><small>clear</smal
                 <li><a href="http://asu.news21.com/">The Latino Experience Across America</a></li>
                 <li><a href="http://berkeley.news21.com/">Intersections: Bay Area Communities at the Crossroads</a></li>
                 <li><a href="http://columbia.news21.com/">Charter Explosion: Hybrid Schools in Public Education</a></li>
-                <li><a href="http://www.thenewvoters.com">The New Voters: Identity & U.S. Politics</a></li>
+                <li><a href="http://umd.news21.com/">The New Voters: Identity & U.S. Politics</a></li>
                 <li><a href="http://unc.news21.com/">Powering a Nation: Quest for Energy in a Changing USA</a></li>
                 <li><a href="http://northwestern.news21.com/">Young Urban Adults and the New America</a></li>
                 <li><a href="http://usc.news21.com/">Southwestern Shifts: New Communities & New Realities</a></li>
