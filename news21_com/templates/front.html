@@ -79,19 +79,19 @@
 <td style="width:1%;"></td>
 
 {% for home1 in home1 %}
-<th style="width:30%;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{{ home1.title }}</th>
+<th style="width:30%;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">Editors&#39; Picks</th>
 {% endfor %}
 
 <td style="width:2%;"></td>
 
 {% for home2 in home2 %}
-<th style="width:30%;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{{ home2.title }}</th>
+<th style="width:30%;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">Change in Focus: Students</th>
 {% endfor %}
 
 <td style="width:2%;"></td>
 
 {% for home3 in home3 %}
-<th style="width:30%;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{{ home3.title }}</th>
+<th style="width:30%;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">Innovation Explained</th>
 {% endfor %}
 
 <td style="width:1%;"></td>
@@ -104,7 +104,25 @@
 {% for home1 in home1 %}
 <td style="height:200px;vertical-align:top;">
 {% autoescape off %}
-<p>{{ home1.content }}</p>
+<p><ul>
+<li><a href="http://asu.news21.com/the-virgin-of-guadalupe/">Virgin Tour: Mexico's Patron Saint Goes Global
+</a></li>
+
+<li><a href="http://berkeley.news21.com/town-square/">California Communities Build a New Kind of Town Square</a></li>
+
+<li><a href="http://columbia.news21.com/?page_id=1233">Zero to 4,566: Mapping Charter School Growth</a></li>
+
+<li><a href="http://www.thenewvoters.com/voices/newdestinations/2009/07/former-rogers-mayor-sees-country-everybody">Latinos Reshape an Arkansas Town</a></li>
+
+<li><a href="http://news21.jomc.unc.edu/index.php/stories/portraits.html">Energy Portraits: Four Families Try to Conserve</a></li>
+
+<li><a href="http://northwestern.news21.com/2009/07/27/dreamers-undocumented-young-adults-face-uncertainty/#more-344">Dreamers: Undocumented Young Adults Face Uncertainty</a></li>
+
+<li><a href="http://news21.uscannenberg.org/index.php/bfrank/storypage/C15">As California Tribal Purging Leaves Some Behind</a></li>
+
+<li><a href="http://youngandthewireless.com/">Seven Kids and One Laptop: An Arizona Family Makes Do</a></li>
+
+</ul></p>
 {% endautoescape %}
 </td>
 {% endfor %}
@@ -114,7 +132,9 @@
 {% for home2 in home2 %}
 <td style="height:200px;vertical-align:top;">
 {% autoescape off %}
-<p>{{ home2.content }}</p>
+<p><a href="http://asu.news21.com/building-success/"><img src="http://newsroom.news21.com/site_media/uploads/promos/2009/08/03/asu-boy-education.jpg" alt="boy at work by Elizabeth Shell and Jeremy Pennycook" align="center" style="width:100%;height:auto;"></a>
+<h2 style="margin-bottom:0px;"><a href="http://asu.news21.com/building-success/">Hispanics Closing the Achievement Gap</a></h2>
+Students reveal how they, with the help of their parents and their schools, are succeeding in bucking the high dropout rate for Hispanics.</p>
 {% endautoescape %}
 </td>
 {% endfor %}
@@ -124,7 +144,14 @@
 {% for home3 in home3 %}
 <td style="height:200px;vertical-align:top;">
 {% autoescape off %}
-<p>{{ home3.content }}</p>
+<p><h2 style="margin-bottom:0px;"><a href="http://innovate.news21.com">Sharing Approaches to Storytelling</a></h2>
+Everything News21 does is meant to be shared. Check the blog for insights into how the projects were conceived, reported, created and produced.
+<a href="http://www.wordle.net/gallery/wrdl/1026050/News21_Innovations" 
+		  title="Wordle: News21 Innovations"><img
+		  src="http://newsroom.news21.com/site_media/uploads/promos/2009/08/03/wordle-innov-cloud-v4.jpg"
+		  alt="Wordle: News21 Innovations" width="272" 
+		  style="padding:4px"></a>
+</p>
 {% endautoescape %}
 </td>
 {% endfor %}
@@ -140,7 +167,7 @@
 {% for status in status %}
 <div>
 {% autoescape off %}
-<p>{{ status.content }}</p>
+
 {% endautoescape %}
 </div>
 {% endfor %}
@@ -149,7 +176,7 @@
 {% block home4_heading %}
 {% for home4 in home4 %}
 {% autoescape off %}
-{{ home4.title }}
+About News21
 {% endautoescape %}
 {% endfor %}
 {% endblock %}
@@ -158,7 +185,14 @@
 {% for home4 in home4 %}
 <div>
 {% autoescape off %}
-<p>{{ home4.content }}</p>
+<p><p><span style="color: red;"><strong>BETA 4.0: Summer 2009</strong></span></p>
+<p>
+<strong>News21 is an alliance of more than 90 students from 12 universities dedicated to exploring new approaches to in-depth digital journalism. Carnegie-Knight fellows from Harvard, Missouri, Nebraska and Texas participated in the projects developed by the eight schools listed below. 
+</strong>
+</p>
+<p>
+<strong>These projects will continue to be refined into the fall.  Please return to see our work take shape and <a href="mailto:news@news21.com">offer feedback</a>.</strong>
+</p></p>
 {% endautoescape %}
 </div>
 {% endfor %}
@@ -168,7 +202,7 @@
 {% block home5_heading %}
 {% for home5 in home5 %}
 {% autoescape off %}
-{{ home5.title }}
+University Newsrooms
 {% endautoescape %}
 {% endfor %}
 {% endblock %}
@@ -176,7 +210,20 @@
 {% block home5_text %}
 {% for home5 in home5 %}
 {% autoescape off %}
-{{ home5.content }}
+              <ul class="left">
+                <li><a href="http://asu.news21.com/">Arizona State</a></li>
+                <li><a href="http://berkeley.news21.com/">Berkeley</a></li>
+                <li><a href="http://columbia.news21.com/">Columbia</a></li>
+                <li><a href="http://www.thenewvoters.com">Maryland</a></li>
+
+              </ul>
+              <ul class="right">
+                <li><a href="http://unc.news21.com/">North Carolina</a></li>
+                <li><a href="http://northwestern.news21.com/">Northwestern</a></li>
+                <li style="white-space: nowrap;"><a href="http://usc.news21.com/">Southern California</a></li>
+                <li><a href="http://syracuse.news21.com/">Syracuse</a></li>
+
+              </ul>
 {% endautoescape %}
 {% endfor %}
 {% endblock %}
