@@ -26,7 +26,7 @@
         </div>
         {% else %}
         {% ifequal billboard.billboard_type '1' %}
-                <div style="background: #5c8eb2 url({{ billboard.image.image.url }});width:700px; height:360px;z-index:0; no-repeat;cursor:pointer;cursor:hand;" OnClick="window.location='{% firstof billboard.link.url billboard.promo.permalink %}'"  title="{{ billboard.image.caption }} : {{ billboard.image.attribution }}">
+                <div style="background: #5c8eb2 url({{ billboard.image.image.url }});width:700px; height:360px;z-index:0; no-repeat;cursor:pointer;cursor:hand;" OnClick="window.location='{% firstof billboard.link.url billboard.promo.permalink %}'"  title="{{ billboard.image.caption }} : {{ billboard.image.attribution }}"><p>&nbsp;</p>
                 </div>
         {% else %}
             {% ifequal billboard.billboard_type '2' %}
