@@ -9,13 +9,16 @@
 <div id="topic_detail" stylesheet="float:right;" class="grid_7">
 
     <h1>{{ topic }}</h1>
-    <p>
+    <p style="line-height:1;">
         <div style="float:left;">
     {% for i in topic_image%}
         <img src="{{ i.photo.get_thumbnail_url }}">
     {% endfor %}
         </div>
-    {{ topic.description }}
+    </p>
+    <p style="line-height:1;">
+    {% autoescape off %}{{ topic.description }}{% endautoescape %}
+<hr>
     <br clear="all">
     </p>
 
