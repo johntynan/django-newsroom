@@ -2,17 +2,6 @@
 
 {% block head_title %}{{ topic }}{% endblock %}
 
-    {% block stylesheets %}
-    <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}themes/esser/css/reset.css" />
-    <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}themes/esser/css/960.css" />
-    <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}themes/esser/css/text_test.css" />
-    <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}themes/esser/css/site_test.css" />
-
-    <!--[if lt IE 7]>
-    <link rel="stylesheet" type="text/css" media="all" href="{{ MEDIA_URL }}themes/esser/css/ie6.css" />
-    <![endif]-->
-    {% endblock %}
-
 {% block body_id %}topics{% endblock %}
 
 {% block body %}
@@ -20,7 +9,7 @@
 <div id="topic_detail" stylesheet="float:right;" class="grid_7">
 
     <!-- h1>{{ topic }}</h1 -->
-    <p>
+    <p style="line-height:1;">
         <div style="float:left;">
     {% for i in topic_image%}
         <img src="{{ i.photo.get_thumbnail_url }}">
