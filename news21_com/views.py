@@ -38,6 +38,7 @@ def front(request):
     home4 = []
     home5 = []
     home6 = []
+    home7 = []
     status = []
     flatpages = FlatPage.objects.all()
     for x in flatpages:
@@ -53,6 +54,8 @@ def front(request):
             home5.append(x)
         elif x.url == '/home6/':
             home6.append(x)
+        elif x.url == '/home7/':
+            home7.append(x)
         elif x.url == '/status/':
             status.append(x)
 
@@ -65,6 +68,7 @@ def front(request):
             'home4': home4,
             'home5': home5,
             'home6': home6,
+            'home7': home7,
             'status': status,
              },
               context_instance=RequestContext(request))
