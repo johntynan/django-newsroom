@@ -92,7 +92,7 @@
 
         <div id="homepage-banner" class="box" style="background:white;border-bottom:0px;">
 {% for home7 in home7 %}
-            <div style="position:relative;top:-1px;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{{ home7.title }}</div>
+            <div style="position:relative;top:-1px;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{% autoescape off %}{{ home7.title }}{% endautoescape %}</div>
             {% if home7.content %}
             <div style="background:#a6a6a7;padding-left:16px;">
                 {% autoescape off %}
@@ -169,19 +169,19 @@
 <td style="width:1%;"></td>
 
 {% for home1 in home1 %}
-<th style="width:30%;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{{ home1.title }}</th>
+<th style="width:30%;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{% autoescape off %}{{ home1.title }}{% endautoescape %}</th>
 {% endfor %}
 
 <td style="width:2%;"></td>
 
 {% for home2 in home2 %}
-<th style="width:30%;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{{ home2.title }}</th>
+<th style="width:30%;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{% autoescape off %}{{ home2.title }}{% endautoescape %}</th>
 {% endfor %}
 
 <td style="width:2%;"></td>
 
 {% for home3 in home3 %}
-<th style="width:30%;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{{ home3.title }}</th>
+<th style="width:30%;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{% autoescape off %}{{ home3.title }}{% endautoescape %}</th>
 {% endfor %}
 
 <td style="width:1%;"></td>
@@ -237,7 +237,7 @@
 {% endblock %}
 
 {% block home4_height %}
-            <div class="padding" style="height:380px;">
+            <div class="padding" style="height:330px;">
 {% endblock %}
 
 {% block home4_heading %}
