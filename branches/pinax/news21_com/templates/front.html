@@ -11,17 +11,15 @@
 {% block extrahead %}
 {% endblock %}
 
-
-
 {% block body %}
 
         <div id="homepage-banner" class="box" style="background:white;border-bottom:0px;">
 {% for home7 in home7 %}
-            <div style="position:relative;top:-1px;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">EXPLORATIONS IN A CHANGING AMERICA</div>
+            <div style="position:relative;top:-1px;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{% autoescape off %}{{ home7.title }}{% endautoescape %}</div>
             {% if home7.content %}
             <div style="background:#a6a6a7;padding-left:16px;">
                 {% autoescape off %}
-                An arena where the nation's top next-gen journalists experiment in telling complex stories
+                 {{ home7.content }}
                 {% endautoescape %}
             </div>
             {% else %}
@@ -63,7 +61,7 @@
 
 {% for home6 in home6 %}
     {% autoescape off %}
-    2009 PROJECTS: Spotlight on In-Depth Coverage of American Evolution 
+    {{ home6.title }}
     {% endautoescape %}
 {% endfor %}
 
@@ -75,18 +73,7 @@
 {% for home6 in home6 %}
 
     {% autoescape off %}
-<ul>
-    <li><strong><a href="http://asu.news21.com/">The Latino Experience Across America</a></strong></li>
-    <li><strong><a href="http://berkeley.news21.com/">Intersections: Bay Area Communities at the Crossroads</a></strong></li>
-    <li><strong><a href="http://columbia.news21.com/">Charter Explosion: Hybrid Schools in Public Education</a></strong></li>
-    <li style="white-space:nowrap;"><strong><a href="http://umd.news21.com">The New Voters: Identity & U.S. Politics</a></strong></li>
-</ul>
-<ul style="margin: 10px">
-    <li><strong><a href="http://unc.news21.com/">Powering a Nation: Quest for Energy in a Changing USA</a></strong></li>
-    <li style="white-space:nowrap;"><strong><a href="http://northwestern.news21.com/">Young Urban Adults and the New America</a></strong></li>
-    <li><strong><a href="http://usc.news21.com/">Southwestern Shifts: New Communities & New Realities</a></strong></li>
-    <li><strong><a href="http://syracuse.news21.com">The Young & the Wireless: Net Gen Rising</a></strong></li>
-</ul>
+    {{ home6.content }}
     {% endautoescape %}
 
 {% endfor %}
@@ -105,19 +92,19 @@
 <td style="width:1%;"></td>
 
 {% for home1 in home1 %}
-<th style="width:30%;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">	Innovation Explained</th>
+<th style="width:30%;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{% autoescape off %}{{ home1.title }}{% endautoescape %}</th>
 {% endfor %}
 
 <td style="width:2%;"></td>
 
 {% for home2 in home2 %}
-<th style="width:30%;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">	Change in Focus: Energy Impact</th>
+<th style="width:30%;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{% autoescape off %}{{ home2.title }}{% endautoescape %}</th>
 {% endfor %}
 
 <td style="width:2%;"></td>
 
 {% for home3 in home3 %}
-<th style="width:30%;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">About News21</th>
+<th style="width:30%;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{% autoescape off %}{{ home3.title }}{% endautoescape %}</th>
 {% endfor %}
 
 <td style="width:1%;"></td>
@@ -130,14 +117,7 @@
 {% for home1 in home1 %}
 <td style="height:200px;vertical-align:top;">
 {% autoescape off %}
-<p><h2 style="margin-bottom:0px;"><a href="http://innovate.news21.com">Sharing Approaches to Storytelling</a></h2>
-Everything News21 does is meant to be shared. Check the blog for insights into how the projects were conceived, reported, created and produced.
-<a href="http://www.wordle.net/gallery/wrdl/1026050/News21_Innovations" 
-		  title="Wordle: News21 Innovations"><img
-		  src="http://newsroom.news21.com/site_media/uploads/promos/2009/08/03/wordle-innov-cloud-v4.jpg"
-		  alt="Wordle: News21 Innovations" width="272" 
-		  style="padding:4px"></a>
-</p>
+<p>{{ home1.content }}</p>
 {% endautoescape %}
 </td>
 {% endfor %}
@@ -147,9 +127,7 @@ Everything News21 does is meant to be shared. Check the blog for insights into h
 {% for home2 in home2 %}
 <td style="height:200px;vertical-align:top;">
 {% autoescape off %}
-<p><a href="http://unc.news21.com/index.php/stories/portraits/the-mallets.html"><img src="http://newsroom.news21.com/site_media/uploads/promos/2009/08/11/energy-portrait-v1.jpg" alt="the Maletts of Texas; photo by Nacho Corbella, UNC" align="center" style="width:100%;height:auto;"></a>
-<h2 style="margin-bottom:0px;"><a href="http://unc.news21.com/index.php/stories/portraits/the-mallets.html">Analyzing the Mallet Family's Energy Use </a></h2>
-As the U.S. population grows, so does production of greenhouse gases. Four American families detail their energy consumption, including new Texas parents.<br/></p>
+<p>{{ home2.content }}</p>
 {% endautoescape %}
 </td>
 {% endfor %}
@@ -159,18 +137,7 @@ As the U.S. population grows, so does production of greenhouse gases. Four Ameri
 {% for home3 in home3 %}
 <td style="height:200px;vertical-align:top;">
 {% autoescape off %}
-<p><p><span style="color: red;"><strong>BETA 4.0: Summer 2009</strong></span></p>
-<p>
-<strong>News21 is an alliance of more than 90 students from 12 universities dedicated to exploring new approaches to in-depth digital journalism. Carnegie-Knight fellows from Harvard, Missouri, Nebraska and Texas also participated in the projects developed by the eight schools listed above. 
-</strong>
-</p>
-<p>
-<strong>These projects will continue to be refined into the fall.  Please return to see our work take shape and <a href="mailto:news@news21.com">offer feedback</a>.</strong>
-
-<p>
-<strong>To view projects from the first three years of News21,  <a href="http://news21project.org/projects">visit the archive</a>.</strong>
-
-</p> </p>
+<p>{{ home3.content }}</p>
 {% endautoescape %}
 </td>
 {% endfor %}
@@ -193,13 +160,13 @@ As the U.S. population grows, so does production of greenhouse gases. Four Ameri
 {% endblock %}
 
 {% block home4_height %}
-            <div class="padding" style="height:380px;">
+            <div class="padding" style="height:330px;">
 {% endblock %}
 
 {% block home4_heading %}
 {% for home4 in home4 %}
 {% autoescape off %}
-Featured Presentations
+{{ home4.title }}
 {% endautoescape %}
 {% endfor %}
 {% endblock %}
@@ -208,36 +175,16 @@ Featured Presentations
 {% for home4 in home4 %}
 <div>
 {% autoescape off %}
-<p><span style="line-height: 1;">Here's a sampling of stories and journalistic approaches from the eight News21 newsrooms:</span>
-</p><ul>
-<li><a href="http://asu.news21.com/the-virgin-of-guadalupe/">Virgin Tour: Mexico's Patron Saint Goes Global
-</a></li>
-
-<li><a href="http://berkeley.news21.com/town-square/">California Communities Build a New Kind of Town Square</a></li>
-
-<li><a href="http://columbia.news21.com/?page_id=1233">Zero to 4,566: Mapping Charter School Growth</a></li>
-
-<li><a href="http://www.thenewvoters.com/voices/newdestinations/2009/07/former-rogers-mayor-sees-country-everybody">Latinos Reshape an Arkansas Town</a></li>
-
-<li><a href="http://unc.news21.com/index.php/opinions/senator-john-kerry.html">Re-poowering the nation? Sen. John Kerry, others weigh in</a></li>
-
-<li><a href="http://northwestern.news21.com/2009/07/27/dreamers-undocumented-young-adults-face-uncertainty/#more-344">Dreamers: Undocumented Young Adults Face Uncertainty</a></li>
-
-<li><a href="http://news21.uscannenberg.org/index.php/bfrank/storypage/C15">As California Tribal Purging Leaves Some Behind</a></li>
-
-<li><a href="http://youngandthewireless.com/">Seven Kids and One Laptop: An Arizona Family Makes Do</a></li>
-
-</ul>
+<p>{{ home4.content }}</p>
 {% endautoescape %}
 </div>
 {% endfor %}
 {% endblock %}
 
-
 {% block home5_heading %}
 {% for home5 in home5 %}
 {% autoescape off %}
-	University Newsrooms
+{{ home5.title }}
 {% endautoescape %}
 {% endfor %}
 {% endblock %}
@@ -245,21 +192,7 @@ Featured Presentations
 {% block home5_text %}
 {% for home5 in home5 %}
 {% autoescape off %}
-              <ul class="left">
-                <li><a href="http://asu.news21.com/">Arizona State</a></li>
-                <li><a href="http://berkeley.news21.com/">Berkeley</a></li>
-                <li><a href="http://columbia.news21.com/">Columbia</a></li>
-                <li><a href="http://www.thenewvoters.com">Maryland</a></li>
-
-              </ul>
-              <ul class="right">
-                <li><a href="http://unc.news21.com/">North Carolina</a></li>
-                <li><a href="http://northwestern.news21.com/">Northwestern</a></li>
-                <li style="white-space: nowrap;"><a href="http://usc.news21.com/">Southern California</a></li>
-                <li><a href="http://syracuse.news21.com/">Syracuse</a></li>
-
-              </ul>
-
+{{ home5.content }}
 {% endautoescape %}
 {% endfor %}
 {% endblock %}
