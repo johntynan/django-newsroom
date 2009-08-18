@@ -180,13 +180,9 @@
 
 <td style="width:2%;"></td>
 
-
-<th style="width:30%;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{% for home3 in home3 %}{{ home3.title }}{% endfor %}
-{% for status in status %}
-{% autoescape off %}
-{{ status.content }}
-{% endautoescape %}
-{% endfor %}</th>
+{% for home3 in home3 %}
+<th style="width:30%;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{{ home3.title }}</th>
+{% endfor %}
 
 <td style="width:1%;"></td>
 
