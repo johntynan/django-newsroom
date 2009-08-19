@@ -131,6 +131,50 @@
     </div>
 {% endfor %}
 
+<div class="clear"></div>
+<table style="width:100%;position:relative;top:-1px;">
+<tr>
+
+<td style="width:1%;"></td>
+
+{% for home1 in home1 %}
+<th style="width:45%;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{% autoescape off %}{{ home1.title }}{% endautoescape %}</th>
+{% endfor %}
+
+<td style="width:2%;"></td>
+
+{% for home2 in home2 %}
+<th style="width:45%;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{% autoescape off %}{{ home2.title }}{% endautoescape %}</th>
+{% endfor %}
+
+</tr>
+<tr>
+
+<td></td>
+
+{% for home1 in home1 %}
+<td style="height:200px;vertical-align:top;">
+{% autoescape off %}
+<p>{{ home1.content }}</p>
+{% endautoescape %}
+</td>
+{% endfor %}
+
+<td></td>
+
+{% for home2 in home2 %}
+<td style="height:200px;vertical-align:top;">
+{% autoescape off %}
+<p>{{ home2.content }}</p>
+{% endautoescape %}
+</td>
+{% endfor %}
+
+</tr>
+</table>
+
+
+
           <div id="topics" class="box">
 
             <div style="position:relative;top:-1px;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">
@@ -162,69 +206,13 @@
           </div>
 {% endblock %}
 
-{% block body_extra %}<div class="clear"></div>
-<table style="width:100%;position:relative;top:-7px;">
-<tr>
 
-<td style="width:1%;"></td>
 
-{% for home1 in home1 %}
-<th style="width:30%;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{% autoescape off %}{{ home1.title }}{% endautoescape %}</th>
-{% endfor %}
 
-<td style="width:2%;"></td>
-
-{% for home2 in home2 %}
-<th style="width:30%;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{% autoescape off %}{{ home2.title }}{% endautoescape %}</th>
-{% endfor %}
-
-<td style="width:2%;"></td>
-
-{% for home3 in home3 %}
-<th style="width:30%;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{% autoescape off %}{{ home3.title }}{% endautoescape %}</th>
-{% endfor %}
-
-<td style="width:1%;"></td>
-
-</tr>
-<tr>
-
-<td></td>
-
-{% for home1 in home1 %}
-<td style="height:200px;vertical-align:top;">
-{% autoescape off %}
-<p>{{ home1.content }}</p>
-{% endautoescape %}
-</td>
-{% endfor %}
-
-<td></td>
-
-{% for home2 in home2 %}
-<td style="height:200px;vertical-align:top;">
-{% autoescape off %}
-<p>{{ home2.content }}</p>
-{% endautoescape %}
-</td>
-{% endfor %}
-
-<td></td>
-
-{% for home3 in home3 %}
-<td style="height:200px;vertical-align:top;">
-{% autoescape off %}
-<p>{{ home3.content }}</p>
-{% endautoescape %}
-</td>
-{% endfor %}
-
-<td></td>
-
-</tr>
-</table>
-
+{% block body_extra %}
 {% endblock %}
+
+
 
 {% block sidebar_status %}
 {% for status in status %}
@@ -237,7 +225,7 @@
 {% endblock %}
 
 {% block home4_height %}
-            <div class="padding" style="height:330px;">
+            <div class="padding" style="height:358px;">
 {% endblock %}
 
 {% block home4_heading %}
@@ -273,3 +261,20 @@
 {% endautoescape %}
 {% endfor %}
 {% endblock %}
+
+{% block sidebar_highlight %}
+{% for home3 in home3 %}
+          <div id="topics" class="box">
+
+            <div style="position:relative;top:-1px;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{% autoescape off %}{{ home3.title }}{% endautoescape %}</div>
+
+            <div class="padding" style="height:198px;vertical-align:top;">
+
+<p>{% autoescape off %}{{ home3.content }}{% endautoescape %}</p>
+
+            </div>
+
+          </div>
+{% endfor %}
+{% endblock %}
+
