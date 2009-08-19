@@ -23,10 +23,10 @@
 
           {% block navbar %}
           <ul class="dropdown" style="list-style: none">
-            <li><a href="/topics/" style="z-index:1;padding: 0px 0px;"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/topics.gif" alt="Topics" /></a>
-              <ul class="dropdown" style="z-index:1; width: 105px;">
+            <li><a href="/topics/" style="z-index:2;padding: 0px 0px;"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/topics.gif" alt="Topics" /></a>
+              <ul class="dropdown" style="z-index:2; width: 105px;">
                 <li><a href="/schools/">By Newsroom</a>
-                <ul class="sub_menu" style="z-index:1;width: 140px;">
+                <ul class="sub_menu" style="z-index:2;width: 140px;">
                     <li><a href="http://asu.news21.com/">Arizona</a></li>
                     <li><a href="http://berkeley.news21.com/">Berkeley</a></li>
                     <li><a href="http://columbia.news21.com/">Columbia</a></li>
@@ -38,7 +38,7 @@
                 </ul>
                 </li>
                 <li><a href="/about/#participants">By Project</a>
-                <ul class="sub_menu" style="z-index:1; width: 160px;">
+                <ul class="sub_menu" style="z-index:2; width: 160px;">
                     <li><a href="http://asu.news21.com/">The Latino Experience</a></li>
                     <li><a href="http://berkeley.news21.com/">Intersections</a></li>
                     <li><a href="http://columbia.news21.com/">Charter School Explosion</a></li>
@@ -50,7 +50,7 @@
                 </ul>
                 </li>
                 <li><a href="/topics/list/">Category</a>
-                <ul class="sub_menu" style="z-index:1;width: 120px;">
+                <ul class="sub_menu" style="z-index:2;width: 120px;">
                     <li><a href="/topics/cities">Cities</a></li>
                     <li><a href="/topics/culture">Culture</a></li>
                     <li><a href="/topics/demographics">Demographics</a></li>
@@ -78,7 +78,7 @@
 
 
             <li><a href="/about/" style="padding: 0px 0px;"><img src="{{ MEDIA_URL }}themes/esser/images/header/buttons/about.gif" alt="About"></a>
-              <ul class="dropdown" style="z-index:1; width: 90px;">
+              <ul class="dropdown" style="z-index:2; width: 90px;">
                 <li><a href="/about#initiative">The Initiative</a></li>
                 <li><a href="/about#participants">Participants</a></li>
                 <!-- <li><a href="#">Contributors</a></li>
@@ -92,7 +92,7 @@
 
         <div id="homepage-banner" class="box" style="background:white;border-bottom:0px;">
 {% for home7 in home7 %}
-            <div style="position:relative;top:-1px;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{% autoescape off %}{{ home7.title }}{% endautoescape %}</div>
+            <div style="position:relative;top:-1px;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;z-index:0;">{% autoescape off %}{{ home7.title }}{% endautoescape %}</div>
             {% if home7.content %}
             <div style="background:#a6a6a7;padding-left:16px;">
                 {% autoescape off %}
