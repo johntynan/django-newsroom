@@ -187,11 +187,11 @@
 
 {% block sidebar_highlight %}
 {% for home3 in home3 %}
-          <div id="topics">
+          <div id="topics" style="height:256px;">
 
             <div style="position:relative;top:-1px;background-image:url('{{ MEDIA_URL }}themes/esser/images/bgs/news21gradient.gif');background-color:#ED930E;font-size:18px;text-align:left;padding-left:15px;color:white;font-family: helvetica, arial sans-serif;font-weight:300;">{% autoescape off %}{{ home3.title }}{% endautoescape %}</div>
 
-            <div class="padding" style="height:198px;vertical-align:top;">
+            <div class="padding" style="vertical-align:top;">
 
 <p>{% autoescape off %}{{ home3.content }}{% endautoescape %}</p>
 
