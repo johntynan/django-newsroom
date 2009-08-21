@@ -401,6 +401,6 @@ ul.dropdown li:hover > ul 			{ visibility: visible; }
 a.white {color: white; text-decoration: none}
 a.white:link {color: white; text-decoration: none}
 a.white:visited {color: white; text-decoration: none}
-a.white:hover {color: #f29812; text-decoration: underline}
+a.white:hover {color: #404040; text-decoration: underline}
 a.white:active {color: white; text-decoration: none}
 
