@@ -355,9 +355,11 @@ a:active {
 
 #content ul li.even {
     background-color: #fff;
+    padding-top: 10px;
 }
 #content ul li.odd {
-    background-color: #B2B2B4;
+    background-color: #DADADA;
+    padding-top: 10px;
 }
 
 /* 
