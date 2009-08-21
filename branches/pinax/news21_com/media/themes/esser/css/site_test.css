@@ -404,3 +404,9 @@ a.white:visited {color: white; text-decoration: none}
 a.white:hover {color: #404040; text-decoration: none}
 a.white:active {color: white; text-decoration: none}
 
+a.gold {color: #f29812; text-decoration: none}
+a.gold:link {color: #f29812; text-decoration: none}
+a.gold:visited {color: #f29812; text-decoration: none}
+a.gold:hover {color: #404040; text-decoration: none}
+a.gold:active {color: #f29812; text-decoration: none}
+
