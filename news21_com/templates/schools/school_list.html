@@ -10,7 +10,8 @@
 
 <ul>
 {% for o in school_list %}
-<li class="{% cycle 'even' 'odd' %}"><a href="/schools/{{o.slug}}">{{o}}</a> {{o.description}}<br>
+<li class="{% cycle 'even' 'odd' %}"><span style="font-size:120%;"><a href="/topics/{{o.slug}}">{{o}}</a></span><br>
+{{o.description}}</li>
 {% empty %}
 <li>No topics submitted yet.</li>
 {% endfor %}
