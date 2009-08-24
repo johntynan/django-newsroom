@@ -21,7 +21,7 @@
 <hr>
     </p>
 
-    <ul>
+    <ul style="top:-20px;">
     {% for p in promos %}
         <li class="{% cycle 'even' 'odd' %}"><span style="font-size:120%;"><a href="{{p.permalink}}">{{p}}</a></span><br>
         {{p.description}} </li>
