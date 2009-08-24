@@ -2,9 +2,15 @@
 
 You have received the following promo from http://newsroom.news21.com/profiles/{{ user }}.
 
+{{ headline }}
+
+{{ description }}
+
 You can view this promo here:
 
 http://newsroom.news21.com/promos/{{ object }}
+
+{{ headline }}
 
 
 {% endblocktrans %}
