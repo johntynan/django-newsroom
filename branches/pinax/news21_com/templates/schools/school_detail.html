@@ -19,13 +19,12 @@
     <p style="line-height:1;">
     {% autoescape off %}{{ topic.description }}{% endautoescape %}
 <hr>
-    <br clear="all">
     </p>
 
-
-    <ul>
+    <ul style="top:-20px;">
     {% for p in promos %}
-        <li class="{% cycle 'even' 'odd' %}"><a href="{{p.permalink}}">{{p}}</a> {{p.description}} </li>
+        <li class="{% cycle 'even' 'odd' %}"><span style="font-size:120%;"><a href="{{p.permalink}}">{{p}}</a></span><br>
+        {{p.description}} </li>
     {% endfor %}
     {% for l in promo_link %}
         <li><a href="{{l.id}}">{{l}}</a> 
