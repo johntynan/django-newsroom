@@ -353,13 +353,13 @@ a:active {
   margin: 0;
 }
 
-#content ul li.even {
+e#content ul li.even {
     background-color: #fff;
-    padding-top: 10px;
+    padding-top: 6px;
 }
 #content ul li.odd {
     background-color: #DADADA;
-    padding-top: 10px;
+    padding-top: 6px;
 }
 
 /* 
