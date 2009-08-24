@@ -2,7 +2,11 @@
 
 {% load i18n %}
 
-{% block head_title %}{{ flatpage.title }}{% endblock %}
+
+{% block head_title %}
+{% for flatpage in flatpage %}{{ flatpage.title }}{% endfor %}
+{% endblock %}
+
 
 {% block body %}
           <div class="grid_9">
