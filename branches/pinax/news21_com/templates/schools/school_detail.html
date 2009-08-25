@@ -2,6 +2,10 @@
 
 {% block head_title %}{{ topic }}{% endblock %}
 
+{% block extrahead %}
+<link type="application/rss+xml" rel="alternate" title="News21 {{ topic }} Feed" href="/topics/feed/{{ topic.id }}" />
+{% endblock %}
+
 {% block body_id %}topics{% endblock %}
 
 {% block body %}
