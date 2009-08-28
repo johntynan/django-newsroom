@@ -44,6 +44,9 @@ class Topic(models.Model):
     topic_path = models.ManyToManyField( 
                 TopicPath,
                 blank=True)
+
+    class Meta:
+        ordering = ["title"]
     
     def __unicode__(self):
         return self.title
