@@ -15,8 +15,9 @@ class TopicPath(models.Model):
 
     """
     topic_path = models.CharField(max_length=256)
-    ordering = ['topic_path']
 
+    class Meta:
+        ordering = ["topic_path"]
 
     def __unicode__(self):
         return self.topic_path
