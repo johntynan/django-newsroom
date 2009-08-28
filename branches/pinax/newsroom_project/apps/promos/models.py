@@ -5,6 +5,8 @@ from django.contrib.contenttypes.models import ContentType
 from topics.models import TopicPath
 from geotags.models import Point,Line, MultiLine, Polygon
 
+User._meta.ordering = ['username']
+
 "billboard", "small", "medium", "original"
 IMAGE_KIND_BILLBOARD = 'B'
 IMAGE_KIND_SMALL = 'S'
