@@ -13,7 +13,7 @@ from django.views.generic.simple import direct_to_template
 
 from geotags.models import Point, Line, Polygon
 
-def kml_feed_new(request, template="geotags/geotags_new.kml",
+def kml_feed(request, template="geotags/geotags.kml",
              geotag_class_name=None,content_type_name=None,
              object_id=None):
     """
@@ -33,7 +33,7 @@ def kml_feed_new(request, template="geotags/geotags_new.kml",
     return render_to_kml(template,context_instance=context)
 
 
-def kml_feed_map_new(request,template="geotags/view_kml_feed_new.html",
+def kml_feed_map(request,template="geotags/view_kml_feed.html",
                  geotag_class_name=None, content_type_name=None):
     """
     Direct the user to a template with all the required parameters to render

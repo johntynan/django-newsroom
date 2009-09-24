@@ -2,14 +2,14 @@ from django.conf.urls.defaults import *
 from geotags.models import Point
 from geotags.forms import PointForm
 
-from geotags.views import kml_feed, kml_feed_map, kml_feeds_map, kml_feed_map_new, kml_feed_new
+from geotags.views import kml_feed, kml_feed_map, kml_feeds_map
 
 urlpatterns = patterns('',
 
     # KML feeds
     url(r'^kml_feed/(?P<geotag_class_name>[a-z]+)/$',kml_feed,
         name="geotags-kml_feed"),
-    url(r'^kml_feed/(?P<geotag_class_name>[a-z]+)/(?P<content_type_name>[a-z ]+)/$',kml_feed_new,
+    url(r'^kml_feed/(?P<geotag_class_name>[a-z]+)/(?P<content_type_name>[a-z ]+)/$',kml_feed,
         name="geotags-kml_feed_per_contenttype"),
 
     # KML Feeds visualiser
@@ -19,7 +19,7 @@ urlpatterns = patterns('',
         name="geotags-kml_feeds_map_per_contenttype"),
     url(r'^(?P<geotag_class_name>[a-z]+)/$', kml_feed_map,
         name="geotags-kml_feed_map"),
-    url(r'^(?P<geotag_class_name>[a-z]+)/(?P<content_type_name>[a-z ]+)/$', kml_feed_map_new,
+    url(r'^(?P<geotag_class_name>[a-z]+)/(?P<content_type_name>[a-z ]+)/$', kml_feed_map,
         name="geotags-kml_feed_map_per_contenttype"),
 
     # KML Feeds visualiser
