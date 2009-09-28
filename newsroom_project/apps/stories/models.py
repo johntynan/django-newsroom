@@ -58,6 +58,10 @@ class Story(models.Model):
     """
     A Story is composed of one or more Pages
     """
+    submitter = models.ForeignKey(
+                User,
+                null=True,blank=True,
+                related_name='stories_submitted',)
     authors = models.ManyToManyField(User)
     sites = models.ManyToManyField(Site)
     headline = models.CharField(max_length=256)

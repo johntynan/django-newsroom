@@ -26,6 +26,7 @@ def create_draft_story(headline=None, user=None):
     story.save()
     story.sites = Site.objects.all()
     if user:
+        story.submitter = user
         story.authors.add(user)
     story.save()
     return story
@@ -40,6 +41,7 @@ def create_published_story(headline=None, user=None):
     story.save()
     story.sites = Site.objects.all()
     if user:
+        story.submitter = user
         story.authors.add(user)
     story.save()
     return story
