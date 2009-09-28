@@ -34,6 +34,7 @@ def add_story(request):
         form = StoryForm(request.POST)
         if form.is_valid():
             story = form.save(commit=False)
+            story.submitter = request.user
             story.slug = slugify(story.headline)
             story.save()
             form.save_m2m()
